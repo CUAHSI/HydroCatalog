@@ -1,0 +1,30 @@
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\Images\fail.gif
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\Images\hislogo.jpg
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\Images\pass.gif
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\TestWsdl config files\web_method_and_param.txt
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\TestWsdl config files\wsdl_uri.txt
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests-WebVersion.dll
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests-WebVersion.pdb
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\log4net.dll
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests.dll
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\nunit.framework.dll
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\nunit.framework.xml
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests.pdb
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\obj\Debug\ResolveAssemblyReference.cache
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\obj\Debug\WsdlValidationTests-WebVersion.dll
+D:\dev_webservicetest\WsdlValidationTests-WebVersion\obj\Debug\WsdlValidationTests-WebVersion.pdb
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\Images\fail.gif
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\Images\hislogo.jpg
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\Images\pass.gif
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\TestWsdl config files\web_method_and_param.txt
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\TestWsdl config files\wsdl_uri.txt
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests-WebVersion.dll
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests-WebVersion.pdb
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\log4net.dll
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests.dll
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\nunit.framework.dll
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\nunit.framework.xml
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\bin\WsdlValidationTests.pdb
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\obj\Debug\ResolveAssemblyReference.cache
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\obj\Debug\WsdlValidationTests-WebVersion.dll
+C:\dev_webservicetest\WsdlValidationTests-WebVersion\obj\Debug\WsdlValidationTests-WebVersion.pdb
