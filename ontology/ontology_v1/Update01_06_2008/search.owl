@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+
+  xmlns:com-atmo="http://www.cuahsi.org/atmohydrocompound#"
+  xmlns:cor-atmo="http://www.cuahsi.org/atmohydrocore#"
+  xmlns:syn-atmo="http://www.cuahsi.org/atmohydrosyn#"
+
+  xmlns:com-watq="http://www.cuahsi.org/watqualcompound#"
+  xmlns:cor-watq="http://www.cuahsi.org/watqualcore#"
+  xmlns:syn-watq="http://www.cuahsi.org/watqualsyn#"
+
+  xmlns:com-surf="http://www.cuahsi.org/surfhydrocompound#"
+  xmlns:cor-surf="http://www.cuahsi.org/surfhydrocore#"
+  xmlns:syn-surf="http://www.cuahsi.org/surfhydrosyn#"
+
+  xmlns:com-subs="http://www.cuahsi.org/subshydrocompound#"
+  xmlns:cor-subs="http://www.cuahsi.org/subshydrocore#"
+  xmlns:syn-subs="http://www.cuahsi.org/subshydrosyn#"
+
+  xmlns:com-land="http://www.cuahsi.org/landcompound#"
+  xmlns:cor-land="http://www.cuahsi.org/landcore#"
+  xmlns:syn-land="http://www.cuahsi.org/landsyn#"
+
+  xmlns:com-ocea="http://www.cuahsi.org/oceancompound#"
+  xmlns:cor-ocea="http://www.cuahsi.org/oceancore#"
+  xmlns:syn-ocea="http://www.cuahsi.org/oceansyn#"
+
+  xmlns="http://www.cuahsi.org/search#">
+<!--  xml:base="http://www.cuahsi.org/search"> -->
+
+<!--  xmlns:com-="http://www.cuahsi.org/compound#" -->
+<!--  xmlns:cor-="http://www.cuahsi.org/core#" -->
+<!--  xmlns:syn-="http://www.cuahsi.org/syn#" -->
+
+
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="navigation.owl"/>
+    <owl:imports rdf:resource="atmohydrocompound.owl"/>
+    <owl:imports rdf:resource="atmohydrocore.owl"/>
+    <owl:imports rdf:resource="atmohydrosyn.owl"/>
+    <owl:imports rdf:resource="watqualcompound.owl"/>
+    <owl:imports rdf:resource="watqualcore.owl"/>
+    <owl:imports rdf:resource="watqualsyn.owl"/>
+    <owl:imports rdf:resource="surfhydrocompound.owl"/>
+    <owl:imports rdf:resource="surfhydrocore.owl"/>
+    <owl:imports rdf:resource="surfhydrosyn.owl"/>
+    <owl:imports rdf:resource="landcompound.owl"/>
+    <owl:imports rdf:resource="landcore.owl"/>
+    <owl:imports rdf:resource="landsyn.owl"/>
+    <owl:imports rdf:resource="subshydrocompound.owl"/>
+    <owl:imports rdf:resource="subshydrocore.owl"/>
+    <owl:imports rdf:resource="subshydrosyn.owl"/>
+    <owl:imports rdf:resource="oceancompound.owl"/>
+    <owl:imports rdf:resource="oceancore.owl"/>
+    <owl:imports rdf:resource="oceansyn.owl"/>
+  </owl:Ontology>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 128)  http://protege.stanford.edu -->

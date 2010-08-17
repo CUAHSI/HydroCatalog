@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:flow="http://www.cuahsi.org/flow#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:met-syn="http://www.cuahsi.org/meteorology-syn#"
+    xmlns:nav="http://www.cuahsi.org/navigation#"
+    xmlns:met="http://www.cuahsi.org/meteorology#"
+    xmlns:flow-syn="http://www.cuahsi.org/flow-syn#"
+    xmlns:met-ext="http://www.cuahsi.org/meteorology-extended#"
+    xmlns:flow-ext="http://www.cuahsi.org/flow-extended#"
+    xmlns:nwis="http://www.cuahsi.org/nwis#"
+    xmlns:epastoret="http://www.cuahsi.org/epastoret#"
+    xmlns="http://www.cuahsi.org/search#"
+  xml:base="http://www.cuahsi.org/search">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://hydroseek.org/ontology/flow.owl"/>
+    <owl:imports rdf:resource="http://hydroseek.org/ontology/flow-syn.owl"/>
+    <owl:imports rdf:resource="http://hydroseek.org/ontology/flow-extended.owl"/>
+    <owl:imports rdf:resource="http://hydroseek.org/ontology/navigation.owl"/>
+  </owl:Ontology>
+</rdf:RDF>

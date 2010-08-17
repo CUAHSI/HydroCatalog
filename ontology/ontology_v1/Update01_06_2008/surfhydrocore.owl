@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns:com-surf="http://www.cuahsi.org/surfhydrocompound#"
+  xmlns="http://www.cuahsi.org/surfhydrocore#"
+  xml:base="http://www.cuahsi.org/surfhydrocore">
+
+<!-- Import Upper Level OWL files -->
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--  <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/> -->
+<!--  <owl:imports rdf:resource="http://hydroseek.org/search/ontology/compoundSurfHydro.owl"/> -->
+
+
+  <owl:DatatypeProperty rdf:about="#siteType">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.cuahsi.org/navigation#subsurfaceHydrology"/>
+          <rdf:Description rdf:about="http://www.cuahsi.org/navigation#surfaceHydrology"/>
+          <rdf:Description rdf:about="http://www.cuahsi.org/navigation#ocean"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+
+
+    <owl:Class rdf:ID="waveHeight">
+    <rdfs:label xml:lang="en">Wave Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#wave"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="aveWaveHeight">
+    <rdfs:label xml:lang="en">Average Wave Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#wave"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="wavePeriod">
+    <rdfs:label xml:lang="en">Wave Period</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#wave"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="waveSpeed">
+    <rdfs:label xml:lang="en">Wave Speed</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#wave"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="waveGroupVelocity">
+    <rdfs:label xml:lang="en">Wave Group Velocity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#wave"/>
+  </owl:Class>
+
+
+
+
+
+  <owl:Class rdf:ID="tideElevation">
+    <rdfs:label xml:lang="en">Wave Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="highTide">
+    <rdfs:label xml:lang="en">Height Tide</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="highTideDuration">
+    <rdfs:label xml:lang="en">Height Tide Duration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="lowTide">
+    <rdfs:label xml:lang="en">Height Tide</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="lowTideDuration">
+    <rdfs:label xml:lang="en">Low Tide Duration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="tidePeriod">
+    <rdfs:label xml:lang="en">Wave Period</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="tideSpeed">
+    <rdfs:label xml:lang="en">Wave Speed</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#tide"/>
+  </owl:Class>
+
+
+  
+  
+  
+  
+  <owl:Class rdf:ID="waveHeight">
+    <rdfs:label xml:lang="en">Wave Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#ocean"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="current">
+    <rdfs:label xml:lang="en">Currents</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#ocean"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#estuary"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="streamVelocity">
+    <rdfs:label xml:lang="en">Stream Velocity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="streamFlow">
+    <rdfs:label xml:lang="en">Streamflow</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="evaporation">
+    <rdfs:label xml:lang="en">Evaporation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#estuary"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#lake"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#ocean"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="evapotranspirationActual">
+    <rdfs:label xml:lang="en">Evapotranspiration, Actual</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#evapotranspiration"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="evapotranspirationPotential">
+    <rdfs:label xml:lang="en">Evapotranspiration, Potential</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#evapotranspiration"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="surfacehydrology_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#surfaceHydrology"/>
+  </owl:Class>
+
+
+
+  
+  
+  <owl:Class rdf:ID="stageStream">
+    <rdfs:label xml:lang="en">Stage, Stream</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelStream"/>
+    <rdfs:comment xml:lang="en">The height of a water surface above an established datum plane. (Compare Gage Height)</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="gageHeightStream">
+    <rdfs:label xml:lang="en">Gage Height, Stream</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelStream"/>
+    <rdfs:comment xml:lang="en">Gage height is the water surface elevation referred to some arbitrary gage datum. (Compare Stage)</rdfs:comment>
+  </owl:Class>
+
+
+
+  
+  <owl:Class rdf:ID="stageLake">
+    <rdfs:label xml:lang="en">Stage, Lake</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelLakeReser"/>
+    <rdfs:comment xml:lang="en">The height of a water surface above an established datum plane. (Compare Gage Height)</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="gageHeightLake">
+    <rdfs:label xml:lang="en">Gage Height, Lake</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelLakeReser"/>
+    <rdfs:comment xml:lang="en">Gage height is the water surface elevation referred to some arbitrary gage datum. (Compare Stage)</rdfs:comment>
+  </owl:Class>
+
+
+
+  
+  <rdf:Description rdf:about="#current">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#siteType"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Estuary</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#gageHeightStream">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#siteType"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Stream</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#streamVelocity">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Stream</owl:hasValue>
+        <owl:onProperty rdf:resource="#siteType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#streamFlow">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Stream</owl:hasValue>
+        <owl:onProperty rdf:resource="#siteType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#gageHeightLake">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#siteType"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Reservoir</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+
+
+</rdf:RDF>
+
+
+
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

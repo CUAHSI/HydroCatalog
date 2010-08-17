@@ -1,0 +1,707 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns:com-watqual="http://www.cuahsi.org/watqualcompound#"
+  xmlns="http://www.cuahsi.org/watqualcore2#"
+  xml:base="http://www.cuahsi.org/watqualcore2">
+
+<!-- Import Upper Level OWL Files -->
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!-- <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/> -->
+<!-- <owl:imports rdf:resource="http://hydroseek.org/search/ontology/watqualcompound.owl"/> -->
+
+<!-- Core Level ->  Compound Layer Indicator Organisms  -->
+  <owl:Class rdf:ID="enterococci">
+    <rdfs:label xml:lang="en">Enterococci</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="fecalColiform">
+    <rdfs:label xml:lang="en">Fecal Coliform</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ecoli">
+    <rdfs:label xml:lang="en">Escherichia coli</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalColiform">
+    <rdfs:label xml:lang="en">Total Coliform</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="fecalStreptococci">
+    <rdfs:label xml:lang="en">Fecal streptococci</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="clostridiumPerfringens">
+    <rdfs:label xml:lang="en">Clostridium Perfringens</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="indicatorOrg_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#indicatorOrganisms"/>
+  </owl:Class>
+
+
+<!-- Core Level ->  Compound Layer Biochemical Oxygen Demand  -->
+  <owl:Class rdf:ID="BOD5">
+    <rdfs:label xml:lang="en">BOD5</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BODultimate">
+    <rdfs:label xml:lang="en">BOD ultimate</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BODuCarb">
+    <rdfs:label xml:lang="en">BOD ultimate, carbonaceous</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BOD5carb">
+    <rdfs:label xml:lang="en">BOD5, carbonaceous</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BOD5nitro">
+    <rdfs:label xml:lang="en">BOD5, nitrogenous</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BOD20nitro">
+    <rdfs:label xml:lang="en">BOD20, nitrogenous</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BOD20">
+    <rdfs:label xml:lang="en">BOD20</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BODuNitro">
+    <rdfs:label xml:lang="en">BOD ultimate, nitrogenous</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="BOD_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#biochemicalOxygenDemand"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Chlorophyll -->
+  <owl:Class rdf:ID="chlorophyllABC">
+    <rdfs:label xml:lang="en">Chlorophyll (a+b+c)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chlorophyll"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chlorophyllA">
+    <rdfs:label xml:lang="en">Chlorophyll a</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chlorophyll"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chlorophyllB">
+    <rdfs:label xml:lang="en">Chlorophyll b</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chlorophyll"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chlorophyllC">
+    <rdfs:label xml:lang="en">Chlorophyll c</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chlorophyll"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="pheophytin">
+    <rdfs:label xml:lang="en">Pheophytin</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chlorophyll"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chlorophyll_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chlorophyll"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Priority Pollutants -->
+  <owl:Class rdf:ID="acenaphthene">
+    <rdfs:label xml:lang="en">Acenaphthene</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="acenaphthylene">
+    <rdfs:label xml:lang="en">Acenaphthylene</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="acrolein">
+    <rdfs:label xml:lang="en">Acrolein</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="acrylonitrile">
+    <rdfs:label xml:lang="en">Acrylonitrile</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="aldrin">
+    <rdfs:label xml:lang="en">Aldrin</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="antimony">
+    <rdfs:label xml:lang="en">Antimony</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="arsenic">
+    <rdfs:label xml:lang="en">Arsenic</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="asbestos">
+    <rdfs:label xml:lang="en">Asbestos</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="beryllium">
+    <rdfs:label xml:lang="en">Beryllium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="cadmium">
+    <rdfs:label xml:lang="en">Cadmium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="priorityPollutant_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#priorityPollutants"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Heavy Metals -->
+  <owl:Class rdf:ID="lead">
+    <rdfs:label xml:lang="en">Lead</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="mercury">
+    <rdfs:label xml:lang="en">Mercury</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="selenium">
+    <rdfs:label xml:lang="en">Selenium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="heavyMetals_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="cobalt">
+    <rdfs:label xml:lang="en">Cobalt</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer PriorityPollutant & HeavyMetal -->
+  <owl:Class rdf:ID="manganese">
+    <rdfs:label xml:lang="en">Manganese</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="molybdenum">
+    <rdfs:label xml:lang="en">Molybdenum</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="iron">
+    <rdfs:label xml:lang="en">Iron</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="copper">
+    <rdfs:label xml:lang="en">Copper</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="zinc">
+    <rdfs:label xml:lang="en">Zinc</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#heavyMetals"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Chromium -->
+  <owl:Class rdf:ID="chromiumTri">
+    <rdfs:label xml:lang="en">Trivalent Chromium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chromium"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chromiumTotal">
+    <rdfs:label xml:lang="en">Chromium, all forms</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chromium"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chromiumHex">
+    <rdfs:label xml:lang="en">Hexavalent Chromium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chromium"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chromium_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#chromium"/>
+  </owl:Class>
+
+
+<!-- Core Level ->  Compound Layer Hardness -->
+  <owl:Class rdf:ID="carbonateHardness">
+    <rdfs:label xml:lang="en">Carbonate Hardness</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#hardness"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalHardness">
+    <rdfs:label xml:lang="en">Total Hardness</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#hardness"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="nonCarbonateHardness">
+    <rdfs:label xml:lang="en">Non-carbonate Hardness</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#hardness"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hardness_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#hardness"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Alkalinity -->
+  <owl:Class rdf:ID="carbonateAlkalinity">
+    <rdfs:label xml:lang="en">Carbonate Alkalinity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#alkalinity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="bicarbonateAlkalinity">
+    <rdfs:label xml:lang="en">Bicarbonate Alkalinity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#alkalinity"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hydroxideAlkalinity">
+    <rdfs:label xml:lang="en">Hydroxide Alkalinity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#alkalinity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="alkalinity_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#alkalinity"/>
+  </owl:Class>
+
+
+<!-- Core Level ->  Navigation Layer Chemical Parameters -->
+  <owl:Class rdf:ID="oxidationReductionPotential">
+    <rdfs:label xml:lang="en">Oxidation-Reduction Potential</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chemO2demand">
+    <rdfs:label xml:lang="en">Chemical Oxygen Demand (COD)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="dissolvedOxygen">
+    <rdfs:label xml:lang="en">Dissolved Oxygen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chlorine">
+    <rdfs:label xml:lang="en">Chlorine</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="pH">
+    <rdfs:label xml:lang="en">pH</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="salinity">
+    <rdfs:label xml:lang="en">Salinity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+
+
+
+
+
+
+<!-- Core Level ->  Compound Layer Nutrients/MicroNutrients -->
+  <owl:Class rdf:ID="silicon">
+    <rdfs:label xml:lang="en">Silicon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="boron">
+    <rdfs:label xml:lang="en">Boron</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="micronutrients_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#micronutrients"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Nutrients/MacroNutrients -->
+  <owl:Class rdf:ID="macronutrients_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#macronutrients"/>
+  </owl:Class>
+
+
+ 
+<!-- Core Level ->  Compound Layer Nutrients/MacroNutrients/Carbon -->
+  <owl:Class rdf:ID="totalCarbon">
+    <rdfs:label xml:lang="en">Total Carbon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#carbon"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalOrganicCarbon">
+    <rdfs:label xml:lang="en">Total Organic Carbon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#carbon"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#organicCarbonIndicators"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="organicCarbon">
+    <rdfs:label xml:lang="en">Organic Carbon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#carbon"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="dissolvedOrganicCarbon">
+    <rdfs:label xml:lang="en">Dissolved Organic Carbon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#carbon"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#organicCarbonIndicators"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="inorganicCarbon">
+    <rdfs:label xml:lang="en">Inorganic Carbon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#carbon"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="carbon_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#carbon"/>
+  </owl:Class>
+
+
+
+  
+  <owl:Class rdf:ID="specificUVabsorbance">
+    <rdfs:label xml:lang="en">Specific UV Absorbance </rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#organicCarbonIndicators"/>
+  </owl:Class>
+
+
+
+
+
+  <owl:Class rdf:ID="dissolvedSilica">
+    <rdfs:label xml:lang="en">Dissolved Silica</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="calcium">
+    <rdfs:label xml:lang="en">Calcium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="magnesium">
+    <rdfs:label xml:lang="en">Magnesium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="potassium">
+    <rdfs:label xml:lang="en">Potassium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="sodium">
+    <rdfs:label xml:lang="en">Sodium</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chloride">
+    <rdfs:label xml:lang="en">chloride</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="sulfate">
+    <rdfs:label xml:lang="en">Sulfate</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="flouride">
+    <rdfs:label xml:lang="en">fluoride</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#majorWeatheringProducts"/>
+  </owl:Class>
+
+
+
+
+
+
+
+
+
+<!-- Core Level ->  Compound Layer Nutrients/MacroNutrients/Phosphate -->
+  <owl:Class rdf:ID="polyphosphate">
+    <rdfs:label xml:lang="en">Polyphosphate</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hydrolyzablePhopshorus">
+    <rdfs:label xml:lang="en">Hydrolyzable Phosphorus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalPhosphorus">
+    <rdfs:label xml:lang="en">Total Phosphorus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="organicPhosphorus">
+    <rdfs:label xml:lang="en">Organic Phosphorus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="orthophosphate">
+    <rdfs:label xml:lang="en">Orthophosphate PO4</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hydrolyzablePlusOrthophosphate">
+    <rdfs:label xml:lang="en">Inorganic Phosphorus</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalPhosphate">
+    <rdfs:label xml:lang="en">Phosphate</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#phosphorus"/>
+  </owl:Class>
+
+
+
+<!-- Core Level ->  Compound Layer Nutrients/MacroNutrients/Nitrogen -->
+  <owl:Class rdf:ID="totalKjeldahlNitrogen">
+    <rdfs:label xml:lang="en">Total Kjeldahl Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="nitriteNitrogen">
+    <rdfs:label xml:lang="en">Nitrite Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="nitritePlusNitrate">
+    <rdfs:label xml:lang="en">Nitrite + Nitrate</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalInorganicNitrogen">
+    <rdfs:label xml:lang="en">Total Inorganic Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="organicNitrogen">
+    <rdfs:label xml:lang="en">Organic Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalNitrogen">
+    <rdfs:label xml:lang="en">Total Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="albuminoidNitrogen">
+    <rdfs:label xml:lang="en">Albuminoid Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="nitrateNitrogen">
+    <rdfs:label xml:lang="en">Nitrate Nitrogen</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="nitrogen_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#nitrogen"/>
+  </owl:Class>
+
+
+<!-- Core Level ->  Navigation Layer Physical Parameters/Solids -->
+  <owl:Class rdf:ID="totalDissolvedSolids">
+    <rdfs:label xml:lang="en">Total Dissolved Solids</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#dissolvedSolids"/>
+    <rdfs:comment xml:lang="en">Total dissolved solids (often abbreviated TDS) is an expression for the combined content of all inorganic and organic substances contained in a liquid which are present in a molecular, ionized or micro-granular (colloidal sol) suspended form</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="fixedDissolvedSolids">
+    <rdfs:label xml:lang="en">Fixed Dissolved Solids</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#dissolvedSolids"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="fixedSuspendedSolids">
+    <rdfs:label xml:lang="en">Fixed Suspended Solids</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#suspendedSolids"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalSuspendedSolids">
+    <rdfs:label xml:lang="en">Total Suspended Solids</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#suspendedSolids"/>
+  </owl:Class>
+
+
+
+
+<!-- Core Level ->  Navigation Layer Physical Parameters -->
+  <owl:Class rdf:ID="color">
+    <rdfs:label xml:lang="en">Color</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="temperatureWater">
+    <rdfs:label xml:lang="en">Water Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="specificConductivity">
+    <rdfs:label xml:lang="en">Specific Conductivity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+  </owl:Class>
+
+
+  
+  <owl:Class rdf:ID="moistureSoil">
+    <rdfs:label xml:lang="en">Soil Moisture</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="temperatureSoil">
+    <rdfs:label xml:lang="en">Soil Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="porositySoil">
+    <rdfs:label xml:lang="en">Soil Porosity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hydroconductSoil">
+    <rdfs:label xml:lang="en">Hydraulic Conductivity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="piezometricHeadSoil">
+    <rdfs:label xml:lang="en">Poezometric Head</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="matricPotentialSoil">
+    <rdfs:label xml:lang="en">Matric Potential</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="soil_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#soilPhyPara"/>
+  </owl:Class>
+
+
+  
+  <owl:Class rdf:ID="turbidity">
+    <rdfs:label xml:lang="en">Turbidity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="secchiDepth">
+    <rdfs:label xml:lang="en">Secchi Depth</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#transparency"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="lightAttenuationCoefficient">
+    <rdfs:label xml:lang="en">Light Attenuation Coefficient</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#transparency"/>
+  </owl:Class>
+
+
+
+
+
+<!-- Core Level ->  Navigation Infrastructure -->
+  <owl:Class rdf:ID="batteryVoltage">
+    <rdfs:label xml:lang="en">Battery Voltage</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#instrumentInfo"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="samplecount">
+    <rdfs:label xml:lang="en">Sample Count</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/watqualcompound#instrumentInfo"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="dischargepts">
+    <rdfs:label xml:lang="en">Discharge Points</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#infrastructure"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="intakes">
+    <rdfs:label xml:lang="en">Intakes</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#infrastructure"/>
+  </owl:Class>
+
+
+
+
+
+<!--  <owl:Class rdf:ID="Axiom_1">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#nutrients"/>
+          <owl:Class rdf:about="#organicNitrogen"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment xml:lang="en"> In traditional logic, an axiom or postulate is a proposition that is not proved or demonstrated but considered to be self-evident. Therefore, its truth is taken for granted, and serves as a starting point for deducing and inferring other (theory dependent) truths. </rdfs:comment>
+  </owl:Class> -->
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

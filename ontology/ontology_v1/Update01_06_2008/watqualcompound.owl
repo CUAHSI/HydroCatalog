@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns="http://www.cuahsi.org/watqualcompound#"
+  xml:base="http://www.cuahsi.org/watqualcompound">
+
+<!-- Import Upper Level OWL Files -->
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/> -->
+
+
+<!-- Compound Level -> Navigation Layer Instruments  -->
+  <owl:Class rdf:ID="instrumentInfo">
+    <rdfs:label xml:lang="en">Instrument Information</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#infrastructure"/>
+  </owl:Class>
+
+
+
+
+<!-- Compound Level -> Navigation Layer Biological Parameters  -->
+  <owl:Class rdf:about="#indicatorOrganisms">
+    <rdfs:label xml:lang="en">Indicator Organisms</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#biologicalParameters"/>
+    <rdfs:comment xml:lang="en">An organism which indicates the presence of contamination and the potential presence of other (usually pathogenic) organisms.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="#biochemicalOxygenDemand">
+    <rdfs:label xml:lang="en">Biochemical Oxygen Demand</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#biologicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#chlorophyll">
+    <rdfs:label xml:lang="en">Chlorophyll</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#biologicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="biologicalParam_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#biologicalParameters"/>
+  </owl:Class>
+
+
+<!-- Compound Level -> Navigation Layer Chemical Parameters  -->
+  <owl:Class rdf:ID="nutrients">
+    <rdfs:label xml:lang="en">Nutrients</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="organicCarbonIndicators">
+    <rdfs:label xml:lang="en">Organic Carbon Indicators</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="majorWeatheringProducts">
+    <rdfs:label xml:lang="en">Major Weathering Products</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+<!-- "Medium" does not appear in Viewer because it has no "label" -->
+  <owl:Class rdf:ID="medium">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#waterQuality"/>
+  </owl:Class>
+  <medium rdf:ID="soil">
+    <rdfs:label xml:lang="en">Soil</rdfs:label>
+  </medium>
+  <medium rdf:ID="sediment">
+    <rdfs:label xml:lang="en">Sediment</rdfs:label>
+  </medium>
+  <medium rdf:ID="water">
+    <rdfs:label xml:lang="en">Water</rdfs:label>
+  </medium>
+
+  <owl:Class rdf:ID="micronutrients">
+    <rdfs:label xml:lang="en">Micronutrients</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="nutrients"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="macronutrients">
+    <rdfs:label xml:lang="en">Macronutrients</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="nutrients"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="nitrogen">
+    <rdfs:label xml:lang="en">Nitrogen</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="macronutrients"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#medium"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="hasMedium"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ammoniaNitrogen">
+    <rdfs:label xml:lang="en">Ammonia Nitrogen</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="nitrogen"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="phosphorus">
+    <rdfs:label xml:lang="en">Phosphorus</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="macronutrients"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#medium"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="hasMedium"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="carbon">
+    <rdfs:label xml:lang="en">Carbon</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#macronutrients"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:FunctionalProperty rdf:about="#hasMedium">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#medium"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#nitrogen"/>
+          <owl:Class rdf:about="#phosphorus"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+
+  <owl:Class rdf:about="#alkalinity">
+    <rdfs:label xml:lang="en">Alkalinity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hardness">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+    <rdfs:label xml:lang="en">Hardness</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#heavyMetals">
+    <rdfs:label xml:lang="en">Heavy Metals</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+    <rdfs:comment xml:lang="en">A metal whose specific gravity is approximately 5.0 or higher.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chromium">
+    <rdfs:label xml:lang="en">Chromium</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#heavyMetals"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#priorityPollutants">
+    <rdfs:label xml:lang="en">Priority Pollutants</rdfs:label>
+    <rdfs:comment xml:lang="en">Chemical designated by the EPA as having high priority because of its toxicity or potential to cause cancer or mutations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chemicalParam_other">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#chemicalParameters"/>
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+  </owl:Class>
+
+
+
+
+<!-- Compound Level -> Navigation Layer Physical Parameters  -->
+  <owl:Class rdf:ID="solids">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+    <rdfs:label xml:lang="en">Solids</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="dissolvedSolids">
+    <rdfs:label xml:lang="en">Dissolved Solids</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="solids"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="suspendedSolids">
+    <rdfs:label xml:lang="en">Suspended Solids</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="solids"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="soilPhyPara">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+    <rdfs:label xml:lang="en">Soil Parameters</rdfs:label>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="transparency">
+    <rdfs:label xml:lang="en">Transparency</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#physicalParameters"/>
+  </owl:Class>
+
+</rdf:RDF>
+

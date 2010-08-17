@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:nav="http://www.cuahsi.org/navigation#"
+    xmlns="http://www.cuahsi.org/compoundatmohydro#"
+  xml:base="http://www.cuahsi.org/compoundatmohydro">
+
+<!-- Import Upper Level OWL files -->
+  <owl:Ontology rdf:about="">
+  <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/>
+  </owl:Ontology>
+
+<!-- Compound Layer: Winds  -->
+  <owl:Class rdf:ID="winds">
+    <rdfs:label xml:lang="en">Winds</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windGustVelocity">
+    <rdfs:subClassOf rdf:resource="#winds"/>
+    <rdfs:label xml:lang="en">Wind Gust Velocity</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windVelocity">
+    <rdfs:subClassOf rdf:resource="#winds"/>
+    <rdfs:label xml:lang="en">Wind Velocity</rdfs:label>
+    <rdfs:comment xml:lang="en">Wind Velocity and Wind Force (e.g. in Beaufort scale) can be classified under this category.</rdfs:comment>
+  </owl:Class>
+
+
+
+<!-- Compound Layer: Pressure Air  -->
+  <owl:Class rdf:ID="atmosphericPressure">
+    <rdfs:label xml:lang="en">Pressure (Air)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="barometricPressure">
+    <rdfs:label xml:lang="en">Barometric Pressure</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="atmosphericPressure"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="waterVaporPressure">
+    <rdfs:label xml:lang="en">Water Vapor Pressure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#atmosphericPressure"/>
+  </owl:Class>
+
+
+
+<!-- Compound Layer: Precipitation  -->
+  <owl:Class rdf:ID="precipitation">
+    <rdfs:label xml:lang="en">Precipitation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snow">
+    <rdfs:label xml:lang="en">Snow</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#precipitation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+<!-- Compound Layer: Heat Flux  -->
+  <owl:Class rdf:ID="heatFluxes">
+    <rdfs:label xml:lang="en">Heat Fluxes</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+
+
+<!-- Compound Layer: Radiation  -->
+  <owl:Class rdf:ID="radiation">
+    <rdfs:label xml:lang="en">Radiation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="terrestrialRadiation">
+    <rdfs:label xml:lang="en">Terrestrial Radiation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#radiation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">The total infrared radiation emitted by earth. Most of it is absorbed by the atmosphere, less than ten percent is radiated directly into space</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="solarRadiation">
+    <rdfs:label xml:lang="en">Solar Radiation</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#radiation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="photosyntheticallyActiveRadiation">
+    <rdfs:label xml:lang="en">Photosynthetically Active Radiation</rdfs:label>
+    <rdfs:comment xml:lang="en">The range of light between 400-700nm that can be used in photosynthesis by plants</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="solarRadiation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+<!-- Compound Layer: Humidity  -->
+  <owl:Class rdf:ID="humidity">
+    <rdfs:label xml:lang="en">Humidity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+
+<!-- Compound Layer: Temperature (Air)  -->
+  <owl:Class rdf:ID="temperatureAir">
+    <rdfs:label xml:lang="en">Temperature (Air)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

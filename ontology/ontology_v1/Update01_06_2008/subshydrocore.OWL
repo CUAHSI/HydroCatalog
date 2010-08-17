@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns:com-subs="http://www.cuahsi.org/subshydrocompound#"
+  xmlns="http://www.cuahsi.org/subshydrocore#"
+  xml:base="http://www.cuahsi.org/subshydrocore">
+
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="http://hydroseek.org/search/ontology/gcmd.owl"/> -->
+<!--    <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/> -->
+
+  <owl:Class rdf:ID="groundWaterFlow">
+    <rdfs:label xml:lang="en">Ground Water Flow</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#subsurfaceHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="subsurfHydro_other">
+    <rdfs:label xml:lang="en">Ground Water Flow</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#subsurfaceHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="groundWaterLevelDatumNGVD29">
+    <rdfs:label xml:lang="en">Datum: NGVD 1929</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/subshydrocompound#waterLevelGroundWater"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#siteType"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Groundwater</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="groundWaterLevelDatumNAVD88">
+    <rdfs:label xml:lang="en">Datum: NAVD 1988</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/subshydrocompound#waterLevelGroundWater"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#siteType"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Groundwater</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="groundWaterLevelDatumLandSurface">
+    <rdfs:label xml:lang="en">Datum: Land Surface</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/subshydrocompound#waterLevelGroundWater"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#siteType"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Groundwater</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="groundWaterLevelDatumMSL">
+    <rdfs:label xml:lang="en">Datum: Mean Sea Level</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/subshydrocompound#waterLevelGroundWater"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#siteType"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Groundwater</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="groundWaterLevelOther">
+    <rdfs:label xml:lang="en">Datum: Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/subshydrocompound#waterLevelGroundWater"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#siteType"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Groundwater</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+  
+  
+  <rdf:Description rdf:about="#groundWaterFlow">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#siteType"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Groundwater</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

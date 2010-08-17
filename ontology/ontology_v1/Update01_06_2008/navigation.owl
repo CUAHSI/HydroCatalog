@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.cuahsi.org/navigation"
+  xmlns="http://www.cuahsi.org/navigation#">
+
+  <owl:Ontology rdf:about=""/>
+
+  <owl:Class rdf:ID="hydrology">
+    <rdfs:label xml:lang="en">HydroSphere</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="waterQuality">
+    <rdfs:label xml:lang="en">Water/Soil Quality</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="physicalParameters">
+    <rdfs:label xml:lang="en">Physical Parameters</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="waterQuality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="biologicalParameters">
+    <rdfs:label xml:lang="en">Biological Parameters</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="waterQuality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="chemicalParameters">
+    <rdfs:label xml:lang="en">Chemical Parameters</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="waterQuality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="infrastructure">
+    <rdfs:label xml:lang="en">Infrastructure</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="atmosphericHydrology">
+    <rdfs:label xml:lang="en">Atmospheric Hydrology</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="subsurfaceHydrology">
+    <rdfs:label xml:lang="en">Subsurface Hydrology</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="land">
+    <rdfs:label xml:lang="en">Land</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ocean">
+    <rdfs:label xml:lang="en">Ocean</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="surfaceHydrology">
+    <rdfs:label xml:lang="en">Surface Hydrology</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="hydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="estuary">
+    <rdfs:label xml:lang="en">Estuary</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="surfaceHydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="river">
+    <rdfs:label xml:lang="en">Rivers and Streams</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="surfaceHydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="lake">
+    <rdfs:label xml:lang="en">Lakes and Reservoirs</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="surfaceHydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="glacier">
+    <rdfs:label xml:lang="en">Glaciers</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="surfaceHydrology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

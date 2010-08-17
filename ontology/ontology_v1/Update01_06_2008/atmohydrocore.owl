@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:com-atmo="http://www.cuahsi.org/atmohydrocompound#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns="http://www.cuahsi.org/atmohydrocore#"
+  xml:base="http://www.cuahsi.org/atmohydrocore">
+
+<!-- Import Upper Level OWL files -->
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="atmohydrocompound.owl"/> -->
+<!--    <owl:imports rdf:resource="navigation.owl"/> -->
+
+<!-- Core Layer -> Compound Layer: Winds  -->
+  <owl:Class rdf:ID="windGustVelocityAbsolute">
+    <rdfs:label xml:lang="en">Absolute</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#windGustVelocity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windGustVelocityOrdinal">
+    <rdfs:label xml:lang="en">Ordinal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#windGustVelocity"/>
+    <rdfs:comment xml:lang="en">Beaufort or Saffir-Simpson scales are ordinal measures of wind velocity</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windRun">
+    <rdfs:label xml:lang="en">Wind Run</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#winds"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windDirection">
+    <rdfs:label xml:lang="en">Wind Direction</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#winds"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windGustDirection">
+    <rdfs:label xml:lang="en">Wind Gust Direction</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#winds"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windVelocityOrdinal">
+    <rdfs:label xml:lang="en">Ordinal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#windVelocity"/>
+    <rdfs:comment xml:lang="en">Beaufort or Saffir-Simpson scales are ordinal measures of wind velocity</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="windVelocityAbsolute">
+    <rdfs:label xml:lang="en">Absolute</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#windVelocity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="wind_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#winds"/>
+  </owl:Class>
+
+
+
+<!-- Core Layer -> Compound Layer: Pressure Air  -->
+  <owl:Class rdf:ID="atmosphericPressure">
+    <rdfs:label xml:lang="en">Pressure (Air)</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+
+
+
+<!-- Core Layer -> Compound Layer: Precipitation  -->
+  <owl:Class rdf:ID="precipitationAmount">
+    <rdfs:label xml:lang="en">Precipitation Amount</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#precipitation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="dryPeriods">
+    <rdfs:label xml:lang="en">Dry Periods</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#precipitation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowWaterEquivalent">
+    <rdfs:label xml:lang="en">Snow Water Equivalent</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowair"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowDepth">
+    <rdfs:label xml:lang="en">Snow Depth</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowair"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowWaterEquivalent">
+    <rdfs:label xml:lang="en">Snow Water Equivalent</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowground"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowDepth">
+    <rdfs:label xml:lang="en">Snow Depth</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowground"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowTemperature">
+    <rdfs:label xml:lang="en">Snow Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowground"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowEnergy">
+    <rdfs:label xml:lang="en">Energy Content</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowground"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="snowDensity">
+    <rdfs:label xml:lang="en">Density</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#snowground"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="precipitatonDuration">
+    <rdfs:label xml:lang="en">Precipitation Duration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#precipitation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="precipitation_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#precipitation"/>
+  </owl:Class>
+
+
+
+
+<!-- Core Layer -> Compound Layer: Heat Flux  -->
+  <owl:Class rdf:ID="sensibleHeatFlux">
+    <rdfs:label xml:lang="en">Sensible Heat Flux</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#heatFluxes"/>
+    <rdfs:comment xml:lang="en">Flux of heat from the earth's surface which results in a change of temperature</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="latentHeatFlux">
+    <rdfs:label xml:lang="en">Latent Heat Flux</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#heatFluxes"/>
+    <rdfs:comment xml:lang="en">Flux of heat from the earth's surface to the atmosphere that is associated with evaporation or condensation of water vapor at the surface</rdfs:comment>
+  </owl:Class>
+
+
+
+
+<!-- Core Layer -> Compound Layer: Radiation  -->
+  <owl:Class rdf:ID="sunshineDuration">
+    <rdfs:label xml:lang="en">Sunshine Duration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#radiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalDownRadiation">
+    <rdfs:label xml:lang="en">Downward</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#totalRadiation"/>
+    <rdfs:comment xml:lang="en">The difference between absorbed and emitted total radiation</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalUpRadiation">
+    <rdfs:label xml:lang="en">Upward</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#totalRadiation"/>
+    <rdfs:comment xml:lang="en">The difference between absorbed and emitted total radiation</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="totalNetRadiation">
+    <rdfs:label xml:lang="en">Net=Down-Up</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#totalRadiation"/>
+    <rdfs:comment xml:lang="en">The difference between absorbed and emitted total radiation</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="terrestrialUpRadiation">
+    <rdfs:label xml:lang="en">Upward</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#terrestrialRadiation"/>
+    <rdfs:comment xml:lang="en">Terrestrial radiation from atmosphere and clouds</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="terrestrialReflectedRadiation">
+    <rdfs:label xml:lang="en">Reflected</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#terrestrialRadiation"/>
+    <rdfs:comment xml:lang="en">Terrestrial radiation from the earth's surface</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="terrestrialNetRadiation">
+    <rdfs:label xml:lang="en">Net=Up-Reflected</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#terrestrialRadiation"/>
+    <rdfs:comment xml:lang="en">Terrestrial radiation from the earth's surface</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="incomingPAR">
+    <rdfs:label xml:lang="en">Incoming</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#photosyntheticallyActiveRadiation"/>     
+  </owl:Class>
+
+  <owl:Class rdf:ID="outgoingPAR">
+    <rdfs:label xml:lang="en">Outgoing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#photosyntheticallyActiveRadiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="netPAR">
+    <rdfs:label xml:lang="en">Net=In-Out</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#photosyntheticallyActiveRadiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="downwardSolarRadiation">
+    <rdfs:label xml:lang="en">Solar Radiation, downward</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#solarRadiation"/>
+    <rdfs:comment xml:lang="en">Incoming shortwave radiation</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="reflectedSolarRadiation">
+    <rdfs:label xml:lang="en">Reflected Solar Radiation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#solarRadiation"/>
+    <rdfs:comment xml:lang="en">Product of surface albedo and the downward solar radiation.Upward-directed solar radiation, reflected by the earth's surface and the atmosphere</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="netSolarRadiation">
+    <rdfs:label xml:lang="en">Net Solar Radiation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#solarRadiation"/>
+    <rdfs:comment xml:lang="en">The difference between the solar radiation directed downward and reflected</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="transmittedIncidentRadiation">
+    <rdfs:label xml:lang="en">Transmitted</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#incidentRadiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="reflectedIncidentRadiation">
+    <rdfs:label xml:lang="en">Reflected</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#incidentRadiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="scatteredIncidentRadiation">
+    <rdfs:label xml:lang="en">Scattered</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#incidentRadiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="absorbedIncidentRadiation">
+    <rdfs:label xml:lang="en">Absorbed</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#incidentRadiation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="radiation_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#radiation"/>
+  </owl:Class>
+
+
+
+<!-- Core Layer -> Compound Layer: Humidity  -->
+  <owl:Class rdf:ID="relativeHumidity">
+    <rdfs:label xml:lang="en">Relative Humidity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="mixingratio">
+    <rdfs:label xml:lang="en">Mixing Ratio</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="specificHumidity">
+    <rdfs:label xml:lang="en">Specific Humidity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="absoluteHumidity">
+    <rdfs:label xml:lang="en">Absolute Humidity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="dewPointTemperature">
+    <rdfs:label xml:lang="en">Dew Point Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="wetBulbTemperature">
+    <rdfs:label xml:lang="en">Wet Bulb Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="vaporPressure">
+    <rdfs:label xml:lang="en">Vapor Pressure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="vaporPressureDeficit">
+    <rdfs:label xml:lang="en">Vapor Pressure Deficit</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="humidity_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+  </owl:Class>
+
+
+
+<!-- Core Layer -> Compound Layer: Temperature (Air)  -->
+  <owl:Class rdf:ID="dryBulbTemperature">
+    <rdfs:label xml:lang="en">Dry Bulb Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#temperatureAir"/>
+  </owl:Class>
+
+
+
+
+<!-- Core Layer -> Navigation Layer: Atmospheric Hydrology  -->
+  <owl:Class rdf:ID="atmosphere_other">
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="visibility">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#atmosphericHydrology"/>
+    <rdfs:label xml:lang="en">Visibility</rdfs:label>
+  </owl:Class>
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

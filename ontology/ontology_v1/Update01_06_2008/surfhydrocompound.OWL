@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#" 
+  xmlns="http://www.cuahsi.org/surfhydrocompound#"
+  xml:base="http://www.cuahsi.org/surfhydrocompound">
+
+<!-- Import Upper Level OWL files -->
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="navigation.owl"/> -->
+
+  <owl:Class rdf:ID="wave">
+    <rdfs:label xml:lang="en">Wave Characteristics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#estuary"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="tide">
+    <rdfs:label xml:lang="en">Tide Characteristics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#estuary"/>
+  </owl:Class>
+
+<!-- Compound Layer: Lakes and Reservoirs  -->
+  <owl:Class rdf:ID="waterLevelLakeReser">
+    <rdfs:label xml:lang="en">Water Level, Lake or Reservoir</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#lake"/>
+  </owl:Class>
+
+<!-- Compound Layer: Water Level Stream  -->
+  <owl:Class rdf:ID="waterLevelStream">
+    <rdfs:label xml:lang="en">Water Level, Stream</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+  </owl:Class>
+
+<!-- Compound Layer: Evapotranspiration -->
+  <owl:Class rdf:ID="evapotranspiration">
+    <rdfs:label xml:lang="en">Evapotranspiration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#lake"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#estuary"/>
+<!--    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#ocean"/> -->
+  </owl:Class>
+  
+
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

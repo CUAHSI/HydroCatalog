@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns:com-surf="http://www.cuahsi.org/surfhydrocompound#"
+  xmlns:cor-surf="http://www.cuahsi.org/surfhydrocore#"
+  xmlns="http://www.cuahsi.org/surfhydrosyn#"
+  xml:base="http://www.cuahsi.org/surfhydrosyn">
+
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="http://hydroseek.org/search/ontology/flow.owl"/> -->
+
+  <owl:Class rdf:ID="lakeWaterLevel">
+    <rdfs:label xml:lang="en">Lake, Water Level</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#lake"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelLakeReser"/>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="lakeGageHeight">
+    <rdfs:label xml:lang="en">Lake, Gage Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelLakeReser"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#gageHeightLake"/>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="streamWaterLevel">
+    <rdfs:label xml:lang="en">Stream, Water Level</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelStream"/>
+  </owl:Class>
+ 
+  
+
+  <owl:Class rdf:ID="riverFlow">
+    <rdfs:label xml:lang="en">River Flow</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#streamFlow"/>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="dischargeStream">
+    <rdfs:label xml:lang="en">Discharge, Stream</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#streamFlow"/>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="flowRateStream">
+    <rdfs:label xml:lang="en">Flowrate, Stream</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#river"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#streamFlow"/>
+  </owl:Class>
+
+  
+ 
+  <owl:Class rdf:ID="streamGageHeight">
+    <rdfs:label xml:lang="en">Stream, Gage Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelStream"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#gageHeightStream"/>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="streamStage">
+    <rdfs:label xml:lang="en">Stream, Stage</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelStream"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#stageStream"/>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="lakeStageHeight">
+    <rdfs:label xml:lang="en">Lake, Stage Height</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/surfhydrocompound#waterLevelLakeReser"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/surfhydrocore#stageLake"/>
+  </owl:Class>
+  
+
+
+  
+
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:com-atmo="http://www.cuahsi.org/atmohydrocompound#"
+  xmlns:cor-atmo="http://www.cuahsi.org/atmohydrocore#"
+  xmlns="http://www.cuahsi.org/atmohydrosyn#"
+  xml:base="http://www.cuahsi.org/atmohydrosyn">
+
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="atmohydrocompound.owl"/> -->
+<!--    <owl:imports rdf:resource="atmohydrocore.owl"/> -->
+
+  <owl:Class rdf:ID="humidityRelative">
+    <rdfs:label xml:lang="en">Humidity, Relative</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/atmohydrocore#relativeHumidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="airTemperature">
+    <rdfs:label xml:lang="en">Air Temperature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#temperatureAir"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/atmohydrocore#dryBulbTemperature"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="infraRedRadiation">
+    <rdfs:label xml:lang="en">Infra-red Radiation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#radiation"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/atmohydrocompound#terrestrialRadiation"/>
+<!--    <owl:equivalentClass rdf:ID="longWaveRadiation"/> -->
+  </owl:Class>
+
+   <owl:Class rdf:ID="longWaveRadiation">
+    <rdfs:label xml:lang="en">Long Wave Radiation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#radiation"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/atmohydrocompound#terrestrialRadiation"/>
+<!--    <owl:equivalentClass rdf:ID="infraRedRadiation"/> -->
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="humidityAbsolute">
+    <rdfs:label xml:lang="en">Humidity, Absolute</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#humidity"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/atmohydrocore#absoluteHumidity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="shortWaveRadiation">
+    <rdfs:label xml:lang="en">Short Wave Radiation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/atmohydrocompound#radiation"/>
+    <owl:equivalentClass rdf:resource="http://www.cuahsi.org/atmohydrocompound#solarRadiation"/>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.3, Build 225.4)  http://protege.stanford.edu -->

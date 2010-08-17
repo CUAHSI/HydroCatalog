@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:nav="http://www.cuahsi.org/navigation#"
+    xmlns:com="http://www.cuahsi.org/compoundSurfHydro#"
+    xmlns="http://www.cuahsi.org/coresurfhydro#"
+  xml:base="http://www.cuahsi.org/coresurfhydro">
+
+<!-- Import Upper Level OWL files -->
+  <owl:Ontology rdf:about="">
+  <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/>
+  <owl:imports rdf:resource="http://hydroseek.org/search/ontology/compoundSurfHydro.owl"/>
+  </owl:Ontology>
+
+
+
+  <owl:Class rdf:ID="evaporation">
+    <rdfs:label xml:lang="en">Evaporation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#surfaceHydrology"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="evapotranspiration">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#surfaceHydrology"/>
+    <rdfs:label xml:lang="en">EVAPOTRANSPIRATION</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="evapotranspirationPotential">
+    <rdfs:label xml:lang="en">Evapotranspiration, Potential</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#evapotranspiration"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="evapotranspirationActual">
+    <rdfs:subClassOf rdf:resource="#evapotranspiration"/>
+    <rdfs:label xml:lang="en">Evapotranspiration, Actual</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="penmanMethod_PET">
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/meteorology#evapotranspirationPotential"/>
+    <rdfs:label xml:lang="en">Penman Method</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:ID="priestlyTaylorMethod_PET">
+    <rdfs:label xml:lang="en">Priestley-Taylor Method</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/meteorology#evapotranspirationPotential"/>
+  </owl:Class>
+</rdf:RDF>
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

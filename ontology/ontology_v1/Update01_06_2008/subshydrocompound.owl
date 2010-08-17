@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:nav="http://www.cuahsi.org/navigation#"
+  xmlns="http://www.cuahsi.org/subshydrocompound#"
+  xml:base="http://www.cuahsi.org/subshydrocompound">
+
+
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
+<!--    <owl:imports rdf:resource="http://hydroseek.org/search/ontology/gcmd.owl"/> -->
+<!--    <owl:imports rdf:resource="http://hydroseek.org/search/ontology/navigation.owl"/> -->
+
+  <owl:Class rdf:ID="waterLevelGroundWater">
+    <rdfs:label xml:lang="en">Water Level, Ground Water</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.cuahsi.org/navigation#subsurfaceHydrology"/>
+  </owl:Class>
+
+
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->
