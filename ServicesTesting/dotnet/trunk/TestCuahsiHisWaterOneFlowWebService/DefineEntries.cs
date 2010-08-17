@@ -1,0 +1,2 @@
+#define DEBUG_WEBSERV_TEST
+// #define RETRY_AT_TIMEOUT

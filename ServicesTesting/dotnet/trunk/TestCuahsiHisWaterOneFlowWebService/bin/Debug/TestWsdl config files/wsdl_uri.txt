@@ -1,0 +1,10 @@
+http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx?WSDL
+http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL
+http://river.sdsc.edu/wateroneflow/NWIS/Data.asmx?WSDL
+http://river.sdsc.edu/wateroneflow/NWIS/Groundwater.asmx?WSDL
+http://water.sdsc.edu/wateroneflow/EPA/cuahsi_1_0.asmx?WSDL
+http://river.sdsc.edu/wateroneflow/MODIS/Service.asmx?WSDL
+http://water.sdsc.edu/wateroneflow/NAM12k/Service.asmx?WSDL
+http://water.sdsc.edu/wateroneflow/DAYMET/Service.asmx?WSDL
+http://river.sdsc.edu/wateroneflow/SNOTEL/cuahsi_1_0.asmx?WSDL
+file:///D:/Visual%20Studio%202005/Projects/TestCuahsiHisWaterOneFlowWebService/WsdlValidationTests/WSDL%20xml%20files/DailyValues.xml

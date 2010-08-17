@@ -1,0 +1,34 @@
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\obj\Debug\ResolveAssemblyReference.cache
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\obj\Debug\TestWebService.exe
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\obj\Debug\TestWebService.pdb
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\log4netConfig.xml
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWsdl config files\web_method_and_param.txt
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWsdl config files\wsdl_uri.txt
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWsdl config files\TestData1.xls
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\log4net.dll
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WaterOneFlowWebServiceTests.dll
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WsdlValidationTests.dll
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\nunit.framework.dll
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WaterOneFlowWebServiceTests.pdb
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\nunit.framework.xml
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WsdlValidationTests.pdb
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWebService.exe.config
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWebService.exe
+D:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWebService.pdb
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\log4netConfig.xml
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWsdl config files\web_method_and_param.txt
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWsdl config files\wsdl_uri.txt
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWsdl config files\TestData1.xls
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWebService.exe.config
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWebService.exe
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\TestWebService.pdb
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\log4net.dll
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WaterOneFlowWebServiceTests.dll
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WsdlValidationTests.dll
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\nunit.framework.dll
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WaterOneFlowWebServiceTests.pdb
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\nunit.framework.xml
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\bin\Debug\WsdlValidationTests.pdb
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\obj\Debug\ResolveAssemblyReference.cache
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\obj\Debug\TestWebService.exe
+C:\dev_webservicetest\TestCuahsiHisWaterOneFlowWebService\obj\Debug\TestWebService.pdb
