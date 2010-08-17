@@ -1,0 +1,27 @@
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\TestConfigFiles\web_method_and_param.txt
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\TestConfigFiles\wsdl_uri.txt
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\NUnit test code\NUnitTestWOFWMT.cs
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\Data Files\TestData1.xls
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\TestConfigFiles\TestData1.xls
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\WaterOneFlowWebServiceTests.dll.config
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\WaterOneFlowWebServiceTests.dll
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\WaterOneFlowWebServiceTests.pdb
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\log4net.dll
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\nunit.framework.dll
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\nunit.framework.xml
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\obj\Debug\ResolveAssemblyReference.cache
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\obj\Debug\WaterOneFlowWebServiceTests.dll
+D:\dev_webservicetest\WaterOneFlowWebMethodTests\obj\Debug\WaterOneFlowWebServiceTests.pdb
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\TestConfigFiles\web_method_and_param.txt
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\TestConfigFiles\wsdl_uri.txt
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\NUnit test code\NUnitTestWOFWMT.cs
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\Data Files\TestData1.xls
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\TestConfigFiles\TestData1.xls
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\WaterOneFlowWebServiceTests.dll.config
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\WaterOneFlowWebServiceTests.dll
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\WaterOneFlowWebServiceTests.pdb
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\log4net.dll
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\bin\Debug\nunit.framework.xml
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\obj\Debug\ResolveAssemblyReference.cache
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\obj\Debug\WaterOneFlowWebServiceTests.dll
+C:\dev_webservicetest\WaterOneFlowWebMethodTests\obj\Debug\WaterOneFlowWebServiceTests.pdb

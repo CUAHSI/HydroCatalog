@@ -1,0 +1,10 @@
+GetValues,location::string,variable::string,startDate::string,endDate::string,authToken::string
+GetSitesXml,site::ArrayOfString,authToken::string
+GetSiteInfo,site::string,authToken::string
+GetVariableInfo,variable::string,authToken::string
+GetSites,site::ArrayOfString,authToken::string
+GetSiteInfoObject,site::string,authToken::string
+GetVariableInfoObject,variable::string,authToken::string
+GetValuesObject,location::string,variable::string,startDate::string,endDate::string,authToken::string
+
+
