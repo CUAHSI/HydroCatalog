@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WSDLValidation", "WSDLValidation.vdproj", "{95199206-4E08-4754-BC90-478827EF7461}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95199206-4E08-4754-BC90-478827EF7461}.Debug|Default.ActiveCfg = Debug
+		{95199206-4E08-4754-BC90-478827EF7461}.Debug|Default.Build.0 = Debug
+		{95199206-4E08-4754-BC90-478827EF7461}.Release|Default.ActiveCfg = Release
+		{95199206-4E08-4754-BC90-478827EF7461}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
