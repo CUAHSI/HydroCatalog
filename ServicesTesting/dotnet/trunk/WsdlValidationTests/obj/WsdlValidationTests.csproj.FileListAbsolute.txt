@@ -1,0 +1,47 @@
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\log4netConfig.xml
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\WSDL xml files\BadlyFormedDailyValues.xml
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\WSDL xml files\DailyValues.xml
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\NUnit test code\NUnitTestWSTUW.cs
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll.config
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\WsdlValidationTests.pdb
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\log4net.dll
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\nunit.framework.dll
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\log4net.xml
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\nunit.framework.xml
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\obj\Debug\ResolveAssemblyReference.cache
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\obj\Debug\WsdlValidationTests.Resource.resources
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\obj\Debug\WsdlValidationTests.csproj.GenerateResource.Cache
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\obj\Debug\WsdlValidationTests.dll
+D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\obj\Debug\WsdlValidationTests.pdb
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\log4netConfig.xml
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\WSDL xml files\BadlyFormedDailyValues.xml
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\WSDL xml files\DailyValues.xml
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\NUnit test code\NUnitTestWSTUW.cs
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll.config
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\WsdlValidationTests.pdb
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\log4net.dll
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\nunit.framework.dll
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\log4net.xml
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\bin\Debug\nunit.framework.xml
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\obj\Debug\ResolveAssemblyReference.cache
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\obj\Debug\WsdlValidationTests.Resource.resources
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\obj\Debug\WsdlValidationTests.csproj.GenerateResource.Cache
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\obj\Debug\WsdlValidationTests.dll
+D:\Visual Studio 2005\Projects\serviceTesting\WsdlValidationTests\obj\Debug\WsdlValidationTests.pdb
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\NUnit test code\NUnitTestWSTUW.cs
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\log4netConfig.xml
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\WSDL xml files\BadlyFormedDailyValues.xml
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\WSDL xml files\DailyValues.xml
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll.config
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\WsdlValidationTests.pdb
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\nunit.framework.dll
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\log4net.xml
+D:\dev_webservicetest\WsdlValidationTests\bin\Debug\nunit.framework.xml
+D:\dev_webservicetest\WsdlValidationTests\obj\Debug\ResolveAssemblyReference.cache
+D:\dev_webservicetest\WsdlValidationTests\obj\Debug\WsdlValidationTests.Resource.resources
+D:\dev_webservicetest\WsdlValidationTests\obj\Debug\WsdlValidationTests.csproj.GenerateResource.Cache
+D:\dev_webservicetest\WsdlValidationTests\obj\Debug\WsdlValidationTests.dll
+D:\dev_webservicetest\WsdlValidationTests\obj\Debug\WsdlValidationTests.pdb

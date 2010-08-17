@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\WsdlValidationTests.csproj</TopNode>
+  <SelectedNode>[0-1002]WsdlValidationTests.NUnit_test_code.NUnitTestWSTUW.Test_DoesWsdlFileExists_withExistingFile</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\WsdlValidationTests.csproj" Expanded="true">
+      <Nodes>
+        <Node UniqueName="[0-1003]D:\Visual Studio 2005\Projects\TestCuahsiHisWaterOneFlowWebService\WsdlValidationTests\bin\Debug\WsdlValidationTests.dll" Expanded="true">
+          <Nodes>
+            <Node UniqueName="[0-1004]WsdlValidationTests" Expanded="true">
+              <Nodes>
+                <Node UniqueName="[0-1005]WsdlValidationTests.NUnit_test_code" Expanded="true">
+                  <Nodes>
+                    <Node UniqueName="[0-1001]WsdlValidationTests.NUnit_test_code.NUnitTestWSTUW" Expanded="true">
+                      <Nodes>
+                        <Node UniqueName="[0-1002]WsdlValidationTests.NUnit_test_code.NUnitTestWSTUW.Test_DoesWsdlFileExists_withExistingFile" />
+                      </Nodes>
+                    </Node>
+                  </Nodes>
+                </Node>
+              </Nodes>
+            </Node>
+          </Nodes>
+        </Node>
+      </Nodes>
+    </Node>
+  </Nodes>
+</VisualState>
