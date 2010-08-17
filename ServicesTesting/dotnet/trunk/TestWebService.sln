@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F09D5642-6EDB-4C05-91E7-2AACFF2E9A6C}"
+	ProjectSection(SolutionItems) = preProject
+		localtestrun.testrunconfig = localtestrun.testrunconfig
+		added_dlls\log4net.dll = added_dlls\log4net.dll
+		TestCuahsiHisWaterOneFlowWebService.vsmdi = TestCuahsiHisWaterOneFlowWebService.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebService", "TestCuahsiHisWaterOneFlowWebService\TestWebService.csproj", "{16BF342B-7189-4945-90BB-7BC254458BD5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A90458D8-DE97-4CDE-AEB8-D8AF77947ADD} = {A90458D8-DE97-4CDE-AEB8-D8AF77947ADD}
+		{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98} = {3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsdlValidationTests", "WsdlValidationTests\WsdlValidationTests.csproj", "{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsdlValidationTests-WebVersion", "WsdlValidationTests-WebVersion\WsdlValidationTests-WebVersion.csproj", "{1DD37500-3581-4D61-9CA3-76244D505F28}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98} = {3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterOneFlowWebServiceTests", "WaterOneFlowWebMethodTests\WaterOneFlowWebServiceTests.csproj", "{A90458D8-DE97-4CDE-AEB8-D8AF77947ADD}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WSDLValidation", "WSDLValidation\WSDLValidation.vdproj", "{5C659A62-F6B2-46A6-BBFC-9C5086D4E8A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16BF342B-7189-4945-90BB-7BC254458BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BF342B-7189-4945-90BB-7BC254458BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BF342B-7189-4945-90BB-7BC254458BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BF342B-7189-4945-90BB-7BC254458BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4E04DF-1593-4F50-BDA8-AE68B4AEFC98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD37500-3581-4D61-9CA3-76244D505F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD37500-3581-4D61-9CA3-76244D505F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD37500-3581-4D61-9CA3-76244D505F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD37500-3581-4D61-9CA3-76244D505F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90458D8-DE97-4CDE-AEB8-D8AF77947ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90458D8-DE97-4CDE-AEB8-D8AF77947ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90458D8-DE97-4CDE-AEB8-D8AF77947ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90458D8-DE97-4CDE-AEB8-D8AF77947ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C659A62-F6B2-46A6-BBFC-9C5086D4E8A7}.Debug|Any CPU.ActiveCfg = Debug
+		{5C659A62-F6B2-46A6-BBFC-9C5086D4E8A7}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
