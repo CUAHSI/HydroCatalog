@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterWebService", "WaterWebService\WaterWebService.csproj", "{94A62712-DA1F-4B99-8E11-96902976B46D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterDataAccess", "WaterDataAccess\WaterDataAccess.csproj", "{077579B2-2FE8-4A2F-8AB1-CEFB8D8404CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdmSeriesModel", "OdmSeriesModel\OdmSeriesModel.csproj", "{899125C5-B81D-4A32-B900-E5AFD187BE7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94A62712-DA1F-4B99-8E11-96902976B46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A62712-DA1F-4B99-8E11-96902976B46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A62712-DA1F-4B99-8E11-96902976B46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A62712-DA1F-4B99-8E11-96902976B46D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{077579B2-2FE8-4A2F-8AB1-CEFB8D8404CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077579B2-2FE8-4A2F-8AB1-CEFB8D8404CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077579B2-2FE8-4A2F-8AB1-CEFB8D8404CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077579B2-2FE8-4A2F-8AB1-CEFB8D8404CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899125C5-B81D-4A32-B900-E5AFD187BE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899125C5-B81D-4A32-B900-E5AFD187BE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899125C5-B81D-4A32-B900-E5AFD187BE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899125C5-B81D-4A32-B900-E5AFD187BE7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
