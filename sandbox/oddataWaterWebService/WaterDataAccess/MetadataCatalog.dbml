@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Class="MetadataCatalogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="Variables">
+    <Type Name="Variable">
+      <Column Name="VariableCode" Type="System.String" DbType="nvarchar(50)" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VariableName" Type="System.String" DbType="varchar" CanBeNull="false" />
+      <Column Name="VariableUnitsId" Type="System.Int32" DbType="int" CanBeNull="false" />
+      <Column Name="TimeUnitsId" Type="System.Int32" DbType="int" CanBeNull="false" />
+      <Column Name="TimeSupport" Type="System.Single" DbType="float" CanBeNull="false" />
+      <Column Name="isRegular" Type="System.Boolean" DbType="bit" CanBeNull="false" />
+      <Column Name="Speciation" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="SampleMedium" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="DataType" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="NoDataValue" Type="System.Single" DbType="float" CanBeNull="true" />
+      <Column Name="VariableUnitsAbbreviation" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
+      <Column Name="TimeUnitsAbbreviation" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="VariableUnitsName" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="TimeUnitsName" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="VariableVocabulary" Type="System.String" CanBeNull="false" />
+      <Association Name="Variable_VariableProperties" Member="VariableProperties" ThisKey="VariableCode" OtherKey="VariableCode" Type="VariableProperties" />
+      <Association Name="Series_Variable" Member="Series" ThisKey="VariableCode" OtherKey="VariableCode" Type="Series" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Sites">
+    <Type Name="Site">
+      <Column Name="SiteId" Type="System.Int32" DbType="int" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SiteCode" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
+      <Column Name="SiteName" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.Single" DbType="float" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.Single" DbType="float" CanBeNull="false" />
+      <Column Name="NetworkCode" Type="System.String" CanBeNull="false" />
+      <Association Name="Site_SiteProperties" Member="SiteProperties" ThisKey="SiteId" OtherKey="SiteId" Type="SiteProperties" />
+      <Association Name="Series_Site" Member="Series" ThisKey="SiteId" OtherKey="SiteId" Type="Series" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="SiteProperties">
+    <Type Name="SiteProperties">
+      <Column Name="SiteId" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyName" Type="System.String" CanBeNull="false" />
+      <Column Name="PropertyValue" Type="System.String" CanBeNull="false" />
+      <Column Name="PropertyUri" Type="System.String" CanBeNull="false" />
+      <Column Name="PropertyDescription" Type="System.String" CanBeNull="false" />
+      <Association Name="Site_SiteProperties" Member="Site" ThisKey="SiteId" OtherKey="SiteId" Type="Site" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="VariableProperties">
+    <Type Name="VariableProperties">
+      <Column Name="VariableCode" Type="System.String" DbType="nvarchar(50)" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyName" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Column Name="PropertyDescription" Type="System.String" DbType="nvarchar(255)" CanBeNull="false" />
+      <Association Name="Variable_VariableProperties" Member="Variable" ThisKey="VariableCode" OtherKey="VariableCode" Type="Variable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Series">
+    <Type Name="Series">
+      <Column Name="SeriesId" Type="System.Int32" DbType="int" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BeginDateTime" Type="System.DateTimeOffset" DbType="DateTime" CanBeNull="false" />
+      <Column Name="EndDateTime" Type="System.DateTimeOffset" DbType="DateTime" CanBeNull="false" />
+      <Column Name="SiteId" Type="System.Int32" DbType="int" CanBeNull="false" />
+      <Column Name="VariableCode" Type="System.String" DbType="nvarchar(50)" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Series_Variable" Member="Variables" ThisKey="VariableCode" OtherKey="VariableCode" Type="Variable" Cardinality="One" />
+      <Association Name="Series_Site" Member="Sites" ThisKey="SiteId" OtherKey="SiteId" Type="Site" Cardinality="One" />
+    </Type>
+  </Table>
+</Database>

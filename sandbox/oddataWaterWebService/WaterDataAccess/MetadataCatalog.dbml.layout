@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.625" name="MetadataCatalog">
+  <DataContextMoniker Name="/MetadataCatalogDataContext" />
+  <nestedChildShapes>
+    <classShape Id="81d10cab-5dac-4ca9-949d-4266c55e47e2" absoluteBounds="0.5, 3.625, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/MetadataCatalogDataContext/Variable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="881b6500-78b4-48ea-a7b6-67f763292b59" absoluteBounds="0.515, 4.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8db6b02d-f284-434f-9e6c-e68a9a1fb8d2" absoluteBounds="3.375, 3.75, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/MetadataCatalogDataContext/Site" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d33a3cee-2e8e-4dc2-8d33-0f868b999da4" absoluteBounds="3.39, 4.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ce8181ba-a2b1-48d5-a959-6aa630b718e5" absoluteBounds="3.375, 6.25, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/MetadataCatalogDataContext/SiteProperties" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb0f6097-c194-4d4b-9210-e26c4c4f8c4c" absoluteBounds="3.39, 6.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 5.7131982421875); (4.375 : 6.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MetadataCatalogDataContext/Site/Site_SiteProperties" />
+      <nodes>
+        <classShapeMoniker Id="8db6b02d-f284-434f-9e6c-e68a9a1fb8d2" />
+        <classShapeMoniker Id="ce8181ba-a2b1-48d5-a959-6aa630b718e5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5f20a79d-8d4f-455f-af5a-55ea5735e98f" absoluteBounds="0.875, 8, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/MetadataCatalogDataContext/VariableProperties" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8a661690-f2a2-4363-b0b4-45cde5829170" absoluteBounds="0.89, 8.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.6875 : 7.3189111328125); (1.6875 : 8)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MetadataCatalogDataContext/Variable/Variable_VariableProperties" />
+      <nodes>
+        <classShapeMoniker Id="81d10cab-5dac-4ca9-949d-4266c55e47e2" />
+        <classShapeMoniker Id="5f20a79d-8d4f-455f-af5a-55ea5735e98f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1f388a1a-7547-454b-8837-274a891b24ff" absoluteBounds="2.125, 1, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/MetadataCatalogDataContext/Series" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5e841816-843d-4c07-a673-4c81704a7529" absoluteBounds="2.14, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.75 : 2.77089680989583); (3.75 : 3.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MetadataCatalogDataContext/Series/Series_Site" />
+      <nodes>
+        <classShapeMoniker Id="1f388a1a-7547-454b-8837-274a891b24ff" />
+        <classShapeMoniker Id="8db6b02d-f284-434f-9e6c-e68a9a1fb8d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.9062505 : 2.77089680989583); (2.9062505 : 5.98159912109375); (2.5 : 5.98159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MetadataCatalogDataContext/Series/Series_Variable" />
+      <nodes>
+        <classShapeMoniker Id="1f388a1a-7547-454b-8837-274a891b24ff" />
+        <classShapeMoniker Id="81d10cab-5dac-4ca9-949d-4266c55e47e2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
