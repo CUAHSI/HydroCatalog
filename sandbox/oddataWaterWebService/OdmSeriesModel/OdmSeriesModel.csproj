@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{899125C5-B81D-4A32-B900-E5AFD187BE7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sdsc.Odm.SeriesModel</RootNamespace>
+    <AssemblyName>OdmSeriesModel</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="Common\ControlledVocabulary.cs" />
+    <Compile Include="Common\DataServiceCode.cs" />
+    <Compile Include="Common\DataType.cs" />
+    <Compile Include="Common\DataTypeCv.cs" />
+    <Compile Include="OdData\DataValueOdm.cs" />
+    <Compile Include="Common\GeneralCategoryCv.cs" />
+    <Compile Include="Common\GenericAnnotation.cs" />
+    <Compile Include="Common\GenericCode.cs" />
+    <Compile Include="Common\GenericProvenance.cs" />
+    <Compile Include="Common\Method.cs" />
+    <Compile Include="Common\ObservationalSpacingBase.cs" />
+    <Compile Include="Common\QualityControlLevel.cs" />
+    <Compile Include="Common\SeriesProcessingAction.cs" />
+    <Compile Include="Common\Source.cs" />
+    <Compile Include="Common\TimeScale.cs" />
+    <Compile Include="Common\TimeStamp.cs" />
+    <Compile Include="Common\Unit.cs" />
+    <Compile Include="Common\UnitTypeCv.cs" />
+    <Compile Include="Common\UnitValue.cs" />
+    <Compile Include="OdData\CensorCodeCv.cs" />
+    <Compile Include="OdData\DataValueCategorical.cs" />
+    <Compile Include="OdData\DataValueCore.cs" />
+    <Compile Include="OdData\Instrument.cs" />
+    <Compile Include="OdData\LabMethod.cs" />
+    <Compile Include="OdData\OffsetType.cs" />
+    <Compile Include="OdData\Qualifier.cs" />
+    <Compile Include="OdData\Sample.cs" />
+    <Compile Include="OdData\SampleTypeCv.cs" />
+    <Compile Include="ODExtensibility\PropertyDouble.cs" />
+    <Compile Include="ODExtensibility\PropertyGeneric.cs" />
+    <Compile Include="ODExtensibility\PropertyInteger.cs" />
+    <Compile Include="ODExtensibility\PropertyString.cs" />
+    <Compile Include="OdLocation\LocationBase.cs" />
+    <Compile Include="OdLocation\LocationGeographicBox.cs" />
+    <Compile Include="OdLocation\LocationGeographicPoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Base\RuleViolation.cs" />
+    <Compile Include="Series\SeriesOdm.cs" />
+    <Compile Include="Series\SeriesRecord.cs" />
+    <Compile Include="Site\Site.cs" />
+    <Compile Include="Site\SiteOdm.cs" />
+    <Compile Include="Site\SiteTypeCv.cs" />
+    <Compile Include="Variable\ObservedVariable.cs" />
+    <Compile Include="Variable\SampleMediaCv.cs" />
+    <Compile Include="Variable\SpeciationCv.cs" />
+    <Compile Include="Variable\ValueTypeCv.cs" />
+    <Compile Include="Variable\VariableOdm.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
