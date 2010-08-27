@@ -84,17 +84,36 @@ namespace HisAgentTests
         /// <summary>
         ///A test for Parse
         ///</summary>
-          [Test()]
-        [Ignore()]
-        public void ParseTest()
+        [TestCase("P1D", 1)]
+        [TestCase("P10D", 10)]
+        public void ParseTestPeriod(string input, int resultInDays)
         {
-            IsoTimePeriod target = new IsoTimePeriod(); // TODO: Initialize to an appropriate value
-            string period = string.Empty; // TODO: Initialize to an appropriate value
-            IsoTimePeriod expected = null; // TODO: Initialize to an appropriate value
-            IsoTimePeriod actual;
-            actual = target.Parse(period);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            IsoTimePeriod target =  IsoTimePeriod.Parse(input); 
+
+            TimeSpan period = new TimeSpan(resultInDays,0,0);
+
+              
+            Assert.AreEqual(period, target.TimeSpan);
+           // Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+        /// <summary>
+        ///A test for Parse
+        ///</summary>
+        [TestCase("2010-01-01/2010-01-01", "2010-01-01", "2010 - 01 - 01", 0)]
+        [TestCase("2010-01-01/2010-01-20", "2010-01-01", "2010 - 01 - 20", 19)]
+        [TestCase("2008-12-01/2008-12-31", "2008-12-01", "2008 - 12 - 31", 30)]
+        public void ParseTestStartEnd(string input, string start, string end, int resultInDays)
+        {
+            IsoTimePeriod target = IsoTimePeriod.Parse(input);
+
+            TimeSpan period = new TimeSpan(resultInDays, 0, 0,0);
+            DateTimeOffset sdate =  DateTimeOffset.Parse(start);
+            Assert.AreEqual(sdate, target.StartDate);
+            DateTimeOffset edate = DateTimeOffset.Parse(end);
+            Assert.AreEqual(edate, target.EndDate);
+            Assert.AreEqual(period, target.TimeSpan);
+
+            // Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }
