@@ -119,11 +119,11 @@ namespace Cuahsi.His.Ruon
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.MethodName, AlarmSeverity.Critical, "Service List Failed"));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Service List Failed"));
                             }
                             else
                             {
-                                alarms.Add(new Clear(result.ServiceName, result.MethodName, ""));
+                                alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
                         if (Boolean.Parse(Configuration["Monitor_SeriesCatalog"]))
@@ -133,11 +133,11 @@ namespace Cuahsi.His.Ruon
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.MethodName, AlarmSeverity.Critical, "Series Failed"));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed"));
                             }
                             else
                             {
-                                alarms.Add(new Clear(result.ServiceName, result.MethodName, ""));
+                                alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
 
                            
@@ -150,55 +150,22 @@ namespace Cuahsi.His.Ruon
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.MethodName, AlarmSeverity.Critical, "Ontology Failed"));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Ontology Failed"));
                             }
                             else
                             {
-                                alarms.Add(new Clear(result.ServiceName, result.MethodName, ""));
+                                alarms.Add(new Clear(result.ServiceName, result.ServiceName+result.MethodName, ""));
                             }
-
            
                         }
-
-
-                         ReportAlarms(alarms, false);
+  
                     }catch
                         {
                             alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
-                            ReportAlarms(alarms, false);
                         }
                 }
-                //// Get the state
-                //int state = machine.GetState();
-
-                //if (state >= 0)
-                //{
-                //    AlarmConsts alarmConsts = AlarmConstants(state);
-                //    if (alarmConsts.severity == AlarmSeverity.Clear) // i.e. not an alarm: clear is needed
-                //    {
-                //        alarms.Add(new Clear(alarmConsts.resource, alarmConsts.id, alarmConsts.description));
-                //    }
-                //    else
-                //    {
-                //        alarms.Add(new Alarm(alarmConsts.resource, alarmConsts.id, alarmConsts.severity, alarmConsts.description));
-                //    }
-
-                //    // incremental=false will make sure ELECTRICITY alarm will go down (if exists)
-                //    // It is okay to report every time, since ReportAlarms 
-                //    // will ignore if it is identical to last time (non-incremental mode only!!!)
-                //    ReportAlarms(alarms, false);
-                //    reportedElectricityProblem = false;
-                //}
-                //else
-                //{
-                //    if (!reportedElectricityProblem)
-                //    {
-                //        AlarmConsts alarmConsts = AlarmConstants(state);
-                //        alarms.Add(new Alarm(alarmConsts.resource, alarmConsts.id, alarmConsts.severity, alarmConsts.description));
-                //        ReportAlarms(alarms, true); // Incremental so we don't loose the cofee level alarms.
-                //        reportedElectricityProblem = true;
-                //    }
-                //}
+                ReportAlarms(alarms, false);
+              
             }
             catch (Exception ex)
             {
