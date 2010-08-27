@@ -1,6 +1,7 @@
 ﻿using Cuahsi.His.Ruon;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using System;
+using NUnit.Framework;
 
 namespace HisAgentTests
 {
@@ -10,64 +11,18 @@ namespace HisAgentTests
     ///This is a test class for HisCentralTesterTest and is intended
     ///to contain all HisCentralTesterTest Unit Tests
     ///</summary>
-    [TestClass()]
+    [TestFixture()]
     public class HisCentralTesterTest
     {
 
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
+     
 
 
         /// <summary>
         ///A test for runSeriesCatalogByBox
         ///</summary>
-        [TestMethod()]
+        [Test()]
         public void runSeriesCatalogByBoxTest()
         {
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
@@ -81,7 +36,7 @@ namespace HisAgentTests
         /// <summary>
         ///A test for runQueryServiceList
         ///</summary>
-        [TestMethod()]
+          [Test()]
         public void runQueryServiceListTest()
         {
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
@@ -94,7 +49,7 @@ namespace HisAgentTests
         /// <summary>
         ///A test for runServicesByBox
         ///</summary>
-        [TestMethod()]
+        [Test()]
         public void runServicesByBoxTest()
         {
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
@@ -107,7 +62,7 @@ namespace HisAgentTests
         /// <summary>
         ///A test for Endpoint
         ///</summary>
-        [TestMethod()]
+        [Test()]
         public void EndpointTest()
         {
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
@@ -122,7 +77,7 @@ namespace HisAgentTests
         /// <summary>
         ///A test for ServiceName
         ///</summary>
-        [TestMethod()]
+          [Test()]
         public void ServiceNameTest()
         {
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
