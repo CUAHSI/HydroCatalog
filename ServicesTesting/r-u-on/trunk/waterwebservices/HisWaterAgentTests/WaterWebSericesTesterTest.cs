@@ -78,13 +78,13 @@ namespace HisAgentTests
         /// <summary>
         ///A test for RunTests
         ///</summary>
-          [Test()]
-        public void RunTestsTest()
+          [TestCase("http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx","NWIS:10263500", "NWIS:00060", "2010-01-01/2010-01-31")]
+          [TestCase("http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx", "NWIS:10109000", "NWIS:00065", "P1D")]
+
+         public void RunTestsTest(string endpoint, string ws_SiteCode, string ws_variableCode, string ISOTimPeriod)
         {
             WaterWebSericesTester target = new WaterWebSericesTester(); // TODO: Initialize to an appropriate value
-            string ws_SiteCode = "NWIS:10263500"; 
-            string ws_variableCode = "NWIS:00060"; 
-            string ISOTimPeriod = string.Empty; // TODO: Initialize to an appropriate value
+            target.Endpoint = endpoint;
            // TestResult expected = null; // TODO: Initialize to an appropriate value
             TestResult actual;
             actual = target.RunTests("TestServer",ws_SiteCode, ws_variableCode, ISOTimPeriod);
@@ -92,5 +92,23 @@ namespace HisAgentTests
             Assert.IsTrue(actual.Working);
           //  Assert.Inconclusive("Verify the correctness of this test method.");
         }
+
+          /// <summary>
+          ///A test for RunTests
+          ///</summary>
+          [TestCase("http://example", "NWIS:10263500", "NWIS:00060", "2010-01-01/2010-01-31")]
+          [TestCase("http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx", "NWIS:00000", "NWIS:00065", "P1D")]
+          [TestCase("http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx", "NWIS:00000", "NWIS:00065", "1D")]
+          public void BadDataTests(string endpoint, string ws_SiteCode, string ws_variableCode, string ISOTimPeriod)
+          {
+              WaterWebSericesTester target = new WaterWebSericesTester(); // TODO: Initialize to an appropriate value
+              target.Endpoint = endpoint;
+              // TestResult expected = null; // TODO: Initialize to an appropriate value
+              TestResult actual;
+              actual = target.RunTests("TestServer", ws_SiteCode, ws_variableCode, ISOTimPeriod);
+
+              Assert.IsFalse(actual.Working);
+              //  Assert.Inconclusive("Verify the correctness of this test method.");
+          }
     }
 }

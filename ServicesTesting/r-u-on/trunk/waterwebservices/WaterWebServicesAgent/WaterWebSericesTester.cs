@@ -66,7 +66,7 @@ namespace cuahsi.wof.ruon
             try
             {
                 // set to 1 day for now
-                isoTimePeriod.TimeSpan = new TimeSpan(2,0,0,0);
+                isoTimePeriod = IsoTimePeriod.Parse(ISOTimPeriod);
             } catch (Exception ex)
             {
                 testResult.errorString = String.Format("Bad Time Period {0} for {1}",ISOTimPeriod, serverName);

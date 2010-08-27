@@ -91,8 +91,8 @@ namespace cuahsi.wof.ruon
         //: base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
         // 60, null, null, serviceProcess)
         public WaterWebServicesAgent(IServiceProcess serviceProcess)
-            : base("WaterWebServicesAgent", "1.1", "AAAABIESfWjQAAADDrFZJTSn",
-             30, null, null, serviceProcess)
+            : base("WaterWebServicesAgent", "1.2", "AAAABIESfWjQAAADDrFZJTSn",
+             300, null, null, serviceProcess)
         {
             bool isInstalled = Agent.IsInstalled("WaterWebServicesAgent");
 
@@ -148,7 +148,7 @@ namespace cuahsi.wof.ruon
                 Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx",
                 SiteCode = "NWIS:10263500",
                 VariableCode = "NWIS:00060",
-                ISOTimeInterval = "2010"
+                ISOTimeInterval = "2010-01-01/2010-01-31"
             });
             servers.Servers.Add(new WofServer
             {
