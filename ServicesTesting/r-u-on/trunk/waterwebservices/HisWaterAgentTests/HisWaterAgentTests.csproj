@@ -63,6 +63,7 @@
     <ProjectReference Include="..\iao.net\iao.net.csproj">
       <Project>{76F7F0EE-DFD6-4266-A22B-9484481BE23B}</Project>
       <Name>iao.net</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\HisCentralAgent\HISAgent.csproj">
       <Project>{7823DD95-633E-4F9A-9315-A7B1A7FA9F55}</Project>
