@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Simple Agent Test</title>
+</head>
+<body>
+
+<script>
+    var agent;
+    var uid = 0;
+    
+    function start(accountId)
+    {
+    	try
+    	{
+	        agent = new ActiveXObject("Ruon.SimpleAgent");
+	        
+	        // Use the following lines if you require proxy authentication
+	        //agent.ProxyUser = "proxyuser";
+	        //agent.ProxyPassword = "proxypassword";
+        	
+        	return error( agent.Start("SimpleSample", accountId) );
+        }
+        catch (e)
+        {
+            alert(e.message);
+        }
+    }
+    
+    function alarm(resource, id, description)
+    {
+        error( agent.Alarm(resource, id, description) );
+    }
+    
+    function clear(resource, id, description)
+    {
+        error( agent.Clear(resource, id, description) );
+    }
+
+    function clearAll()
+    {
+        error( agent.ClearAll() );
+    }
+    
+    function error(good)
+    {
+        if (!good)
+        {
+            alert(agent.LastError);
+        }
+        return good;
+    }
+    
+    function go()
+    {
+        var aid = document.getElementById("aid").value;
+        if (start(aid))
+        {
+            document.getElementById("agenton").style.visibility = "";
+        }
+    }
+    
+    function dispose()
+    {
+        agent.Dispose();
+        agent = null;
+        document.getElementById("agenton").style.visibility = "hidden";
+    }
+</script>
+    1) Make sure your machine supports the .NET framework. If your Windows is up-to-date, it is probably there.<br><br>
+    2) Install the SimpleAgent ActiveX by executing "regasm iao.net.dll /codebase". "regasm" is usually located at "C:\WINDOWS\Microsoft.NET\Framework\v2.0*".<br><br>
+    3) Enter secret account id: <input id="aid"/> <input onclick="go()" type="button" value="Start Agent" /> (Copy value from the account settings page).<br><br>
+    <div id="agenton" style="visibility:hidden">
+        4) Agent Running. You can toggle alarms and check out the source code.<br><br>
+        <a href="javascript:alarm('resource', 'theid', 'The alarm')">Raise the Alarm</a><br>
+        <a href="javascript:alarm('resource', uid++, 'An alarm')">Raise an Alarm</a><br>
+        <a href="javascript:clear('resource', 'theid', 'The alarm')">Clear the Alarm</a><br>
+        <a href="javascript:clearAll()">Clear all alarms</a>
+        <br><br>
+        <a href="javascript:dispose()">Dispose of ActiveX</a>
+    </div>
+</body>
+</html>
