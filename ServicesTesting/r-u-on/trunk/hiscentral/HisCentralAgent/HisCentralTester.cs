@@ -47,9 +47,9 @@ public class HisCentralTestResult
             set { _serviceName = value; }
         }
 
-        public HisCentralTestResult runQueryServiceList(){
+        public HisCentralTestResult runQueryServiceList(String serviceName){
 
-         HisCentralTestResult testResult = new HisCentralTestResult{Working = false, ServiceName=ServiceName,MethodName="ServiceInfo" };
+            HisCentralTestResult testResult = new HisCentralTestResult { Working = false, ServiceName = serviceName, MethodName = "ServiceInfo" };
            
             try
             {
@@ -69,11 +69,11 @@ public class HisCentralTestResult
             return testResult;
         }
 
-        public HisCentralTestResult runServicesByBox()
+        public HisCentralTestResult runServicesByBox(String serviceName)
         {
 
             HisCentralTestResult testResult = new HisCentralTestResult { Working = false, 
-                ServiceName = ServiceName,
+                ServiceName = serviceName,
                  MethodName = "ServicesByBox"
             };
    
@@ -96,14 +96,14 @@ public class HisCentralTestResult
             return testResult;
         }
 
-        public HisCentralTestResult runSeriesCatalogByBox()
+        public HisCentralTestResult runSeriesCatalogByBox(String serviceName)
         {
 
             HisCentralTestResult testResult = new HisCentralTestResult
             
             {
                 Working = false,
-                ServiceName = ServiceName,
+                ServiceName = serviceName,
                 MethodName = "SeriesCatalogByBox"
             };
             try

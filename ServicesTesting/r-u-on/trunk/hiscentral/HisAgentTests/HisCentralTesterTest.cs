@@ -73,7 +73,7 @@ namespace HisAgentTests
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
             //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
             HisCentralTestResult actual;
-            actual = target.runSeriesCatalogByBox();
+            actual = target.runSeriesCatalogByBox("test");
             Assert.IsTrue( actual != null);
           //  Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -87,7 +87,7 @@ namespace HisAgentTests
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
             //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
             HisCentralTestResult actual;
-            actual = target.runQueryServiceList();
+            actual = target.runQueryServiceList("test");
             Assert.IsTrue(actual != null);
         }
 
@@ -100,7 +100,7 @@ namespace HisAgentTests
             HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
             //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
             HisCentralTestResult actual;
-            actual = target.runServicesByBox();
+            actual = target.runServicesByBox("test");
             Assert.IsTrue(actual != null);
         }
 

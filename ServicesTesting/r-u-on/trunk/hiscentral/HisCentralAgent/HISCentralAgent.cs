@@ -115,11 +115,11 @@ namespace Cuahsi.His.Ruon
                         tester.Endpoint = server["HIS_Central_Url"];
                         if (Boolean.Parse(Configuration["Monitor_SiteInfo"]))
                         {
-                            HisCentralTestResult result = tester.runQueryServiceList();
+                            HisCentralTestResult result = tester.runQueryServiceList(server["ServerName"]);
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Service List Failed"));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Service List Failed " + result.ServiceName));
                             }
                             else
                             {
@@ -129,11 +129,11 @@ namespace Cuahsi.His.Ruon
                         if (Boolean.Parse(Configuration["Monitor_SeriesCatalog"]))
                         {
 
-                            HisCentralTestResult result = tester.runSeriesCatalogByBox();
+                            HisCentralTestResult result = tester.runSeriesCatalogByBox(server["ServerName"]);
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed"));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed " + result.ServiceName));
                             }
                             else
                             {
@@ -146,11 +146,11 @@ namespace Cuahsi.His.Ruon
                       if (Boolean.Parse(Configuration["Monitor_Ontology"]))
                         {
 
-                            HisCentralTestResult result = tester.runSeriesCatalogByBox();
+                            HisCentralTestResult result = tester.runSeriesCatalogByBox(server["ServerName"]);
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Ontology Failed"));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Ontology Failed " + result.ServiceName));
                             }
                             else
                             {
@@ -159,17 +159,22 @@ namespace Cuahsi.His.Ruon
            
                         }
   
-                    }catch
+                    }catch (Exception ex)
                         {
-                            alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
-                        }
+                            alarms.Add(new Event("HIS Central", "ServiceError", AlarmSeverity.Critical, "Error in Monitor Service" +server["ServerName"]));
+                         }
                 }
+  
                 ReportAlarms(alarms, false);
               
             }
             catch (Exception ex)
             {
                 // log error
+                List<IAlarm> alarms = new List<IAlarm>();
+                alarms.Add(new Event("HIS Central", "CriticalServiceError", AlarmSeverity.Critical, "Critical Error in Monitor Service"));
+        
+                ReportAlarms(alarms, false);
             }
         }
     }
