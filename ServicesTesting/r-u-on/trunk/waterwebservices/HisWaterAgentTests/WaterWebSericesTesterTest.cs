@@ -1,6 +1,7 @@
 ﻿using cuahsi.wof.ruon;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using System;
+using NUnit.Framework;
 
 namespace HisAgentTests
 {
@@ -10,64 +11,18 @@ namespace HisAgentTests
     ///This is a test class for WaterWebSericesTesterTest and is intended
     ///to contain all WaterWebSericesTesterTest Unit Tests
     ///</summary>
-    [TestClass()]
+    [TestFixture()]
     public class WaterWebSericesTesterTest
     {
 
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
+      
 
 
         /// <summary>
         ///A test for GetSites
         ///</summary>
-        [TestMethod()]
+         [Test()]
         public void GetSitesTest()
         {
             WaterWebSericesTester target = new WaterWebSericesTester(); // TODO: Initialize to an appropriate value
@@ -81,7 +36,7 @@ namespace HisAgentTests
         /// <summary>
         ///A test for WaterWebSericesTester Constructor
         ///</summary>
-        [TestMethod()]
+          [Test()]
         [Ignore]
         public void WaterWebSericesTesterConstructorTest()
         {
@@ -92,7 +47,7 @@ namespace HisAgentTests
         /// <summary>
         ///A test for Endpoint
         ///</summary>
-        [TestMethod()]
+        [Test()]
         public void EndpointTest()
         {
             WaterWebSericesTester target = new WaterWebSericesTester(); // TODO: Initialize to an appropriate value
@@ -107,22 +62,23 @@ namespace HisAgentTests
         /// <summary>
         ///A test for ServiceName
         ///</summary>
-        [TestMethod()]
+         [Test()]
         public void ServiceNameTest()
         {
             WaterWebSericesTester target = new WaterWebSericesTester(); // TODO: Initialize to an appropriate value
             string expected = "Example";
+            target.ServiceName = expected;
             string actual;
             actual = target.ServiceName;
-            target.ServiceName = expected;
-            actual = target.Endpoint;
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual, "Setting Service Name Failed");
+
+           
         }
 
         /// <summary>
         ///A test for RunTests
         ///</summary>
-        [TestMethod()]
+          [Test()]
         public void RunTestsTest()
         {
             WaterWebSericesTester target = new WaterWebSericesTester(); // TODO: Initialize to an appropriate value
