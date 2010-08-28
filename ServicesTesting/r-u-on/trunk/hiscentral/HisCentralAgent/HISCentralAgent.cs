@@ -50,7 +50,7 @@ namespace Cuahsi.His.Ruon
              // 60, null, null, serviceProcess)
         public HISCentralAgent(IServiceProcess serviceProcess)
             : base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
-              600, null, null, serviceProcess)
+              30, null, null, serviceProcess)
         {
 
             Configuration.MetaConfig(

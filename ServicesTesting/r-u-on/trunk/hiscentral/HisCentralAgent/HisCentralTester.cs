@@ -39,7 +39,9 @@ public class HisCentralTestResult
         public String Endpoint
         {
             get { return hiscentralendpoint; }
-            set { hiscentralendpoint = value; }
+            set { hiscentralendpoint = value;
+                svc.Url = value;
+            }
         }
         public String ServiceName
         {

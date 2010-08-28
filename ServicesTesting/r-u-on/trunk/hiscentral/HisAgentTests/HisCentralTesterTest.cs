@@ -44,6 +44,7 @@ namespace HisAgentTests
             HisCentralTestResult actual;
             actual = target.runQueryServiceList("test");
             Assert.IsTrue(actual != null);
+            Assert.IsTrue(actual.Working);
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace HisAgentTests
             //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
             HisCentralTestResult actual;
             actual = target.runServicesByBox("test");
-            Assert.IsTrue(actual != null);
+            Assert.IsTrue(actual.Working);
         }
 
         /// <summary>
@@ -71,6 +72,23 @@ namespace HisAgentTests
             target.Endpoint = expected;
             actual = target.Endpoint;
             Assert.AreEqual(expected, actual);
+
+        }
+
+          /// <summary>
+        ///A test for Endpoint
+        ///</summary>
+        [Test()]
+        public void BadEndpointTest()
+        {
+            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
+            string badendpoint = "http://www.example.com/"; // TODO: Initialize to an appropriate value
+          
+            target.Endpoint = badendpoint;
+            
+            
+            var actual = target.runQueryServiceList("test");
+            Assert.IsFalse(actual.Working);
 
         }
 
