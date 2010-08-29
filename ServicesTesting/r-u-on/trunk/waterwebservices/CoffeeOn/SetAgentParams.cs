@@ -40,7 +40,7 @@ namespace CoffeeOn
             get
             {
                 AgentParams ap = new AgentParams();
-
+                
 
                 // The standard parameters
                 if (textBox1.Text!="")

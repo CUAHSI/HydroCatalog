@@ -23,6 +23,10 @@ namespace cuahsi.wof.ruon
 
             svc = new WaterOneFlow();
         }
+
+        public String TesterStatus { get; set; }
+        public event EventHandler UpdatedTesterStatus;
+
         public String Endpoint
         {
             get { return endpointSoap; }
@@ -42,7 +46,8 @@ namespace cuahsi.wof.ruon
             TestResult testResult = new TestResult { Working = false, ServiceName = serviceName, MethodName = "GetSites" };
             try
             {
-
+              //  TesterStatus = "Running GetSites";
+            //    UpdatedTesterStatus(this,null);
                 var results = svc.GetSites(new string[] { }, null);
                 if (results != null)
                 {
@@ -51,6 +56,9 @@ namespace cuahsi.wof.ruon
                         testResult.Working = true;
                     }
                 }
+              //  TesterStatus = "Done GetSites "+testResult.Working;
+              //  UpdatedTesterStatus(this, null);
+
             }
             catch (Exception ex)
             {
@@ -70,11 +78,14 @@ namespace cuahsi.wof.ruon
             } catch (Exception ex)
             {
                 testResult.errorString = String.Format("Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
+                             //   TesterStatus =testResult.errorString;
+              //  UpdatedTesterStatus(this,null );
             }
             try
             {
 
-
+                         //       TesterStatus = "Running GetSiteInfo ";
+               // UpdatedTesterStatus(this, null);
                 var results = svc.GetSiteInfoObject(ws_SiteCode, null);
                 if (results != null)
                 {
@@ -83,20 +94,45 @@ namespace cuahsi.wof.ruon
                         testResult.Working = true;
                     }
                 }
-                
-                var timeSeries = svc.GetValuesObject(ws_SiteCode, ws_variableCode, "2010-08-01", "2010-08-10", null);
-                if (results != null)
+                else
                 {
-                    if (results.site.Length > 0)
+                  //  TesterStatus = "failed getSiteInfo";
+                 //   UpdatedTesterStatus(this, null);
+
+                    testResult.Working = false;
+                    return testResult;
+                }
+             //   TesterStatus = "Running GetValues";
+             //   UpdatedTesterStatus(this, null);
+                var timeSeries = svc.GetValuesObject(ws_SiteCode, ws_variableCode, 
+                    isoTimePeriod.StartDate.ToString("yyyy-MM-dd"), isoTimePeriod.EndDate.ToString("yyyy-MM-dd"),
+                    null);
+                if (timeSeries != null)
+                {
+                    if (timeSeries.timeSeries != null)
                     {
                         testResult.Working = true;
                     }
                 }
+                else
+                {
+               //     TesterStatus = "failed GetValues";
+              //  UpdatedTesterStatus(this, null);
+           
+                    testResult.Working = false;
+                    return testResult;
+                }
+           //     TesterStatus = "Done GetValues" + testResult.Working;
+              //  UpdatedTesterStatus(this, null);
             }
             catch (Exception ex)
             {
+           //     TesterStatus = "failed Service Error " + ex.Message;
+            //    UpdatedTesterStatus(this, null);
                 testResult.errorString = ex.Message;
             }
+         //   TesterStatus = "Done with Run";
+           // UpdatedTesterStatus(this, null);
             return testResult;
         }
     }

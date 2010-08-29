@@ -166,7 +166,7 @@ namespace Ruon
         /// </summary>
         public int MonitorIntervalSec
         {
-            get { return MonitorIntervalSec; }
+            get { return monitorIntervalSec; }
             set
             {
                 monitorIntervalSec = value;

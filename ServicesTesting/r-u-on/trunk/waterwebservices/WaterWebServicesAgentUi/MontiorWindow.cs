@@ -15,52 +15,100 @@ namespace cuahsi.wof.ruon
     {
         private WaterWebServicesAgent agent = null;
         private AgentParams _agentParams ;
-       
+        private int originalMontiorInterval = 600;
+
+        private ServerList servers;
 
         public MontiorWindow()
         {
             InitializeComponent();
-            Status.Text = "Ready";
+            RuonResourceChanged += new EventHandler(this.OnResourceUpdateEvent);
+            
             agent = new WaterWebServicesAgent(null);
+            agent.UpdatedStatus += OnAgentStatusUpdate;
+            originalMontiorInterval = agent.MonitorIntervalSec;
+            agent.MonitorIntervalSec = -1;
+      
+           //resorrces = agent.Configuration.ManagedResources;
+           //ServerListGrid.DataSource = resorrces; 
+            RuonResourceChanged(this, null); // trigger a resource load
 
-           Dictionary<string,string>[] resorrces = agent.Configuration.ManagedResources;
-
-           ServerListGrid.DataSource = resorrces; 
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+            Status.Text = "Ready";
             SetPictures();
         }
 
-       
-
-        private void ToggleAgent()
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            try
-            {
-                if (agent == null)
-                {
-                    agent = new WaterWebServicesAgent(null); // if i can do this, we have an installed agent
-                }
-                else
-                {
-                    agent.Dispose();
-                    agent = null;
-                }
-                SetPictures();
-            }
-            catch (Exception ex)
-            {
-               // ReportError(ex);
-            }
+            Status.Text = "run completed";
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            agent.MonitorIntervalSec = originalMontiorInterval;
+            base.OnClosed(e);
+        }
+
+      
         private void SetPictures()
         {
             return;
             //  throw new NotImplementedException();
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+      
+
+        public event EventHandler RuonResourceChanged;
+
+        private void OnResourceUpdateEvent(object sender, EventArgs e)
         {
-          // Chk_AgentRun.Checked = !Chk_AgentRun.Checked;
-            ToggleAgent();
-            Status.Text = "Clicked";
+            servers =new ServerList(agent.Configuration.ManagedResources);
+
+            serverListBindingSource.DataSource = servers;
+            ServerListGrid.Refresh();
+        }
+
+        private void OnAgentStatusUpdate(object sender, EventArgs e)
+        {
+            Status.Text = ((WaterWebServicesAgent) sender).AgentStatus;
+
+        }
+        private void hisCentralServerListBindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            AgentParams ap = new AgentParams();
+            ap.Resources = servers.AsAgentResource();
+            agent.SetParameters(ap);
+        }
+
+        private void btn_executeMonitor_Click(object sender, EventArgs e)
+        {
+             Status.Text = "Running Monitors"; 
+            backgroundWorker1.RunWorkerAsync();
+            
+        }
+
+        private event EventHandler MontiorDone;
+        private void runMonitorDone (object sender, EventArgs e)
+        {
+          
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+ 
+            agent.Monitor(servers.AsResource());
+
         }
     }
+  
 }

@@ -34,18 +34,38 @@ namespace cuahsi.wof.ruon
         }
 
     }
-    public class ServerList
+    public class ServerList :List<WofServer>
     {
-        private List<WofServer> _servers = new List<WofServer>();
-        public List<WofServer> Servers
+        private Boolean _editied = false;
+        public ServerList()
         {
-            get { return _servers; }
-
+            
+        }
+        public ServerList (Dictionary<string, string>[]  agentMangagedResources )
+        {
+            foreach (Dictionary<string, string> r in agentMangagedResources)
+            {
+               WofServer server = new WofServer();
+                Boolean enabled;
+              Boolean.TryParse( r[WaterWebServicesAgent.SERVERENABLED],out enabled);
+                server.Enabled = enabled;
+                server.Endpoint = r[WaterWebServicesAgent.ENDPOINT];
+                server.Name = r[WaterWebServicesAgent.SERVERNAME];
+                server.SiteCode = r[WaterWebServicesAgent.SITECODE];
+                server.VariableCode = r[WaterWebServicesAgent.VARIABLECODE];
+                server.ISOTimeInterval = r[WaterWebServicesAgent.ISOTIMEPERIOD];
+                this.Add(server);
+            }
+        }
+        public Boolean Edited
+        {
+            get { return _editied; }
+            set { _editied = value; }
         }
         public Dictionary<string, string>[] AsResource()
         {
-            List<Dictionary<String, String>> s = new List<Dictionary<String, String>>(Servers.Count);
-            foreach (var hisCentralServer in Servers)
+            List<Dictionary<String, String>> s = new List<Dictionary<String, String>>(this.Count);
+            foreach (var hisCentralServer in this)
             {
                 s.Add(hisCentralServer.ToDictionary());
             }
@@ -54,8 +74,8 @@ namespace cuahsi.wof.ruon
 
         public string[][] AsAgentResource()
         {
-            List<string[]> s = new List<string[]>(Servers.Count);
-            foreach (var hisCentralServer in Servers)
+            List<string[]> s = new List<string[]>(this.Count);
+            foreach (var hisCentralServer in this)
             {
                 s.Add(hisCentralServer.ToAgentStringArray());
             }
@@ -81,9 +101,8 @@ namespace cuahsi.wof.ruon
         public const string VARIABLECODE = "ws_VariableCode";
         public const string ISOTIMEPERIOD = "ISO_TimeInterval";
 
-        private string hisCentralEndpointsAsString;
         private ServerList servers;
-        private string usgsDailyValues = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx?WSDL";
+        private string usgsDailyValues = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx";
         /// <summary>
         /// Constructor, HAS to have this signature
         /// </summary>
@@ -133,7 +152,7 @@ namespace cuahsi.wof.ruon
 
                 foreach (var list in Configuration.ManagedResources)
                 {
-                    servers.Servers.Add(new WofServer { Name = list[SERVERNAME], Enabled = Boolean.Parse(list[SERVERENABLED]), Endpoint = list[ENDPOINT] });
+                    servers.Add(new WofServer { Name = list[SERVERNAME], Enabled = Boolean.Parse(list[SERVERENABLED]), Endpoint = list[ENDPOINT] });
                 }
             }
         }
@@ -141,7 +160,7 @@ namespace cuahsi.wof.ruon
         private void SetupBaseServices()
         {
             servers = new ServerList();
-            servers.Servers.Add(new WofServer
+            servers.Add(new WofServer
             {
                 Name = "NWISDV",
                 Enabled = true,
@@ -150,7 +169,7 @@ namespace cuahsi.wof.ruon
                 VariableCode = "NWIS:00060",
                 ISOTimeInterval = "2010-01-01/2010-01-31"
             });
-            servers.Servers.Add(new WofServer
+            servers.Add(new WofServer
             {
                 Name = "NWISUV",
                 Enabled = true,
@@ -160,15 +179,13 @@ namespace cuahsi.wof.ruon
                 ISOTimeInterval = "P1D"
             }
             );
-            //string[] his1 = { "His1", "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx" };
-            //string[] his2 = { "His2", "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx" };
             AgentParams ap = new AgentParams();
-            // ap.Resources = new string[][] { his1, his2 };
-            ap.Resources = servers.AsAgentResource();
+             ap.Resources = servers.AsAgentResource();
             this.SetParameters(ap);
         }
 
-
+        public event EventHandler UpdatedStatus;
+        public string AgentStatus { get; set; }
 
         override protected void Uninstall()
         {
@@ -178,16 +195,27 @@ namespace cuahsi.wof.ruon
 
         override protected void Monitor()
         {
+            Monitor(Configuration.ManagedResources);
+        }
+
+        public void OnTesterStatusUpdate (object sender, EventArgs eventArgs)
+        {
+            AgentStatus = ((WaterWebSericesTester) sender).TesterStatus;
+            UpdatedStatus(this, null);
+        }
+        public void Monitor(Dictionary<string,string>[] managedResources)
+        {
             try
             {
                 AgentParams ap = new AgentParams();
                 List<IAlarm> alarms = new List<IAlarm>();
 
                 WaterWebSericesTester tester = new WaterWebSericesTester();
+                tester.UpdatedTesterStatus += OnTesterStatusUpdate;
                 // set endpoint 
                 tester.Endpoint = usgsDailyValues;
 
-                foreach (var server in Configuration.ManagedResources)
+                foreach (var server in managedResources)
                 {
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
