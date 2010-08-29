@@ -21,7 +21,7 @@ namespace Ruon
     /// <br/><br/>
     /// This class is not yet implemented.
     /// </summary>
-    abstract public class SharedAgent : ServiceAgent
+    public abstract class SharedAgent : ServiceAgent
     {
         /// <summary>
         /// Class Constructor 
@@ -34,8 +34,11 @@ namespace Ruon
         /// <param name="proxyUser">If there is a proxy and it requries a user name, you would specify it here. Other wise a null is expected</param>
         /// <param name="proxyPassword">If there is a proxy and it requries a password, you would specify it here. Other wise a null is expected</param>
         /// <param name="serviceProcess">The IServiceParam is passed to the subclassing agent by the ServiceLoader</param>
-        public SharedAgent(string agentType, string agentVersion, int monitorIntervalMili, string proxyUser, string proxyPassword, IServiceProcess serviceProcess)
-            : base(agentType, agentVersion, GetEmbeddedVariable("CUSTOMER_ID"), monitorIntervalMili, proxyUser, proxyPassword, serviceProcess)
+        public SharedAgent(string agentType, string agentVersion, int monitorIntervalMili, string proxyUser,
+                           string proxyPassword, IServiceProcess serviceProcess)
+            : base(
+                agentType, agentVersion, GetEmbeddedVariable("CUSTOMER_ID"), monitorIntervalMili, proxyUser,
+                proxyPassword, serviceProcess)
         {
         }
 
@@ -47,22 +50,24 @@ namespace Ruon
         /// <returns>Value of the variable</returns>
         public static String GetEmbeddedVariable(String name)
         {
-            string lookfor = "<NAME/>"+name+"<VALUE/>";
+            string lookfor = "<NAME/>" + name + "<VALUE/>";
             int start = embeddedvariables.IndexOf(lookfor);
-            if (start<0)
+            if (start < 0)
             {
                 return null;
             }
-            start+=lookfor.Length;
+            start += lookfor.Length;
 
             int end = embeddedvariables.IndexOf("<END/>", start);
-            if (end<0)
+            if (end < 0)
             {
                 return null;
             }
-            return embeddedvariables.Substring(start, end-start);
+            return embeddedvariables.Substring(start, end - start);
         }
-        private static string embeddedvariables = "!!!EMBEDDED_VARIABLE_NOT_CONFIGURED!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ENDOFBUFF";
+
+        private static string embeddedvariables =
+            "!!!EMBEDDED_VARIABLE_NOT_CONFIGURED!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ENDOFBUFF";
 
         internal override void ActOn(Iaop.Directive d)
         {
@@ -85,7 +90,7 @@ namespace Ruon
             }
 
             string auth = GetEmbeddedVariable("AUTHENTIC_TAG");
-            if (auth==null)
+            if (auth == null)
             {
                 throw new IAOException("AUTHENTIC_TAG not embedded");
             }
@@ -100,7 +105,7 @@ namespace Ruon
 
         private void Base64Binary(string bin64)
         {
-            byte [] buff = System.Convert.FromBase64String(bin64);
+            byte[] buff = System.Convert.FromBase64String(bin64);
             serviceProcess.Upgrade(buff);
         }
     }

@@ -32,31 +32,31 @@ namespace Ruon
         private string iaopUrl;
 
 
-
         internal Iaop(string agentType, string agentVersion, bool ssl)
         {
             this.agentType = agentType;
             this.agentVersion = agentVersion;
             iaopUrl = (ssl ? "https" : "http") + "://agent.r-u-on.com/iaop1";
         }
+
         internal string AgentId
         {
-            set{ id = value; }
-            get{ return id; }
+            set { id = value; }
+            get { return id; }
         }
+
         internal string AgentType
         {
-            get
-            {
-                return agentType;
-            }
+            get { return agentType; }
         }
+
         internal void SetProxyCredentials(string username, string password)
         {
             proxySettings = new ProxySettings();
             proxySettings.username = username;
             proxySettings.password = password;
         }
+
         internal void SetProxySettings(string url, string username, string password, string domain, string authType)
         {
             proxySettings = new ProxySettings();
@@ -74,12 +74,11 @@ namespace Ruon
 
         private NetworkCredential CreateNetworkCredentials()
         {
-            return isSet(proxySettings.domain) ?
-                new NetworkCredential(proxySettings.username, proxySettings.password, proxySettings.domain) :
-                new NetworkCredential(proxySettings.username, proxySettings.password);
+            return isSet(proxySettings.domain)
+                       ? new NetworkCredential(proxySettings.username, proxySettings.password, proxySettings.domain)
+                       : new NetworkCredential(proxySettings.username, proxySettings.password);
         }
 
-        
 
         private WebProxy CreateProxy()
         {
@@ -90,7 +89,7 @@ namespace Ruon
             {
                 CredentialCache credetialCache = new CredentialCache();
                 credetialCache.Add(proxyUri, isSet(proxySettings.authType) ? proxySettings.authType : "Basic",
-                    CreateNetworkCredentials());
+                                   CreateNetworkCredentials());
                 proxy.Credentials = credetialCache;
             }
             return proxy;
@@ -110,7 +109,7 @@ namespace Ruon
 #else
                 WebRequest req = WebRequest.Create(iaopUrl);
 #endif
-                if (proxySettings!= null)
+                if (proxySettings != null)
                 {
                     if (isSet(proxySettings.url))
                     {
@@ -125,7 +124,7 @@ namespace Ruon
                 {
                     req.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
                 }
- 
+
                 req.Method = "POST";
 
                 string content = BuildRequest(innerRequest);
@@ -157,6 +156,7 @@ namespace Ruon
                 }
             }
         }
+
         internal void iterate()
         {
             lock (mutex)
@@ -169,15 +169,18 @@ namespace Ruon
         {
             return new StringBuilder().Append(" ").Append(name).Append("=\"").Append(value).Append("\"").ToString();
         }
+
         private string uptime()
         {
             TimeSpan delta = DateTime.Now - born;
             return Math.Round(delta.TotalSeconds).ToString();
         }
+
         private string time()
         {
             return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
+
         private string BuildRequest(string innerRequest)
         {
             string host = Dns.GetHostName();
@@ -185,16 +188,16 @@ namespace Ruon
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<iaop");
-            sb.Append(pair("pver","1"));
+            sb.Append(pair("pver", "1"));
             sb.Append(pair("atype", agentType));
             sb.Append(pair("aver", agentVersion));
-            sb.Append(pair("os","os.win32"));
-            sb.Append(pair("ip",ip));
-            sb.Append(pair("host",host));
-            sb.Append(pair("id",id));
-            sb.Append(pair("time",time()));
-            sb.Append(pair("uptime",uptime()));
-            sb.Append(pair("iter",iteration.ToString()));
+            sb.Append(pair("os", "os.win32"));
+            sb.Append(pair("ip", ip));
+            sb.Append(pair("host", host));
+            sb.Append(pair("id", id));
+            sb.Append(pair("time", time()));
+            sb.Append(pair("uptime", uptime()));
+            sb.Append(pair("iter", iteration.ToString()));
             sb.Append(">");
             sb.Append(innerRequest);
             sb.Append("</iaop>");
@@ -203,7 +206,7 @@ namespace Ruon
 
         internal class Result
         {
-            XmlNode basenode;
+            private XmlNode basenode;
 
             private void Error()
             {
@@ -212,7 +215,7 @@ namespace Ruon
                 {
                     if (n.Name == "error")
                     {
-                        throw new IAOException("Server response: "+n.InnerText);
+                        throw new IAOException("Server response: " + n.InnerText);
                     }
                 }
             }
@@ -230,6 +233,7 @@ namespace Ruon
                     throw new IAOException("HTTP result is not IAOP compliant");
                 }
             }
+
             internal bool Is(string t)
             {
                 XmlNode n = basenode.ChildNodes[0];
@@ -241,8 +245,8 @@ namespace Ruon
                 {
                     return false;
                 }
-
             }
+
             internal string GetValue()
             {
                 XmlNode n = basenode.ChildNodes[0];
@@ -255,15 +259,16 @@ namespace Ruon
                     throw new IAOException("Empty IAOP response");
                 }
             }
+
             internal XmlNode BaseNode
             {
                 get { return basenode; }
             }
+
             public override string ToString()
             {
                 return basenode.InnerText;
             }
-
         }
 
         /// <summary>
@@ -307,21 +312,21 @@ namespace Ruon
                 /// Need to load configuration
                 /// </summary>
                 Config,
-            };
+            } ;
 
             internal Directive(Iaop.Result result)
             {
                 if (result.Is("directive"))
                 {
                     string v = result.GetValue();
-                    string [] ss = v.Split(new char[] { ':' });
+                    string[] ss = v.Split(new char[] {':'});
                     x = ss[1];
-                    string [] nnn = { "sleep", "die", "upgrade", "uninstall", "config" };
+                    string[] nnn = {"sleep", "die", "upgrade", "uninstall", "config"};
                     for (int i = 0; i < nnn.Length; ++i)
                     {
                         if (nnn[i] == ss[0])
                         {
-                            verb = (Verb)i;
+                            verb = (Verb) i;
                             return;
                         }
                     }
@@ -332,7 +337,8 @@ namespace Ruon
                     throw new IAOException("Result is not a directive");
                 }
             }
-            override public  string ToString()
+
+            public override string ToString()
             {
                 return verb + ":" + x;
             }
@@ -340,6 +346,5 @@ namespace Ruon
             internal Verb verb;
             internal string x;
         }
-
     }
 }

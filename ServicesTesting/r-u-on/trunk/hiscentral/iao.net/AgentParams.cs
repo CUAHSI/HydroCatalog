@@ -23,40 +23,31 @@ namespace Ruon
         /// </summary>
         public string Alias
         {
-            set
-            {
-                Add("alias", value);
-            }
+            set { Add("alias", value); }
         }
+
         /// <summary>
         /// The agent group. Will create a new group if does not already exist.
         /// </summary>
         public string Group
         {
-            set
-            {
-                Add("group", value);
-            }
+            set { Add("group", value); }
         }
+
         /// <summary>
         /// Minimum alarm severity for notification. If Clear is indicated, it means no notifications will be sent (none).
         /// </summary>
         public AlarmSeverity Notif
         {
-            set
-            {
-                Add("notif", value == AlarmSeverity.Clear ? "none" : value.ToString());
-            }
+            set { Add("notif", value == AlarmSeverity.Clear ? "none" : value.ToString()); }
         }
+
         /// <summary>
         /// Settings this to true will suppress Agent Down, Agent Back Up and Agent Reboot Alarms for this agent
         /// </summary>
         public bool SuppressKeepAliveAlarms
         {
-            set
-            {
-                Add("skaa", value ? "true" : "false");
-            }
+            set { Add("skaa", value ? "true" : "false"); }
         }
 
         /// <summary>
@@ -66,7 +57,7 @@ namespace Ruon
         /// Each row in the array stands for a resource and each coloumn for one of its properies, according
         /// to the meta data supplied to the AgentConfig class.
         /// </summary>
-        public string [][] Resources
+        public string[][] Resources
         {
             set
             {
@@ -91,11 +82,15 @@ namespace Ruon
         /// This is useful when providing the user with an interface to edit the resource list localy.
         /// </summary>
         /// <param name="key">The name of the agent configuration variable, as passed in the Agent.Configuration.MetaConfig method</param>
-        public string this[string key] { set { Add("config." + key, value); } }
-
+        public string this[string key]
+        {
+            set { Add("config." + key, value); }
+        }
 
         #region privateParts
+
         private StringBuilder sb = new StringBuilder();
+
         private void Add(String name, String value)
         {
             sb.Append("<").Append(name).Append(">");
@@ -104,10 +99,12 @@ namespace Ruon
             sb.Append("]]>");
             sb.Append("</").Append(name).Append(">");
         }
+
         internal string Xml()
         {
             return sb.ToString();
         }
+
         #endregion
     }
 }

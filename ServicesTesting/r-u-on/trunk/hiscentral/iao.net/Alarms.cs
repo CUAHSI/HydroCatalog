@@ -7,7 +7,6 @@ using System.Text;
 
 namespace Ruon
 {
-
     /// <summary>
     /// Severity of the alarm
     /// </summary>
@@ -16,21 +15,21 @@ namespace Ruon
         /// <summary>
         /// Critical
         /// </summary>
-        Critical=0,
+        Critical = 0,
         /// <summary>
         /// Major
         /// </summary>
-        Major=1,
+        Major = 1,
         /// <summary>
         /// Minor
         /// </summary>
-        Minor=2,
+        Minor = 2,
         /// <summary>
         /// This is not a valid alarm state but is useful when coding 
         /// generic state code.
         /// </summary>
-        Clear=-1
-    };
+        Clear = -1
+    } ;
 
     /// <summary>
     /// Objects with this interface are used to communicate agent state to the 
@@ -44,14 +43,16 @@ namespace Ruon
     /// This class implements some common methods needed by Alarm, Clear and Event
     /// There is no direct use for this class.
     /// </summary>
-    abstract public class AlarmTop:IAlarm
+    public abstract class AlarmTop : IAlarm
     {
         internal object[] args;
-        internal AlarmTop(object [] args) 
+
+        internal AlarmTop(object[] args)
         {
             this.args = args;
         }
-        abstract internal String TagFormat();
+
+        internal abstract String TagFormat();
 
         /// <summary>
         /// The XML node representing the alarm
@@ -66,13 +67,13 @@ namespace Ruon
             return sb.ToString();
         }
 
-        static internal string Sev(AlarmSeverity s)
+        internal static string Sev(AlarmSeverity s)
         {
             if (s == AlarmSeverity.Clear)
             {
                 throw new IAOException("Alarm cannot have a Clear state");
             }
-            return (new string[] { "C", "M", "m" })[(int)s];
+            return (new string[] {"C", "M", "m"})[(int) s];
         }
     }
 
@@ -90,11 +91,11 @@ namespace Ruon
         /// <param name="description">The verbal description of the alarm (Up to 1024 bytes).</param>
         /// </summary>
         public Alarm(String resource, String id, AlarmSeverity severity, String description)
-            :base(new Object[]{resource, id, Sev(severity),description})
+            : base(new Object[] {resource, id, Sev(severity), description})
         {
         }
 
-        override internal String TagFormat() 
+        internal override String TagFormat()
         {
             return "<alarm resource=\"{0}\" id=\"{1}\" severity=\"{2}\"><![CDATA[{3}]]></alarm>";
         }
@@ -104,17 +105,18 @@ namespace Ruon
     /// A Clear Alarm instruction passed to the ReportAlarms() method.
     /// The combination of resource and id uniquly identifies the alarm to be cleared.
     /// </summary>
-    public class Clear : AlarmTop 
+    public class Clear : AlarmTop
     {
         /// <summary>
         /// Create a Clear object using the default description
         /// <param name="resource">The alarmed resource</param>
         /// <param name="id">The id of the alarm</param>
         /// </summary>
-        public Clear(String resource, String id) 
-            :base(new Object[]{resource, id})
+        public Clear(String resource, String id)
+            : base(new Object[] {resource, id})
         {
         }
+
         /// <summary>
         /// Create a Clear object with a specified description
         /// <param name="resource">The alarmed resource</param>
@@ -124,16 +126,17 @@ namespace Ruon
         /// being cleared.</param>
         /// </summary>
         public Clear(String resource, String id, String description)
-            :base(new Object[]{resource, id, description})
+            : base(new Object[] {resource, id, description})
         {
         }
-        override internal String TagFormat() 
+
+        internal override String TagFormat()
         {
-            if (args.Length==3)
+            if (args.Length == 3)
             {
                 return "<clear resource=\"{0}\" id=\"{1}\" ><![CDATA[{2}]]></clear>";
             }
-            else 
+            else
             {
                 return "<clear resource=\"{0}\" id=\"{1}\" />";
             }
@@ -156,13 +159,13 @@ namespace Ruon
         /// <param name="description"> The verbal description of the alarm (Up to 1024 bytes).</param>  
         /// </summary>
         public Event(String resource, String id, AlarmSeverity severity, String description)
-            : base(new Object[]{resource, id, Sev(severity),description})
+            : base(new Object[] {resource, id, Sev(severity), description})
         {
         }
-        override internal String TagFormat() 
+
+        internal override String TagFormat()
         {
             return "<event resource=\"{0}\" id=\"{1}\" severity=\"{2}\"><![CDATA[{3}]]></event>";
         }
     }
-
 }

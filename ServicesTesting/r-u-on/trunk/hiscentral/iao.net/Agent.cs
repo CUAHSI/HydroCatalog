@@ -30,7 +30,7 @@ namespace Ruon
     /// <br/>
     /// Version     1.13
     /// </summary>
-    public abstract class Agent:IDisposable
+    public abstract class Agent : IDisposable
     {
         /// <summary>
         /// Class constructor specifying the Agent's details
@@ -44,7 +44,8 @@ namespace Ruon
         /// <param name="proxyUser">If there is a proxy and it requries a user name, you would specify it here. Other wise a null is expected. The agent
         /// will use the proxy server defined in the Ineternet Explorer connectivity options. </param>
         /// <param name="proxyPassword">If there is a proxy and it requries a password, you would specify it here. Other wise a null is expected</param>
-        public Agent(string agentType, string agentVersion, string accountId, int monitorIntervalSec, string proxyUser, string proxyPassword)
+        public Agent(string agentType, string agentVersion, string accountId, int monitorIntervalSec, string proxyUser,
+                     string proxyPassword)
         {
             this.iaop = new Iaop(agentType, agentVersion, true);
             config = new AgentConfig(agentType, this);
@@ -60,7 +61,7 @@ namespace Ruon
                 string proxyAuthType = config["ProxyAuthType"];
                 string proxyUrl = config["ProxyURL"];
 
-                if (proxyUser!=null || proxyUrl!=null)
+                if (proxyUser != null || proxyUrl != null)
                 {
                     iaop.SetProxySettings(proxyUrl, proxyUser, proxyPassword, proxyDomain, proxyAuthType);
                 }
@@ -78,10 +79,10 @@ namespace Ruon
                 iaop.AgentId = id;
             }
 
-            keepaliveTimer = new Timer(new TimerCallback(Keepalive),null, 30*1000, Timeout.Infinite);
-            
+            keepaliveTimer = new Timer(new TimerCallback(Keepalive), null, 30*1000, Timeout.Infinite);
+
             this.monitorIntervalSec = monitorIntervalSec;
-            int mis = monitorIntervalSec>0?monitorIntervalSec*1000:monitorIntervalSec;
+            int mis = monitorIntervalSec > 0 ? monitorIntervalSec*1000 : monitorIntervalSec;
             sampleTimer = new System.Threading.Timer(new TimerCallback(CheckTime), null, mis, mis);
         }
 
@@ -92,7 +93,7 @@ namespace Ruon
         /// you are working with a notification/subscription scheme.
         /// Monitor will not ba called again, until a previous call has returned.
         /// </summary>
-        virtual protected void Monitor()
+        protected virtual void Monitor()
         {
         }
 
@@ -102,7 +103,7 @@ namespace Ruon
         /// After the initial configuration load, the configuration is updated every time the administrator
         /// makes a change to the configuration via the Agent page.
         /// </summary>
-        virtual protected void OnConfigLoaded()
+        protected virtual void OnConfigLoaded()
         {
         }
 
@@ -125,16 +126,16 @@ namespace Ruon
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<alarms incremental=\"");
-            sb.Append(incremental?"true":"false");
+            sb.Append(incremental ? "true" : "false");
             sb.Append("\">");
             foreach (IAlarm alarm in alarms)
             {
                 sb.Append(alarm.ToString());
             }
             sb.Append("</alarms>");
-            ActOn( iaop.Request(sb.ToString()) );
+            ActOn(iaop.Request(sb.ToString()));
         }
-        
+
         /// <summary>
         /// Set agent parameters such as Alias, Group, etc.
         /// </summary>
@@ -170,7 +171,7 @@ namespace Ruon
             set
             {
                 monitorIntervalSec = value;
-                int mis = monitorIntervalSec > 0 ? monitorIntervalSec * 1000 : monitorIntervalSec;
+                int mis = monitorIntervalSec > 0 ? monitorIntervalSec*1000 : monitorIntervalSec;
                 sampleTimer.Change(mis, mis);
             }
         }
@@ -193,7 +194,7 @@ namespace Ruon
         /// decide what to do with the message. The default implementation is empty.
         /// </summary>
         /// <param name="message">The message</param>
-        virtual protected void Log(string message)
+        protected virtual void Log(string message)
         {
         }
 
@@ -202,15 +203,15 @@ namespace Ruon
         /// The implementing agent should implement this method to assure that the agent is uninstalled 
         /// and that no further API calls are being made on the Agent object.
         /// </summary>
-        abstract protected void Uninstall();
+        protected abstract void Uninstall();
 
         /// <summary>
         /// Dispose of internal timers. Highly desirable to call this method when the object is no longer needed.
         /// </summary>
-        public void Dispose() 
+        public void Dispose()
         {
-            Dispose(true); 
-            GC.SuppressFinalize(this); 
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -221,8 +222,8 @@ namespace Ruon
         /// this you might be trying to dispose of objects that have been collected
         /// by the garbage disposer.
         /// </param>
-        virtual protected void Dispose(bool includeManagedResources) 
-        { 
+        protected virtual void Dispose(bool includeManagedResources)
+        {
             if (includeManagedResources)
             {
                 keepaliveTimer.Dispose();
@@ -242,6 +243,7 @@ namespace Ruon
         }
 
         #region privateParts
+
         internal Iaop iaop;
         private AgentConfig config;
         private System.Threading.Timer keepaliveTimer;
@@ -249,7 +251,7 @@ namespace Ruon
         private int monitorIntervalSec;
         private int emergencyRetry = -1;
         private bool shouldLoadConfig = false;
-        private Dictionary <String, bool> lastSnapshot = null;
+        private Dictionary<String, bool> lastSnapshot = null;
         private bool insideMonitor = false;
 
         private string Register(string accountId)
@@ -262,13 +264,15 @@ namespace Ruon
             }
             return r.GetValue();
         }
+
         private void ActOn(Iaop.Result r)
         {
             Iaop.Directive d = new Iaop.Directive(r);
             iaop.iterate();
             ActOn(d);
         }
-        virtual internal void ActOn(Iaop.Directive d)
+
+        internal virtual void ActOn(Iaop.Directive d)
         {
             switch (d.verb)
             {
@@ -285,7 +289,7 @@ namespace Ruon
                     {
                         shouldLoadConfig = true;
                     }
-                    int timeout = int.Parse(d.x) * 1000;
+                    int timeout = int.Parse(d.x)*1000;
                     keepaliveTimer.Change(timeout, Timeout.Infinite);
                     break;
                 default:
@@ -297,6 +301,7 @@ namespace Ruon
                 LoadConfig();
             }
         }
+
         private void Keepalive(object stateInfo)
         {
             try
@@ -308,15 +313,15 @@ namespace Ruon
             {
                 if (emergencyRetry-- < 0)
                 {
-                    keepaliveTimer.Change(60 * 1000, Timeout.Infinite);
+                    keepaliveTimer.Change(60*1000, Timeout.Infinite);
                 }
                 else
                 {
-                    keepaliveTimer.Change(3 * 1000, Timeout.Infinite);
+                    keepaliveTimer.Change(3*1000, Timeout.Infinite);
                 }
-
             }
         }
+
         private void CheckTime(object stateInfo)
         {
             if (!insideMonitor)
@@ -338,6 +343,7 @@ namespace Ruon
                 }
             }
         }
+
         internal void LoadConfig()
         {
             try
@@ -352,6 +358,7 @@ namespace Ruon
                 Console.Out.Write(e);
             }
         }
+
         private bool SameAsLast(List<IAlarm> alarms, bool incremental)
         {
             if (incremental)
@@ -361,7 +368,7 @@ namespace Ruon
             }
             else
             {
-                Dictionary <String,bool> thisSnapshot = new Dictionary<string,bool>();
+                Dictionary<String, bool> thisSnapshot = new Dictionary<string, bool>();
                 bool delta = false;
 
                 foreach (IAlarm ia in alarms)
@@ -375,7 +382,7 @@ namespace Ruon
                     }
                     String key = sb.ToString();
 
-                    if (lastSnapshot != null && delta==false)
+                    if (lastSnapshot != null && delta == false)
                     {
                         if (lastSnapshot.ContainsKey(key))
                         {
@@ -386,7 +393,7 @@ namespace Ruon
                             delta = true;
                         }
                     }
-                    thisSnapshot[key]=true;
+                    thisSnapshot[key] = true;
                 }
 
                 if (lastSnapshot == null || lastSnapshot.Count > 0)
@@ -397,6 +404,7 @@ namespace Ruon
                 return !delta;
             }
         }
+
         #endregion
     }
 
@@ -406,11 +414,12 @@ namespace Ruon
     public class IAOException : Exception
     {
         internal IAOException(string msg, Exception innerException)
-            :base(msg, innerException)
+            : base(msg, innerException)
         {
         }
+
         internal IAOException(string msg)
-            :base(msg)
+            : base(msg)
         {
         }
     }

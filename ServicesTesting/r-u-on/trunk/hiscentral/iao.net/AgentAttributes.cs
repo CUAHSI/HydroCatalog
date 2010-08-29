@@ -13,6 +13,7 @@ namespace Ruon
         private string id;
         private string name;
         private string description;
+
         /// <summary>
         /// Attribute Constructor
         /// </summary>
@@ -26,18 +27,29 @@ namespace Ruon
             this.name = name;
             this.description = description;
         }
+
         /// <summary>
         /// Retrieve the id
         /// </summary>
-        public string Id { get { return id; } }
+        public string Id
+        {
+            get { return id; }
+        }
+
         /// <summary>
         /// Name
         /// </summary>
-        public string Name { get { return name; } }
+        public string Name
+        {
+            get { return name; }
+        }
+
         /// <summary>
         /// Description
         /// </summary>
-        public string Description { get { return description; } }
-
+        public string Description
+        {
+            get { return description; }
+        }
     }
 }

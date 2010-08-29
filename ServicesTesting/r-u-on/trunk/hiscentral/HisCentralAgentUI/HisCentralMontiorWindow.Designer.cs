@@ -34,9 +34,9 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.Status = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.hisCentralServerListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endpointDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisCentralServerListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.StatusGraphic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hisCentralServerListBindingSource1)).BeginInit();
@@ -90,11 +90,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(240, 103);
             this.dataGridView1.TabIndex = 4;
             // 
-            // hisCentralServerListBindingSource1
-            // 
-            this.hisCentralServerListBindingSource1.DataMember = "Servers";
-            this.hisCentralServerListBindingSource1.DataSource = typeof(Cuahsi.His.Ruon.HisCentralServerList);
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -106,6 +101,10 @@
             this.endpointDataGridViewTextBoxColumn.DataPropertyName = "Endpoint";
             this.endpointDataGridViewTextBoxColumn.HeaderText = "Endpoint";
             this.endpointDataGridViewTextBoxColumn.Name = "endpointDataGridViewTextBoxColumn";
+            // 
+            // hisCentralServerListBindingSource1
+            // 
+            this.hisCentralServerListBindingSource1.DataSource = typeof(Cuahsi.His.Ruon.HisCentralServerList);
             // 
             // HisCentralMontiorWindow
             // 

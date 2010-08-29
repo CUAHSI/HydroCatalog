@@ -19,12 +19,13 @@ namespace Ruon
     /// </summary>
     //[ClassInterface(ClassInterfaceType.None)]
     //[Guid("8D24FB64-5E39-41d4-B0DB-B8A28A92E85B")]
-    public class SimpleAgent:ISimpleAgent
+    public class SimpleAgent : ISimpleAgent
     {
         private string agentType = null;
         private string accountId = null;
         private Agent agent = null;
         private string lastError;
+
         private List<IAlarm> toList(IAlarm a)
         {
             List<IAlarm> list = new List<IAlarm>(1);
@@ -34,6 +35,7 @@ namespace Ruon
             }
             return list;
         }
+
         private bool Report(IAlarm alarm)
         {
             try
@@ -51,8 +53,9 @@ namespace Ruon
                 return false;
             }
         }
-        private string proxyUser=null;
-        private string proxyPassword=null;
+
+        private string proxyUser = null;
+        private string proxyPassword = null;
 
         /// <summary>
         /// Starts the agent
@@ -132,7 +135,7 @@ namespace Ruon
         /// <summary>
         /// Return the description of the last error.
         /// </summary>
-        public string LastError 
+        public string LastError
         {
             get { return lastError; }
         }
@@ -145,6 +148,7 @@ namespace Ruon
             get { return proxyUser; }
             set { proxyUser = value; }
         }
+
         /// <summary>
         /// Password to use for proxy server
         /// </summary>
@@ -163,22 +167,24 @@ namespace Ruon
         /// <summary>
         /// Dispose of internal timers. Highly desirable to call this method when the object is no longer needed.
         /// </summary>
-        public void Dispose() 
+        public void Dispose()
         {
-            Dispose(true); 
-            GC.SuppressFinalize(this); 
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// Dispose
         /// </summary>
         /// <param name="includeManagedResources"></param>
-        virtual protected void Dispose(bool includeManagedResources) 
-        { 
+        protected virtual void Dispose(bool includeManagedResources)
+        {
             if (includeManagedResources)
             {
                 agent.Dispose();
             }
         }
+
         /// <summary>
         /// Finalizer
         /// </summary>

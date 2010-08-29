@@ -10,7 +10,9 @@ namespace Ruon
     internal class SimpleAgentImp : Agent
     {
         private SimpleAgent sa;
-        internal SimpleAgentImp(string agentType, SimpleAgent sa, string accountId, string proxyUser, string proxyPassword)
+
+        internal SimpleAgentImp(string agentType, SimpleAgent sa, string accountId, string proxyUser,
+                                string proxyPassword)
             : base(agentType, "1.00", accountId, -1, proxyUser, proxyPassword)
         {
             this.sa = sa;

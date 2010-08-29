@@ -38,14 +38,13 @@ namespace Ruon
             /// Boolean
             /// </summary>
             Boolean
-        };
+        } ;
 
         /// <summary>
         /// Class used to indicate the meta data of a variable.
         /// </summary>
         public class MetaVar
         {
-
             /// <summary>
             /// Constructor 
             /// </summary>
@@ -54,7 +53,9 @@ namespace Ruon
             /// <param name="type">The type of the variable</param>
             /// <param name="defaultValue">The default value of the variable</param>
             public MetaVar(string name, AgentConfig.Type type, string defaultValue)
-                : this(name, type, defaultValue, false) { }
+                : this(name, type, defaultValue, false)
+            {
+            }
 
             /// <summary>
             /// Constructor 
@@ -70,20 +71,23 @@ namespace Ruon
                 this.defaultValue = defaultValue;
                 this.secret = secret;
             }
+
             #region privateParts
+
             private string name;
             private AgentConfig.Type type;
             private string defaultValue;
             private bool secret;
+
             internal string Tag()
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("<param name=\"{0}\" type=\"{1}\" default=\"{2}\" secret=\"secret\"/>",
-                    name, type, defaultValue, secret);
+                                name, type, defaultValue, secret);
                 return sb.ToString();
             }
-            #endregion
 
+            #endregion
         }
 
         /// <summary>
@@ -119,7 +123,7 @@ namespace Ruon
         /// of entities the agent manages (such as Hosts, Processes, Profiles, etc.). Each resource
         /// has its own values.
         /// </param>
-        public void MetaConfig(MetaVar [] agent, MetaVar [] resource)
+        public void MetaConfig(MetaVar[] agent, MetaVar[] resource)
         {
             this.agentMetaConfig = agent;
             this.resourceMetaConfig = resource;
@@ -133,28 +137,29 @@ namespace Ruon
         /// Get the list of user configured managed resources. Each entry is a map
         /// containing the variables the user entered.
         /// </summary>
-        public Dictionary<string, string> [] ManagedResources
+        public Dictionary<string, string>[] ManagedResources
         {
-            get 
+            get
             {
                 if (managedResources == null)
                 {
                     return null;
                 }
-                return managedResources.ToArray(); 
+                return managedResources.ToArray();
             }
         }
 
         #region private_parts
-        static private RegistryKey regBase = Registry.LocalMachine;
-        static private string regSoftware = "SOFTWARE";
-        static private string regRuon = regSoftware+"\\R-U-ON";
-        static private string regAgent = regRuon+"\\Agents";
+
+        private static RegistryKey regBase = Registry.LocalMachine;
+        private static string regSoftware = "SOFTWARE";
+        private static string regRuon = regSoftware + "\\R-U-ON";
+        private static string regAgent = regRuon + "\\Agents";
 
         private Agent agent;
         private string agentType;
-        private MetaVar [] agentMetaConfig;
-        private MetaVar [] resourceMetaConfig;
+        private MetaVar[] agentMetaConfig;
+        private MetaVar[] resourceMetaConfig;
         private List<Dictionary<string, string>> managedResources = null;
         private Dictionary<string, string> userConfig = null;
 
@@ -173,13 +178,12 @@ namespace Ruon
             }
             try
             {
-                return (string)reg.GetValue(key);
+                return (string) reg.GetValue(key);
             }
             finally
             {
                 reg.Close();
             }
-
         }
 
         internal static string RegGet(string key, string agentType)
@@ -205,6 +209,7 @@ namespace Ruon
                 reg.Close();
             }
         }
+
         internal void Clean()
         {
             regBase.DeleteSubKeyTree(regAgent + "\\" + agentType);
@@ -213,10 +218,11 @@ namespace Ruon
                 Clean(regRuon);
             }
         }
+
         private bool Clean(string subKey)
         {
             RegistryKey reg = regBase.OpenSubKey(subKey);
-            try 
+            try
             {
                 if (reg.ValueCount + reg.SubKeyCount == 0)
                 {
@@ -227,7 +233,7 @@ namespace Ruon
                 {
                     return false;
                 }
-            } 
+            }
             finally
             {
                 reg.Close();
@@ -243,9 +249,10 @@ namespace Ruon
             sb.Append("</fetchconfig>");
             return sb.ToString();
         }
+
         private string Request(string p, MetaVar[] meta)
         {
-            if (meta!= null)
+            if (meta != null)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("<{0}>", p);
@@ -261,11 +268,12 @@ namespace Ruon
                 return "";
             }
         }
+
         internal void UserConfig(Iaop.Result result)
         {
             if (result.Is("config"))
             {
-                Dictionary<string, string> newConfig =  new Dictionary<string,string>();
+                Dictionary<string, string> newConfig = new Dictionary<string, string>();
                 foreach (XmlNode node in result.BaseNode.ChildNodes[0].ChildNodes)
                 {
                     if (node.Name == "resources")
@@ -287,7 +295,7 @@ namespace Ruon
 
         private void LoadResources(XmlNode node)
         {
-            List<Dictionary<string, string>> newResources = new List<Dictionary<string,string>>();
+            List<Dictionary<string, string>> newResources = new List<Dictionary<string, string>>();
             foreach (XmlNode n in node.ChildNodes)
             {
                 Dictionary<string, string> resource = new Dictionary<string, string>();
@@ -300,6 +308,7 @@ namespace Ruon
 
             managedResources = newResources;
         }
+
         #endregion
     }
 }

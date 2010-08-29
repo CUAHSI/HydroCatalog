@@ -13,11 +13,13 @@ namespace Ruon
         /// unistall has been reqeusted
         /// </summary>
         void Uninstall();
+
         /// <summary>
         /// An upgrade has been requested
         /// </summary>
         /// <param name="buff">The image of the new version</param>
         void Upgrade(byte[] buff);
+
         /// <summary>
         /// Log the message
         /// </summary>
@@ -34,7 +36,7 @@ namespace Ruon
     /// The rest should be populated and not recevied as arguments.<br/>
     /// See ServiceAgentSample for an example on how to create a ServiceLoader compatible Agent
     /// </summary>
-    public class ServiceAgent:Agent
+    public class ServiceAgent : Agent
     {
         /// <summary>
         /// Class constructor specifying the Agent's details
@@ -48,8 +50,9 @@ namespace Ruon
         /// <param name="proxyUser">If there is a proxy and it requries a user name, you would specify it here. Other wise a null is expected</param>
         /// <param name="proxyPassword">If there is a proxy and it requries a password, you would specify it here. Other wise a null is expected</param>
         /// <param name="serviceProcess">Will be passed by the ServiceLoader to the subclassing agent</param>
-        public ServiceAgent(string agentType, string agentVersion, string accountId, int monitorIntervalSec, string proxyUser, string proxyPassword, IServiceProcess serviceProcess)
-            :base(agentType, agentVersion, accountId, monitorIntervalSec, proxyUser, proxyPassword)
+        public ServiceAgent(string agentType, string agentVersion, string accountId, int monitorIntervalSec,
+                            string proxyUser, string proxyPassword, IServiceProcess serviceProcess)
+            : base(agentType, agentVersion, accountId, monitorIntervalSec, proxyUser, proxyPassword)
         {
             this.serviceProcess = serviceProcess;
         }
@@ -57,7 +60,8 @@ namespace Ruon
         /// <summary>
         /// internal protected
         /// </summary>
-        internal protected IServiceProcess serviceProcess;
+        protected internal IServiceProcess serviceProcess;
+
         /// <summary>
         /// Uninstall
         /// </summary>
@@ -65,6 +69,7 @@ namespace Ruon
         {
             serviceProcess.Uninstall();
         }
+
         /// <summary>
         /// Letting the wrapping service log the message
         /// </summary>

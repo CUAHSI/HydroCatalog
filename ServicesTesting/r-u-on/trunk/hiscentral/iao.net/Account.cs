@@ -48,12 +48,9 @@ namespace Ruon
             return Guid(Url("email", email, "password", password, "parent", parentAccountID, "create"));
         }
 
-
-
-
         #region private_parts
 
-        private static string Url(params string [] pp)
+        private static string Url(params string[] pp)
         {
             bool name = true;
             StringBuilder sb = new StringBuilder();
@@ -65,8 +62,8 @@ namespace Ruon
             foreach (string p in pp)
             {
                 sb.Append(p);
-                sb.Append(name?"=":"&");
-                name=!name;
+                sb.Append(name ? "=" : "&");
+                name = !name;
             }
             sb.Length = sb.Length - 1;
             return sb.ToString();
@@ -91,7 +88,7 @@ namespace Ruon
             }
             catch (Exception ex)
             {
-                if (ex.GetType() != typeof(IAOException))
+                if (ex.GetType() != typeof (IAOException))
                 {
                     throw new IAOException(ex.Message, ex);
                 }
@@ -118,7 +115,6 @@ namespace Ruon
                 throw new IAOException("Unknown protocol response " + node.InnerText);
             }
         }
-
 
         #endregion
     }
