@@ -34,20 +34,20 @@ namespace cuahsi.wof.ruon
         }
 
     }
-    public class ServerList :List<WofServer>
+    public class ServerList : List<WofServer>
     {
         private Boolean _editied = false;
         public ServerList()
         {
-            
+
         }
-        public ServerList (Dictionary<string, string>[]  agentMangagedResources )
+        public ServerList(Dictionary<string, string>[] agentMangagedResources)
         {
             foreach (Dictionary<string, string> r in agentMangagedResources)
             {
-               WofServer server = new WofServer();
+                WofServer server = new WofServer();
                 Boolean enabled;
-              Boolean.TryParse( r[WaterWebServicesAgent.SERVERENABLED],out enabled);
+                Boolean.TryParse(r[WaterWebServicesAgent.SERVERENABLED], out enabled);
                 server.Enabled = enabled;
                 server.Endpoint = r[WaterWebServicesAgent.ENDPOINT];
                 server.Name = r[WaterWebServicesAgent.SERVERNAME];
@@ -161,26 +161,45 @@ namespace cuahsi.wof.ruon
         {
             servers = new ServerList();
             servers.Add(new WofServer
-            {
-                Name = "NWISDV",
-                Enabled = true,
-                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx",
-                SiteCode = "NWIS:10263500",
-                VariableCode = "NWIS:00060",
-                ISOTimeInterval = "2010-01-01/2010-01-31"
-            });
+                            {
+                                Name = "NWISDV",
+                                Enabled = true,
+                                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx",
+                                SiteCode = "NWIS:10263500",
+                                VariableCode = "NWIS:00060",
+                                ISOTimeInterval = "2010-01-01/2010-01-31"
+                            });
             servers.Add(new WofServer
-            {
-                Name = "NWISUV",
-                Enabled = true,
-                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx",
-                SiteCode = "NWIS:10109000",
-                VariableCode = "NWIS:00065",
-                ISOTimeInterval = "P1D"
-            }
-            );
+                            {
+                                Name = "NWISUV",
+                                Enabled = true,
+                                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx",
+                                SiteCode = "NWIS:10109000",
+                                VariableCode = "NWIS:00065",
+                                ISOTimeInterval = "P1D"
+                            });
+            servers.Add(new WofServer
+                            {
+                                Name = "Disabled",
+                                Enabled = false,
+                                Endpoint =
+                                    "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx",
+                                SiteCode = "NWIS:10109000",
+                                VariableCode = "NWIS:00065",
+                                ISOTimeInterval = "P1D"
+                            });
+            servers.Add(new WofServer
+                {
+                    Name = "Bad URL",
+                    Enabled = true,
+                    Endpoint = "http://example.com/wateroneflow/NWIS/UnitValues.asmx",
+                    SiteCode = "NWIS:10109000",
+                    VariableCode = "NWIS:00065",
+                    ISOTimeInterval = "P1D"
+                }
+                );
             AgentParams ap = new AgentParams();
-             ap.Resources = servers.AsAgentResource();
+            ap.Resources = servers.AsAgentResource();
             this.SetParameters(ap);
         }
 
@@ -189,6 +208,7 @@ namespace cuahsi.wof.ruon
 
         override protected void Uninstall()
         {
+           base.Uninstall();
             Dispose();
             //
         }
@@ -198,12 +218,12 @@ namespace cuahsi.wof.ruon
             Monitor(Configuration.ManagedResources);
         }
 
-        public void OnTesterStatusUpdate (object sender, EventArgs eventArgs)
+        public void OnTesterStatusUpdate(object sender, EventArgs eventArgs)
         {
-            AgentStatus = ((WaterWebSericesTester) sender).TesterStatus;
+            AgentStatus = ((WaterWebSericesTester)sender).TesterStatus;
             UpdatedStatus(this, null);
         }
-        public void Monitor(Dictionary<string,string>[] managedResources)
+        public void Monitor(Dictionary<string, string>[] managedResources)
         {
             try
             {
@@ -220,7 +240,7 @@ namespace cuahsi.wof.ruon
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
                         alarms.Add(new Alarm(server[SERVERNAME], server[SERVERNAME] + "Disabled", AlarmSeverity.Minor, server[SERVERNAME] + " Disabled"));
-                        break;
+                        continue;
                     }
                     else
                     {
@@ -264,13 +284,13 @@ namespace cuahsi.wof.ruon
                         alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
 
                     }
-                   
+
                 }
                 alarms.Add(new Clear("WaterWebService", "WWS_FAILED", "Working Monitor Service"));
 
                 ReportAlarms(alarms, false);
-                    
-            
+
+
             }
             catch (Exception ex)
             {
