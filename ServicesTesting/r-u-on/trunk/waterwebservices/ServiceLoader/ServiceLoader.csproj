@@ -92,6 +92,10 @@
       <Project>{76F7F0EE-DFD6-4266-A22B-9484481BE23B}</Project>
       <Name>iao.net</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WaterWebServicesAgentUi\WaterWebServicesAgentUi.csproj">
+      <Project>{1D22AF80-EE24-46F9-896B-0251B996952C}</Project>
+      <Name>WaterWebServicesAgentUi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WaterWebServicesAgent\HISWaterWebServicesAgent.csproj">
       <Project>{B09EC81E-D5B7-4512-8F61-80BDE43CE3E8}</Project>
       <Name>HISWaterWebServicesAgent</Name>

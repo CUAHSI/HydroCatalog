@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HISWaterWebServicesAgent", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterWebServicesAgentUi", "WaterWebServicesAgentUi\WaterWebServicesAgentUi.csproj", "{1D22AF80-EE24-46F9-896B-0251B996952C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupWSMonitors", "SetupWSMonitors\SetupWSMonitors.vdproj", "{672C36C3-31F2-4411-9703-8640856BB234}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = iaosharp.vsmdi
@@ -93,6 +95,12 @@ Global
 		{1D22AF80-EE24-46F9-896B-0251B996952C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{1D22AF80-EE24-46F9-896B-0251B996952C}.Release|x86.ActiveCfg = Release|x86
 		{1D22AF80-EE24-46F9-896B-0251B996952C}.Release|x86.Build.0 = Release|x86
+		{672C36C3-31F2-4411-9703-8640856BB234}.Debug|Any CPU.ActiveCfg = Debug
+		{672C36C3-31F2-4411-9703-8640856BB234}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{672C36C3-31F2-4411-9703-8640856BB234}.Debug|x86.ActiveCfg = Debug
+		{672C36C3-31F2-4411-9703-8640856BB234}.Release|Any CPU.ActiveCfg = Release
+		{672C36C3-31F2-4411-9703-8640856BB234}.Release|Mixed Platforms.ActiveCfg = Release
+		{672C36C3-31F2-4411-9703-8640856BB234}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
