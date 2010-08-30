@@ -88,6 +88,10 @@
     <Content Include="ruon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HisCentralAgentUI\HisCentralAgentUI.csproj">
+      <Project>{F2C3BC9E-3E4C-4C2D-ABD8-6DCABDE6831C}</Project>
+      <Name>HisCentralAgentUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iao.net\iao.net.csproj">
       <Project>{76F7F0EE-DFD6-4266-A22B-9484481BE23B}</Project>
       <Name>iao.net</Name>
