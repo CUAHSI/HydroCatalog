@@ -32,5 +32,17 @@ namespace Cuahsi.His.Ruon.Properties {
                 return ((string)(this["CuahsiHisCentralAgent_org_cuahsi_hiscentral_hiscentral"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AAAABIESfWjQAAADDrFZJTSn")]
+        public string AccountId {
+            get {
+                return ((string)(this["AccountId"]));
+            }
+            set {
+                this["AccountId"] = value;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Ruon;
 
 namespace Cuahsi.His.Ruon
@@ -10,16 +11,53 @@ namespace Cuahsi.His.Ruon
         public String Name { get; set; }
         public String Endpoint { get; set; }
 
+        public Dictionary<String, String> ToDictionary()
+        {
+            Dictionary<String, String> asDict = new Dictionary<string, string>(6);
+            asDict.Add(HISCentralAgent.SERVERNAME, Name);
+            asDict.Add(HISCentralAgent.ENDPOINT, Endpoint);
+            return asDict;
+        }
+
+        public string[] ToAgentStringArray()
+        {
+            return this.ToDictionary().Values.ToArray();
+        }
     }
     public class HisCentralServerList  :List<HisCentralServer>
     {
-        
+        public HisCentralServerList()
+        {
+           
+        }
+        public HisCentralServerList(Dictionary<string, string>[] agentMangagedResources)
+        {
+            foreach (Dictionary<string, string> r in agentMangagedResources)
+            {
+                HisCentralServer server = new HisCentralServer();
+
+                server.Endpoint = r[HISCentralAgent.ENDPOINT];
+                server.Name = r[HISCentralAgent.SERVERNAME];
+
+                this.Add(server);
+            }
+        }
+
         public String[][] AsAgentResource()
         {
             List<String[]> s = new List<string[]>(this.Count);
             foreach (var hisCentralServer in this)
             {
                 s.Add(new string[] { hisCentralServer.Name, hisCentralServer.Endpoint });
+            }
+            return s.ToArray();
+        }
+        public Dictionary<string, string>[] AsResource()
+        {
+            List<Dictionary<String, String>> s = new List<Dictionary<String, String>>(this.Count);
+            foreach (var hisCentralServer in this)
+            {
+                s.Add(hisCentralServer.ToDictionary());
             }
             return s.ToArray();
         }
@@ -34,6 +72,12 @@ namespace Cuahsi.His.Ruon
     [AgentAttributes("Cuahsi.HISCentral", "R-U-ON Cuahsi HISCentral Agent", "HIS Central Agent")]
     public class HISCentralAgent : ServiceAgent
     {
+        public const string SERVERNAME = "ServerName";
+        public const string ENDPOINT = "HIS_Central_Url";
+        public const string Monitor_SiteInfo = "Monitor_SiteInfo";
+        public const string Monitor_SeriesCatalog = "Monitor_SeriesCatalog";
+        public const string Monitor_Ontology = "Monitor_Ontology";
+
         private string hisCentralEndpointsAsString;
         private HisCentralServerList servers;
         private string hisCentral1 = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx";
@@ -44,9 +88,12 @@ namespace Cuahsi.His.Ruon
         //: base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
         // 60, null, null, serviceProcess)
         public HISCentralAgent(IServiceProcess serviceProcess)
-            : base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
+            : base("HISCentralAgent", "1.0", 
+            //"AAAABIESfWjQAAADDrFZJTSn",
+            Properties.Settings.Default.AccountId,
               30, null, null, serviceProcess)
         {
+
 
             Configuration.MetaConfig(
                new AgentConfig.MetaVar[]
@@ -59,8 +106,8 @@ namespace Cuahsi.His.Ruon
                  new AgentConfig.MetaVar[]
                 {
                     // Manage Resources in comma delimited list
-                    new AgentConfig.MetaVar("ServerName",AgentConfig.Type.String, "HISCentral" ),
-                    new AgentConfig.MetaVar("HIS_Central_Url", AgentConfig.Type.String, hisCentral1),
+                    new AgentConfig.MetaVar(SERVERNAME,AgentConfig.Type.String, "HISCentral" ),
+                    new AgentConfig.MetaVar(ENDPOINT, AgentConfig.Type.String, hisCentral1),
                 }
 
            );
@@ -95,6 +142,11 @@ namespace Cuahsi.His.Ruon
         }
         override protected void Monitor()
         {
+            Monitor(Configuration.ManagedResources);
+        }
+
+       public void Monitor(Dictionary<string, string>[] managedResources)
+        {
             try
             {
                 AgentParams ap = new AgentParams();
@@ -104,7 +156,7 @@ namespace Cuahsi.His.Ruon
                 // set endpoint 
                 tester.Endpoint = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx";
 
-                foreach (var server in Configuration.ManagedResources)
+                foreach (var server in managedResources)
                 {
                     try
                     {
