@@ -32,5 +32,17 @@ namespace cuahsi.wof.ruon.Properties {
                 return ((string)(this["WaterWebServicesAgent_CuahsiSoap_WaterOneFlow"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AAAABIESfWjQAAADDrFZJTSn")]
+        public string AccountId {
+            get {
+                return ((string)(this["AccountId"]));
+            }
+            set {
+                this["AccountId"] = value;
+            }
+        }
     }
 }

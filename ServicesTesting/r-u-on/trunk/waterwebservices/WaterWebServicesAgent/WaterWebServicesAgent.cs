@@ -110,7 +110,9 @@ namespace cuahsi.wof.ruon
         //: base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
         // 60, null, null, serviceProcess)
         public WaterWebServicesAgent(IServiceProcess serviceProcess)
-            : base("WaterWebServicesAgent", "1.2", "AAAABIESfWjQAAADDrFZJTSn",
+            : base("WaterWebServicesAgent", "1.2", 
+            //"AAAABIESfWjQAAADDrFZJTSn",
+               Properties.Settings.Default.AccountId ,
              300, null, null, serviceProcess)
         {
             bool isInstalled = Agent.IsInstalled("WaterWebServicesAgent");

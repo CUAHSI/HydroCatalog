@@ -55,6 +55,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentParamsTest.cs" />
     <Compile Include="IsoTimePeriodTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WaterWebSericesTesterTest.cs" />
