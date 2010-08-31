@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <!-- EPA Template version 3.2.1, 28 June 2006 -->
+      <title>CUASHI WaterOneFlow web services</title>
+      <meta name="DC.title" content="">
+      <meta name="DC.description" content="">
+      <meta name="keywords" content="">
+      <meta name="DC.subject" content="">
+      <meta name="DC.type" content="">
+
+      <!-- For date metadata, use the format YYYY-MM-DD -->
+      <meta name="DC.date.modified" content="2007-06-29">
+      <meta name="DC.date.created" content="">
+      <meta name="DC.date.reviewed" content="">
+      <meta name="DC.language" content="en">
+      <meta name="DC.creator" content="">
+      <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+      <link rel="meta" href="http://www.epa.gov/labels.rdf" type="application/rdf+xml" title="ICRA labels">
+      <meta http-equiv="Content-Style-Type" content="text/css">
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <style type="text/css" media="screen">@import 'styles/epa.css';</style>
+
+      <!-- [if lt IE 7]>
+         <link rel="stylesheet" type="text/css" href="styles/waters.css">
+      <![endif]-->
+
+      <!-- OW Added stylesheets -->
+      <link rel="stylesheet" type="text/css" href="styles/waters.css">
+
+   </head>
+
+   <body>
+      <p class="skip">&nbsp;</p>
+      <p class="skip">
+         <a id="skiptop" href="#content" title="Jump to main content.">Jump to main content.</a>
+      </p>
+      
+      <!-- START EPA HEADER -->
+      <div id="header">
+
+         <!-- START LOGO -->
+         <div id="logo">
+            <ahref="images/logo.png/" title="US EPA home page"><img src="images/logo.png" alt="[logo] US EPA" border="0" height="111" width="100"></a>
+         </div>
+
+         <!-- START AREA NAME -->
+         <div id="areaname">
+            <p>CUASHI: WaterOneFlow Webservices Method: getSitesXML </p>
+         </div>
+
+
+
+         <!-- BEGIN BREADCRUMBS -->
+         <ul>
+            <li class="first">You are here: <a href="http://www.cuashi.org/">CUASHI Home</a></li>
+            <!-- START AREA BREADCRUMBS -->
+            <li><a href="http://his.cuahsi.org/wofws.html">Webservices</a></li>
+            <li><a href="index1.html">WaterOneFlow</a></li>
+            <li><a href="getSitesXML.html">getSitesXML</a></li>
+            <!-- END AREA BREADCRUMBS -->
+            </li>
+         </ul>
+         <!-- END BREADCRUMBS -->
+            </li>
+         </ul>
+         <!-- END BREADCRUMBS -->
+      </div>
+      <!-- END EPA HEADER -->
+
+      <hr class="skip">
+      <p class="skip">
+         <a name="pagecontents" id="pagecontents"></a>
+         <a name="pagetop" id="pagetop"></a>
+      </p>
+
+      <!-- BEGIN CONTENT -->
+      <div id="content">
+         <!-- EPA SITE-WIDE ANNOUNCEMENTS - DO NOT REMOVE - this code is used for emergency messages -->
+         <!-- If this page is a Sub-Office/Sub-Region/Center/Lab/Topic home page, CHANGE "sitewidec" TO "sitewideb" -->
+
+         <!-- BEGIN watersCONTENT -->
+         <div id="waterscontent">
+
+            <!-- BEGIN PAGE NAME -->
+            <h1 class="page_title">getSitesXML</h1>
+            <!-- TOC START -->
+            <div class="toc">
+               <ul>
+                  <li><a href="#Description">Description</a></li>
+                  <li><a href="#Web and Database Services">Input & Output Parameter Descriptions</a></li>
+                  <li><a href="#Web and Database Services1">SOAP Request and Response (Example XML)</a></li>
+                  <li>
+                  <a href="#Mailing List">Mailing List</a></li>
+               </ul>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <h2><a name="Description"></a>Description</h2>
+            <div id="description_section">
+               <p>
+			getSitesXML: Given an array of site numbers, this method returns the site metadata for each one. Send the array of site codes in this format: 'NetworkName:SiteCode'. Sending an empty array will return all sites, up to a limit of 50,000. 
+		    </p> 
+
+            </div>
+         <h2><a name="Description"></a>Example Endpoint WSDL</h2>
+<p>Little Bear River: http://his02.usu.edu/littlebearriver/cuahsi_1_0.asmx?WSDL</p>
+            <h2><a name="Web and Database Services"></a>Input</h2><br>
+            </p>
+		  
+            <table>
+               <tbody>
+                  <tr>
+                     <th>Parameters</th>
+                     
+                     <th>Variable TYPE </th>
+                     <th>EXAMPLE</th>
+                  </tr>
+                  <tr>
+                     <td>
+                        <a>NetworkName:SiteCode</a><br/>
+
+</td>
+                     
+                     <td>
+                     <p>String</p>   
+                     </td>
+                     <td>
+                     <p>""</p>      
+                     </td>
+                  </tr>
+                  <tr class="alt">
+                     <td>
+                        <a> Authentication String</a><br/>
+
+                     </td>
+                     <td>
+                     <p>String</p>      
+                     </td>
+                     <td>
+                     <p>""</p>      
+                     </td>
+                  </tr>
+                  
+                </tbody>
+            </table>    
+<h2><a></a>Output</h2><br>
+            </p>
+		  
+            <table>
+               <tbody>
+                  <tr>
+                     <th>Parameters</th>
+                     
+                     <th>TYPE: getSites </th>
+                     <th>EXAMPLE: getSites </th>
+                  </tr>
+                  <tr>
+                     <td>
+                        <a>GetSitesXMLResult</a><br/>
+
+</td>
+                     
+                     <td>
+				<p>String (XML format)</p>   
+                     </td>
+                     <td>
+                     <p>See SOAP RESPONSE</p>      
+                     </td>
+                  </tr>
+                  
+                </tbody>
+            </table>
+   
+<h2><a name="Web and Database Services1"></a>SOAP REQUEST </h2><br>
+<PRE lang=xml><FONT color=#0000ff>&lt;soapenv:Envelope</FONT><FONT color=#be3232> xmlns:soapenv</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://schemas.xmlsoap.org/soap/envelope/</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:ws</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://www.cuahsi.org/his/1.0/ws/</FONT><FONT color=#0000ff>"&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;soapenv:Header/&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;soapenv:Body&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;ws:GetSitesXml&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;!--</FONT><FONT color=#8c8c8c>Optional:</FONT><FONT color=#0000ff>--&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;ws:site&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+            </FONT><FONT color=#0000ff>&lt;!--</FONT><FONT color=#8c8c8c>Zero or more repetitions:</FONT><FONT color=#0000ff>--&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+            </FONT><FONT color=#0000ff>&lt;ws:string&gt;&lt;/ws:string&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;/ws:site&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;!--</FONT><FONT color=#8c8c8c>Optional:</FONT><FONT color=#0000ff>--&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;ws:authToken&gt;</FONT><FONT style='color:black;font-weight:bold;'>""</FONT><FONT color=#0000ff>&lt;/ws:authToken&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;/ws:GetSitesXml&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;/soapenv:Body&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+</FONT><FONT color=#0000ff>&lt;/soapenv:Envelope&gt;</FONT></PRE>
+<h2><a name="Web and Database Services1"></a>SOAP RESPONSE</h2><br>
+<PRE lang=xml><FONT color=#0000ff>&lt;soap:Envelope</FONT><FONT color=#be3232> xmlns:soap</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://schemas.xmlsoap.org/soap/envelope/</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:xsi</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://www.w3.org/2001/XMLSchema-instance</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:xsd</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://www.w3.org/2001/XMLSchema</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:wsa</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://schemas.xmlsoap.org/ws/2004/08/addressing</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:wsse</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:wsu</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd</FONT><FONT color=#0000ff>"&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;soap:Header&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;wsa:Action&gt;</FONT><FONT style='color:black;font-weight:bold;'>http://www.cuahsi.org/his/1.0/ws/GetSitesXmlResponse</FONT><FONT color=#0000ff>&lt;/wsa:Action&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;wsa:MessageID&gt;</FONT><FONT style='color:black;font-weight:bold;'>urn:uuid:bea579d1-4131-4718-8f0b-4368eb959427</FONT><FONT color=#0000ff>&lt;/wsa:MessageID&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;wsa:RelatesTo&gt;</FONT><FONT style='color:black;font-weight:bold;'>urn:uuid:77358de2-212a-4c2e-96f6-f427f4246562</FONT><FONT color=#0000ff>&lt;/wsa:RelatesTo&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;wsa:To&gt;</FONT><FONT style='color:black;font-weight:bold;'>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</FONT><FONT color=#0000ff>&lt;/wsa:To&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;wsse:Security&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;wsu:Timestamp</FONT><FONT color=#be3232> wsu:Id</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>Timestamp-aa2f52c5-a9b1-4884-a972-1556010d49cb</FONT><FONT color=#0000ff>"&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+            </FONT><FONT color=#0000ff>&lt;wsu:Created&gt;</FONT><FONT style='color:black;font-weight:bold;'>2010-08-31T19:12:36Z</FONT><FONT color=#0000ff>&lt;/wsu:Created&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+            </FONT><FONT color=#0000ff>&lt;wsu:Expires&gt;</FONT><FONT style='color:black;font-weight:bold;'>2010-08-31T19:17:36Z</FONT><FONT color=#0000ff>&lt;/wsu:Expires&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;/wsu:Timestamp&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;/wsse:Security&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;/soap:Header&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;soap:Body&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;GetSitesXmlResponse</FONT><FONT color=#be3232> xmlns</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://www.cuahsi.org/his/1.0/ws/</FONT><FONT color=#0000ff>"&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+         </FONT><FONT color=#0000ff>&lt;GetSitesXmlResult&gt;&lt;![CDATA[</FONT><FONT color=#804000>&lt;sitesResponse xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wtr="http://www.cuahsi.org/waterML/" xmlns="http://www.cuahsi.org/waterML/1.0/"&gt;&lt;queryInfo&gt;&lt;criteria /&gt;&lt;/queryInfo&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River at Mendon Road near Mendon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="1"&gt;USU-LBR-Mendon&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.718473&lt;/latitude&gt;&lt;longitude&gt;-111.946402&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;421276.323&lt;/X&gt;&lt;Y&gt;4618952.04&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located below county road bridge at Mendon Road crossing&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River at McMurdy Hollow near Paradise, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="2"&gt;USU-LBR-Paradise&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.575552&lt;/latitude&gt;&lt;longitude&gt;-111.855217&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;428703.917&lt;/X&gt;&lt;Y&gt;4603005.09&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located below bridge at 8700 South (McMurdy Hollow)&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Utah State University Experimental Farm near Wellsville, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="3"&gt;USU-LBR-ExpFarm&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.666993&lt;/latitude&gt;&lt;longitude&gt;-111.890567&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;425861.714&lt;/X&gt;&lt;Y&gt;4613186.929&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;This is a continuous weather station.  Located at the Utah State University Experimental Farm near Wellsville, Utah.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;South Fork Little Bear River below Davenport Creek near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="4"&gt;USU-LBR-SFLower&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.506518&lt;/latitude&gt;&lt;longitude&gt;-111.815079&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;431977.822&lt;/X&gt;&lt;Y&gt;4595308.471&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located under a private road bridge just below the confluence with Davenport Creek.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;East Fork Little Bear River at Paradise Canal Diversion near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="5"&gt;USU-LBR-EFLower&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.529212&lt;/latitude&gt;&lt;longitude&gt;-111.799324&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;433315.887&lt;/X&gt;&lt;Y&gt;4597815.707&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located on the Paradise Canal diversion structure.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River Upper Weather Station near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="6"&gt;USU-LBR-EFWeather&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.535543&lt;/latitude&gt;&lt;longitude&gt;-111.805946&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;432770.027&lt;/X&gt;&lt;Y&gt;4598523.785&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;This is a continuous weather station.  Located in the East Fork of the Little Bear River near Avon, Utah.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;South Fork Little Bear River above Davenport Creek near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="7"&gt;USU-LBR-SFUpper&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.495409&lt;/latitude&gt;&lt;longitude&gt;-111.817993&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;431977.822&lt;/X&gt;&lt;Y&gt;4595308.471&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located on the downstream side of a private footbridge on the Selman Ranch.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Radio Repeater near Paradise, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="8"&gt;USU-LBR-ParadiseRepeater&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.556736&lt;/latitude&gt;&lt;longitude&gt;-111.854455&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;428746.734&lt;/X&gt;&lt;Y&gt;4600915.466&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located on high ridge overlooking the Little Bear River.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;East Fork Little Bear River Radio Repeater near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="9"&gt;USU-LBR-EFRepeater&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.536&lt;/latitude&gt;&lt;longitude&gt;-111.806&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;432770.027&lt;/X&gt;&lt;Y&gt;4598523.785&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Co-located with the Little Bear River upper weather station in the East Fork.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River near Wellsville, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="10"&gt;USU-LBR-Wellsville&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.643457&lt;/latitude&gt;&lt;longitude&gt;-111.917649&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;423579.317&lt;/X&gt;&lt;Y&gt;4610597.583&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located on the upstream side of State Highway 101 bridge.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River below Confluence of South and East Forks near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="11"&gt;USU-LBR-Confluence&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.536088&lt;/latitude&gt;&lt;longitude&gt;-111.830455&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;localSiteXY projectionInformation=" NAD83 / UTM zone 12N"&gt;&lt;X&gt;430726.09724&lt;/X&gt;&lt;Y&gt;4598603.64519&lt;/Y&gt;&lt;/localSiteXY&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;Located on the downstream side of the county bridge over the Little Bear River.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River at Paradise, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="12"&gt;10105900&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.5756&lt;/latitude&gt;&lt;longitude&gt;-111.8544&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;This is a real time USGS streamflow gage.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River Paradise Weather Station near Paradise, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="13"&gt;USU-LBR-ParadiseWeather&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.5724&lt;/latitude&gt;&lt;longitude&gt;-111.8551&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;This is a continuous weather station.  Located on a bluff overlooking the Little Bear River.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;site&gt;&lt;siteInfo&gt;&lt;siteName&gt;Little Bear River South Fork Weather Station near Avon, Utah&lt;/siteName&gt;&lt;siteCode network="LittleBearRiver" siteID="14"&gt;USU-LBR-SFWeather&lt;/siteCode&gt;&lt;geoLocation&gt;&lt;geogLocation xsi:type="LatLonPointType" srs="EPSG:4269"&gt;&lt;latitude&gt;41.4967&lt;/latitude&gt;&lt;longitude&gt;-111.8193&lt;/longitude&gt;&lt;/geogLocation&gt;&lt;/geoLocation&gt;&lt;verticalDatum&gt;NGVD29&lt;/verticalDatum&gt;&lt;note title="County"&gt;Cache&lt;/note&gt;&lt;note title="State"&gt;Utah&lt;/note&gt;&lt;note title="Site Comments"&gt;This is a continuous weather station.&lt;/note&gt;&lt;/siteInfo&gt;&lt;/site&gt;&lt;/sitesResponse&gt;</FONT><FONT color=#0000ff>]]&gt;&lt;/GetSitesXmlResult&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+      </FONT><FONT color=#0000ff>&lt;/GetSitesXmlResponse&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+   </FONT><FONT color=#0000ff>&lt;/soap:Body&gt;</FONT><FONT style='color:black;font-weight:bold;'>
+</FONT><FONT color=#0000ff>&lt;/soap:Envelope&gt;</FONT></PRE>
+            <h2><a name="Mailing List"></a>Mailing List</h2>
+            <div id="mailing_list_section">
+               <p>
+                  For questions and clarifications please contact
+                  <a href="mailto:waters_support@epa.gov?subject=WATERS Mailing List">Support@sdsc.edu</a>
+                  or use the
+                  <a href="http://www.epa.gov/waters/comments.html">Contact Us</a>
+                  web page.
+               </p>
+            </div>
+
+        </div>
+        <!-- END ServicesCONTENT -->
+     </div>
+     <!-- END CONTENT -->
+
+     <!-- BEGIN STOCK NAVIGATION AND FOOTER -->
+     <hr class="skip">
+
+     <!-- BEGIN AREA MAIN NAVIGATION -->
+     <div id="area-nav">
+        <h3 class="skip">Local Navigation</h3>
+        <ul>
+           <li><a href="index1.html">About WaterOneFlow<br></a></li>
+           <ul>
+              <li><a href="getSiteInfo.html">getSiteInfo</a></li>
+              <li><a href="getSiteInfoObject.html">getSiteInfoObject</a></li>
+              <li><a href="getSites.html">getSites</a></li>
+<li><a href="getSitesXML.html">getSitesXML</a></li>
+<li><a href="getValues.html">getValues</a></li>
+<li><a href="getValuesObject.html">getValuesObject</a></li>
+<li><a href="getVariableInfo.html">getVariableInfo</a></li>
+<li><a href="getVariableInfoObject.html">getVariableInfoObject</a></li>
+           </ul>
+           <li><a href="index1.html">Tools</a></li>
+           <li><a href="index1.html">Data</a></li>
+           <li><a href="index1.html">Documents</a></li>
+           <li><a href="index1.html">Reporting</a></li>
+        </ul>
+     </div>
+     <!-- END AREA MAIN NAVIGATION -->
+
+
+     <hr class="skip">
+
+<!-- BEGIN FOOTER -->
+     <div id="footer">
+        <ul id="globalfooter">
+           <li><a href="http://his.cuahsi.org/contactus.html">CUASHI Home</a> 			</li>
+         	<li class="last"><a href="getSitesXML.html">Return to Top</a> 			         </li>
+	
+        </ul>
+     </div>
+
+     <!-- END FOOTER -->
+     <p class="skip"><a id="skipbot" href="#content" title="Jump     to main content.">Jump to main content.</a></p>
+
+  </body>
+
+</html>

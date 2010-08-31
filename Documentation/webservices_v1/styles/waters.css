@@ -1,0 +1,218 @@
+/*
+ * WATERS Services Stylesheet
+ */
+
+#waterscontent {
+   background-color:#fff;
+   margin:3px 8px;
+   zoom: 1; 
+}
+
+#waterscontent p.service_subtitle {
+   font-size: 11px;
+}
+
+#waterscontent p.expander {
+   font-size: 9px;
+}
+
+#waterscontent p.usagescenario_text {
+   padding-left: 5px; 
+   font-size: 12px;
+}   
+
+#waterscontent h2 {
+   font-size: 13px;
+   font-weight: bold;
+   margin: 2em 0 0 0; 
+   padding: 3px 3px 3px 3px;
+   position: relative;
+   border-top: 1px solid #000000;
+   border-right: 1px solid #000000;
+   border-left: 1px solid #000000;
+   border-bottom: 1px solid #000000;
+   background-color: #336699;
+   color: #FFFFFF;
+}
+
+#waterscontent h2.top {
+   font-size: 13px;
+   font-weight: bold;
+   margin: 0 0 0 0; 
+   padding: 3px 3px 3px 3px;
+   position: relative;
+   border-top: 1px solid #000000;
+   border-right: 1px solid #000000;
+   border-left: 1px solid #000000;
+   border-bottom: 1px solid #000000;
+   background-color: #336699;
+   color: #FFFFFF;
+}
+
+#waterscontent h3 {
+   font-size: 12px;
+   font-weight: bold;
+   padding: 3px 3px 3px 0px;
+   position: relative;
+   color: #000000;
+}
+
+#waterscontent h4 {
+   font-size: 11px;
+   font-weight: bold;
+   padding: 3px 3px 3px 0px;
+   position: relative;
+   color: #000000;
+}
+
+#waterscontent a, a:link {
+   color: #0000cc;
+}
+
+#waterscontent ol, ul {
+   padding-top: 0pt;
+   padding-right: 0pt;
+   padding-bottom: 0pt;
+   padding-left: 0pt;
+   margin-top: 0.0em;
+   margin-right: 0pt;
+   margin-bottom: 0pt;
+   margin-left: 15px;
+   line-height: 125%;
+}
+
+#waterscontent ol.toc, div.toc ol {
+   margin-top: 1em;
+   margin-right: 0pt;
+   margin-bottom: 0pt;
+   margin-left: 0pt;
+   padding-top: 0pt;
+   padding-right: 0pt;
+   padding-bottom: 0pt;
+   padding-left: 0pt;
+   list-style-type: none;
+   list-style-image: none;
+   list-style-position: outside;
+}
+
+#waterscontent table {
+   margin:1em 0 0 1px;
+   border:1px solid;
+   border-color: #36C;
+   border-style: outset;
+   border-spacing: 0;
+   border-collapse: collapse;
+   clear:right;
+   width: 100%;
+}
+
+#waterscontent tr.alt {
+   background:#f5f5f5
+}
+
+#waterscontent th {
+   font-weight: bold;
+   font-size: 11px;
+   text-align: left;
+   padding-top: 6px;
+   padding-right: 12px;
+   padding-bottom: 6px;
+   padding-left: 12px;
+   border-style: inset;
+   border-width: 1px;
+   background-color: #CCCCCC;
+}
+
+#waterscontent td {
+   text-align: left;
+   vertical-align: top;
+   padding-top: 6px;
+   padding-right: 12px;
+   padding-bottom: 6px;
+   padding-left: 12px;
+   border-style: inset;
+   border-width: 1px;
+   font-size: 11px;
+   font-weight: normal;
+}
+
+
+#waterscontent th.nowrap {
+	white-space: nowrap
+}
+
+
+#waterscontent th.param {
+  width: 140px;
+}
+
+#waterscontent th.datatype {
+  width: 130px;
+}
+
+#waterscontent th.optional {
+  width: 50px;
+}
+
+#waterscontent th.description {
+  /* no reason to set width, this column should fill remaining space */
+  width: 100%;
+}
+
+#waterscontent th.gisformat {
+  width: 40px;
+  text-align: center;
+}
+
+#waterscontent th.gisservicename {
+  width: 240px;
+  text-align: left;
+}
+
+#waterscontent code {
+   color: #007000;
+}
+
+#waterscontent td.object_name {
+   text-align: center;
+   vertical-align: bottom;
+   font-size: 11px;
+   font-weight: bold;
+   height: 30px;
+}
+
+#waterscontent pre {
+   font-size: 11px;
+   font-family: monospace;
+   color: #007000;
+   padding: 0;
+   margin: 0;
+   background-color: #fafafa;
+   border-top: 1px solid #ccc;
+   border-right: 1px solid #ccc;
+   border-left: 1px solid #ccc;
+   border-bottom: 1px solid #ccc;
+   line-height: 20px; /*--Height of each line of code--*/
+   width: 100%;
+   height: 250px;
+   overflow: auto; /*--If the Code exceeds the width, a scrolling is available--*/
+   overflow-Y: auto;  /*--Hides vertical scroll created by IE--*/
+}
+
+#waterscontent pre code {
+   margin: 0 0 0 40px;  /*--Left Margin--*/
+   padding: 18px 0;
+   display: block;
+}
+
+#waterscontent td.object_name {
+   text-align: center;
+   vertical-align: bottom;
+   font-size: 12px;
+   font-weight: bold;
+   height: 40px;
+}
+
+#waterscontent td.nowrap {
+	white-space: nowrap
+}
