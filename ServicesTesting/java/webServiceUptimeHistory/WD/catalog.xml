@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+
+<system systemId="http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL" uri="xml-resources/web-service-references/UnitValues/wsdl/river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx.wsdl"/>
+<system systemId="http://hiscentral.cuahsi.org/webservices/hiscentral.asmx?WSDL" uri="xml-resources/web-service-references/hiscentral/wsdl/hiscentral.cuahsi.org/webservices/hiscentral.asmx.wsdl"/>
+</catalog>

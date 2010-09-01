@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee    http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+  <package-mapping>
+    <package-type>UnitValues</package-type>
+    <namespaceURI>http://www.cuahsi.org/his/1.0/ws/</namespaceURI>
+  </package-mapping>
+  <package-mapping>
+    <package-type>javax.xml.soap</package-type>
+    <namespaceURI>http://www.cuahsi.org/waterML/1.0/</namespaceURI>
+  </package-mapping>
+  <service-interface-mapping>
+    <service-interface>UnitValues.WaterOneFlow_Service</service-interface>
+    <wsdl-service-name xmlns:serviceNS="http://www.cuahsi.org/his/1.0/ws/">serviceNS:WaterOneFlow</wsdl-service-name>
+    <port-mapping>
+      <port-name>WaterOneFlow</port-name>
+      <java-port-name>WaterOneFlow</java-port-name>
+    </port-mapping>
+  </service-interface-mapping>
+  <service-endpoint-interface-mapping>
+    <service-endpoint-interface>UnitValues.WaterOneFlow_PortType</service-endpoint-interface>
+    <wsdl-port-type xmlns:portTypeNS="http://www.cuahsi.org/his/1.0/ws/">portTypeNS:WaterOneFlow</wsdl-port-type>
+    <wsdl-binding xmlns:bindingNS="http://www.cuahsi.org/his/1.0/ws/">bindingNS:WaterOneFlow</wsdl-binding>
+    <service-endpoint-method-mapping>
+      <java-method-name>getSitesXml</java-method-name>
+      <wsdl-operation>GetSitesXml</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSitesXmlSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSitesXmlSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getSiteInfo</java-method-name>
+      <wsdl-operation>GetSiteInfo</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSiteInfoSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSiteInfoSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getVariableInfo</java-method-name>
+      <wsdl-operation>GetVariableInfo</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetVariableInfoSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetVariableInfoSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getSites</java-method-name>
+      <wsdl-operation>GetSites</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSitesSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSitesSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getSiteInfoObject</java-method-name>
+      <wsdl-operation>GetSiteInfoObject</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSiteInfoObjectSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetSiteInfoObjectSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getVariableInfoObject</java-method-name>
+      <wsdl-operation>GetVariableInfoObject</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetVariableInfoObjectSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetVariableInfoObjectSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getValues</java-method-name>
+      <wsdl-operation>GetValues</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetValuesSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetValuesSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getValuesObject</java-method-name>
+      <wsdl-operation>GetValuesObject</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>javax.xml.soap.SOAPElement</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetValuesObjectSoapIn</wsdl-message>
+          <wsdl-message-part-name>parameters</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>javax.xml.soap.SOAPElement</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://www.cuahsi.org/his/1.0/ws/">wsdlMsgNS:GetValuesObjectSoapOut</wsdl-message>
+        <wsdl-message-part-name>parameters</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+  </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

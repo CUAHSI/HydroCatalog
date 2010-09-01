@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+	<wsdl location="file:C:\Users\David Ryan Eng Tool\Documents\NetBeansProjects\WebServicesDiagnostic\src\META-INF\wsdl/UnitValues.asmx.wsdl" packageName="UnitValues"/>
+</configuration>

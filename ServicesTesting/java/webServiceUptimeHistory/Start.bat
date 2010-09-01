@@ -1,0 +1,2 @@
+java -jar "C:\Documents and Settings\mae171b\Desktop\WebDiagnostic\WebServicesDiagnostic\dist\WebServicesDiagnostic.jar"
+java -jar "C:\Documents and Settings\mae171b\Desktop\WebDiagnostic\WD\dist\WD.jar"

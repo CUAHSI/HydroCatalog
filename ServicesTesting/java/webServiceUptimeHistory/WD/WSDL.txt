@@ -1,0 +1,46 @@
+USGS0; http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx?WSDL
+USGS1; http://river.sdsc.edu/wateroneflow/NWIS/Data.asmx?WSDL
+USGS2; http://water.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL
+EPA3; http://river.sdsc.edu/wateroneflow/EPA/cuahsi_1_0.asmx?WSDL
+Chesapeake Bay Information Management System4; http://cbe.cae.drexel.edu/CIMS/cuahsi_1_1.asmx?WSDL
+USGS5; http://river.sdsc.edu/wateroneflow/NWIS/Groundwater.asmx?WSDL
+Utah Water Research Laboratory, Utah State University6; http://icewater.usu.edu/MudLake/cuahsi_1_0.asmx?WSDL
+San Diego River Park Foundation7; http://river.sdsc.edu/sdrfp2_ws/cuahsi_1_0.asmx?WSDL
+Crown of the Continent Observatory (Montana State University)8; http://his03.geol.umt.edu/COTCsnow/cuahsi_1_0.asmx?WSDL
+Florida Dept of Environmental Protection 9; http://ees-his06.ad.ufl.edu/santafe-flstoret/cuahsi_1_0.asmx?WSDL
+UF Agric and Biol Engineering; Dr. Jasmeet Judge10; http://ees-his06.ad.ufl.edu/SantaFe-MICROWAVECITRA/cuahsi_1_0.asmx?WSDL 
+National Atmospheric Deposition Program11; http://cbe.cae.drexel.edu/NADP/cuahsi_1_1.asmx?WSDL
+Suwannee River Water Management District12; http://ees-his06.ad.ufl.edu/SantaFe-SRGWL/cuahsi_1_0.asmx?WSDL
+USGS Groundwater Data Florida13; http://ees-his06.ad.ufl.edu/SantaFe-GWLUSGS/cuahsi_1_0.asmx?WSDL
+Susquehanna River Basin Hydrologic Observatory Sys14; http://cbe.cae.drexel.edu/SRBHOS/cuahsi_1_1.asmx?WSDL
+Texas Instream Flow Program15; http://his.crwr.utexas.edu/SabineBio/cuahsi_1_0.asmx?WSDL
+Texas Instream Flow Program16; http://his.crwr.utexas.edu/SanAntonioBio/cuahsi_1_0.asmx?WSDL
+Utah Water Research Laboratory, Utah State University17; http://icewater.usu.edu/littlebearriver/cuahsi_1_0.asmx?WSDL
+IdahoWaters Reynolds Creek Experimental Watershed18; http://idahowaters.uidaho.edu/RCEW_ODWS/cuahsi_1_0.asmx?WSDL
+IIHR - The University of Iowa19; http://his08.iihr.uiowa.edu/tippingbucket/cuahsi_1_0.asmx?WSDL
+IIHR - The University of Iowa20; http://his08.iihr.uiowa.edu/water_quality/cuahsi_1_0.asmx?WSDL
+Baltimore Waters Test Bed21; http://his09.umbc.edu/BaltGW/cuahsi_1_0.asmx?WSDL 
+Baltimore Ecosystem Study22; http://his09.umbc.edu/BESOD/cuahsi_1_0.asmx?WSDL 
+Baltimore Ecosystem Study23; http://his09.umbc.edu/BESSoil/cuahsi_1_0.asmx?WSDL 
+Univ of Florida Water Institute24; http://ees-his06.ad.ufl.edu/SFe_CTDSondes/cuahsi_1_0.asmx?WSDL
+Suwannee River Water Management District25; http://ees-his06.ad.ufl.edu/SantaFe-RainDlySRWMD/cuahsi_1_0.asmx?WSDL
+Southwest Florida Water Management District26; http://ees-his06.ad.ufl.edu/SFe_SWFGWL/cuahsi_1_0.asmx?WSDL
+NOAA National Weather Service Advanced Hydrologic Prediction Service27; http://cbe.cae.drexel.edu/MPE/cuahsi_1_1.asmx?WSDL
+Superfund Basic Research Program, UCSD28; http://water.sdsc.edu/renewsd/cuahsi_1_0.asmx
+Multicultural students At Sea Together (MAST)29; http://cbe.cae.drexel.edu/MAST/cuahsi_1_1.asmx?WSDL
+Florida Dept of Enviro Protection, STORET database30; http://ees-his06.ad.ufl.edu/Santafe-flstoret/cuahsi_1_0.asmx?WSDL
+Texas Water Development Board31; http://his.crwr.utexas.edu/TWDB_Sondes/cuahsi_1_0.asmx?WSDL
+Texas Water Development Board32; http://his.crwr.utexas.edu/Twdb_Tides/cuahsi_1_0.asmx?WSDL
+TWDB33; http://his.crwr.utexas.edu/TWDB_Wind/cuahsi_1_0.asmx?WSDL
+Lawrence Berkeley National Laboratory34; http://Cuahsi.lbl.gov/HIS/cuahsi_1_0.asmx?WSDL
+Hydro_NEXRAD Data Services at the University of Iowa35; http://cbe.cae.drexel.edu/HydroNEXRAD/cuahsi_1_1.asmx?WSDL
+Boise State University, Hydrologic Sciences Department37; http://icewater.boisestate.edu/dcew2dataservices/cuahsi_1_0.asmx?WSDL
+National Climatic Data Center38; http://water.sdsc.edu/wateroneflow/NCDC/ISH_1_0.asmx?WSDL
+U.S. Army Corps of Engineers39; http://water.sdsc.edu/wateroneflow/corps/cuahsi_1_0.asmx?WSDL
+University of Idaho - Bio/Ag Engineering/Waters of the West40; http://icewater.civil.uidaho.edu/ParadiseCreek/cuahsi_1_0.asmx?WSDL
+Watershed Sciences Department, Utah State University41; http://icewater.usu.edu/loganriver/cuahsi_1_0.asmx?WSDL
+Niagara Peninsula Conservation Authority42; http://www.his.npca.ca/waterdataservices/cuahsi_1_0.asmx?WSDL
+USGS, Virginia DEQ and Maryland Department of Natural Resources43; http://cbe.cae.drexel.edu/RIMP/cuahsi_1_0.asmx?WSDL
+Beacon Institute of River and Estuary44; http://24.187.226.76/reon/cuahsi_1_0.asmx?WSDL
+Suwannee River Water Management District 45; http://ees-his06.ad.ufl.edu/SFe_SRWMD_SurfWater/cuahsi_1_0.asmx?WSDL
+Idaho State University46; http://icewater.geology.isu.edu/PortneufWatershed/cuahsi_1_0.asmx?WSDL

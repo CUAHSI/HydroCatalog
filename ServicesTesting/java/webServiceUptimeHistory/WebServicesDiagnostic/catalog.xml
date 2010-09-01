@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://ws.sensordatabus.org/WaterML/cuahsi_1_0.asmx?WSDL" uri="xml-resources/web-service-references/cuahsi_1_0/wsdl/ws.sensordatabus.org/WaterML/cuahsi_1_0.asmx.wsdl"/>
+    <system systemId="http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL" uri="xml-resources/web-service-references/UnitValues/wsdl/river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx.wsdl"/>
+</catalog>

@@ -1,0 +1,45 @@
+Watershed Sciences Department, Utah State University41: Failed
+Florida Dept of Enviro Protection, STORET database30: Failed
+Texas Water Development Board32: Failed
+Chesapeake Bay Information Management System4: Failed
+Baltimore Waters Test Bed21: Unknown
+Utah Water Research Laboratory, Utah State University17: Failed
+USGS, Virginia DEQ and Maryland Department of Natural Resources43: Failed
+Suwannee River Water Management District 45: Failed
+EPA3: Failed
+Suwannee River Water Management District12: Failed
+Hydro_NEXRAD Data Services at the University of Iowa35: Failed
+UF Agric and Biol Engineering: Failed
+Texas Water Development Board31: Failed
+Southwest Florida Water Management District26: Failed
+Idaho State University46: Failed
+IIHR - The University of Iowa20: Failed
+Florida Dept of Environmental Protection 9: Failed
+IdahoWaters Reynolds Creek Experimental Watershed18: Failed
+USGS Groundwater Data Florida13: Failed
+Baltimore Ecosystem Study22: Unknown
+Utah Water Research Laboratory, Utah State University6: Failed
+Boise State University, Hydrologic Sciences Department37: Failed
+University of Idaho - Bio/Ag Engineering/Waters of the West40: Failed
+Baltimore Ecosystem Study23: Unknown
+San Diego River Park Foundation7: Failed
+TWDB33: Failed
+Multicultural students At Sea Together (MAST)29: Failed
+Susquehanna River Basin Hydrologic Observatory Sys14: Failed
+National Climatic Data Center38: Failed
+Beacon Institute of River and Estuary44: Failed
+Suwannee River Water Management District25: Failed
+Crown of the Continent Observatory (Montana State University)8: Failed
+National Atmospheric Deposition Program11: Failed
+Superfund Basic Research Program, UCSD28: Failed
+USGS2: Failed
+USGS5: Failed
+IIHR - The University of Iowa19: Failed
+NOAA National Weather Service Advanced Hydrologic Prediction Service27: Failed
+Lawrence Berkeley National Laboratory34: Failed
+Univ of Florida Water Institute24: Failed
+USGS1: Failed
+Niagara Peninsula Conservation Authority42: Failed
+U.S. Army Corps of Engineers39: Failed
+Texas Instream Flow Program16: Failed
+Texas Instream Flow Program15: Failed
