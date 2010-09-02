@@ -143,31 +143,197 @@
 <h2><a name="Web and Database Services"></a>Output</h2><br>
             </p>
 		  
-            <table>
+<table>
                <tbody>
-                  <tr>
-                     <th>Parameters</th>
-                     
-                     <th>TYPE: getVariableInfo </th>
-                     <th>EXAMPLE: getVariableInfo </th>
-                  </tr>
-                  <tr>
-                     <td>
-                        <p>GetVariableInfoResponse/variablesResponse/variables/...</p>
-<a>variable</a>
-
-</td>
-                     
-                     <td>
-				<p>Object</p>   
-                     </td>
-                     <td>
-                     <p>See SOAP RESPONSE</p>      
-                     </td>
-                  </tr>
                   
-                </tbody>
-            </table>
+		  <tr>
+                     
+		     <th>PARAMETERS</th>
+                     <th>VARIABLE TYPE</th>
+                     <th>PATH</th>
+		     <th>DESCRIPTION</th>
+		     <th>EXAMPLE</th>
+                  
+		  </tr>
+                  
+		  <tr>
+                     
+		     <td>
+			<a>variableCode
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Returns variable code used by the network.</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+		  <tr>
+                     
+		     <td>
+			<a>variableName
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Returns variable name used by network.</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+		  <tr>
+                     
+		     <td>
+			<a>valueType
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Descibes how the variable is observed.</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+		  <tr>
+                     
+		     <td>
+			<a>dataType
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Describes conditions on the variable when a measurement is taken.</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+		  <tr>
+                     
+		     <td>
+			<a>units
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Returns variable's units of measurement (meters,kilogram,seconds,etc.)</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+		  <tr>
+                     
+		     <td>
+			<a>NoDataValue
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Returns null data value since no site is selected in the input parameters.</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+		  <tr>
+                     
+		     <td>
+			<a>timeSupport
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>GetVariableInfoObjectResponse/variableResponse/variables/variable/...</p>   
+                     </td>
+
+		     <td>
+			<p>Returns UnitID, UnitDescription, UnitType, timeInterval and UnitAbbreviation. </p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+
+
+               </tbody>
+</table>
    
 <h2><a name="Web and Database Services1"></a>SOAP REQUEST </h2><br>
 <PRE lang=xml><FONT color=#0000ff>&lt;soapenv:Envelope</FONT><FONT color=#be3232> xmlns:soapenv</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://schemas.xmlsoap.org/soap/envelope/</FONT><FONT color=#0000ff>"</FONT><FONT color=#be3232> xmlns:ws</FONT><FONT color=#0000ff>="</FONT><FONT style='color:black;font-weight:bold;'>http://www.cuahsi.org/his/1.0/ws/</FONT><FONT color=#0000ff>"&gt;</FONT><FONT style='color:black;font-weight:bold;'>
