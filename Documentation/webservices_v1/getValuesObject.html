@@ -182,20 +182,68 @@
 		  <tr>
                      
 		     <td>
-			<a>value
+			<a>sourceInfo
 			</a>
 		     </td>
                      
                      <td>
-			<p>String</p>   
+			<p>Object</p>   
                      </td>
                      
 		     <td>
-			<p>./timeSeriesResponse/timeSeries/values/...</p>   
+			<p>timeSeriesResponse/timeSeries/...</p>   
                      </td>
 
 		     <td>
-			<p>Returns a list of values from a site between the time interval specified as an XML string</p>   
+			<p>Includes Site Information. (See SUB-PARAMETERS)</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+		  <tr>
+                     
+		     <td>
+			<a>variable
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>timeSeriesResponse/timeSeries/...</p>   
+                     </td>
+
+		     <td>
+			<p>Includes variable information about the site selected.</p>   
+                     </td>		     
+
+		     <td>
+                     	<p>See SOAP RESPONSE</p>      
+                     </td>
+                  
+		  </tr>
+		  <tr>
+                     
+		     <td>
+			<a>values
+			</a>
+		     </td>
+                     
+                     <td>
+			<p>Object</p>   
+                     </td>
+                     
+		     <td>
+			<p>timeSeriesResponse/timeSeries/...</p>   
+                     </td>
+
+		     <td>
+			<p>Returns an array of values from the site selected (See SUB-PARAMETERS)</p>   
                      </td>		     
 
 		     <td>
@@ -204,48 +252,7 @@
                   
 		  </tr>
                </tbody>
-
-</table> 
-<table>
-               <tbody>
-                  
-		  <tr>
-                     
-		     <th>PARAMETERS</th>
-                     <th>VARIABLE TYPE</th>
-                     <th>PATH</th>
-		     <th>DESCRIPTION</th>
-		     <th>EXAMPLE</th>
-                  
-		  </tr>
-                  
-		  <tr>
-                     
-		     <td>
-			<a>GetVariableInfoResponse
-			</a>
-		     </td>
-                     
-                     <td>
-			<p>String</p>   
-                     </td>
-                     
-		     <td>
-			<p>./...</p>   
-                     </td>
-
-		     <td>
-			<p>Returns a variable list from selected site as an XML string</p>   
-                     </td>		     
-
-		     <td>
-                     	<p>See SOAP RESPONSE</p>      
-                     </td>
-                  
-		  </tr>
-               </tbody>
-</table>
-            <table>
+</table>            <table>
                <tbody>
                   
 		  <tr>
@@ -266,11 +273,11 @@
 		     </td>
                      
                      <td>
-			<p>Object</p>   
+			<p>String</p>   
                      </td>
                      
 		     <td>
-			<p>./timeSeriesResponse/values/...</p>   
+			<p>./values/...</p>   
                      </td>
 
 		     <td>
@@ -295,7 +302,7 @@
                      </td>
                      
 		     <td>
-			<p>./timeSeriesResponse/values/...</p>   
+			<p>./values/...</p>   
                      </td>
 
 		     <td>
@@ -319,7 +326,7 @@
                      </td>
                      
 		     <td>
-			<p>./timeSeriesResponse/values/...</p>   
+			<p>./values/...</p>   
                      </td>
 
 		     <td>
