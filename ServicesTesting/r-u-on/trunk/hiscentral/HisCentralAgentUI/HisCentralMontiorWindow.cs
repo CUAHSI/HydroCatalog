@@ -10,6 +10,7 @@ using Ruon;
 
 namespace Cuahsi.His.Ruon
 {
+    [System.Diagnostics.DebuggerDisplay("HISCentral")]
     public partial class HisCentralMontiorWindow : Form
     {
         private HISCentralAgent agent = null;
@@ -31,26 +32,7 @@ namespace Cuahsi.His.Ruon
 
        
 
-        private void ToggleAgent()
-        {
-            try
-            {
-                if (agent == null)
-                {
-                    agent = new HISCentralAgent(null); // if i can do this, we have an installed agent
-                }
-                else
-                {
-                    agent.Dispose();
-                    agent = null;
-                }
-               
-            }
-            catch (Exception ex)
-            {
-               // ReportError(ex);
-            }
-        }
+       
 
        
 

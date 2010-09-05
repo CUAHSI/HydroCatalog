@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using Ruon;
 
 namespace Cuahsi.His.Ruon
@@ -72,6 +73,9 @@ namespace Cuahsi.His.Ruon
     [AgentAttributes("Cuahsi.HISCentral", "R-U-ON Cuahsi HISCentral Agent", "HIS Central Agent")]
     public class HISCentralAgent : ServiceAgent
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+         private static readonly ILog preformanceLogger = LogManager.GetLogger("HISServicePerformance");
+      
         public const string SERVERNAME = "ServerName";
         public const string ENDPOINT = "HIS_Central_Url";
         public const string Monitor_SiteInfo = "Monitor_SiteInfo";
@@ -81,6 +85,17 @@ namespace Cuahsi.His.Ruon
         private string hisCentralEndpointsAsString;
         private HisCentralServerList servers;
         private string hisCentral1 = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx";
+
+        private HisCentralTester _tester;
+
+        // stats
+        private int runs = 0;
+        private float timeAccumulted = 0;
+        private float timeSquared = 0;
+        private long timeMin = long.MaxValue;
+        private long timeMax = long.MinValue;
+
+
         /// <summary>
         /// Constructor, HAS to have this signature
         /// </summary>
@@ -93,7 +108,7 @@ namespace Cuahsi.His.Ruon
             Properties.Settings.Default.AccountId,
               30, null, null, serviceProcess)
         {
-
+            log.Info("Creating HIS Central Agent");
 
             Configuration.MetaConfig(
                new AgentConfig.MetaVar[]
@@ -113,14 +128,17 @@ namespace Cuahsi.His.Ruon
            );
             if (Configuration.ManagedResources.Length == 0)
             {
+                log.Debug("No resources");
                 SetupBaseServices();
             }
             else
             {
+
                 servers = new HisCentralServerList();
 
                 foreach (var list in Configuration.ManagedResources)
                 {
+                    log.Debug("Creating Server "+list["ServerName"]+ list["HIS_Central_Url"] );
                     servers.Add(new HisCentralServer { Name = list["ServerName"], Endpoint = list["HIS_Central_Url"] });
                 }
             }
@@ -136,17 +154,36 @@ namespace Cuahsi.His.Ruon
             AgentParams ap = new AgentParams();
             // ap.Resources = new string[][] { his1, his2 };
             ap.Resources = servers.AsAgentResource();
+            log.Debug("Setting two initial services up");
             this.SetParameters(ap);
 
 
         }
+        // used for mock injection for testing
+        public HisCentralTester Tester
+        {
+            get
+            {
+                if (_tester == null)
+                {
+                    return new HisCentralTester();
+                }
+                else
+                {
+                    return _tester;
+                }
+            }
+            set { _tester = value; }
+        }
         override protected void Monitor()
         {
+            log.Debug("Running Monitor override");
             Monitor(Configuration.ManagedResources);
         }
 
        public void Monitor(Dictionary<string, string>[] managedResources)
         {
+            log.Debug("Running Monitor method");
             try
             {
                 AgentParams ap = new AgentParams();
@@ -160,31 +197,49 @@ namespace Cuahsi.His.Ruon
                 {
                     try
                     {
+                        log.DebugFormat("Testing {0} " ,server["ServerName"]);
+                        int enabledCount = 0;
+                        int failedCount = 0;
                         tester.Endpoint = server["HIS_Central_Url"];
                         if (Boolean.Parse(Configuration["Monitor_SiteInfo"]))
                         {
+                            enabledCount++;
+                            log.DebugFormat("running {0} {1} ", server["ServerName"],"Monitor_SiteInfo");
+                            var timer = new System.Timers.Timer();
                             HisCentralTestResult result = tester.runQueryServiceList(server["ServerName"]);
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Service List Failed " + result.ServiceName));
+                                failedCount++;
+                                log.DebugFormat("completed failed {0} {1} ", server["ServerName"], "Monitor_SiteInfo");
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
+                                    AlarmSeverity.Major, 
+                                    "Service List Failed " + result.ServiceName + " error: "+ result.errorString));
                             }
                             else
                             {
+                                log.DebugFormat("completed {0} {1} ", server["ServerName"], "Monitor_SiteInfo");
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
                         if (Boolean.Parse(Configuration["Monitor_SeriesCatalog"]))
                         {
-
+                            enabledCount++;
+                            log.DebugFormat("running {0} {1} ", server["ServerName"], "Monitor_SeriesCatalog");
                             HisCentralTestResult result = tester.runSeriesCatalogByBox(server["ServerName"]);
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed " + result.ServiceName));
+                                failedCount++;
+                                log.DebugFormat("completed failed {0} {1} ", server["ServerName"], "Monitor_SeriesCatalog");
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, 
+                                    AlarmSeverity.Major,
+                                    "Series Failed " + result.ServiceName + " error: " + result.errorString));
                             }
                             else
                             {
+
+                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_SeriesCatalog");
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
 
@@ -193,25 +248,40 @@ namespace Cuahsi.His.Ruon
 
                         if (Boolean.Parse(Configuration["Monitor_Ontology"]))
                         {
-
-                            HisCentralTestResult result = tester.runSeriesCatalogByBox(server["ServerName"]);
+                            enabledCount++;
+                            log.DebugFormat("running {0} {1} ", server["ServerName"], "Monitor_Ontology");
+                            HisCentralTestResult result = tester.runGetWordListNitrogen(server["ServerName"]);
 
                             if (!result.Working)
                             {
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Ontology Failed " + result.ServiceName));
+                                failedCount++;
+                                log.DebugFormat("Completed Failed {0} {1} ", server["ServerName"], "Monitor_Ontology");
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
+                                    AlarmSeverity.Major,
+                                    "Ontology Failed " + result.ServiceName + " error: " + result.errorString));
                             }
                             else
                             {
+                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_Ontology"); 
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
 
                         }
-
+                        if (failedCount >= enabledCount)
+                        {
+                            log.DebugFormat("All Tests failed {0} ", server["ServerName"]);
+                            alarms.Add(new Alarm(server["ServerName"],"ServiceAllFailed",
+                                AlarmSeverity.Critical,
+                                server["ServerName"] + " All Enabled Services failed"));
+                        }
                     }
                     catch (Exception ex)
                     {
+                        log.ErrorFormat("ERROR service {0} message {1}", server["ServerName"], ex.Message);
                         alarms.Add(new Event("HIS Central", "ServiceError", AlarmSeverity.Critical, "Error in Monitor Service" + server["ServerName"]));
                     }
+
+                    
                 }
 
                 ReportAlarms(alarms, false);
@@ -221,6 +291,7 @@ namespace Cuahsi.His.Ruon
             {
                 // log error
                 List<IAlarm> alarms = new List<IAlarm>();
+                log.ErrorFormat("ERROR {0}}",  ex.Message);
                 alarms.Add(new Event("HIS Central", "CriticalServiceError", AlarmSeverity.Critical, "Critical Error in Monitor Service"));
 
                 ReportAlarms(alarms, false);
