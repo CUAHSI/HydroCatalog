@@ -2,6 +2,8 @@
 
 using System;
 using NUnit.Framework;
+using NUnit.Mocks;
+using Ruon;
 
 namespace HisAgentTests
 {
@@ -12,99 +14,220 @@ namespace HisAgentTests
     ///to contain all HisCentralTesterTest Unit Tests
     ///</summary>
     [TestFixture()]
-    public class HisCentralTesterTest
+    public class HisAgentTest 
     {
+        IHisCentralTestResult good = new HisCentralTestResult
+                                         {
+                                             MethodName = "Dummy",Working = true,ServiceName ="MockService"
+                                             , runTimeMilliseconds = 1
+                                         };
+        IHisCentralTestResult bad = new HisCentralTestResult
+        {
+            MethodName = "Dummy",
+            Working = false,
+            ServiceName = "MockService",
+            runTimeMilliseconds = 1
+        };
+        IHisCentralTestResult LongRun = new HisCentralTestResult
+        {
+            MethodName = "Dummy",
+            Working = false,
+            ServiceName = "MockService",
+            runTimeMilliseconds = 60000,
+            errorString = "Mock Service Error Message"
+        };
 
+        private HisCentralServerList servers;
+        private HisCentralServerList oneServer;
 
-     
+        [SetUp]
+        public void setup()
+        {
+            servers = new HisCentralServerList();
+            servers.Add(new HisCentralServer { Name = "MockServers1", Endpoint = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx" });
+            servers.Add(new HisCentralServer { Name = "MockServers2", Endpoint = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx" });
 
+            oneServer = new HisCentralServerList();
+            oneServer.Add(new HisCentralServer { Name = "OneServer", Endpoint = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx" });
+ 
+        }
+        // This method implements the test condition for the Find
+        // method.
+        private static bool AlarmIsCritial(IAlarm p)
+        {
+            if ( p.ToString().StartsWith("<alarm") && p.ToString().Contains("severity=\"C\"")
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // This method implements the test condition for the Find
+        // method.
+        private static bool AlarmIsMajor(IAlarm p)
+        {
+            if ( p.ToString().StartsWith("<alarm") && p.ToString().Contains("severity=\"M\"")
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // This method implements the test condition for the Find
+        // method.
+        private static bool AlarmIsClear(IAlarm p)
+        {
+            if (p.ToString().StartsWith("<clear")
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // This method implements the test condition for the Find
+        // method.
+        private static bool AlarmIsServiceError(IAlarm p)
+        {
+            if (p.ToString().StartsWith("<alarm") && p.ToString().Contains("id=\"ServiceError\"")
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+             // This method implements the test condition for the Find
+        // method.
+        private static bool AlarmIsCriticalServiceError(IAlarm p)
+        {
+            if (p.ToString().StartsWith("<event") && p.ToString().Contains("id=\"CriticalServiceError\"")
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        
+                  // This method implements the test condition for the Find
+        // method.
+        private static bool AlarmIsServiceAllFailed(IAlarm p)
+        {
+            if (p.ToString().StartsWith("<alarm") && p.ToString().Contains("id=\"ServiceAllFailed\"")
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         /// <summary>
-        ///A test for runSeriesCatalogByBox
+        ///A test for all working
         ///</summary>
         [Test()]
-        public void runSeriesCatalogByBoxTest()
+      
+        public void TestAgentUningMock_allWorking()
         {
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
+
+            DynamicMock mockHisCentral = new DynamicMock(typeof(IHisCentralTester));
+            mockHisCentral.Expect("Endpoint", "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx");
+            mockHisCentral.ExpectAndReturn("runQueryServiceList", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runServicesByBox", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runSeriesCatalogByBox", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runSearchableConcepts", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runGetWordListNitrogen", good, "OneServer");
+
+           HISCentralAgent target = new HISCentralAgent(null);
+            target.MonitorIntervalSec = -1; 
+           target.Tester = (IHisCentralTester) mockHisCentral.MockInstance;
+            // TODO: Initialize to an appropriate value
             //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
             HisCentralTestResult actual;
-            actual = target.runSeriesCatalogByBox("test");
-            Assert.IsTrue( actual != null);
-          //  Assert.Inconclusive("Verify the correctness of this test method.");
+            var alarms = target.Monitor(oneServer.AsResource());
+            Assert.IsFalse(alarms.Exists(AlarmIsCriticalServiceError)); 
+            Assert.IsFalse(alarms.Exists(AlarmIsServiceError)); 
+
+            Assert.IsFalse(alarms.Exists(AlarmIsServiceAllFailed));
+            IAlarm criticalAlarm = alarms.Find( AlarmIsCritial);
+             Assert.IsNull(criticalAlarm);
+            //  Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for runQueryServiceList
+        ///A test for all working
         ///</summary>
-          [Test()]
-        public void runQueryServiceListTest()
+        [Test()]
+
+        public void TestAgentUningMock_allFailing()
         {
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
+
+            DynamicMock mockHisCentral = new DynamicMock(typeof(IHisCentralTester));
+            mockHisCentral.Expect("Endpoint","http://hiscentral.cuahsi.org/webservices/hiscentral.asmx");
+            mockHisCentral.ExpectAndReturn("runQueryServiceList", bad, "OneServer");
+            mockHisCentral.ExpectAndReturn("runServicesByBox", bad, "OneServer");
+            mockHisCentral.ExpectAndReturn("runSeriesCatalogByBox", bad, "OneServer");
+            mockHisCentral.ExpectAndReturn("runSearchableConcepts", bad, "OneServer");
+            mockHisCentral.ExpectAndReturn("runGetWordListNitrogen", bad, "OneServer");
+
+            HISCentralAgent target = new HISCentralAgent(null);
+            target.MonitorIntervalSec = -1;
+            target.Tester = (IHisCentralTester)mockHisCentral.MockInstance;
+            // TODO: Initialize to an appropriate value
             //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
             HisCentralTestResult actual;
-            actual = target.runQueryServiceList("test");
-            Assert.IsTrue(actual != null);
-            Assert.IsTrue(actual.Working);
-        }
+            var alarms = target.Monitor(oneServer.AsResource());
+            Assert.IsFalse(alarms.Exists(AlarmIsCriticalServiceError)); 
+            Assert.IsFalse(alarms.Exists(AlarmIsServiceError)); 
 
-        /// <summary>
-        ///A test for runServicesByBox
-        ///</summary>
-        [Test()]
-        public void runServicesByBoxTest()
-        {
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
-            //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
-            HisCentralTestResult actual;
-            actual = target.runServicesByBox("test");
-            Assert.IsTrue(actual.Working);
-        }
-
-        /// <summary>
-        ///A test for Endpoint
-        ///</summary>
-        [Test()]
-        public void EndpointTest()
-        {
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
-            string expected = "http://www.example.com/"; // TODO: Initialize to an appropriate value
-            string actual;
-            target.Endpoint = expected;
-            actual = target.Endpoint;
-            Assert.AreEqual(expected, actual);
-
-        }
-
-          /// <summary>
-        ///A test for Endpoint
-        ///</summary>
-        [Test()]
-        public void BadEndpointTest()
-        {
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
-            string badendpoint = "http://www.example.com/"; // TODO: Initialize to an appropriate value
-          
-            target.Endpoint = badendpoint;
+            Assert.IsTrue(alarms.Exists(AlarmIsServiceAllFailed));
+            System.Collections.Generic.List<IAlarm> criticalAlarm = alarms.FindAll(AlarmIsCritial);
+            Assert.That(criticalAlarm.Count ==1); // the service error is one
             
-            
-            var actual = target.runQueryServiceList("test");
-            Assert.IsFalse(actual.Working);
-
         }
 
-        /// <summary>
-        ///A test for ServiceName
-        ///</summary>
-          [Test()]
-        public void ServiceNameTest()
+        [Test()]
+        public void TestAgentUningMock_PartialFail()
         {
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
-            string expected = "testTest"; // TODO: Initialize to an appropriate value
-            string actual;
-            target.ServiceName = expected;
-            actual = target.ServiceName;
-            Assert.AreEqual(expected, actual);
-           // Assert.Inconclusive("Verify the correctness of this test method.");
+
+            DynamicMock mockHisCentral = new DynamicMock(typeof(IHisCentralTester));
+            mockHisCentral.Expect("Endpoint", "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx");
+            mockHisCentral.ExpectAndReturn("runQueryServiceList", bad, "OneServer");
+            mockHisCentral.ExpectAndReturn("runServicesByBox", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runSeriesCatalogByBox", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runSearchableConcepts", good, "OneServer");
+            mockHisCentral.ExpectAndReturn("runGetWordListNitrogen", good, "OneServer");
+
+            HISCentralAgent target = new HISCentralAgent(null);
+            target.MonitorIntervalSec = -1;
+            target.Tester = (IHisCentralTester)mockHisCentral.MockInstance;
+            // TODO: Initialize to an appropriate value
+            //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
+            HisCentralTestResult actual;
+            var alarms = target.Monitor(oneServer.AsResource());
+            Assert.IsFalse(alarms.Exists(AlarmIsCriticalServiceError));
+            Assert.IsFalse(alarms.Exists(AlarmIsServiceError)); // all checks fail
+
+            Assert.IsFalse(alarms.Exists(AlarmIsServiceAllFailed));
+            System.Collections.Generic.List<IAlarm> criticalAlarm = alarms.FindAll(AlarmIsCritial);
+            Assert.That(criticalAlarm.Count == 0); // the service error is one
+
         }
 
        

@@ -13,25 +13,10 @@ namespace HisAgentTests
     ///to contain all HisCentralTesterTest Unit Tests
     ///</summary>
     [TestFixture()]
-    public class HisAgentTest
+    public class HisCentralTesterTest
     {
 
-        /// <summary>
-        ///A test for runSeriesCatalogByBox
-        ///</summary>
-        [Test()]
-        [Ignore]
-        public void runSeriesCatalogByBoxTestMock()
-        {
-            
-            HisCentralTester target = new HisCentralTester(); // TODO: Initialize to an appropriate value
-            //HisCentralTestResult expected = null; // TODO: Initialize to an appropriate value
-            HisCentralTestResult actual;
-            actual = target.runSeriesCatalogByBox("test");
-            Assert.IsTrue(actual != null);
-            //  Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-     
+       
 
 
         /// <summary>

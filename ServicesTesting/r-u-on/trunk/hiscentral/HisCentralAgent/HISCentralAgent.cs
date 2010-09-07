@@ -86,7 +86,7 @@ namespace Cuahsi.His.Ruon
         private HisCentralServerList servers;
         private string hisCentral1 = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx";
 
-        private HisCentralTester _tester;
+        private IHisCentralTester _tester;
 
         // stats
         private int runs = 0;
@@ -160,7 +160,7 @@ namespace Cuahsi.His.Ruon
 
         }
         // used for mock injection for testing
-        public HisCentralTester Tester
+        public IHisCentralTester Tester
         {
             get
             {
@@ -178,10 +178,18 @@ namespace Cuahsi.His.Ruon
         override protected void Monitor()
         {
             log.Debug("Running Monitor override");
-            Monitor(Configuration.ManagedResources);
+           var alarms= Monitor(Configuration.ManagedResources);
+            ReportAlarms(alarms, false);
         }
 
-       public void Monitor(Dictionary<string, string>[] managedResources)
+        /// <summary>
+        /// Modified ovverride void Montior(), to allow for testing.
+        /// Pass in a managedReource list, and return a list of alarms
+        /// </summary>
+        /// <param name="managedResources">list of resources use HISCenrealList.ToResource()</param>
+      
+        /// <returns></returns>
+       public List<IAlarm> Monitor(Dictionary<string, string>[] managedResources)
         {
             log.Debug("Running Monitor method");
             try
@@ -189,7 +197,7 @@ namespace Cuahsi.His.Ruon
                 AgentParams ap = new AgentParams();
                 List<IAlarm> alarms = new List<IAlarm>();
 
-                HisCentralTester tester = new HisCentralTester();
+                IHisCentralTester tester = Tester;
                 // set endpoint 
                 tester.Endpoint = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx";
 
@@ -284,7 +292,8 @@ namespace Cuahsi.His.Ruon
                     
                 }
 
-                ReportAlarms(alarms, false);
+
+                return alarms;
 
             }
             catch (Exception ex)
@@ -294,7 +303,9 @@ namespace Cuahsi.His.Ruon
                 log.ErrorFormat("ERROR {0}}",  ex.Message);
                 alarms.Add(new Event("HIS Central", "CriticalServiceError", AlarmSeverity.Critical, "Critical Error in Monitor Service"));
 
-                ReportAlarms(alarms, false);
+            
+
+                return alarms;
             }
         }
     }

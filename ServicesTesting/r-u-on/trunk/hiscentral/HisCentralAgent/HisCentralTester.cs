@@ -5,10 +5,19 @@ using System.Text;
 using Cuahsi.His.Ruon.org.cuahsi.hiscentral;
 using log4net;
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "cuahsi.logging.log4net", Watch = true)]
+// [assembly: log4net.Config.XmlConfigurator(ConfigFile = "cuahsi.logging.log4net", Watch = true)]
 namespace Cuahsi.His.Ruon
 {
-    public class HisCentralTestResult
+    public interface IHisCentralTestResult
+    {
+        bool Working { get; set; }
+        String ServiceName { get; set; }
+        String MethodName { get; set; }
+        String errorString { get; set; }
+        long runTimeMilliseconds { get; set; }
+    }
+
+    public class HisCentralTestResult : IHisCentralTestResult
     {
         public bool Working { get; set; }
         public String ServiceName { get; set; }
@@ -17,7 +26,18 @@ namespace Cuahsi.His.Ruon
         public long runTimeMilliseconds { get; set; }
     }
 
-    public class HisCentralTester
+    public interface IHisCentralTester
+    {
+        String Endpoint { get; set; }
+        String ServiceName { get; set; }
+        HisCentralTestResult runQueryServiceList(String serviceName);
+        HisCentralTestResult runServicesByBox(String serviceName);
+        HisCentralTestResult runSeriesCatalogByBox(String serviceName);
+        HisCentralTestResult runSearchableConcepts();
+        HisCentralTestResult runGetWordListNitrogen(String serviceName);
+    }
+
+    public class HisCentralTester : IHisCentralTester
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -249,7 +269,7 @@ namespace Cuahsi.His.Ruon
 
                 svc.Timeout = 3 * 60000;
                 var result = svc.GetWordList(
-                    nitrogen ,10
+                    nitrogen, 10
                     );
                 {
                     log.InfoFormat("{0} {1} in {2}ms {3} results from getword list",
