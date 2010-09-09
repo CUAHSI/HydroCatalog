@@ -49,7 +49,7 @@ namespace Cuahsi.His.Ruon
 
         private Box chesapeak = new Box { xmax = -75.5, xmin = -76.5, ymax = 39.5, ymin = 37.0 };
 
-        private Box small = new Box { xmax = -106.7, xmin = -93.28, ymax = 3.5, ymin = 28.8 };
+        private Box small = new Box { xmax = -71.0, xmin = -72.0, ymax = 42.0, ymin = 41.0 };
 
         private String nitrogen = "Nitrogen";
         private String streamFlux = "Discharge, Stream";
@@ -180,8 +180,11 @@ namespace Cuahsi.His.Ruon
                 int[] networks = new int[0];
                 string DateFormatString = "yyyy-MM-dd";
                 svc.Timeout = 3 * 60000;
-                var result = svc.getSeriesCatalogInBoxPaged(chesapeak.xmin, chesapeak.xmax, chesapeak.ymin, chesapeak.ymax,
-                   nitrogen, "", start.ToString(DateFormatString), end.ToString(DateFormatString), 1);
+                //var result = svc.getSeriesCatalogInBoxPaged(chesapeak.xmin, chesapeak.xmax, chesapeak.ymin, chesapeak.ymax,
+                //   nitrogen, "", start.ToString(DateFormatString), end.ToString(DateFormatString), 1);
+                //
+                var result = svc.GetSeriesCatalogForBox2(small.xmin, small.xmax, small.ymin, small.ymax,
+                   streamFlux, "", start.ToString(DateFormatString), end.ToString(DateFormatString));
                 if (result.Length > 0)
                 {
                     log.InfoFormat("{0} {1} in {2}ms {3} results from service info",

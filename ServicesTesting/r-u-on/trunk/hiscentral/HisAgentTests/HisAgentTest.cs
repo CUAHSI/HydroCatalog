@@ -14,8 +14,9 @@ namespace HisAgentTests
     ///to contain all HisCentralTesterTest Unit Tests
     ///</summary>
     [TestFixture()]
-    public class HisAgentTest 
+    public class HisAgentTest
     {
+        #region Fake Results
         IHisCentralTestResult good = new HisCentralTestResult
                                          {
                                              MethodName = "Dummy",Working = true,ServiceName ="MockService"
@@ -36,6 +37,7 @@ namespace HisAgentTests
             runTimeMilliseconds = 60000,
             errorString = "Mock Service Error Message"
         };
+        #endregion
 
         private HisCentralServerList servers;
         private HisCentralServerList oneServer;
@@ -51,6 +53,7 @@ namespace HisAgentTests
             oneServer.Add(new HisCentralServer { Name = "OneServer", Endpoint = "http://hiscentral.cuahsi.org/webservices/hiscentral.asmx" });
  
         }
+        #region Alarm Predicates
         // This method implements the test condition for the Find
         // method.
         private static bool AlarmIsCritial(IAlarm p)
@@ -138,11 +141,12 @@ namespace HisAgentTests
                 return false;
             }
         }
+        #endregion
+
         /// <summary>
         ///A test for all working
         ///</summary>
         [Test()]
-      
         public void TestAgentUningMock_allWorking()
         {
 
@@ -171,7 +175,7 @@ namespace HisAgentTests
         }
 
         /// <summary>
-        ///A test for all working
+        ///A test for all failing. Should return a ServiceAllFailed alarm
         ///</summary>
         [Test()]
 
@@ -202,6 +206,9 @@ namespace HisAgentTests
             
         }
 
+        /// <summary>
+        /// Test one failing. Should not return a critical Alarm
+        /// </summary>
         [Test()]
         public void TestAgentUningMock_PartialFail()
         {
@@ -228,6 +235,7 @@ namespace HisAgentTests
             System.Collections.Generic.List<IAlarm> criticalAlarm = alarms.FindAll(AlarmIsCritial);
             Assert.That(criticalAlarm.Count == 0); // the service error is one
 
+            Assert.That(alarms.FindAll(AlarmIsMajor).Count == 1); // one bad
         }
 
        

@@ -44,5 +44,17 @@ namespace Cuahsi.His.Ruon.Properties {
                 this["AccountId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int MonitorIntervalSeconds {
+            get {
+                return ((int)(this["MonitorIntervalSeconds"]));
+            }
+            set {
+                this["MonitorIntervalSeconds"] = value;
+            }
+        }
     }
 }

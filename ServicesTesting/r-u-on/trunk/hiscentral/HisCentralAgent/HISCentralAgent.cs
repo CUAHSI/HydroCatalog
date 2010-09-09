@@ -25,11 +25,11 @@ namespace Cuahsi.His.Ruon
             return this.ToDictionary().Values.ToArray();
         }
     }
-    public class HisCentralServerList  :List<HisCentralServer>
+    public class HisCentralServerList : List<HisCentralServer>
     {
         public HisCentralServerList()
         {
-           
+
         }
         public HisCentralServerList(Dictionary<string, string>[] agentMangagedResources)
         {
@@ -74,8 +74,9 @@ namespace Cuahsi.His.Ruon
     public class HISCentralAgent : ServiceAgent
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-         private static readonly ILog preformanceLogger = LogManager.GetLogger("HISServicePerformance");
-      
+        private static readonly ILog preformanceLogger = LogManager.GetLogger("HISServicePerformance");
+        private const string PERFORMANCEFORMAT = "{0}\t{1}\t{2}\t{3}"; //ServiceName,Method,Time,Message
+
         public const string SERVERNAME = "ServerName";
         public const string ENDPOINT = "HIS_Central_Url";
         public const string Monitor_SiteInfo = "Monitor_SiteInfo";
@@ -103,10 +104,10 @@ namespace Cuahsi.His.Ruon
         //: base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
         // 60, null, null, serviceProcess)
         public HISCentralAgent(IServiceProcess serviceProcess)
-            : base("HISCentralAgent", "1.0", 
-            //"AAAABIESfWjQAAADDrFZJTSn",
+            : base("HISCentralAgent", "1.0",
+                //"AAAABIESfWjQAAADDrFZJTSn",
             Properties.Settings.Default.AccountId,
-              30, null, null, serviceProcess)
+              Properties.Settings.Default.MonitorIntervalSeconds, null, null, serviceProcess)
         {
             log.Info("Creating HIS Central Agent");
 
@@ -138,7 +139,7 @@ namespace Cuahsi.His.Ruon
 
                 foreach (var list in Configuration.ManagedResources)
                 {
-                    log.Debug("Creating Server "+list["ServerName"]+ list["HIS_Central_Url"] );
+                    log.Debug("Creating Server " + list["ServerName"] + list["HIS_Central_Url"]);
                     servers.Add(new HisCentralServer { Name = list["ServerName"], Endpoint = list["HIS_Central_Url"] });
                 }
             }
@@ -178,7 +179,7 @@ namespace Cuahsi.His.Ruon
         override protected void Monitor()
         {
             log.Debug("Running Monitor override");
-           var alarms= Monitor(Configuration.ManagedResources);
+            var alarms = Monitor(Configuration.ManagedResources);
             ReportAlarms(alarms, false);
         }
 
@@ -187,9 +188,9 @@ namespace Cuahsi.His.Ruon
         /// Pass in a managedReource list, and return a list of alarms
         /// </summary>
         /// <param name="managedResources">list of resources use HISCenrealList.ToResource()</param>
-      
+
         /// <returns></returns>
-       public List<IAlarm> Monitor(Dictionary<string, string>[] managedResources)
+        public List<IAlarm> Monitor(Dictionary<string, string>[] managedResources)
         {
             log.Debug("Running Monitor method");
             try
@@ -205,14 +206,14 @@ namespace Cuahsi.His.Ruon
                 {
                     try
                     {
-                        log.DebugFormat("Testing {0} " ,server["ServerName"]);
+                        log.DebugFormat("Testing {0} ", server["ServerName"]);
                         int enabledCount = 0;
                         int failedCount = 0;
                         tester.Endpoint = server["HIS_Central_Url"];
                         if (Boolean.Parse(Configuration["Monitor_SiteInfo"]))
                         {
                             enabledCount++;
-                            log.DebugFormat("running {0} {1} ", server["ServerName"],"Monitor_SiteInfo");
+                            log.DebugFormat("running {0} {1} ", server["ServerName"], "Monitor_SiteInfo");
                             var timer = new System.Timers.Timer();
                             HisCentralTestResult result = tester.runQueryServiceList(server["ServerName"]);
 
@@ -220,13 +221,15 @@ namespace Cuahsi.His.Ruon
                             {
                                 failedCount++;
                                 log.DebugFormat("completed failed {0} {1} ", server["ServerName"], "Monitor_SiteInfo");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
-                                    AlarmSeverity.Major, 
-                                    "Service List Failed " + result.ServiceName + " error: "+ result.errorString));
+                                    AlarmSeverity.Major,
+                                    "Service List Failed " + result.ServiceName + " error: " + result.errorString));
                             }
                             else
                             {
                                 log.DebugFormat("completed {0} {1} ", server["ServerName"], "Monitor_SiteInfo");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
@@ -240,7 +243,8 @@ namespace Cuahsi.His.Ruon
                             {
                                 failedCount++;
                                 log.DebugFormat("completed failed {0} {1} ", server["ServerName"], "Monitor_SeriesCatalog");
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, 
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
                                     AlarmSeverity.Major,
                                     "Series Failed " + result.ServiceName + " error: " + result.errorString));
                             }
@@ -248,6 +252,7 @@ namespace Cuahsi.His.Ruon
                             {
 
                                 log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_SeriesCatalog");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
 
@@ -264,13 +269,15 @@ namespace Cuahsi.His.Ruon
                             {
                                 failedCount++;
                                 log.DebugFormat("Completed Failed {0} {1} ", server["ServerName"], "Monitor_Ontology");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
                                     AlarmSeverity.Major,
                                     "Ontology Failed " + result.ServiceName + " error: " + result.errorString));
                             }
                             else
                             {
-                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_Ontology"); 
+                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_Ontology");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
 
@@ -278,9 +285,9 @@ namespace Cuahsi.His.Ruon
                         if (failedCount >= enabledCount)
                         {
                             log.DebugFormat("All Tests failed {0} ", server["ServerName"]);
-                            alarms.Add(new Alarm(server["ServerName"],"ServiceAllFailed",
-                                AlarmSeverity.Critical,
-                                server["ServerName"] + " All Enabled Services failed"));
+                            alarms.Add(new Alarm(server["ServerName"], "ServiceAllFailed",
+                   AlarmSeverity.Critical,
+                   server["ServerName"] + " All Enabled Services failed"));
                         }
                     }
                     catch (Exception ex)
@@ -289,7 +296,7 @@ namespace Cuahsi.His.Ruon
                         alarms.Add(new Event("HIS Central", "ServiceError", AlarmSeverity.Critical, "Error in Monitor Service" + server["ServerName"]));
                     }
 
-                    
+
                 }
 
 
@@ -300,10 +307,10 @@ namespace Cuahsi.His.Ruon
             {
                 // log error
                 List<IAlarm> alarms = new List<IAlarm>();
-                log.ErrorFormat("ERROR {0}}",  ex.Message);
+                log.ErrorFormat("ERROR {0}}", ex.Message);
                 alarms.Add(new Event("HIS Central", "CriticalServiceError", AlarmSeverity.Critical, "Critical Error in Monitor Service"));
 
-            
+
 
                 return alarms;
             }
