@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN">
+	<head>
+	<style>
+		html,body {
+			height: 99%;
+			width: 99%;
+		}
+		#map {
+			width: 100%;
+			height: 100%;
+			border: 1px solid black;
+		}	
+	</style>
+	<script src='http://openlayers.org/api/OpenLayers.js'></script>
+	</head>
+	<body>
+		<div id='map'></div>
+		<script type="text/javascript">
+			var map = new OpenLayers.Map('map',{maxResolution: 0.703125} );
+			var wmscURL = [
+				"http://wmsc1.terrapages.net/getmap?",
+				"http://wmsc2.terrapages.net/getmap?",
+				"http://wmsc3.terrapages.net/getmap?",
+				"http://wmsc4.terrapages.net/getmap?"
+			];
+			var terrapagesStreetLayer = new OpenLayers.Layer.WMS( 'TerraPages Street',wmscURL, {layers: 'UnprojectedStreet', format: 'image/jpeg' }, {buffer: 1, isBaseLayer: true} );
+			map.addLayer(terrapagesStreetLayer);
+			map.zoomToMaxExtent();		
+		</script>
+	</body>
+</html>
+

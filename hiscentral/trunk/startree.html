@@ -1,0 +1,220 @@
+<html>
+<head>
+<title>Inxight Star Tree</title>
+</head>
+
+<body onResize="resize()" bgcolor="White" leftMargin="0" topMargin="0" marginheight="0"
+marginwidth="0">
+
+<!-- THREE JAVASCRIPT FUNCTIONS -->
+
+<script>
+	function STmouseOver(urlandhierarchy){}
+	function STsingleClick(urlandhierarchy){}
+
+	// The following function replaces the old directory value in URL to the new value
+	// To use this function, set "invoke_double_click" parameter to FALSE.
+	function STdoubleClick(urlandhierarchy){
+			var oldDirPath = ""; // specify your old directory path
+			var newDirPath = ""; // specify your new directory path
+
+			var locArray = urlandhierarchy.split("\t");
+			var URL = locArray[0].replace(oldDirPath, newDirPath);
+
+			if (locArray[0] != "null")
+			{
+				newWindow = window.open(URL,"newWindow");
+			}
+	}
+
+//			function resize() {
+	//			    if (navigator.appName.indexOf("Microsoft") != -1) {
+		//			    width=document.body.clientWidth;
+			//			height=document.body.clientHeight;
+				//	} else {
+//						var netscapeScrollWidth=15;
+	//					width=window.innerWidth - netscapeScrollWidth;
+		//				height=window.innerHeight-netscapeScrollWidth;
+			//		}
+//						document.myApplet.hbp.dims.width = width;
+	//					document.myApplet.hbp.dims.height = height;
+		//				document.myApplet.hbp.triggerPaint();
+				//		document.myApplet.resize_this(width, height);
+					//	window.scroll(0,0);
+		//	}
+			// window.onResize = resize;
+//            window.onLoad = resize;
+</script>
+
+
+
+<!-- THE APPLET PARAMETERS -->
+
+<center>
+<applet name="myApplet" codebase=applets code="STApplet.class"
+archive = "StarTree30c.jar" WIDTH="100%" HEIGHT="100%" MAYSCRIPT>
+
+<param name="dataset" value="viewtree.stc">
+	<!-- This parameter is required. It specifies the location of the .STC file
+	to load. -->
+
+<param name="where" value="">
+	<!-- This parameter is optional. This is the parameter that you modify
+	if you wish to provide dynamic queries for your Star Tree users -->
+
+<param name="query_variable_substitutions" value="">
+	<!-- This parameter is optional. This is the parameter that you modify
+	if you wish to substitute variables for the queries. For example,
+	value can be $param1=param1value;$param2=param2value;$param3=param3value;
+	-->
+
+<param name="data_streaming" value="false">
+	<!-- This parameter is optional. Specifies whether the applet should display nodes as they are loaded.
+	 Although overall load time increases, this behavior, called stream data loading,
+	 provides a perceived improvement in performance over the default behavior,
+	 which is to wait until all nodes are loaded before displaying the applet. -->
+
+<!-- THIS PARAMETER SETS THE DIRECTORY CONTAINING THE APPLET'S IMAGES -->
+
+<param name="image_base_url" value="">
+	<!-- This parameter is optional. It is used in conjunction with the .STC file
+	and specifies the location of all the nodes' thumbnails and icons. -->
+
+
+
+<!-- THESE TWO PARAMETERS AFFECT THE APPLET'S IMAGES -->
+
+<param name="show_thumbnail" value="$SHOW_THUMBNAIL">
+	<!-- TRUE by default. If set to TRUE, this will load thumbnails when the applet
+	is loaded. -->
+
+<param name="image_delay" value="">
+	<!-- FALSE by default. This is only available with the 2.5 applet. If set to
+	TRUE, the applet's images won't scale when the tree in dragged. -->
+
+
+
+<!-- THESE PARAMETERS SET VALUES FOR THE BACKGROUND IMAGE -->
+
+<param name="background_image" value="$BACKGROUNDIMAGEURL">
+	<!-- The URL location of the background image; this is not affected by the
+	previous parameter, so you have to enter the sub-directory name as well. For
+	example: "http://myserver/images/background_image.gif". -->
+
+<param name="back_img_layout" value="">
+	<!-- By default, the background image is placed at "0,0". This parameter can
+	use any of the following compass point values to specify the desired location
+	of the background image:  C, N, E, S, W, NE, NW, SE, SW. (C is for Center.)
+	Either use this parameter, or use both of the following two parameters
+	(for the X and Y axes) -->
+
+<param name="background_image_X" value="">
+	<!-- By default, the background image is placed at "0,0". This parameter has
+	to be a number. If less than 1, it will be interpreted as a percentage;
+	otherwise, it will be interpreted as the number of pixels. Either way, it
+	specifies the absolute location of the background image on the X axis.
+	Use this parameter along with the Y axis parameter below. -->
+
+<param name="background_image_Y" value="">
+	<!-- By default, the background image is placed at "0,0". This parameter has
+	to be a number. If less than 1, it will be interpreted as a percentage;
+	otherwise, it will be interpreted as the number of pixels. Either way, it
+	specifies the absolute location of the background image on the Y axis.
+	Use this parameter along with the X axis parameter above. -->
+
+
+
+<!-- THIS PARAMETER SETS THE TARGET WINDOW FOR LINKED PAGES -->
+
+<param name="target_window" value="new">
+	<!-- By default,link opens in a new window. If you want to use
+	another window or frame in which links will appear, enter the name
+	of that window or frame.
+	Note: If no window or a frame with that name exists, the link opens in a new
+	window. -->
+
+
+
+
+<!-- BUTTONS DISPLAYED ON THE APPLET'S DISPLAY PANEL -->
+
+
+<param name="Home_button" value="true">
+	<!-- TRUE by default. If FALSE, the Home button won't appear on the
+	display	panel. -->
+
+<param name="Stretch_button" value="true">
+	<!-- FALSE by default. If TRUE, the Stretch button will appear on the
+	display panel. -->
+
+<param name="Thumbnail_button" value="true">
+	<!-- FALSE by default. If TRUE, the Thumbnail button will appear on the
+	display panel. -->
+
+<param name="Layout_button" value="true">
+	<!-- FALSE by default. If TRUE, the Layout button will appear on the
+	display panel. -->
+
+<param name="Textsize_button" value="true">
+	<!-- FALSE by default. If TRUE, the Text Size button will appear on the
+	display panel. -->
+
+<param name="Textmode_button" value="true">
+	<!-- FALSE by default. If TRUE, the Text Mode button will appear on the
+	display panel. -->
+
+<param name="Search_button" value="">
+	<!-- TRUE by default. If FALSE, the Search button, along with the text field,
+	won't appear on the display panel. -->
+
+<param name="Help_button" value="true">
+	<!-- TRUE by default. If FALSE, the Help button will not appear on the
+        display panel. -->
+
+<param name="Display_panel" value="">
+	<!-- BOTTOM by default. This parameter specifies the location of the display
+	panel in the applet. It can be set to TOP, BOTTOM, or NONE. -->
+
+<!-- THIS PARAMETER SETS APPEARANCE OF THE NODE -->
+
+<param name="Show_TextRect" value="$SHOW_TEXT_RECT">
+	<!-- TRUE by default. Specifies whether to show a border around each node or not.
+	Hiding the border gives the appearance of text floating. This works best
+	when the tree is not very dense. -->
+    <!-- changed by rsjamsud to support show thumbnail by disabling text rectangcle-->
+
+<param name="Show_PlusMinus" value="$SHOW_PLUSMINUS">
+	<!-- TRUE by default. Specifies whether to show the plus/minus sign on each node or not.
+	This symbol shows users which nodes have children and gives them the ability to hide some subtrees.
+	Hiding the plus/minus signs may present a more uncluttered look. -->
+    <!-- changed by rsjamsud to support show thumbnail by disabling PLUSMINUS-->
+
+
+<!-- THIS PARAMETER SETS THE URL OF THE HELP PAGE -->
+
+<param name="help_url" value="">
+	<!-- By default, this points to the Help page located on the Inxight server,
+	unless you specify another URL. If another page is specified, you can enter
+	its relative URL. -->
+	<!-- NOTE: YOU MUST INCLUDE THE INXIGHT TECHNOLOGY ATTRIBUTION LINE IF YOU
+        CREATE YOUR OWN HELP PAGE. -->
+
+
+
+<!-- PARAMETERS THAT ACTIVATE THE JAVASCRIPT FUNCTIONS -->
+
+<param name="invoke_double_click" value="">
+	<!-- TRUE by default. If FALSE, the STdoubleClick() function will be called. -->
+
+<param name="enable_single_click" value="">
+	<!-- FALSE by default. If TRUE, the STsingleClick() function will be called. -->
+
+<param name="enable_mouse_over" value="">
+	<!-- FALSE by default. If TRUE, the STmouseOver() function will be called. -->
+
+<param name="move_to_center" value="">
+	<!-- TRUE by default. If FALSE, single-click events won't move the node to the 	center. -->
+</applet>
+</center>
+</body>
+</html>
