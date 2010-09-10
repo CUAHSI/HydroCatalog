@@ -5,7 +5,7 @@ using System.Text;
 using Cuahsi.His.Ruon.org.cuahsi.hiscentral;
 using log4net;
 
-// [assembly: log4net.Config.XmlConfigurator(ConfigFile = "cuahsi.logging.log4net", Watch = true)]
+
 namespace Cuahsi.His.Ruon
 {
     public interface IHisCentralTestResult
