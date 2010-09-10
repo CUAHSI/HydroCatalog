@@ -16,6 +16,7 @@ using com.hp.hpl.jena.rdf.model;
 using com.hp.hpl.jena.util.iterator;
 using com.hp.hpl.jena.ontology;
 
+using log4net;
 
 
 
@@ -26,7 +27,11 @@ using com.hp.hpl.jena.ontology;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 public class hiscentral : System.Web.Services.WebService {
 
-    public hiscentral () {
+   private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType));
+   
+    private static readonly ILog queryLog = LogManager.GetLogger("QueryLog");
+  
+        public hiscentral () {
 
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
@@ -476,6 +481,7 @@ ServiceStatus
   public SeriesRecord[] GetSeriesCatalogForBox2(double xmin, double xmax, double ymin, double ymax, string conceptKeyword, String networkIDs, string beginDate, string endDate)
   {
 
+   
     Box box = new Box();
     box.xmax = xmax;
     box.xmin = xmin;
