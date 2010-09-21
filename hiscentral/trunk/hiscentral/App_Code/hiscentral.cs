@@ -27,7 +27,7 @@ using log4net;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 public class hiscentral : System.Web.Services.WebService {
 
-   private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType));
+   private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
    
     private static readonly ILog queryLog = LogManager.GetLogger("QueryLog");
   
