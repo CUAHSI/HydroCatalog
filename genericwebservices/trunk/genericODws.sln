@@ -143,7 +143,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "genericODws", "genericODws\
 		SccLocalPath = ""
 		SccProvider = ""
 		TargetFramework = "3.5"
-		ProjectReferences = "{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}|waterOneFlowImpl.dll;{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}|ODM1_1_Datasets.dll;{7CC3CBAF-84AA-4C14-95A8-926C92580F3E}|ODM1_0_Datasets.dll;{79C351EE-392B-474E-B182-E75D558A4EB7}|WaterOneFlowUtilitiesCode.dll;{32144077-B780-491E-B0F4-EA29440B056B}|WofAuthentication.dll;"
+		ProjectReferences = "{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}|ODM1_1_Datasets.dll;{7CC3CBAF-84AA-4C14-95A8-926C92580F3E}|ODM1_0_Datasets.dll;{79C351EE-392B-474E-B182-E75D558A4EB7}|WaterOneFlowUtilitiesCode.dll;{32144077-B780-491E-B0F4-EA29440B056B}|WofAuthentication.dll;{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}|waterOneFlowImpl.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/genericODws"
 		Debug.AspNetCompiler.PhysicalPath = "genericODws\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\genericODws\"
@@ -162,7 +162,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "genericODws", "genericODws\
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "waterOneFlowImpl", "..\waterOneFlowImpl\waterOneFlowImpl.csproj", "{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "waterOneFlowImpl", "waterOneFlowImpl\waterOneFlowImpl.csproj", "{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GenericWSSetup", "GenericWSSetup\GenericWSSetup.vdproj", "{3F88F566-467C-4F51-A3CD-A06A52505AC9}"
 EndProject
