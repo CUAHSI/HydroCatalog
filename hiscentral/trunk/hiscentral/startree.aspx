@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="startree.aspx.cs" Inherits="_Default"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="startree.aspx.cs" Inherits="startree"
     Debug="true" EnableEventValidation="true" %>
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
@@ -28,7 +28,7 @@
                         <div id="appletSection">
 
                        <applet name="TreeApplet" code="STApplet.class" codebase="applets" archive="StarTree30c.jar" WIDTH="100%" HEIGHT="100%" MAYSCRIPT>'+
-                        <param="cache_option" VALUE="No">
+                        <param name="cache_option" VALUE="No">
                         <param name="dataset" value="ontology_mar1.stc">
                         <param name="data_streaming" value="false">
                         <param name="invoke_double_click" value="FALSE">

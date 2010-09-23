@@ -2,7 +2,6 @@
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc2" %>
 
-<%@ Register Src="../HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
 
 
 

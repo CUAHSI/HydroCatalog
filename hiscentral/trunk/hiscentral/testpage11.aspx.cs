@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class testpage : System.Web.UI.Page
+public partial class testpage_11 : System.Web.UI.Page
 {
     CUAHSI.WaterOneFlow m_service = new CUAHSI.WaterOneFlow();
 

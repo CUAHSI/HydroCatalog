@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="mynetworks.aspx.cs" Inherits="networks" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="mynetworks.aspx.cs" Inherits="mynetworks" %>
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
 

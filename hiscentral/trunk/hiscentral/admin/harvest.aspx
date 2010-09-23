@@ -1,8 +1,7 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Harvest.aspx.cs" Inherits="Harvest" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Harvest.aspx.cs" Inherits="admin_Harvest" %>
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc2" %>
 
-<%@ Register Src="../HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
 
 
 

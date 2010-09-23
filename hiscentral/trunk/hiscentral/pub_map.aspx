@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="pub_map.aspx.cs" Inherits="maps_map" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="pub_map.aspx.cs" Inherits="pub_map" %>
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
 

@@ -17,7 +17,7 @@ using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
 
-public partial class logoImage : System.Web.UI.Page
+public partial class treeImage : System.Web.UI.Page
 {
   protected void Page_Load(object sender, EventArgs e)
   {

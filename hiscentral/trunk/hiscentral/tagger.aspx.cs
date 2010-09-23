@@ -9,7 +9,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 
-public partial class _Default : System.Web.UI.Page 
+public partial class tagger : System.Web.UI.Page 
 {
     private DataSet dataSet;
     private SqlConnection con;

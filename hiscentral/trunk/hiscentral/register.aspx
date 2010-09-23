@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="register.aspx.cs" Inherits="login" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="register.aspx.cs" Inherits="register" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -26,7 +26,7 @@
                   <ContentTemplate>
                     <table border="0" style="font-size: 100%; font-family: Verdana">
                       <tr>
-                        <td align="center" colspan="2" style="font-weight: bold; color: black; background-color: lightsteelblue">
+                        <td align="center" colspan="2" style="font-weight: bold; color: black; background-color: LightSteelBlue">
                           Complete</td>
                       </tr>
                       <tr>

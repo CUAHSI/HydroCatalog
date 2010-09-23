@@ -13,7 +13,7 @@ using System.Drawing;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
 
-public partial class uploadIcon : System.Web.UI.Page
+public partial class uploadImages : System.Web.UI.Page
 {
     Object networkid;
 

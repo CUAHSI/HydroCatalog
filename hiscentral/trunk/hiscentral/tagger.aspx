@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tagger.aspx.cs" Inherits="_Default"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tagger.aspx.cs" Inherits="tagger"
     Debug="true" EnableEventValidation="true" %>
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>

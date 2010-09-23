@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="uploadImages.aspx.cs" Inherits="uploadIcon" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="uploadImages.aspx.cs" Inherits="uploadImages" %>
 
 <%@ Register Src="HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
 

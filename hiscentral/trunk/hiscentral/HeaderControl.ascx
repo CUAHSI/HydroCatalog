@@ -3,7 +3,7 @@
 
 	<div class="pageheader" style="left: 0px; top: 0px">
     <div class="whiteline"></div>
-    <div class="hislogo" ><img src="images/hiscentrallogo.jpg" alt="CUAHSI Hydrologic Information System - Sharing Hydrologic Data" align="left" height="125" width="700" tabindex="-1"  / >
+    <div class="hislogo" ><img src="images/hiscentrallogo.jpg" alt="CUAHSI Hydrologic Information System - Sharing Hydrologic Data" align="left" height="125" width="700" tabindex="-1"  />
 
     </div>
    

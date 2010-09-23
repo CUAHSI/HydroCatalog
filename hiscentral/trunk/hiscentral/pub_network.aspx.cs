@@ -10,7 +10,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 
-public partial class network : System.Web.UI.Page
+public partial class public_network : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HeaderControl.ascx.cs" Inherits="WebUserControl" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HeaderControl.ascx.cs" Inherits="AdminWebUserControl" %>
 <link href="../styles/his.css" rel="stylesheet" type="text/css" />
 
 	<div class="pageheader">

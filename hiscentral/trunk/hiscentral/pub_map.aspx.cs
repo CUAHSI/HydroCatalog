@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 using System.Text;
 
-public partial class maps_map : System.Web.UI.Page
+public partial class pub_map : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
