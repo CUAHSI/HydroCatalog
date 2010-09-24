@@ -174,8 +174,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeRewriter", "CodeRewrite
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeRewriterTest", "CodeRewriterTest\CodeRewriterTest.csproj", "{6C533CAF-5213-49F2-A980-D04E6C40D18E}"
 EndProject
-Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Odm1_1", "Odm1_1\Odm1_1.dbproj", "{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODM1_1_Datasets", "ODM1_1_Datasets\ODM1_1_Datasets.csproj", "{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODM1_0_Datasets", "ODM1_0_Datasets\ODM1_0_Datasets.csproj", "{7CC3CBAF-84AA-4C14-95A8-926C92580F3E}"
@@ -347,34 +345,6 @@ Global
 		{6C533CAF-5213-49F2-A980-D04E6C40D18E}.WaterDev|Any CPU.Build.0 = Release|Any CPU
 		{6C533CAF-5213-49F2-A980-D04E6C40D18E}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6C533CAF-5213-49F2-A980-D04E6C40D18E}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|.NET.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|Any CPU.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|Any CPU.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|Any CPU.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|Mixed Platforms.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Debug|Mixed Platforms.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|.NET.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|Any CPU.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|Any CPU.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|Any CPU.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|Mixed Platforms.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Default|Mixed Platforms.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|.NET.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|Any CPU.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|Any CPU.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|Any CPU.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|Mixed Platforms.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.Release|Mixed Platforms.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|.NET.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|Any CPU.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|Any CPU.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|Any CPU.Deploy.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|Mixed Platforms.Build.0 = Default|Any CPU
-		{4E912C15-19AF-4A7F-B60D-7B8EC8BEFDB8}.WaterDev|Mixed Platforms.Deploy.0 = Default|Any CPU
 		{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}.Debug|.NET.Build.0 = Debug|Any CPU
 		{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
