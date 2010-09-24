@@ -1,3 +1,3 @@
 glob:*.suo
 glob:hiscentral/trunk/hiscentral/web_ConnectionStrings.config
-relre:_Resharper.*
+glob:_Resharper.*
