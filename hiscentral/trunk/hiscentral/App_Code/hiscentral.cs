@@ -19,7 +19,7 @@ using com.hp.hpl.jena.ontology;
 
 using log4net;
 
-
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "hiscentral.log4net", Watch = true)]
 
 /// <summary>
 /// Summary description for hiscentral
@@ -209,7 +209,7 @@ public class hiscentral : System.Web.Services.WebService
 
             }
         }
-        log.InfoFormat(logFormat, methodName, "Start", timer.ElapsedMilliseconds,
+        log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
      String.Format(objecformat,
      conceptKeyword,
      box.xmin, box.xmax, box.ymin, box.ymax
@@ -324,7 +324,7 @@ String.Join(",", Networkids) )
             }
         }
 
-        log.InfoFormat(logFormat, methodName, "End", timer.ElapsedMilliseconds,
+        log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
                       String.Format(objecformat,
                                     String.Join(",", conceptids),
 String.Join(",", Networkids))
