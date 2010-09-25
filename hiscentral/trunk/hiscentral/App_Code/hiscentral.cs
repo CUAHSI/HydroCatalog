@@ -136,7 +136,7 @@ public class hiscentral : System.Web.Services.WebService
 
         log.InfoFormat(logFormat, methodName, "Start", 0,
            String.Format(objecformat,
-           conceptKeyword,
+           conceptKeyword ?? String.Empty,
            box.xmin, box.xmax, box.ymin, box.ymax
            , networksString));
 
@@ -211,7 +211,7 @@ public class hiscentral : System.Web.Services.WebService
         }
         log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
      String.Format(objecformat,
-     conceptKeyword,
+     conceptKeyword ?? String.Empty,
      box.xmin, box.xmax, box.ymin, box.ymax
      , networksString));
         timer.Stop();
@@ -242,8 +242,9 @@ public class hiscentral : System.Web.Services.WebService
         
         log.InfoFormat(logFormat, methodName, "Start", 0,
                        String.Format(objecformat,
+                       conceptids == null ? string.Empty :
                                      String.Join(",", conceptids),
-String.Join(",", Networkids) )
+Networkids == null ? string.Empty : String.Join(",", Networkids))
                                      
            ); 
         
@@ -326,8 +327,9 @@ String.Join(",", Networkids) )
 
         log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
                       String.Format(objecformat,
-                                    String.Join(",", conceptids),
-String.Join(",", Networkids))
+                       conceptids == null ? string.Empty :
+                                     String.Join(",", conceptids),
+Networkids == null ? string.Empty : String.Join(",", Networkids))
 
           );
         timer.Stop();
@@ -593,6 +595,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         Stopwatch timer = new Stopwatch();
         timer.Start();
         string networksString = networkIDs ?? String.Empty;
+        
 
         //if (networkIDs != null )
         //{
@@ -603,7 +606,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         //}
         log.InfoFormat(logFormat, methodName, "Start", 0,
            String.Format(objecformat,
-           conceptKeyword,
+           conceptKeyword ?? String.Empty,
            xmin, xmax, ymin, ymax
            , networksString, 
            beginDate ?? String.Empty, endDate ?? String.Empty)
@@ -712,7 +715,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         //}
         log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
           String.Format(objecformat,
-          conceptKeyword,
+          conceptKeyword ?? String.Empty,
           xmin, xmax, ymin, ymax
           , networksString,
           beginDate ?? String.Empty, endDate ?? String.Empty)
@@ -741,7 +744,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         //}
         log.InfoFormat(logFormat, methodName, "Start", 0,
            String.Format(objecformat,
-           conceptKeyword,
+           conceptKeyword ?? String.Empty,
            xmin, xmax, ymin, ymax
            , networksString,
            beginDate ?? String.Empty, endDate ?? String.Empty)
@@ -831,7 +834,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         //}
         log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
          String.Format(objecformat,
-         conceptKeyword,
+         conceptKeyword ?? String.Empty,
          xmin, xmax, ymin, ymax
          , networksString,
          beginDate ?? String.Empty, endDate ?? String.Empty)
