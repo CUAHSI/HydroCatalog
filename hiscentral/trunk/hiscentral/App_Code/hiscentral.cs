@@ -397,7 +397,7 @@ ServiceStatus
     [WebMethod]
     public ServiceInfo[] GetServicesInBox2(double xmin, double ymin, double xmax, double ymax)
     {
-        string objecformat = "box({1},{2},{3},{4})";
+        string objecformat = "box({0},{1},{2},{3})";
         string methodName = "GetServicesInBox2";
         Stopwatch timer = new Stopwatch();
         timer.Start();
@@ -405,7 +405,6 @@ ServiceStatus
         
         log.InfoFormat(logFormat, methodName, "Start", 0,
            String.Format(objecformat,
-           
            xmin, xmax, ymin, ymax
            ));
 
@@ -590,11 +589,11 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public SeriesRecord[] GetSeriesCatalogForBox2(double xmin, double xmax, double ymin, double ymax, string conceptKeyword, String networkIDs, string beginDate, string endDate)
     {
-        string objecformat = "concept:{0},box({1},{2},{3},{4}),network({5},daterange{6}-{7}";
+        string objecformat = "concept:{0},box({1},{2},{3},{4}),network{5},daterange{6}-{7}";
         string methodName = "GetSeriesCatalogForBox2";
         Stopwatch timer = new Stopwatch();
         timer.Start();
-        string networksString = networkIDs ?? String.Empty;
+        //string networksString = networkIDs ?? String.Empty;
         
 
         //if (networkIDs != null )
@@ -604,13 +603,15 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         //        networksString += iD.ToString();
         //    }
         //}
-        log.InfoFormat(logFormat, methodName, "Start", 0,
-           String.Format(objecformat,
-           conceptKeyword ?? String.Empty,
-           xmin, xmax, ymin, ymax
-           , networksString, 
-           beginDate ?? String.Empty, endDate ?? String.Empty)
-           );
+
+        //log.InfoFormat(logFormat, methodName, "Start", 0,
+        //    String.Empty
+        //   //String.Format(objecformat,
+        //   //conceptKeyword ?? String.Empty,
+        //   //xmin, xmax, ymin, ymax
+        //   //, networksString, 
+        //   //beginDate ?? String.Empty, endDate ?? String.Empty)
+        //   );
 
         Box box = new Box();
         box.xmax = xmax;
@@ -713,13 +714,14 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
             }
         }
         //}
-        log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
-          String.Format(objecformat,
-          conceptKeyword ?? String.Empty,
-          xmin, xmax, ymin, ymax
-          , networksString,
-          beginDate ?? String.Empty, endDate ?? String.Empty)
-          );
+        //log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
+        //    String.Empty
+        //  //String.Format(objecformat,
+        //  //conceptKeyword ?? String.Empty,
+        //  //xmin, xmax, ymin, ymax
+        //  //, networksString,
+        //  //beginDate ?? String.Empty, endDate ?? String.Empty)
+        //  );
         timer.Stop();
 
         return series;
