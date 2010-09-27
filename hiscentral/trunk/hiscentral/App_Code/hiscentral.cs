@@ -383,7 +383,8 @@ ServiceStatus
         public string Title, ServiceDescriptionURL;
         public string name, Email, phone;
         public string organization, orgwebsite, citation, aabstract;
-        public int valuecount, variablecount, sitecount;
+        public Int64 valuecount;
+        public int variablecount, sitecount;
         public int ServiceID;
         public string NetworkName;
         public double minx, miny, maxx, maxy;
@@ -509,7 +510,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
                 infos[i].miny = double.Parse(row["Ymin"].ToString());
                 infos[i].maxy = double.Parse(row["Ymax"].ToString());
             }
-            infos[i].valuecount = (row["ValueCount"] != null && row["ValueCount"].ToString() != "") ? int.Parse(row["ValueCount"].ToString()) : 0;
+            infos[i].valuecount = (row["ValueCount"] != null && row["ValueCount"].ToString() != "") ? Int64.Parse(row["ValueCount"].ToString()) : 0;
             infos[i].variablecount = (row["VariableCount"] != null && row["VariableCount"].ToString() != "") ? int.Parse(row["VariableCount"].ToString()) : 0;
             infos[i].sitecount = (row["SiteCount"] != null && row["SiteCount"].ToString() != "") ? int.Parse(row["SiteCount"].ToString()) : 0;
             infos[i].citation = row["citation"] != null ? row["citation"].ToString() : "";

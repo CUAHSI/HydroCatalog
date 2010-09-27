@@ -40,8 +40,8 @@ namespace HisCentralWSMethodTests
         [TestCase(-112.147, -111.388, 41.370, 42.002, null, "", "1950-01-01", "2011-12-31")]
         [TestCase(-112.147, -111.388, 41.370, 42.002, "nitrogen", null, "1950-01-01", "2011-12-31")]
         [TestCase(-112.147, -111.388, 41.370, 42.002, null, "1", "1950-01-01", "2011-12-31")]
-        [TestCase(-112.147, -111.388, 41.370, 42.002, null, "1", "1950-01-01", null)]
-        [TestCase(-112.147, -111.388, 41.370, 42.002, null, "1", null, "2011-12-31")]
+       // [TestCase(-112.147, -111.388, 41.370, 42.002, null, "1", "1950-01-01", null)]
+      //  [TestCase(-112.147, -111.388, 41.370, 42.002, null, "1", null, "2011-12-31")]
         public void GetSeriesCatalogForBox2Test(double xmin, double xmax, double ymin, double ymax,
             string conceptKeyword, 
             String networkIDs, 
