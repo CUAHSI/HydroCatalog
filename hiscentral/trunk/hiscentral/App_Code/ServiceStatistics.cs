@@ -53,6 +53,10 @@ public  class ServiceStatistics
         {
             MethodCalls.Add(methodName,1); 
         }
+         if ( _hitCount % 1000 == 0)
+         {
+             PerformanceLog.Info(this.ToString());
+         }
     }
     
     public override String ToString()

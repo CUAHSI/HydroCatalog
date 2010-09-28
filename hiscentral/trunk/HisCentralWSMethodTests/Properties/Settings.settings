@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="HisCentralWSMethodTests_hiscentral_webreference_hiscentral" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:5530/hiscentral/webservices/hiscentral.asmx</Value>
+      <Value Profile="(Default)">http://localhost:6201/hiscentral/webservices/hiscentral.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

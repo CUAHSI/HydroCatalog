@@ -414,7 +414,7 @@ ServiceStatus
         timer.Start();
 
 
-        queryLog.InfoFormat(logFormat, methodName, "Start", 0,
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
            String.Format(objecformat,
            xmin, xmax, ymin, ymax
            ));
@@ -446,7 +446,7 @@ ServiceStatus
         System.Data.DataRowCollection rows = ds.Tables["Service_LIST"].Rows;
 
         var r = getServiceInfoArray(rows);
-        queryLog.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
                   String.Format(objecformat,
 
                   xmin, xmax, ymin, ymax
@@ -471,7 +471,7 @@ ServiceStatus
         //        networksString += iD.ToString();
         //    }
         //}
-        queryLog.InfoFormat(logFormat, methodName, "Start", 0,
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
            String.Empty);
         //SELECT     NetworkID, username, NetworkName, NetworkTitle, ServiceWSDL, ServiceAbs, ContactName, ContactEmail, ContactPhone, Organization, website, 
         //                  IsPublic, SupportsAllMethods, Citation, MapIconPath, OrgIconPath, LastHarvested, FrequentUpdates, logo, icon, IsApproved, NetworkVocab, 
@@ -501,7 +501,7 @@ ServiceStatus
 
 
         var r = getServiceInfoArray(rows);
-        queryLog.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
         String.Empty);
         timer.Stop();
         return r;
@@ -626,9 +626,9 @@ ServiceStatus
         string methodName = "GetSeriesCatalogForBox2";
         Stopwatch timer = new Stopwatch();
         timer.Start();
-        
 
-        queryLog.InfoFormat(logFormat, methodName, "Start", 0,
+
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
             String.Format(objecformat,
             conceptKeyword ?? String.Empty,
             xmin, xmax, ymin, ymax
@@ -740,7 +740,7 @@ ServiceStatus
             }
         }
         //}
-        queryLog.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
             String.Format(objecformat,
             conceptKeyword ?? String.Empty,
             xmin, xmax, ymin, ymax
@@ -770,7 +770,7 @@ ServiceStatus
         //        networksString += iD.ToString();
         //    }
         //}
-        queryLog.InfoFormat(logFormat, methodName, "Start", 0,
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
            String.Format(objecformat,
            conceptKeyword ?? String.Empty,
            xmin, xmax, ymin, ymax
@@ -860,7 +860,7 @@ ServiceStatus
             }
         }
         //}
-        queryLog.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
          String.Format(objecformat,
          conceptKeyword ?? String.Empty,
          xmin, xmax, ymin, ymax

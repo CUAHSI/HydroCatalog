@@ -34,8 +34,8 @@
 
     <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
     <file value="..\..\log-data\hiscentral\root-logger.txt" />
-    <appendToFile value="true" />
-    <maxSizeRollBackups value="-1" />
+    <appendToFile value="false" />
+    <maxSizeRollBackups value="100" />
     <maximumFileSize value="5MB" />
     <rollingStyle value="Date" />
     <datePattern value="yyyyMM" />
@@ -57,7 +57,7 @@
   </appender>
   <appender name="LogFileAppender" type="log4net.Appender.FileAppender" >
     <file value="..\..\log-data\hiscentral\webapp-log.txt" />
-    <appendToFile value="true" />
+    <appendToFile value="false" />
     <layout type="log4net.Layout.PatternLayout">
       <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
     </layout>
