@@ -18,7 +18,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "hiscentral", "hiscentral\",
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "5530"
+		VWDPort = "6201"
 	EndProjectSection
 EndProject
 Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "hiscentral_deploy", "hiscentral_deploy\hiscentral_deploy.wdproj", "{71DBF00F-79DE-4377-8810-476FAA9AD963}"
