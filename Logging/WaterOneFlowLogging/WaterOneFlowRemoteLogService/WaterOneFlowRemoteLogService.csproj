@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuahsiLoggingDbAppender.cs" />
+    <Compile Include="FastDbAppender.cs" />
     <Compile Include="LogWorker.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
@@ -77,6 +79,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryMessage_v1.cs" />
     <Compile Include="WaterOneFlowLog.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,7 +88,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WaterOneFlow.logging.log4net">
+    <Content Include="CuahsiRemoteLogger.log4net">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

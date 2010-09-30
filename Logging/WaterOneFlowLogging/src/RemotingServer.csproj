@@ -19,8 +19,8 @@
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RemotingServer</RootNamespace>
-    <StartupObject>RemotingServer.RemotingServer</StartupObject>
+    <RootNamespace>Cuahsi.Log4Net</RootNamespace>
+    <StartupObject>Cuahsi.Log4Net.RemotingServer.RemotingServer</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -109,14 +109,18 @@
   <ItemGroup>
     <None Include="App.config" />
     <BaseApplicationManifest Include="Properties\app.manifest" />
-    <None Include="RemotingServer_TemporaryKey.pfx" />
-    <Content Include="WaterOneFlow.logging.log4net">
+    <None Include="CuahsiRemoteLogger.log4net">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Include="RemotingServer_TemporaryKey.pfx" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AssemblyVersionInfo.cs" />
+    <Compile Include="CuahsiLoggingDbAppender.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="FastDbAppender.cs" />
     <Compile Include="RemotingServer.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -26,10 +26,10 @@ using DnsPermission=System.Net.DnsPermission;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("log4net - RemotingServer")]
-[assembly: AssemblyDescription("log4net RemotingServer")]
+[assembly: AssemblyTitle("CUAHSI log4net - RemotingServer")]
+[assembly: AssemblyDescription("CUAHSI log4net RemotingServer. Derired from the log4net remoting service")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("log4net - RemotingServer")]
+[assembly: AssemblyProduct("CUAHSI log4net - RemotingServer")]
 [assembly: AssemblyCulture("")]		
 
 //

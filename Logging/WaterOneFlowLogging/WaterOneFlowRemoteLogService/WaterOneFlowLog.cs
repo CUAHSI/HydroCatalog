@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 
 // Configure log4net using the .config file
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "WaterOneFlow.logging.log4net", Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "CuahsiRemoteLogger.log4net", Watch = true)]
 
 
 namespace WaterOneFlowRemoteLogService
