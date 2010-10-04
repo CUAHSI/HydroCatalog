@@ -11,15 +11,16 @@
 <head runat="server">
     <title>CUAHSI HIS Central Data Annotation Tool</title>
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    
 </head>
 <body onload="GetApplet()">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
             <Services>
-                <asp:ServiceReference Path="TaggerService.asmx" InlineScript="False" />
+                <asp:ServiceReference Path="webservices/TaggerService.asmx" InlineScript="False" />
             </Services>
         </asp:ScriptManager>
-        
+       
        
             <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="top: 0px;
                 position: absolute; left: 0px;">
@@ -165,7 +166,7 @@
     </form>
 
 
-    <script src="tagger.js" type="text/javascript"></script>
+    <script src="js/tagger.js" type="text/javascript"></script>
 
 
 </body>

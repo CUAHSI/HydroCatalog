@@ -47,7 +47,7 @@
 
               
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CentralHISConnectionString %>"           
-            InsertCommand="INSERT INTO HISNetworks(username, NetworkTitle, NetworkName, ServiceWSDL, IsPublic, CreatedDate, IsApproved, FrequentUpdates) VALUES (@username, @NetworkTitle, @NetworkName, @ServiceWSDL, @IsPublic, @CreatedDate, @IsApproved, 'true')">
+            InsertCommand="INSERT INTO HISNetworks(username, NetworkTitle, NetworkName, ServiceWSDL, IsPublic, CreatedDate, IsApproved, FrequentUpdates, ServiceGroup) VALUES (@username, @NetworkTitle, @NetworkName, @ServiceWSDL, @IsPublic, @CreatedDate, @IsApproved, 'true', @ServiceGroup)">
 
 
         </asp:SqlDataSource>   
