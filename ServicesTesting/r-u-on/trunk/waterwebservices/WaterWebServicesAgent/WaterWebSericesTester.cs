@@ -112,6 +112,10 @@ namespace cuahsi.wof.ruon
                     if (timeSeries.timeSeries != null)
                     {
                         testResult.Working = true;
+                    } else
+                    {
+                        testResult.Working = false;
+                        return testResult;
                     }
                 }
                 else
@@ -129,7 +133,9 @@ namespace cuahsi.wof.ruon
             {
            //     TesterStatus = "failed Service Error " + ex.Message;
             //    UpdatedTesterStatus(this, null);
+                testResult.Working = false;
                 testResult.errorString = ex.Message;
+                return testResult;
             }
          //   TesterStatus = "Done with Run";
            // UpdatedTesterStatus(this, null);
