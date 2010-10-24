@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 using Ruon;
 
 namespace cuahsi.wof.ruon
@@ -92,6 +93,8 @@ namespace cuahsi.wof.ruon
     [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
     public class WaterWebServicesAgent : ServiceAgent
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
         public const string GETSITES = "Use_GetSites";
         public const string GETVALUES = "Use_GetValues";
         public const string SERVERNAME = "Server_Name";

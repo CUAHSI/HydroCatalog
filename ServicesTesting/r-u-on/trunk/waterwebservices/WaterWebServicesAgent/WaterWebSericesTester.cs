@@ -1,5 +1,6 @@
 ﻿using System;
 using cuahsi.wof.ruon.CuahsiSoap;
+using log4net;
 
 
 namespace cuahsi.wof.ruon
@@ -14,6 +15,9 @@ namespace cuahsi.wof.ruon
     }
     public class WaterWebSericesTester
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+       
         public string serviceName = "WaterOneFlowSoap_Undefined";
         public string endpointSoap = "WaterOneFlowSoap_Undefined";
         private WaterOneFlow svc;
@@ -22,6 +26,7 @@ namespace cuahsi.wof.ruon
         {
 
             svc = new WaterOneFlow();
+            log.Debug("Created WaterWebServices Monitor");
         }
 
         public String TesterStatus { get; set; }
@@ -99,6 +104,7 @@ namespace cuahsi.wof.ruon
                   //  TesterStatus = "failed getSiteInfo";
                  //   UpdatedTesterStatus(this, null);
 
+                    log.Error("Service Failed");
                     testResult.Working = false;
                     return testResult;
                 }
