@@ -90,7 +90,7 @@ namespace HisAgentTests
         {
             IsoTimePeriod target =  IsoTimePeriod.Parse(input); 
 
-            TimeSpan period = new TimeSpan(resultInDays,0,0);
+            TimeSpan period = new TimeSpan(resultInDays,0,0,0);
 
               
             Assert.AreEqual(period, target.TimeSpan);

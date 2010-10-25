@@ -127,7 +127,10 @@ namespace cuahsi.wof.ruon
                         testResult.Working = true;
                     } else
                     {
-                        log.Error("GetValues Failed empty or null timeseries " + serviceName);
+                        log.ErrorFormat("GetValues Failed empty or null timeseries |{0}|{1}|{2}|{3}|{4}" ,
+                            serviceName,ws_SiteCode, ws_variableCode,
+                            isoTimePeriod.StartDate.ToString("yyyy-MM-dd"),
+                            isoTimePeriod.EndDate.ToString("yyyy-MM-dd"));
                         testResult.Working = false;
                         return testResult;
                     }
@@ -136,7 +139,10 @@ namespace cuahsi.wof.ruon
                 {
                //     TesterStatus = "failed GetValues";
               //  UpdatedTesterStatus(this, null);
-                    log.Error("GetValues Failed null results " + serviceName);
+                    log.ErrorFormat("GetValues Failed null results |{0}|{1}|{2}|{3}|{4}",
+                                    serviceName, ws_SiteCode, ws_variableCode,
+                                    isoTimePeriod.StartDate.ToString("yyyy-MM-dd"),
+                                    isoTimePeriod.EndDate.ToString("yyyy-MM-dd"));
                     testResult.Working = false;
                     return testResult;
                 }
