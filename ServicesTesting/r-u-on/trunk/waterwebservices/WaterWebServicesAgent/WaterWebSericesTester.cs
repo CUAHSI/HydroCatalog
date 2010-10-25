@@ -58,6 +58,7 @@ namespace cuahsi.wof.ruon
                 {
                     if (results.site.Length > 0)
                     {
+                        log.Debug("Working GetSites" + serviceName + " sitecount " + results.site.Length);
                         testResult.Working = true;
                     }
                 }
@@ -67,6 +68,7 @@ namespace cuahsi.wof.ruon
             }
             catch (Exception ex)
             {
+                log.Error("Failed GetSites" + serviceName ,ex);
                 testResult.errorString = ex.Message;
             }
             return testResult;
@@ -83,7 +85,9 @@ namespace cuahsi.wof.ruon
             } catch (Exception ex)
             {
                 testResult.errorString = String.Format("Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
-                             //   TesterStatus =testResult.errorString;
+                log.Error(testResult.errorString, ex);
+                
+                //   TesterStatus =testResult.errorString;
               //  UpdatedTesterStatus(this,null );
             }
             try
@@ -97,6 +101,9 @@ namespace cuahsi.wof.ruon
                     if (results.site.Length > 0)
                     {
                         testResult.Working = true;
+                    } else
+                    {
+                        log.Error("SiteInfo failed Failed zero sites " + serviceName);
                     }
                 }
                 else
@@ -104,7 +111,7 @@ namespace cuahsi.wof.ruon
                   //  TesterStatus = "failed getSiteInfo";
                  //   UpdatedTesterStatus(this, null);
 
-                    log.Error("Service Failed");
+                    log.Error("Service Failed null results " + serviceName);
                     testResult.Working = false;
                     return testResult;
                 }
@@ -120,6 +127,7 @@ namespace cuahsi.wof.ruon
                         testResult.Working = true;
                     } else
                     {
+                        log.Error("GetValues Failed empty or null timeseries " + serviceName);
                         testResult.Working = false;
                         return testResult;
                     }
@@ -128,7 +136,7 @@ namespace cuahsi.wof.ruon
                 {
                //     TesterStatus = "failed GetValues";
               //  UpdatedTesterStatus(this, null);
-           
+                    log.Error("GetValues Failed null results " + serviceName);
                     testResult.Working = false;
                     return testResult;
                 }
@@ -139,12 +147,14 @@ namespace cuahsi.wof.ruon
             {
            //     TesterStatus = "failed Service Error " + ex.Message;
             //    UpdatedTesterStatus(this, null);
+                log.Error("Vaules Failed exception" + serviceName, ex);
                 testResult.Working = false;
                 testResult.errorString = ex.Message;
                 return testResult;
             }
          //   TesterStatus = "Done with Run";
            // UpdatedTesterStatus(this, null);
+            log.Debug("worked "+ serviceName);
             return testResult;
         }
     }
