@@ -83,8 +83,8 @@ namespace HisAgentTests
           [TestCase("http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx", "NWIS:10109000", "NWIS:00065", "P1D")]
         [TestCase("http://river.sdsc.edu/wateroneflow/NCDC/ISH_1_0.asmx","NCDCISH:72584523225","NCDCISH:CIG","2008-01-01/2008-03-01")]
 [TestCase("http://river.sdsc.edu/wateroneflow/NCDC/ISD_1_0.asmx","NCDCISD:72584523225","NCDCISD:CIG", "2008-01-01/2008-03-01")]
-[TestCase("http://river.sdsc.edu/wateroneflow/NCDC/ISH_1_0.asmx","NCDCISH:72584523225","NCDCISH:CIG", "P4D")]
-[TestCase("http://river.sdsc.edu/wateroneflow/NCDC/ISD_1_0.asmx","NCDCISD:72584523225","NCDCISD:CIG", "P2D")]
+//[TestCase("http://river.sdsc.edu/wateroneflow/NCDC/ISH_1_0.asmx","NCDCISH:72584523225","NCDCISH:CIG", "P4D")]
+//[TestCase("http://river.sdsc.edu/wateroneflow/NCDC/ISD_1_0.asmx","NCDCISD:72584523225","NCDCISD:CIG", "P2D")]
 
          public void RunTestsTest(string endpoint, string ws_SiteCode,
               string ws_variableCode, string ISOTimPeriod)
