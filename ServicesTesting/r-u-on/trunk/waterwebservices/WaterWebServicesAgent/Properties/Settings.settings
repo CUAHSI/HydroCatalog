@@ -8,5 +8,8 @@
     <Setting Name="AccountId" Type="System.String" Scope="User">
       <Value Profile="(Default)">AAAABIESfWjQAAADDrFZJTSn</Value>
     </Setting>
+    <Setting Name="TimeOutInSeconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -44,5 +44,17 @@ namespace cuahsi.wof.ruon.Properties {
                 this["AccountId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int TimeOutInSeconds {
+            get {
+                return ((int)(this["TimeOutInSeconds"]));
+            }
+            set {
+                this["TimeOutInSeconds"] = value;
+            }
+        }
     }
 }
