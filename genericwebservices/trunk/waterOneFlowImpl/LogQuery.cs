@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using log4net;
 
+/* a permission object is goint to be needed to make 
+ * this with the ability to access the DNS
+ * http://msdn.microsoft.com/en-us/library/system.security.codeaccesspermission.aspx
+ * http://www.eggheadcafe.com/community/aspnet/12/10007688/request-for-the-permission-of-type-systemnetdnspermission-system-version2000-cultureneutral-publickeytokenb77a5c561934e089.aspx
+ * http://social.msdn.microsoft.com/forums/en-US/csharpgeneral/thread/d4a58414-cc38-43ba-b7ef-1578767a823d
+ */
 
 // Load the configuration from the 'wateroneflow.logging.log4net' file
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "wateroneflow.logging.log4net", Watch = true)]
