@@ -118,14 +118,14 @@ namespace Unittests
         public void DoAppendOneRecord()
         {
             CuahsiLoggingDbAppender target = new CuahsiLoggingDbAppender(); // TODO: Initialize to an appropriate value
-            LoggingEvent loggingEvent = null; // TODO: Initialize to an appropriate value
-            String logdata = "2008-09-25 13:45:27,232 |(HIS) | TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-16T00:00:00|||129.116.248.192";
-            LoggingEventData led = new LoggingEventData();
-            led.Message = logdata;
+            //LoggingEvent loggingEvent = null; // TODO: Initialize to an appropriate value
+            //String logdata = "2008-09-25 13:45:27,232 |(HIS) | TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-16T00:00:00|||129.116.248.192";
+            //LoggingEventData led = new LoggingEventData();
+            //led.Message = logdata;
             
-            loggingEvent = new LoggingEvent(led);
+            //loggingEvent = new LoggingEvent(led);
             target.ConnectionString = "Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;";
-            target.DoAppend(loggingEvent);
+            target.DoAppend(LogEvent1());
             //Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
@@ -241,5 +241,18 @@ namespace Unittests
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
          */
+
+        public LoggingEvent LogEvent1()
+        {
+            LoggingEventData eventData = new LoggingEventData();
+            eventData.Message =
+                "TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-16T00:00:00|||129.116.248.192";
+            eventData.TimeStamp = new DateTime();
+            
+            LoggingEvent le = new LoggingEvent(eventData);
+
+            return le;
+
+        }
     }
 }
