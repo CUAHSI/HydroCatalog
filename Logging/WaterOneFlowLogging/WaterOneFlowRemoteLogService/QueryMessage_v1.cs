@@ -52,7 +52,22 @@ namespace WaterOneFlowRemoteLogService
     {
         public QueryMessageV1(string message)
         {
-
+            String [] tokens = message.Split('|');
+            if (tokens.Length == 11)
+            {
+                this.CallDateTime = DateTime.Parse(tokens[0]);
+                this.HisServer = tokens[1];
+                this.Network = tokens[2];
+                this.Method = tokens[3];
+                this.Location = tokens[4];
+                this.Variable = tokens[5];
+                this.StartDateTime = DateTimeOffset.Parse(tokens[6]);
+                this.EndDateTime = DateTimeOffset.Parse(tokens[7]);
+                this.ProcessingTime = TimeSpan.Parse(tokens[8]);
+                this.Count = Convert.ToInt64(tokens[9]);
+                this.UserHostIp = tokens[10];
+                   
+            }
         }
 
     }

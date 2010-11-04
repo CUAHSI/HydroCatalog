@@ -20,6 +20,7 @@
 from the Log4Net in the Cuahsi logger
 */
 
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using log4net.Appender;
@@ -156,10 +157,82 @@ namespace WaterOneFlowRemoteLogService.Appender
 		virtual protected void InitializeCommand(IDbCommand command)
 		{
 			command.CommandType = CommandType.Text;
-			command.CommandText = "INSERT INTO [LogTable] ([Time],[Logger],[Level],[Thread],[Message]) VALUES (@Time,@Logger,@Level,@Thread,@Message)";
+			//command.CommandText = "INSERT INTO [LogTable] ([Time],[Logger],[Level],[Thread],[Message]) VALUES (@Time,@Logger,@Level,@Thread,@Message)";
+            command.CommandText = "INSERT INTO [Log11Service] " +
+                                  " ([querytime],[machine],[network],[method],[location],[variable],[starttime],[endtime],[proctime],[reccount],[userhost])" +
+                                  " VALUES ( @QueryTime,@Machine,@Network,@Method,@Location,@Variable,@StartTime,@EndTime,@ProcTime,@RecCount,@UserHost)";
+
 
 			IDbDataParameter param = null;
-			
+
+            // @QueryTime
+            param = command.CreateParameter();
+            param.ParameterName = "@QueryTime";
+            param.DbType = DbType.DateTime;
+            command.Parameters.Add(param);
+
+            // @Machine
+            param = command.CreateParameter();
+            param.ParameterName = "@Machine";
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+
+            // @Network
+            param = command.CreateParameter();
+            param.ParameterName = "@Network";
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+
+            // @Method
+            param = command.CreateParameter();
+            param.ParameterName = "@Method";
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+            
+            // @Location
+            param = command.CreateParameter();
+            param.ParameterName = "@Location";
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+
+            // @Variable
+            param = command.CreateParameter();
+            param.ParameterName = "@Variable";
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+
+            // @StartTime
+            param = command.CreateParameter();
+            param.ParameterName = "@StartTime";
+            param.DbType = DbType.DateTimeOffset;
+            command.Parameters.Add(param);
+
+            // @EndTime
+            param = command.CreateParameter();
+            param.ParameterName = "@EndTime";
+            param.DbType = DbType.DateTimeOffset;
+            command.Parameters.Add(param);
+
+
+            // @ProcTime
+            param = command.CreateParameter();
+            param.ParameterName = "@ProcTime";
+            param.DbType = DbType.Int32;
+            command.Parameters.Add(param);
+
+            // @RecCount
+            param = command.CreateParameter();
+            param.ParameterName = "@RecCount";
+            param.DbType = DbType.Int64;
+            command.Parameters.Add(param);
+
+            // @UserHost
+            param = command.CreateParameter();
+            param.ParameterName = "@UserHost";
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+
+            /*
 			// @Time
 			param = command.CreateParameter();
 			param.ParameterName = "@Time";
@@ -190,6 +263,7 @@ namespace WaterOneFlowRemoteLogService.Appender
 			param.ParameterName = "@Message";
 			param.DbType = DbType.String;
 			command.Parameters.Add(param);
+             */
 		}
 
 		/// <summary>
@@ -205,12 +279,59 @@ namespace WaterOneFlowRemoteLogService.Appender
 		/// </remarks>
 		virtual protected void SetCommandValues(IDbCommand command, LoggingEvent loggingEvent)
 		{
-			((IDbDataParameter)command.Parameters["@Time"]).Value = loggingEvent.TimeStamp;
+			/*((IDbDataParameter)command.Parameters["@Time"]).Value = loggingEvent.TimeStamp;
 			((IDbDataParameter)command.Parameters["@Logger"]).Value = loggingEvent.LoggerName;
 			((IDbDataParameter)command.Parameters["@Level"]).Value = loggingEvent.Level.Name;
 			((IDbDataParameter)command.Parameters["@Thread"]).Value = loggingEvent.ThreadName;
 			((IDbDataParameter)command.Parameters["@Message"]).Value = loggingEvent.RenderedMessage;
-		
-        }
+		*/
+		    string logMessage = loggingEvent.RenderedMessage;
+		    string[] fields = logMessage.Split('|');
+		    string dtime = fields[0].Substring(0, fields[0].Length - 4);
+            
+            ((IDbDataParameter)command.Parameters["@QueryTime"]).Value = Convert.ToDateTime(dtime);
+            ((IDbDataParameter)command.Parameters["@Machine"]).Value = fields[1];
+            ((IDbDataParameter)command.Parameters["@Network"]).Value = fields[2];
+            ((IDbDataParameter)command.Parameters["@Method"]).Value = fields[3];
+            ((IDbDataParameter)command.Parameters["@Location"]).Value = fields[4];
+            ((IDbDataParameter)command.Parameters["@Variable"]).Value = fields[5];
+            if (fields[6] == "")
+            {
+                ((IDbDataParameter) command.Parameters["@StartTime"]).Value = DBNull.Value;
+            }
+            else
+            {
+                ((IDbDataParameter) command.Parameters["@StartTime"]).Value = fields[6];
+            }
+            if (fields[7] == "")
+            {
+                ((IDbDataParameter) command.Parameters["@EndTime"]).Value = DBNull.Value;
+            }
+            else
+            {
+                ((IDbDataParameter) command.Parameters["@EndTime"]).Value = fields[7];
+            }
+		    if (fields[8] == "")
+            {
+                ((IDbDataParameter) command.Parameters["@ProcTime"]).Value = DBNull.Value;
+            }
+            else
+            {
+                ((IDbDataParameter)command.Parameters["@ProcTime"]).Value = Convert.ToInt32(fields[8]);
+            }
+            if (fields[9] == "")
+            {
+                ((IDbDataParameter) command.Parameters["@RecCount"]).Value = DBNull.Value;
+            }
+            else
+            {
+                ((IDbDataParameter) command.Parameters["@RecCount"]).Value = Convert.ToInt64(fields[9]);
+            }
+		    ((IDbDataParameter)command.Parameters["@UserHost"]).Value = fields[10];
+
+
+
+
+		}
 	}
 }
