@@ -125,7 +125,8 @@ namespace Unittests
             
             //loggingEvent = new LoggingEvent(led);
             target.ConnectionString = "Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;";
-            target.DoAppend(LogEvent1());
+            String message = "TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-16T00:00:00|||129.116.248.192";
+            target.DoAppend(LogEvent1(message));
             //Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
@@ -149,10 +150,10 @@ namespace Unittests
                 LoggingEventData led = new LoggingEventData();
                 if (logdata.Split('|').Length == 11)
                 {
-                    led.Message = logdata;
-                    loggingEvent = new LoggingEvent(led);
-                    target.ConnectionString =
-                        "Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;";
+                    string message = String.Join("|", logdata.Split('|'), 2, 9);
+                    loggingEvent = LogEvent1(message);
+                        target.ConnectionString =
+                            "Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;";
                     target.DoAppend(loggingEvent);
                 }
 
@@ -242,15 +243,15 @@ namespace Unittests
         }
          */
 
-        public LoggingEvent LogEvent1()
+        public LoggingEvent LogEvent1(String message)
         {
             LoggingEventData eventData = new LoggingEventData();
-            eventData.Message =
-                "TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-16T00:00:00|||129.116.248.192";
-            eventData.TimeStamp = new DateTime();
-            
+            eventData.Message = message;
+                
+            eventData.TimeStamp = DateTime.Now;
+           
             LoggingEvent le = new LoggingEvent(eventData);
-
+            
             return le;
 
         }
