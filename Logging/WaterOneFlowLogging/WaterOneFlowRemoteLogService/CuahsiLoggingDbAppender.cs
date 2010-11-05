@@ -287,47 +287,47 @@ namespace WaterOneFlowRemoteLogService.Appender
 		*/
 		    string logMessage = loggingEvent.RenderedMessage;
 		    string[] fields = logMessage.Split('|');
-		    string dtime = fields[0].Substring(0, fields[0].Length - 4);
+		    //string dtime = loggingEvent.TimeStamp;
             
-            ((IDbDataParameter)command.Parameters["@QueryTime"]).Value = Convert.ToDateTime(dtime);
-            ((IDbDataParameter)command.Parameters["@Machine"]).Value = fields[1];
-            ((IDbDataParameter)command.Parameters["@Network"]).Value = fields[2];
-            ((IDbDataParameter)command.Parameters["@Method"]).Value = fields[3];
-            ((IDbDataParameter)command.Parameters["@Location"]).Value = fields[4];
-            ((IDbDataParameter)command.Parameters["@Variable"]).Value = fields[5];
-            if (fields[6] == "")
+            ((IDbDataParameter)command.Parameters["@QueryTime"]).Value = loggingEvent.TimeStamp;
+		    ((IDbDataParameter) command.Parameters["@Machine"]).Value = LoggingEvent.HostNameProperty;
+            ((IDbDataParameter)command.Parameters["@Network"]).Value = fields[0];
+            ((IDbDataParameter)command.Parameters["@Method"]).Value = fields[1];
+            ((IDbDataParameter)command.Parameters["@Location"]).Value = fields[2];
+            ((IDbDataParameter)command.Parameters["@Variable"]).Value = fields[3];
+            if (fields[4] == "")
             {
                 ((IDbDataParameter) command.Parameters["@StartTime"]).Value = DBNull.Value;
             }
             else
             {
-                ((IDbDataParameter) command.Parameters["@StartTime"]).Value = fields[6];
+                ((IDbDataParameter) command.Parameters["@StartTime"]).Value = fields[4];
             }
-            if (fields[7] == "")
+            if (fields[5] == "")
             {
                 ((IDbDataParameter) command.Parameters["@EndTime"]).Value = DBNull.Value;
             }
             else
             {
-                ((IDbDataParameter) command.Parameters["@EndTime"]).Value = fields[7];
+                ((IDbDataParameter) command.Parameters["@EndTime"]).Value = fields[5];
             }
-		    if (fields[8] == "")
+		    if (fields[6] == "")
             {
                 ((IDbDataParameter) command.Parameters["@ProcTime"]).Value = DBNull.Value;
             }
             else
             {
-                ((IDbDataParameter)command.Parameters["@ProcTime"]).Value = Convert.ToInt32(fields[8]);
+                ((IDbDataParameter)command.Parameters["@ProcTime"]).Value = Convert.ToInt32(fields[6]);
             }
-            if (fields[9] == "")
+            if (fields[7] == "")
             {
                 ((IDbDataParameter) command.Parameters["@RecCount"]).Value = DBNull.Value;
             }
             else
             {
-                ((IDbDataParameter) command.Parameters["@RecCount"]).Value = Convert.ToInt64(fields[9]);
+                ((IDbDataParameter) command.Parameters["@RecCount"]).Value = Convert.ToInt64(fields[7]);
             }
-		    ((IDbDataParameter)command.Parameters["@UserHost"]).Value = fields[10];
+		    ((IDbDataParameter)command.Parameters["@UserHost"]).Value = fields[8];
 
 
 
