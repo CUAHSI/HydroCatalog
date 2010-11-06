@@ -8,7 +8,7 @@
   
   <!-- added Oct 2010 dwv -->
   <appender name="CuahsiDbAppender" type="WaterOneFlowRemoteLogService.Appender.CuahsiLoggingDbAppender, WaterOneFlowRemoteLogService">
-    <connectionString value="Persist Security Info=False;Integrated Security=false;server=ate;database=log4net_test;Connect Timeout=30;User ID=sa;Password=sa" />
+    <connectionString value="Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;" />
   </appender>
   <!-- added Oct 2010 dwv -->
   
@@ -34,7 +34,7 @@
     <datePattern value="yyyyMMdd" />
     <staticLogFileName value="true" />
     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%date [%thread] %-5level %logger (%property{log4net:HostName})- %message%newline"" />
+      <conversionPattern value="%date [%thread] %-5level %logger (%property{log4net:HostName})- %message%newline" />
     </layout>
   </appender>
  
