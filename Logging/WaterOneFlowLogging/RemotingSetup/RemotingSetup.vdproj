@@ -21,18 +21,18 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C3DB9BE7EFC5121C53D1CE864C4142EB"
-        "OwnerKey" = "8:_8776713B82A44AA086790F971D49519C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E157A478182F499BA9443FDB0B228951"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_FE235F6D2DBE9E1F8F1F03CE1B7FF5BC"
+        "OwnerKey" = "8:_8776713B82A44AA086790F971D49519C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8776713B82A44AA086790F971D49519C"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C3DB9BE7EFC5121C53D1CE864C4142EB"
+        "OwnerKey" = "8:_FE235F6D2DBE9E1F8F1F03CE1B7FF5BC"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -74,6 +74,11 @@
                     {
                     "Name" = "8:Microsoft .NET Framework 2.0"
                     "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    {
+                    "Name" = "8:.NET Framework 3.5 SP1"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
                     }
                 }
             }
@@ -110,6 +115,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_B3EA400645734AD08A0D4CB260164156"
+            {
+            "Name" = "8:Primary output from WaterOneFlowRemoteLogService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_8776713B82A44AA086790F971D49519C"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_4F7FEDD3_BA3D_4A9A_95B0_2967B822E4C8"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -125,7 +144,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:2.0.50727"
+                "FrameworkVersion" = "8:2.0.50727"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -133,14 +152,34 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C3DB9BE7EFC5121C53D1CE864C4142EB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E157A478182F499BA9443FDB0B228951"
+            {
+            "SourcePath" = "8:..\\WaterOneFlowRemoteLogService\\ReadMe_RemoteLoggingServer.txt"
+            "TargetName" = "8:ReadMe_RemoteLoggingServer.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_16B5C87FDB78452B8CF32528210A4417"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FE235F6D2DBE9E1F8F1F03CE1B7FF5BC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C3DB9BE7EFC5121C53D1CE864C4142EB"
+                    "_FE235F6D2DBE9E1F8F1F03CE1B7FF5BC"
                     {
                     "Name" = "8:log4net.dll"
                     "Attributes" = "3:512"
@@ -162,26 +201,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E157A478182F499BA9443FDB0B228951"
-            {
-            "SourcePath" = "8:..\\WaterOneFlowRemoteLogService\\ReadMe_RemoteLoggingServer.txt"
-            "TargetName" = "8:ReadMe_RemoteLoggingServer.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_16B5C87FDB78452B8CF32528210A4417"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -256,14 +275,16 @@
         "MsiBootstrapper"
         {
         "LangId" = "3:1033"
+        "RequiresElevation" = "11:FALSE"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Cuahsi Remote Logging Service"
         "ProductCode" = "8:{9C77C1BF-9F0E-48B6-821F-A5BAF81D3F5C}"
-        "PackageCode" = "8:{4B0226AA-1B2C-4B95-A4A7-E799D56346F0}"
+        "PackageCode" = "8:{7CFC1150-A8FE-4C68-856A-918D5205DB41}"
         "UpgradeCode" = "8:{CF3DA1F8-A419-4A20-A37A-E94257A11AA3}"
+        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
@@ -852,7 +873,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8776713B82A44AA086790F971D49519C"
             {
-            "SourcePath" = "8:..\\WaterOneFlowRemoteLogService\\obj\\Release\\WaterOneFlowRemoteLogService.exe"
+            "SourcePath" = "8:..\\WaterOneFlowRemoteLogService\\obj\\Debug\\WaterOneFlowRemoteLogService.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_16B5C87FDB78452B8CF32528210A4417"
@@ -962,9 +983,6 @@
                 {
                 }
             }
-        }
-        "VJSharpPlugin"
-        {
         }
     }
 }

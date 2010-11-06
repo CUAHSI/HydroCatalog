@@ -149,7 +149,11 @@ namespace Unittests
                 LoggingEventData led = new LoggingEventData();
                 if (logdata.Split('|').Length == 11)
                 {
-                    led.Message = logdata;
+
+                    String[] split = logdata.Split('|');
+                   
+                    led.Message =  String.Join("|", split, 2, split.Length - 2);
+                    led.TimeStamp = DateTime.Now;
                     loggingEvent = new LoggingEvent(led);
                     target.ConnectionString =
                         "Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;";
@@ -246,8 +250,8 @@ namespace Unittests
         {
             LoggingEventData eventData = new LoggingEventData();
             eventData.Message =
-                "TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-16T00:00:00|||129.116.248.192";
-            eventData.TimeStamp = new DateTime();
+                "TWDB|GetValues|TWDB:D1|TWDB:TEm001|1900-06-16T00:00:00|1900-06-17T00:00:00|||129.116.248.192";
+            eventData.TimeStamp = DateTime.Now;
             
             LoggingEvent le = new LoggingEvent(eventData);
 

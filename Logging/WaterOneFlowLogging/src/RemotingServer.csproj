@@ -31,7 +31,7 @@
     <TargetZone>Internet</TargetZone>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>http://localhost/RemotingServer/</PublishUrl>
     <Install>true</Install>
@@ -47,6 +47,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\build\debug\</OutputPath>
@@ -111,6 +112,7 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
     <None Include="CuahsiRemoteLogger.log4net">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="RemotingServer_TemporaryKey.pfx" />
     <Compile Include="AssemblyInfo.cs">
