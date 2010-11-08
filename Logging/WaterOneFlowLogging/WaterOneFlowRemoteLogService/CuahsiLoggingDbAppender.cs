@@ -25,6 +25,7 @@ using System.Data;
 using System.Data.SqlClient;
 using log4net.Appender;
 using log4net.Core;
+using log4net.Util;
 
 /* We will want to split the message, and only use probably the 
  * [%ndc]
@@ -63,19 +64,19 @@ namespace WaterOneFlowRemoteLogService.Appender
     /// and <see cref="SetCommandValues"/> methods must be overridden.
     /// </para>
     /// </remarks>
-    public class CuahsiLoggingDbAppender : FastDbAppender
-    // inherited from FastDbAppender IAppender, IBulkAppender, IOptionHandler
+    public class CuahsiLoggingDbAppender : IAppender, IBulkAppender, IOptionHandler
+    // based on FastDbAppender IAppender, IBulkAppender, IOptionHandler
     {
         private string m_name;
         private string m_connectionString;
 
-        public string Name
+        public string Name // caseSensetive
         {
             get { return m_name; }
             set { m_name = value; }
         }
 
-        public string ConnectionString
+        public string ConnectionString // caseSensetive
         {
             get { return m_connectionString; }
             set { m_connectionString = value; }
@@ -83,6 +84,13 @@ namespace WaterOneFlowRemoteLogService.Appender
 
         public virtual void ActivateOptions()
         {
+            /* We need to access ConnectionString in the Activate options
+            to make the work
+                */
+            if (String.IsNullOrEmpty( m_connectionString))
+            {
+                LogLog.Error("Failed to find connectionString .");
+            }
         }
 
         public virtual void Close()

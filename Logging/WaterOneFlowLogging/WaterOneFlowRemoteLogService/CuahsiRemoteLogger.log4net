@@ -7,13 +7,13 @@
   </appender>
   
   <!-- added Oct 2010 dwv -->
-  <appender name="CuahsiDbAppender" type="WaterOneFlowRemoteLogService.Appender.CuahsiLoggingDbAppender, WaterOneFlowRemoteLogService">
+  <appender name="CuahsiDbAppender" type="WaterOneFlowRemoteLogService.Appender.CuahsiLoggingDbAppender">
     <connectionString value="Server=disrupter.sdsc.edu;Database=hiscentral_logging;User ID=loggingService;Password=l0gg1ng;Trusted_Connection=False;" />
   </appender>
   <!-- added Oct 2010 dwv -->
   
   <appender name="QueryLogFileAppender" type="log4net.Appender.RollingFileAppender">
-    <file value="F:\CUAHSI_LOG\AllServicesRemoting\query-log.txt" />
+    <file value="query-log.txt" />
     <appendToFile value="true" />
     <maxSizeRollBackups value="-1" />
     <maximumFileSize value="20MB" />
@@ -26,7 +26,7 @@
   </appender>
  
   <appender name="RootLogFileAppender" type="log4net.Appender.RollingFileAppender">
-    <file value="F:\CUAHSI_LOG\AllServicesRemoting\Root-log.txt" />
+    <file value="Root-log.txt" />
     <appendToFile value="true" />
     <maxSizeRollBackups value="-1" />
     <maximumFileSize value="20MB" />
