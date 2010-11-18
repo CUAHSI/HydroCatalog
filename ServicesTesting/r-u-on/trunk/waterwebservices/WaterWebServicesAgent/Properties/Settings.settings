@@ -5,8 +5,11 @@
     <Setting Name="WaterWebServicesAgent_CuahsiSoap_WaterOneFlow" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx</Value>
     </Setting>
-    <Setting Name="AccountId" Type="System.String" Scope="User">
+    <Setting Name="AccountId" Type="System.String" Scope="Application">
       <Value Profile="(Default)">AAAABIESfWjQAAADDrFZJTSn</Value>
+    </Setting>
+    <Setting Name="TimeOutInSeconds" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">120</Value>
     </Setting>
   </Settings>
 </SettingsFile>

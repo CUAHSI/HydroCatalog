@@ -8,7 +8,7 @@ echo unInstalling WindowsService...
 echo ---------------------------------------------------
 net stop "WaterOneFlowLog"
 pause
-installutil /u WaterOneFlowRemoteLogService.exe
+installutil /u .\WaterOneFlowRemoteLogService.exe
 pause 
 echo ---------------------------------------------------
 echo Done.

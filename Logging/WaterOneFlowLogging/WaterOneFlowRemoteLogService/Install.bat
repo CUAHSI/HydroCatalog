@@ -8,9 +8,9 @@ echo Installing WindowsService...
 echo ---------------------------------------------------
 net stop "WaterOneFlowLog"
 pause
-installutil /u WaterOneFlowRemoteLogService.exe
+installutil /u .\WaterOneFlowRemoteLogService.exe
 pause
-InstallUtil /i WaterOneFlowRemoteLogService.exe
+InstallUtil /i .\WaterOneFlowRemoteLogService.exe
 pause
 net start "WaterOneFlowLog"
 pause 

@@ -39,7 +39,7 @@ namespace WaterOneFlowRemoteLogService
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.DisplayName = "WaterOneFlowLog";
+            this.serviceInstaller1.DisplayName = "Cuahsi WaterOneFlowLog";
             this.serviceInstaller1.ServiceName = "WaterOneFlowLog";
             // 
             // ProjectInstaller

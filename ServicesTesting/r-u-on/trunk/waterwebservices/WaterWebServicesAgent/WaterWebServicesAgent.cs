@@ -260,7 +260,7 @@ namespace cuahsi.wof.ruon
                         {
                             TestResult result = tester.GetSites(server[SERVERNAME]);
 
-                            if (!result.Working)
+                            if (!result.Working.HasValue || !result.Working.Value)
                             {
                                 log.Debug("GetSites Failed " + server[SERVERNAME]);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, server[SERVERNAME] + "Service List Failed"));
@@ -276,7 +276,7 @@ namespace cuahsi.wof.ruon
 
                             TestResult result = tester.RunTests(server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD]);
 
-                            if (!result.Working)
+                            if (!result.Working.HasValue || !result.Working.Value)
                             {
                                 log.Debug(" GetValues Failed " + server[SERVERNAME]);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed " + server[SERVERNAME] + server[SITECODE] + server[VARIABLECODE] + server[ISOTIMEPERIOD]));

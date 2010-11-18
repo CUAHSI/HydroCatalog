@@ -33,15 +33,21 @@ namespace cuahsi.wof.ruon.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("AAAABIESfWjQAAADDrFZJTSn")]
         public string AccountId {
             get {
                 return ((string)(this["AccountId"]));
             }
-            set {
-                this["AccountId"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("120")]
+        public int TimeOutInSeconds {
+            get {
+                return ((int)(this["TimeOutInSeconds"]));
             }
         }
     }
