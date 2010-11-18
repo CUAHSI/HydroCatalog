@@ -19,7 +19,7 @@ using com.hp.hpl.jena.ontology;
 
 using log4net;
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "hiscentral.log4net", Watch = true)]
+
 
 /// <summary>
 /// Summary description for hiscentral
@@ -28,11 +28,18 @@ using log4net;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 public class hiscentral : System.Web.Services.WebService
 {
+   
 
     private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private const string logFormat = "Method:{0}, {1}";
 
     private static readonly ILog queryLog = LogManager.GetLogger("QueryLog");
-    private const string logFormat = "{0}|{1}|{2}|{3}";
+    private const string queryLogFormat = "{0}|{1}|{2}|{3}";
+
+ public ServiceStatistics ServiceStats
+    {
+        get { return (ServiceStatistics)Application["ServiceStatistics"]; }
+    }
 
     public hiscentral()
     {
@@ -94,7 +101,7 @@ public class hiscentral : System.Web.Services.WebService
     public Site[] GetSitesInBox2(double xmin, double xmax, double ymin, double ymax, string conceptKeyword, string networkIDs)
     {
 
-     
+
 
 
         Box box = new Box();
@@ -239,15 +246,15 @@ public class hiscentral : System.Web.Services.WebService
         string methodName = "GetMappedVariables";
         Stopwatch timer = new Stopwatch();
         timer.Start();
-        
+
         log.InfoFormat(logFormat, methodName, "Start", 0,
                        String.Format(objecformat,
                        conceptids == null ? string.Empty :
                                      String.Join(",", conceptids),
 Networkids == null ? string.Empty : String.Join(",", Networkids))
-                                     
-           ); 
-        
+
+           );
+
         string options = "";
         string sql = "SELECT     MappingsApproved.ConceptID, Variables.AltVariableName, Variables.AltVariableCode, Variables.ValueType, Variables.IsRegular, " +
                          "Variables.TimeSupport, Variables.TimeUnitID, Variables.DataType, Variables.GeneralCategory, HISNetworks.NetworkName, " +
@@ -398,13 +405,15 @@ ServiceStatus
     [WebMethod]
     public ServiceInfo[] GetServicesInBox2(double xmin, double ymin, double xmax, double ymax)
     {
+        ServiceStats.AddCount("GetServicesInBox2");
+
         string objecformat = "box({0},{1},{2},{3})";
         string methodName = "GetServicesInBox2";
         Stopwatch timer = new Stopwatch();
         timer.Start();
-        
-        
-        log.InfoFormat(logFormat, methodName, "Start", 0,
+
+
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
            String.Format(objecformat,
            xmin, xmax, ymin, ymax
            ));
@@ -415,16 +424,19 @@ ServiceStatus
          "AND (((xmin between @minx and @maxx) or (xmax between @minx and @maxx))AND((ymin between @miny and @maxy) or (ymax between @miny and @maxy))) OR " +
          "(((@minx between xmin and xmax) or (@maxx between xmin and xmax))AND((@miny between ymin and ymax) or (@maxy between ymin and ymax))) ";
         String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
+      
         DataSet ds = new DataSet();
         SqlConnection con = new SqlConnection(connect);
         using (con)
         {
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
-
+           
             da.SelectCommand.Parameters.AddWithValue("@maxy", ymax);
             da.SelectCommand.Parameters.AddWithValue("@miny", ymin);
             da.SelectCommand.Parameters.AddWithValue("@maxx", xmax);
             da.SelectCommand.Parameters.AddWithValue("@minx", xmin);
+
+            log.DebugFormat(logFormat, methodName,da.SelectCommand.CommandText);
 
             da.Fill(ds, "Service_LIST");
         }
@@ -432,12 +444,12 @@ ServiceStatus
         //ds.Tables["URL"].Rows
         System.Data.DataRowCollection rows = ds.Tables["Service_LIST"].Rows;
 
-var r= getServiceInfoArray(rows);
-        log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
-          String.Format(objecformat,
+        var r = getServiceInfoArray(rows);
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
+                  String.Format(objecformat,
 
-          xmin, xmax, ymin, ymax
-          ));
+                  xmin, xmax, ymin, ymax
+                  ));
         timer.Stop();
 
         return r;
@@ -446,10 +458,11 @@ var r= getServiceInfoArray(rows);
     [WebMethod]
     public ServiceInfo[] GetWaterOneFlowServiceInfo()
     {
-        string methodName = "GetSitesInBox2";
+        ServiceStats.AddCount("GetWaterOneFlowServiceInfo");
+        string methodName = "GetWaterOneFlowServiceInfo";
         Stopwatch timer = new Stopwatch();
         timer.Start();
-       
+
         //if (networkIDs != null )
         //{
         //    foreach (var iD in networkIDs)
@@ -457,7 +470,7 @@ var r= getServiceInfoArray(rows);
         //        networksString += iD.ToString();
         //    }
         //}
-        log.InfoFormat(logFormat, methodName, "Start", 0,
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
            String.Empty);
         //SELECT     NetworkID, username, NetworkName, NetworkTitle, ServiceWSDL, ServiceAbs, ContactName, ContactEmail, ContactPhone, Organization, website, 
         //                  IsPublic, SupportsAllMethods, Citation, MapIconPath, OrgIconPath, LastHarvested, FrequentUpdates, logo, icon, IsApproved, NetworkVocab, 
@@ -474,18 +487,21 @@ var r= getServiceInfoArray(rows);
         using (con)
         {
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
+
+            log.DebugFormat(logFormat, methodName, da.SelectCommand.CommandText);
+
             da.Fill(ds, "Service_LIST");
         }
         con.Close();
         //ds.Tables["URL"].Rows
         System.Data.DataRowCollection rows = ds.Tables["Service_LIST"].Rows;
 
-        
 
-      
-         var r=   getServiceInfoArray(rows);
-log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
-         String.Empty);
+
+
+        var r = getServiceInfoArray(rows);
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
+        String.Empty);
         timer.Stop();
         return r;
 
@@ -493,6 +509,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
 
     private ServiceInfo[] getServiceInfoArray(DataRowCollection rows)
     {
+       
         ServiceInfo[] infos = new ServiceInfo[rows.Count];
         DataRow row;
         for (int i = 0; i < rows.Count; i++)
@@ -510,15 +527,17 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
                 infos[i].miny = double.Parse(row["Ymin"].ToString());
                 infos[i].maxy = double.Parse(row["Ymax"].ToString());
             }
-           // infos[i].valuecount = (String.IsNullOrEmpty( (string)row["ValueCount"] )) ? Int32.Parse(row["ValueCount"].ToString()) : 0;
+            // infos[i].valuecount = (String.IsNullOrEmpty( (string)row["ValueCount"] )) ? Int32.Parse(row["ValueCount"].ToString()) : 0;
             if (row["ValueCount"] != DBNull.Value)
             {
-               try { 
-                  infos[i].valuecount = Int32.Parse(row["ValueCount"].ToString() );
-               } catch (OverflowException ex)
-               {
-                   infos[i].valuecount = Int32.MaxValue;
-               } 
+                try
+                {
+                    infos[i].valuecount = Int32.Parse(row["ValueCount"].ToString());
+                }
+                catch (OverflowException ex)
+                {
+                    infos[i].valuecount = Int32.MaxValue;
+                }
             }
             infos[i].variablecount = (row["VariableCount"] != null && row["VariableCount"].ToString() != "") ? int.Parse(row["VariableCount"].ToString()) : 0;
             infos[i].sitecount = (row["SiteCount"] != null && row["SiteCount"].ToString() != "") ? int.Parse(row["SiteCount"].ToString()) : 0;
@@ -583,6 +602,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public SeriesRecord[] GetSeriesCatalogForBox(Box box, String conceptCode, int[] networkIDs, string beginDate, string endDate)
     {
+        ServiceStats.AddCount("GetSeriesCatalogForBox");
         String snetids = "";
         if (networkIDs != null && networkIDs.Length > 0)
         {
@@ -599,29 +619,21 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public SeriesRecord[] GetSeriesCatalogForBox2(double xmin, double xmax, double ymin, double ymax, string conceptKeyword, String networkIDs, string beginDate, string endDate)
     {
+        ServiceStats.AddCount("GetSeriesCatalogForBox2");
+
         string objecformat = "concept:{0},box({1},{2},{3},{4}),network{5},daterange{6}-{7}";
         string methodName = "GetSeriesCatalogForBox2";
         Stopwatch timer = new Stopwatch();
         timer.Start();
-        //string networksString = networkIDs ?? String.Empty;
-        
 
-        //if (networkIDs != null )
-        //{
-        //    foreach (var iD in networkIDs)
-        //    {
-        //        networksString += iD.ToString();
-        //    }
-        //}
 
-        //log.InfoFormat(logFormat, methodName, "Start", 0,
-        //    String.Empty
-        //   //String.Format(objecformat,
-        //   //conceptKeyword ?? String.Empty,
-        //   //xmin, xmax, ymin, ymax
-        //   //, networksString, 
-        //   //beginDate ?? String.Empty, endDate ?? String.Empty)
-        //   );
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
+            String.Format(objecformat,
+            conceptKeyword ?? String.Empty,
+            xmin, xmax, ymin, ymax
+            , networkIDs ?? String.Empty, 
+            beginDate ?? String.Empty, endDate ?? String.Empty)
+           );
 
         Box box = new Box();
         box.xmax = xmax;
@@ -691,6 +703,9 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
             da.SelectCommand.Parameters.AddWithValue("@long2", box.xmin);
             da.SelectCommand.Parameters.AddWithValue("@bdate", beginDate);
             da.SelectCommand.Parameters.AddWithValue("@edate", endDate);
+
+            log.DebugFormat(logFormat, methodName, da.SelectCommand.CommandText);
+
             DataSet ds = new DataSet();
             da.Fill(ds, "SearchCatalog");
 
@@ -724,14 +739,13 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
             }
         }
         //}
-        //log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
-        //    String.Empty
-        //  //String.Format(objecformat,
-        //  //conceptKeyword ?? String.Empty,
-        //  //xmin, xmax, ymin, ymax
-        //  //, networksString,
-        //  //beginDate ?? String.Empty, endDate ?? String.Empty)
-        //  );
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
+            String.Format(objecformat,
+            conceptKeyword ?? String.Empty,
+            xmin, xmax, ymin, ymax
+            , networkIDs ?? String.Empty,
+            beginDate ?? String.Empty, endDate ?? String.Empty)
+          );
         timer.Stop();
 
         return series;
@@ -740,6 +754,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public SeriesRecord[] getSeriesCatalogInBoxPaged(double xmin, double xmax, double ymin, double ymax, string conceptKeyword, String networkIDs, string beginDate, string endDate, int pageno)
     {
+        ServiceStats.AddCount("getSeriesCatalogInBoxPaged");
 
         string objecformat = "concept:{0},box({1},{2},{3},{4}),network({5},daterange{6}-{7}";
         string methodName = "getSeriesCatalogInBoxPaged";
@@ -754,7 +769,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
         //        networksString += iD.ToString();
         //    }
         //}
-        log.InfoFormat(logFormat, methodName, "Start", 0,
+        queryLog.InfoFormat(queryLogFormat, methodName, "Start", 0,
            String.Format(objecformat,
            conceptKeyword ?? String.Empty,
            xmin, xmax, ymin, ymax
@@ -844,7 +859,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
             }
         }
         //}
-        log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
+        queryLog.InfoFormat(queryLogFormat, methodName, "end", timer.ElapsedMilliseconds,
          String.Format(objecformat,
          conceptKeyword ?? String.Empty,
          xmin, xmax, ymin, ymax
@@ -875,6 +890,9 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public OntologyPath[] getSearchablePaths()
     {
+        ServiceStats.AddCount("getSearchablePaths");
+
+        const string methodName = "getSearchablePaths";
         String sql = "SELECT ConceptID,synonym as SearchableConcept,ConceptName,Path FROM v_SynonymLookup order by path";
 
         OntologyPath[] thetable = new OntologyPath[0];
@@ -892,6 +910,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
 
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
 
+            log.DebugFormat(logFormat, methodName, da.SelectCommand.CommandText);
 
             da.Fill(ds, "rows");
             thetable = new OntologyPath[ds.Tables["rows"].Rows.Count];
@@ -1113,6 +1132,7 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public String[] GetSearchableConcepts()
     {
+        ServiceStats.AddCount("GetSearchableConcepts");
         return getOntologyKeywords();
 
         ////  appContext = HttpContext.Current;
@@ -1171,6 +1191,8 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public OntologyNode getOntologyTree(String conceptKeyword)
     {
+        ServiceStats.AddCount("getOntologyTree");
+
         if (conceptKeyword == null || conceptKeyword.Equals("")) conceptKeyword = "Hydrosphere";
         String sql = "SELECT conceptid, conceptName from v_ConceptsUnionSynonyms where conceptName  = @conceptKeyword";
         DataSet ds = new DataSet();
@@ -1408,6 +1430,8 @@ log.InfoFormat(logFormat, methodName, "end", timer.ElapsedMilliseconds,
     [WebMethod]
     public string[] GetWordList(string prefixText, int count)
     {
+        ServiceStats.AddCount("GetWordList");
+
         List<String> wordlist = new List<String>();
 
 

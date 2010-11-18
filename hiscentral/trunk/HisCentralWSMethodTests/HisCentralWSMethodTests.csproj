@@ -104,10 +104,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:5530/hiscentral/webservices/hiscentral.asmx">
+    <WebReferenceUrl Include="http://localhost:6201/hiscentral/webservices/hiscentral.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\hiscentral.webreference\</RelPath>
-      <UpdateFromURL>http://localhost:5530/hiscentral/webservices/hiscentral.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6201/hiscentral/webservices/hiscentral.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

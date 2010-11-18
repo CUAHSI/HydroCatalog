@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 using Ruon;
 
 namespace cuahsi.wof.ruon
@@ -92,6 +93,8 @@ namespace cuahsi.wof.ruon
     [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
     public class WaterWebServicesAgent : ServiceAgent
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
         public const string GETSITES = "Use_GetSites";
         public const string GETVALUES = "Use_GetValues";
         public const string SERVERNAME = "Server_Name";
@@ -146,6 +149,7 @@ namespace cuahsi.wof.ruon
                 catch (Exception ex)
                 {
                     // log something
+                    log.Error("Setup failed");
                 }
             }
             else
@@ -241,6 +245,7 @@ namespace cuahsi.wof.ruon
                 {
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
+                        log.Debug("Disabled Service " + server[SERVERNAME]);
                         alarms.Add(new Alarm(server[SERVERNAME], server[SERVERNAME] + "Disabled", AlarmSeverity.Minor, server[SERVERNAME] + " Disabled"));
                         continue;
                     }
@@ -257,10 +262,12 @@ namespace cuahsi.wof.ruon
 
                             if (!result.Working)
                             {
+                                log.Debug("GetSites Failed " + server[SERVERNAME]);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, server[SERVERNAME] + "Service List Failed"));
                             }
                             else
                             {
+                                log.Debug("GetSites OK  " + server[SERVERNAME]);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
@@ -271,10 +278,12 @@ namespace cuahsi.wof.ruon
 
                             if (!result.Working)
                             {
+                                log.Debug(" GetValues Failed " + server[SERVERNAME]);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed " + server[SERVERNAME] + server[SITECODE] + server[VARIABLECODE] + server[ISOTIMEPERIOD]));
                             }
                             else
                             {
+                                log.Debug("GetValues OK" + server[SERVERNAME]);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
@@ -283,6 +292,7 @@ namespace cuahsi.wof.ruon
                     }
                     catch
                     {
+                        log.Debug("Major Error in Monitor Service while testing service " + server[SERVERNAME]);
                         alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
 
                     }
@@ -291,6 +301,7 @@ namespace cuahsi.wof.ruon
                 alarms.Add(new Clear("WaterWebService", "WWS_FAILED", "Working Monitor Service"));
 
                 ReportAlarms(alarms, false);
+                log.Debug("Number of Alarms reported " + alarms.Count);
 
 
             }
@@ -298,6 +309,8 @@ namespace cuahsi.wof.ruon
             {
                 //   alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
                 // big error. log somewhere
+                log.Debug("Major Service Error " + ex.Message);
+
                 List<IAlarm> alarms = new List<IAlarm>();
                 alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Critical, "Error in Monitor Service"));
                 ReportAlarms(alarms, false);

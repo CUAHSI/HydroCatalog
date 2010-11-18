@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<log4net debug="true">
+  <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date  %-5level %logger (%property{log4net:HostName}) [%ndc] - %message%newline" />
+    </layout>
+  </appender>
+  
+  <!-- added Oct 2010 dwv -->
+  <appender name="CuahsiDbAppender" type="WaterOneFlowRemoteLogService.Appender.CuahsiLoggingDbAppender, WaterOneFlowRemoteLogService">
+    <connectionString value="Persist Security Info=False;Integrated Security=false;server=ate;database=log4net_test;Connect Timeout=30;User ID=sa;Password=sa" />
+  </appender>
+  <!-- added Oct 2010 dwv -->
+  
+  <appender name="QueryLogFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="F:\CUAHSI_LOG\AllServicesRemoting\query-log.txt" />
+    <appendToFile value="true" />
+    <maxSizeRollBackups value="-1" />
+    <maximumFileSize value="20MB" />
+    <rollingStyle value="Composite" />
+    <datePattern value="yyyyMMdd" />
+    <staticLogFileName value="true" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date |(%property{log4net:HostName}) | %message%newline" />
+    </layout>
+  </appender>
+ 
+  <appender name="RootLogFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="F:\CUAHSI_LOG\AllServicesRemoting\Root-log.txt" />
+    <appendToFile value="true" />
+    <maxSizeRollBackups value="-1" />
+    <maximumFileSize value="20MB" />
+    <rollingStyle value="Composite" />
+    <datePattern value="yyyyMMdd" />
+    <staticLogFileName value="true" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger (%property{log4net:HostName})- %message%newline"" />
+    </layout>
+  </appender>
+ 
+  <!-- added Aug 2007 dwv -->
+  <appender name="ErrorSmtpAppender" type="log4net.Appender.SmtpAppender">
+    <filter type="log4net.Filter.StringMatchFilter">
+      <stringToMatch value="WaterOneFlow" />
+    </filter>
+    <to value="david.valentine@gmail.com" />
+    <from value="valentin@sdsc.edu" />
+    <subject value="OD WS Error" />
+    <smtpHost value="smtp.sdsc.edu" />
+    <bufferSize value="4" />
+    <lossy value="true" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="ERROR"/>
+    </evaluator>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%newline%date [%thread] %-5level %logger - %message%newline%newline%newline" />
+    </layout>
+  </appender>
+  <appender name="AdoNetAppender" type="log4net.Appender.AdoNetAppender">
+    <bufferSize value="1" />
+    <connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 
+
+      <connectionString value="data source=localhost;initial catalog=eventlogger;integrated security=true;persist security info=True" />
+
+    <commandText value="INSERT INTO Log ([Date],[Thread],[Level],[Logger],[Message],[Exception]) VALUES (@log_date, @thread, @log_level, @logger, @message, @exception)" />
+    <parameter>
+      <parameterName value="@log_date" />
+      <dbType value="DateTime" />
+      <layout type="log4net.Layout.RawTimeStampLayout" />
+    </parameter>
+    <parameter>
+      <parameterName value="@thread" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%thread" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@log_level" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout">
+        <!--  <conversionPattern value="%level" /> -->
+        <conversionPattern value="%property{contact} %property{server} %property{path}"/>
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@logger" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%logger" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@message" />
+      <dbType value="String" />
+      <size value="4000" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%message" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@exception" />
+      <dbType value="String" />
+      <size value="2000" />
+      <layout type="log4net.Layout.ExceptionLayout" />
+    </parameter>
+  </appender>
+  <root>
+    <level value="FATAL" />
+    <appender-ref ref="ConsoleAppender" />
+    <appender-ref ref="RootLogFileAppender" />
+    <appender-ref ref="ErrorSmtpAppender" />
+  </root>
+  
+  <logger name="CUAHSI.WEBSERVICES">
+    <!-- this it the file that logs the query-->
+    <level value="INFO" />
+    <appender-ref ref="StartStopSmtpAppender" />
+    <!-- 
+    <appender-ref ref="AdoNetAppender" />
+    -->
+  </logger>
+
+  <logger name="QueryLog">
+    <!-- this it the file that logs the query-->
+    <level value="INFO" />
+    <filter type="log4net.Filter.StringMatchFilter">
+      <stringToMatch value="Get" />
+    </filter>
+    <appender-ref ref="QueryLogFileAppender" />
+    <appender-ref ref="CuahsiDbAppender" />
+  </logger>
+  
+</log4net>

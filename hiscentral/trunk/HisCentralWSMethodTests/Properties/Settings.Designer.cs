@@ -26,7 +26,7 @@ namespace HisCentralWSMethodTests.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:5530/hiscentral/webservices/hiscentral.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6201/hiscentral/webservices/hiscentral.asmx")]
         public string HisCentralWSMethodTests_hiscentral_webreference_hiscentral {
             get {
                 return ((string)(this["HisCentralWSMethodTests_hiscentral_webreference_hiscentral"]));

@@ -1,5 +1,6 @@
 ﻿using System;
 using cuahsi.wof.ruon.CuahsiSoap;
+using log4net;
 
 
 namespace cuahsi.wof.ruon
@@ -14,6 +15,9 @@ namespace cuahsi.wof.ruon
     }
     public class WaterWebSericesTester
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+       
         public string serviceName = "WaterOneFlowSoap_Undefined";
         public string endpointSoap = "WaterOneFlowSoap_Undefined";
         private WaterOneFlow svc;
@@ -22,6 +26,7 @@ namespace cuahsi.wof.ruon
         {
 
             svc = new WaterOneFlow();
+            log.Debug("Created WaterWebServices Monitor");
         }
 
         public String TesterStatus { get; set; }
@@ -53,6 +58,7 @@ namespace cuahsi.wof.ruon
                 {
                     if (results.site.Length > 0)
                     {
+                        log.Debug("Working GetSites" + serviceName + " sitecount " + results.site.Length);
                         testResult.Working = true;
                     }
                 }
@@ -62,6 +68,7 @@ namespace cuahsi.wof.ruon
             }
             catch (Exception ex)
             {
+                log.Error("Failed GetSites" + serviceName ,ex);
                 testResult.errorString = ex.Message;
             }
             return testResult;
@@ -78,7 +85,9 @@ namespace cuahsi.wof.ruon
             } catch (Exception ex)
             {
                 testResult.errorString = String.Format("Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
-                             //   TesterStatus =testResult.errorString;
+                log.Error(testResult.errorString, ex);
+                
+                //   TesterStatus =testResult.errorString;
               //  UpdatedTesterStatus(this,null );
             }
             try
@@ -92,6 +101,9 @@ namespace cuahsi.wof.ruon
                     if (results.site.Length > 0)
                     {
                         testResult.Working = true;
+                    } else
+                    {
+                        log.Error("SiteInfo failed Failed zero sites " + serviceName);
                     }
                 }
                 else
@@ -99,6 +111,7 @@ namespace cuahsi.wof.ruon
                   //  TesterStatus = "failed getSiteInfo";
                  //   UpdatedTesterStatus(this, null);
 
+                    log.Error("Service Failed null results " + serviceName);
                     testResult.Working = false;
                     return testResult;
                 }
@@ -112,13 +125,24 @@ namespace cuahsi.wof.ruon
                     if (timeSeries.timeSeries != null)
                     {
                         testResult.Working = true;
+                    } else
+                    {
+                        log.ErrorFormat("GetValues Failed empty or null timeseries |{0}|{1}|{2}|{3}|{4}" ,
+                            serviceName,ws_SiteCode, ws_variableCode,
+                            isoTimePeriod.StartDate.ToString("yyyy-MM-dd"),
+                            isoTimePeriod.EndDate.ToString("yyyy-MM-dd"));
+                        testResult.Working = false;
+                        return testResult;
                     }
                 }
                 else
                 {
                //     TesterStatus = "failed GetValues";
               //  UpdatedTesterStatus(this, null);
-           
+                    log.ErrorFormat("GetValues Failed null results |{0}|{1}|{2}|{3}|{4}",
+                                    serviceName, ws_SiteCode, ws_variableCode,
+                                    isoTimePeriod.StartDate.ToString("yyyy-MM-dd"),
+                                    isoTimePeriod.EndDate.ToString("yyyy-MM-dd"));
                     testResult.Working = false;
                     return testResult;
                 }
@@ -129,10 +153,14 @@ namespace cuahsi.wof.ruon
             {
            //     TesterStatus = "failed Service Error " + ex.Message;
             //    UpdatedTesterStatus(this, null);
+                log.Error("Vaules Failed exception" + serviceName, ex);
+                testResult.Working = false;
                 testResult.errorString = ex.Message;
+                return testResult;
             }
          //   TesterStatus = "Done with Run";
            // UpdatedTesterStatus(this, null);
+            log.Debug("worked "+ serviceName);
             return testResult;
         }
     }

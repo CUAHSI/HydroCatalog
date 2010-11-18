@@ -150,15 +150,15 @@ namespace cuahsi.wof.ruon
             {
                 case "d":
                 case "D":
-                    timespan = new TimeSpan(period,0,0);
+                    timespan = new TimeSpan(period,0,0,0);
                     break; 
                 case "m":
                 case "M":
-                    timespan = new TimeSpan(period*30, 0, 0);
+                    timespan = new TimeSpan(period*30, 0, 0,0);
                     break; 
                 case "y":
                 case "Y":
-                    timespan = new TimeSpan(period*365, 0, 0);
+                    timespan = new TimeSpan(period*365, 0, 0,0);
                     break; 
                 default:
                     throw new ArgumentException(end + " Not Supported, only d, m, y are supported" );

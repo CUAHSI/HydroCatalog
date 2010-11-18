@@ -1241,16 +1241,16 @@
   </wsdl:binding>
   <wsdl:service name="hiscentral">
     <wsdl:port name="hiscentralSoap" binding="tns:hiscentralSoap">
-      <soap:address location="http://localhost:5530/hiscentral/webservices/hiscentral.asmx" />
+      <soap:address location="http://localhost:6201/hiscentral/webservices/hiscentral.asmx" />
     </wsdl:port>
     <wsdl:port name="hiscentralSoap12" binding="tns:hiscentralSoap12">
-      <soap12:address location="http://localhost:5530/hiscentral/webservices/hiscentral.asmx" />
+      <soap12:address location="http://localhost:6201/hiscentral/webservices/hiscentral.asmx" />
     </wsdl:port>
     <wsdl:port name="hiscentralHttpGet" binding="tns:hiscentralHttpGet">
-      <http:address location="http://localhost:5530/hiscentral/webservices/hiscentral.asmx" />
+      <http:address location="http://localhost:6201/hiscentral/webservices/hiscentral.asmx" />
     </wsdl:port>
     <wsdl:port name="hiscentralHttpPost" binding="tns:hiscentralHttpPost">
-      <http:address location="http://localhost:5530/hiscentral/webservices/hiscentral.asmx" />
+      <http:address location="http://localhost:6201/hiscentral/webservices/hiscentral.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

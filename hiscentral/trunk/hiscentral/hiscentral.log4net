@@ -2,7 +2,7 @@
 <log4net debug="true">
   <appender name="QueryLogFileAppender"
             type="log4net.Appender.RollingFileAppender">
-    <file value="..\..\log-data\query-log.txt" />
+    <file value="..\..\log-data\hiscentral\query-log.txt" />
     <appendToFile value="true" />
     <maxSizeRollBackups value="-1" />
     <maximumFileSize value="5MB" />
@@ -24,11 +24,18 @@
       <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
     </layout>
   </appender>
+  
+  <appender name="PerfEventLogAppender" type="log4net.Appender.EventLogAppender" >
+  
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+    </layout>
+  </appender>
 
     <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
-    <file value="..\..\log-data\query-log.txt" />
-    <appendToFile value="true" />
-    <maxSizeRollBackups value="-1" />
+    <file value="..\..\log-data\hiscentral\root-logger.txt" />
+    <appendToFile value="false" />
+    <maxSizeRollBackups value="100" />
     <maximumFileSize value="5MB" />
     <rollingStyle value="Date" />
     <datePattern value="yyyyMM" />
@@ -49,8 +56,8 @@
     </evaluator>
   </appender>
   <appender name="LogFileAppender" type="log4net.Appender.FileAppender" >
-    <file value="..\..\log-data\webapp-log.txt" />
-    <appendToFile value="true" />
+    <file value="..\..\log-data\hiscentral\webapp-log.txt" />
+    <appendToFile value="false" />
     <layout type="log4net.Layout.PatternLayout">
       <conversionPattern value="%date [%thread] %-5level %logger [%ndc] - %message%newline" />
     </layout>
@@ -68,10 +75,15 @@
     <appender-ref ref="HttpTraceAppender" /> 
     <appender-ref ref="RollingLogFileAppender" />
   </root>
-  
+ 
   <logger name="QueryLog">
     <!-- this it the file that logs the query-->
     <level value="INFO" />
     <appender-ref ref="QueryLogFileAppender" />
+  </logger>
+
+  <logger name="PerformanceLog">
+    <level value="INFO" />
+    <appender-ref ref="PerfEventLogAppender" />
   </logger>
 </log4net>

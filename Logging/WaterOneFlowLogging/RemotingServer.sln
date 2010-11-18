@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemotingServer", "src\RemotingServer.csproj", "{3A9BCF6F-FA1B-409A-93E9-7028F9A2A91F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterOneFlowRemoteLogService", "WaterOneFlowRemoteLogService\WaterOneFlowRemoteLogService.csproj", "{32986202-D713-4C45-9930-F1D5DA4A53AF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RemotingSetup", "RemotingSetup\RemotingSetup.vdproj", "{98CA0FED-9E90-4367-B7E1-DFF1B33E8914}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A9BCF6F-FA1B-409A-93E9-7028F9A2A91F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9BCF6F-FA1B-409A-93E9-7028F9A2A91F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9BCF6F-FA1B-409A-93E9-7028F9A2A91F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9BCF6F-FA1B-409A-93E9-7028F9A2A91F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32986202-D713-4C45-9930-F1D5DA4A53AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32986202-D713-4C45-9930-F1D5DA4A53AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32986202-D713-4C45-9930-F1D5DA4A53AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32986202-D713-4C45-9930-F1D5DA4A53AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CA0FED-9E90-4367-B7E1-DFF1B33E8914}.Debug|Any CPU.ActiveCfg = Debug
+		{98CA0FED-9E90-4367-B7E1-DFF1B33E8914}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
