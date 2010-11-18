@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFSTest", "WFSTest.csproj", "{D4081AE7-E563-48DE-8ABC-EC624040332C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFSTest", ".\WFSTestClient\WFSTest.csproj", "{D4081AE7-E563-48DE-8ABC-EC624040332C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
