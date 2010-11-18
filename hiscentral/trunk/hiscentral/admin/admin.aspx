@@ -16,7 +16,7 @@
     
     <div>
       &nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CentralHISConnectionString %>"
-            SelectCommand="SELECT [NetworkID], [username], [NetworkName], [ServiceWSDL], [Organization], [IsPublic], [LastHarvested], [FrequentUpdates], [CreatedDate], [ProjectStatus], [NetworkVocab], [IsApproved], [ValueCount], [VariableCount], [SiteCount], [ServiceStatus] FROM [HISNetworks] ORDER BY [NetworkID]">
+            SelectCommand="SELECT [NetworkID], [username], [NetworkName], [ServiceWSDL], [Organization], [IsPublic], [LastHarvested], [FrequentUpdates], [CreatedDate], [ProjectStatus], [NetworkVocab], [IsApproved], [ValueCount], [VariableCount], [SiteCount], [ServiceStatus] FROM [HISNetworks] where username != 'delete_me' ORDER BY [NetworkID]">
         </asp:SqlDataSource>
       <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="Large" Style="z-index: 100;
         left: 79px; position: absolute; top: 179px" Text="All Registered WaterOneFlow Web Services"

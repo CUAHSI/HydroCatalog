@@ -65,7 +65,7 @@ function AddConceptToMenu(conceptID,conceptKeyword){
 
 function MapToOntology(){
     //updated 3
-    alert(activeVarID + "," + activeConceptID + "," + activeConceptKeyword);
+    //alert(activeVarID + "," + activeConceptID + "," + activeConceptKeyword);
 Tagger.TaggerService.FinalizeMapping(activeVarID,activeConceptID,activeConceptKeyword, document.form1.uem.value, onMappingComplete);
 }
 
@@ -76,7 +76,7 @@ __doPostBack('Button1','');
 
 function MapAndSuggest(){
     //updated 2
-    alert(activeVarID + "," + activeConceptID + "," + activeConceptKeyword);
+    //alert(activeVarID + "," + activeConceptID + "," + activeConceptKeyword);
 Tagger.TaggerService.MapAndSuggest(activeVarID,activeConceptID,activeConceptKeyword,document.form1.textfield3.value, document.form1.uem.value, onMappingComplete);
 }
 

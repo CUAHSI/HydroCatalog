@@ -18,7 +18,7 @@ public class wfsHandler : IHttpHandler
 
 {
 
-  string baseurl = "http://water.sdsc.edu";
+  string baseurl = "http://localhost";
 	public wfsHandler()
 	{
 		//
@@ -233,7 +233,7 @@ public class wfsHandler : IHttpHandler
       StringBuilder sb = new StringBuilder();
       sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
       sb.Append("<xsd:schema targetNamespace=\"http://his.cuahsi.org/his\" xmlns:cuahsi=\"http://his.cuahsi.org/his\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:gml=\"http://www.opengis.net/gml\" elementFormDefault=\"qualified\" version=\"0.1\">");
-      sb.Append("<xsd:import namespace=\"http://www.opengis.net/gml\" schemaLocation=\"http://anakin/wfsconnector/schema/gml/2.1.2/feature.xsd\"/>");
+      sb.Append("<xsd:import namespace=\"http://www.opengis.net/gml\" schemaLocation=\"http://schemas.opengis.net/gml/3.1.1/base/gml.xsd\"/>");
 
       sb.Append("<xsd:complexType name=\"Series\">");
       sb.Append("<xsd:complexContent>");
@@ -263,6 +263,7 @@ public class wfsHandler : IHttpHandler
       //xdoc.LoadXml(sb.ToString());
       //context.Response.Headers.Add("Fuck", "You");
       context.Response.AppendHeader("Transfer-Encoding", "None");
+      context.Response.ContentType = "text/xml";
       //context.Response.Write(xdoc.ToString());
       //context.Response.Output.w
       context.Response.Write(sb.ToString());
@@ -340,7 +341,10 @@ public class wfsHandler : IHttpHandler
      */
     sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
     sb.Append("<wfs:FeatureCollection xmlns:cuahsi=\"http://www.cuahsi.org/cuahsi\" xmlns:gml=\"http://www.opengis.net/gml\" xmlns:wfs=\"http://www.opengis.net/wfs\" xmlns:ogc=\"http://www.opengis.net/ogc\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" ");
-    sb.Append("xsi:schemaLocation=\'" + baseurl + context.Request.Path + "?SERVICE=WFS%26VERSION=1.1.0%26REQUEST=DescribeFeatureType%26TYPENAME=Series%26OUTPUTFORMAT=XMLSCHEMA\' >");
+    sb.AppendFormat("xsi:schemaLocation=\'{0} {1} {2} {3}' >"
+        , "http://www.cuahsi.org/cuahsi", baseurl + context.Request.Path + "?SERVICE=WFS&amp;VERSION=1.1.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=Series&amp;OUTPUTFORMAT=XMLSCHEMA",
+       "http://www.opengis.net/wfs", "http://schemas.opengis.net/gml/3.1.1/base/gml.xsd");
+    
     sb.Append("<gml:boundedBy><gml:Envelope srsName=\"EPSG:4326\">");
     sb.Append("<gml:lowerCorner>"+ymin+" "+xmin+"</gml:lowerCorner>");
     sb.Append("<gml:upperCorner>"+ymax+" "+xmax+"</gml:upperCorner>"); 
@@ -370,12 +374,12 @@ public class wfsHandler : IHttpHandler
       sb.Append("</gml:Point>");
       sb.Append("</gml:pointMember>");
       sb.Append("</gml:MultiPoint>");
-      sb.Append("<cuahsi:" + nname + ".SiteCode>").Append(sitecode).Append("</cuahsi:" + nname + ".SiteCode>");
-      sb.Append("<cuahsi:" + nname + ".SourceID>").Append(sourceid).Append("</cuahsi:" + nname + ".SourceID>");
-      sb.Append("<cuahsi:" + nname + ".ServiceWSDL>").Append(wsdl).Append("</cuahsi:" + nname + ".ServiceWSDL>");
-      sb.Append("<cuahsi:" + nname + ".NetworkName>").Append(nname).Append("</cuahsi:" + nname + ".NetworkName>");
-      sb.Append("<cuahsi:" + nname + ".VariableName>").Append(varname).Append("</cuahsi:" + nname + ".VariableName>");
-      sb.Append("<cuahsi:" + nname + ".VariableCode>").Append(varcode).Append("</cuahsi:" + nname + ".VariableCode>");
+      sb.Append("<cuahsi:series.SiteCode>").Append(sitecode).Append("</cuahsi:series.SiteCode>");
+      sb.Append("<cuahsi:series.SourceID>").Append(sourceid).Append("</cuahsi:series.SourceID>");
+      sb.Append("<cuahsi:series.ServiceWSDL>").Append(wsdl).Append("</cuahsi:series.ServiceWSDL>");
+      sb.Append("<cuahsi:series.NetworkName>").Append(nname).Append("</cuahsi:series.NetworkName>");
+      sb.Append("<cuahsi:series.VariableName>").Append(varname).Append("</cuahsi:series.VariableName>");
+      sb.Append("<cuahsi:series.VariableCode>").Append(varcode).Append("</cuahsi:series.VariableCode>");
       sb.Append("</cuahsi:Series>");
       sb.Append("</gml:featureMember>");
       //sb.Append("</esri:_shape_>");

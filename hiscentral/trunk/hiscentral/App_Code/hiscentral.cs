@@ -393,7 +393,7 @@ ServiceStatus
     [WebMethod]
     public ServiceInfo[] GetServicesInBox(Box box)
     {
-        return GetServicesInBox2(box.xmin, box.xmax, box.ymin, box.ymax);
+        return GetServicesInBox2(box.xmin, box.ymin, box.xmax, box.ymax);
     }
     [WebMethod]
     public ServiceInfo[] GetServicesInBox2(double xmin, double ymin, double xmax, double ymax)

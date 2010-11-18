@@ -22,17 +22,34 @@ public partial class admin_deletenetwork : System.Web.UI.Page
   }
   protected void btnYes_Click(object sender, EventArgs e)
   {
-    string networkid = "";
-    if (Session["NetworkID"] != null)
-    {
-      networkid = Session["NetworkID"].ToString();
-    }
-    else
-    {
+    //string networkid = "";
+    //if (Session["NetworkID"] != null)
+    //{
+    //  networkid = Session["NetworkID"].ToString();
+    //}
+    //else
+    //{
+    //  Response.Redirect("admin.aspx");
+    //}
+    //deleteHarvestedData(networkid,true);
+    //Response.Redirect("admin.aspx");
+      string networkid = "";
+      if (Session["NetworkID"] != null)
+      {
+          networkid = Session["NetworkID"].ToString();
+      }
+      else
+      {
+          Response.Redirect("admin.aspx");
+      }
+
+      string connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
+      SqlConnection con = new SqlConnection(connect);
+      con.Open();
+      String delsql = "update hisnetworks set ispublic = 0, username = 'delete_me', networkName='delete_me', ServiceWSDL='delete_me'  WHERE networkid = " + networkid;
+      SqlCommand command = new SqlCommand(delsql, con);
+      command.ExecuteNonQuery();
       Response.Redirect("admin.aspx");
-    }
-    deleteHarvestedData(networkid,true);
-    Response.Redirect("admin.aspx");
   }
   protected void Button1_Click(object sender, EventArgs e)
   {

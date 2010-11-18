@@ -33,10 +33,10 @@ public partial class admin_Harvest : System.Web.UI.Page
       string logfilename = sourceid + "_"+datestring + ".txt";
 
     //string harvesterPath = "C:/Documents and Settings/whitenac/My Documents/Visual Studio 2005/Projects/HISCentralHarvester/HISCentralHarvester/bin/Debug/HISCentralHarvester.exe";
-    string harvesterPath = "C:\\hydroseek\\Harvester\\HISCentralHarvester.exe";
-    System.Diagnostics.Process.Start(harvesterPath, sourceid);
+      string harvesterPath = "F:/hiscentral_home/harvester/HISCentralHarvester2.exe";
+      System.Diagnostics.Process.Start(harvesterPath, sourceid);
 
-    this.HyperLink1.NavigateUrl = "/hydroseekdata/" + logfilename;
+      this.HyperLink1.NavigateUrl = "/logs/" + logfilename;
     this.HyperLink1.Visible = true;
   }
 }
