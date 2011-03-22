@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralHarvester2", "HisCentralHarvester2\HisCentralHarvester2.csproj", "{085C5C27-34C5-4533-BF5C-21D41505A3F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralHarvestTest", "HisCentralHarvestTest\HisCentralHarvestTest.csproj", "{A04E64DE-C45F-46FE-9C86-4EF11F491175}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{085C5C27-34C5-4533-BF5C-21D41505A3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{085C5C27-34C5-4533-BF5C-21D41505A3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{085C5C27-34C5-4533-BF5C-21D41505A3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{085C5C27-34C5-4533-BF5C-21D41505A3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A04E64DE-C45F-46FE-9C86-4EF11F491175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A04E64DE-C45F-46FE-9C86-4EF11F491175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A04E64DE-C45F-46FE-9C86-4EF11F491175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A04E64DE-C45F-46FE-9C86-4EF11F491175}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
