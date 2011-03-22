@@ -56,3 +56,5 @@ glob:HisCentralDeployment
 glob:genericODws_deploy/GenericODWS/
 glob:hiscentral/trunk/hiscentral/web_ConnectionStrings.config
 glob:genericwebservices/trunk/genericODws/vwd.webinfo
+glob:HisCentralHarvester2/HisCentralHarvester2/HarvestAppSettings.config
+glob:HisCentralHarvester2/HisCentralHarvester2/HavestConnectionStrings.config
