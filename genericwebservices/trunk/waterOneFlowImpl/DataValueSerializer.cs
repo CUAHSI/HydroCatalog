@@ -19,7 +19,14 @@ namespace WaterOneFlow.Schema
             private const string TypeName = "ValueSingleVariable";
             public XmlSchema GetSchema()
             {
-                throw new NotImplementedException();
+               // throw new NotImplementedException();
+                Assembly asmb = Assembly.GetExecutingAssembly();
+                string[] names = asmb.GetManifestResourceNames();
+                Stream stream = asmb.GetManifestResourceStream("WaterOneFlowImpl.JustVariableValue.xsd");
+                //string text =   new StreamReader(stream).ReadToEnd();
+                //   stream.Position = 0;
+                XmlSchema vsvSchema = XmlSchema.Read(stream, null);
+                return vsvSchema;
         }
         //public XmlSchema GetSchema()
             //{
@@ -78,12 +85,14 @@ namespace WaterOneFlow.Schema
             {
                 //// This method is called by the framework to get the schema for this type.
                 //// We return an existing schema from disk.
-              Assembly asmb= Assembly.GetExecutingAssembly();
+                Assembly asmb = Assembly.GetExecutingAssembly();
                 string[] names = asmb.GetManifestResourceNames();
                 Stream stream = asmb.GetManifestResourceStream("WaterOneFlowImpl.JustVariableValue.xsd");
-             //string text =   new StreamReader(stream).ReadToEnd();
-             //   stream.Position = 0;
+                //string text =   new StreamReader(stream).ReadToEnd();
+                //   stream.Position = 0;
                 XmlSchema vsvSchema = XmlSchema.Read(stream, null);
+
+               
                 xs.Add(vsvSchema);
 
                 //XmlNameTable xmlNameTable = new NameTable();

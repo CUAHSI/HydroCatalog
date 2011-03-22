@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Services;
 using System.Web.Services.Protocols;
-
+using System.Xml.Serialization;
 using WaterOneFlowImpl;
 
 using Microsoft.Web.Services3;
@@ -18,6 +18,7 @@ using Microsoft.Web.Services3.Messaging;
 namespace WaterOneFlow
 {
     using WaterOneFlow.Schema.v1;
+    using ConstantsNs = WaterOneFlowImpl.v1_0.Constants;
 
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1,
         Name = WsDescriptions.WsDefaultName, 
@@ -27,7 +28,9 @@ namespace WaterOneFlow
     {
 
         [WebMethod(Description = WsDescriptions.GetSitesDefaultDesc)]
-        string GetSitesXml(string[] site, String authToken);
+        string GetSitesXml(
+            [XmlArray("site"), XmlArrayItem("string", typeof(string))]
+            string[] site, String authToken);
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoDefaultDesc)]
         string GetSiteInfo(string site, String authToken);
@@ -40,14 +43,19 @@ namespace WaterOneFlow
         string GetValues(string location, string variable, string startDate, string endDate, String authToken);
 
         [WebMethod(Description = WsDescriptions.GetSitesDefaultDesc)]
-        SiteInfoResponseType GetSites(string[] site, String authToken);
+        SiteInfoResponseType GetSites(
+            [XmlArray("site"), XmlArrayItem("string", typeof(string))]
+            string[] site, String authToken);
+
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
 
+
         [WebMethod(Description = WsDescriptions.GetVariableInfoObjectDefaultDesc)]
         VariablesResponseType GetVariableInfoObject(string variable, String authToken);
+
 
         [WebMethod(Description = WsDescriptions.GetValuesObjectDefaultDesc)]
         TimeSeriesResponseType GetValuesObject(string location, string variable, string startDate, string endDate, String authToken);

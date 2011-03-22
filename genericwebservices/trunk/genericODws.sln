@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B626EB45-21B7-474E-AD5C-FFF9F3315170}"
 	ProjectSection(SolutionItems) = preProject
 		genericODws.vsmdi = genericODws.vsmdi
@@ -143,7 +143,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "genericODws", "genericODws\
 		SccAuxPath = ""
 		SccLocalPath = ""
 		SccProvider = ""
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		ProjectReferences = "{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}|ODM1_1_Datasets.dll;{7CC3CBAF-84AA-4C14-95A8-926C92580F3E}|ODM1_0_Datasets.dll;{79C351EE-392B-474E-B182-E75D558A4EB7}|WaterOneFlowUtilitiesCode.dll;{32144077-B780-491E-B0F4-EA29440B056B}|WofAuthentication.dll;{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}|waterOneFlowImpl.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/genericODws"
 		Debug.AspNetCompiler.PhysicalPath = "genericODws\"
@@ -160,6 +160,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "genericODws", "genericODws\
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "6278"
+		VWDDynamicPort = "false"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

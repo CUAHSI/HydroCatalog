@@ -45,12 +45,22 @@ namespace v1_1 {
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
-        [SoapDocumentMethod(
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="variable"></param>
+      /// <param name="authToken"></param>
+      /// <returns></returns>
+      /* live with SoapDocument Method. it's out in the world
+       * */
+        [SoapDocumentMethod(        
       ResponseNamespace = ConstantsNs.XML_SCHEMA_NAMSPACE,
        ResponseElementName = "VariablesResponse")]
         [WebMethod(Description = WsDescriptions.GetVariableInfoObjectDefaultDesc)]
         VariablesResponseType GetVariableInfoObject(string variable, String authToken);
 
+        /* live with SoapDocument Method. it's out in the world
+   * */
         [SoapDocumentMethod(
        ResponseNamespace = ConstantsNs.XML_SCHEMA_NAMSPACE,
        ResponseElementName = "TimeSeriesResponse")]  

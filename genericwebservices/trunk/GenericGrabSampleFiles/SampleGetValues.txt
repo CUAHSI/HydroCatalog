@@ -13,4 +13,3 @@ GetValues_WOffset,LBR_TEST,USU-LBR-ExpFarm,USU20,2008-01-01,2008-02-01,a
 GetValues_PhosMenAll,LBR_TEST,USU-LBR-Mendon,USU40,1900-01-01,2010-01-01,a
 GetValues_TurbMenJan,LBR_TEST,USU-LBR-Mendon,USU6,2008-01-01,2008-02-01,a
 GetValues_TurbMenAll_noDates,LBR_TEST,USU-LBR-Mendon,USU6,,,a
-GetValues_CategoricalExample,LBR_TEST,USU-LBR-Mendon,SDSC45,2005-01-01,2008-02-01,a

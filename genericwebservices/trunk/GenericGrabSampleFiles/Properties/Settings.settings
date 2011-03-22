@@ -9,7 +9,7 @@
       <Value Profile="(Default)">http://localhost:6278/genericODws/cuahsi_1_0.asmx</Value>
     </Setting>
     <Setting Name="outputDir" Type="System.String" Scope="User">
-      <Value Profile="(Default)">d:\SoftwareReleases\genericodws\lbrsampleResponses</Value>
+      <Value Profile="(Default)">C:\SoftwareReleases\genericodws\lbrsampleResponses</Value>
     </Setting>
   </Settings>
 </SettingsFile>
