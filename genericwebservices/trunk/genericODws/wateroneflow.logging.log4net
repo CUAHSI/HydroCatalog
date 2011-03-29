@@ -333,7 +333,7 @@
 	<root>
 		<level value="DEBUG" />
     <appender-ref ref="EventLogAppender"  />
-    <appender-ref ref="SDSCQueryLog" />	
+
     <appender-ref ref="LogFileAppender" />
 		<appender-ref ref="HttpTraceAppender" />
     <appender-ref ref="WebServiceDBAppender" />

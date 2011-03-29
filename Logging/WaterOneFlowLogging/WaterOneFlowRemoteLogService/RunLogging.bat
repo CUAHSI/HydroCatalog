@@ -1,0 +1,3 @@
+
+WaterOneFlowRemoteLogService.exe debugmode
+
