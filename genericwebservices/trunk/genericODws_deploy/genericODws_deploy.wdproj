@@ -89,7 +89,7 @@ Added global property  zipFileBaseName, softwareReleaseDir
     <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)_appSettings.config" />
     <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)_ConnectionString.config" />
     <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)_wateroneflow.authentication.config" />
-    <!--<ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)*.config" >
+  <!--  <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)*.config" >
       <IsConfiguration>True</IsConfiguration>
     </ExtraConfigFiles> -->
   </ItemGroup>
@@ -105,6 +105,7 @@ Added global property  zipFileBaseName, softwareReleaseDir
     </WebConfigReplacementFiles>
   </ItemGroup>
   <ItemGroup>
+    <!-- was $(Configuration)_appsettings.config -->
     <MyWebConfig Include="$(OutputPath)build_configs\$(Configuration)_appsettings.config" />
     <MyConnectionString Include="$(OutputPath)build_configs\$(Configuration)_connectionstring.config" />
     <MyWaterOneFlowAuth Include="$(OutputPath)build_configs\$(Configuration)_wateroneflow.authentication.config" />

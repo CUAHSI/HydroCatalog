@@ -19,17 +19,37 @@ public class waterml2 : Iwaterml2
     public Message GetValues(string location, string variable,
         string startDate, string endDate)
     {
-        var svc = new TansformValues("waterml2/xslt/WaterML1_timeSeries_to_WaterML2.xsl");
-      var result =   svc.GetTimeSeries(location, variable,
-                           startDate, endDate
-                           );
-      //  return result.ToString();
-        string a =  "<?xml version=\"1.0\" encoding=\"utf-8\"?><WaterMonitoringCollection id=\"generated_collection_doc\"></WaterMonitoringCollection>";
-         
-                    XmlDocument xmlDoc = new XmlDocument();
-                    xmlDoc.LoadXml(result.ToString());
-         var message = Message.CreateMessage(MessageVersion.None, null, xmlDoc.DocumentElement);
-        
+        var svc = new TransformValues("waterml2/xslt/WaterML1_timeSeries_to_WaterML2.xsl");
+        var result = svc.GetTimeSeries(location, variable,
+                             startDate, endDate
+                             );
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(result.ToString());
+        var message = Message.CreateMessage(MessageVersion.None, null, xmlDoc.DocumentElement);
+
+        return message;
+    }
+
+    public Message GetSites(string location)
+    {
+        var svc = new TransformSites("waterml2/xslt/WaterML1_siteResponse_to_WaterML2.xsl");
+        var result = svc.GetSiteInfo(location
+                             );
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(result.ToString());
+        var message = Message.CreateMessage(MessageVersion.None, null, xmlDoc.DocumentElement);
+
+        return message;
+    }
+
+    public Message GetVariable(string variable)
+    {
+        var svc = new TransformVariable("waterml2/xslt/WaterML1_siteResponse_to_WaterML2.xsl");
+        var result = svc.GeVariable(variable);
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(result.ToString());
+        var message = Message.CreateMessage(MessageVersion.None, null, xmlDoc.DocumentElement);
+
         return message;
     }
 

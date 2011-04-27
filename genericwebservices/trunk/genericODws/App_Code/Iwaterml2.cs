@@ -22,4 +22,19 @@ public interface Iwaterml2
     //   )]
     Message GetValues(string location, string variable, 
         string startDate, string endDate);
+
+    [OperationContract]
+    [WebGet(
+        // ResponseFormat = WebMessageFormat.Xml,
+        UriTemplate = "featureOfInterest?location={location}"
+        )]
+    Message GetSites(string location);
+
+    [OperationContract]
+    [WebGet(
+        // ResponseFormat = WebMessageFormat.Xml,
+        UriTemplate = "observedProperty?variable={variable}"
+        )]
+    Message GetVariable(string variable
+    );
 }

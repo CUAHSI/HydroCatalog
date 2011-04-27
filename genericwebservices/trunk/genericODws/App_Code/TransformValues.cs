@@ -20,7 +20,7 @@ namespace cuahsi.his.service.xslt
     {
         using WaterOneFlow.Schema.v1;
 
-       public class TansformValues
+       public class TransformValues
         {
 
 
@@ -32,7 +32,7 @@ namespace cuahsi.his.service.xslt
 
 
 
-            private static ILog log = LogManager.GetLogger(typeof(TansformValues));
+           private static ILog log = LogManager.GetLogger(typeof(TransformValues));
 
             private XmlSerializer serializer;
 
@@ -40,7 +40,7 @@ namespace cuahsi.his.service.xslt
 
             private CompiledXslt xslt;
             private string xsltName;
-            public TansformValues()
+            public TransformValues()
                 : base()
             {
 
@@ -48,8 +48,8 @@ namespace cuahsi.his.service.xslt
 
 
             }
-            
-            public TansformValues( string XlstName)
+
+            public TransformValues(string XlstName)
                 : base()
             {
                
