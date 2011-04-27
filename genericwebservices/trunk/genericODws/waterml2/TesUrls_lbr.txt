@@ -1,0 +1,9 @@
+USU-LBR-Mendon
+
+/values?location=USU:USU-LBR-Mendon&variable=USU:USU3&startDate=2005-01-01&endDate=2008-01-01
+
+http://localhost:6278/genericODws/waterml2/waterml2.svc/values?location=USU:USU-LBR-Mendon&variable=USU:USU3&startDate=2005-01-01&endDate=2008-01-01
+
+http://localhost:6278/genericODws/waterml2/waterml2.svc/GetValues?location=USU:USU-LBR-Mendon&variable=USU:USU3&startDate=2005-01-01&endDate=2008-01-01
+
+http://localhost:6278/genericODws/waterml2/waterml2.svc

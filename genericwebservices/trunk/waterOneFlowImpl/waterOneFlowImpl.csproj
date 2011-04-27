@@ -208,7 +208,7 @@
   <PropertyGroup>
     <PreBuildEvent>CALL "$(DevEnvDir)\..\Tools\vsvars32.bat"
 cd $(ProjectDir)
-genschema.bat
+REM genschema.bat
 
 
 </PreBuildEvent>
