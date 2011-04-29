@@ -13,9 +13,7 @@
       exclude-result-prefixes="xs"
       version="2.0">
   
-  <!-- XSL to translate between a WaterML1.0 sitesResponse document and a WaterML2.0 collection. Currently only a partial translation. History:
-    2010-08-20 - Created - Pete Taylor 
-  --> 
+  
   
   <xsl:output method="xml" indent="yes"/> 
   
@@ -42,10 +40,13 @@
                     <xsl:value-of select="wml:siteInfo/wml:geoLocation/wml:geogLocation/@srs"/>
                   </xsl:attribute>
                   <xsl:value-of select="wml:siteInfo/wml:geoLocation/wml:geogLocation/wml:latitude"/> 
-                  <xsl:value-of select="wml:siteInfo/wml:geoLocation/wml:geogLocation/wml:longitude"/>
+                  <xsl:text> </xsl:text><xsl:value-of select="wml:siteInfo/wml:geoLocation/wml:geogLocation/wml:longitude"/>
                 </gml:pos>
               </gml:Point>
             </sams:shape>
+            
+       <xsl:apply-templates select="wml:siteInfo/wml:elevation_m" />  
+         <xsl:apply-templates select="wml:siteInfo/wml:verticalDatum" />  
             
             <xsl:for-each select="wml:siteInfo/wml:note">
               <sam:parameter>
@@ -56,7 +57,7 @@
                     </xsl:attribute>
                   </om:name>
                   <om:value xsi:type="xsd:string">
-c:\temp\
+                    <xsl:value-of select="."/>
                   </om:value>
                 </om:NamedValue>
               </sam:parameter>
@@ -71,5 +72,29 @@ c:\temp\
       
     
   </xsl:template>
+    
+    <xsl:template match="wml:elevation_m">
+            <sam:parameter>
+                <om:NamedValue>
+                  <om:name xlink:href="http://www.cuahsi.org/waterml2/params/elevation_m/">
+                  </om:name>
+                  <om:value xsi:type="xsd:string">
+                    <xsl:value-of select="."/>
+                  </om:value>
+                </om:NamedValue>
+              </sam:parameter>
+    </xsl:template>
+    
+<xsl:template match="wml:verticalDatum">
+            <sam:parameter>
+                <om:NamedValue>
+                  <om:name xlink:href="http://www.cuahsi.org/waterml2/params/verticalDatum/">
+                  </om:name>
+                  <om:value xsi:type="xsd:string">
+                    <xsl:value-of select="."/>
+                  </om:value>
+                </om:NamedValue>
+              </sam:parameter>
+    </xsl:template>
 
 </xsl:stylesheet>

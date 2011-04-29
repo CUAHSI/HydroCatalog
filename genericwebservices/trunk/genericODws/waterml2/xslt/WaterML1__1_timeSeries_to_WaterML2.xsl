@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Liquid XML Studio Developer Edition (Education) 9.0.11.3078 (http://www.liquid-technologies.com) -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wml2="http://www.opengis.net/waterml/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:om="http://www.opengis.net/om/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:wml="http://www.cuahsi.org/waterML/1.0/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wml2="http://www.opengis.net/waterml/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:om="http://www.opengis.net/om/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:output method="xml" indent="yes" />
     <xsl:template match="wml:timeSeriesResponse">
         <wml2:WaterMonitoringCollection>
@@ -70,31 +71,31 @@
                             </gml:TimeInstant>
                         </om:resultTime>
                         <xsl:choose>
-                            <xsl:when test="wml:values/wml:method/wml:MethodLink">
+                            <xsl:when test="wml:values/wml:method/wml:methodLink">
                                 <om:procedure>
                                     <xsl:attribute name="xlink:href">
-                                        <xsl:value-of select="wml:values/wml:method/wml:MethodLink" />
+                                        <xsl:value-of select="wml:values/wml:method/wml:methodLink" />
                                     </xsl:attribute>
                                     <xsl:attribute name="xlink:title">
-                                        <xsl:value-of select="wml:values/wml:method/wml:MethodName" />
+                                        <xsl:value-of select="wml:values/wml:method/wml:methodName" />
                                     </xsl:attribute>
                                 </om:procedure>
                             </xsl:when>
-                            <xsl:when test="wml:values/wml:method/wml:MethodDescription">
+                            <xsl:when test="wml:values/wml:method/wml:methodDescription">
                                 <om:procedure>
                                     <xsl:attribute name="xlink:href">
                                         <xsl:text>urn:cuahsi/wof/method:</xsl:text>
-                                        <xsl:value-of select="wml:values/wml:method/@methodID" />
+                                        <xsl:value-of select="wml:values/wml:method/wml:methodCode" />
                                     </xsl:attribute>
                                     <xsl:attribute name="xlink:title">
-                                        <xsl:value-of select="wml:values/wml:method/wml:MethodDescription" />
+                                        <xsl:value-of select="wml:values/wml:method/wml:methodDescription" />
                                     </xsl:attribute>
                                 </om:procedure>
                             </xsl:when>
                             <xsl:otherwise>
                                 <om:procedure>
                                     <xsl:attribute name="xlink:href">
-                                        <xsl:text>urn:cuahsi/wof/method/unknown</xsl:text>xsl:text>
+                                        <xsl:text>urn:cuahsi/wof/method/unknown</xsl:text>
                                     </xsl:attribute>
                                 </om:procedure>
                             </xsl:otherwise>
@@ -137,14 +138,32 @@
                                                 <xsl:value-of select="concat(wml:variable/wml:units/@unitsAbbreviation, wml:variable/wml:units/@unitsName)" />
                                             </xsl:attribute>
                                         </wml2:unitOfMeasure>
-                                                                               <wml2:quality>
+                                        <xsl:choose>
+                                       <xsl:when test="count(wml:values/wml:censorCode) &lt; 1 " >
+                                      <wml2:quality>
                                             <!-- xlink:href="http://waterdata.usgs.gov/NJ/nwis/help/?provisional"
 	                        xlink:title="Provisional data subject to revision."/>
                                         -->
                                             <xsl:attribute name="xlink:href">http://www.opengis.net/def/timeseriesType/WaterML/2.0/notcensored
                                             </xsl:attribute>
                                             <xsl:attribute name="xlink:title">not censored</xsl:attribute>
-                                    </wml2:quality> 
+                                    </wml2:quality>  
+                                        </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:for-each select="wml:values/wml:censorCode" >
+                                                <wml2:quality>
+                                            <!-- xlink:href="http://waterdata.usgs.gov/NJ/nwis/help/?provisional"
+	                        xlink:title="Provisional data subject to revision."/>
+                                            -->
+ <xsl:attribute name="xlink:href">
+ <xsl:value-of select="concat('http://www.opengis.net/def/timeseriesType/WaterML/2.0/',wml:censorCode)" />
+                                            </xsl:attribute>
+                                            <xsl:attribute name="xlink:title">
+                                                <xsl:value-of select="wml:censorCode" />
+                                            </xsl:attribute>                                    </wml2:quality>
+                                                </xsl:for-each>
+											</xsl:otherwise>
+                                    </xsl:choose>   
                                         <wml2:dataType>
                                             <!--      xlink:href="http://www.opengis.net/def/timeseriesType/WaterML/2.0/Continuous"
 	                        xlink:title="Continuous/Instantaneous"/>
@@ -156,7 +175,17 @@
                                                 <xsl:value-of select="wml:variable/wml:dataType" />
                                             </xsl:attribute>
                                         </wml2:dataType>
-
+                               <xsl:if test="count(wml:values/wml:qualityControlLevel) = 1">
+                                        <wml2:processing>
+                                            <!-- xlink:href="http://waterdata.usgs.gov/NJ/nwis/help/?provisional"
+	                        xlink:title="Provisional data subject to revision."/>
+                                        -->
+                                            <xsl:attribute name="xlink:href">
+                                                 <xsl:value-of select="concat('urn:cuahsi/qualityControlLevel',wml:values/wml:qualityControlLevel[1]/wml:qualityControlLevelCode)"/>
+                                            </xsl:attribute>
+                                            <xsl:attribute name="xlink:title"> <xsl:value-of select="wml:values/wml:qualityControlLevel[1]/wml:definition"/></xsl:attribute>
+                                    </wml2:processing>
+                                </xsl:if>
                                 </wml2:TimeValuePair>
                             </wml2:defaultTimeValuePair>
                             <xsl:for-each select="wml:values/wml:value">
@@ -170,12 +199,12 @@
                                         </wml2:value>
                                         <!-- <xsl:if test="not(empty(@qualityControlLevel))">
                      -->
-                                        <xsl:if test="@qualityControlLevel">
-                                            <wml2:processing>
+                                        <xsl:if test="count(wml:values/wml:qualityControlLevel) > 1">
+                                            <wml2:quality>
                                                 <xsl:attribute name="xlink:href">
                                                     <xsl:value-of select="concat(&quot;#&quot;,translate(@qualityControlLevel, &quot; &quot;, &quot;_&quot;))" />
                                                 </xsl:attribute>
-                                            </wml2:processing>
+                                            </wml2:quality>
                                         </xsl:if>
                                     </wml2:TimeValuePair>
                                 </wml2:element>

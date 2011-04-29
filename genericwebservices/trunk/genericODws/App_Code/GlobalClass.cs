@@ -42,7 +42,7 @@ namespace WaterOneFlow.odws
             String codeDate = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
 
             String process = "GenericODWS_Start";
-            String path = Context.Request.ApplicationPath;
+           String path = Context.Request.ApplicationPath;
             String network = ConfigurationManager.AppSettings["network"];
             String vocabulary = ConfigurationManager.AppSettings["vocabulary"];
 
