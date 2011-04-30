@@ -2,6 +2,8 @@
 <!-- Created with Liquid XML Studio Developer Edition (Education) 9.0.11.3078 (http://www.liquid-technologies.com) -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wml2="http://www.opengis.net/waterml/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:om="http://www.opengis.net/om/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" 
 xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
+   <xsl:include href="WaterML1_1_timseries_WaterProcess_to_WaterML2.xsl" />
+    
     <xsl:output method="xml" indent="yes" />
     <xsl:template match="wml:timeSeriesResponse">
         <wml2:WaterMonitoringCollection>
@@ -16,7 +18,27 @@ xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/
                     </wml2:generationDate>
                     <wml2:generationSystem>Translation from WaterML1.0 response document</wml2:generationSystem>
                 </wml2:DocumentMetadata>
+                <xsl:comment>8.2.8	metadata (OM_Observation)
+  wml2:intendedSamplingInterval P2Y2M25DT21H54M52.27S
+  wml2:status 
+  wml2:sampledMedium 
+  wml2:maximumGap P5Y0M24DT12H3M45.94S
+                    
+    wml2:parameter
+       om:NamedValue>
+            om:name 
+            om:value 
+        om:NamedValue
+    (and/or)
+    wml2:parameter xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:actuate="other" gml:remoteSchema="http://www.liquid-technologies.com"
+</xsl:comment>
             </wml2:metadata>
+            <xsl:comment> 
+   8.12.1.7.1	phenomenaDictionary
+   8.12.1.7.2	qualifierDictionary 
+   8.12.1.7.3	qualityDictionary 
+                processing
+</xsl:comment>
             <!--  <xsl:if test="not(empty($unique-list))"> -->
             <xsl:if test="not($unique-list)">
                 <wml2:qualityDictionary>
@@ -42,7 +64,15 @@ xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/
                 <wml2:observationMember>
                     <wml2:WaterMonitoringObservation>
                         <xsl:attribute name="gml:id">
-                            <xsl:value-of select="@name" />
+                            <xsl:choose>
+                                <xsl:when test="@name">
+                                    <xsl:value-of select="@name" />
+								</xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>observation</xsl:text>
+								</xsl:otherwise>
+							</xsl:choose>
+                            
                         </xsl:attribute>
                         <!-- Figure out the start and end time of the series -->
                         <xsl:variable name="start-time" select="wml:values/wml:value[1]/@dateTime">
@@ -70,36 +100,10 @@ xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/
                                 </gml:timePosition>
                             </gml:TimeInstant>
                         </om:resultTime>
-                        <xsl:choose>
-                            <xsl:when test="wml:values/wml:method/wml:methodLink">
-                                <om:procedure>
-                                    <xsl:attribute name="xlink:href">
-                                        <xsl:value-of select="wml:values/wml:method/wml:methodLink" />
-                                    </xsl:attribute>
-                                    <xsl:attribute name="xlink:title">
-                                        <xsl:value-of select="wml:values/wml:method/wml:methodName" />
-                                    </xsl:attribute>
-                                </om:procedure>
-                            </xsl:when>
-                            <xsl:when test="wml:values/wml:method/wml:methodDescription">
-                                <om:procedure>
-                                    <xsl:attribute name="xlink:href">
-                                        <xsl:text>urn:cuahsi/wof/method:</xsl:text>
-                                        <xsl:value-of select="wml:values/wml:method/wml:methodCode" />
-                                    </xsl:attribute>
-                                    <xsl:attribute name="xlink:title">
-                                        <xsl:value-of select="wml:values/wml:method/wml:methodDescription" />
-                                    </xsl:attribute>
-                                </om:procedure>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <om:procedure>
-                                    <xsl:attribute name="xlink:href">
-                                        <xsl:text>urn:cuahsi/wof/method/unknown</xsl:text>
-                                    </xsl:attribute>
-                                </om:procedure>
-                            </xsl:otherwise>
-                        </xsl:choose>
+                         <om:procedure>
+                            <xsl:call-template name="WaterObservationProcess"/>
+                         </om:procedure>
+                      
                         <om:observedProperty>
                             <xsl:attribute name="xlink:href">
                                 <xsl:value-of select='concat(wml:variable/wml:variableCode[1]/@vocabulary,":",wml:variable/wml:variableCode[1])' />
@@ -120,27 +124,33 @@ xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/
                                 </xsl:attribute>
                             </xsl:if>
                         </om:featureOfInterest>
+                        <xsl:comment>9.2.1.1	resultQuality would go here</xsl:comment>
                         <om:result>
                             <wml2:Timeseries>
                                 <xsl:attribute name="gml:id">
                                     <xsl:value-of select="concat(@name,&quot;_TS&quot;)">
                                     </xsl:value-of>
                                 </xsl:attribute>
+                                 <xsl:comment>domainExtent refers to time described above</xsl:comment>
                                 <wml2:domainExtent xlink:href="#phen_time">
                                 </wml2:domainExtent>
+                                <xsl:comment>baseTime and  spacing</xsl:comment>
                                 <wml2:defaultTimeValuePair>
                                     <wml2:TimeValuePair>
+                                        <xsl:comment>8.6.3	unitOfMeasure. Mapping. The unit of measure is specified using the ISO19103 UnitOfMeasure type. </xsl:comment>
                                         <wml2:unitOfMeasure>
                                             <xsl:attribute name="xlink:href">
-                                                <xsl:value-of select="concat(&quot;&quot;,wml:variable/wml:units/@unitsAbbreviation)" />
+                                                <xsl:value-of select="concat(&quot;&quot;,wml:variable/wml:unit/wml:unitAbbreviation)" />
                                             </xsl:attribute>
                                             <xsl:attribute name="xlink:title">
-                                                <xsl:value-of select="concat(wml:variable/wml:units/@unitsAbbreviation, wml:variable/wml:units/@unitsName)" />
+                                                <xsl:value-of select="concat(wml:variable/wml:unit/wml:unitAbbreviation,' ', wml:variable/wml:unit/wml:unitName)" />
                                             </xsl:attribute>
                                         </wml2:unitOfMeasure>
                                         <xsl:choose>
                                        <xsl:when test="count(wml:values/wml:censorCode) &lt; 1 " >
-                                      <wml2:quality>
+                                         
+                                     <xsl:comment>8.6.4	Data quality. Mapping needed</xsl:comment>
+                                        <wml2:quality>
                                             <!-- xlink:href="http://waterdata.usgs.gov/NJ/nwis/help/?provisional"
 	                        xlink:title="Provisional data subject to revision."/>
                                         -->
@@ -164,6 +174,7 @@ xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/
                                                 </xsl:for-each>
 											</xsl:otherwise>
                                     </xsl:choose>   
+                                        <xsl:comment>8.6.5	Data type. need to do a mapping</xsl:comment>
                                         <wml2:dataType>
                                             <!--      xlink:href="http://www.opengis.net/def/timeseriesType/WaterML/2.0/Continuous"
 	                        xlink:title="Continuous/Instantaneous"/>
