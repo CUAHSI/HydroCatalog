@@ -18,8 +18,10 @@ namespace cuahsi.his.service.xslt
 {
     namespace v1_0
     {
-        using WaterOneFlow.Schema.v1;
-
+        using WaterOneFlow.Schema.v1_1;
+        using WaterOneFlow.odws.v1_1;
+      //  using WaterOneFlow.Schema.v1_0;
+       // using WaterOneFlow.odws;
        public class TransformSites
         {
 
@@ -104,8 +106,8 @@ ElementName = "siteResponse",
 
                 
                     locationParam s = new locationParam(Location);
-                    var result = svc.GetSiteInfo(s);
-    
+                   var result = svc.GetSiteInfoResponse(s);
+                    // var result = svc.GetSiteInfo(s);
 
 
 

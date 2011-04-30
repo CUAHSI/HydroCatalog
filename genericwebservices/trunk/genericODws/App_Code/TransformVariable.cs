@@ -18,8 +18,10 @@ namespace cuahsi.his.service.xslt
 {
     namespace v1_0
     {
-        using WaterOneFlow.Schema.v1;
-
+        using WaterOneFlow.Schema.v1_1;
+       using WaterOneFlow.odws.v1_1;
+       // using WaterOneFlow.Schema.v1;
+        // using WaterOneFlow.odws;
        public class TransformVariable
         {
 
@@ -32,7 +34,7 @@ namespace cuahsi.his.service.xslt
 
 
 
-           private static ILog log = LogManager.GetLogger(typeof(TransformSites));
+           private static ILog log = LogManager.GetLogger(typeof(TransformVariable));
 
             private XmlSerializer serializer;
 
@@ -105,25 +107,25 @@ ElementName = "variablesResponse",
 
 
                     var result = svc.GetVariableInfo(variable);
-    
 
 
 
-                    //MemoryStream memoryStream = new MemoryStream();
-                    //XmlWriter writer = XmlWriter.Create(memoryStream);
-                    //serializer.Serialize(writer, result);
-                    //memoryStream.Position = 0;
-                    //var reader = XmlReader.Create(memoryStream);
 
-                    //StringBuilder sb = new StringBuilder();
-                    //var writer2 = XmlWriter.Create(sb);
-
-                    //xslt.Transform(reader, writer2);
-
+                    MemoryStream memoryStream = new MemoryStream();
+                    XmlWriter writer = XmlWriter.Create(memoryStream);
+                    serializer.Serialize(writer, result);
+                    memoryStream.Position = 0;
+                    var reader = XmlReader.Create(memoryStream);
 
                     StringBuilder sb = new StringBuilder();
-                    XmlWriter writer = XmlWriter.Create(sb);
-                    serializer.Serialize(writer, result);
+                    var writer2 = XmlWriter.Create(sb);
+
+                    xslt.Transform(reader, writer2);
+
+
+                    //StringBuilder sb = new StringBuilder();
+                    //XmlWriter writer = XmlWriter.Create(sb);
+                    //serializer.Serialize(writer, result);
                     return sb;
 
                 }

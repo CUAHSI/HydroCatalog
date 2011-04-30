@@ -47,7 +47,7 @@
                             <sam:parameter>
                                 <om:NamedValue>
                                     <om:name xlink:href="http://www.cuahsi.org/waterml2/params/unknownPropertyName/">
-                                        <xsl:attribute name=" xlink:href">
+                                        <xsl:attribute name="xlink:href">
                                             <xsl:value-of select="concat(&quot;http://www.cuahsi.org/waterml2/params/&quot;, @name)" />
                                         </xsl:attribute>
                                     </om:name>
