@@ -2,6 +2,7 @@
 using cuahsi.wof.ruon;
 
 using System;
+using cuahsi.wof.ruon.wof_1_0;
 using NUnit.Framework;
 
 namespace HisAgentTests
@@ -144,7 +145,7 @@ namespace HisAgentTests
         [TestCase("test3", true, "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx", "NWIS:00000", "NWIS:00065", "1D")]
         public void WofServer(string serviceName, bool enabled, string serverEndpointurlServerUrl, string siteCode, string variableCode, string date)
         {
-            var wof = new WofServer();
+            var wof = new ObsSeriesServer();
             wof.Name = serviceName;
             wof.Enabled = enabled;
             wof.Endpoint = serverEndpointurlServerUrl;
@@ -168,8 +169,8 @@ namespace HisAgentTests
         public void ServerList(string serviceName, bool enabled, string serverEndpointurlServerUrl, string siteCode, string variableCode, string date)
         {
 
-            var servers = new ServerList();
-            servers.Add(new WofServer
+            var servers = new ObsSeriesServerList();
+            servers.Add(new ObsSeriesServer
             {
                 Name = serviceName,
                 Enabled = enabled,
@@ -196,7 +197,7 @@ namespace HisAgentTests
             Assert.That(asResoruceDict[0][WaterWebServicesAgent.VARIABLECODE] == servers[0].VariableCode, "failed dict variable" + serviceName);
             Assert.That(asResoruceDict[0][WaterWebServicesAgent.ISOTIMEPERIOD] == servers[0].ISOTimeInterval, "failed dict datetime" + serviceName);
 
-            var listToServers = new ServerList(asResoruceDict);
+            var listToServers = new ObsSeriesServerList(asResoruceDict);
 
             Assert.That(listToServers[0].Name == servers[0].Name, "failed dict name" + serviceName);
             Assert.That(listToServers[0].Enabled == servers[0].Enabled, "failed dict enabled" + serviceName);

@@ -144,7 +144,7 @@
             // 
             // serverListBindingSource
             // 
-            this.serverListBindingSource.DataSource = typeof(cuahsi.wof.ruon.WofServer);
+            this.serverListBindingSource.DataSource = typeof(cuahsi.wof.ruon.ObsSeriesServer);
             // 
             // backgroundWorker1
             // 

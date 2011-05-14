@@ -11,5 +11,11 @@
     <Setting Name="TimeOutInSeconds" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">120</Value>
     </Setting>
+    <Setting Name="WaterWebServicesAgent_wof_1_1_WaterOneFlow" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://hydro10.sdsc.edu/LBRSDSC/cuahsi_1_1.asmx</Value>
+    </Setting>
+    <Setting Name="WaterWebServicesAgent_badNamespace_wml11_over_wof10_WaterOneFlow" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://his09.umbc.edu/BaltPrecip/cuahsi_1_1.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

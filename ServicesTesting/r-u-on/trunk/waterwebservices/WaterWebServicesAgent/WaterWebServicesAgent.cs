@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using cuahsi.wof.ruon.wof_1_0;
 using log4net;
 using Ruon;
+using HisServiceTypes;
 
 namespace cuahsi.wof.ruon
 {
 
-    public class WofServer
+    public class ObsSeriesServer
     {
         public String Name { get; set; }
         public Boolean Enabled { get; set; }
@@ -16,7 +19,10 @@ namespace cuahsi.wof.ruon
         public String SiteCode { get; set; }
         public String VariableCode { get; set; }
         public String ISOTimeInterval { get; set; }
+        public ObsSeriesServer()
+        {
 
+        }
         public Dictionary<String, String> ToDictionary()
         {
             Dictionary<String, String> asDict = new Dictionary<string, string>(6);
@@ -35,18 +41,18 @@ namespace cuahsi.wof.ruon
         }
 
     }
-    public class ServerList : List<WofServer>
+    public class ObsSeriesServerList : List<ObsSeriesServer>
     {
         private Boolean _editied = false;
-        public ServerList()
+        public ObsSeriesServerList()
         {
 
         }
-        public ServerList(Dictionary<string, string>[] agentMangagedResources)
+        public ObsSeriesServerList(Dictionary<string, string>[] agentMangagedResources)
         {
             foreach (Dictionary<string, string> r in agentMangagedResources)
             {
-                WofServer server = new WofServer();
+                ObsSeriesServer server = new ObsSeriesServer();
                 Boolean enabled;
                 Boolean.TryParse(r[WaterWebServicesAgent.SERVERENABLED], out enabled);
                 server.Enabled = enabled;
@@ -94,7 +100,7 @@ namespace cuahsi.wof.ruon
     public class WaterWebServicesAgent : ServiceAgent
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         public const string GETSITES = "Use_GetSites";
         public const string GETVALUES = "Use_GetValues";
         public const string SERVERNAME = "Server_Name";
@@ -104,7 +110,7 @@ namespace cuahsi.wof.ruon
         public const string VARIABLECODE = "ws_VariableCode";
         public const string ISOTIMEPERIOD = "ISO_TimeInterval";
 
-        private ServerList servers;
+        private ObsSeriesServerList _obsSeriesServers;
         private string usgsDailyValues = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx";
         /// <summary>
         /// Constructor, HAS to have this signature
@@ -112,22 +118,45 @@ namespace cuahsi.wof.ruon
         // public HISCentralAgent(IServiceProcess serviceProcess)
         //: base("HISCentralAgent", "1.0", "AAAABIESfWjQAAADDrFZJTSn",
         // 60, null, null, serviceProcess)
+#if SDSCServices
+        // 300 seconds-five minutes
         public WaterWebServicesAgent(IServiceProcess serviceProcess)
-            : base("WaterWebServicesAgent", "1.2", 
+            : base("WaterWebServicesAgent", "1.3", 
             //"AAAABIESfWjQAAADDrFZJTSn",
                Properties.Settings.Default.AccountId ,
              300, null, null, serviceProcess)
         {
-            bool isInstalled = Agent.IsInstalled("WaterWebServicesAgent");
+        bool isInstalled = Agent.IsInstalled("WaterWebServicesAgent");
+#elif DEBUG
+        // 0seconds, aka run once
+        public WaterWebServicesAgent(IServiceProcess serviceProcess)
+            : base("CuahsiWaterServicesAgent", "1.3",
+                //"AAAABIESfWjQAAADDrFZJTSn",
+               Properties.Settings.Default.AccountId,
+             0, null, null, serviceProcess)
+        {
+
+            bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
+#else
+       // run once an hour: 3600 seconds, 
+            public WaterWebServicesAgent(IServiceProcess serviceProcess)
+            : base("CuahsiWaterServicesAgent", "1.3",
+                //"AAAABIESfWjQAAADDrFZJTSn",
+               Properties.Settings.Default.AccountId,
+             3600, null, null, serviceProcess)
+        {
+
+            bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
+#endif
 
             Configuration.MetaConfig(
-               new AgentConfig.MetaVar[]
+                   new AgentConfig.MetaVar[]
                 {
                     // agent parameters
                     new AgentConfig.MetaVar(GETSITES, AgentConfig.Type.Boolean, "true"),
                     new AgentConfig.MetaVar(GETVALUES, AgentConfig.Type.Boolean, "true"),
                 },
-                 new AgentConfig.MetaVar[]
+                     new AgentConfig.MetaVar[]
                 {
                     // Manage Resources in comma delimited list
                     new AgentConfig.MetaVar(SERVERNAME,AgentConfig.Type.String, "Unknown Server" ),
@@ -138,7 +167,7 @@ namespace cuahsi.wof.ruon
                     new AgentConfig.MetaVar(ISOTIMEPERIOD, AgentConfig.Type.String, "2010-08-01T13:00:00Z/2010-08-15T00:00:00Z"),
                 }
 
-           );
+               );
 
             if (Configuration.ManagedResources.Length == 0)
             {
@@ -154,19 +183,19 @@ namespace cuahsi.wof.ruon
             }
             else
             {
-                servers = new ServerList();
+                _obsSeriesServers = new ObsSeriesServerList();
 
                 foreach (var list in Configuration.ManagedResources)
                 {
-                    servers.Add(new WofServer { Name = list[SERVERNAME], Enabled = Boolean.Parse(list[SERVERENABLED]), Endpoint = list[ENDPOINT] });
+                    _obsSeriesServers.Add(new ObsSeriesServer { Name = list[SERVERNAME], Enabled = Boolean.Parse(list[SERVERENABLED]), Endpoint = list[ENDPOINT] });
                 }
             }
         }
 
         private void SetupBaseServices()
         {
-            servers = new ServerList();
-            servers.Add(new WofServer
+            _obsSeriesServers = new ObsSeriesServerList();
+            _obsSeriesServers.Add(new ObsSeriesServer
                             {
                                 Name = "NWISDV",
                                 Enabled = true,
@@ -175,7 +204,7 @@ namespace cuahsi.wof.ruon
                                 VariableCode = "NWIS:00060",
                                 ISOTimeInterval = "2010-01-01/2010-01-31"
                             });
-            servers.Add(new WofServer
+            _obsSeriesServers.Add(new ObsSeriesServer
                             {
                                 Name = "NWISUV",
                                 Enabled = true,
@@ -184,7 +213,7 @@ namespace cuahsi.wof.ruon
                                 VariableCode = "NWIS:00065",
                                 ISOTimeInterval = "P1D"
                             });
-            servers.Add(new WofServer
+            _obsSeriesServers.Add(new ObsSeriesServer
                             {
                                 Name = "Disabled",
                                 Enabled = false,
@@ -194,7 +223,7 @@ namespace cuahsi.wof.ruon
                                 VariableCode = "NWIS:00065",
                                 ISOTimeInterval = "P1D"
                             });
-            servers.Add(new WofServer
+            _obsSeriesServers.Add(new ObsSeriesServer
                 {
                     Name = "Bad URL",
                     Enabled = true,
@@ -205,7 +234,7 @@ namespace cuahsi.wof.ruon
                 }
                 );
             AgentParams ap = new AgentParams();
-            ap.Resources = servers.AsAgentResource();
+            ap.Resources = _obsSeriesServers.AsAgentResource();
             this.SetParameters(ap);
         }
 
@@ -214,7 +243,7 @@ namespace cuahsi.wof.ruon
 
         override protected void Uninstall()
         {
-           base.Uninstall();
+            base.Uninstall();
             Dispose();
             //
         }
@@ -231,18 +260,22 @@ namespace cuahsi.wof.ruon
         }
         public void Monitor(Dictionary<string, string>[] managedResources)
         {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            Stopwatch timer2 = new Stopwatch();
+            timer2.Start();
             try
             {
                 AgentParams ap = new AgentParams();
                 List<IAlarm> alarms = new List<IAlarm>();
 
-                WaterWebSericesTester tester = new WaterWebSericesTester();
-                tester.UpdatedTesterStatus += OnTesterStatusUpdate;
-                // set endpoint 
-                tester.Endpoint = usgsDailyValues;
 
+
+
+                log.Info("starting run");
                 foreach (var server in managedResources)
                 {
+
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
                         log.Debug("Disabled Service " + server[SERVERNAME]);
@@ -255,6 +288,32 @@ namespace cuahsi.wof.ruon
                     }
                     try
                     {
+                        log.InfoFormat("Endpoint {0}, start", server[ENDPOINT]);
+                        
+                        IWaterWebSericesTester tester ;
+                        var serviceType = WsdlUtilities.ServiceTypeFromWsdlUrl(server[ENDPOINT]);
+                       
+                        switch (serviceType)
+                        {
+                            case HisServiceTypes.ServiceTypeEnum.WOF_1_0 :
+                                tester = new cuahsi.wof.ruon.wof_1_0.WaterWebSericesTester();
+                                break;
+                            case HisServiceTypes.ServiceTypeEnum.WOF_1_1:
+                                tester = new cuahsi.wof.ruon.wof_1_1.WaterWebSericesTester();
+                                break;
+                            case HisServiceTypes.ServiceTypeEnum.WOF_1_1_badNamespace:
+                                tester = new cuahsi.wof.ruon.wof_1_1_badnamespace.WaterWebSericesTester();
+                                break;
+                            default:
+                                throw new ArgumentException("Cannot determine Service Type: " + server[ENDPOINT]);
+
+                        }
+                        tester.UpdatedTesterStatus += OnTesterStatusUpdate;
+                        // set endpoint 
+                        tester.Endpoint = usgsDailyValues;
+
+                        timer2.Reset();
+                       
                         tester.Endpoint = server[ENDPOINT];
                         if (Boolean.Parse(Configuration[GETSITES]))
                         {
@@ -262,12 +321,12 @@ namespace cuahsi.wof.ruon
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
-                                log.Debug("GetSites Failed " + server[SERVERNAME]);
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, server[SERVERNAME] + "Service List Failed"));
+                                log.Debug("FAILED: GetSites " + server[SERVERNAME]);
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "FAILED: GetSites " + server[SERVERNAME]));
                             }
                             else
                             {
-                                log.Debug("GetSites OK  " + server[SERVERNAME]);
+                                log.Debug("OK: GetSites " + server[SERVERNAME]);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
@@ -278,22 +337,24 @@ namespace cuahsi.wof.ruon
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
-                                log.Debug(" GetValues Failed " + server[SERVERNAME]);
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "Series Failed " + server[SERVERNAME] + server[SITECODE] + server[VARIABLECODE] + server[ISOTIMEPERIOD]));
+                                log.Debug("FAILED: GetValues " + server[SERVERNAME]);
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD], server[ENDPOINT])));
                             }
                             else
                             {
-                                log.Debug("GetValues OK" + server[SERVERNAME]);
+                                log.Debug("OK: GetValues " + server[SERVERNAME]);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
 
+                        log.InfoFormat("Endpoint {0}, end: {1}", server[ENDPOINT], timer2.Elapsed);
+                        timer2.Reset();
 
                     }
                     catch
                     {
                         log.Debug("Major Error in Monitor Service while testing service " + server[SERVERNAME]);
-                        alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
+                        alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "ERROR in Monitor Service"));
 
                     }
 
@@ -302,6 +363,8 @@ namespace cuahsi.wof.ruon
 
                 ReportAlarms(alarms, false);
                 log.Debug("Number of Alarms reported " + alarms.Count);
+                log.InfoFormat("Run Complete {0}", timer.Elapsed);
+                timer.Stop();
 
 
             }
@@ -312,8 +375,10 @@ namespace cuahsi.wof.ruon
                 log.Debug("Major Service Error " + ex.Message);
 
                 List<IAlarm> alarms = new List<IAlarm>();
-                alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Critical, "Error in Monitor Service"));
+                alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));
                 ReportAlarms(alarms, false);
+                log.InfoFormat("Run Complete {0}", timer.Elapsed);
+                timer.Stop();
             }
         }
     }

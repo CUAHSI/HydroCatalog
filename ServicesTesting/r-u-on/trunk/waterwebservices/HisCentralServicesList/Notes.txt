@@ -1,0 +1,23 @@
+﻿
+  string sql = "SELECT NetworkName,NetworkTitle,ServiceWSDL,ServiceAbs,ContactName,ContactEmail," +
+                      "ContactPhone,Organization,website,Citation," +
+                      "Xmin,Xmax,Ymin,Ymax,ValueCount,VariableCount,SiteCount,EarliestRec,LatestRec" +
+                      " FROM HISNetworks where NetworkID = @NetworkID AND (isPublic='true')";
+
+  SELECT NetworkName,NetworkTitle,ServiceWSDL,ServiceAbs,ContactName,ContactEmail
+,ContactPhone,Organization,website,Citation Xmin,Xmax,Ymin,Ymax,ValueCount
+,VariableCount,SiteCount,EarliestRec,LatestRec  
+FROM HISNetworks where  (isPublic='true')
+
+			"SELECT ServCode,SiteCode,SiteName,VarCode,VarName,VarUnits,Vocabulary,Ontology,Concept
+
+            ",Valuecount,StartDate,EndDate,Latitude,Longitude,IsRegular,TimeUnits,TimeStep,DataType,Medium" +
+            ",MethodID,Method,QCLevelID,QCLevel,SourceID,SourceName,LocType,ServType,XLL,YLL,XUR,YUR,Location" +
+            ",Variable,ReqsAuth,WofVersion,WaterMLURI,WFSURI,WMSURI,DAccessURI,StateName,Geometry,RecordType,OrgHier" +
+            ",SerStatus,LastUpdate FROM hiscentral.dbo.v_ObservationsMetadata where sourceid = @Sourceid";
+			
+SELECT top 1 ServCode,SiteCode,SiteName,VarCode,VarName,VarUnits,Vocabulary,Ontology,Concept
+ ,Valuecount,StartDate,EndDate,Latitude,Longitude,IsRegular,TimeUnits,TimeStep,DataType,Medium
+,MethodID,Method,QCLevelID,QCLevel,SourceID,SourceName,LocType,ServType,XLL,YLL,XUR,YUR,Location
+,Variable,ReqsAuth,WofVersion,WaterMLURI,WFSURI,WMSURI,DAccessURI,StateName,Geometry,RecordType,OrgHier
+,SerStatus,LastUpdate FROM hiscentral.dbo.v_ObservationsMetadata where sourceid = @Sourceid

@@ -2,7 +2,7 @@
 <log4net debug="true">
   <appender name="QueryLogFileAppender" 
             type="log4net.Appender.RollingFileAppender">
-    <file value="log-data\HISMonitorPerformance.txt" />
+    <file value="..\log-data\HISMonitorPerformance.txt" />
     <appendToFile value="true" />
     <maxSizeRollBackups value="-1" />
     <maximumFileSize value="5MB" />
@@ -14,7 +14,7 @@
     </layout>
   </appender>
   <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
-    <file value="log-data\HISMonitorLog.txt" />
+    <file value="..\log-data\HISMonitorLog.txt" />
     <appendToFile value="true" />
     <maxSizeRollBackups value="10" />
     <maximumFileSize value="5MB" />

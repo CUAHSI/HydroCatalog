@@ -1,28 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 
-using cuahsi.wof.ruon.CuahsiSoap;
+using cuahsi.wof.ruon.badNamespace_wml11_over_wof10;
+using cuahsi.wof.ruon.wof_1_0;
 using log4net;
 
 
-namespace cuahsi.wof.ruon
+namespace cuahsi.wof.ruon.wof_1_1_badnamespace
 {
-    public class TestResult
-    {
-        /// <summary>
-        /// Null if no report
-        /// false if there was an error
-        /// true if everthing is ok.
-        /// </summary>
-        public bool? Working { get; set; }
-        public String ServiceName { get; set; }
-        public String MethodName { get; set; }
-        public String errorString { get; set; }
-        public Double runTime { get; set; }
-        public Double runTimeGetSitesSeries { get; set; }
-        public Double runTimeGetValues { get; set; }
-    }
-    public class WaterWebSericesTester
+    public class WaterWebSericesTester: IWaterWebSericesTester
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -63,25 +49,25 @@ namespace cuahsi.wof.ruon
             TestResult testResult = new TestResult {  ServiceName = serviceName, MethodName = "GetSites" };
             try
             {
-              //  TesterStatus = "Running GetSites";
-            //    UpdatedTesterStatus(this,null);
-                var results = svc.GetSites(new string[] { }, null);
+                //  TesterStatus = "Running GetSites";
+                //    UpdatedTesterStatus(this,null);
+                var results = svc.GetSitesObject(new string[] { }, null);
                 if (results != null)
                 {
                     if (results.site.Length > 0)
                     {
-                        log.DebugFormat("Working GetSites {0} sitecount {1} in {2} ms " , serviceName , results.site.Length,siteTimer.ElapsedMilliseconds);
+                        log.DebugFormat("OK GetSites {0} sitecount {1} in {2} ms " , serviceName , results.site.Length,siteTimer.ElapsedMilliseconds);
                         testResult.Working = true;
                        
                     }
                 }
-              //  TesterStatus = "Done GetSites "+testResult.Working;
-              //  UpdatedTesterStatus(this, null);
+                //  TesterStatus = "Done GetSites "+testResult.Working;
+                //  UpdatedTesterStatus(this, null);
 
             }
             catch (Exception ex)
             {
-                log.ErrorFormat("Failed GetSites {0} exception {1}" , serviceName ,ex.Message);
+                log.ErrorFormat("FAILED: GetSites {0} exception {1}", serviceName, ex.Message);
                 testResult.errorString = ex.Message;
                 testResult.Working = false;
             }
@@ -97,14 +83,14 @@ namespace cuahsi.wof.ruon
             runtimer.Start();
 
             TestResult testResult = new TestResult {  ServiceName = serverName, MethodName = "TestService" };
-           IsoTimePeriod isoTimePeriod = new IsoTimePeriod();
+            IsoTimePeriod isoTimePeriod = new IsoTimePeriod();
             try
             {
                 // set to 1 day for now
                 isoTimePeriod = IsoTimePeriod.Parse(ISOTimPeriod);
             } catch (Exception ex)
             {
-                testResult.errorString = String.Format("Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
+                testResult.errorString = String.Format("FAILED PARAMETER: Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
                 log.Error(testResult.errorString, ex);
                 testResult.Working = false;
                 return testResult; // can't get a result. Bad data
@@ -113,7 +99,7 @@ namespace cuahsi.wof.ruon
             try
             {
                 
-                  var results = svc.GetSiteInfoObject(ws_SiteCode, null);
+                var results = svc.GetSiteInfoObject(ws_SiteCode, null);
                 if (results != null)
                 {
                     if (results.site.Length > 0)
@@ -121,28 +107,28 @@ namespace cuahsi.wof.ruon
                         testResult.Working = true;
                     } else
                     {
-                        log.ErrorFormat("GetSiteInfo {0} failed Failed zero sites in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
+                        log.ErrorFormat("FAILED: GetSiteInfo {0} zero sites in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
                         testResult.Working = false;
                     }
                 }
                 else
                 {
-                  //  TesterStatus = "failed getSiteInfo";
-                 //   UpdatedTesterStatus(this, null);
+                    //  TesterStatus = "failed getSiteInfo";
+                    //   UpdatedTesterStatus(this, null);
 
 
-                    log.ErrorFormat("GetSiteInfo {0} Failed null results in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
+                    log.ErrorFormat("FAILED:  GetSiteInfo {0} null results in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
                     testResult.Working = false;
                     
-                   // return testResult; // keep going to get values
+                    // return testResult; // keep going to get values
                 }
 
                
 
-             //   TesterStatus = "Running GetValues";
-             //   UpdatedTesterStatus(this, null);
+                //   TesterStatus = "Running GetValues";
+                //   UpdatedTesterStatus(this, null);
                 var valuesTimer = new Stopwatch();
-                    valuesTimer.Start();
+                valuesTimer.Start();
 
                 try
                 {
@@ -160,7 +146,7 @@ namespace cuahsi.wof.ruon
                         else
                         {
                             log.ErrorFormat(
-                                "GetValues Failed empty or null timeseries |{0}|{1}|{2}|{3}|{4}| in {5}ms error: {6}",
+                                "FAILED:  GetValues empty or null timeseries |{0}|{1}|{2}|{3}|{4}| in {5}ms error: {6}",
                                 serviceName, ws_SiteCode, ws_variableCode,
                                 isoTimePeriod.StartDate.ToString("yyyy-MM-dd"),
                                 isoTimePeriod.EndDate.ToString("yyyy-MM-dd"),
@@ -175,7 +161,7 @@ namespace cuahsi.wof.ruon
                     {
                         //     TesterStatus = "failed GetValues";
                         //  UpdatedTesterStatus(this, null);
-                        log.ErrorFormat("GetValues Failed null results |{0}|{1}|{2}|{3}|{4}| in {5} ms",
+                        log.ErrorFormat("FAILED: GetValues null results |{0}|{1}|{2}|{3}|{4}| in {5} ms",
                                         serviceName, ws_SiteCode, ws_variableCode,
                                         isoTimePeriod.StartDate.ToString("yyyy-MM-dd"),
                                         isoTimePeriod.EndDate.ToString("yyyy-MM-dd"),
@@ -188,7 +174,7 @@ namespace cuahsi.wof.ruon
                 {
                     //     TesterStatus = "failed Service Error " + ex.Message;
                     //    UpdatedTesterStatus(this, null);
-                    log.ErrorFormat("GetValues Failed {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
+                    log.ErrorFormat("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
                     testResult.Working = false;
                     testResult.errorString = ex.Message;
                     //  return testResult;
@@ -196,20 +182,20 @@ namespace cuahsi.wof.ruon
                 valuesTimer.Stop();
                 
                 //     TesterStatus = "Done GetValues" + testResult.Working;
-              //  UpdatedTesterStatus(this, null);
+                //  UpdatedTesterStatus(this, null);
             }
             catch (Exception ex)
             {
-           //     TesterStatus = "failed Service Error " + ex.Message;
-            //    UpdatedTesterStatus(this, null);
-                log.ErrorFormat("Service Failed {0} in {2} ms exception {1} ", serverName, runtimer.ElapsedMilliseconds, ex.Message);
+                //     TesterStatus = "failed Service Error " + ex.Message;
+                //    UpdatedTesterStatus(this, null);
+                log.ErrorFormat("FAILED:  Service {0} in {2} ms exception {1} ", serverName, runtimer.ElapsedMilliseconds, ex.Message);
                 testResult.Working = false;
                 testResult.errorString = ex.Message;
-              //  return testResult;
+                //  return testResult;
             }
-         //   TesterStatus = "Done with Run";
-           // UpdatedTesterStatus(this, null);
-            log.DebugFormat("CompletedRun for service {0} in {1} ms, worked={2} ", serviceName, runtimer.ElapsedMilliseconds, testResult.Working);
+            //   TesterStatus = "Done with Run";
+            // UpdatedTesterStatus(this, null);
+            log.DebugFormat("OK: CompletedRun for service {0} in {1} ms, worked={2} ", serviceName, runtimer.ElapsedMilliseconds, testResult.Working);
             testResult.runTime = runtimer.ElapsedMilliseconds;
             runtimer.Stop();
           
@@ -218,5 +204,3 @@ namespace cuahsi.wof.ruon
         }
     }
 }
-
-
