@@ -1,0 +1,20 @@
+﻿http://waterservices.usgs.gov/rest/GML-Site-Service.html
+
+SiteONly:
+http://waterservices.usgs.gov/nwis/site?format=rdb&sites=01646500
+http://waterservices.usgs.gov/nwis/site?format=rdb&sites=01646500&siteOutput=expanded
+
+series
+http://waterservices.usgs.gov/nwis/site?format=rdb&sites=01646500&seriesCatalogOutput=true
+series: qw
+http://waterservices.usgs.gov/nwis/site?format=rdb&sites=01646500&seriesCatalogOutput=true&hasDataTypeCd=qw
+series: dv. iv, gw
+http://waterservices.usgs.gov/nwis/site?format=rdb&sites=01646500&seriesCatalogOutput=true&outputDataTypeCd=iv,dv,gw&hasDataTypeCd=qw
+
+Active Rhode iSland: 
+
+http://waterservices.usgs.gov/nwis/site?format=rdb&stateCd=ri&siteOutput=expanded&siteStatus=active
++ series
+http://waterservices.usgs.gov/nwis/site?format=rdb&stateCd=ri&seriesCatalogOutput=true&outputDataTypeCd=iv,dv&siteStatus=active
+
+

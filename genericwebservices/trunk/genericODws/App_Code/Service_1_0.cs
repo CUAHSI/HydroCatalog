@@ -56,7 +56,8 @@ namespace WaterOneFlow.odws
         {
             //log4net.Util.LogLog.InternalDebugging = true; 
 
-            ODws = new ODService(this.Context); //INFO we can extend this for other service types
+           // ODws = new ODService(this.Context); //INFO we can extend this for other service types
+            ODws = new ODService(null); //INFO we can extend this for other service types
             // aStandard = new StandardServices();
 
             try
@@ -111,7 +112,7 @@ namespace WaterOneFlow.odws
 
         public SiteInfoResponseType GetSites(string[] SiteNumbers, String authToken)
         {
-            GlobalClass.WaterAuth.SitesServiceAllowed(Context, authToken);
+          //  GlobalClass.WaterAuth.SitesServiceAllowed(Context, authToken);
 
             try
             {
@@ -126,7 +127,7 @@ namespace WaterOneFlow.odws
 
         public virtual SiteInfoResponseType GetSiteInfoObject(string SiteNumber, String authToken)
         {
-            GlobalClass.WaterAuth.SiteInfoServiceAllowed(Context, authToken);
+         //   GlobalClass.WaterAuth.SiteInfoServiceAllowed(Context, authToken);
 
             try
             {
@@ -143,7 +144,7 @@ namespace WaterOneFlow.odws
 
         public VariablesResponseType GetVariableInfoObject(string Variable, String authToken)
         {
-            GlobalClass.WaterAuth.VariableInfoServiceAllowed(Context, authToken);
+          //  GlobalClass.WaterAuth.VariableInfoServiceAllowed(Context, authToken);
 
             try
             {
@@ -167,7 +168,7 @@ namespace WaterOneFlow.odws
         public virtual TimeSeriesResponseType GetValuesObject(string locationParam, string VariableCode,
                                                               string StartDate, string EndDate, String authToken)
         {
-            GlobalClass.WaterAuth.DataValuesServiceAllowed(Context, authToken);
+         //   GlobalClass.WaterAuth.DataValuesServiceAllowed(Context, authToken);
 
             if (!useODForValues)
                 throw new SoapException(

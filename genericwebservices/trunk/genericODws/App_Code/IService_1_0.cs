@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
@@ -23,7 +25,8 @@ namespace WaterOneFlow
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1,
         Name = WsDescriptions.WsDefaultName, 
         Namespace = Constants.WS_NAMSPACE)]
-
+    [ServiceContract(Name = WsDescriptions.WsDefaultName, Namespace = Constants.WS_NAMSPACE)]
+    [XmlSerializerFormat]
     interface IService_1_0
     {
 
@@ -33,31 +36,54 @@ namespace WaterOneFlow
             string[] site, String authToken);
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoDefaultDesc)]
+       
         string GetSiteInfo(string site, String authToken);
 
         [WebMethod(Description =  WsDescriptions.GetVariableInfoDefaultDesc)]
+        
         string GetVariableInfo(string variable, String authToken);
 
 
         [WebMethod(Description = WsDescriptions.GetValuesDefaultDesc )]
+      
         string GetValues(string location, string variable, string startDate, string endDate, String authToken);
 
         [WebMethod(Description = WsDescriptions.GetSitesDefaultDesc)]
+        //[OperationContract()]
+        //[WebGet(
+        //    // ResponseFormat = WebMessageFormat.Xml,
+        // UriTemplate = "GetSites"
+        // )]
         SiteInfoResponseType GetSites(
             [XmlArray("site"), XmlArrayItem("string", typeof(string))]
             string[] site, String authToken);
 
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
+        [OperationContract()]
+        [WebGet(
+            // ResponseFormat = WebMessageFormat.Xml,
+      UriTemplate = "series?site={site}&authToken={authToken}"
+      )]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
 
 
         [WebMethod(Description = WsDescriptions.GetVariableInfoObjectDefaultDesc)]
+        [OperationContract()]
+        [WebGet(
+            // ResponseFormat = WebMessageFormat.Xml,
+       UriTemplate = "variables?variable={variable}&authToken={authToken}"
+       )]
         VariablesResponseType GetVariableInfoObject(string variable, String authToken);
 
 
         [WebMethod(Description = WsDescriptions.GetValuesObjectDefaultDesc)]
+        [OperationContract()]
+        [WebGet(
+            // ResponseFormat = WebMessageFormat.Xml,
+        UriTemplate = "values?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"
+        )]
         TimeSeriesResponseType GetValuesObject(string location, string variable, string startDate, string endDate, String authToken);
 
    

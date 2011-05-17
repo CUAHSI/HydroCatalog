@@ -49,48 +49,48 @@ namespace WaterOneFlow.odws
                 // This is now done in the global.asax file
                 // this got cached, which cause the name to be localhost
                 serviceName = ConfigurationManager.AppSettings["GetValuesName"];
-                Boolean odValues = Boolean.Parse(ConfigurationManager.AppSettings["UseODForValues"]);
-                if (odValues)
-                {
-                    string Port = aContext.Request.ServerVariables["SERVER_PORT"];
+                //Boolean odValues = Boolean.Parse(ConfigurationManager.AppSettings["UseODForValues"]);
+                //if (odValues)
+                //{
+                //    string Port = aContext.Request.ServerVariables["SERVER_PORT"];
 
-                    if (Port == null || Port == "80" || Port == "443")
+                //    if (Port == null || Port == "80" || Port == "443")
 
-                        Port = "";
+                //        Port = "";
 
-                    else
+                //    else
 
-                        Port = ":" + Port;
-
-
-
-                    string Protocol = aContext.Request.ServerVariables["SERVER_PORT_SECURE"];
-
-                    if (Protocol == null || Protocol == "0")
-
-                        Protocol = "http://";
-
-                    else
-
-                        Protocol = "https://";
+                //        Port = ":" + Port;
 
 
 
+                //    string Protocol = aContext.Request.ServerVariables["SERVER_PORT_SECURE"];
+
+                //    if (Protocol == null || Protocol == "0")
+
+                //        Protocol = "http://";
+
+                //    else
+
+                //        Protocol = "https://";
 
 
-                    // *** Figure out the base Url which points at the application's root
 
-                    serviceUrl = Protocol + aContext.Request.ServerVariables["SERVER_NAME"] +
 
-                                                Port +
-                                                aContext.Request.ApplicationPath
-                                                + "/" + ConfigurationManager.AppSettings["asmxPage_1_1"] + "?WSDL";
 
-                }
-                else
-                {
+                //    // *** Figure out the base Url which points at the application's root
+
+                //    serviceUrl = Protocol + aContext.Request.ServerVariables["SERVER_NAME"] +
+
+                //                                Port +
+                //                                aContext.Request.ApplicationPath
+                //                                + "/" + ConfigurationManager.AppSettings["asmxPage_1_1"] + "?WSDL";
+
+                //}
+                //else
+                //{
                     serviceUrl = ConfigurationManager.AppSettings["externalGetValuesService"];
-                }
+                //}
 
             }
 

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IWaterWebSericesTester.cs" />
+    <Compile Include="ServiceConnectionException.cs" />
     <Compile Include="WaterWebSericesTester_1_1_badNamespace.cs" />
     <Compile Include="WaterWebSericesTester_1_0.cs" />
     <Compile Include="IsoTimePeriod.cs" />

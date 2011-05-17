@@ -1,0 +1,27 @@
+# US Geological Survey
+#
+# The Site File stores location and general information about ground water,
+# surface water, and meteorological sites for sites in USA.
+#
+# File-format description:  http://waterdata.usgs.gov/nwis/?tab_delimited_format_info
+# Automated-retrieval info: http://waterdata.usgs.gov/nwis/?automated_retrieval_info
+#
+# Contact:   gs-w_support_nwisweb@usgs.gov
+# retrieved: 2011-05-12 14:58:54 EDT	(vaas01)
+#
+# The following selected fields are included in this output:
+# agency_cd       -- Agency
+# site_no         -- Site identification number
+# station_nm      -- Site name
+# site_tp_cd      -- Site type
+# dec_lat_va      -- Decimal latitude
+# dec_long_va     -- Decimal longitude
+# coord_acy_cd    -- Latitude-longitude accuracy
+# dec_coord_datum_cd -- Decimal Latitude-longitude datum
+# alt_va          -- Altitude of Gage/land surface
+# alt_acy_va      -- Altitude accuracy
+# alt_datum_cd    -- Altitude datum
+#
+agency_cd	site_no	station_nm	site_tp_cd	dec_lat_va	dec_long_va	coord_acy_cd	dec_coord_datum_cd	alt_va	alt_acy_va	alt_datum_cd
+5s	15s	50s	7s	16s	16s	1s	10s	8s	3s	10s
+USGS	01646500	POTOMAC RIVER NEAR WASH, DC LITTLE FALLS PUMP STA	ST	38.94977778	-77.12763889	S	NAD83	37.95	.01	NGVD29

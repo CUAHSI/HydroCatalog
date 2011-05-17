@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Xml.Xsl;
 using cuahsi.his.service.xslt.utilties;
 
 using log4net;
@@ -42,6 +44,9 @@ namespace cuahsi.his.service.xslt
 
             private CompiledXslt xslt;
             private string xsltName;
+
+            private XsltArgumentList args = new XsltArgumentList();
+
             public TransformValues()
                 : base()
             {
@@ -51,11 +56,13 @@ namespace cuahsi.his.service.xslt
 
             }
 
-            public TransformValues(string XlstName)
+            public TransformValues(string XlstName, Uri wfsBase, Uri observedPropertiesBase)
                 : base()
             {
                
                 xsltName = XlstName;
+                args.AddParam("wfsBase", String.Empty, wfsBase.ToString()+"/featureOfInterest?location=");
+                args.AddParam("observedPropertiesBase", String.Empty, observedPropertiesBase.ToString() + "/observedProperty?variable=");
                 InitializeService();
 
 
@@ -123,7 +130,7 @@ ElementName = "timeSeriesResponse",
                     StringBuilder sb = new StringBuilder();
                     var writer2 = XmlWriter.Create(sb);
 
-                    xslt.Transform(reader, writer2);
+                    xslt.Transform(reader, args ,writer2);
 
 
 

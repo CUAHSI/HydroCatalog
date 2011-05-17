@@ -1,0 +1,56 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ServicesWebSite.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    CUAHSI Services
+                    Monitors
+                </h1>
+            </div>
+            <div class="loginDisplay">
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem Selectable="False" Text="WebServices" Value="WebServices">
+                            <asp:MenuItem NavigateUrl="~/ActiveAlerts.aspx" Text="Active Alerts" 
+                                ToolTip="Active Alerts" Value="Active Alerts"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Historic.aspx" Text="Last 7 Days" 
+                                Value="Last 7 Days"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/HisCentral.aspx" Text="His Central" 
+                            Value="His Central"></asp:MenuItem>
+                        <asp:MenuItem Text="SDSC" Selectable="False" Value="SDSC">
+                            <asp:MenuItem NavigateUrl="~/SDSCActive.aspx" Text="WebServices" 
+                                Value="WebServices"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/SDSCAll.aspx" Text="All Montitors" 
+                                Value="All Montitors"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

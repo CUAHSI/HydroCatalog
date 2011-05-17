@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		iaosharp.vsmdi = iaosharp.vsmdi
 		Local.testsettings = Local.testsettings
+		MonitorBuildNotes.txt = MonitorBuildNotes.txt
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
@@ -27,6 +28,8 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupSDSCMonitors", "SetupSDSCMonitors\SetupSDSCMonitors.vdproj", "{8E8D10B9-9C03-4955-9E61-BFA50A403AA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisServiceUtilities", "HisServiceTypes\HisServiceUtilities.csproj", "{07DEB67A-2F09-4BBA-9E5D-35BF7C1BA477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesWebSite", "ServicesWebSite\ServicesWebSite.csproj", "{260656EC-0A89-4493-B054-0A6ABA774CF4}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -191,6 +194,21 @@ Global
 		{07DEB67A-2F09-4BBA-9E5D-35BF7C1BA477}.SDSCServices|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{07DEB67A-2F09-4BBA-9E5D-35BF7C1BA477}.SDSCServices|Mixed Platforms.Build.0 = Release|Any CPU
 		{07DEB67A-2F09-4BBA-9E5D-35BF7C1BA477}.SDSCServices|x86.ActiveCfg = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.Release|x86.ActiveCfg = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|Any CPU.ActiveCfg = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|Any CPU.Build.0 = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|Mixed Platforms.Build.0 = Release|Any CPU
+		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

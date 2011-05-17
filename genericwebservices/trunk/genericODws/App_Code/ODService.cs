@@ -24,7 +24,7 @@ namespace WaterOneFlow.odws
     {
         private Cache appCache;
 
-        private HttpContext appContext;
+       // private HttpContext appContext;
 
         private VariablesDataset vds;
         /* This is now done in the global.asax file
@@ -38,46 +38,49 @@ namespace WaterOneFlow.odws
         private static readonly ILog queryLog = LogManager.GetLogger("QueryLog");
         private static readonly Logging queryLog2 = new Logging();
 
+       
+
         public ODService(HttpContext aContext)
         {
 
             log.Debug("Starting " + System.Configuration.ConfigurationManager.AppSettings["network"]);
-            appContext = aContext;
+           // appContext = aContext;
+
             // This is now done in the global.asax file
             // this got cached, which cause the name to be localhost
             serviceName = ConfigurationManager.AppSettings["GetValuesName"];
             Boolean odValues = Boolean.Parse(ConfigurationManager.AppSettings["UseODForValues"]);
-            if (odValues)
-            {
-                string Port = aContext.Request.ServerVariables["SERVER_PORT"];
+            //if (odValues)
+            //{
+            //    string Port = appContext.Request.ServerVariables["SERVER_PORT"];
 
-                if (Port == null || Port == "80" || Port == "443")
-                    Port = "";
-                else
-                    Port = ":" + Port;
+            //    if (Port == null || Port == "80" || Port == "443")
+            //        Port = "";
+            //    else
+            //        Port = ":" + Port;
 
 
 
-                string Protocol = aContext.Request.ServerVariables["SERVER_PORT_SECURE"];
-                if (Protocol == null || Protocol == "0")
-                    Protocol = "http://";
-                else
-                 Protocol = "https://";
+            //    string Protocol = appContext.Request.ServerVariables["SERVER_PORT_SECURE"];
+            //    if (Protocol == null || Protocol == "0")
+            //        Protocol = "http://";
+            //    else
+            //     Protocol = "https://";
 
-                // *** Figure out the base Url which points at the application's root
+            //    // *** Figure out the base Url which points at the application's root
 
-                serviceUrl = Protocol + aContext.Request.ServerVariables["SERVER_NAME"] +
-                                            Port +
-                                            aContext.Request.ApplicationPath
-                                            + "/" + ConfigurationManager.AppSettings["asmxPage"];
+            //    serviceUrl = Protocol + appContext.Request.ServerVariables["SERVER_NAME"] +
+            //                                Port +
+            //                                appContext.Request.ApplicationPath
+            //                                + "/" + ConfigurationManager.AppSettings["asmxPage"];
 
-            }
-            else
-            {
-                serviceUrl = ConfigurationManager.AppSettings["externalGetValuesService"];
-            }
+            //}
+            //else
+            //{
+            //    serviceUrl = ConfigurationManager.AppSettings["externalGetValuesService"];
+            //}
 
- 
+            serviceUrl = ConfigurationManager.AppSettings["externalGetValuesService"];
 
         }
 
@@ -85,10 +88,10 @@ namespace WaterOneFlow.odws
 
         public SiteInfoResponseType GetSiteInfo(string locationParameter)
         {
-            Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+            //Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
  
-            queryLog2.LogStart(Logging.Methods.GetSiteInfo, locationParameter,
-                appContext.Request.UserHostName);
+            //queryLog2.LogStart(Logging.Methods.GetSiteInfo, locationParameter,
+            //    appContext.Request.UserHostName);
             locationParam lp = null;
             try
             {
@@ -128,11 +131,11 @@ namespace WaterOneFlow.odws
                 resp.site[0].seriesCatalog[0].menuGroupName = serviceName;
                 resp.site[0].seriesCatalog[0].serviceWsdl = serviceUrl;
             }
-            queryLog2.LogEnd(Logging.Methods.GetSiteInfo,
-                locationParameter,
-                timer.ElapsedMilliseconds.ToString(),
-                resp.site.Length.ToString(),
-                    appContext.Request.UserHostName);
+            //queryLog2.LogEnd(Logging.Methods.GetSiteInfo,
+            //    locationParameter,
+            //    timer.ElapsedMilliseconds.ToString(),
+            //    resp.site.Length.ToString(),
+            //        appContext.Request.UserHostName);
 
             return resp;
         }
@@ -148,16 +151,16 @@ namespace WaterOneFlow.odws
             {
                 location = locationIDs.ToString();
             }
-            queryLog2.LogStart(Logging.Methods.GetSites, location,
-                appContext.Request.UserHostName);
+            //queryLog2.LogStart(Logging.Methods.GetSites, location,
+            //    appContext.Request.UserHostName);
 
             SiteInfoResponseType resp = obj.GetSites(locationIDs);
 
-            queryLog2.LogEnd(Logging.Methods.GetSites,
-                locationIDs.ToString(),
-                timer.ElapsedMilliseconds.ToString(),
-                resp.site.Length.ToString(),
-                appContext.Request.UserHostName);
+            //queryLog2.LogEnd(Logging.Methods.GetSites,
+            //    locationIDs.ToString(),
+            //    timer.ElapsedMilliseconds.ToString(),
+            //    resp.site.Length.ToString(),
+            //    appContext.Request.UserHostName);
 
             return resp;
         }
@@ -182,16 +185,17 @@ namespace WaterOneFlow.odws
             //  String.Empty, // processing time
             //   String.Empty // count 
             //   );
-            queryLog2.LogStart(Logging.Methods.GetVariables, VariableParameter,
-                  appContext.Request.UserHostName);
+
+            //queryLog2.LogStart(Logging.Methods.GetVariables, VariableParameter,
+            //      appContext.Request.UserHostName);
 
             VariablesResponseType resp = obj.GetVariableInfo(VariableParameter);
 
-            queryLog2.LogEnd(Logging.Methods.GetVariables,
-                VariableParameter,
-                timer.ElapsedMilliseconds.ToString(),
-                resp.variables.Length.ToString(),
-                  appContext.Request.UserHostName);
+            //queryLog2.LogEnd(Logging.Methods.GetVariables,
+            //    VariableParameter,
+            //    timer.ElapsedMilliseconds.ToString(),
+            //    resp.variables.Length.ToString(),
+            //      appContext.Request.UserHostName);
 
             //           queryLog.InfoFormat("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}",
             //System.Configuration.ConfigurationManager.AppSettings["network"], // network
@@ -217,26 +221,27 @@ namespace WaterOneFlow.odws
         {
             Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
             GetValuesOD obj = new GetValuesOD();
-            queryLog2.LogValuesStart(Logging.Methods.GetValues, // method
-                             SiteNumber, //locaiton
-                           Variable, //variable
-                           StartDate, // startdate
-                           StartDate, //enddate
-                           appContext.Request.UserHostName
-                           );
+        
+            //queryLog2.LogValuesStart(Logging.Methods.GetValues, // method
+            //                 SiteNumber, //locaiton
+            //               Variable, //variable
+            //               StartDate, // startdate
+            //               StartDate, //enddate
+            //               appContext.Request.UserHostName
+            //               );
 
             TimeSeriesResponseType resp = obj.getValues(SiteNumber, Variable, StartDate, EndDate);
 
     
-            queryLog2.LogValuesEnd(Logging.Methods.GetValues,
-                   SiteNumber, //locaiton
-                   Variable, //variable
-                   StartDate, // startdate
-                   StartDate, //enddate
-                   timer.ElapsedMilliseconds, // processing time
-                   resp.timeSeries.values.value.Length, // count 
-                   appContext.Request.UserHostName
-                   );
+            //queryLog2.LogValuesEnd(Logging.Methods.GetValues,
+            //       SiteNumber, //locaiton
+            //       Variable, //variable
+            //       StartDate, // startdate
+            //       StartDate, //enddate
+            //       timer.ElapsedMilliseconds, // processing time
+            //       resp.timeSeries.values.value.Length, // count 
+            //       appContext.Request.UserHostName
+            //       );
 
             return resp;
 

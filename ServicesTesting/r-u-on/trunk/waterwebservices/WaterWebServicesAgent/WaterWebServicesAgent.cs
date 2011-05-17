@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using cuahsi.wof.ruon.wof_1_0;
@@ -96,7 +97,18 @@ namespace cuahsi.wof.ruon
     /// A non-trivial agent would of course have more activities in the constructor and would
     /// probably override Monitor to poll the state of the resoures being monitored. CoffeeOn shows how it's done.
     /// </summary>
-    [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
+  
+ #if SDSCServices
+    [AgentAttributes("Cuahsi.SDSCServicesSoap", "R-U-ON SDSC WaterWebServicesSoap Agent", "SDSC WaterWebServices Soap Agent")]
+
+#elif DEBUG
+      [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
+   
+#else
+     [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
+
+#endif
+
     public class WaterWebServicesAgent : ServiceAgent
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -199,7 +211,7 @@ namespace cuahsi.wof.ruon
                             {
                                 Name = "NWISDV",
                                 Enabled = true,
-                                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx",
+                                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx?WSDL",
                                 SiteCode = "NWIS:10263500",
                                 VariableCode = "NWIS:00060",
                                 ISOTimeInterval = "2010-01-01/2010-01-31"
@@ -208,7 +220,7 @@ namespace cuahsi.wof.ruon
                             {
                                 Name = "NWISUV",
                                 Enabled = true,
-                                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx",
+                                Endpoint = "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL",
                                 SiteCode = "NWIS:10109000",
                                 VariableCode = "NWIS:00065",
                                 ISOTimeInterval = "P1D"
@@ -218,7 +230,7 @@ namespace cuahsi.wof.ruon
                                 Name = "Disabled",
                                 Enabled = false,
                                 Endpoint =
-                                    "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx",
+                                    "http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL",
                                 SiteCode = "NWIS:10109000",
                                 VariableCode = "NWIS:00065",
                                 ISOTimeInterval = "P1D"
@@ -227,7 +239,7 @@ namespace cuahsi.wof.ruon
                 {
                     Name = "Bad URL",
                     Enabled = true,
-                    Endpoint = "http://example.com/wateroneflow/NWIS/UnitValues.asmx",
+                    Endpoint = "http://example.com/wateroneflow/NWIS/UnitValues.asmx?WSDL",
                     SiteCode = "NWIS:10109000",
                     VariableCode = "NWIS:00065",
                     ISOTimeInterval = "P1D"
@@ -268,6 +280,12 @@ namespace cuahsi.wof.ruon
             {
                 AgentParams ap = new AgentParams();
                 List<IAlarm> alarms = new List<IAlarm>();
+                if (managedResources == null)
+                {
+                    alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Minor, "ERROR Starting up Monitor Service.? Resources list (series to test) Null "));
+                    ReportAlarms(alarms, false);
+                    return;
+                }
 
 
 
@@ -275,7 +293,7 @@ namespace cuahsi.wof.ruon
                 log.Info("starting run");
                 foreach (var server in managedResources)
                 {
-
+                    Boolean ServiceHasError = false;
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
                         log.Debug("Disabled Service " + server[SERVERNAME]);
@@ -289,39 +307,64 @@ namespace cuahsi.wof.ruon
                     try
                     {
                         log.InfoFormat("Endpoint {0}, start", server[ENDPOINT]);
-                        
-                        IWaterWebSericesTester tester ;
-                        var serviceType = WsdlUtilities.ServiceTypeFromWsdlUrl(server[ENDPOINT]);
-                       
-                        switch (serviceType)
+
+                        IWaterWebSericesTester tester = null;
+                        ServiceTypeEnum serviceType = ServiceTypeEnum.UNKNOWN;
+                        try
                         {
-                            case HisServiceTypes.ServiceTypeEnum.WOF_1_0 :
-                                tester = new cuahsi.wof.ruon.wof_1_0.WaterWebSericesTester();
-                                break;
-                            case HisServiceTypes.ServiceTypeEnum.WOF_1_1:
-                                tester = new cuahsi.wof.ruon.wof_1_1.WaterWebSericesTester();
-                                break;
-                            case HisServiceTypes.ServiceTypeEnum.WOF_1_1_badNamespace:
-                                tester = new cuahsi.wof.ruon.wof_1_1_badnamespace.WaterWebSericesTester();
-                                break;
-                            default:
-                                throw new ArgumentException("Cannot determine Service Type: " + server[ENDPOINT]);
+                            serviceType = WsdlUtilities.ServiceTypeFromWsdlUrl(server[ENDPOINT]);
+                            switch (serviceType)
+                            {
+                                case HisServiceTypes.ServiceTypeEnum.WOF_1_0:
+                                    tester = new cuahsi.wof.ruon.wof_1_0.WaterWebSericesTester();
+                                    break;
+                                case HisServiceTypes.ServiceTypeEnum.WOF_1_1:
+                                    tester = new cuahsi.wof.ruon.wof_1_1.WaterWebSericesTester();
+                                    break;
+                                case HisServiceTypes.ServiceTypeEnum.WOF_1_1_badNamespace:
+                                    tester = new cuahsi.wof.ruon.wof_1_1_badnamespace.WaterWebSericesTester();
+                                    break;
+                                default:
+                                    log.Warn("Cannot determine Service Type: " + server[ENDPOINT]);
+                                    throw new ArgumentException("Cannot determine Service Type: " + server[ENDPOINT]);
+
+
+
+                            }
+                            log.DebugFormat("OK: WSDL or capabilities for {0}", server[SERVERNAME]);
+                            alarms.Add(new Clear(server[SERVERNAME], "WSDL"));
 
                         }
+                        catch (System.Net.WebException ex)
+                        {
+                            log.ErrorFormat("ERROR: Connecting to WSDL or capabilities for {0} at {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                            alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
+                            throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            log.ErrorFormat("ERROR: When parsing WSDL or capabilities (or other error) for {0} url:  {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                            alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
+                            throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
+
+                        }
+
+
                         tester.UpdatedTesterStatus += OnTesterStatusUpdate;
                         // set endpoint 
-                        tester.Endpoint = usgsDailyValues;
+                        // tester.Endpoint = usgsDailyValues;
 
                         timer2.Reset();
-                       
+
                         tester.Endpoint = server[ENDPOINT];
-                        if (Boolean.Parse(Configuration[GETSITES]))
+                        if (Boolean.Parse(Configuration[GETSITES]) && !ServiceHasError)
                         {
                             TestResult result = tester.GetSites(server[SERVERNAME]);
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
-                                log.Debug("FAILED: GetSites " + server[SERVERNAME]);
+                                log.ErrorFormat("FAILED: GetSites {0} {1} " + server[SERVERNAME] + server[ENDPOINT]);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "FAILED: GetSites " + server[SERVERNAME]));
                             }
                             else
@@ -330,14 +373,14 @@ namespace cuahsi.wof.ruon
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
-                        if (Boolean.Parse(Configuration[GETVALUES]))
+                        if (Boolean.Parse(Configuration[GETVALUES]) && !ServiceHasError)
                         {
 
                             TestResult result = tester.RunTests(server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD]);
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
-                                log.Debug("FAILED: GetValues " + server[SERVERNAME]);
+                                log.Error(String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD], server[ENDPOINT]));
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD], server[ENDPOINT])));
                             }
                             else
@@ -351,10 +394,14 @@ namespace cuahsi.wof.ruon
                         timer2.Reset();
 
                     }
-                    catch
+                    catch (ServiceConnectionException ex)
                     {
-                        log.Debug("Major Error in Monitor Service while testing service " + server[SERVERNAME]);
-                        alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "ERROR in Monitor Service"));
+                        // already logged above
+                    }
+                    catch (Exception ex)
+                    {
+                        log.ErrorFormat("ERROR: Major Error in Monitor Service while testing service {0} {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                        alarms.Add(new Alarm(server[SERVERNAME], "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));
 
                     }
 
@@ -372,7 +419,7 @@ namespace cuahsi.wof.ruon
             {
                 //   alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
                 // big error. log somewhere
-                log.Debug("Major Service Error " + ex.Message);
+                log.Error("Major Service Error " + ex.Message + ex.StackTrace);
 
                 List<IAlarm> alarms = new List<IAlarm>();
                 alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));

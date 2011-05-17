@@ -19,7 +19,12 @@ public class waterml2 : Iwaterml2
     public Message GetValues(string location, string variable,
         string startDate, string endDate)
     {
-        var svc = new TransformValues("waterml2/xslt/WaterML1_1_timeSeries_to_WaterML2.xsl");
+        var context = System.ServiceModel.OperationContext.Current.IncomingMessageHeaders;
+        var baseUrl = context.To.GetLeftPart(UriPartial.Path);
+        var hostUrl = System.ServiceModel.OperationContext.Current.Host.BaseAddresses[0];
+
+        var svc = new TransformValues("REST/xslt/WaterML1_1_timeSeries_to_WaterML2.xsl", 
+            hostUrl, hostUrl);
         var result = svc.GetTimeSeries(location, variable,
                              startDate, endDate
                              );
@@ -32,7 +37,7 @@ public class waterml2 : Iwaterml2
 
     public Message GetSites(string location)
     {
-        var svc = new TransformSites("waterml2/xslt/WaterML1_1_siteResponse_to_WaterML2.xsl");
+        var svc = new TransformSites("REST/xslt/WaterML1_1_siteResponse_to_WaterML2.xsl");
         var result = svc.GetSiteInfo(location
                              );
         XmlDocument xmlDoc = new XmlDocument();
@@ -44,7 +49,7 @@ public class waterml2 : Iwaterml2
 
     public Message GetVariable(string variable)
     {
-        var svc = new TransformVariable("waterml2/xslt/WaterML1_1_variables_to_waterml2.xslt");
+        var svc = new TransformVariable("REST/xslt/WaterML1_1_variables_to_waterml2.xslt");
         var result = svc.GeVariable(variable);
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(result.ToString());

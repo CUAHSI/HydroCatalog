@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="http://river.sdsc.edu" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="Default Web Site/CuashiServicesMonitors" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="True" msdeploySkipExtraFilesOnServer="False" msdeployMarkAsApp="True" profileName="River" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="ad\valentin" savePWD="False" userPWD="" SelectedForPublish="True" />
+</publishData>

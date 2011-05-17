@@ -54,5 +54,19 @@ namespace cuahsi.his.service.xslt.utilties
 
             myXslTransform.Transform(input, output);
         }
+
+        /// <summary>
+        /// see http://msdn.microsoft.com/en-us/library/ms163433(v=VS.80).aspx
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="output"></param>
+        public void Transform(XmlReader input, XsltArgumentList args,XmlWriter output )
+        {
+            if (File.GetLastWriteTimeUtc(_filename) > lastUpdate) loadXslt();
+
+            if (log.IsDebugEnabled) log.InfoFormat("tranforming Xslt filename{0}", _filename);
+
+            myXslTransform.Transform(input,args, output);
+        }
     }
 }

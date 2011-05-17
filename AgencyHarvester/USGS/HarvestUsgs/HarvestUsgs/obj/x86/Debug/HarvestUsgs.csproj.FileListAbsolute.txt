@@ -1,0 +1,10 @@
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\HarvestUsgs.exe
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\HarvestUsgs.pdb
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\obj\x86\Debug\HarvestUsgs.exe
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\obj\x86\Debug\HarvestUsgs.pdb
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\examples\series_01646500.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\examples\series_active_rhodeisland_iv_dv.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\examples\site01646500.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\examples\site_01646500_expanded.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgs\bin\Debug\examples\site_active_rhodeisland.txt
