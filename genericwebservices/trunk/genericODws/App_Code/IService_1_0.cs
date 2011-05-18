@@ -26,6 +26,7 @@ namespace WaterOneFlow
         Name = WsDescriptions.WsDefaultName, 
         Namespace = Constants.WS_NAMSPACE)]
     [ServiceContract(Name = WsDescriptions.WsDefaultName, Namespace = Constants.WS_NAMSPACE)]
+   
     [XmlSerializerFormat]
     interface IService_1_0
     {
@@ -61,16 +62,23 @@ namespace WaterOneFlow
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
         [OperationContract()]
+        [FaultContract(typeof(WaterOneFlowException))]
+        [FaultContract(typeof(WaterOneFlowServerException))]
+        [FaultContract(typeof(WaterOneFlowSourceException))]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
       UriTemplate = "series?site={site}&authToken={authToken}"
       )]
+
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
 
 
         [WebMethod(Description = WsDescriptions.GetVariableInfoObjectDefaultDesc)]
         [OperationContract()]
+        [FaultContract(typeof(WaterOneFlowException))]
+        [FaultContract(typeof(WaterOneFlowServerException))]
+        [FaultContract(typeof(WaterOneFlowSourceException))]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
        UriTemplate = "variables?variable={variable}&authToken={authToken}"
@@ -80,6 +88,9 @@ namespace WaterOneFlow
 
         [WebMethod(Description = WsDescriptions.GetValuesObjectDefaultDesc)]
         [OperationContract()]
+        [FaultContract(typeof(WaterOneFlowException))]
+        [FaultContract(typeof(WaterOneFlowServerException))]
+        [FaultContract(typeof(WaterOneFlowSourceException))]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
         UriTemplate = "values?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"

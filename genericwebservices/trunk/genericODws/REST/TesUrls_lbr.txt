@@ -10,3 +10,26 @@ http://localhost:6278/genericODws/REST/waterml_2.svc/featureOfInterest?location=
 
 http://localhost:6278/genericODws/REST/waterml_2.svc/observedProperty?variable=USU:USU3
 
+
+http://localhost:6278/genericODws/REST/waterml_1_0.svc/values?location=USU:USU-LBR-Mendon&variable=USU:USU3&startDate=2005-08-01&endDate=2005-09-01
+
+http://localhost:6278/genericODws/REST/waterml_1_0.svc
+
+http://localhost:6278/genericODws/REST/waterml_1_0.svc/series?site=USU:USU-LBR-Mendon
+
+http://localhost:6278/genericODws/REST/waterml_1_0.svc/variables?variable=USU:USU3
+
+http://localhost:6278/genericODws/REST/waterml_1_0.svc/variables?variable=
+
+http://localhost:6278/genericODws/REST/waterml_1_1.svc/values?location=USU:USU-LBR-Mendon&variable=USU:USU3&startDate=2005-08-01&endDate=2005-09-01
+
+http://localhost:6278/genericODws/REST/waterml_1_1.svc
+
+http://localhost:6278/genericODws/REST/waterml_1_1.svc/series?site=USU:USU-LBR-Mendon
+
+http://localhost:6278/genericODws/REST/waterml_1_1.svc/variables?variable=USU:USU3
+
+http://localhost:6278/genericODws/REST/waterml_1_1.svc/variables?variable=
+
+
+

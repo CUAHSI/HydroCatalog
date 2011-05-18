@@ -15,9 +15,8 @@ using Microsoft.Web.Services3.Messaging;
 using WaterOneFlowImpl;
 using WaterOneFlow;
 
-// Load the configuration from the 'wateroneflow.logging.log4net' file
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "wateroneflow.logging.log4net", Watch = true)]
+
 
 namespace WaterOneFlow.odws
 {
