@@ -1,5 +1,6 @@
 using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Text;
 using log4net;
 using System.Web;
@@ -37,11 +38,19 @@ namespace WaterOneFlow.odws
         }
     }
 
+#if DEBUG
     [WebService(Name = WsDescriptions.WsDefaultName,
         Namespace = Constants.WS_NAMSPACE,
         Description = WsDescriptions.SvcDevelopementalWarning + WsDescriptions.WsDefaultDescription)]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [SoapActor("*")]
+#else
+      [WebService(Name = WsDescriptions.WsDefaultName,
+        Namespace = Constants.WS_NAMSPACE,
+        Description =  WsDescriptions.WsDefaultDescription)]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [SoapActor("*")]
+#endif
     public class Service_1_0 : WebService, IService_1_0
     {
         protected ODService ODws;
@@ -51,6 +60,7 @@ namespace WaterOneFlow.odws
 
         private static readonly ILog log = LogManager.GetLogger(typeof (Service_1_0));
         private static readonly ILog queryLog = LogManager.GetLogger("QueryLog");
+        private static readonly Logging queryLog2 = new Logging();
 
         public Service_1_0()
         {
@@ -113,10 +123,29 @@ namespace WaterOneFlow.odws
         public SiteInfoResponseType GetSites(string[] SiteNumbers, String authToken)
         {
           //  GlobalClass.WaterAuth.SitesServiceAllowed(Context, authToken);
+            Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
 
+            string location = null;
+            if (SiteNumbers != null)
+            {
+                location = SiteNumbers.ToString();
+            }
+            queryLog2.LogStart(Logging.Methods.GetSites, location,
+                Context.Request.UserHostName);
+
+ 
             try
             {
-                return ODws.GetSites(SiteNumbers);
+                var response = ODws.GetSites(SiteNumbers);
+
+                if (response != null){
+                queryLog2.LogEnd(Logging.Methods.GetSites,
+                    location.ToString(),
+                    timer.ElapsedMilliseconds.ToString(),
+                    response.site.Length.ToString(),
+                    Context.Request.UserHostName);
+}
+                return response;
             }
             catch (Exception we)
             {
@@ -128,10 +157,26 @@ namespace WaterOneFlow.odws
         public virtual SiteInfoResponseType GetSiteInfoObject(string SiteNumber, String authToken)
         {
          //   GlobalClass.WaterAuth.SiteInfoServiceAllowed(Context, authToken);
+            Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+
+            queryLog2.LogStart(Logging.Methods.GetSiteInfo, SiteNumber,
+                Context.Request.UserHostName);
 
             try
             {
-                return ODws.GetSiteInfo(SiteNumber);
+                var response = ODws.GetSiteInfo(SiteNumber);
+
+                if (response != null)
+                {
+                    queryLog2.LogEnd(Logging.Methods.GetSiteInfo,
+                                     SiteNumber,
+                                     timer.ElapsedMilliseconds.ToString(),
+                                     response.site.Length.ToString(),
+                                     Context.Request.UserHostName);
+                }
+
+                return response;
+
             }
             catch (Exception we)
             {
@@ -145,10 +190,23 @@ namespace WaterOneFlow.odws
         public VariablesResponseType GetVariableInfoObject(string Variable, String authToken)
         {
           //  GlobalClass.WaterAuth.VariableInfoServiceAllowed(Context, authToken);
-
+            Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+            queryLog2.LogStart(Logging.Methods.GetVariablesObject, Variable,
+                  Context.Request.UserHostName);
             try
             {
-                return ODws.GetVariableInfo(Variable);
+                var response =  ODws.GetVariableInfo(Variable);
+
+                if (response != null)
+                {
+                    queryLog2.LogEnd(Logging.Methods.GetVariables,
+                                     Variable,
+                                     timer.ElapsedMilliseconds.ToString(),
+                                     response.variables.Length.ToString(),
+                                     Context.Request.UserHostName);
+                }
+
+                return response;
             }
             catch (Exception we)
             {
@@ -169,7 +227,14 @@ namespace WaterOneFlow.odws
                                                               string StartDate, string EndDate, String authToken)
         {
          //   GlobalClass.WaterAuth.DataValuesServiceAllowed(Context, authToken);
-
+            Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+            queryLog2.LogValuesStart(Logging.Methods.GetValues, // method
+                             locationParam, //locaiton
+                           VariableCode, //variable
+                           StartDate, // startdate
+                           EndDate, //enddate
+                           Context.Request.UserHostName
+                           );
             if (!useODForValues)
                 throw new SoapException(
                     "GetValues implemented external to this service. Call GetSiteInfo, and SeriesCatalog includes the service Wsdl for GetValues. Attribute:serviceWsdl on Element:seriesCatalog XPath://seriesCatalog/[@serviceWsdl]",
@@ -177,7 +242,20 @@ namespace WaterOneFlow.odws
 
             try
             {
-                return ODws.GetValues(locationParam, VariableCode, StartDate, EndDate);
+                var response = ODws.GetValues(locationParam, VariableCode, StartDate, EndDate);
+                if (response != null)
+                {
+                    queryLog2.LogValuesEnd(Logging.Methods.GetValues,
+                                           locationParam, //locaiton
+                                           VariableCode, //variable
+                                           StartDate, // startdate
+                                           EndDate, //enddate
+                                           timer.ElapsedMilliseconds, // processing time
+                                           response.timeSeries.values.value.Length, // count 
+                                           Context.Request.UserHostName
+                        );
+                }
+                return response;
             }
             catch (Exception we)
             {
