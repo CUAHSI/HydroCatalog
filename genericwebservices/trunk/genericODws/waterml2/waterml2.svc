@@ -1,4 +1,0 @@
-﻿<%@ ServiceHost Factory="Microsoft.ServiceModel.Web.WebServiceHost2Factory" 
-   Language="C#" Debug="true" Service="waterml2" CodeBehind="~/App_Code/waterml2.cs" %>
-  
-
