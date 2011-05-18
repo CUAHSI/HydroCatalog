@@ -38,6 +38,8 @@
                             <asp:MenuItem NavigateUrl="~/SDSCAll.aspx" Text="All Montitors" 
                                 Value="All Montitors"></asp:MenuItem>
                         </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" Value="About">
+                        </asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>

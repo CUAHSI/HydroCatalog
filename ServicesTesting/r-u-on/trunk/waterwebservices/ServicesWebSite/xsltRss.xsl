@@ -13,10 +13,14 @@
             </head>
             <body>
                 <h1>
-                    <xsl:value-of select="/rss/channel/title" />
+                   RSS from R-U-ON Monitors for CUAHSI Services 
                 </h1>
                 <p>
-                    <xsl:value-of select="/rss/channel/description" disable-output-escaping="yes" />
+                  <ul>
+                    <li class="active"> Red are active Alerts</li>
+                    <li class="disable"> Olive are Alerts that being filtered (disabled).</li>
+                    <li class="historic"> Green are Alerts that have cleared.</li>
+                  </ul>
                 </p>
    
                 <xsl:for-each select="/rss/channel/item">

@@ -3,6 +3,30 @@
        .historic {color:#00AA00;}
         .disabled {color:#AAAA00;}
        
+       table.style1 {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.style1 th.style1 {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	
+}
+table.style1 td.style1 {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	
+}
 /* DEFAULTS
 ----------------------------------------------------------*/
 
