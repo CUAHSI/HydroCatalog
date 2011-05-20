@@ -10,6 +10,7 @@ using WaterOneFlowImpl;
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Addressing;
 using Microsoft.Web.Services3.Messaging;
+using WaterOneFlowImpl.Generic;
 
 /* In order to keep the "Contract" Clean. Descriptions are found the WsDescriptions Class.
  * This is a set of constants.
@@ -26,7 +27,7 @@ namespace v1_1 {
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1,
         Name = WsDescriptions.WsDefaultName,
    Namespace = ConstantsNs.WS_NAMSPACE)]
-    [ServiceContract(Name = WsDescriptions.WsDefaultName, Namespace = Constants.WS_NAMSPACE)]
+    [ServiceContract(Name = WsDescriptions.WsDefaultName, Namespace = ConstantsNs.WS_NAMSPACE)]
     [XmlSerializerFormat]
     interface IService
     {

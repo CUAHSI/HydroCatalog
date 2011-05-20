@@ -14,13 +14,13 @@ using Microsoft.Web.Services3.Addressing;
 using Microsoft.Web.Services3.Messaging;
 using WaterOneFlowImpl;
 using WaterOneFlow;
-
-
+using WaterOneFlowImpl.Generic;
 
 
 namespace WaterOneFlow.odws
 {
     using WaterOneFlow.Schema.v1;
+    using ConstantsNs = WaterOneFlowImpl.v1_0.Constants;
 
     public class Config
     {
@@ -39,13 +39,13 @@ namespace WaterOneFlow.odws
 
 #if DEBUG
     [WebService(Name = WsDescriptions.WsDefaultName,
-        Namespace = Constants.WS_NAMSPACE,
+        Namespace = ConstantsNs.WS_NAMSPACE,
         Description = WsDescriptions.SvcDevelopementalWarning + WsDescriptions.WsDefaultDescription)]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [SoapActor("*")]
 #else
-      [WebService(Name = WsDescriptions.WsDefaultName,
-        Namespace = Constants.WS_NAMSPACE,
+    [WebService(Name = WsDescriptions.WsDefaultName,
+        Namespace = ConstantsNs.WS_NAMSPACE,
         Description =  WsDescriptions.WsDefaultDescription)]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [SoapActor("*")]

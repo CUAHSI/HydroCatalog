@@ -57,6 +57,7 @@ namespace WaterOneFlow.odws
 //        [SoapActor("*")]
 //#endif
       //  public class Service : WebService, IService
+        [ServiceBehavior(Namespace = ConstantsNamespace.WS_NAMSPACE)]
         public class Service : IService
     {
 

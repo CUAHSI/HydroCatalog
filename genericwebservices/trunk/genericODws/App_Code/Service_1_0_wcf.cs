@@ -21,10 +21,16 @@ using System.ServiceModel.Channels;
 
 namespace WaterOneFlow.odws
 {
+    using WaterOneFlow.Schema.v1;
+    using ConstantsNs = WaterOneFlowImpl.v1_0.Constants;
     namespace v1_0.wcf
     {
 
-        using WaterOneFlow.Schema.v1;
+
+        
+
+
+
 
         public class Config
         {
@@ -55,7 +61,9 @@ namespace WaterOneFlow.odws
 
         //#endif
         // public class Service_1_0 : WebService, IService_1_0
-        public class Service_1_0 : IService_1_0
+
+        [ServiceBehavior(Namespace = ConstantsNs.WS_NAMSPACE)]
+        public class Service_1_0 //: IService_1_0
         {
             protected ODService ODws;
             //private StandardServices aStandard;
@@ -124,7 +132,7 @@ namespace WaterOneFlow.odws
                 return xml;
             }
 
-
+           
             public SiteInfoResponseType GetSites(string[] SiteNumbers, String authToken)
             {
                 //  GlobalClass.WaterAuth.SitesServiceAllowed(Context, authToken);
@@ -176,6 +184,7 @@ namespace WaterOneFlow.odws
                     //throw SoapExceptionGenerator.WOFExceptionToSoapException(we);
                 }
             }
+          
 
             public virtual SiteInfoResponseType GetSiteInfoObject(string SiteNumber, String authToken)
             {
@@ -227,6 +236,9 @@ namespace WaterOneFlow.odws
 
             }
 
+           
+
+
             public VariablesResponseType GetVariableInfoObject(string Variable, String authToken)
             {
                 //  GlobalClass.WaterAuth.VariableInfoServiceAllowed(Context, authToken);
@@ -273,6 +285,7 @@ namespace WaterOneFlow.odws
                 }
 
             }
+           
 
             public virtual string GetValues(string locationParam, string VariableCode, string StartDate, string EndDate,
                                             String authToken)
@@ -295,9 +308,9 @@ namespace WaterOneFlow.odws
                                );
                 if (!useODForValues)
                     throw new WaterOneFlowException("GetValues implemented external to this service. Call GetSiteInfo, and SeriesCatalog includes the service Wsdl for GetValues. Attribute:serviceWsdl on Element:seriesCatalog XPath://seriesCatalog/[@serviceWsdl]");
-                    //throw new SoapException(
-                    //    "GetValues implemented external to this service. Call GetSiteInfo, and SeriesCatalog includes the service Wsdl for GetValues. Attribute:serviceWsdl on Element:seriesCatalog XPath://seriesCatalog/[@serviceWsdl]",
-                    //    new XmlQualifiedName("ServiceException"));
+                //throw new SoapException(
+                //    "GetValues implemented external to this service. Call GetSiteInfo, and SeriesCatalog includes the service Wsdl for GetValues. Attribute:serviceWsdl on Element:seriesCatalog XPath://seriesCatalog/[@serviceWsdl]",
+                //    new XmlQualifiedName("ServiceException"));
 
                 try
                 {
@@ -341,6 +354,7 @@ namespace WaterOneFlow.odws
                 }
 
             }
+         
 
             #endregion
             private string getClientIP()

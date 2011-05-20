@@ -1,0 +1,12 @@
+﻿Generated the WCF service intefaces from code
+
+svcutil http://hydro10.sdsc.edu/LBRSDSC/cuahsi_1_1.asmx?wsdl
+copy to folder, add namespace Service.v1_0
+svcutil http://hydro10.sdsc.edu/LBRSDSC/cuahsi_1_0.asmx?wsdl
+copy to folder, add namespace Service.v1_1
+
+
+tried Nope... namespaces get screwed up;
+svcutil http://hydro10.sdsc.edu/LBRSDSC/cuahsi_1_1.asmx?wsdl /namespace:http://www.cuahsi.org/his/1.1/ws/,WaterOneFlow.v1_1 /namespace:http://www.cuahsi.org/waterML/1.1/,WaterOneFlow.Schema.v1_1
+
+svcutil http://hydro10.sdsc.edu/LBRSDSC/cuahsi_1_0.asmx?wsdl /namespace:http://www.cuahsi.org/his/1.0/ws/,WaterOneFlow.v1_0 /namespace:http://www.cuahsi.org/waterML/1.0/,WaterOneFlow.Schema.v1
