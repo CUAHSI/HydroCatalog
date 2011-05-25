@@ -1,0 +1,29 @@
+﻿USE [hiscentral_logging]
+GO
+
+/****** Object:  Table [dbo].[ServiceMonitor]    Script Date: 05/24/2011 17:49:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ServiceMonitor](
+	[TimeChecked] [timestamp] NOT NULL,
+	[Identifier] [uniqueidentifier] NOT NULL,
+	[ServiceName] [nchar](50) NULL,
+	[MethodName] [nchar](50) NULL,
+	[Working] [bit] NULL,
+	[ErrorString] [ntext] NULL,
+	[RunTime] [bigint] NULL,
+	[Servity] [nchar](10) NULL,
+	[Location] [nchar](100) NULL,
+	[Variable] [nchar](100) NULL,
+	[StartDate] [nchar](30) NULL,
+	[EndDate] [nchar](30) NULL,
+	[Endpoint] [nchar](255) NULL,
+	[ExceptionMessage] [ntext] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using Ruon;
 
 namespace cuahsi.wof.ruon
 {
@@ -11,106 +13,189 @@ namespace cuahsi.wof.ruon
         /// true if everthing is ok.
         /// </summary>
         bool? Working { get; set; }
-
         String ServiceName { get; set; }
         String MethodName { get; set; }
-        String errorString { get; set; }
-        Double runTime { get; set; }
-        Double runTimeGetSitesSeries { get; set; }
-        Double runTimeGetValues { get; set; }
+        String ErrorString { get; set; }
+        Double RunTime { get; set; }
+        Double RunTimeGetSitesSeries { get; set; }
+        Double RunTimeGetValues { get; set; }
     }
+
+   
     public interface ITestResult2 :ITestResult
     {
         /// <summary>
         /// Adds Storage for parameters, and 
-  
-        /// </summary>
-        
 
-        String location { get; set; }
-        String variable { get; set; }
-        String startDate { get; set; }
-        Double endDate { get; set; }
-        Double endpoint { get; set; }
-        Dictionary<string, string> errorList { get; set; }
-        
+        /// </summary>
+        Guid Identifier { get; set; }
+        AlarmSeverity Serverity { get; set; }
+        String Location { get; set; }
+        String Variable { get; set; }
+        String StartDate { get; set; }
+        string EndDate { get; set; }
+        String Endpoint { get; set; }
+        String ExceptionMessage { get; set; }
+
+        IAlarm ToAlarm();
     }
-    public class TestResult : ITestResult
+    //public class TestResult : ITestResult
+    //{
+    //    /// <summary>
+    //    /// Null if no report
+    //    /// false if there was an error
+    //    /// true if everthing is ok.
+    //    /// </summary>
+    //    public bool? Working { get; set; }
+    //    public String ServiceName { get; set; }
+    //    public String MethodName { get; set; }
+    //    public String ErrorString { get; set; }
+    //    public Double runTime { get; set; }
+    //    public Double runTimeGetSitesSeries { get; set; }
+    //    public Double runTimeGetValues { get; set; }
+    //    public Dictionary<string, string> errorList { get; set; }
+    //}
+
+     [DataContract( Namespace = "uri:his.cuahsi.org/Monitoring/1/TestResult/")]
+    public class TestResult : ITestResult2
     {
-        /// <summary>
-        /// Null if no report
-        /// false if there was an error
-        /// true if everthing is ok.
-        /// </summary>
+         private String exceptionMessage;
+
+         /// <summary>
+         /// Null if no report
+         /// false if there was an error
+         /// true if everthing is ok.
+         /// </summary>
+         [DataMember]
+         public Guid Identifier { get; set; }
+        [DataMember]
         public bool? Working { get; set; }
+        [DataMember]
         public String ServiceName { get; set; }
+        [DataMember]
         public String MethodName { get; set; }
-        public String errorString { get; set; }
-        public Double runTime { get; set; }
-        public Double runTimeGetSitesSeries { get; set; }
-        public Double runTimeGetValues { get; set; }
-        public Dictionary<string, string> errorList { get; set; }
-    }
+        [DataMember]
+        public String ErrorString { get; set; }
+        [DataMember]
+        public Double RunTime { get; set; }
+       
+        public Double RunTimeGetSitesSeries { get; set; }
+       
+        public Double RunTimeGetValues { get; set; }
 
-    public class TestResult2 : ITestResult2
-    {
-        private string _location;
-
-        private string _variable;
-
-        private string _startDate;
-
-        private double _endDate;
-
-        private double _endpoint;
-
-        /// <summary>
-        /// Null if no report
-        /// false if there was an error
-        /// true if everthing is ok.
-        /// </summary>
-        public bool? Working { get; set; }
-        public String ServiceName { get; set; }
-        public String MethodName { get; set; }
-        public String errorString { get; set; }
-        public Double runTime { get; set; }
-        public Double runTimeGetSitesSeries { get; set; }
-        public Double runTimeGetValues { get; set; }
-
-        public string location
+        public TestResult()
         {
-            get { return _location; }
-            set { _location = value; }
+            //Identifier = Guid.NewGuid();
+            init(true);
+        }
+        public TestResult(bool working)
+        {
+            init(working);
         }
 
-        public string variable
+        public TestResult(bool working, AlarmSeverity alarmSeverity )
         {
-            get { return _variable; }
-            set { _variable = value; }
+            init(working);
+            Serverity = alarmSeverity;
         }
 
-        public string startDate
+        public TestResult(bool working, AlarmSeverity alarmSeverity,
+            String serviceName,
+            String methodName)
         {
-            get { return _startDate; }
-            set { _startDate = value; }
+            init(working);
+            Serverity = alarmSeverity;
+            ServiceName = serviceName;
+            MethodName = methodName;
+
+        }
+        public TestResult(bool working, AlarmSeverity alarmSeverity,
+           String serviceName,
+           String methodName,String endpoint)
+        {
+            init(working);
+            Serverity = alarmSeverity;
+            ServiceName = serviceName;
+            MethodName = methodName;
+            Endpoint = endpoint;
+
+        } 
+        public TestResult(bool working, AlarmSeverity alarmSeverity,
+           String serviceName,
+           String methodName,String endpoint,String errorString)
+        {
+            init(working);
+            Serverity = alarmSeverity;
+            ServiceName = serviceName;
+            MethodName = methodName;
+            Endpoint = endpoint;
+            ErrorString = errorString;
+        }
+        private void init(bool working)
+        {
+            Identifier = Guid.NewGuid();
+
+            ServiceName = "UNSET";
+            MethodName = String.Empty;
+            Working = working;
+            Serverity = AlarmSeverity.Clear;
+            if (!working)
+            {
+                Serverity = AlarmSeverity.Minor;
+            }
+
+            ErrorString = String.Empty;
+            RunTime = -1;
+            Location = String.Empty;
+            Variable = String.Empty;
+            StartDate = String.Empty;
+            EndDate = String.Empty;
+            Endpoint = String.Empty;
+            ExceptionMessage = String.Empty;
+
+        }
+        [DataMember]
+        public AlarmSeverity Serverity { get; set; }
+
+         [DataMember]
+         public string Location { get; set; }
+
+         [DataMember]
+         public string Variable { get; set; }
+
+         [DataMember]
+         public string StartDate { get; set; }
+
+         [DataMember]
+         public String EndDate { get; set; }
+
+         [DataMember]
+         public string Endpoint { get; set; }
+
+         [DataMember]
+        public String ExceptionMessage { get; set; }
+
+        public IAlarm ToAlarm()
+        {
+            if (Working.HasValue)
+            {
+                if (Working.Value)
+                {
+                    return new Clear(ServiceName, ServiceName + MethodName);
+                }
+                else
+                {
+                    return  new Alarm
+                    (ServiceName, ServiceName + MethodName, Serverity, 
+                    ErrorString);
+                    
+                }
+
+            }
+            return new Alarm
+                    ("CODINGERROR", "CODINGERROR", AlarmSeverity.Minor,
+                    "CODINGERROR SHOULD NOT GET HERE");
         }
 
-        public double endDate
-        {
-            get { return _endDate; }
-            set { _endDate = value; }
-        }
-
-        public double endpoint
-        {
-            get { return _endpoint; }
-            set { _endpoint = value; }
-        }
-
-        public Dictionary<string, string> errorList
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
     }
 }

@@ -65,6 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IWaterWebSericesTester.cs" />
+    <Compile Include="Service References\MonitoringCollection\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ServiceConnectionException.cs" />
     <Compile Include="WaterWebSericesTester_1_1_badNamespace.cs" />
     <Compile Include="WaterWebSericesTester_1_0.cs" />
@@ -114,6 +119,20 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MonitoringCollection\MonitoringCollector.wsdl" />
+    <None Include="Service References\MonitoringCollection\MonitoringCollector.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringCollection\MonitoringCollector1.wsdl" />
+    <None Include="Service References\MonitoringCollection\MonitoringCollector1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringCollection\MonitoringCollector2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringCollection\MonitoringCollector3.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web References\badNamespace_wml11_over_wof10\cuahsi_1_1.wsdl" />
     <None Include="Web References\badNamespace_wml11_over_wof10\Reference.map">
@@ -200,6 +219,16 @@
     <Content Include="cuahsi.log4net.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\MonitoringCollection\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MonitoringCollection\configuration.svcinfo" />
+    <None Include="Service References\MonitoringCollection\configuration91.svcinfo" />
+    <None Include="Service References\MonitoringCollection\MonitoringCollector.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MonitoringCollection\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

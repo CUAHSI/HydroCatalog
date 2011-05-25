@@ -67,11 +67,11 @@ namespace cuahsi.wof.ruon.wof_1_1
             catch (Exception ex)
             {
                 log.ErrorFormat("FAILED: GetSites {0} exception {1}", serviceName, ex.Message);
-                testResult.errorString = ex.Message;
+                testResult.ErrorString = ex.Message;
                 testResult.Working = false;
             }
             siteTimer.Stop();
-            testResult.runTimeGetSitesSeries = siteTimer.ElapsedMilliseconds;
+            testResult.RunTimeGetSitesSeries = siteTimer.ElapsedMilliseconds;
            
             return testResult;
         }
@@ -89,8 +89,8 @@ namespace cuahsi.wof.ruon.wof_1_1
                 isoTimePeriod = IsoTimePeriod.Parse(ISOTimPeriod);
             } catch (Exception ex)
             {
-                testResult.errorString = String.Format("FAILED PARAMETER: Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
-                log.Error(testResult.errorString, ex);
+                testResult.ErrorString = String.Format("FAILED PARAMETER: Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
+                log.Error(testResult.ErrorString, ex);
                 testResult.Working = false;
                 return testResult; // can't get a result. Bad data
                
@@ -175,7 +175,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                     //    UpdatedTesterStatus(this, null);
                     log.ErrorFormat("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
                     testResult.Working = false;
-                    testResult.errorString = ex.Message;
+                    testResult.ErrorString = ex.Message;
                     //  return testResult;
                 }
                 valuesTimer.Stop();
@@ -189,13 +189,13 @@ namespace cuahsi.wof.ruon.wof_1_1
                 //    UpdatedTesterStatus(this, null);
                 log.ErrorFormat("FAILED:  Service {0} in {2} ms exception {1} ", serverName, runtimer.ElapsedMilliseconds, ex.Message);
                 testResult.Working = false;
-                testResult.errorString = ex.Message;
+                testResult.ErrorString = ex.Message;
                 //  return testResult;
             }
             //   TesterStatus = "Done with Run";
             // UpdatedTesterStatus(this, null);
             log.DebugFormat("OK: CompletedRun for service {0} in {1} ms, worked={2} ", serviceName, runtimer.ElapsedMilliseconds, testResult.Working);
-            testResult.runTime = runtimer.ElapsedMilliseconds;
+            testResult.RunTime = runtimer.ElapsedMilliseconds;
             runtimer.Stop();
           
            

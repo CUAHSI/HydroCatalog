@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="uri:his.cuahsi.org/Monitoring/1/TestResult/" elementFormDefault="qualified" targetNamespace="uri:his.cuahsi.org/Monitoring/1/TestResult/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Ruon" />
+  <xs:complexType name="TestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Endpoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Identifier" type="ser:guid" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MethodName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunTime" type="xs:double" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Ruon" minOccurs="0" name="Serverity" type="q1:AlarmSeverity" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Working" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TestResult" nillable="true" type="tns:TestResult" />
+  <xs:complexType name="ArrayOfTestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TestResult" nillable="true" type="tns:TestResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTestResult" nillable="true" type="tns:ArrayOfTestResult" />
+</xs:schema>

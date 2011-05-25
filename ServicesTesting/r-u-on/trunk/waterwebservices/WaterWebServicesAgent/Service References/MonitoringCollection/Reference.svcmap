@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dfdc4987-d702-40b4-8f96-76bbd19705de" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:29394/services/MonitoringCollector.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MonitoringCollector.disco" MetadataType="Disco" ID="da9a912f-f330-476d-a9bc-0f83042ed00d" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?disco" />
+    <MetadataFile FileName="MonitoringCollector.wsdl" MetadataType="Wsdl" ID="14301b82-6942-4235-b881-d514baf04daf" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="MonitoringCollector.xsd" MetadataType="Schema" ID="1c8130d5-5694-4c7f-9d60-15edb0b3acf9" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd2" />
+    <MetadataFile FileName="MonitoringCollector1.xsd" MetadataType="Schema" ID="68984d12-9120-43df-8dde-68b554657292" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd3" />
+    <MetadataFile FileName="MonitoringCollector2.xsd" MetadataType="Schema" ID="8946c64d-f019-4366-8e23-6284e825698a" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd0" />
+    <MetadataFile FileName="MonitoringCollector1.wsdl" MetadataType="Wsdl" ID="d8ba43f5-3074-4440-8277-73f0f1d189fe" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?wsdl" />
+    <MetadataFile FileName="MonitoringCollector3.xsd" MetadataType="Schema" ID="16afba9b-b585-4825-9c7d-6d4b296244be" SourceId="1" SourceUrl="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

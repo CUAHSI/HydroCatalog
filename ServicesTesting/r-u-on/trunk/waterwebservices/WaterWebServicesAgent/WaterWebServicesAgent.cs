@@ -97,15 +97,15 @@ namespace cuahsi.wof.ruon
     /// A non-trivial agent would of course have more activities in the constructor and would
     /// probably override Monitor to poll the state of the resoures being monitored. CoffeeOn shows how it's done.
     /// </summary>
-  
- #if SDSCServices
+
+#if SDSCServices
     [AgentAttributes("Cuahsi.SDSCServicesSoap", "R-U-ON SDSC WaterWebServicesSoap Agent", "SDSC WaterWebServices Soap Agent")]
 
 #elif DEBUG
       [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
    
 #else
-     [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
+    [AgentAttributes("Cuahsi.WaterWebServicesSoap", "R-U-ON Cuahsi WaterWebServicesSoap Agent", "HIS WaterWebServices Soap Agent")]
 
 #endif
 
@@ -121,6 +121,10 @@ namespace cuahsi.wof.ruon
         public const string SITECODE = "ws_SiteCode";
         public const string VARIABLECODE = "ws_VariableCode";
         public const string ISOTIMEPERIOD = "ISO_TimeInterval";
+
+        public const string MONITORSERVICENAME = "WaterWebService";
+
+        public const string FAILCODE_MONITORSERVICE = "WWS_FAILED";
 
         private ObsSeriesServerList _obsSeriesServers;
         private string usgsDailyValues = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx";
@@ -150,8 +154,8 @@ namespace cuahsi.wof.ruon
 
             bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
 #else
-       // run once an hour: 3600 seconds, 
-            public WaterWebServicesAgent(IServiceProcess serviceProcess)
+        // run once an hour: 3600 seconds, 
+        public WaterWebServicesAgent(IServiceProcess serviceProcess)
             : base("CuahsiWaterServicesAgent", "1.3",
                 //"AAAABIESfWjQAAADDrFZJTSn",
                Properties.Settings.Default.AccountId,
@@ -272,6 +276,8 @@ namespace cuahsi.wof.ruon
         }
         public void Monitor(Dictionary<string, string>[] managedResources)
         {
+            List<ITestResult2> testResults = new List<ITestResult2>();
+
             Stopwatch timer = new Stopwatch();
             timer.Start();
             Stopwatch timer2 = new Stopwatch();
@@ -282,8 +288,21 @@ namespace cuahsi.wof.ruon
                 List<IAlarm> alarms = new List<IAlarm>();
                 if (managedResources == null)
                 {
-                    alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Minor, "ERROR Starting up Monitor Service.? Resources list (series to test) Null "));
-                    ReportAlarms(alarms, false);
+                    var startupError = new TestResult {
+                    Working = false,
+                    ServiceName = MONITORSERVICENAME,
+                    MethodName = FAILCODE_MONITORSERVICE,
+                   ErrorString =
+                        "ERROR Starting up Monitor Service.? Resources list (series to test) Null ",
+                    Serverity = AlarmSeverity.Minor
+                };
+            
+                    testResults.Add(startupError);
+
+                    alarms.Add(new Alarm(startupError.ServiceName, startupError.MethodName, AlarmSeverity.Minor, "ERROR Starting up Monitor Service.? Resources list (series to test) Null "));
+                    
+                        ReportAlarms(alarms, false);
+                    SendTestResults(testResults);
                     return;
                 }
 
@@ -297,13 +316,29 @@ namespace cuahsi.wof.ruon
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
                         log.Debug("Disabled Service " + server[SERVERNAME]);
+                        var disabledAlarm = new TestResult(false,
+                            AlarmSeverity.Minor,
+                            server[SERVERNAME],
+                             "Disabled",
+                             server[ENDPOINT],
+                             server[SERVERNAME] + " Disabled");
+                        testResults.Add(disabledAlarm);
+
                         alarms.Add(new Alarm(server[SERVERNAME], server[SERVERNAME] + "Disabled", AlarmSeverity.Minor, server[SERVERNAME] + " Disabled"));
                         continue;
                     }
                     else
                     {
+                        var clearAlarm = new TestResult(true,
+                            AlarmSeverity.Clear,
+                            server[SERVERNAME],
+                             "Disabled",
+                             server[ENDPOINT],
+                             server[SERVERNAME] + " Enabled");
+                        testResults.Add(clearAlarm);
                         alarms.Add(new Clear(server[SERVERNAME], server[SERVERNAME] + "Disabled", server[SERVERNAME] + " Enabled"));
                     }
+
                     try
                     {
                         log.InfoFormat("Endpoint {0}, start", server[ENDPOINT]);
@@ -332,19 +367,56 @@ namespace cuahsi.wof.ruon
 
                             }
                             log.DebugFormat("OK: WSDL or capabilities for {0}", server[SERVERNAME]);
+                            var clearAlarm = new TestResult(true,
+                            AlarmSeverity.Clear,
+                            server[SERVERNAME],
+                             "WSDL",
+                             server[ENDPOINT],
+                             "OK: WSDL or capabilities");
+                            testResults.Add(clearAlarm); 
+
                             alarms.Add(new Clear(server[SERVERNAME], "WSDL"));
 
                         }
                         catch (System.Net.WebException ex)
                         {
-                            log.ErrorFormat("ERROR: Connecting to WSDL or capabilities for {0} at {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                            string errorMessage =
+                                string.Format("ERROR: Connecting to WSDL or capabilities for {0} at {1} {2} {3}",
+                                              server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                            log.ErrorFormat(errorMessage);
+                            var errorService = new TestResult
+                            {
+                                Working = false,
+                                ServiceName = server[SERVERNAME],
+                                MethodName = "WSDL",
+                                ErrorString = "ERROR: Connecting to Service: " + server[SERVERNAME],
+                                Serverity = AlarmSeverity.Critical,
+                                Endpoint = server[ENDPOINT],
+                                ExceptionMessage = errorMessage
+                            };
+
+                            testResults.Add(errorService);
+
                             alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
+                            
                             throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
 
                         }
                         catch (Exception ex)
                         {
-                            log.ErrorFormat("ERROR: When parsing WSDL or capabilities (or other error) for {0} url:  {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                            string errorMessage =
+                                string.Format("ERROR: When parsing WSDL or capabilities (or other error) for {0} url:  {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                            log.Error(errorMessage);
+                            var errorService = new TestResult
+                            {
+                                Working = false,
+                                ServiceName = server[SERVERNAME],
+                                MethodName = "WSDL",
+                                ErrorString = "ERROR: Connecting to Service: " + server[SERVERNAME],
+                                Serverity = AlarmSeverity.Critical,
+                                Endpoint = server[ENDPOINT],
+                                ExceptionMessage = errorMessage
+                            }; 
                             alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
                             throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
 
@@ -361,6 +433,7 @@ namespace cuahsi.wof.ruon
                         if (Boolean.Parse(Configuration[GETSITES]) && !ServiceHasError)
                         {
                             TestResult result = tester.GetSites(server[SERVERNAME]);
+                            testResults.Add(result);
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
@@ -377,6 +450,7 @@ namespace cuahsi.wof.ruon
                         {
 
                             TestResult result = tester.RunTests(server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD]);
+                            testResults.Add(result);
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
@@ -386,6 +460,7 @@ namespace cuahsi.wof.ruon
                             else
                             {
                                 log.Debug("OK: GetValues " + server[SERVERNAME]);
+
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
@@ -400,15 +475,38 @@ namespace cuahsi.wof.ruon
                     }
                     catch (Exception ex)
                     {
-                        log.ErrorFormat("ERROR: Major Error in Monitor Service while testing service {0} {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                        string errorMessage =
+                                string.Format("ERROR: Major Error in Monitor Service while testing service {0} {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                        log.Error(errorMessage); 
+                        var errorService = new TestResult
+                        {
+                            Working = false,
+                            ServiceName = server[SERVERNAME],
+                            MethodName = "WWS_FAILED",
+                            ErrorString = "ERROR in Monitor Service testing service " + server[SERVERNAME],
+                            Serverity = AlarmSeverity.Critical
+                        };
+
+                        testResults.Add(errorService);
+                       
                         alarms.Add(new Alarm(server[SERVERNAME], "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));
 
                     }
 
                 }
+
+                var clearService = new TestResult(true,
+                           AlarmSeverity.Clear,
+                           "WaterWebService",
+                            "WWS_FAILED");
+                clearService.ErrorString = "OK: Monitor Service Working";
+                testResults.Add(clearService);
+               
                 alarms.Add(new Clear("WaterWebService", "WWS_FAILED", "Working Monitor Service"));
 
                 ReportAlarms(alarms, false);
+                SendTestResults(testResults);
+
                 log.Debug("Number of Alarms reported " + alarms.Count);
                 log.InfoFormat("Run Complete {0}", timer.Elapsed);
                 timer.Stop();
@@ -419,14 +517,61 @@ namespace cuahsi.wof.ruon
             {
                 //   alarms.Add(new Alarm("HIS Central", "Service_Info", AlarmSeverity.Critical, "Error in Monitor Service"));
                 // big error. log somewhere
-                log.Error("Major Service Error " + ex.Message + ex.StackTrace);
+                String errorMessage = "Major Service Error " + ex.Message + ex.StackTrace;
+                log.Error(errorMessage);
+                var errorService = new TestResult
+                                       {
+                                           Working = false,
+                                           ServiceName = "WaterWebService",
+                                           MethodName = "WWS_FAILED",
+                                           ErrorString = "ERROR in Monitor Service",
+                                           Serverity = AlarmSeverity.Critical,
+                                           ExceptionMessage = errorMessage
+                                       };
+                 
+                testResults.Add(errorService);
 
                 List<IAlarm> alarms = new List<IAlarm>();
                 alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));
                 ReportAlarms(alarms, false);
+                SendTestResults(testResults);
                 log.InfoFormat("Run Complete {0}", timer.Elapsed);
                 timer.Stop();
             }
         }
+
+        protected void SendTestResults(List<ITestResult2> testResults)
+        {
+            using (var svc = new MonitoringCollection.MonitoringCollectionClient())
+            {
+                List<MonitoringCollection.TestResult> list =
+                    testResults.ConvertAll(
+                        new Converter<ITestResult2, MonitoringCollection.TestResult>(TestResultToMcTestResult));
+                svc.AcceptTestResults(list.ToArray());
+            }
+        }
+
+        public static MonitoringCollection.TestResult TestResultToMcTestResult(ITestResult2 testResult)
+        {
+            var tr = new MonitoringCollection.TestResult
+                         {
+                             Working = testResult.Working,
+                             ServiceName = testResult.ServiceName,
+                             MethodName = testResult.MethodName,
+                             ErrorString = testResult.ErrorString,
+                             Serverity = testResult.Serverity,
+                             ExceptionMessage = testResult.ExceptionMessage,
+                             Location = testResult.Location,
+                             Variable = testResult.Variable,
+                             StartDate = testResult.StartDate,
+                             EndDate = testResult.EndDate,
+                             Endpoint = testResult.Endpoint,
+                             Identifier = testResult.Identifier,
+                             RunTime = testResult.RunTime,
+
+                         };
+            return tr;
+        }
     }
+
 }
