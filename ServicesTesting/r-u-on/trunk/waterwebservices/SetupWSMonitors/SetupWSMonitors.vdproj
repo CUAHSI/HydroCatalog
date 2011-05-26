@@ -762,7 +762,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:R-U-On CUAHSI HIS Web Service Monitors"
         "ProductCode" = "8:{C3F7BB1D-5BD5-4E2E-81C4-DA6A1FEE9C06}"
-        "PackageCode" = "8:{12C1313F-326B-4D98-9ED7-B4561FCBBE8C}"
+        "PackageCode" = "8:{3DE5476F-0A96-41C0-B639-193295F9B39A}"
         "UpgradeCode" = "8:{9351F82E-7F41-45C7-BFA5-2137DD9657E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1395,7 +1395,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1A1941BA01BB425499F939F6519B8B1B"
             {
-            "SourcePath" = "8:..\\ServiceLoader\\obj\\Debug\\CuahsiHisWebServicesRUOnService.exe"
+            "SourcePath" = "8:..\\ServiceLoader\\obj\\Release\\CuahsiHisWebServicesRUOnService.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"
@@ -1451,7 +1451,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4AA0FFB5089744D2AF3682FD2B0E52EA"
             {
-            "SourcePath" = "8:..\\HisCentralServicesList\\obj\\x86\\Debug\\HisCentralServicesList.exe"
+            "SourcePath" = "8:..\\HisCentralServicesList\\obj\\x86\\Release\\HisCentralServicesList.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"
@@ -1479,7 +1479,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_73A1D4B9ADC0498A8202E390116B4415"
             {
-            "SourcePath" = "8:..\\iao.net\\bin\\Debug\\iao.net.XML"
+            "SourcePath" = "8:..\\iao.net\\bin\\Release\\iao.net.XML"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"
@@ -1591,7 +1591,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_88466D54765F452E8AD5DAA8924B18F7"
             {
-            "SourcePath" = "8:..\\iao.net\\obj\\Debug\\iao.net.dll"
+            "SourcePath" = "8:..\\iao.net\\obj\\Release\\iao.net.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"
@@ -1703,7 +1703,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8F43C4FAD1A44A7FB67341E0288B1BA5"
             {
-            "SourcePath" = "8:..\\WaterWebServicesAgent\\obj\\Debug\\WaterWebServicesAgent.dll"
+            "SourcePath" = "8:..\\WaterWebServicesAgent\\obj\\Release\\WaterWebServicesAgent.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"
@@ -1787,7 +1787,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A056B3C28CAF44F0A1ABD0786FF43681"
             {
-            "SourcePath" = "8:..\\WaterWebServicesAgentUi\\obj\\x86\\Debug\\WaterWebServicesAgentUi.exe"
+            "SourcePath" = "8:..\\WaterWebServicesAgentUi\\obj\\x86\\Release\\WaterWebServicesAgentUi.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"
@@ -1815,7 +1815,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AE286270713343049364F380F2B12005"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\ServiceLoader\\bin\\Release\\CuahsiHisWebServicesRUOnService.xml"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EDC5A370B4A742C8A2D26E8C9D29309C"

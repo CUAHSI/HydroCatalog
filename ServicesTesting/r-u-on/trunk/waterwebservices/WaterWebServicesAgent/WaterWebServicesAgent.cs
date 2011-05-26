@@ -122,9 +122,13 @@ namespace cuahsi.wof.ruon
         public const string VARIABLECODE = "ws_VariableCode";
         public const string ISOTIMEPERIOD = "ISO_TimeInterval";
 
-        public const string MONITORSERVICENAME = "WaterWebService";
+        public const string MONITORSERVICE_SERVICENAME = "WaterWebService";
 
-        public const string FAILCODE_MONITORSERVICE = "WWS_FAILED";
+        public const string MONITORSERVICE_METHOD = "WWS_STATUS";
+
+        public const string URLDISABLED_METHODNAME = "URL_STATUS";
+        public const string DISABLED_MESSAGE = " DISABLED";
+        public const string ENABLED_MESSAGE = " ENABLED";
 
         private ObsSeriesServerList _obsSeriesServers;
         private string usgsDailyValues = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx";
@@ -290,8 +294,8 @@ namespace cuahsi.wof.ruon
                 {
                     var startupError = new TestResult {
                     Working = false,
-                    ServiceName = MONITORSERVICENAME,
-                    MethodName = FAILCODE_MONITORSERVICE,
+                    ServiceName = MONITORSERVICE_SERVICENAME,
+                    MethodName = MONITORSERVICE_METHOD,
                    ErrorString =
                         "ERROR Starting up Monitor Service.? Resources list (series to test) Null ",
                     Serverity = AlarmSeverity.Minor
@@ -315,16 +319,16 @@ namespace cuahsi.wof.ruon
                     Boolean ServiceHasError = false;
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
-                        log.Debug("Disabled Service " + server[SERVERNAME]);
+                        log.Debug(URLDISABLED_METHODNAME+" " + server[SERVERNAME]);
                         var disabledAlarm = new TestResult(false,
                             AlarmSeverity.Minor,
                             server[SERVERNAME],
-                             "Disabled",
+                            URLDISABLED_METHODNAME,
                              server[ENDPOINT],
-                             server[SERVERNAME] + " Disabled");
+                             server[SERVERNAME] + DISABLED_MESSAGE);
                         testResults.Add(disabledAlarm);
 
-                        alarms.Add(new Alarm(server[SERVERNAME], server[SERVERNAME] + "Disabled", AlarmSeverity.Minor, server[SERVERNAME] + " Disabled"));
+                        alarms.Add(new Alarm(server[SERVERNAME], server[SERVERNAME] + URLDISABLED_METHODNAME, AlarmSeverity.Minor, server[SERVERNAME] + " Disabled"));
                         continue;
                     }
                     else
@@ -332,11 +336,11 @@ namespace cuahsi.wof.ruon
                         var clearAlarm = new TestResult(true,
                             AlarmSeverity.Clear,
                             server[SERVERNAME],
-                             "Disabled",
+                             URLDISABLED_METHODNAME,
                              server[ENDPOINT],
-                             server[SERVERNAME] + " Enabled");
+                             server[SERVERNAME] + ENABLED_MESSAGE);
                         testResults.Add(clearAlarm);
-                        alarms.Add(new Clear(server[SERVERNAME], server[SERVERNAME] + "Disabled", server[SERVERNAME] + " Enabled"));
+                        alarms.Add(new Clear(server[SERVERNAME], server[SERVERNAME] + URLDISABLED_METHODNAME, server[SERVERNAME] + " Enabled"));
                     }
 
                     try
@@ -416,7 +420,8 @@ namespace cuahsi.wof.ruon
                                 Serverity = AlarmSeverity.Critical,
                                 Endpoint = server[ENDPOINT],
                                 ExceptionMessage = errorMessage
-                            }; 
+                            };
+                            testResults.Add(errorService);
                             alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
                             throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
 
@@ -482,14 +487,14 @@ namespace cuahsi.wof.ruon
                         {
                             Working = false,
                             ServiceName = server[SERVERNAME],
-                            MethodName = "WWS_FAILED",
+                            MethodName = MONITORSERVICE_METHOD,
                             ErrorString = "ERROR in Monitor Service testing service " + server[SERVERNAME],
                             Serverity = AlarmSeverity.Critical
                         };
 
                         testResults.Add(errorService);
-                       
-                        alarms.Add(new Alarm(server[SERVERNAME], "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));
+
+                        alarms.Add(new Alarm(server[SERVERNAME], MONITORSERVICE_METHOD, AlarmSeverity.Critical, "ERROR in Monitor Service"));
 
                     }
 
@@ -497,12 +502,12 @@ namespace cuahsi.wof.ruon
 
                 var clearService = new TestResult(true,
                            AlarmSeverity.Clear,
-                           "WaterWebService",
-                            "WWS_FAILED");
+                           MONITORSERVICE_SERVICENAME,
+                            MONITORSERVICE_METHOD);
                 clearService.ErrorString = "OK: Monitor Service Working";
                 testResults.Add(clearService);
-               
-                alarms.Add(new Clear("WaterWebService", "WWS_FAILED", "Working Monitor Service"));
+
+                alarms.Add(new Clear(MONITORSERVICE_SERVICENAME, MONITORSERVICE_METHOD, "OK: Working Monitor Service"));
 
                 ReportAlarms(alarms, false);
                 SendTestResults(testResults);
@@ -522,8 +527,8 @@ namespace cuahsi.wof.ruon
                 var errorService = new TestResult
                                        {
                                            Working = false,
-                                           ServiceName = "WaterWebService",
-                                           MethodName = "WWS_FAILED",
+                                           ServiceName = MONITORSERVICE_SERVICENAME,
+                                           MethodName = MONITORSERVICE_METHOD,
                                            ErrorString = "ERROR in Monitor Service",
                                            Serverity = AlarmSeverity.Critical,
                                            ExceptionMessage = errorMessage
@@ -532,7 +537,7 @@ namespace cuahsi.wof.ruon
                 testResults.Add(errorService);
 
                 List<IAlarm> alarms = new List<IAlarm>();
-                alarms.Add(new Alarm("WaterWebService", "WWS_FAILED", AlarmSeverity.Critical, "ERROR in Monitor Service"));
+                alarms.Add(new Alarm(MONITORSERVICE_SERVICENAME, MONITORSERVICE_METHOD, AlarmSeverity.Critical, "ERROR in Monitor Service"));
                 ReportAlarms(alarms, false);
                 SendTestResults(testResults);
                 log.InfoFormat("Run Complete {0}", timer.Elapsed);

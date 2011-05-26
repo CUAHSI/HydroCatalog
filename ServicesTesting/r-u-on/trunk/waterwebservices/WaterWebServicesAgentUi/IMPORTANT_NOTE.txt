@@ -1,0 +1,4 @@
+﻿ANY changes to the Service reference to the MonitoringColleciton service need to be copied to 
+the Service Loader (and the UI)
+
+Copy the ServiceModel block in the App.Config

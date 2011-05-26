@@ -45,7 +45,12 @@ namespace cuahsi.wof.ruon.wof_1_1
         {
             var siteTimer = new Stopwatch();
             siteTimer.Start();
-            TestResult testResult = new TestResult {  ServiceName = serviceName, MethodName = "GetSites" };
+            TestResult testResult = new TestResult
+                                        {
+                                            ServiceName = serviceName,
+                                            MethodName = "GetSites",
+                                            Endpoint = Endpoint
+                                        };
             try
             {
                 //  TesterStatus = "Running GetSites";
@@ -67,11 +72,12 @@ namespace cuahsi.wof.ruon.wof_1_1
             catch (Exception ex)
             {
                 log.ErrorFormat("FAILED: GetSites {0} exception {1}", serviceName, ex.Message);
-                testResult.ErrorString = ex.Message;
+                testResult.ErrorString = "FAILED: GetSites exception";
+                testResult.ExceptionMessage =ex.Message;
                 testResult.Working = false;
             }
             siteTimer.Stop();
-            testResult.RunTimeGetSitesSeries = siteTimer.ElapsedMilliseconds;
+            testResult.RunTime = siteTimer.ElapsedMilliseconds;
            
             return testResult;
         }
@@ -81,12 +87,21 @@ namespace cuahsi.wof.ruon.wof_1_1
             var runtimer = new Stopwatch();
             runtimer.Start();
 
-            TestResult testResult = new TestResult {  ServiceName = serverName, MethodName = "TestService" };
+            TestResult testResult = new TestResult
+                                        {
+                                            ServiceName = serverName,
+                                            MethodName = Names.TESTSERVICE_METHODNAME,
+                                            Endpoint = Endpoint,
+                                            Location = ws_SiteCode,
+                                            Variable = ws_variableCode
+                                        };
             IsoTimePeriod isoTimePeriod = new IsoTimePeriod();
             try
             {
                 // set to 1 day for now
                 isoTimePeriod = IsoTimePeriod.Parse(ISOTimPeriod);
+                testResult.StartDate = isoTimePeriod.StartDate.ToString("yyyy-MM-dd");
+                testResult.EndDate = isoTimePeriod.EndDate.ToString("yyyy-MM-dd");
             } catch (Exception ex)
             {
                 testResult.ErrorString = String.Format("FAILED PARAMETER: Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
@@ -108,6 +123,8 @@ namespace cuahsi.wof.ruon.wof_1_1
                     {
                         log.ErrorFormat("FAILED: GetSiteInfo {0} zero sites in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
                         testResult.Working = false;
+                        testResult.ErrorString = String.Format("FAILED: GetSiteInfo {0} zero sites in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
+ 
                     }
                 }
                 else
@@ -117,7 +134,9 @@ namespace cuahsi.wof.ruon.wof_1_1
 
 
                     log.ErrorFormat("FAILED:  GetSiteInfo {0} null results in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
+                    testResult.ErrorString = String.Format("FAILED:  GetSiteInfo {0} null results in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
                     testResult.Working = false;
+                    testResult.RunTimeGetSitesSeries = runtimer.ElapsedMilliseconds;
                     
                     // return testResult; // keep going to get values
                 }
@@ -152,7 +171,10 @@ namespace cuahsi.wof.ruon.wof_1_1
                                 valuesTimer.ElapsedMilliseconds,
                                 timeSeries.ToString());
 
+                            testResult.ErrorString = "FAILED:  GetValues empty or null timeseries";
                             testResult.Working = false;
+                            testResult.RunTime = runtimer.ElapsedMilliseconds;
+
                             //  return testResult;
                         }
                     }
@@ -166,6 +188,8 @@ namespace cuahsi.wof.ruon.wof_1_1
                                         isoTimePeriod.EndDate.ToString("yyyy-MM-dd"),
                                         valuesTimer.ElapsedMilliseconds);
                         testResult.Working = false;
+                        testResult.ErrorString = "FAILED: GetValues null results";
+                        testResult.RunTime = runtimer.ElapsedMilliseconds;
                         // return testResult;
                     }
                 }
@@ -175,7 +199,10 @@ namespace cuahsi.wof.ruon.wof_1_1
                     //    UpdatedTesterStatus(this, null);
                     log.ErrorFormat("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
                     testResult.Working = false;
-                    testResult.ErrorString = ex.Message;
+                    testResult.ErrorString = String.Format("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
+                    testResult.ExceptionMessage = ex.Message;
+
+                    testResult.RunTime = runtimer.ElapsedMilliseconds;
                     //  return testResult;
                 }
                 valuesTimer.Stop();
@@ -189,7 +216,11 @@ namespace cuahsi.wof.ruon.wof_1_1
                 //    UpdatedTesterStatus(this, null);
                 log.ErrorFormat("FAILED:  Service {0} in {2} ms exception {1} ", serverName, runtimer.ElapsedMilliseconds, ex.Message);
                 testResult.Working = false;
-                testResult.ErrorString = ex.Message;
+                testResult.ErrorString = String.Format("FAILED:  Service {0} in {2} ms exception {1} ", serverName,
+                                                       runtimer.ElapsedMilliseconds, ex.Message);
+                testResult.ExceptionMessage = ex.Message;
+                testResult.RunTime = runtimer.ElapsedMilliseconds;//  return testResult;
+
                 //  return testResult;
             }
             //   TesterStatus = "Done with Run";
