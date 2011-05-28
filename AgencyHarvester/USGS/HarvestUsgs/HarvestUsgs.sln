@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestUsgs", "HarvestUsgs\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestUsgsTest", "HarvestUsgsTest\HarvestUsgsTest.csproj", "{AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralEntity_v1", "HisCentralEntity_v1\HisCentralEntity_v1.csproj", "{B68DE97D-FB02-47DF-A981-60C621812056}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B68DE97D-FB02-47DF-A981-60C621812056}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

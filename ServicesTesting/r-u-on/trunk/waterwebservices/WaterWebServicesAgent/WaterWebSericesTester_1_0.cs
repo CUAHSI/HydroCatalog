@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 using cuahsi.wof.ruon.CuahsiSoap;
 using log4net;
+using Ruon;
 
 
 namespace cuahsi.wof.ruon.wof_1_0
@@ -143,6 +144,7 @@ namespace cuahsi.wof.ruon.wof_1_0
                     testResult.ErrorString = String.Format("FAILED:  GetSiteInfo {0} null results in {1} ms", serviceName, runtimer.ElapsedMilliseconds); 
                     testResult.Working = false;
                     testResult.RunTime = runtimer.ElapsedMilliseconds;
+                    testResult.Serverity = AlarmSeverity.Critical;
                     // return testResult; // keep going to get values
                 }
 
@@ -178,6 +180,7 @@ namespace cuahsi.wof.ruon.wof_1_0
                             testResult.ErrorString = "FAILED:  GetValues empty or null timeseries";
                             testResult.Working = false;
                             testResult.RunTime = runtimer.ElapsedMilliseconds;
+                            testResult.Serverity = AlarmSeverity.Major;
                             //  return testResult;
                         }
                     }
@@ -193,6 +196,7 @@ namespace cuahsi.wof.ruon.wof_1_0
                         testResult.Working = false;
                         testResult.ErrorString = "FAILED: GetValues null results";
                         testResult.RunTime = runtimer.ElapsedMilliseconds;
+                        testResult.Serverity = AlarmSeverity.Major;
                         // return testResult;
                     }
                 }
@@ -200,11 +204,11 @@ namespace cuahsi.wof.ruon.wof_1_0
                 {
                     //     TesterStatus = "failed Service Error " + ex.Message;
                     //    UpdatedTesterStatus(this, null);
-                    log.ErrorFormat("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
+                    log.ErrorFormat("FAILED: GetValues {0} in {1} ms exception {2} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
                     testResult.Working = false;
-                    testResult.ErrorString = String.Format("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
+                    testResult.ErrorString = String.Format("FAILED: GetValues {0} in {1} ms exception {2} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
                     testResult.ExceptionMessage = ex.Message;
-
+                    testResult.Serverity = AlarmSeverity.Critical;
                     testResult.RunTime = runtimer.ElapsedMilliseconds;
                     //  return testResult;
                 }
@@ -217,12 +221,14 @@ namespace cuahsi.wof.ruon.wof_1_0
             {
                 //     TesterStatus = "failed Service Error " + ex.Message;
                 //    UpdatedTesterStatus(this, null);
-                log.ErrorFormat("FAILED:  Service {0} in {2} ms exception {1} ", serverName, runtimer.ElapsedMilliseconds, ex.Message);
+                log.ErrorFormat("FAILED:  Service {0} in {1} ms exception {2} ", serverName, runtimer.ElapsedMilliseconds, ex.Message);
                 testResult.Working = false;
-                testResult.ErrorString = String.Format("FAILED:  Service {0} in {2} ms exception {1} ", serverName,
+                testResult.ErrorString = String.Format("FAILED:  Service {0} in {1} ms exception {2} ", serverName,
                                                        runtimer.ElapsedMilliseconds, ex.Message);
               testResult.ExceptionMessage = ex.Message;
-                testResult.RunTime = runtimer.ElapsedMilliseconds;//  return testResult;
+                testResult.RunTime = runtimer.ElapsedMilliseconds;
+                testResult.Serverity = AlarmSeverity.Critical;
+                //  return testResult;
             }
             //   TesterStatus = "Done with Run";
             // UpdatedTesterStatus(this, null);

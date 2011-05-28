@@ -3,6 +3,7 @@ using System.Diagnostics;
 using cuahsi.wof.ruon.wof_1_0;
 using cuahsi.wof.ruon.wof_1_1;
 using log4net;
+using Ruon;
 
 
 namespace cuahsi.wof.ruon.wof_1_1
@@ -75,6 +76,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                 testResult.ErrorString = "FAILED: GetSites exception";
                 testResult.ExceptionMessage =ex.Message;
                 testResult.Working = false;
+                testResult.Serverity = AlarmSeverity.Critical;
             }
             siteTimer.Stop();
             testResult.RunTime = siteTimer.ElapsedMilliseconds;
@@ -107,6 +109,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                 testResult.ErrorString = String.Format("FAILED PARAMETER: Bad Time Period {0} for {1}",ISOTimPeriod, serverName);
                 log.Error(testResult.ErrorString, ex);
                 testResult.Working = false;
+                testResult.Serverity = AlarmSeverity.Major; 
                 return testResult; // can't get a result. Bad data
                
             }
@@ -124,7 +127,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                         log.ErrorFormat("FAILED: GetSiteInfo {0} zero sites in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
                         testResult.Working = false;
                         testResult.ErrorString = String.Format("FAILED: GetSiteInfo {0} zero sites in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
- 
+                        testResult.Serverity = AlarmSeverity.Critical;
                     }
                 }
                 else
@@ -137,7 +140,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                     testResult.ErrorString = String.Format("FAILED:  GetSiteInfo {0} null results in {1} ms", serviceName, runtimer.ElapsedMilliseconds);
                     testResult.Working = false;
                     testResult.RunTimeGetSitesSeries = runtimer.ElapsedMilliseconds;
-                    
+                    testResult.Serverity = AlarmSeverity.Critical;
                     // return testResult; // keep going to get values
                 }
 
@@ -174,7 +177,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                             testResult.ErrorString = "FAILED:  GetValues empty or null timeseries";
                             testResult.Working = false;
                             testResult.RunTime = runtimer.ElapsedMilliseconds;
-
+                            testResult.Serverity = AlarmSeverity.Major;
                             //  return testResult;
                         }
                     }
@@ -190,6 +193,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                         testResult.Working = false;
                         testResult.ErrorString = "FAILED: GetValues null results";
                         testResult.RunTime = runtimer.ElapsedMilliseconds;
+                        testResult.Serverity = AlarmSeverity.Major;
                         // return testResult;
                     }
                 }
@@ -201,7 +205,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                     testResult.Working = false;
                     testResult.ErrorString = String.Format("FAILED: GetValues {0} in {2} ms exception {1} ", serverName, valuesTimer.ElapsedMilliseconds, ex.Message);
                     testResult.ExceptionMessage = ex.Message;
-
+                    testResult.Serverity = AlarmSeverity.Critical;
                     testResult.RunTime = runtimer.ElapsedMilliseconds;
                     //  return testResult;
                 }
@@ -220,7 +224,7 @@ namespace cuahsi.wof.ruon.wof_1_1
                                                        runtimer.ElapsedMilliseconds, ex.Message);
                 testResult.ExceptionMessage = ex.Message;
                 testResult.RunTime = runtimer.ElapsedMilliseconds;//  return testResult;
-
+                testResult.Serverity = AlarmSeverity.Critical;
                 //  return testResult;
             }
             //   TesterStatus = "Done with Run";

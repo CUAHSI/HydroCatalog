@@ -762,7 +762,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:R-U-On CUAHSI HIS Web Service Monitors"
         "ProductCode" = "8:{C3F7BB1D-5BD5-4E2E-81C4-DA6A1FEE9C06}"
-        "PackageCode" = "8:{3DE5476F-0A96-41C0-B639-193295F9B39A}"
+        "PackageCode" = "8:{B7404432-7343-49EF-85BF-42DB6E63E3F8}"
         "UpgradeCode" = "8:{9351F82E-7F41-45C7-BFA5-2137DD9657E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

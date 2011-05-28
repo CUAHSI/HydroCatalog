@@ -17,5 +17,8 @@
     <Setting Name="WaterWebServicesAgent_badNamespace_wml11_over_wof10_WaterOneFlow" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://his09.umbc.edu/BaltPrecip/cuahsi_1_1.asmx</Value>
     </Setting>
+    <Setting Name="RunInterval" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3600</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

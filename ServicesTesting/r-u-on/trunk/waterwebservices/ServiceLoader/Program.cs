@@ -2,12 +2,17 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using log4net;
 
 namespace Cuahsi.His.Ruon
 {
+  
+ 
     static class Program
     {
-        static void Main(string [] args)
+
+    private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+       static void Main(string [] args)
         {
             try
             {
@@ -84,7 +89,7 @@ namespace Cuahsi.His.Ruon
         private static void Service()
         {
             ServiceBase[] ServicesToRun;
-
+            log.Info("Running Service");
             ServicesToRun = new ServiceBase[] { new TheService() };
             ServiceBase.Run(ServicesToRun);
         }

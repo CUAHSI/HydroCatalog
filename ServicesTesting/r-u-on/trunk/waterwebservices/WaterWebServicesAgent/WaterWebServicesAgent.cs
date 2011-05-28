@@ -115,6 +115,7 @@ namespace cuahsi.wof.ruon
 
         public const string GETSITES = "Use_GetSites";
         public const string GETVALUES = "Use_GetValues";
+        public const string READFROMCENTRAL = "Use_HISCENTRAL_forSeries";
         public const string SERVERNAME = "Server_Name";
         public const string SERVERENABLED = "Server_Enabled";
         public const string ENDPOINT = "Endpoint_Url";
@@ -158,23 +159,25 @@ namespace cuahsi.wof.ruon
 
             bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
 #else
-        // run once an hour: 3600 seconds, 
+        // run once an hour: 3600 seconds, or as configured in the DLL .config
         public WaterWebServicesAgent(IServiceProcess serviceProcess)
             : base("CuahsiWaterServicesAgent", "1.3",
                 //"AAAABIESfWjQAAADDrFZJTSn",
                Properties.Settings.Default.AccountId,
-             3600, null, null, serviceProcess)
+             Properties.Settings.Default.RunInterval, null, null, serviceProcess)
         {
 
             bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
 #endif
-
+            log.DebugFormat("RunInterval Property:{0}, Agent:{1})",
+                      Properties.Settings.Default.RunInterval, MonitorIntervalSec);
             Configuration.MetaConfig(
                    new AgentConfig.MetaVar[]
                 {
                     // agent parameters
                     new AgentConfig.MetaVar(GETSITES, AgentConfig.Type.Boolean, "true"),
                     new AgentConfig.MetaVar(GETVALUES, AgentConfig.Type.Boolean, "true"),
+                     new AgentConfig.MetaVar(READFROMCENTRAL,AgentConfig.Type.Boolean, "true"),
                 },
                      new AgentConfig.MetaVar[]
                 {
@@ -203,6 +206,7 @@ namespace cuahsi.wof.ruon
             }
             else
             {
+                log.Debug("Reading Services");
                 _obsSeriesServers = new ObsSeriesServerList();
 
                 foreach (var list in Configuration.ManagedResources)
@@ -280,6 +284,7 @@ namespace cuahsi.wof.ruon
         }
         public void Monitor(Dictionary<string, string>[] managedResources)
         {
+            log.Debug("Starting Monitor method");
             List<ITestResult2> testResults = new List<ITestResult2>();
 
             Stopwatch timer = new Stopwatch();
@@ -292,20 +297,22 @@ namespace cuahsi.wof.ruon
                 List<IAlarm> alarms = new List<IAlarm>();
                 if (managedResources == null)
                 {
-                    var startupError = new TestResult {
-                    Working = false,
-                    ServiceName = MONITORSERVICE_SERVICENAME,
-                    MethodName = MONITORSERVICE_METHOD,
-                   ErrorString =
-                        "ERROR Starting up Monitor Service.? Resources list (series to test) Null ",
-                    Serverity = AlarmSeverity.Minor
-                };
-            
+                    log.Error("ManageResources is null (starting up?)");
+                    var startupError = new TestResult
+                    {
+                        Working = false,
+                        ServiceName = MONITORSERVICE_SERVICENAME,
+                        MethodName = MONITORSERVICE_METHOD,
+                        ErrorString =
+                             "ERROR Starting up Monitor Service.? Resources list (series to test) Null ",
+                        Serverity = AlarmSeverity.Minor
+                    };
+
                     testResults.Add(startupError);
 
                     alarms.Add(new Alarm(startupError.ServiceName, startupError.MethodName, AlarmSeverity.Minor, "ERROR Starting up Monitor Service.? Resources list (series to test) Null "));
-                    
-                        ReportAlarms(alarms, false);
+
+                    ReportAlarms(alarms, false);
                     SendTestResults(testResults);
                     return;
                 }
@@ -319,7 +326,7 @@ namespace cuahsi.wof.ruon
                     Boolean ServiceHasError = false;
                     if (!Boolean.Parse(server[SERVERENABLED]))
                     {
-                        log.Debug(URLDISABLED_METHODNAME+" " + server[SERVERNAME]);
+                        log.Debug(URLDISABLED_METHODNAME + " " + server[SERVERNAME]);
                         var disabledAlarm = new TestResult(false,
                             AlarmSeverity.Minor,
                             server[SERVERNAME],
@@ -377,7 +384,7 @@ namespace cuahsi.wof.ruon
                              "WSDL",
                              server[ENDPOINT],
                              "OK: WSDL or capabilities");
-                            testResults.Add(clearAlarm); 
+                            testResults.Add(clearAlarm);
 
                             alarms.Add(new Clear(server[SERVERNAME], "WSDL"));
 
@@ -402,7 +409,7 @@ namespace cuahsi.wof.ruon
                             testResults.Add(errorService);
 
                             alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
-                            
+
                             throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
 
                         }
@@ -482,7 +489,7 @@ namespace cuahsi.wof.ruon
                     {
                         string errorMessage =
                                 string.Format("ERROR: Major Error in Monitor Service while testing service {0} {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
-                        log.Error(errorMessage); 
+                        log.Error(errorMessage);
                         var errorService = new TestResult
                         {
                             Working = false,
@@ -533,7 +540,7 @@ namespace cuahsi.wof.ruon
                                            Serverity = AlarmSeverity.Critical,
                                            ExceptionMessage = errorMessage
                                        };
-                 
+
                 testResults.Add(errorService);
 
                 List<IAlarm> alarms = new List<IAlarm>();
@@ -547,13 +554,18 @@ namespace cuahsi.wof.ruon
 
         protected void SendTestResults(List<ITestResult2> testResults)
         {
-            using (var svc = new MonitoringCollection.MonitoringCollectionClient())
+           try{
+               using (var svc = new MonitoringCollection.MonitoringCollectionClient())
             {
                 List<MonitoringCollection.TestResult> list =
                     testResults.ConvertAll(
                         new Converter<ITestResult2, MonitoringCollection.TestResult>(TestResultToMcTestResult));
                 svc.AcceptTestResults(list.ToArray());
             }
+           } catch (Exception ex)
+           {
+               log.Error("Could Not send results to Web Service. Look at the binding size. http://stackoverflow.com/questions/784606/large-wcf-web-service-request-failing-with-400-http-bad-request "+ ex.Message + ex.StackTrace);
+           }
         }
 
         public static MonitoringCollection.TestResult TestResultToMcTestResult(ITestResult2 testResult)

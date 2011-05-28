@@ -27,7 +27,7 @@ namespace ServicesWebSite.services
            ,[Working]
            ,[ErrorString]
            ,[RunTime]
-           ,[Servity]
+           ,[Severity]
            ,[Location]
            ,[Variable]
            ,[StartDate]
@@ -41,7 +41,7 @@ namespace ServicesWebSite.services
            ,@Working
            ,@ErrorString
            ,@RunTime
-           ,@Servity
+           ,@Severity
            ,@Location
            ,@Variable
            ,@StartDate
@@ -86,8 +86,8 @@ namespace ServicesWebSite.services
                            cmd.Parameters.Add(new SqlParameter("ErrorString",SqlDbType.NText));
                            cmd.Parameters["ErrorString"].Value =  result.ErrorString ?? String.Empty;
                            cmd.Parameters.Add(new SqlParameter("RunTime", result.RunTime));
-                           cmd.Parameters.Add(new SqlParameter("Servity", SqlDbType.VarChar, 10));
-                           cmd.Parameters["Servity"].Value = sev ;
+                           cmd.Parameters.Add(new SqlParameter("Severity", SqlDbType.VarChar, 10));
+                           cmd.Parameters["Severity"].Value = sev;
                            cmd.Parameters.Add(new SqlParameter("Location", SqlDbType.VarChar, 100));
                            cmd.Parameters["Location"].Value = result.Location ?? String.Empty;
                            cmd.Parameters.Add(new SqlParameter("Variable", SqlDbType.VarChar, 100));

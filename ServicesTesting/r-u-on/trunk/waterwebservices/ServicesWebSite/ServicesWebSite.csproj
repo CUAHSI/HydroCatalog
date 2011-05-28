@@ -33,6 +33,42 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>true</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SDSCServices|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/CuahsiServicesMonitors</DeployIisAppPath>
+    <PublishDatabases>false</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ApplicationServices-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|\aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\SDSCServices\AutoScripts\ApplicationServices-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="hiscentral_loggingConnectionString-Deployment" Order="2">
+          <Destination Path="Server=disrupter.sdsc.edu%3bDatabase=hiscentral_logging%3bUser ID=loggingService%3bPassword=l0gg1ng%3bTrusted_Connection=False%3b" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=disrupter.sdsc.edu%3bInitial Catalog=hiscentral_logging%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\SDSCServices\AutoScripts\hiscentral_loggingConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="hiscentral_loggingReader-Deployment" Order="3">
+          <Destination Path="Data Source=disrupter.sdsc.edu%3bInitial Catalog=hiscentral_logging%3bPersist Security Info=True%3bUser ID=webservice%3bPassword=webservice" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=disrupter.sdsc.edu%3bInitial Catalog=hiscentral_logging%3bPersist Security Info=True%3bUser ID=webservice%3bPassword=webservice" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\SDSCServices\AutoScripts\hiscentral_loggingReader-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -67,12 +103,17 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="ActiveAlerts.aspx" />
+    <Content Include="PublicServicesStatus.aspx" />
+    <Content Include="PublicServiceStatistics.aspx" />
     <Content Include="SDSCAll.aspx" />
     <Content Include="HisCentral.aspx" />
     <Content Include="Historic.aspx" />
     <Content Include="SDSCActive.aspx" />
+    <Content Include="services\lstServiceRecordsView.txt" />
     <Content Include="services\MonitoringCollector.svc" />
     <Content Include="services\ServiceMonitorTable.txt" />
+    <Content Include="services\ServiceStats.txt" />
+    <Content Include="services\WebServiceMonitor.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -87,6 +128,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.SDSCServices.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
@@ -135,6 +180,20 @@
     <Compile Include="ActiveAlerts.aspx.designer.cs">
       <DependentUpon>ActiveAlerts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PublicServicesStatus.aspx.cs">
+      <DependentUpon>PublicServicesStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicServicesStatus.aspx.designer.cs">
+      <DependentUpon>PublicServicesStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PublicServiceStatistics.aspx.cs">
+      <DependentUpon>PublicServiceStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicServiceStatistics.aspx.designer.cs">
+      <DependentUpon>PublicServiceStatistics.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SDSCAll.aspx.cs">
       <DependentUpon>SDSCAll.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -175,8 +234,12 @@
       <DependentUpon>SDSCActive.aspx</DependentUpon>
     </Compile>
     <Compile Include="services\IMonitoringCollector.cs" />
+    <Compile Include="services\IWebServiceMonitor.cs" />
     <Compile Include="services\MonitoringCollector.svc.cs">
       <DependentUpon>MonitoringCollector.svc</DependentUpon>
+    </Compile>
+    <Compile Include="services\WebServiceMonitor.svc.cs">
+      <DependentUpon>WebServiceMonitor.svc</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
