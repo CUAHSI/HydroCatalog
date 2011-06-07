@@ -1,0 +1,4 @@
+2010-09-24 15:43:58,662 [4] INFO  hiscentral [(null)] - GetSitesInBox2|Start|0|
+2010-09-24 15:43:59,491 [4] INFO  hiscentral [(null)] - GetSitesInBox2|end|817|
+2010-09-24 15:44:09,959 [4] INFO  hiscentral [(null)] - GetSitesInBox2|Start|0|
+2010-09-24 15:44:09,959 [4] INFO  hiscentral [(null)] - GetSitesInBox2|end|5|

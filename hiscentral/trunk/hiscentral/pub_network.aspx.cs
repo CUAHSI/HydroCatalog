@@ -27,9 +27,11 @@ public partial class public_network : System.Web.UI.Page
         }
         
       }
+      //DateTime maxd = getMaxEnddate(networkid);
+
       Session["NetworkID"] = networkid;
       string NETWORK = " ";
-      string sql = "SELECT username, ServiceWSDL, ServiceAbs, NetworkName, ContactName, ContactEmail, ContactPhone, Organization, website, IsPublic, SupportsAllMethods, Citation, MapIconPath, OrgIconPath, LastHarvested, Xmin, Xmax, Ymin, Ymax, ValueCount, VariableCount, SiteCount, EarliestRec, LatestRec, ServiceStatus, ProjectStatus, NetworkTitle, NetworkID, CreatedDate FROM HISNetworks WHERE (NetworkID = "+networkid+")";
+      string sql = "SELECT username, ServiceWSDL, ServiceAbs, NetworkName, ContactName, ContactEmail, ContactPhone, Organization, website, IsPublic, SupportsAllMethods, Citation, MapIconPath, OrgIconPath, LastHarvested,FrequentUpdates, Xmin, Xmax, Ymin, Ymax, ValueCount, VariableCount, SiteCount, EarliestRec, LatestRec, ServiceStatus, ProjectStatus, NetworkTitle, NetworkID, CreatedDate FROM HISNetworks WHERE (NetworkID = "+networkid+")";
 
 
       DataSet ds = new DataSet();
@@ -62,14 +64,36 @@ public partial class public_network : System.Web.UI.Page
         this.lblNetworkTitle.Text = row["NetworkTitle"].ToString();
         this.lblOrganizationLabel.Text = row["Organization"].ToString();
         this.lblServiceWSDLLabel.Text = row["ServiceWSDL"].ToString();
-        
+        string updated = row["FrequentUpdates"].ToString();
         this.litDesc.Text += "<H3>Abstract</H3><BR>";
         this.litDesc.Text += row["ServiceAbs"].ToString();
         this.litDesc.Text += "<BR><BR>";
+        //String networkid = row["NetworkID"].ToString();
+        DateTime maxd = DateTime.Parse(row["LatestRec"].ToString());
+        DateTime lastHarvestDate = DateTime.Parse(row["LastHarvested"].ToString());
+        TimeSpan dif = lastHarvestDate - maxd;
+        bool isCurrent=false;
+        if (dif.Days < 3 || networkid=="3") isCurrent = true;
+
         string lastHarvested = row["LastHarvested"].ToString();
         if (lastHarvested != null && lastHarvested != "") {
             this.lblLastHarvested.Text = "Last Harvested on " + lastHarvested;
         }
+        if (updated == "True")
+        {
+            this.lblLastHarvested.Text += "<br>(updated weekly,";
+        }
+        else {
+            this.lblLastHarvested.Text += "<br>(";
+        }
+        if (isCurrent)
+        {
+            this.lblLastHarvested.Text += " assumed current)";
+        }
+        else {
+            this.lblLastHarvested.Text += " assumed static)";
+        }
+
         //this.ServiceAbsLabel.Text = row["ServiceAbs"].ToString(); 
         this.lblSiteCount.Text = row["SiteCount"].ToString();
         this.lblVariableCount.Text = row["VariableCount"].ToString();
@@ -100,6 +124,32 @@ public partial class public_network : System.Web.UI.Page
     protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
     {
 
+    }
+    private DateTime getMaxEnddate(string networkid) {
+        string NETWORK = " ";
+        string sql = "SELECT max(enddatetime) from seriesCatalog WHERE (sourceiD = " + networkid + ")";
+
+
+        DataSet ds = new DataSet();
+        SqlConnection con = new SqlConnection(this.SqlDataSource1.ConnectionString);
+
+
+        using (con)
+        {
+            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            da.Fill(ds, "maxdate");
+        }
+        //Literal lit;
+        //Label lbl;
+        con.Close();
+        DateTime d = new DateTime(1800, 1, 1) ;
+        if (ds.Tables["maxdate"].Rows.Count>=1){
+            DataRow row = ds.Tables["maxdate"].Rows[0];
+            d = DateTime.Parse(row[0].ToString());
+
+        }
+        return d;
+       
     }
   private void AddDescriptions(string networkid){
           Session["NetworkID"] = networkid;
