@@ -1,0 +1,4 @@
+﻿<%@ ServiceHost Factory="Microsoft.ServiceModel.Web.WebServiceHost2Factory" 
+   Language="C#" Debug="true" Service="WaterOneFlow.odws.v1_0.wcf.Service_1_0" CodeBehind="~/App_Code/Service_1_0_wcf.cs" %>
+  
+

@@ -89,7 +89,7 @@ Added global property  zipFileBaseName, softwareReleaseDir
     <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)_appSettings.config" />
     <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)_ConnectionString.config" />
     <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)_wateroneflow.authentication.config" />
-    <!--<ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)*.config" >
+    <!--  <ExtraConfigFiles Include="$(OutputPath)\**\$(Configuration)*.config" >
       <IsConfiguration>True</IsConfiguration>
     </ExtraConfigFiles> -->
   </ItemGroup>
@@ -105,14 +105,15 @@ Added global property  zipFileBaseName, softwareReleaseDir
     </WebConfigReplacementFiles>
   </ItemGroup>
   <ItemGroup>
+    <!-- was $(Configuration)_appsettings.config -->
     <MyWebConfig Include="$(OutputPath)build_configs\$(Configuration)_appsettings.config" />
     <MyConnectionString Include="$(OutputPath)build_configs\$(Configuration)_connectionstring.config" />
     <MyWaterOneFlowAuth Include="$(OutputPath)build_configs\$(Configuration)_wateroneflow.authentication.config" />
     <MyLog4net Include="$(OutputPath)build_configs\$(Configuration)_wateroneflow.logging.log4net" />
     <MyOutputFiles Include="$(OutputPath)\**\*.*" />
-  <!--  <MyInstallerFile Include="$(OutputPath)Installer.targets" /> -->
+    <!--  <MyInstallerFile Include="$(OutputPath)Installer.targets" /> -->
     <MyInstallerFile Include="$(SourceWebPhysicalPath)\Installer.targets" />
-                     <MyInstallerConfigFile Include="$(OutputPath)\Test.config" />
+    <MyInstallerConfigFile Include="$(OutputPath)\Test.config" />
     <MyInstallerConfigFile Include="$(OutputPath)\MyWs.config" />
     <MyInstallerConfigFile Include="$(OutputPath)\MyWs_TWO.config" />
     <MyCommunityTasks Include="$(OutputPath)MSBuildCommunityTasks\**\*.*" />
@@ -137,6 +138,10 @@ Added global property  zipFileBaseName, softwareReleaseDir
     <ProjectReference Include="..\..\WofAuthentication\WofAuthentication.csproj">
       <Project>{32144077-B780-491E-B0F4-EA29440B056B}</Project>
       <Name>WofAuthentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xslt\Xslt.csproj">
+      <Project>{ECC2E655-B860-4A02-B3B2-1223AA673FC9}</Project>
+      <Name>Xslt</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v10.0\Microsoft.WebDeployment.targets" />

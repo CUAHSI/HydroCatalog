@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml;
@@ -8,6 +10,7 @@ using WaterOneFlowImpl;
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Addressing;
 using Microsoft.Web.Services3.Messaging;
+using WaterOneFlowImpl.Generic;
 
 /* In order to keep the "Contract" Clean. Descriptions are found the WsDescriptions Class.
  * This is a set of constants.
@@ -24,6 +27,8 @@ namespace v1_1 {
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1,
         Name = WsDescriptions.WsDefaultName,
    Namespace = ConstantsNs.WS_NAMSPACE)]
+    [ServiceContract(Name = WsDescriptions.WsDefaultName, Namespace = ConstantsNs.WS_NAMSPACE)]
+    [XmlSerializerFormat]
     interface IService
     {
         [WebMethod(Description = WsDescriptions.GetSitesDefaultDesc )]
@@ -43,6 +48,11 @@ namespace v1_1 {
         SiteInfoResponseType GetSitesObject(string[] site, String authToken);
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
+        [OperationContract()]
+        [WebGet(
+            // ResponseFormat = WebMessageFormat.Xml,
+      UriTemplate = "series?site={site}&authToken={authToken}"
+      )]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
       /// <summary>
@@ -57,6 +67,11 @@ namespace v1_1 {
       ResponseNamespace = ConstantsNs.XML_SCHEMA_NAMSPACE,
        ResponseElementName = "VariablesResponse")]
         [WebMethod(Description = WsDescriptions.GetVariableInfoObjectDefaultDesc)]
+        [OperationContract()]
+        [WebGet(
+            // ResponseFormat = WebMessageFormat.Xml,
+       UriTemplate = "variables?variable={variable}&authToken={authToken}"
+       )]
         VariablesResponseType GetVariableInfoObject(string variable, String authToken);
 
         /* live with SoapDocument Method. it's out in the world
@@ -65,6 +80,11 @@ namespace v1_1 {
        ResponseNamespace = ConstantsNs.XML_SCHEMA_NAMSPACE,
        ResponseElementName = "TimeSeriesResponse")]  
         [WebMethod(Description = WsDescriptions.GetValuesObjectDefaultDesc)]
+        [OperationContract()]
+        [WebGet(
+            // ResponseFormat = WebMessageFormat.Xml,
+        UriTemplate = "values?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"
+        )]
         TimeSeriesResponseType GetValuesObject(string location, string variable, string startDate, string endDate, String authToken);
 
         // 1.1 methods

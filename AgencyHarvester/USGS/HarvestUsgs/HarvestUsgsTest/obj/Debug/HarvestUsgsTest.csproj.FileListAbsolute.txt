@@ -1,0 +1,15 @@
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\obj\Debug\ResolveAssemblyReference.cache
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\HarvestUsgsTest.dll
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\HarvestUsgsTest.pdb
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\HarvestUsgs.exe
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\nunit.framework.dll
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\nunit.mocks.dll
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\HarvestUsgs.pdb
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\nunit.framework.xml
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\obj\Debug\HarvestUsgsTest.dll
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\obj\Debug\HarvestUsgsTest.pdb
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\examples\series_01646500.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\examples\series_active_rhodeisland_iv_dv.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\examples\site01646500.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\examples\site_01646500_expanded.txt
+C:\dev_hydrocatalog\AgencyHarvester\USGS\HarvestUsgs\HarvestUsgsTest\bin\Debug\examples\site_active_rhodeisland.txt

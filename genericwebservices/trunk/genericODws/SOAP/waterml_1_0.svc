@@ -1,0 +1,4 @@
+﻿<%@ ServiceHost Factory="System.ServiceModel.Activation.ServiceHostFactory"
+   Language="C#" Debug="true" Service="WaterOneFlow.odws.v1_0.wcf.soap.Service_soap"  CodeBehind="~/App_Code/Service_1_0_wcf_soap.cs" %>
+  
+

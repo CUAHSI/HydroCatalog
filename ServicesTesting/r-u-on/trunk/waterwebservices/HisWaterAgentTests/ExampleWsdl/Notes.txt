@@ -1,0 +1,8 @@
+﻿1.0 endpoint
+http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx?WSDL
+
+1.1 endpoint:
+http://hydro10.sdsc.edu/LBRSDSC/Cuahsi_1_1.asmx?WSDL
+
+BadEndpoint, Wrong Namespace for 1.1 endpoint:
+http://his09.umbc.edu/BaltPrecip/cuahsi_1_1.asmx?WSDL

@@ -1,0 +1,150 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:Program.cs" caret="116" fromTop="6" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:Notes.txt" caret="337" fromTop="8" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2596" fromTop="37" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:site_active_rhodeisland.txt" caret="1001" fromTop="24" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:series_01646500.txt" caret="0" fromTop="0" />
+      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="707" fromTop="17" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="18" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="28" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="9" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="13" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="25" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="74" fromTop="2" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="10" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="26" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="3" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="18" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="21" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="33" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="22" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="13" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="17" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="15" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="14" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="21" />
+      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="497" fromTop="13" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="12" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="16" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2592" fromTop="13" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="1483" fromTop="16" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="1668" fromTop="19" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="372" fromTop="14" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="1953" fromTop="18" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2516" fromTop="17" />
+      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="1009" fromTop="26" />
+      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="342" fromTop="8" />
+      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="731" fromTop="18" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files\NUnit 2.5.9\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="8" />
+      <Item value="ParseRdb`0" priority="0" />
+      <Item value="Stream`0" priority="1" />
+      <Item value="String`0" priority="9" />
+      <Item value="InputStream" priority="2" />
+      <Item value="inputStream" priority="0" />
+      <Item value="return" priority="3" />
+      <Item value="null" priority="1" />
+      <Item value="void" priority="2" />
+      <Item value="while" priority="4" />
+      <Item value="using" priority="0" />
+      <Item value="Double`0" priority="0" />
+      <Item value="line" priority="1" />
+      <Item value="new" priority="4" />
+      <Item value="string" priority="5" />
+      <Item value="List" priority="0" />
+      <Item value="headers" priority="2" />
+      <Item value="if" priority="1" />
+      <Item value="foreach" priority="2" />
+      <Item value="Columns" priority="1" />
+      <Item value="Dictionary&lt;string,string&gt;" priority="0" />
+      <Item value="dataValues" priority="1" />
+      <Item value="s" priority="0" />
+      <Item value="tokens" priority="0" />
+      <Item value="IEnumerator" priority="0" />
+      <Item value="value" priority="0" />
+      <Item value="readonly" priority="0" />
+      <Item value="IEnumerable`0" priority="0" />
+      <Item value="bool" priority="1" />
+      <Item value="haveReadHeaders" priority="0" />
+      <Item value="true" priority="0" />
+      <Item value="private" priority="0" />
+      <Item value="ReadLine`0" priority="0" />
+      <Item value="TestCase" priority="0" />
+      <Item value="parseRdb" priority="4" />
+      <Item value="ParseRdb" priority="0" />
+      <Item value="TextReader`0" priority="0" />
+      <Item value="StreamReader`0" priority="0" />
+      <Item value="var" priority="2" />
+      <Item value="AssemblyLoadEventArgs`0" priority="0" />
+      <Item value="Dictionary" priority="1" />
+      <Item value="Assert`0" priority="0" />
+      <Item value="break" priority="0" />
+      <Item value="int" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.TextReader">
+      <Item value="ReadLine`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="StartsWith`0" priority="0" />
+      <Item value="Split`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="0" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="Add`0" priority="0" />
+      <Item value="Count" priority="0" />
+      <Item value="GetEnumerator`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2">
+      <Item value="Add`0" priority="0" />
+      <Item value="Keys" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerator`1">
+      <Item value="Current" priority="1" />
+      <Item value="MoveNext`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:HarvestUsgs.ParseRdb">
+      <Item value="init`0" priority="0" />
+      <Item value="Headers" priority="0" />
+      <Item value="GetNextValue`0" priority="0" />
+      <Item value="Columns" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
+      <Item value="Contains`0" priority="1" />
+      <Item value="AreEqual`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2+KeyCollection">
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

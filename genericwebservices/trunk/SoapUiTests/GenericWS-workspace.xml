@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-workspace name="GenericWS" soapui-version="3.6.1" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:project name="GenericWs_1_0">C:/dev_hydrocatalog/genericwebservices/trunk/SoapUiTests/GenericWs-1-0-soapui-project.xml</con:project>
+  <con:project name="GenericWs_1_1">C:/dev_hydrocatalog/genericwebservices/trunk/SoapUiTests/GenericWs-1-1-soapui-project.xml</con:project>
+</con:soapui-workspace>

@@ -1,0 +1,14 @@
+There are two builds.
+* One for a large list of sites (Release, SetupWsMontitors)
+* onw for a small list of sites (SDSCServices, SetupSDSCMonitors)
+The Debug is set to 0, so it will only run once.
+
+When Packaging, use:
+* Release > SetupWSMonitors
+* SDSCServices
+
+Inside the HisWaterWebServicesAgent/WaterWebServicesAgent.cs, 
+there are some Conditional Symbols defined: SDSCService, Deebug
+
+The SDSCService builds attributes for every 5 minutes
+the Release builds with a time of every hour.

@@ -56,7 +56,7 @@ namespace WaterOneFlowImpl
             {
                 // create a soap fault with a subcode, external
                 XmlQualifiedName soapCode = ServerFaultCode;
-                XmlQualifiedName subCodeName = new XmlQualifiedName("external",Constants.XML_SCHEMA_NAMSPACE);
+                XmlQualifiedName subCodeName = new XmlQualifiedName("external",v1_0.Constants.XML_SCHEMA_NAMSPACE);
                 SoapFaultSubCode subCode = new SoapFaultSubCode(subCodeName);
 
                 se = new SoapException(ex.Message, soapCode, subCode);

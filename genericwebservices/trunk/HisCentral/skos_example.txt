@@ -1,0 +1,11 @@
+﻿http://lab.usgin.org/book/usgin-skos-vocabulary-service-profile-home/examples-skos-concept-encoding
+<skos:ConceptScheme rdf:about="urn:cgi:classifierScheme:CGI:SimpleLithology:200811"/>
+
+   <skos:Concept rdf:about="urn:cgi:classifier:CGI:SimpleLithology:200811:breccia">
+        <skos:definition>Coarse-grained material composed of angular broken rock fragments; the fragments typically have sharp edges and unworn corners. The fragments may be held together by a mineral cement, or in a fine-grained matrix. Clasts may be of any composition or origin. Source: Neuendorf et al. 2005</skos:definition>
+        <skos:prefLabel xml:lang="en">Breccia@en</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">brèches@fr</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">breccia@it</skos:prefLabel>
+        <skos:inScheme rdf:resource="urn:cgi:classifierScheme:CGI:SimpleLithology:200811"/>
+        <skos:broader rdf:resource="urn:cgi:classifierScheme:CGI:SimpleLithology:200811:compound_material"/>
+    </skos:Concept>

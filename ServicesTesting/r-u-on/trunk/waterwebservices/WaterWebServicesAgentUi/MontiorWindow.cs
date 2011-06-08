@@ -17,7 +17,7 @@ namespace cuahsi.wof.ruon
         private AgentParams _agentParams ;
         private int originalMontiorInterval = 600;
 
-        private ServerList servers;
+        private ObsSeriesServerList _obsSeriesServers;
 
         public MontiorWindow()
         {
@@ -61,9 +61,9 @@ namespace cuahsi.wof.ruon
 
         private void OnResourceUpdateEvent(object sender, EventArgs e)
         {
-            servers =new ServerList(agent.Configuration.ManagedResources);
+            _obsSeriesServers =new ObsSeriesServerList(agent.Configuration.ManagedResources);
 
-            serverListBindingSource.DataSource = servers;
+            serverListBindingSource.DataSource = _obsSeriesServers;
             ServerListGrid.Refresh();
         }
 
@@ -86,7 +86,7 @@ namespace cuahsi.wof.ruon
         {
            
             AgentParams ap = new AgentParams();
-            ap.Resources = servers.AsAgentResource();
+            ap.Resources = _obsSeriesServers.AsAgentResource();
             agent.SetParameters(ap);
         }
 
@@ -106,7 +106,7 @@ namespace cuahsi.wof.ruon
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
  
-            agent.Monitor(servers.AsResource());
+            agent.Monitor(_obsSeriesServers.AsResource());
 
         }
     }

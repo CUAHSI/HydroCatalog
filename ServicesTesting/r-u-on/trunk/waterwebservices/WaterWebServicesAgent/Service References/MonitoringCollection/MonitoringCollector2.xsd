@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="uri:his.cuahsi.org/Monitoring/1/" elementFormDefault="qualified" targetNamespace="uri:his.cuahsi.org/Monitoring/1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:29394/services/MonitoringCollector.svc?xsd=xsd2" namespace="uri:his.cuahsi.org/Monitoring/1/TestResult/" />
+  <xs:element name="AcceptTestResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="uri:his.cuahsi.org/Monitoring/1/TestResult/" minOccurs="0" name="testResult" nillable="true" type="q1:TestResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptTestResults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="uri:his.cuahsi.org/Monitoring/1/TestResult/" minOccurs="0" name="testResult" nillable="true" type="q2:ArrayOfTestResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
