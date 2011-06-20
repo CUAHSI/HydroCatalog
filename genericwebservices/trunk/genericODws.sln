@@ -159,9 +159,10 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "genericODws", "genericODws\
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "6278"
+		VWDPort = "62781"
 		VWDDynamicPort = "false"
 		DefaultWebSiteLanguage = "Visual C#"
+		StartServerOnDebug = "false"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "waterOneFlowImpl", "waterOneFlowImpl\waterOneFlowImpl.csproj", "{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}"
@@ -193,6 +194,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericWs2", "GenericWs2\GenericWs2.csproj", "{592A2308-5B12-469F-87AF-0330B4FD63E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterOneFlowWcfInterfaces", "WaterOneFlowWcfInterfaces\WaterOneFlowWcfInterfaces.csproj", "{017A86A3-6073-417A-A398-50E9339C2E29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFSHandler", "WFSHandler\WFSHandler.csproj", "{1CDD205B-042C-4C56-A338-40A6C0D4B603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralTest", "HisCentralTest\HisCentralTest.csproj", "{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -519,8 +524,8 @@ Global
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|.NET.ActiveCfg = Release|Any CPU
-		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Any CPU.ActiveCfg = Release|Any CPU
-		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Any CPU.Build.0 = Release|Any CPU
+		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Any CPU.ActiveCfg = WaterDev|Any CPU
+		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Any CPU.Build.0 = WaterDev|Any CPU
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
 		{017A86A3-6073-417A-A398-50E9339C2E29}.Debug|.NET.ActiveCfg = Debug|Any CPU
@@ -543,6 +548,46 @@ Global
 		{017A86A3-6073-417A-A398-50E9339C2E29}.WaterDev|Any CPU.Build.0 = Release|Any CPU
 		{017A86A3-6073-417A-A398-50E9339C2E29}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{017A86A3-6073-417A-A398-50E9339C2E29}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Default|.NET.ActiveCfg = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Release|.NET.ActiveCfg = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.WaterDev|.NET.ActiveCfg = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.WaterDev|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.WaterDev|Any CPU.Build.0 = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1CDD205B-042C-4C56-A338-40A6C0D4B603}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Default|.NET.ActiveCfg = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Release|.NET.ActiveCfg = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|.NET.ActiveCfg = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Any CPU.Build.0 = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LittleBear11" ContextNamespace="genericws.example" Class="SitesSeriesDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=LittleBear11;User ID=webservice" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ODDB" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Variables" Member="Variables">
+    <Type Name="Variable">
+      <Column Name="VariableID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VariableCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="VariableName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Speciation" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="VariableUnitsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SampleMedium" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ValueType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="IsRegular" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TimeSupport" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="TimeUnitsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="GeneralCategory" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NoDataValue" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SeriesCatalog" Member="SeriesCatalogs">
+    <Type Name="SeriesCatalog">
+      <Column Name="SeriesID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VariableID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VariableCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VariableName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Speciation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VariableUnitsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VariableUnitsName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SampleMedium" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ValueType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TimeSupport" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TimeUnitsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeUnitsName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DataType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GeneralCategory" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MethodDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Organization" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SourceDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Citation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="QualityControlLevelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QualityControlLevelCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BeginDateTime" Type="System.DateTimeOffset" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDateTime" Type="System.DateTimeOffset" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BeginDateTimeUTC" Type="System.DateTimeOffset" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDateTimeUTC" Type="System.DateTimeOffset" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ValueCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sites" Member="Sites">
+    <Type Name="Site">
+      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SiteCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="LatLongDatumID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Elevation_m" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VerticalDatum" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LocalX" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LocalY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LocalProjectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PosAccuracy_m" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

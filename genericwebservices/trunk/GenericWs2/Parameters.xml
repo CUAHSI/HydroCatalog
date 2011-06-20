@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters >
+<!--    <add key="network" value="UNDEFINED"/>
+    <add key="vocabulary" value="UNDEFINED"/>
+    <add key="contactEmail" value="cuahsi@example.com"/>
+    -->
+  <parameter name="NetworkCode" 
+             description="Please define a short code that will identify the network" 
+             defaultValue="UNDEFINED" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='network']/@value" />
+
+    <parameterValidation type="RegularExpression" 
+                         validationString="^\s"  />
+  </parameter>
+  <parameter name="VocabularyCode"
+               description="Please define a short code that will identify the vocabulary. Present practice says this is the same as the NetworkCode"
+               defaultValue="UNDEFINED" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$"
+                   match="/configuration/appSettings/add[@key='vocabulary']/@value" />
+    <parameterValidation type="RegularExpression"
+                         validationString="[^\s]"  />
+  </parameter>
+  <parameter name="contactEmail"
+             description="Please provide contactEmail address " 
+             defaultValue="me@example.com" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='contactEmail']/@value" />
+  </parameter>
+  <parameter name="TimeUseUTCorLocal"
+             description="Local - Attempt to shift to Local time of server \n
+       UTC (Default)- Return UTC Times \n
+       Undefined - Return no offset, even if a UTC Offset is provided \n"
+             defaultValue="UTC" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$"
+                    match="/configuration/appSettings/add[@key='returnUndefinedUTCorLocal']/@value" />
+    <parameterValidation type="Enumeration" validationString="UTC,Local,Undefined" />
+  </parameter>
+
+</parameters>

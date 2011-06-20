@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HisCentral
+namespace WFSHandler
 {
     public class Class1
     {
