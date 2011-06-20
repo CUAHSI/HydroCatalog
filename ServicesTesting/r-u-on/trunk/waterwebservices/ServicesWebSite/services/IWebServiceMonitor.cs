@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace ServicesWebSite.services
@@ -13,41 +13,13 @@ namespace ServicesWebSite.services
     public interface IWebServiceMonitor
     {
         [OperationContract]
+        [WebGet(UriTemplate = "PublicServicesStatus")]
         MonitoredServicesResponse PublicServicesStatus();
 
         [OperationContract]
-        MonitoredServicesResponse ServiceStatus();
+        [WebGet(UriTemplate = "ServiceStatus/{serviceCode}")]
+        MonitoredServicesResponse ServiceStatus(string serviceCode);
     }
     
-    [DataContract(Name = "MonitoredServicesResponse",
-        Namespace = "uri:his.cuahsi.org/Monitoring/1/")]
-    public class MonitoredServicesResponse
-    {
-        [DataMember]
-        public List<MonitoredService> MonitoredServices { get; private set; }
-        
-        public MonitoredServicesResponse()
-        {
-            MonitoredServices = new List<MonitoredService>();
-        }
-    }
-
-    [DataContract(Name = "MonitoredService",
-        Namespace = "uri:his.cuahsi.org/Monitoring/1/")]
-    public class MonitoredService
-    {
-        [DataMember]
-        public string Network { get; set; }
-        [DataMember]
-        public string Endpoint { get; set; }
-        [DataMember]
-        public string Status { get; set; }
-        [DataMember]
-        public DateTime LastTested { get; set; }
-        [DataMember]
-        public string Reliability { get; set; }
-        [DataMember]
-        public string ErrorMessage { get; set; }
-        
-    }
+   
 }

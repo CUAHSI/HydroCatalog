@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="ServicesWebSite.services.WebServiceMonitor" CodeBehind="WebServiceMonitor.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Factory="Microsoft.ServiceModel.Web.WebServiceHost2Factory" Service="ServicesWebSite.services.WebServiceMonitor" CodeBehind="WebServiceMonitor.svc.cs" %>
