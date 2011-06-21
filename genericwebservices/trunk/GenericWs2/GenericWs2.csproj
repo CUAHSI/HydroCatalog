@@ -25,7 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <PublishDatabases>true</PublishDatabases>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
-    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2.zip</DesktopBuildPackageLocation>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_Debug.zip</DesktopBuildPackageLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2.zip</DesktopBuildPackageLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WaterDev|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_waterdev.zip</DesktopBuildPackageLocation>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah">
@@ -93,6 +95,8 @@
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
+    <Content Include="InstallationHowTo.txt" />
+    <Content Include="WaterML_1_1.aspx" />
     <Content Include="cuahsi_1_0.asmx" />
     <Content Include="cuahsi_1_1.asmx" />
     <Content Include="DatabaseTest.aspx" />
@@ -194,6 +198,13 @@
     </Compile>
     <Compile Include="Configure.aspx.designer.cs">
       <DependentUpon>Configure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WaterML_1_1.aspx.cs">
+      <DependentUpon>WaterML_1_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WaterML_1_1.aspx.designer.cs">
+      <DependentUpon>WaterML_1_1.aspx</DependentUpon>
     </Compile>
     <Compile Include="DatabaseTest.aspx.designer.cs">
       <DependentUpon>DatabaseTest.aspx</DependentUpon>

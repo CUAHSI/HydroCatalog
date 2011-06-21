@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WaterML_1_0.aspx.cs" Inherits="GenericWebservice.WaterML_1_0" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WaterML_1_1.aspx.cs" Inherits="GenericWebservice.WaterML_1_1" %>
 <%@ Register TagPrefix="wml" TagName="WmlUrl" Src="~/UserControls/TestRestUrl.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -7,16 +7,16 @@
         <script type="text/javascript">
     var networkCode = "<%= ConfigurationManager.AppSettings["Network"] %>" ;
     var vocabularyCode =  "<%= ConfigurationManager.AppSettings["Vocabulary"] %>" ;
-   var  SoapPage="cuahsi_1_0.asmx";
- var baseUrl ="REST/waterml_1_0.svc/" ;
+   var  SoapPage="cuahsi_1_1.asmx";
+ var baseUrl ="REST/waterml_1_1.svc/" ;
 var siteMethod="series";
    var valuesMethod="values";
    var  variableMethod="variables";
    </script>
      </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-             <wml:WmlUrl ID="wml10url" runat="server" BaseUrl="REST/waterml_1_0.svc/" siteMethod="series"
-                valuesMethod="values" variableMethod="variables" SoapPage="~/cuahsi_1_0.asmx"/>
+             <wml:WmlUrl ID="wml11url" runat="server" BaseUrl="REST/waterml_1_1.svc/" siteMethod="series"
+                valuesMethod="values" variableMethod="variables" SoapPage="~/cuahsi_1_1.asmx"/>
  <div>
   <p>
         WaterML is delivered over a SOAP API, called "WaterOneFlow". In this version, the API is updated

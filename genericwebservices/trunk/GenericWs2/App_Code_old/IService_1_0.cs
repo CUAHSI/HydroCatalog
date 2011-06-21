@@ -78,7 +78,7 @@ namespace WaterOneFlow.v1_0
         [OperationContract(Action = Constants.WS_NAMSPACE + "GetSiteInfoObject")]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
-            UriTemplate = "series?site={site}&authToken={authToken}"
+            UriTemplate = "series?location={site}&authToken={authToken}"
             )]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 

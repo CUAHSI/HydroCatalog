@@ -30,10 +30,10 @@ namespace WaterOneFlow.odws.v1_0
     //[SoapActor("*")]
 #else
     [WebService(Name = WsDescriptions.WsDefaultName,
-        Namespace = ConstantsNs.WS_NAMSPACE,
+        Namespace = Constants.WS_NAMSPACE,
         Description =  WsDescriptions.WsDefaultDescription)]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [SoapActor("*")]
+   // [SoapActor("*")]
 #endif
     public class Service_1_0 : WebService, IService_1_0
     {

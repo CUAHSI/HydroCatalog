@@ -10,15 +10,15 @@
 namespace GenericWebservice {
     
     
-    public partial class WaterML_1_0 {
+    public partial class WaterML_1_1 {
         
         /// <summary>
-        /// wml10url control.
+        /// wml11url control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GenericWebservice.TestRestUrl wml10url;
+        protected global::GenericWebservice.TestRestUrl wml11url;
     }
 }
