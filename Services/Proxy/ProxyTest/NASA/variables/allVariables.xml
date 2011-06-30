@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+  <variablesResponse xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://www.cuahsi.org/waterML/1.0/">
+  <queryInfo> 
+    <creationTime>2011-02-15T19:34:06Z</creationTime> 
+    <queryURL>http://hydro1.sci.gsfc.nasa.gov/daac-bin/cuahsi/his.cgi?function=GetVariableInfo</queryURL> 
+    <note>NASA DISC/HDISC WebService</note> 
+    
+  </queryInfo>
+  <variables>
+       <variable>
+         <variableCode vocabulary="NLDAS" default="true" variableID="86">NLDAS_MOS0125_H.002:soilm0_10cm</variableCode>
+         <variableName>0-10 cm layer 1 Soil moisture content</variableName>
+         <valueType>Model Simulation Result</valueType>
+         <dataType>Average</dataType>
+         <generalCategory>Hydrology</generalCategory>
+         <sampleMedium>Soil</sampleMedium>
+         <units unitsAbbreviation="kg/m^2">Kilograms per square meter</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>1</timeInterval>
+         </timeSupport>
+      </variable>
+       <variable>
+         <variableCode vocabulary="NLDAS" default="true" variableID="85">NLDAS_MOS0125_H.002:tsoildeep</variableCode>
+         <variableName>Deep soil temperature</variableName>
+         <valueType>Model Simulation Result</valueType>
+         <dataType>Average</dataType>
+         <generalCategory>Hydrology</generalCategory>
+         <sampleMedium>Soil</sampleMedium>
+         <units unitsAbbreviation="degK">degree Kelvin</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>1</timeInterval>
+         </timeSupport>
+      </variable>
+       <variable>
+         <variableCode vocabulary="NLDAS" default="true" variableID="61">NLDAS_FORA0125_H.002:apcpsfc</variableCode>
+         <variableName>Precipitation hourly total</variableName>
+         <valueType>Derived Value</valueType>
+         <dataType>Incremental</dataType>
+         <generalCategory>Hydrology</generalCategory>
+         <sampleMedium>Precipitation</sampleMedium>
+         <units unitsAbbreviation="kg/m^2">Kilograms per square meter</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>1</timeInterval>
+         </timeSupport>
+      </variable>
+       <variable>
+         <variableCode vocabulary="NLDAS" default="true" variableID="11">NLDAS_FORA0125_H.002:tmp2m</variableCode>
+         <variableName>2-m above ground temperature</variableName>
+         <valueType>Derived Value</valueType>
+         <dataType>Average</dataType>
+         <generalCategory>Hydrology</generalCategory>
+         <sampleMedium>Air</sampleMedium>
+         <units unitsAbbreviation="degK">degree kelvin</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>1</timeInterval>
+         </timeSupport>
+      </variable>
+       <variable>
+         <variableCode vocabulary="GLDAS" default="true" variableID="132">GLDAS_NOAH025_3H.001:rainf</variableCode>
+         <variableName>Rainfall rate</variableName>
+         <valueType>Derived Value</valueType>
+         <dataType>Average</dataType>
+         <generalCategory>Hydrology</generalCategory>
+         <sampleMedium>Precipitation</sampleMedium>
+         <units unitsAbbreviation="kg/m^2/">Kilograms per square meter per second</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>3</timeInterval>
+         </timeSupport>
+      </variable>
+       <variable>
+         <variableCode vocabulary="GLDAS" default="true" variableID="86">GLDAS_NOAH025_3H.001:soilm1</variableCode>
+         <variableName>0-10 cm  Average layer 1 soil moisture</variableName>
+         <valueType>Model Simulation Result</valueType>
+         <dataType>Average</dataType>
+         <generalCategory>Hydrology</generalCategory>
+         <sampleMedium>Soil</sampleMedium>
+         <units unitsAbbreviation="kg/m^2">Kilograms per square meter</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>3</timeInterval>
+         </timeSupport>
+      </variable>
+       <variable>
+         <variableCode vocabulary="TRMM" default="true" variableID="001">TRMM_3B42RT.006:r</variableCode>
+         <variableName>Precipitation rate</variableName>
+         <valueType>Derived Value</valueType>
+         <dataType>Incremental</dataType>
+         <generalCategory>Climate</generalCategory>
+         <sampleMedium>Precipitation</sampleMedium>
+         <units unitsAbbreviation="mm/hr">Millimeters per hour</units>
+         <NoDataValue>-9999</NoDataValue>
+         <timeSupport isRegular="true">
+            <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+            </unit>
+            <timeInterval>3</timeInterval>
+         </timeSupport>
+      </variable>
+   </variables>
+</variablesResponse>
