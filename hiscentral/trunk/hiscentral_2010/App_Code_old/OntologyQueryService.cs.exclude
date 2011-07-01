@@ -1,0 +1,279 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using com.hp.hpl.jena.util.iterator;
+
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using WebService=System.Web.Services.WebService;
+    using System;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using OntologyTools;
+using System.Web.Caching;
+using com.hp.hpl.jena.ontology;
+using System.Data.SqlClient;
+using System.Configuration;
+/// <summary>
+/// Summary description for OntologyQueryService
+/// </summary>
+
+//[WebService(Namespace = "http://www.cuahsi.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+[System.Web.Script.Services.ScriptService]
+public class OntologyQueryService : System.Web.Services.WebService
+{
+    public OntologyQueryService()
+    {
+        InitializeComponent();
+    }
+
+    private HttpContext appContext;
+    private static OntModel m = null;
+    private string connect;
+    private SqlConnection con;
+
+    //private AutoCompleteService ajaxAutoComplete;
+    private System.Collections.Generic.Dictionary<String, String> myDictionary;
+    //= new Dictionary<String, String>(); 
+  
+
+    protected OntModel OntologyModel
+    {
+        get
+        {
+            m = (OntModel)appContext.Cache["SearchOntology"];
+            if (m == null)
+            {
+                // dwv use a static class to generate the application URL
+                String ajaxOwl = getServerUrl() + "ontology/search.owl";
+                //OntologyLoader myLoader = new OntologyLoader("http://water.sdsc.edu/search/ontology/search.owl");
+                OntologyLoader myLoader = new OntologyLoader(ajaxOwl);
+                
+                OntologyModel = myLoader.getOntologyModel();
+                appContext.Cache.Insert("SearchOntology", OntologyModel);
+
+            }
+
+            return m;
+        }
+        set
+        {
+            m = value;
+        }
+    }
+
+    //protected  AutoCompleteService AjaxAutoComplete
+    //{
+    //    get
+    //    {
+    //        if (ajaxAutoComplete == null) ajaxAutoComplete = new AutoCompleteService();
+    //        return ajaxAutoComplete;
+  
+    //    }
+        
+    //}
+
+  
+  private List<string> analyzeNodes(OntModel om)
+  {
+    List<string> elements = new List<string>();
+    List<string> mediumList = new List<string>();
+    mediumList = null; // getMediumList(om);
+    for (ExtendedIterator allClassesItr = om.listClasses(); allClassesItr
+        .hasNext(); )
+    {
+      OntClass k = (OntClass)allClassesItr.next();
+
+      if (isCorrectElement(k))
+      {
+        elements.Add(k.getLabel("en"));
+        if (checkMediumRestriction(om, k))
+        {
+
+          if (mediumList != null)
+          {
+            foreach (String ml in mediumList)
+            {
+              elements.Add(k.getLabel("en") + " (" + ml + ")");
+            }
+          }
+        }
+
+      }
+    }
+
+
+    return elements;
+  }
+    //[WebMethod]
+    //public void InitializeComponent()
+    //{
+    //    appContext = HttpContext.Current;
+
+    //    OntModel initOntologyModel = OntologyModel;
+    //   // Not needed made it as property
+    //  //  OntologyModel = (OntModel)appContext.Cache["SearchOntology"];
+
+
+    //  //  if (OntologyModel == null)
+    //  //{
+    //  //    // dwv use a static class to generate the application URL
+    //  //    String ajaxOwl = getServerUrl() + "ontology/search.owl";
+    //  //    //OntologyLoader myLoader = new OntologyLoader("http://water.sdsc.edu/search/ontology/search.owl");
+    //  //    OntologyLoader  myLoader = new OntologyLoader(ajaxOwl);
+          
+    //  //      OntologyModel = myLoader.getOntologyModel();
+    //  //      appContext.Cache.Insert("SearchOntology", OntologyModel);
+
+    //  //}
+
+    //    // init the autocomplete
+    //    AutoCompleteService initAjaxService = AjaxAutoComplete;
+
+    //}
+  [WebMethod]
+  private void InitializeComponent()
+  {
+    //  appContext = HttpContext.Current;
+
+    string cacheKey = "ajaxVocabulary";
+
+    autoCompleteWordList = (string[])HttpRuntime.Cache.Get(cacheKey);
+    if (autoCompleteWordList == null)
+    {
+      // dwv use a static class to generate the application URL
+      String ajaxOwl = getServerUrl() + "ontology/ajax.owl";
+      // myLoader = new OntologyLoader("http://water.sdsc.edu/search/ontology/ajax.owl");
+      myLoader = new OntologyLoader(ajaxOwl);
+      OnToAJAX ajaxVoc = new OnToAJAX(myLoader.getOntologyModel());
+      autoCompleteWordList = ArrayToEnd(ajaxVoc.getText());
+      Array.Sort(autoCompleteWordList, new CaseInsensitiveComparer());
+      HttpRuntime.Cache.Add(cacheKey, autoCompleteWordList, null, DateTime.Now.AddDays(3), Cache.NoSlidingExpiration, CacheItemPriority.High, null);
+    }
+
+    //  autoCompleteWordList = temp;
+    //  appContext.Cache.Insert("ajaxVocabulary", autoCompleteWordList);
+
+  }
+
+
+    [WebMethod(CacheDuration = 600, BufferResponse = true)]
+    public string getRelevantConceptsAndVariablesXML(String keyword)
+    {
+        string inputString = Server.HtmlEncode(keyword.Trim());
+        // just give me one
+       string[] word = AjaxAutoComplete.GetWordList(inputString,1);
+        inputString = word[0];
+
+        if (!String.IsNullOrEmpty(inputString))
+        {
+            String output = "";
+            if (OntologyModel != null)
+            {
+                connect = ConfigurationManager.ConnectionStrings["ODMConnectionString"].ConnectionString;
+                con = new SqlConnection(connect);
+                con.Open();
+                OntologyQuery myQuery = new OntologyQuery(OntologyModel, con, inputString);
+                output = myQuery.getQueryResult();
+
+            }
+            else {
+
+                // dwv use a static class to generate the application URL
+                String ajaxOwl = getServerUrl() + "ontology/search.owl";
+                //OntologyLoader myLoader = new OntologyLoader("http://water.sdsc.edu/search/ontology/search.owl");
+                OntologyLoader myLoader = new OntologyLoader(ajaxOwl);
+                OntologyModel = myLoader.getOntologyModel();
+                appContext.Cache.Insert("SearchOntology", OntologyModel);
+                connect = ConfigurationManager.ConnectionStrings["ODMConnectionString"].ConnectionString;
+                con = new SqlConnection(connect);
+                con.Open();
+                OntologyQuery myQuery = new OntologyQuery(OntologyModel, con, inputString);
+                output = myQuery.getQueryResult();
+            
+            }
+            return output;
+        }
+        else
+        {
+            return "The query string was null or empty";
+        }
+    }
+
+    [WebMethod(CacheDuration = 600, BufferResponse = true)]
+    public string getRelevantConceptsAndVariablesXMLforGCMD(String keyword)
+    {
+        string inputString = Server.HtmlEncode(keyword);
+
+        if (!String.IsNullOrEmpty(inputString))
+        {
+            String output = "";
+            if (OntologyModel != null)
+            {
+                connect = ConfigurationManager.ConnectionStrings["ODMConnectionString"].ConnectionString;
+                con = new SqlConnection(connect);
+                con.Open();
+                OntologyQueryGCMD myQuery = new OntologyQueryGCMD(OntologyModel, con, inputString);
+                output = myQuery.getQueryResult();
+
+            }
+            else
+            {
+
+                // dwv use a static class to generate the application URL
+                String ajaxOwl = getServerUrl() + "ontology/search.owl";
+                //OntologyLoader myLoader = new OntologyLoader("http://water.sdsc.edu/search/ontology/search.owl");
+                OntologyLoader myLoader = new OntologyLoader(ajaxOwl);
+                OntologyModel = myLoader.getOntologyModel();
+                appContext.Cache.Insert("SearchOntology", OntologyModel);
+                connect = ConfigurationManager.ConnectionStrings["ODMConnectionString"].ConnectionString;
+                con = new SqlConnection(connect);
+                con.Open();
+                OntologyQuery myQuery = new OntologyQuery(OntologyModel, con, inputString);
+                output = myQuery.getQueryResult();
+
+            }
+            return output;
+        }
+        else
+        {
+            return "The query string was null or empty";
+        }
+    }
+    private string getServerUrl()
+    {
+        HttpContext aContext = this.Context;
+        string Port = aContext.Request.ServerVariables["SERVER_PORT"];
+
+        if (Port == null || Port == "80" || Port == "443")
+            Port = "";
+        else
+            Port = ":" + Port;
+
+
+        string Protocol = aContext.Request.ServerVariables["SERVER_PORT_SECURE"];
+        if (Protocol == null || Protocol == "0")
+            Protocol = "http://";
+        else
+            Protocol = "https://";
+
+
+        // *** Figure out the base Url which points at the application's root
+
+        string serviceUrl = Protocol + aContext.Request.ServerVariables["SERVER_NAME"] +
+                            Port +
+                            aContext.Request.ApplicationPath
+                            + "/";
+        return serviceUrl;
+    }
+}
+
+

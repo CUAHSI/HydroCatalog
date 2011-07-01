@@ -1,0 +1,6 @@
+﻿
+
+IIS 7
+500.19 error: 
+1) set the app pool to ASP.Net Classic 
+2) remove teh 

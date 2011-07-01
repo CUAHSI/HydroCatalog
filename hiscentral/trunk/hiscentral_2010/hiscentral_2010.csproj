@@ -1,0 +1,1340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>hiscentral_2010</RootNamespace>
+    <AssemblyName>hiscentral_2010</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/hiscentral</DeployIisAppPath>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\hiscentral\hiscentral_2010_debug.zip</DesktopBuildPackageLocation>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\hiscentral\hiscentral_2010_release.zip</DesktopBuildPackageLocation>
+    <DeployIisAppPath>Default Web Site/hiscentral_Release</DeployIisAppPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\hiscentral_2010.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\hiscentral\hiscentral_2010_production.zip</DesktopBuildPackageLocation>
+    <DeployIisAppPath>HisCentral/hiscentral</DeployIisAppPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.GNU.Classpath">
+      <HintPath>..\3rdParty\IKVM.GNU.Classpath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime">
+      <HintPath>..\3rdParty\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IWS.Lib.SingleSignOn">
+      <HintPath>..\3rdParty\IWS.Lib.SingleSignOn.dll</HintPath>
+    </Reference>
+    <Reference Include="jena">
+      <HintPath>..\3rdParty\jena.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="OntologyTools">
+      <HintPath>..\3rdParty\OntologyTools.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="APP_CODE_OLD_DoNotRename.txt" />
+    <Content Include="addnetwork.aspx" />
+    <Content Include="admin\admin.aspx" />
+    <Content Include="admin\calcstats.aspx" />
+    <Content Include="admin\deletenetwork.aspx" />
+    <Content Include="admin\harvest.aspx" />
+    <Content Include="admin\harvestAll.aspx" />
+    <Content Include="admin\HeaderControl.ascx" />
+    <Content Include="admin\mailform.aspx" />
+    <Content Include="admin\netowner.aspx" />
+    <Content Include="admin\network.aspx" />
+    <Content Include="admin\Ontology.aspx" />
+    <Content Include="admin\taggeradmin.aspx" />
+    <Content Include="admin\taggeradmin.aspx.js" />
+    <Content Include="admin\unmappedvariables.aspx" />
+    <Content Include="applets\awtwidgets.jar" />
+    <Content Include="applets\StarTree30c.jar" />
+    <Content Include="applets\timewall.jar" />
+    <Content Include="applets\TLApplet11w.jar" />
+    <Content Include="App_Code_old\AA_APP_CODE_OLD_DoNotRename.txt" />
+    <Content Include="App_Readme\Elmah.SqlServer.sql" />
+    <Content Include="App_Readme\Elmah.SqlServer.txt" />
+    <Content Include="changepass.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="editcontacts.aspx" />
+    <Content Include="editdesc.aspx" />
+    <Content Include="editlinks.aspx" />
+    <Content Include="getIcon.aspx" />
+    <Content Include="getLogo.aspx" />
+    <Content Include="getTree.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Harvest.aspx" />
+    <Content Include="HeaderControl.ascx" />
+    <Content Include="help.aspx" />
+    <Content Include="HTMLPage.htm" />
+    <Content Include="Icons\13orgicon.gif" />
+    <Content Include="Icons\13orgicon.jpg" />
+    <Content Include="Icons\1mapicon.gif" />
+    <Content Include="Icons\1orgicon.jpg" />
+    <Content Include="Icons\40orgicon.gif" />
+    <Content Include="Icons\40orgicon.jpg" />
+    <Content Include="Icons\48orgicon.jpg" />
+    <Content Include="Icons\49mapicon.jpg" />
+    <Content Include="Icons\49orgicon.gif" />
+    <Content Include="images\blue.GIF" />
+    <Content Include="images\blue_round_left.gif" />
+    <Content Include="images\cuahsi.png" />
+    <Content Include="images\defaulticon.GIF" />
+    <Content Include="images\defaultLogo.jpg" />
+    <Content Include="images\hiscentrallogo.jpg" />
+    <Content Include="images\masthead.jpg" />
+    <Content Include="img\1-w.jpg" />
+    <Content Include="img\1.jpg" />
+    <Content Include="img\2-w.jpg" />
+    <Content Include="img\2.jpg" />
+    <Content Include="img\3-w.jpg" />
+    <Content Include="img\3.jpg" />
+    <Content Include="img\4-w.jpg" />
+    <Content Include="img\4.jpg" />
+    <Content Include="img\5-w.jpg" />
+    <Content Include="img\5.jpg" />
+    <Content Include="img\approve.jpg" />
+    <Content Include="img\blk1px.JPG" />
+    <Content Include="img\bullet.jpg" />
+    <Content Include="img\but-on.jpg" />
+    <Content Include="img\delete.jpg" />
+    <Content Include="img\demote.jpg" />
+    <Content Include="img\first.gif" />
+    <Content Include="img\howto-f-w.jpg" />
+    <Content Include="img\howto-w.jpg" />
+    <Content Include="img\howto.jpg" />
+    <Content Include="img\hydmap.jpg" />
+    <Content Include="img\hydroseek-blk.jpg" />
+    <Content Include="img\last.gif" />
+    <Content Include="img\map-existing.jpg" />
+    <Content Include="img\next.gif" />
+    <Content Include="img\prev.gif" />
+    <Content Include="img\promote.jpg" />
+    <Content Include="img\suggest.jpg" />
+    <Content Include="js\OpenLayers.js" />
+    <Content Include="js\tagger.js" />
+    <Content Include="js\taggerService.js" />
+    <Content Include="login.aspx" />
+    <Content Include="maps\apidoc_config\Languages.txt" />
+    <Content Include="maps\apidoc_config\Menu.txt" />
+    <Content Include="maps\apidoc_config\OL.css" />
+    <Content Include="maps\apidoc_config\Topics.txt" />
+    <Content Include="maps\art\arrows.svg" />
+    <Content Include="maps\art\layer-switcher-maximize.svg" />
+    <Content Include="maps\art\layer-switcher-minimize.svg" />
+    <Content Include="maps\art\marker.svg" />
+    <Content Include="maps\art\measuring-stick-off.svg" />
+    <Content Include="maps\art\measuring-stick-on.svg" />
+    <Content Include="maps\art\panning-hand-off.svg" />
+    <Content Include="maps\art\panning-hand-on.svg" />
+    <Content Include="maps\art\slider.svg" />
+    <Content Include="maps\art\zoom-world.svg" />
+    <Content Include="maps\art\zoombar.svg" />
+    <Content Include="maps\build\license.txt" />
+    <Content Include="maps\build\README.txt" />
+    <Content Include="maps\doc\authors.txt" />
+    <Content Include="maps\doc\licenses\APACHE-2.0.txt" />
+    <Content Include="maps\doc\licenses\BSD-LICENSE.txt" />
+    <Content Include="maps\doc\licenses\MIT-LICENSE.txt" />
+    <Content Include="maps\doc\readme.txt" />
+    <Content Include="maps\doc\walkthru.html" />
+    <Content Include="maps\doc_config\Languages.txt" />
+    <Content Include="maps\doc_config\Menu.txt" />
+    <Content Include="maps\doc_config\OL.css" />
+    <Content Include="maps\doc_config\Topics.txt" />
+    <Content Include="maps\examples\accessible.html" />
+    <Content Include="maps\examples\animated_panning.html" />
+    <Content Include="maps\examples\animator.js" />
+    <Content Include="maps\examples\attribution.html" />
+    <Content Include="maps\examples\baseLayers.html" />
+    <Content Include="maps\examples\behavior-fixed-http-gml.html" />
+    <Content Include="maps\examples\boxes-vector.html" />
+    <Content Include="maps\examples\boxes.html" />
+    <Content Include="maps\examples\browser-name.html" />
+    <Content Include="maps\examples\buffer.html" />
+    <Content Include="maps\examples\click-handler.html" />
+    <Content Include="maps\examples\click.html" />
+    <Content Include="maps\examples\controls.html" />
+    <Content Include="maps\examples\custom-control-point.html" />
+    <Content Include="maps\examples\custom-control.html" />
+    <Content Include="maps\examples\custom-style.html" />
+    <Content Include="maps\examples\debug.html" />
+    <Content Include="maps\examples\doubleSetCenter.html" />
+    <Content Include="maps\examples\drag-feature.html" />
+    <Content Include="maps\examples\draw-feature.html" />
+    <Content Include="maps\examples\editingtoolbar-outside.html" />
+    <Content Include="maps\examples\editingtoolbar.html" />
+    <Content Include="maps\examples\events.html" />
+    <Content Include="maps\examples\example-list.html" />
+    <Content Include="maps\examples\example.html" />
+    <Content Include="maps\examples\fractional-zoom.html" />
+    <Content Include="maps\examples\fullScreen.html" />
+    <Content Include="maps\examples\geojson.html" />
+    <Content Include="maps\examples\georss-flickr.html" />
+    <Content Include="maps\examples\georss-markers.html" />
+    <Content Include="maps\examples\georss.html" />
+    <Content Include="maps\examples\georss.xml" />
+    <Content Include="maps\examples\getfeatureinfo.html" />
+    <Content Include="maps\examples\gml-layer.html" />
+    <Content Include="maps\examples\GMLParser.html" />
+    <Content Include="maps\examples\gml\line.xml" />
+    <Content Include="maps\examples\gml\multipoint.xml" />
+    <Content Include="maps\examples\gml\multipolygon.xml" />
+    <Content Include="maps\examples\gml\owls.xml" />
+    <Content Include="maps\examples\gml\point.xml" />
+    <Content Include="maps\examples\gml\polygon.xml" />
+    <Content Include="maps\examples\google-reproject.html" />
+    <Content Include="maps\examples\google.html" />
+    <Content Include="maps\examples\graphic-name.html" />
+    <Content Include="maps\examples\gutter.html" />
+    <Content Include="maps\examples\hover-handler.html" />
+    <Content Include="maps\examples\image-layer.html" />
+    <Content Include="maps\examples\intersects.html" />
+    <Content Include="maps\examples\Jugl.js" />
+    <Content Include="maps\examples\kamap.html" />
+    <Content Include="maps\examples\kamap.txt" />
+    <Content Include="maps\examples\kml-layer.html" />
+    <Content Include="maps\examples\KMLParser.html" />
+    <Content Include="maps\examples\layer-opacity.html" />
+    <Content Include="maps\examples\layerLoadMonitoring.html" />
+    <Content Include="maps\examples\layerswitcher.html" />
+    <Content Include="maps\examples\lite.html" />
+    <Content Include="maps\examples\mapguide.html" />
+    <Content Include="maps\examples\mapserver.html" />
+    <Content Include="maps\examples\mapserver_untiled.html" />
+    <Content Include="maps\examples\marker-shadow.html" />
+    <Content Include="maps\examples\markerResize.html" />
+    <Content Include="maps\examples\markers.html" />
+    <Content Include="maps\examples\markersTextLayer.html" />
+    <Content Include="maps\examples\marker_shadow.png" />
+    <Content Include="maps\examples\measure.html" />
+    <Content Include="maps\examples\mm.html" />
+    <Content Include="maps\examples\modify-feature.html" />
+    <Content Include="maps\examples\mouse-position.html" />
+    <Content Include="maps\examples\multimap-mercator.html" />
+    <Content Include="maps\examples\multiserver.html" />
+    <Content Include="maps\examples\mvs.html" />
+    <Content Include="maps\examples\navigation-control.html" />
+    <Content Include="maps\examples\navigation-history.html" />
+    <Content Include="maps\examples\navtoolbar-outsidemap.html" />
+    <Content Include="maps\examples\navtoolbar.html" />
+    <Content Include="maps\examples\notile.html" />
+    <Content Include="maps\examples\openmnnd.html" />
+    <Content Include="maps\examples\ordering.html" />
+    <Content Include="maps\examples\osm-layer.html" />
+    <Content Include="maps\examples\outOfRangeMarkers.html" />
+    <Content Include="maps\examples\outOfRangeMarkers.txt" />
+    <Content Include="maps\examples\overviewmap.html" />
+    <Content Include="maps\examples\pan-zoom-panels.html" />
+    <Content Include="maps\examples\panel.html" />
+    <Content Include="maps\examples\point-track-markers.html" />
+    <Content Include="maps\examples\popupMatrix.html" />
+    <Content Include="maps\examples\popupMatrix.jpg" />
+    <Content Include="maps\examples\popups.html" />
+    <Content Include="maps\examples\projected-map.html" />
+    <Content Include="maps\examples\protocol-gears.html" />
+    <Content Include="maps\examples\regular-polygons.html" />
+    <Content Include="maps\examples\resize-features.html" />
+    <Content Include="maps\examples\restricted-extent.html" />
+    <Content Include="maps\examples\rotate-features.html" />
+    <Content Include="maps\examples\select-feature-openpopup.html" />
+    <Content Include="maps\examples\select-feature.html" />
+    <Content Include="maps\examples\setextent.html" />
+    <Content Include="maps\examples\sld.html" />
+    <Content Include="maps\examples\small.jpg" />
+    <Content Include="maps\examples\spherical-mercator.html" />
+    <Content Include="maps\examples\strategy-bbox.html" />
+    <Content Include="maps\examples\strategy-cluster.html" />
+    <Content Include="maps\examples\strategy-paging.html" />
+    <Content Include="maps\examples\style.css" />
+    <Content Include="maps\examples\stylemap.html" />
+    <Content Include="maps\examples\styles-context.html" />
+    <Content Include="maps\examples\styles-rotation.html" />
+    <Content Include="maps\examples\styles-unique.html" />
+    <Content Include="maps\examples\sundials-osm.html" />
+    <Content Include="maps\examples\sundials.html" />
+    <Content Include="maps\examples\tasmania\sld-tasmania.xml" />
+    <Content Include="maps\examples\tasmania\TasmaniaCities.xml" />
+    <Content Include="maps\examples\tasmania\TasmaniaRoads.xml" />
+    <Content Include="maps\examples\tasmania\TasmaniaStateBoundaries.xml" />
+    <Content Include="maps\examples\tasmania\TasmaniaWaterBodies.xml" />
+    <Content Include="maps\examples\textfile.txt" />
+    <Content Include="maps\examples\thinlong.jpg" />
+    <Content Include="maps\examples\tilecache.html" />
+    <Content Include="maps\examples\tms.html" />
+    <Content Include="maps\examples\transition.html" />
+    <Content Include="maps\examples\urban.html" />
+    <Content Include="maps\examples\ve.html" />
+    <Content Include="maps\examples\vector-features.html" />
+    <Content Include="maps\examples\vector-formats.html" />
+    <Content Include="maps\examples\wfs-reprojection.html" />
+    <Content Include="maps\examples\wfs-states.html" />
+    <Content Include="maps\examples\wfs-t.html" />
+    <Content Include="maps\examples\wfs.html" />
+    <Content Include="maps\examples\widelong.jpg" />
+    <Content Include="maps\examples\wideshort.jpg" />
+    <Content Include="maps\examples\wmc.html" />
+    <Content Include="maps\examples\wms-untiled.html" />
+    <Content Include="maps\examples\wms.html" />
+    <Content Include="maps\examples\wmst.html" />
+    <Content Include="maps\examples\worldwind.html" />
+    <Content Include="maps\examples\wrapDateLine.html" />
+    <Content Include="maps\examples\xhtml.html" />
+    <Content Include="maps\examples\xml.html" />
+    <Content Include="maps\examples\xml\features.xml" />
+    <Content Include="maps\examples\xml\georss-flickr.xml" />
+    <Content Include="maps\examples\xml\track1.xml" />
+    <Content Include="maps\examples\yahoo.html" />
+    <Content Include="maps\examples\yelp-georss.xml" />
+    <Content Include="maps\examples\zoomLevels.html" />
+    <Content Include="maps\img\blank.gif" />
+    <Content Include="maps\img\cloud-popup-relative.png" />
+    <Content Include="maps\img\drag-rectangle-off.png" />
+    <Content Include="maps\img\drag-rectangle-on.png" />
+    <Content Include="maps\img\east-mini.png" />
+    <Content Include="maps\img\layer-switcher-maximize.png" />
+    <Content Include="maps\img\layer-switcher-minimize.png" />
+    <Content Include="maps\img\marker-blue.png" />
+    <Content Include="maps\img\marker-gold.png" />
+    <Content Include="maps\img\marker-green.png" />
+    <Content Include="maps\img\marker.png" />
+    <Content Include="maps\img\measuring-stick-off.png" />
+    <Content Include="maps\img\measuring-stick-on.png" />
+    <Content Include="maps\img\north-mini.png" />
+    <Content Include="maps\img\panning-hand-off.png" />
+    <Content Include="maps\img\panning-hand-on.png" />
+    <Content Include="maps\img\slider.png" />
+    <Content Include="maps\img\south-mini.png" />
+    <Content Include="maps\img\west-mini.png" />
+    <Content Include="maps\img\zoom-minus-mini.png" />
+    <Content Include="maps\img\zoom-plus-mini.png" />
+    <Content Include="maps\img\zoom-world-mini.png" />
+    <Content Include="maps\img\zoombar.png" />
+    <Content Include="maps\lib\Firebug\errorIcon.png" />
+    <Content Include="maps\lib\Firebug\firebug.css" />
+    <Content Include="maps\lib\Firebug\firebug.html" />
+    <Content Include="maps\lib\Firebug\firebug.js" />
+    <Content Include="maps\lib\Firebug\firebugx.js" />
+    <Content Include="maps\lib\Firebug\infoIcon.png" />
+    <Content Include="maps\lib\Firebug\license.txt" />
+    <Content Include="maps\lib\Firebug\readme.txt" />
+    <Content Include="maps\lib\Firebug\warningIcon.png" />
+    <Content Include="maps\lib\Gears\gears_init.js" />
+    <Content Include="maps\lib\OpenLayers.js" />
+    <Content Include="maps\lib\OpenLayers\Ajax.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes\Bounds.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes\Class.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes\Element.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes\LonLat.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes\Pixel.js" />
+    <Content Include="maps\lib\OpenLayers\BaseTypes\Size.js" />
+    <Content Include="maps\lib\OpenLayers\Console.js" />
+    <Content Include="maps\lib\OpenLayers\Control.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ArgParser.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Attribution.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Button.js" />
+    <Content Include="maps\lib\OpenLayers\Control\DragFeature.js" />
+    <Content Include="maps\lib\OpenLayers\Control\DragPan.js" />
+    <Content Include="maps\lib\OpenLayers\Control\DrawFeature.js" />
+    <Content Include="maps\lib\OpenLayers\Control\EditingToolbar.js" />
+    <Content Include="maps\lib\OpenLayers\Control\KeyboardDefaults.js" />
+    <Content Include="maps\lib\OpenLayers\Control\LayerSwitcher.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Measure.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ModifyFeature.js" />
+    <Content Include="maps\lib\OpenLayers\Control\MouseDefaults.js" />
+    <Content Include="maps\lib\OpenLayers\Control\MousePosition.js" />
+    <Content Include="maps\lib\OpenLayers\Control\MouseToolbar.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Navigation.js" />
+    <Content Include="maps\lib\OpenLayers\Control\NavigationHistory.js" />
+    <Content Include="maps\lib\OpenLayers\Control\NavToolbar.js" />
+    <Content Include="maps\lib\OpenLayers\Control\OverviewMap.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Pan.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Panel.js" />
+    <Content Include="maps\lib\OpenLayers\Control\PanPanel.js" />
+    <Content Include="maps\lib\OpenLayers\Control\PanZoom.js" />
+    <Content Include="maps\lib\OpenLayers\Control\PanZoomBar.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Permalink.js" />
+    <Content Include="maps\lib\OpenLayers\Control\Scale.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ScaleLine.js" />
+    <Content Include="maps\lib\OpenLayers\Control\SelectFeature.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ZoomBox.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ZoomIn.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ZoomOut.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ZoomPanel.js" />
+    <Content Include="maps\lib\OpenLayers\Control\ZoomToMaxExtent.js" />
+    <Content Include="maps\lib\OpenLayers\Events.js" />
+    <Content Include="maps\lib\OpenLayers\Feature.js" />
+    <Content Include="maps\lib\OpenLayers\Feature\Vector.js" />
+    <Content Include="maps\lib\OpenLayers\Feature\WFS.js" />
+    <Content Include="maps\lib\OpenLayers\Filter.js" />
+    <Content Include="maps\lib\OpenLayers\Filter\Comparison.js" />
+    <Content Include="maps\lib\OpenLayers\Filter\FeatureId.js" />
+    <Content Include="maps\lib\OpenLayers\Filter\Logical.js" />
+    <Content Include="maps\lib\OpenLayers\Filter\Spatial.js" />
+    <Content Include="maps\lib\OpenLayers\Format.js" />
+    <Content Include="maps\lib\OpenLayers\Format\Filter.js" />
+    <Content Include="maps\lib\OpenLayers\Format\Filter\v1.js" />
+    <Content Include="maps\lib\OpenLayers\Format\Filter\v1_0_0.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GeoJSON.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GeoRSS.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GML.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GML\Base.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GML\v2.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GML\v3.js" />
+    <Content Include="maps\lib\OpenLayers\Format\GPX.js" />
+    <Content Include="maps\lib\OpenLayers\Format\JSON.js" />
+    <Content Include="maps\lib\OpenLayers\Format\KML.js" />
+    <Content Include="maps\lib\OpenLayers\Format\OSM.js" />
+    <Content Include="maps\lib\OpenLayers\Format\SLD.js" />
+    <Content Include="maps\lib\OpenLayers\Format\SLD\v1.js" />
+    <Content Include="maps\lib\OpenLayers\Format\SLD\v1_0_0.js" />
+    <Content Include="maps\lib\OpenLayers\Format\Text.js" />
+    <Content Include="maps\lib\OpenLayers\Format\WFS.js" />
+    <Content Include="maps\lib\OpenLayers\Format\WKT.js" />
+    <Content Include="maps\lib\OpenLayers\Format\WMC.js" />
+    <Content Include="maps\lib\OpenLayers\Format\WMC\v1.js" />
+    <Content Include="maps\lib\OpenLayers\Format\WMC\v1_0_0.js" />
+    <Content Include="maps\lib\OpenLayers\Format\WMC\v1_1_0.js" />
+    <Content Include="maps\lib\OpenLayers\Format\XML.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\Collection.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\Curve.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\LinearRing.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\LineString.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\MultiLineString.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\MultiPoint.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\MultiPolygon.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\Point.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\Polygon.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\Rectangle.js" />
+    <Content Include="maps\lib\OpenLayers\Geometry\Surface.js" />
+    <Content Include="maps\lib\OpenLayers\Handler.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Box.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Click.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Drag.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Feature.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Hover.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Keyboard.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\MouseWheel.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Path.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Point.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\Polygon.js" />
+    <Content Include="maps\lib\OpenLayers\Handler\RegularPolygon.js" />
+    <Content Include="maps\lib\OpenLayers\Icon.js" />
+    <Content Include="maps\lib\OpenLayers\Lang.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\cs-CZ.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\de.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\en-CA.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\en.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\fr.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\it.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\nb.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\nl.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\pt-BR.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\sv-SE.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\zh-CN.js" />
+    <Content Include="maps\lib\OpenLayers\Lang\zh-TW.js" />
+    <Content Include="maps\lib\OpenLayers\Layer.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Boxes.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\EventPane.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\FixedZoomLevels.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\GeoRSS.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\GML.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Google.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Grid.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\HTTPRequest.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Image.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\KaMap.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\KaMapCache.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\MapGuide.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\MapServer.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\MapServer\Untiled.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Markers.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\MultiMap.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\PointTrack.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\SphericalMercator.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Text.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\TileCache.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\TMS.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Vector.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\VirtualEarth.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\WFS.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\WMS.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\WMS\Untiled.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\WorldWind.js" />
+    <Content Include="maps\lib\OpenLayers\Layer\Yahoo.js" />
+    <Content Include="maps\lib\OpenLayers\Map.js" />
+    <Content Include="maps\lib\OpenLayers\Marker.js" />
+    <Content Include="maps\lib\OpenLayers\Marker\Box.js" />
+    <Content Include="maps\lib\OpenLayers\Popup.js" />
+    <Content Include="maps\lib\OpenLayers\Popup\Anchored.js" />
+    <Content Include="maps\lib\OpenLayers\Popup\AnchoredBubble.js" />
+    <Content Include="maps\lib\OpenLayers\Popup\Framed.js" />
+    <Content Include="maps\lib\OpenLayers\Popup\FramedCloud.js" />
+    <Content Include="maps\lib\OpenLayers\Projection.js" />
+    <Content Include="maps\lib\OpenLayers\Protocol.js" />
+    <Content Include="maps\lib\OpenLayers\Protocol\HTTP.js" />
+    <Content Include="maps\lib\OpenLayers\Protocol\SQL.js" />
+    <Content Include="maps\lib\OpenLayers\Protocol\SQL\Gears.js" />
+    <Content Include="maps\lib\OpenLayers\Renderer.js" />
+    <Content Include="maps\lib\OpenLayers\Renderer\Canvas.js" />
+    <Content Include="maps\lib\OpenLayers\Renderer\Elements.js" />
+    <Content Include="maps\lib\OpenLayers\Renderer\SVG.js" />
+    <Content Include="maps\lib\OpenLayers\Renderer\VML.js" />
+    <Content Include="maps\lib\OpenLayers\Request.js" />
+    <Content Include="maps\lib\OpenLayers\Request\XMLHttpRequest.js" />
+    <Content Include="maps\lib\OpenLayers\Rule.js" />
+    <Content Include="maps\lib\OpenLayers\SingleFile.js" />
+    <Content Include="maps\lib\OpenLayers\Strategy.js" />
+    <Content Include="maps\lib\OpenLayers\Strategy\BBOX.js" />
+    <Content Include="maps\lib\OpenLayers\Strategy\Cluster.js" />
+    <Content Include="maps\lib\OpenLayers\Strategy\Fixed.js" />
+    <Content Include="maps\lib\OpenLayers\Strategy\Paging.js" />
+    <Content Include="maps\lib\OpenLayers\Style.js" />
+    <Content Include="maps\lib\OpenLayers\StyleMap.js" />
+    <Content Include="maps\lib\OpenLayers\Tile.js" />
+    <Content Include="maps\lib\OpenLayers\Tile\Image.js" />
+    <Content Include="maps\lib\OpenLayers\Tile\WFS.js" />
+    <Content Include="maps\lib\OpenLayers\Tween.js" />
+    <Content Include="maps\lib\OpenLayers\Util.js" />
+    <Content Include="maps\lib\Rico\Color.js" />
+    <Content Include="maps\lib\Rico\Corner.js" />
+    <Content Include="maps\license.txt" />
+    <Content Include="maps\map.aspx" />
+    <Content Include="maps\news.txt" />
+    <Content Include="maps\OpenLayers.js" />
+    <Content Include="maps\readme.txt" />
+    <Content Include="maps\release-license.txt" />
+    <Content Include="maps\repository-license.txt" />
+    <Content Include="maps\tests\Ajax.html" />
+    <Content Include="maps\tests\atom-1.0.xml" />
+    <Content Include="maps\tests\auto-tests.html" />
+    <Content Include="maps\tests\BaseTypes.html" />
+    <Content Include="maps\tests\BaseTypes\Bounds.html" />
+    <Content Include="maps\tests\BaseTypes\Class.html" />
+    <Content Include="maps\tests\BaseTypes\Element.html" />
+    <Content Include="maps\tests\BaseTypes\LonLat.html" />
+    <Content Include="maps\tests\BaseTypes\Pixel.html" />
+    <Content Include="maps\tests\BaseTypes\Size.html" />
+    <Content Include="maps\tests\Console.html" />
+    <Content Include="maps\tests\Control.html" />
+    <Content Include="maps\tests\Control\Attribution.html" />
+    <Content Include="maps\tests\Control\Button.html" />
+    <Content Include="maps\tests\Control\DragFeature.html" />
+    <Content Include="maps\tests\Control\DragPan.html" />
+    <Content Include="maps\tests\Control\DrawFeature.html" />
+    <Content Include="maps\tests\Control\KeyboardDefaults.html" />
+    <Content Include="maps\tests\Control\LayerSwitcher.html" />
+    <Content Include="maps\tests\Control\ModifyFeature.html" />
+    <Content Include="maps\tests\Control\MousePosition.html" />
+    <Content Include="maps\tests\Control\MouseToolbar.html" />
+    <Content Include="maps\tests\Control\Navigation.html" />
+    <Content Include="maps\tests\Control\NavigationHistory.html" />
+    <Content Include="maps\tests\Control\NavToolbar.html" />
+    <Content Include="maps\tests\Control\OverviewMap.html" />
+    <Content Include="maps\tests\Control\Panel.html" />
+    <Content Include="maps\tests\Control\PanZoom.html" />
+    <Content Include="maps\tests\Control\PanZoomBar.html" />
+    <Content Include="maps\tests\Control\Permalink.html" />
+    <Content Include="maps\tests\Control\Scale.html" />
+    <Content Include="maps\tests\Control\ScaleLine.html" />
+    <Content Include="maps\tests\Control\SelectFeature.html" />
+    <Content Include="maps\tests\data\geos_wkt_intersects.js" />
+    <Content Include="maps\tests\data\osm.js" />
+    <Content Include="maps\tests\data_Layer_Text_textfile.txt" />
+    <Content Include="maps\tests\data_Layer_Text_textfile_2.txt" />
+    <Content Include="maps\tests\data_Layer_Text_textfile_overflow.txt" />
+    <Content Include="maps\tests\Events.html" />
+    <Content Include="maps\tests\Extras.html" />
+    <Content Include="maps\tests\Feature.html" />
+    <Content Include="maps\tests\Feature\Vector.html" />
+    <Content Include="maps\tests\Filter.html" />
+    <Content Include="maps\tests\Filter\Comparison.html" />
+    <Content Include="maps\tests\Filter\FeatureId.html" />
+    <Content Include="maps\tests\Filter\Logical.html" />
+    <Content Include="maps\tests\Filter\Spatial.html" />
+    <Content Include="maps\tests\Format.html" />
+    <Content Include="maps\tests\Format\Filter.html" />
+    <Content Include="maps\tests\Format\Filter\v1_0_0.html" />
+    <Content Include="maps\tests\Format\GeoJSON.html" />
+    <Content Include="maps\tests\Format\GeoRSS.html" />
+    <Content Include="maps\tests\Format\GML.html" />
+    <Content Include="maps\tests\Format\GML\cases.js" />
+    <Content Include="maps\tests\Format\GML\v2.html" />
+    <Content Include="maps\tests\Format\GML\v3.html" />
+    <Content Include="maps\tests\Format\GPX.html" />
+    <Content Include="maps\tests\Format\JSON.html" />
+    <Content Include="maps\tests\Format\KML.html" />
+    <Content Include="maps\tests\Format\OSM.html" />
+    <Content Include="maps\tests\Format\SLD.html" />
+    <Content Include="maps\tests\Format\SLD\v1_0_0.html" />
+    <Content Include="maps\tests\Format\WKT.html" />
+    <Content Include="maps\tests\Format\WMC.html" />
+    <Content Include="maps\tests\Format\WMC\v1.html" />
+    <Content Include="maps\tests\Format\WMC\v1_1_0.html" />
+    <Content Include="maps\tests\Format\XML.html" />
+    <Content Include="maps\tests\Geometry.html" />
+    <Content Include="maps\tests\Geometry\Collection.html" />
+    <Content Include="maps\tests\Geometry\Curve.html" />
+    <Content Include="maps\tests\Geometry\LinearRing.html" />
+    <Content Include="maps\tests\Geometry\LineString.html" />
+    <Content Include="maps\tests\Geometry\MultiLineString.html" />
+    <Content Include="maps\tests\Geometry\MultiPoint.html" />
+    <Content Include="maps\tests\Geometry\MultiPolygon.html" />
+    <Content Include="maps\tests\Geometry\Point.html" />
+    <Content Include="maps\tests\Geometry\Polygon.html" />
+    <Content Include="maps\tests\Geometry\Rectangle.html" />
+    <Content Include="maps\tests\Geometry\Surface.html" />
+    <Content Include="maps\tests\geom_eq.js" />
+    <Content Include="maps\tests\georss.txt" />
+    <Content Include="maps\tests\grid_inittiles.html" />
+    <Content Include="maps\tests\Handler.html" />
+    <Content Include="maps\tests\Handler\Click.html" />
+    <Content Include="maps\tests\Handler\Drag.html" />
+    <Content Include="maps\tests\Handler\Feature.html" />
+    <Content Include="maps\tests\Handler\Hover.html" />
+    <Content Include="maps\tests\Handler\Keyboard.html" />
+    <Content Include="maps\tests\Handler\MouseWheel.html" />
+    <Content Include="maps\tests\Handler\Path.html" />
+    <Content Include="maps\tests\Handler\Point.html" />
+    <Content Include="maps\tests\Handler\Polygon.html" />
+    <Content Include="maps\tests\Handler\RegularPolygon.html" />
+    <Content Include="maps\tests\Icon.html" />
+    <Content Include="maps\tests\index.html" />
+    <Content Include="maps\tests\Lang.html" />
+    <Content Include="maps\tests\Layer.html" />
+    <Content Include="maps\tests\Layer\atom-1.0.xml" />
+    <Content Include="maps\tests\Layer\data_Layer_Text_textfile.txt" />
+    <Content Include="maps\tests\Layer\data_Layer_Text_textfile_2.txt" />
+    <Content Include="maps\tests\Layer\data_Layer_Text_textfile_overflow.txt" />
+    <Content Include="maps\tests\Layer\EventPane.html" />
+    <Content Include="maps\tests\Layer\FixedZoomLevels.html" />
+    <Content Include="maps\tests\Layer\GeoRSS.html" />
+    <Content Include="maps\tests\Layer\georss.txt" />
+    <Content Include="maps\tests\Layer\GML.html" />
+    <Content Include="maps\tests\Layer\Google.html" />
+    <Content Include="maps\tests\Layer\Grid.html" />
+    <Content Include="maps\tests\Layer\HTTPRequest.html" />
+    <Content Include="maps\tests\Layer\Image.html" />
+    <Content Include="maps\tests\Layer\KaMap.html" />
+    <Content Include="maps\tests\Layer\MapGuide.html" />
+    <Content Include="maps\tests\Layer\MapServer.html" />
+    <Content Include="maps\tests\Layer\Markers.html" />
+    <Content Include="maps\tests\Layer\mice.xml" />
+    <Content Include="maps\tests\Layer\MultiMap.html" />
+    <Content Include="maps\tests\Layer\owls.xml" />
+    <Content Include="maps\tests\Layer\PointTrack.html" />
+    <Content Include="maps\tests\Layer\SphericalMercator.html" />
+    <Content Include="maps\tests\Layer\Text.html" />
+    <Content Include="maps\tests\Layer\TileCache.html" />
+    <Content Include="maps\tests\Layer\TMS.html" />
+    <Content Include="maps\tests\Layer\Vector.html" />
+    <Content Include="maps\tests\Layer\WFS.html" />
+    <Content Include="maps\tests\Layer\WMS.html" />
+    <Content Include="maps\tests\Layer\WrapDateLine.html" />
+    <Content Include="maps\tests\Layer\Yahoo.html" />
+    <Content Include="maps\tests\list-tests.html" />
+    <Content Include="maps\tests\manual\ajax.html" />
+    <Content Include="maps\tests\manual\ajax.txt" />
+    <Content Include="maps\tests\manual\big-georss.html" />
+    <Content Include="maps\tests\manual\clip-features-svg.html" />
+    <Content Include="maps\tests\manual\draw-feature.html" />
+    <Content Include="maps\tests\manual\feature-handler.html" />
+    <Content Include="maps\tests\manual\google-panning.html" />
+    <Content Include="maps\tests\manual\overviewmap-projection.html" />
+    <Content Include="maps\tests\manual\pan-redraw-svg.html" />
+    <Content Include="maps\tests\manual\reflow.html" />
+    <Content Include="maps\tests\manual\rendered-dimensions.html" />
+    <Content Include="maps\tests\manual\select-feature.html" />
+    <Content Include="maps\tests\manual\tiles-loading.html" />
+    <Content Include="maps\tests\manual\tween.html" />
+    <Content Include="maps\tests\manual\ve-opacity.html" />
+    <Content Include="maps\tests\manual\vector-features-performance.html" />
+    <Content Include="maps\tests\manual\vector-layer-zindex.html" />
+    <Content Include="maps\tests\Map.html" />
+    <Content Include="maps\tests\Marker.html" />
+    <Content Include="maps\tests\Marker\Box.html" />
+    <Content Include="maps\tests\mice.xml" />
+    <Content Include="maps\tests\OpenLayers.html" />
+    <Content Include="maps\tests\owls.xml" />
+    <Content Include="maps\tests\Popup.html" />
+    <Content Include="maps\tests\Popup\Anchored.html" />
+    <Content Include="maps\tests\Popup\AnchoredBubble.html" />
+    <Content Include="maps\tests\Popup\FramedCloud.html" />
+    <Content Include="maps\tests\Projection.html" />
+    <Content Include="maps\tests\Protocol.html" />
+    <Content Include="maps\tests\Protocol\HTTP.html" />
+    <Content Include="maps\tests\Protocol\SQL.html" />
+    <Content Include="maps\tests\Protocol\SQL\Gears.html" />
+    <Content Include="maps\tests\README.txt" />
+    <Content Include="maps\tests\Renderer.html" />
+    <Content Include="maps\tests\Renderer\Canvas.html" />
+    <Content Include="maps\tests\Renderer\Elements.html" />
+    <Content Include="maps\tests\Renderer\SVG.html" />
+    <Content Include="maps\tests\Renderer\VML.html" />
+    <Content Include="maps\tests\Request.html" />
+    <Content Include="maps\tests\Request\XMLHttpRequest.html" />
+    <Content Include="maps\tests\Rule.html" />
+    <Content Include="maps\tests\run-tests.html" />
+    <Content Include="maps\tests\speed\geometry.html" />
+    <Content Include="maps\tests\speed\wmc_speed.html" />
+    <Content Include="maps\tests\Strategy.html" />
+    <Content Include="maps\tests\Strategy\BBOX.html" />
+    <Content Include="maps\tests\Strategy\Cluster.html" />
+    <Content Include="maps\tests\Strategy\Fixed.html" />
+    <Content Include="maps\tests\Strategy\Paging.html" />
+    <Content Include="maps\tests\Style.html" />
+    <Content Include="maps\tests\StyleMap.html" />
+    <Content Include="maps\tests\throws.js" />
+    <Content Include="maps\tests\Tile.html" />
+    <Content Include="maps\tests\Tile\Image.html" />
+    <Content Include="maps\tests\Tile\WFS.html" />
+    <Content Include="maps\tests\Tween.html" />
+    <Content Include="maps\tests\Util.html" />
+    <Content Include="maps\tests\xml_eq.js" />
+    <Content Include="maps\theme\default\ie6-style.css" />
+    <Content Include="maps\theme\default\img\add_point_off.png" />
+    <Content Include="maps\theme\default\img\add_point_on.png" />
+    <Content Include="maps\theme\default\img\blank.gif" />
+    <Content Include="maps\theme\default\img\close.gif" />
+    <Content Include="maps\theme\default\img\drag-rectangle-off.png" />
+    <Content Include="maps\theme\default\img\drag-rectangle-on.png" />
+    <Content Include="maps\theme\default\img\draw_line_off.png" />
+    <Content Include="maps\theme\default\img\draw_line_on.png" />
+    <Content Include="maps\theme\default\img\draw_point_off.png" />
+    <Content Include="maps\theme\default\img\draw_point_on.png" />
+    <Content Include="maps\theme\default\img\draw_polygon_off.png" />
+    <Content Include="maps\theme\default\img\draw_polygon_on.png" />
+    <Content Include="maps\theme\default\img\editing_tool_bar.png" />
+    <Content Include="maps\theme\default\img\move_feature_off.png" />
+    <Content Include="maps\theme\default\img\move_feature_on.png" />
+    <Content Include="maps\theme\default\img\navigation_history.png" />
+    <Content Include="maps\theme\default\img\overview_replacement.gif" />
+    <Content Include="maps\theme\default\img\pan-panel-NOALPHA.png" />
+    <Content Include="maps\theme\default\img\pan-panel.png" />
+    <Content Include="maps\theme\default\img\panning-hand-off.png" />
+    <Content Include="maps\theme\default\img\panning-hand-on.png" />
+    <Content Include="maps\theme\default\img\pan_off.png" />
+    <Content Include="maps\theme\default\img\pan_on.png" />
+    <Content Include="maps\theme\default\img\remove_point_off.png" />
+    <Content Include="maps\theme\default\img\remove_point_on.png" />
+    <Content Include="maps\theme\default\img\save_features_off.png" />
+    <Content Include="maps\theme\default\img\save_features_on.png" />
+    <Content Include="maps\theme\default\img\view_next_off.png" />
+    <Content Include="maps\theme\default\img\view_next_on.png" />
+    <Content Include="maps\theme\default\img\view_previous_off.png" />
+    <Content Include="maps\theme\default\img\view_previous_on.png" />
+    <Content Include="maps\theme\default\img\zoom-panel-NOALPHA.png" />
+    <Content Include="maps\theme\default\img\zoom-panel.png" />
+    <Content Include="maps\theme\default\style.css" />
+    <Content Include="maps\theme\default\style_old.css" />
+    <Content Include="maps\tools\jsmin.c" />
+    <Content Include="maps\tools\README.txt" />
+    <Content Include="mynetwork.aspx" />
+    <Content Include="mynetworks.aspx" />
+    <Content Include="network.aspx" />
+    <Content Include="networks.aspx" />
+    <Content Include="networktemp.aspx" />
+    <Content Include="NIF_ontology_tree.html" />
+    <Content Include="profile.aspx" />
+    <Content Include="pub_map.aspx" />
+    <Content Include="pub_map2.aspx" />
+    <Content Include="pub_map3.aspx" />
+    <Content Include="pub_network.aspx" />
+    <Content Include="pub_Services.aspx" />
+    <Content Include="RecoverPass.aspx" />
+    <Content Include="register.aspx" />
+    <Content Include="report1.aspx" />
+    <Content Include="seriesinfo.aspx" />
+    <Content Include="Services.aspx" />
+    <Content Include="SitesInfo.aspx" />
+    <Content Include="startree.aspx" />
+    <Content Include="startree.html" />
+    <Content Include="startree.js" />
+    <Content Include="style.css" />
+    <Content Include="StyleSheet.css" />
+    <Content Include="styles\Copy of yui-reset.css" />
+    <Content Include="styles\his.css" />
+    <Content Include="styles\his1.css" />
+    <Content Include="styles\map.css" />
+    <Content Include="styles\map2.css" />
+    <Content Include="styles\yui-reset.css" />
+    <Content Include="tagger.aspx" />
+    <Content Include="taggerservice.js" />
+    <Content Include="testpage.aspx" />
+    <Content Include="testpage11.aspx" />
+    <Content Include="TROUBLESHOOTING\WebDeploy.txt" />
+    <Content Include="uploadIcon.aspx" />
+    <Content Include="uploadImages.aspx" />
+    <Content Include="Variables.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WFS\getcapabilities.xml" />
+    <Content Include="WFS\nwis_uv.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addnetwork.aspx.cs">
+      <DependentUpon>addnetwork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addnetwork.aspx.designer.cs">
+      <DependentUpon>addnetwork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\calcstats.aspx.cs">
+      <DependentUpon>calcstats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\calcstats.aspx.designer.cs">
+      <DependentUpon>calcstats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\deletenetwork.aspx.cs">
+      <DependentUpon>deletenetwork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\deletenetwork.aspx.designer.cs">
+      <DependentUpon>deletenetwork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Harvest.aspx.cs">
+      <DependentUpon>harvest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Harvest.aspx.designer.cs">
+      <DependentUpon>harvest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\harvestAll.aspx.cs">
+      <DependentUpon>harvestAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\harvestAll.aspx.designer.cs">
+      <DependentUpon>harvestAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\HeaderControl.ascx.cs">
+      <DependentUpon>HeaderControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\HeaderControl.ascx.designer.cs">
+      <DependentUpon>HeaderControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\mailform.aspx.cs">
+      <DependentUpon>mailform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\mailform.aspx.designer.cs">
+      <DependentUpon>mailform.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\netowner.aspx.cs">
+      <DependentUpon>netowner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\netowner.aspx.designer.cs">
+      <DependentUpon>netowner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\network.aspx.cs">
+      <DependentUpon>network.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\network.aspx.designer.cs">
+      <DependentUpon>network.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Ontology.aspx.cs">
+      <DependentUpon>Ontology.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Ontology.aspx.designer.cs">
+      <DependentUpon>Ontology.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\taggeradmin.aspx.cs">
+      <DependentUpon>taggeradmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\taggeradmin.aspx.designer.cs">
+      <DependentUpon>taggeradmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\unmappedvariables.aspx.cs">
+      <DependentUpon>unmappedvariables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\unmappedvariables.aspx.designer.cs">
+      <DependentUpon>unmappedvariables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="changepass.aspx.cs">
+      <DependentUpon>changepass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="changepass.aspx.designer.cs">
+      <DependentUpon>changepass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editcontacts.aspx.cs">
+      <DependentUpon>editcontacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editcontacts.aspx.designer.cs">
+      <DependentUpon>editcontacts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editdesc.aspx.cs">
+      <DependentUpon>editdesc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editdesc.aspx.designer.cs">
+      <DependentUpon>editdesc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editlinks.aspx.cs">
+      <DependentUpon>editlinks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editlinks.aspx.designer.cs">
+      <DependentUpon>editlinks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="getIcon.aspx.cs">
+      <DependentUpon>getIcon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="getIcon.aspx.designer.cs">
+      <DependentUpon>getIcon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="getLogo.aspx.cs">
+      <DependentUpon>getLogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="getLogo.aspx.designer.cs">
+      <DependentUpon>getLogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="getTree.aspx.cs">
+      <DependentUpon>getTree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="getTree.aspx.designer.cs">
+      <DependentUpon>getTree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Harvest.aspx.cs">
+      <DependentUpon>Harvest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Harvest.aspx.designer.cs">
+      <DependentUpon>Harvest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HeaderControl.ascx.cs">
+      <DependentUpon>HeaderControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HeaderControl.ascx.designer.cs">
+      <DependentUpon>HeaderControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="help.aspx.cs">
+      <DependentUpon>help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="help.aspx.designer.cs">
+      <DependentUpon>help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="maps\map.aspx.cs">
+      <DependentUpon>map.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="maps\map.aspx.designer.cs">
+      <DependentUpon>map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mynetwork.aspx.cs">
+      <DependentUpon>mynetwork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mynetwork.aspx.designer.cs">
+      <DependentUpon>mynetwork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mynetworks.aspx.cs">
+      <DependentUpon>mynetworks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mynetworks.aspx.designer.cs">
+      <DependentUpon>mynetworks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="network.aspx.cs">
+      <DependentUpon>network.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="network.aspx.designer.cs">
+      <DependentUpon>network.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="networks.aspx.cs">
+      <DependentUpon>networks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="networks.aspx.designer.cs">
+      <DependentUpon>networks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="networktemp.aspx.cs">
+      <DependentUpon>networktemp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="networktemp.aspx.designer.cs">
+      <DependentUpon>networktemp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code_old\Emailer.cs" />
+    <Compile Include="App_Code_old\GlobalClass.cs" />
+    <Compile Include="App_Code_old\Harvester.cs" />
+    <Compile Include="App_Code_old\hiscentral.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Code_old\OntologyLoader.cs" />
+    <Compile Include="App_Code_old\ServiceStatistics.cs" />
+    <Compile Include="App_Code_old\SitesResponse.cs" />
+    <Compile Include="App_Code_old\TaggerService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Code_old\TestUtils.cs" />
+    <Compile Include="App_Code_old\TimeSeries.cs" />
+    <Compile Include="App_Code_old\VariableType.cs" />
+    <Compile Include="App_Code_old\VariableTypes.cs" />
+    <Compile Include="App_Code_old\WebService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Code_old\wfsHandler.cs" />
+    <Compile Include="profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="pub_map.aspx.cs">
+      <DependentUpon>pub_map.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pub_map.aspx.designer.cs">
+      <DependentUpon>pub_map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pub_map2.aspx.cs">
+      <DependentUpon>pub_map2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pub_map2.aspx.designer.cs">
+      <DependentUpon>pub_map2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pub_map3.aspx.cs">
+      <DependentUpon>pub_map3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pub_map3.aspx.designer.cs">
+      <DependentUpon>pub_map3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pub_network.aspx.cs">
+      <DependentUpon>pub_network.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pub_network.aspx.designer.cs">
+      <DependentUpon>pub_network.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pub_Services.aspx.cs">
+      <DependentUpon>pub_Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pub_Services.aspx.designer.cs">
+      <DependentUpon>pub_Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecoverPass.aspx.cs">
+      <DependentUpon>RecoverPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecoverPass.aspx.designer.cs">
+      <DependentUpon>RecoverPass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="report1.aspx.cs">
+      <DependentUpon>report1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="report1.aspx.designer.cs">
+      <DependentUpon>report1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="seriesinfo.aspx.cs">
+      <DependentUpon>seriesinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="seriesinfo.aspx.designer.cs">
+      <DependentUpon>seriesinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SitesInfo.aspx.cs">
+      <DependentUpon>SitesInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SitesInfo.aspx.designer.cs">
+      <DependentUpon>SitesInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="startree.aspx.cs">
+      <DependentUpon>startree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="startree.aspx.designer.cs">
+      <DependentUpon>startree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tagger.aspx.cs">
+      <DependentUpon>tagger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tagger.aspx.designer.cs">
+      <DependentUpon>tagger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testpage.aspx.cs">
+      <DependentUpon>testpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testpage.aspx.designer.cs">
+      <DependentUpon>testpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testpage11.aspx.cs">
+      <DependentUpon>testpage11.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testpage11.aspx.designer.cs">
+      <DependentUpon>testpage11.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="uploadIcon.aspx.cs">
+      <DependentUpon>uploadIcon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadIcon.aspx.designer.cs">
+      <DependentUpon>uploadIcon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="uploadImages.aspx.cs">
+      <DependentUpon>uploadImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadImages.aspx.designer.cs">
+      <DependentUpon>uploadImages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Variables.aspx.cs">
+      <DependentUpon>Variables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Variables.aspx.designer.cs">
+      <DependentUpon>Variables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CUAHSI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="birntree.stc" />
+    <None Include="hiscentral.log4net" />
+    <None Include="js\tagger.js.orig" />
+    <Content Include="K9kENLW0.xkey" />
+    <None Include="license\company.dat" />
+    <None Include="license\license.dat" />
+    <None Include="maps\build\build.py" />
+    <None Include="maps\build\buildUncompressed.py" />
+    <None Include="maps\build\full.cfg" />
+    <None Include="maps\build\library.cfg" />
+    <None Include="maps\build\lite.cfg" />
+    <None Include="maps\doc\customization" />
+    <None Include="maps\examples\kml\lines.kml" />
+    <None Include="maps\examples\kml\sundials.kml" />
+    <None Include="maps\examples\osm\sutton_coldfield.osm" />
+    <None Include="maps\examples\proxy.cgi" />
+    <None Include="maps\tests\manual\arkansas.rss" />
+    <None Include="maps\tools\BeautifulSoup.py" />
+    <None Include="maps\tools\exampleparser.py" />
+    <None Include="maps\tools\jsmin.py" />
+    <None Include="maps\tools\mergejs.py" />
+    <None Include="maps\tools\minimize.py" />
+    <None Include="maps\tools\oldot.py" />
+    <None Include="maps\tools\release.sh" />
+    <None Include="maps\tools\shrinksafe.py" />
+    <None Include="maps\tools\toposort.py" />
+    <None Include="maps\tools\update_dev_dir.sh" />
+    <None Include="oldtree.stc" />
+    <None Include="App_Code_old\OntologyQueryService.cs.exclude" />
+    <None Include="App_Code_old\TaggerDemoService.cs.exclude" />
+    <None Include="ontology_mar1.stc" />
+    <Content Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="RqQA6HZm.xkey" />
+    <None Include="TaggerDemoService.asmx.exclude" />
+    <Content Include="tree.stc" />
+    <Content Include="Update20080601_tree.stc" />
+    <Content Include="viewtree.stc" />
+    <None Include="Web References\CUAHSI\cuahsi_1_0.wsdl" />
+    <None Include="Web References\CUAHSI\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CUAHSI\SiteInfoResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CUAHSI\TimeSeriesResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CUAHSI\VariablesResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="web.config.orig" />
+    <Content Include="webservices\hiscentral.asmx" />
+    <Content Include="webservices\OntologyQueryService.asmx" />
+    <Content Include="webservices\TaggerService.asmx" />
+    <Content Include="web_ConnectionStrings_example.config" />
+    <Content Include="Web_System.Net_Note.config" />
+    <Content Include="Web.Production.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://water.sdsc.edu/lbrsdsc/cuahsi_1_0.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CUAHSI\</RelPath>
+      <UpdateFromURL>http://water.sdsc.edu/lbrsdsc/cuahsi_1_0.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>hiscentral_2010_CUAHSI_WaterOneFlow</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6659</DevelopmentServerPort>
+          <DevelopmentServerVPath>/hiscentral</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
