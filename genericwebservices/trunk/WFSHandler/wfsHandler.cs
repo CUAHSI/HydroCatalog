@@ -1,13 +1,18 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.Sql;
 using System.Configuration;
+using System.Linq;
 using System.Web;
 
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using cuahsi.hiscentral.cuahsi.hiscentral;
+using HisCentral;
 
 /// <summary>
 /// Summary description for wfsHandler
@@ -27,10 +32,13 @@ namespace cuahsi.his.ogc
     {
         private String connect;
         string baseurl;
+
+
+
         public wfsHandler()
         {
-            String connect = ConfigurationManager.ConnectionStrings["ODDB"].ConnectionString;
-            
+             connect = ConfigurationManager.ConnectionStrings["ODDB"].ConnectionString;
+
             //
             // TODO: Add constructor logic here
             //
@@ -43,7 +51,7 @@ namespace cuahsi.his.ogc
         /// <param name="query"></param>
         public wfsHandler(string ODDBconnection, string query)
         {
-            String connect = ODDBconnection;
+             connect = ODDBconnection;
 
             //
             // TODO: Add constructor logic here
@@ -58,7 +66,8 @@ namespace cuahsi.his.ogc
 
         public void ProcessRequest(HttpContext context)
         {
-            string networkName = parsePath(context.Request.Path);
+          //  string networkName = parsePath(context.Request.Path);
+            string networkName = ConfigurationManager.AppSettings["network"];
             //throw new Exception("The method or operation is not implemented.");
             //context.Response.ContentType = "text/plain";
             baseurl = "http://" + context.Request.Url.Host;
@@ -67,8 +76,8 @@ namespace cuahsi.his.ogc
                 baseurl += ":" + context.Request.Url.Port;
             }
 
-            if (networkName != "")
-            {
+           // if (networkName != "")
+           // {
                 //BOX box = this.getNetworkBox(networkName);
                 if (context.Request.RequestType == "POST")
                 {
@@ -102,13 +111,13 @@ namespace cuahsi.his.ogc
                     }
 
                 }
-            }
-            else
-            {
-                context.Response.StatusCode = 404;
-                //context.Response.Write(context.Request.Path);
-                context.Response.Close();
-            }
+            //}
+            //else
+            //{
+            //    context.Response.StatusCode = 404;
+            //    //context.Response.Write(context.Request.Path);
+            //    context.Response.Close();
+            //}
             //context.Response.Write(context.Request.Path);
         }
         //private string[] getKeywordList(int id)
@@ -141,70 +150,160 @@ namespace cuahsi.his.ogc
         //    return keywordsList;
 
         //}
+        //        private string[] getKeywordList()
+        //        {
+        //            // TODO: replace with HIS central concepts 
+        //           string sql = @"SELECT distinct variablename as conceptname
+        //                      FROM variables" ;
+        //        DataSet ds = new DataSet();
+        //            SqlConnection con = new SqlConnection(connect);
+        //            SqlCommand mysco = new SqlCommand(sql, con);
+        //            SqlParameterCollection parms = mysco.Parameters;
+        //            parms.Clear();
+
+        //            using (con)
+        //            {
+        //                SqlDataAdapter da = new SqlDataAdapter(mysco);
+        //                da.Fill(ds, "keywords");
+        //            }
+        //            con.Close();
+        //            //Calculate bounding box
+        //            System.Data.DataRowCollection rows = ds.Tables["keywords"].Rows;
+        //            String[] keywordsList = new String[rows.Count];
+        //            for (int i = 0; i < rows.Count; i++)
+        //            {
+
+        //                keywordsList[i] = rows[i][0].ToString();
+
+        //            }
+        //            return keywordsList; 
+        //        }
+
         private string[] getKeywordList()
         {
-            // TODO: replace with HIS central concepts 
-           string sql = @"SELECT distinct variablename as conceptname
-                      FROM variables" ;
-        DataSet ds = new DataSet();
-            SqlConnection con = new SqlConnection(connect);
-            SqlCommand mysco = new SqlCommand(sql, con);
-            SqlParameterCollection parms = mysco.Parameters;
-            parms.Clear();
-            
-            using (con)
-            {
-                SqlDataAdapter da = new SqlDataAdapter(mysco);
-                da.Fill(ds, "keywords");
-            }
-            con.Close();
-            //Calculate bounding box
-            System.Data.DataRowCollection rows = ds.Tables["keywords"].Rows;
-            String[] keywordsList = new String[rows.Count];
-            for (int i = 0; i < rows.Count; i++)
-            {
+            Dictionary<string, MappedVariable> mappings = GetMappings.MappedVariables;
 
-                keywordsList[i] = rows[i][0].ToString();
+            HashSet<string> keywordsList = new HashSet<string>();
+            foreach (var keyword in mappings)
+            {
+                if (keyword.Value.servCode.Equals(ConfigurationManager.AppSettings["Network"], StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (!String.IsNullOrEmpty(keyword.Value.conceptKeyword)) {
+                    keywordsList.Add(keyword.Value.conceptKeyword);
+                }else
+                    {
+                        string concept = GetMappings.GetConceptForVariable(keyword.Value.variableCode);
+                        if (!String.IsNullOrEmpty(concept))
+                        {
+                            keywordsList.Add(concept);
+                        }
+                        else
+                        {
+                            keywordsList.Add(keyword.Value.variableName);
+                        }
+                    }
+                }
 
             }
-            return keywordsList; 
+            return keywordsList.ToArray();
         }
 
-        
+        //private Network getHISNetworksRecord()
+        //{
+        //    string sql = "SELECT NetworkName,NetworkTitle,ServiceWSDL,ServiceAbs,ContactName,ContactEmail," +
+        //                  "ContactPhone,Organization,website,Citation," +
+        //                  "Xmin,Xmax,Ymin,Ymax,ValueCount,VariableCount,SiteCount,EarliestRec,LatestRec" +
+        //                  " FROM HISNetworks where NetworkID = @NetworkID AND (isPublic='true')";
+
+        //    //String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
+        //    DataSet ds = new DataSet();
+        //    SqlConnection con = new SqlConnection(connect);
+        //    SqlCommand mysco = new SqlCommand(sql, con);
+        //    SqlParameterCollection parms = mysco.Parameters;
+        //    parms.Clear();
+
+        //    using (con)
+        //    {
+        //        SqlDataAdapter da = new SqlDataAdapter(mysco);
+        //        da.Fill(ds, "networkInfo");
+        //    }
+        //    con.Close();
+        //    //Calculate bounding box
+        //    System.Data.DataRowCollection rows = ds.Tables["networkInfo"].Rows;
+
+        //    if (rows.Count == 1)
+        //    {
+
+        //        var net = new Network(rows[0]);
+        //        return net;
+        //        // return rows[0];
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
         private Network getHISNetworksRecord()
         {
-            string sql = "SELECT NetworkName,NetworkTitle,ServiceWSDL,ServiceAbs,ContactName,ContactEmail," +
-                          "ContactPhone,Organization,website,Citation," +
-                          "Xmin,Xmax,Ymin,Ymax,ValueCount,VariableCount,SiteCount,EarliestRec,LatestRec" +
-                          " FROM HISNetworks where NetworkID = @NetworkID AND (isPublic='true')";
 
-            //String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
-            DataSet ds = new DataSet();
-            SqlConnection con = new SqlConnection(connect);
-            SqlCommand mysco = new SqlCommand(sql, con);
-            SqlParameterCollection parms = mysco.Parameters;
-            parms.Clear();
-            
-            using (con)
-            {
-                SqlDataAdapter da = new SqlDataAdapter(mysco);
-                da.Fill(ds, "networkInfo");
-            }
-            con.Close();
-            //Calculate bounding box
-            System.Data.DataRowCollection rows = ds.Tables["networkInfo"].Rows;
+            var net = new Network
+                          {
+                              NetworkName = ConfigurationManager.AppSettings["Network"],
+                              ServiceWSDL = HttpContext.Current.Response.ApplyAppPathModifier("cuahsi_1_1.aspx")
+                          };
 
-            if (rows.Count == 1)
-            {
+            /* select MIN(Sites.Latitude) as south, 
+MIN(Sites.Longitude) as west,
+ MAX(Sites.Latitude) as north,
+Max(sites.Longitude) as east, 
+Sum(SeriesCatalog.ValueCount) as ValueCount,
+COUNT_BIG(Distinct Variables.VariableID) as VariableCount,
+ COUNT_BIG(Distinct sites.SiteCode) as SiteCount,
+  MIN(SeriesCatalog.BeginDateTime) as EarliestRec,
+  Max( SeriesCatalog.BeginDateTime) as LatestRec
+ from SeriesCatalog, Sites, Variables
+ where SeriesCatalog.SiteID = Sites.SiteID and SeriesCatalog.VariableID = Variables.VariableID
+             * */
 
-                var net = new Network(rows[0]);
-                return net;
-                // return rows[0];
-            }
-            else
-            {
-                return null;
-            }
+              string sql = @"select MIN(Sites.Latitude) as Ymin, 
+MIN(Sites.Longitude) as Xmin,
+ MAX(Sites.Latitude) as YMax,
+Max(sites.Longitude) as XMax, 
+Cast (Sum(SeriesCatalog.ValueCount) As bigint) as ValueCount,
+COUNT(Distinct Variables.VariableID) as VariableCount,
+ COUNT(Distinct sites.SiteCode) as SiteCount,
+  MIN(SeriesCatalog.BeginDateTime) as EarliestRec,
+  Max( SeriesCatalog.BeginDateTime) as LatestRec
+ from SeriesCatalog, Sites, Variables
+ where SeriesCatalog.SiteID = Sites.SiteID and SeriesCatalog.VariableID = Variables.VariableID";
+
+                //String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
+               DataSet ds = new DataSet();
+               SqlConnection con = new SqlConnection(connect);
+                SqlCommand mysco = new SqlCommand(sql, con);
+               SqlParameterCollection parms = mysco.Parameters;
+               parms.Clear();
+
+                using (con)
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(mysco);
+                    da.Fill(ds, "networkInfo");
+                }
+                con.Close();
+            net.EarliestRec =((DateTime) ds.Tables["networkInfo"].Rows[0]["EarliestRec"]).ToString("yyyy-MM-dd");
+            net.LatestRec = ((DateTime)ds.Tables["networkInfo"].Rows[0]["LatestRec"]).ToString("yyyy-MM-dd");
+             net.SiteCount = (int)ds.Tables["networkInfo"].Rows[0]["SiteCount"];
+             net.VariableCount = (int)ds.Tables["networkInfo"].Rows[0]["VariableCount"];
+            Int64  bigCount= 0;
+             Int64.TryParse( ds.Tables["networkInfo"].Rows[0]["ValueCount"].ToString(), out bigCount);
+            net.ValueCount = bigCount;
+             net.Xmin = (Double)ds.Tables["networkInfo"].Rows[0]["Xmin"];
+             net.Xmax = (Double)ds.Tables["networkInfo"].Rows[0]["Xmax"];
+             net.Ymin = (Double)ds.Tables["networkInfo"].Rows[0]["Ymin"];
+             net.Ymax = (Double)ds.Tables["networkInfo"].Rows[0]["Ymax"];
+
+            return net;
         }
         private static string encodeForXML(object input)
         {
@@ -224,7 +323,7 @@ namespace cuahsi.his.ogc
 
         private void getCapabilities(HttpContext context, string networkid)
         {
-            int intid = int.Parse(networkid);
+           // int intid = int.Parse(networkid);
             var networkInfo = getHISNetworksRecord();
             String[] keywords = getKeywordList();
 
@@ -370,7 +469,7 @@ namespace cuahsi.his.ogc
             sb.Append("<ows:WGS84BoundingBox>");
             sb.Append("<ows:LowerCorner>");
             //  -111.3417 42.12035
-            sb.AppendFormat("{0} {1}",networkInfo.Xmin,networkInfo.Ymin);
+            sb.AppendFormat("{0} {1}", networkInfo.Xmin, networkInfo.Ymin);
             sb.Append("</ows:LowerCorner>");
             sb.Append("<ows:UpperCorner>");
             //-111.2884 42.25035
@@ -431,10 +530,10 @@ namespace cuahsi.his.ogc
         private void describeFeatureType(HttpContext context, String networkCode)
         {
 
-           // int intid = int.Parse(networkid);
-           // DataRow r = getHISNetworksRecord(intid);
+            // int intid = int.Parse(networkid);
+            // DataRow r = getHISNetworksRecord(intid);
 
-          var  describeFeature = DescribeFeatureXmlString(baseurl + context.Request.Path, networkCode);
+            var describeFeature = DescribeFeatureXmlString(baseurl + context.Request.Path, networkCode);
             //contexr
             //System.Xml.XmlDocument xdoc = new System.Xml.XmlDocument();
             //xdoc.LoadXml(sb.ToString());
@@ -691,7 +790,7 @@ namespace cuahsi.his.ogc
         {
             string sql = "SELECT xmin,xmax,ymin,ymax " +
                       "FROM  HISnetworks WHERE (NetworkName =@NetworkName) AND (isPublic='true')";
-           // String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
+            // String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
             DataSet ds = new DataSet();
             SqlConnection con = new SqlConnection(connect);
             SqlCommand mysco = new SqlCommand(sql, con);
@@ -910,17 +1009,51 @@ namespace cuahsi.his.ogc
 
         private void getFeature(HttpContext context, string networkid)
         {
-            string sql = "SELECT ServCode,SiteCode,SiteName,VarCode,VarName,VarUnits,Vocabulary,Ontology,Concept" +
-                ",Valuecount,StartDate,EndDate,Latitude,Longitude,IsRegular,TimeUnits,TimeStep,DataType,Medium" +
-                ",MethodID,Method,QCLevelID,QCLevel,SourceID,SourceName,LocType,ServType,XLL,YLL,XUR,YUR,Location" +
-                ",Variable,ReqsAuth,WofVersion,WaterMLURI,WFSURI,WMSURI,DAccessURI,StateName,Geometry,RecordType,OrgHier" +
-                ",SerStatus,LastUpdate FROM hiscentral.dbo.v_ObservationsMetadata where sourceid = @Sourceid";
+            //string sql = "SELECT ServCode,SiteCode,SiteName,VarCode,VarName,VarUnits,Vocabulary,Ontology,Concept" +
+            //    ",Valuecount,StartDate,EndDate,Latitude,Longitude,IsRegular,TimeUnits,TimeStep,DataType,Medium" +
+            //    ",MethodID,Method,QCLevelID,QCLevel,SourceID,SourceName,LocType,ServType,XLL,YLL,XUR,YUR,Location" +
+            //    ",Variable,ReqsAuth,WofVersion,WaterMLURI,WFSURI,WMSURI,DAccessURI,StateName,Geometry,RecordType,OrgHier" +
+            //    ",SerStatus,LastUpdate FROM hiscentral.dbo.v_ObservationsMetadata where sourceid = @Sourceid";
+
+            string sql =
+                @"SELECT @Network as ServCode,
+SC.SiteCode,SC.SiteName,
+SC.VariableCode as varCode,SC.VariableName as VarName,SC.VariableUnitsName as VarUnits,
+'VCODE' as Vocabulary,
+ 'CUAHSI201004' As Ontology, Null AS Concept
+,SC.Valuecount,SC.BeginDateTime AS  StartDate,SC.EndDateTime AS EndDate,
+S.Latitude,S.Longitude,
+V.IsRegular as IsRegular,
+V.TimeUnitsID  as TimeUnits,NULL as TimeStep,V.DataType,V.SampleMedium AS Medium
+                ,SC.MethodID,SC.MethodDescription as Method
+                ,SC.QualityControlLevelID as QCLevelID,
+                SC.QualityControlLevelCode as QCLevel
+                ,SC.SourceID,SC.Organization as SourceName,
+                
+                'POINT' as LocType, 'SOAP'  as ServType
+                ,S.Latitude as  XLL, s.Longitude as YLL,CAST(NULL AS float) as XUR,CAST(NULL AS float) as YUR
+                ,@Network + ':'+ SC.SiteCode as Location
+                ,@Network + ':'+SC.VariableCode as Variable,
+                0  as ReqsAuth,
+                '1.1' as WofVersion,NULL as WaterMLURI,NULL as WFSURI
+                , nULL as WMSURI,
+               NULL as  DAccessURI,
+             S.State as   StateName,
+              NULL as  Geometry
+                ,NULL AS RecordType
+                ,NULL as OrgHier
+                ,'ACTIVE' as SerStatus
+                ,GetDate() as LastUpdate 
+                FROM Sites S, SeriesCatalog SC, Variables V
+                where SC.SiteID = S.SiteID and SC.VariableID = V.VariableID
+";
+
+
+            
 
 
 
-
-
-            String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
+            //String connect = ConfigurationManager.ConnectionStrings["CentralHISConnectionString"].ConnectionString;
             DataSet ds = new DataSet();
             SqlConnection con = new SqlConnection(connect);
             SqlCommand mysco = new SqlCommand(sql, con);
@@ -928,6 +1061,8 @@ namespace cuahsi.his.ogc
             bool hits = false;
             parms.Clear();
             parms.AddWithValue("@Sourceid", networkid);
+            parms.AddWithValue("@Network", ConfigurationManager.AppSettings["network"]);
+            parms.AddWithValue("@basrUrl", HttpContext.Current.Request.RawUrl.ToString());
             if (context.Request.QueryString["filter"] != null)
             {
                 sql += " and " + filter2SQLWhere(ref parms, context.Request.QueryString["filter"]);

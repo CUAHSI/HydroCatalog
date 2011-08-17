@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WaterML_1_0.aspx.cs" Inherits="GenericWebservice.WaterML_1_0" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
+CodeBehind="WaterML_1_0.aspx.cs" Inherits="GenericWebservice.WaterML_1_0" %>
 <%@ Register TagPrefix="wml" TagName="WmlUrl" Src="~/UserControls/TestRestUrl.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -57,7 +58,8 @@ var siteMethod="series";
         $(document).ready(function () //executes this code when page loading is done
         {  $('#serviceLocation').attr("href",SoapPage);
             getSites( baseUrl, siteMethod );
-            getSeries(baseUrl, valuesMethod );
+            getSeries(baseUrl, valuesMethod);
+            getVariables(baseUrl, variableMethod);
               $('#loading').fadeOut();
         });
     </script>

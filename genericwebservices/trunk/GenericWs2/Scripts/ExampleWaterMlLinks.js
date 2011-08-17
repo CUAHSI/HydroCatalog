@@ -28,7 +28,7 @@ function getSites(baseurl, method) {
         dataType: "json",
         success: function (msg) {
 
-           // alert(msg.d[1].SiteName);
+            // alert(msg.d[1].SiteName);
             // Hide the fake progress indicator graphic.
             $('#RSSContent').removeClass('loading');
             $('#RSSContent').addClass('urlLists');
@@ -40,7 +40,9 @@ function getSites(baseurl, method) {
 
                 var link = baseurl + method + '?location=' + networkCode + ':' + msg.d[site].SiteCode;
                 $('#RSSContent').append(
-                        '<div><span>' + msg.d[site].SiteName + '</span><a href="' + link + '">' + link + '</a></div>'
+                        '<div>'
+                        + '<span> ['  +networkCode + ':' + msg.d[site].SiteCode +'] </span>'
+                        + '<a href="' + link + '">' + msg.d[site].SiteName + '</a></div>'
                            );
             };
 
@@ -59,7 +61,7 @@ function getSeries(baseurl, method) {
         dataType: "json",
         success: function (msg) {
 
-           // alert(msg.d[1].SiteName);
+            // alert(msg.d[1].SiteName);
             // Hide the fake progress indicator graphic.
             $('#RSSContent').removeClass('loading');
             $('#RSSContent').addClass('urlLists');
@@ -72,7 +74,44 @@ function getSeries(baseurl, method) {
                 var link = baseurl + method + '?location=' + networkCode + ':' + msg.d[site].SiteCode + '&variable=' + vocabularyCode + ':' + msg.d[site].VariableCode
                    + '&startDate=' + IsoDateMinus2(msg.d[site].EndDateTime) + '&endDate=' + IsoDate(msg.d[site].EndDateTime);
                 $('#SeriesContent').append(
-                        '<div><span>' + msg.d[site].SiteName + '</span><a href="' + link + '">' + link + '</a></div>'
+                        '<div>'
+                        +'<span> ['+ networkCode + ':' + msg.d[site].SiteCode + '] </span><span> [' + vocabularyCode + ':' + msg.d[site].VariableCode + '] </span>'
+                        +'<a href="' + link + '">' +   msg.d[site].SiteName+ '</a></div>'
+                           );
+            };
+
+
+
+        },
+        error: function () { alert("error"); }
+    });
+
+
+}
+function getVariables(baseurl, method) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        url: "ExampleData.svc/ListVariables",
+        data: null,
+        dataType: "json",
+        success: function (msg) {
+
+            // alert(msg.d[1].SiteName);
+            // Hide the fake progress indicator graphic.
+            $('#RSSContent').removeClass('loading');
+            $('#RSSContent').addClass('urlLists');
+            for (variable in msg.d) {
+                // alert(msg.d[site].SiteName);
+
+                // Insert the returned HTML into the <div>.
+                //$('#RSSContent').text(msg.d);
+
+                var link = baseurl + method + '?variable=' + vocabularyCode + ':' + msg.d[variable].VariableCode;
+                $('#VariablesContent').append(
+                '<div><span> [' + vocabularyCode + ':' + msg.d[variable].VariableCode + '] </span>'
+                
+                        +'<a href="' + link + '">' +msg.d[variable].VariableName + '</a></div>'
                            );
             };
 

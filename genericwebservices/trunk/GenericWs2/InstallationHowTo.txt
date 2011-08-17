@@ -14,6 +14,8 @@ Requirements
 * SqlServer (express is OK)
 * .Net 4.0 ( Use Windows Update or in Visual Studio 2010)
 * WebDeploy (install using MS Web Platform Installer)
+Windows 2003:
+* hotfix from http://support.microsoft.com/kb/915782
 Optional
 * Windows Server AppFabric
 ** this allows for better monitoring of the REST services

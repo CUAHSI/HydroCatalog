@@ -15,37 +15,43 @@ namespace HisCentral
     {
         private static cuahsi.hiscentral.cuahsi.hiscentral.hiscentral svc;
         private static Boolean _loaded = false;
-        private static Dictionary<int, string> _ontologyList = null;
+        private static Dictionary<int, string> _ontologyList = new Dictionary<int, string>();
 
-        private static Dictionary<string, MappedVariable> _mappedVariables = null;
+        private static Dictionary<string, MappedVariable> _mappedVariables = new Dictionary<string, MappedVariable>();
 
          static GetMappings()
         {
-            svc = new cuahsi.hiscentral.cuahsi.hiscentral.hiscentral();
-            Dictionary<int, string> nodes = new Dictionary<int, string>();
-            var tree = svc.getOntologyTree(null);
-            tree2List(tree, nodes);
-            _ontologyList = nodes;
-
-            Dictionary<string, MappedVariable> mvnodes = new Dictionary<string, MappedVariable>();
-            var mvtree = svc.GetMappedVariables2(String.Empty, String.Empty);
-            foreach (var mappedVariable in mvtree)
-            {
-                if (!String.IsNullOrEmpty(mappedVariable.conceptCode)
-                    && !String.IsNullOrEmpty(mappedVariable.variableCode))
+           
+                lock (_ontologyList)
                 {
-                    try
+                  if (Loaded == false)
+            {   svc = new cuahsi.hiscentral.cuahsi.hiscentral.hiscentral();
+                    Dictionary<int, string> nodes = new Dictionary<int, string>();
+                    var tree = svc.getOntologyTree(null);
+                    tree2List(tree, nodes);
+                    _ontologyList = nodes;
+
+                    Dictionary<string, MappedVariable> mvnodes = new Dictionary<string, MappedVariable>();
+                    var mvtree = svc.GetMappedVariables2(String.Empty, String.Empty);
+                    foreach (var mappedVariable in mvtree)
                     {
-                        mvnodes.Add(mappedVariable.variableCode, mappedVariable);
+                        if (!String.IsNullOrEmpty(mappedVariable.conceptCode)
+                            && !String.IsNullOrEmpty(mappedVariable.variableCode))
+                        {
+                            try
+                            {
+                                mvnodes.Add(mappedVariable.variableCode, mappedVariable);
+                            }
+                            catch
+                            {
+                                //
+                            }
+                        }
                     }
-                    catch
-                    {
-                        //
-                    }
+                    _mappedVariables = mvnodes;
+                    _loaded = true;
                 }
             }
-            _mappedVariables = mvnodes;
-            _loaded = true;
         }
 
 

@@ -28,6 +28,7 @@ namespace cuahsi.his.ogc
         public Double Ymax { get; set; }
         public Int64 ValueCount { get; set; }
         public int SiteCount { get; set; }
+        public int VariableCount { get; set; }
         public string EarliestRec { get; set; }
         public string LatestRec { get; set; }
 

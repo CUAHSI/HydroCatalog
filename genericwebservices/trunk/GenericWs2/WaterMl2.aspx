@@ -18,7 +18,8 @@ var siteMethod="featureOfInterest";
         {
             getSites( baseUrl, siteMethod );
             getSeries(baseUrl, valuesMethod );
-              $('#loading').fadeOut();
+             getVariables(baseUrl, variableMethod);
+               $('#loading').fadeOut();
         });
     </script>
     <script type="text/javascript" src="scripts/ExampleWaterMlLinks.js" >

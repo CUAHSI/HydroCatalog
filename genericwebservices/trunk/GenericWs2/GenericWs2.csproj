@@ -26,6 +26,7 @@
     <PublishDatabases>true</PublishDatabases>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
     <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_Debug.zip</DesktopBuildPackageLocation>
+    <ProjectParametersXMLFile>Parameters.Debug.xml</ProjectParametersXMLFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,6 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2.zip</DesktopBuildPackageLocation>
+    <ProjectParametersXMLFile>Parameters.xml</ProjectParametersXMLFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WaterDev|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +47,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_waterdev.zip</DesktopBuildPackageLocation>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <ProjectParametersXMLFile>Parameters.WaterDev.xml</ProjectParametersXMLFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah">
@@ -95,6 +99,9 @@
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
+    <None Include="Parameters.WaterDev.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="InstallationHowTo.txt" />
     <Content Include="WaterML_1_1.aspx" />
     <Content Include="cuahsi_1_0.asmx" />
@@ -158,6 +165,7 @@
     </Content>
     <Content Include="Web.WaterDev.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -360,6 +368,10 @@
       <Project>{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}</Project>
       <Name>waterOneFlowImpl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WFSHandler\WFSHandler.csproj">
+      <Project>{1CDD205B-042C-4C56-A338-40A6C0D4B603}</Project>
+      <Name>WFSHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WofAuthentication\WofAuthentication.csproj">
       <Project>{32144077-B780-491E-B0F4-EA29440B056B}</Project>
       <Name>WofAuthentication</Name>
@@ -370,7 +382,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Code_old\GetSitesOD_v1_1.cs.exclude" />

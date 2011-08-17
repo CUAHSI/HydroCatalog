@@ -6,7 +6,7 @@
     -->
   <parameter name="NetworkCode" 
              description="Please define a short code that will identify the network" 
-             defaultValue="UNDEFINED" tags="">
+             defaultValue="UNDEFINEDpxml" tags="">
     <parameterEntry kind="XmlFile" scope="\\web.config$"
                     match="/configuration/appSettings/add[@key='network']/@value" />
 
@@ -15,7 +15,7 @@
   </parameter>
   <parameter name="VocabularyCode"
                description="Please define a short code that will identify the vocabulary. Present practice says this is the same as the NetworkCode"
-               defaultValue="UNDEFINED" tags="">
+               defaultValue="UNDEFINEDpxml" tags="">
     <parameterEntry kind="XmlFile" scope="\\web.config$"
                    match="/configuration/appSettings/add[@key='vocabulary']/@value" />
     <parameterValidation type="RegularExpression"
@@ -23,7 +23,7 @@
   </parameter>
   <parameter name="contactEmail"
              description="Please provide contactEmail address " 
-             defaultValue="me@example.com" tags="">
+             defaultValue="mepxml@example.com" tags="">
     <parameterEntry kind="XmlFile" scope="\\web.config$"
                     match="/configuration/appSettings/add[@key='contactEmail']/@value" />
   </parameter>

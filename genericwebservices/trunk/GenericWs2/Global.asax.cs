@@ -38,7 +38,7 @@ namespace WaterOneFlow.odws
             WaterAuth.TestConfiguration();
 
 
-            // Code that runs on application startup
+            // Code that runs on application startup 
             String codeDate = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
 
             String process = "GenericODWS_Start";

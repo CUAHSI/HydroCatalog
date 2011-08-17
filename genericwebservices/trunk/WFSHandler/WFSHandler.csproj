@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Network.cs" />
+    <Compile Include="ObservationsMetadata.cs">
+      <DependentUpon>ObservationsMetadata.dbml</DependentUpon>
+    </Compile>
     <Compile Include="ObservationsMetadata.designer.cs" />
     <Compile Include="ObservationsMetadata1.designer.cs">
       <AutoGen>True</AutoGen>
@@ -52,6 +55,11 @@
       <DependentUpon>ObservationsMetadata.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="wfsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,16 +70,27 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="ObservationsMetadata.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ObservationsMetadata1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="ObservationsMetadata.dbml.layout">
       <DependentUpon>ObservationsMetadata.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HisCentral\HisCentral.csproj">
+      <Project>{79EF484B-3408-41D8-9890-3A0C9DA762EC}</Project>
+      <Name>HisCentral</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
