@@ -1,5 +1,0 @@
-C:\dev_hydrocatalog\genericwebservices\trunk\WFSHandler\bin\Debug\WFSHandler.dll
-C:\dev_hydrocatalog\genericwebservices\trunk\WFSHandler\bin\Debug\WFSHandler.pdb
-C:\dev_hydrocatalog\genericwebservices\trunk\WFSHandler\obj\Debug\ResolveAssemblyReference.cache
-C:\dev_hydrocatalog\genericwebservices\trunk\WFSHandler\obj\Debug\WFSHandler.dll
-C:\dev_hydrocatalog\genericwebservices\trunk\WFSHandler\obj\Debug\WFSHandler.pdb

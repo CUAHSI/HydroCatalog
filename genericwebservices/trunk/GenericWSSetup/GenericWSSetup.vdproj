@@ -176,7 +176,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                 "
+                "FrameworkVersion" = "8:2.0.50727                  "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -344,7 +344,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CUAHSI Generic OD Web Services"
         "ProductCode" = "8:{9F3B1F98-423E-4581-A6EA-0A36B1BB3DBD}"
-        "PackageCode" = "8:{654724C0-D9BC-4943-BD60-AEC22BA2E79D}"
+        "PackageCode" = "8:{747D7FD5-18F1-43E1-B30C-9CD9B596D246}"
         "UpgradeCode" = "8:{23168873-97F6-46AE-BB04-DC73AA49282B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

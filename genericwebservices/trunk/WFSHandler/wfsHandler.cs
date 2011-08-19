@@ -356,16 +356,22 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
             sb.Append("<ows:Abstract>");
             sb.Append(encodeForXML(networkInfo.ServiceAbs));
             sb.Append("</ows:Abstract>");
+            // Block 1.
             sb.Append("<ows:Keywords>");
             sb.Append("<ows:Keyword>DataCart</ows:Keyword>");
             sb.Append("<ows:Keyword>Hydrology</ows:Keyword>");
             sb.Append("<ows:Keyword>CUAHSI</ows:Keyword>");
+            sb.Append(" <ows:Type codeSpace='urn:his.cuahsi.org/terms/'>WfsDataservice</ows:Type>");
+            sb.Append("</ows:Keywords>");
+
+            sb.Append("<ows:Keywords>");
             for (int i = 0; i < keywords.Length; i++)
             {
                 sb.Append("<ows:Keyword>");
                 sb.Append(encodeForXML(keywords[i]));
                 sb.Append("</ows:Keyword>");
             }
+            sb.Append(" <ows:Type codeSpace='urn:his.cuahsi.org/terms/'>variables</ows:Type>");
             sb.Append("</ows:Keywords>");
             sb.Append("<ows:ServiceType>WFS</ows:ServiceType>");
             sb.Append("<ows:ServiceTypeVersion>1.1.0</ows:ServiceTypeVersion>");
@@ -829,7 +835,7 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
             string[] coords = bbox.Split(',');
             if (coords.Length == 4)
             {
-                where += " and ((longitude between " + coords[0] + " and " + coords[2] + ") and (latitude between " + coords[1] + " and " + coords[3] + "))";
+                where += " and ((s.longitude between " + coords[0] + " and " + coords[2] + ") and (s.latitude between " + coords[1] + " and " + coords[3] + "))";
                 //where += " and ((longitude between @minx and @maxx) and (latitude between @miny and @maxy))";
                 //parms.AddWithValue("@minx", coords[1]);
                 //parms.AddWithValue("@miny", coords[1]);
@@ -954,7 +960,7 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
                     //parms.AddWithValue("@maxx", ur[1]);
                     //parms.AddWithValue("@maxy", ur[0]);
                     //filterNode.
-                    where += "((longitude between " + ll[1] + " and " + ur[1] + ") and (latitude between " + ll[0] + " and " + ur[0] + "))";
+                    where += "((s.longitude between " + ll[1] + " and " + ur[1] + ") and (s.latitude between " + ll[0] + " and " + ur[0] + "))";
                     break;
                 case "propertyislike":
                     field = filterNode.ChildNodes[0].InnerText.Split(':')[1];
@@ -1019,7 +1025,7 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
                 @"SELECT @Network as ServCode,
 SC.SiteCode,SC.SiteName,
 SC.VariableCode as varCode,SC.VariableName as VarName,SC.VariableUnitsName as VarUnits,
-'VCODE' as Vocabulary,
+@Network as Vocabulary,
  'CUAHSI201004' As Ontology, Null AS Concept
 ,SC.Valuecount,SC.BeginDateTime AS  StartDate,SC.EndDateTime AS EndDate,
 S.Latitude,S.Longitude,
@@ -1030,18 +1036,20 @@ V.TimeUnitsID  as TimeUnits,NULL as TimeStep,V.DataType,V.SampleMedium AS Medium
                 SC.QualityControlLevelCode as QCLevel
                 ,SC.SourceID,SC.Organization as SourceName,
                 
-                'POINT' as LocType, 'SOAP'  as ServType
+                'LatLongPoint' as LocType, 'SOAP'  as ServType
                 ,S.Latitude as  XLL, s.Longitude as YLL,CAST(NULL AS float) as XUR,CAST(NULL AS float) as YUR
                 ,@Network + ':'+ SC.SiteCode as Location
                 ,@Network + ':'+SC.VariableCode as Variable,
                 0  as ReqsAuth,
-                '1.1' as WofVersion,NULL as WaterMLURI,NULL as WFSURI
+                '1.1' as WofVersion,
+            @Wof11Url  as WaterMLURI
+            ,@basewfsUrl as WFSURI
                 , nULL as WMSURI,
                NULL as  DAccessURI,
              S.State as   StateName,
               NULL as  Geometry
-                ,NULL AS RecordType
-                ,NULL as OrgHier
+                ,'ObservationsODM' AS RecordType
+                ,'CUAHSI' as OrgHier
                 ,'ACTIVE' as SerStatus
                 ,GetDate() as LastUpdate 
                 FROM Sites S, SeriesCatalog SC, Variables V
@@ -1062,7 +1070,14 @@ V.TimeUnitsID  as TimeUnits,NULL as TimeStep,V.DataType,V.SampleMedium AS Medium
             parms.Clear();
             parms.AddWithValue("@Sourceid", networkid);
             parms.AddWithValue("@Network", ConfigurationManager.AppSettings["network"]);
-            parms.AddWithValue("@basrUrl", HttpContext.Current.Request.RawUrl.ToString());
+            parms.AddWithValue("@basewfsUrl", HttpContext.Current.Request.RawUrl.ToString());
+            parms.AddWithValue("@Wof11Url", 
+                String.Format("{0}://{1}:{2}/{3}/{4}"
+               , HttpContext.Current.Request.Url.Scheme.ToString()
+               ,HttpContext.Current.Request.Url.Host.ToString()
+            ,HttpContext.Current.Request.Url.Port
+            , HttpContext.Current.Request.ApplicationPath,
+            "cuahsi_1_1.asmx"));
             if (context.Request.QueryString["filter"] != null)
             {
                 sql += " and " + filter2SQLWhere(ref parms, context.Request.QueryString["filter"]);
@@ -1223,9 +1238,25 @@ V.TimeUnitsID  as TimeUnits,NULL as TimeStep,V.DataType,V.SampleMedium AS Medium
                 sb.Append('<').Append(NetworkName).Append(":Ontology>"); //CUAHSI201004
                 sb.Append(rows[i]["Ontology"].ToString());
                 sb.Append("</").Append(NetworkName).Append(":Ontology>"); //
-                sb.Append('<').Append(NetworkName).Append(":Concept>"); //Snow depth
-                sb.Append(rows[i]["Concept"].ToString());
+                 
+                      sb.Append('<').Append(NetworkName).Append(":Concept>"); //Snow depth
+                      if (!String.IsNullOrEmpty(rows[i]["Concept"].ToString()))
+                      {
+                          sb.Append(rows[i]["Concept"].ToString());
+                      }
+                      else
+                      {
+                          string concept = GetMappings.GetConceptForVariable(
+                              String.Format("{0}:{1}", NetworkName, rows[i]["varCode"].ToString())
+                              );
+                          if (!String.IsNullOrEmpty(concept))
+                          {
+                              sb.Append(concept);
+                          }
+                      }
+
                 sb.Append("</").Append(NetworkName).Append(":Concept>"); //
+                  
                 sb.Append('<').Append(NetworkName).Append(":Valuecount>"); //6490
                 sb.Append(rows[i]["Valuecount"].ToString());
                 sb.Append("</").Append(NetworkName).Append(":Valuecount>"); //
