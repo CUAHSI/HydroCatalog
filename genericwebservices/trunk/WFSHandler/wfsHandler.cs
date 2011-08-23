@@ -509,15 +509,15 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
             sb.Append("<ogc:Scalar_Capabilities>");
             sb.Append("<ogc:LogicalOperators />");
             sb.Append("<ogc:ComparisonOperators>");
-            sb.Append("<ogc:ComparisonOperator>EqualTo</ogc:ComparisonOperator>");
-            sb.Append("<ogc:ComparisonOperator>NotEqualTo</ogc:ComparisonOperator>");
-            sb.Append("<ogc:ComparisonOperator>LessThan</ogc:ComparisonOperator>");
-            //sb.Append("<ogc:ComparisonOperator>GreaterThan</ogc:ComparisonOperator>");
-            //sb.Append("<ogc:ComparisonOperator>LessThanEqualTo</ogc:ComparisonOperator>");
-            sb.Append("<ogc:ComparisonOperator>GreaterThanEqualTo</ogc:ComparisonOperator>");
-            sb.Append("<ogc:ComparisonOperator>Like</ogc:ComparisonOperator>");
-            //sb.Append("<ogc:ComparisonOperator>Between</ogc:ComparisonOperator>");
-            //sb.Append("<ogc:ComparisonOperator>NullCheck</ogc:ComparisonOperator>");
+            //sb.Append("<ogc:ComparisonOperator>EqualTo</ogc:ComparisonOperator>");
+            //sb.Append("<ogc:ComparisonOperator>NotEqualTo</ogc:ComparisonOperator>");
+            //sb.Append("<ogc:ComparisonOperator>LessThan</ogc:ComparisonOperator>");
+            ////sb.Append("<ogc:ComparisonOperator>GreaterThan</ogc:ComparisonOperator>");
+            ////sb.Append("<ogc:ComparisonOperator>LessThanEqualTo</ogc:ComparisonOperator>");
+            //sb.Append("<ogc:ComparisonOperator>GreaterThanEqualTo</ogc:ComparisonOperator>");
+            //sb.Append("<ogc:ComparisonOperator>Like</ogc:ComparisonOperator>");
+            ////sb.Append("<ogc:ComparisonOperator>Between</ogc:ComparisonOperator>");
+            ////sb.Append("<ogc:ComparisonOperator>NullCheck</ogc:ComparisonOperator>");
             sb.Append("</ogc:ComparisonOperators>");
             sb.Append("</ogc:Scalar_Capabilities>");
             sb.Append("<ogc:Id_Capabilities>");
@@ -1009,6 +1009,15 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
                 paramName = getParamName(parms, field + "I");
             }
             return paramName;
+
+        }
+
+        private string getSqlColumnNameFromFieldName( string field)
+        {
+            string colName = field;
+
+
+            return colName;
 
         }
 

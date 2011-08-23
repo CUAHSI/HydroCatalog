@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using cuahsi.hiscentral.cuahsi.hiscentral;
 
 namespace HisCentral
@@ -15,6 +16,7 @@ namespace HisCentral
     {
         private static cuahsi.hiscentral.cuahsi.hiscentral.hiscentral svc;
         private static Boolean _loaded = false;
+        private static Boolean _loading = false;
         private static Dictionary<int, string> _ontologyList = new Dictionary<int, string>();
 
         private static Dictionary<string, MappedVariable> _mappedVariables = new Dictionary<string, MappedVariable>();
@@ -22,10 +24,24 @@ namespace HisCentral
          static GetMappings()
         {
            
-                lock (_ontologyList)
+               
+        }
+
+        private static void loadMappings()
+        {
+            int i = 0;
+            while (_loading)
+            {
+                i++;
+                if (i > 60) throw new TimeoutException("HIS central did not return in a reasonable time");
+                Thread.Sleep(500);
+            }
+            lock (_ontologyList)
+            {
+                if (Loaded == false)
                 {
-                  if (Loaded == false)
-            {   svc = new cuahsi.hiscentral.cuahsi.hiscentral.hiscentral();
+                    _loading = true;
+                    svc = new cuahsi.hiscentral.cuahsi.hiscentral.hiscentral();
                     Dictionary<int, string> nodes = new Dictionary<int, string>();
                     var tree = svc.getOntologyTree(null);
                     tree2List(tree, nodes);
@@ -50,22 +66,21 @@ namespace HisCentral
                     }
                     _mappedVariables = mvnodes;
                     _loaded = true;
+                    _loading = false;
                 }
             }
         }
-
-
 
         public static Boolean Loaded
         {
             get { return _loaded; }
         }
-
+        
         public static Dictionary<int, string> OntologyList
         {
          get
          {
-             //if (_ontologyList == null || _ontologyList.Count ==0)
+             if (!Loaded) loadMappings();
              //{
              //    Dictionary<int, string> nodes = new Dictionary<int, string>();
              //    var tree = svc.getOntologyTree(null);
@@ -82,6 +97,8 @@ namespace HisCentral
 
         private static void tree2List(OntologyNode node,  Dictionary<int, string> nodes)
         {
+            
+            
             if (node == null) return;
             
             if (node.childNodes != null)
@@ -108,6 +125,8 @@ namespace HisCentral
         {
             get
             {
+
+                if (!Loaded) loadMappings(); 
                 
                 if (_mappedVariables == null || _mappedVariables.Count == 0)
                 {
@@ -138,7 +157,7 @@ namespace HisCentral
         }
         public static String GetConceptForVariable(String variableCode)
         {
-           if (!Loaded) return null;
+            if (!Loaded) loadMappings();
             var mv = MappedVariables;
             if (mv.Keys.Contains(variableCode))
             {
