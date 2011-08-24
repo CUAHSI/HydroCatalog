@@ -37,6 +37,7 @@
     <WarningLevel>4</WarningLevel>
     <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2.zip</DesktopBuildPackageLocation>
     <ProjectParametersXMLFile>Parameters.xml</ProjectParametersXMLFile>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WaterDev|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -157,16 +158,16 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Debug.config">
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
+    </None>
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.WaterDev.config">
+    </None>
+    <None Include="Web.WaterDev.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">

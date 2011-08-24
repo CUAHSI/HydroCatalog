@@ -169,9 +169,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFSHandler", "WFSHandler\WF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralTest", "HisCentralTest\HisCentralTest.csproj", "{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}"
 EndProject
-Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "GenericWs2.csproj_deploy", "GenericWs2.csproj_deploy\GenericWs2.csproj_deploy.wdproj", "{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WfsHandlerTest", "WfsHandlerTest\WfsHandlerTest.csproj", "{B224EBD0-E0C2-448E-91CB-85550096FACA}"
+EndProject
+Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "GenericWs2.csproj_deploy1", "GenericWs2.csproj_deploy1\GenericWs2.csproj_deploy1.wdproj", "{0F503AB4-EF64-4EF1-BD48-18114B42C310}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -523,25 +523,6 @@ Global
 		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Any CPU.Build.0 = Release|Any CPU
 		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8FCE7763-ED5C-4591-859B-D6DB9F2B1BFC}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Default|.NET.ActiveCfg = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Release|.NET.ActiveCfg = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.WaterDev|.NET.ActiveCfg = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.WaterDev|Any CPU.ActiveCfg = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{23164B20-FF52-459A-A8DD-38CBFDBEBDF1}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
 		{B224EBD0-E0C2-448E-91CB-85550096FACA}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{B224EBD0-E0C2-448E-91CB-85550096FACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B224EBD0-E0C2-448E-91CB-85550096FACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -562,6 +543,26 @@ Global
 		{B224EBD0-E0C2-448E-91CB-85550096FACA}.WaterDev|Any CPU.Build.0 = Release|Any CPU
 		{B224EBD0-E0C2-448E-91CB-85550096FACA}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B224EBD0-E0C2-448E-91CB-85550096FACA}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Default|.NET.ActiveCfg = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Release|.NET.ActiveCfg = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|.NET.ActiveCfg = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Any CPU.ActiveCfg = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Any CPU.Build.0 = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
