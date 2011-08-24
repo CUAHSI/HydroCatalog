@@ -10,15 +10,15 @@
   <RecentFiles>
     <RecentFiles>
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:Program.cs" caret="116" fromTop="6" />
-      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:Notes.txt" caret="337" fromTop="8" />
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2596" fromTop="37" />
-      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:site_active_rhodeisland.txt" caret="1001" fromTop="24" />
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:series_01646500.txt" caret="0" fromTop="0" />
       <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="707" fromTop="17" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:site_active_rhodeisland.txt" caret="1001" fromTop="0" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:series_active_rhodeisland_iv_dv.txt" caret="702" fromTop="17" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:WebClient.cs" caret="0" fromTop="0" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:Notes.txt" caret="337" fromTop="8" />
     </RecentFiles>
     <RecentEdits>
-      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="18" />
-      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="28" />
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="9" />
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="13" />
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2591" fromTop="25" />
@@ -46,7 +46,9 @@
       <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:ParseRdb.cs" caret="2516" fromTop="17" />
       <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="1009" fromTop="26" />
       <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="342" fromTop="8" />
-      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="731" fromTop="18" />
+      <File id="AB45445E-6CA3-4988-A6DA-D2D3ED7E87D8/f:TestRdb.cs" caret="707" fromTop="17" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/d:examples/f:series_active_rhodeisland_iv_dv.txt" caret="711" fromTop="17" />
+      <File id="E817C60A-9C7F-42E0-9ADC-BBF45FC2B565/f:Notes.txt" caret="682" fromTop="8" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

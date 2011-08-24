@@ -32,5 +32,18 @@ namespace cuahsi.hiscentral.Properties {
                 return ((string)(this["HisCentral_cuahsi_hiscentral_hiscentral"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>http://hiscentral.cuahsi.org/webservices/hiscentral.asmx</string>
+  <string>http://water.sdsc.edu/hiscentral/webservices/hiscentral.asmx</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection HisCentralServerList {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["HisCentralServerList"]));
+            }
+        }
     }
 }

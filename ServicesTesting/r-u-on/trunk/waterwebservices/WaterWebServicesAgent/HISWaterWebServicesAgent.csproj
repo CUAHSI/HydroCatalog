@@ -219,6 +219,7 @@
     <Content Include="cuahsi.log4net.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="IMPORTANT_NOTE.txt" />
     <None Include="Service References\MonitoringCollection\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

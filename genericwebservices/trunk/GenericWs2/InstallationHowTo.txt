@@ -1,0 +1,74 @@
+﻿Major improvements
+* REST Endpoints for WaterML 1.0, 1.1 and beta 2.0
+** New Rest test interface 
+* Better Installer
+** IIS 7+ installer package
+** IIS 6 Command line install
+** Remote Install capabiltiies for IIS 6 and II7 via web deploy
+** Ability to install to Web Sites other than Default Web Site
+Under the hood
+* Windows Communicaiton Foundation for the REST endpoints
+
+Requirements
+* IIS/ASP.Net v4
+* SqlServer (express is OK)
+* .Net 4.0 ( Use Windows Update or in Visual Studio 2010)
+* WebDeploy (install using MS Web Platform Installer)
+Windows 2003:
+* hotfix from http://support.microsoft.com/kb/915782
+Optional
+* Windows Server AppFabric
+** this allows for better monitoring of the REST services
+
+To Install
+* gather
+** sql connection string
+** Brief (8 Characters or less) Name of Service
+* Download XXXX.zip
+* unzip
+** files should be xxx
+Files:
+* Mod_GenericWs2.deploy.cmd
+* mod_GenericWs2.deploy-readme.txt
+* GenericWs2.SetParameters.xml
+* GenericWs2.SourceManifest.xml
+* GenericWs2.zip
+
+II7 Installer Install
+* Open IIS 7 web admin, 
+* Navigate to WebSite (should be Default Web Site)
+* 
+
+Command Line Install
+IIS6 Note, post install you will need to create and assign the Web Application to ASP.Net 4.0 Application Pool
+
+0) Install WebDeploy (http://www.iis.net/download/DeployAndMigrate)
+1) Installed patched MsBuild script (see http://support.microsoft.com/kb/2537134)
+2) rename GenericWs2.SetParameters.xml
+3) edit GenericWs2.SetParameters_(YOURNAME).xml
+4) Start VS2010 command line as ADMINSTRATOR
+5) run test install
+GenericWs2.deploy /T  -setParamFile=%PATHTOFILE%\GenericWs2.SetParameters_(YOURNAME).xml
+6) run install
+GenericWs2.deploy /Y  -setParamFile=%PATHTOFILE%\GenericWs2.SetParameters_(YOURNAME).xml
+
+
+This can be done remotely:
+0) Assume WebDeploy is installed, and Patched
+1) Start WebDeploy Service on remote machine
+1) Start VS2010 command line
+2) run test install
+GenericWs2.deploy /T  [/M:ComputerName] [/U:UserName] [/P:Password] -setParamFile=%PATHTOFILE%\GenericWs2.SetParameters_(YOURNAME).xml
+3) run install
+GenericWs2.deploy /Y [/M:ComputerName] [/U:UserName] [/P:Password] -setParamFile=%PATHTOFILE%\GenericWs2.SetParameters_(YOURNAME).xml
+4) IIS6 Note, you will need to create and assign the Web Application to ASP.Net 4.0 Application Pool
+
+
+
+====
+Noted Issues
+* IIS6 Note, you will need to create and assign the Web Application to ASP.Net 4.0 Application Pool
+
+=====
+Web Deploy: http://www.iis.net/download/WebDeploy
+Net 4: 

@@ -46,6 +46,7 @@
     <Compile Include="ParseRdb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="examples\series_01646500.txt">

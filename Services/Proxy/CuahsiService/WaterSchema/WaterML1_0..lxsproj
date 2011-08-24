@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
+<XmlStudioProject xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="9.0.8.3018" UseRelativePaths="false">
+	<Project Name="WaterML1_0.">
+		<SubGroup Name="Documents"/>
+		<SubGroup Name="Schemas">
+			<File Uri="C:\dev_2010\Proxy\CuahsiService\WaterSchema\cuahsiTimeSeries_v1_0.xsd"/>
+		</SubGroup>
+		<SubGroup Name="Transforms">
+			<File Uri="C:\dev_2010\Proxy\CuahsiService\CuahsiService\v1_0\xslt\passthrough_timeSeriesResponse.xslt"/>
+			<File Uri="C:\dev_2010\Proxy\CuahsiService\CuahsiService\v1_0\xslt\passthrough_sitesResponse.xslt"/>
+			<File Uri="C:\dev_2010\Proxy\CuahsiService\CuahsiService\v1_0\xslt\passthrough_variablesResponse.xslt"/>
+		</SubGroup>
+	</Project>
+</XmlStudioProject>

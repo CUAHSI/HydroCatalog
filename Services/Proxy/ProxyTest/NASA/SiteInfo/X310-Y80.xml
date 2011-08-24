@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sitesResponse xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:wtr="http://www.cuahsi.org/waterML/1.0/" 
+xmlns="http://www.cuahsi.org/waterML/1.0/">
+   <queryInfo>
+      <queryURL>http://hydro1.sci.gsfc.nasa.gov/daac-bin/cuahsi/his.cgi?function=GetSiteInfo&amp;location=NLDAS:X310-Y80</queryURL>
+      <criteria>
+         <locationParam>NLDAS:X310-Y80</locationParam>
+      </criteria>
+   </queryInfo>
+   <site>
+      <siteInfo>
+         <siteName>X310-Y80 of North American Land Data Assimilation System (NLDAS) NASA</siteName>
+         <siteCode network="NLDAS" siteID="03100080">X310-Y80</siteCode>
+         <geoLocation>
+            <geogLocation xsi:type="LatLonPointType" srs="EPSG:4326">
+               
+               <latitude>35.063</latitude>
+				<longitude>-86.188</longitude>
+            </geogLocation>
+         </geoLocation>
+      </siteInfo>      
+      <seriesCatalog menuGroupName="North American Land Data Assimilation System (NLDAS) NASA">
+         <series>
+            <variable>         
+               <variableCode vocabulary="NLDAS" default="true" variableID="61">NLDAS_FORA0125_H.002:apcpsfc</variableCode>
+              <variableName>Precipitation hourly total</variableName>
+              <valueType>Derived Value</valueType>
+              <dataType>Incremental</dataType>
+              <generalCategory>Hydrology</generalCategory>
+              <sampleMedium>Precipitation</sampleMedium>         
+              <units unitsAbbreviation="kg/m^2">Kilograms per square meter</units>
+              <NoDataValue>-9999</NoDataValue>
+              <timeSupport isRegular="true">
+                 <unit UnitID="103">
+                 <UnitDescription>hour</UnitDescription>
+                     <UnitType>Time</UnitType>
+                     <UnitAbbreviation>hr</UnitAbbreviation>
+                 </unit>
+                 <timeInterval>1</timeInterval>
+              </timeSupport>
+           </variable>
+           <valueCount>280464</valueCount>
+           <variableTimeInterval xsi:type="TimeIntervalType">
+              <beginDateTime>1979-01-01T13:00:00</beginDateTime>
+              <endDateTime>2010-12-30T12:00:00</endDateTime>
+           </variableTimeInterval>
+           <Method methodID="1">
+              <MethodDescription>
+                  NLDAS Forcing A 0.125 degree hourly data
+              </MethodDescription>
+           </Method>
+           <Source sourceID="1">
+              <Organization>
+                 NASA Goddard Earth Sciences (GES) Data and Information Services Center (DISC)
+              </Organization>
+              <SourceDescription>
+                 NASA North American Land Data Assimilation System (NLDAS) primary forcing A data
+              </SourceDescription>
+           </Source>
+           <QualityControlLevel qualityControlLevelID="2">Derived products</QualityControlLevel>
+         </series>
+         <series>
+            <variable>         
+               <variableCode vocabulary="NLDAS" default="true" variableID="11">NLDAS_FORA0125_H.002:tmp2m</variableCode>
+              <variableName>2-m above ground temperature</variableName>
+              <valueType>Derived Value</valueType>
+              <dataType>Average</dataType>
+              <generalCategory>Hydrology</generalCategory>
+              <sampleMedium>Air</sampleMedium>         
+              <units unitsAbbreviation="degK">degree kelvin</units>
+              <NoDataValue>-9999</NoDataValue>
+              <timeSupport isRegular="true">
+                 <unit UnitID="103">
+                 <UnitDescription>hour</UnitDescription>
+                     <UnitType>Time</UnitType>
+                     <UnitAbbreviation>hr</UnitAbbreviation>
+                 </unit>
+                 <timeInterval>1</timeInterval>
+              </timeSupport>
+           </variable>
+           <valueCount>280464</valueCount>
+           <variableTimeInterval xsi:type="TimeIntervalType">
+              <beginDateTime>1979-01-01T13:00:00</beginDateTime>
+              <endDateTime>2010-12-30T12:00:00</endDateTime>
+           </variableTimeInterval>
+           <Method methodID="1">
+              <MethodDescription>
+                  NLDAS Forcing A 0.125 degree hourly data
+              </MethodDescription>
+           </Method>
+           <Source sourceID="1">
+              <Organization>
+                 NASA Goddard Earth Sciences (GES) Data and Information Services Center (DISC)
+              </Organization>
+              <SourceDescription>
+                 NASA North American Land Data Assimilation System (NLDAS) primary forcing A data
+              </SourceDescription>
+           </Source>
+           <QualityControlLevel qualityControlLevelID="2">Derived products</QualityControlLevel>
+         </series>
+      </seriesCatalog>
+   </site>
+</sitesResponse>

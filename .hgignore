@@ -67,3 +67,4 @@ genericwebservices/trunk/genericODws/build_configs/Debug_*.config
 genericwebservices/trunk/genericODws/build_configs/WaterDev*.config
 app.Debug.config
 web.Debug.config
+*.gpState

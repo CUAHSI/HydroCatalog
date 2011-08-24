@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.Common;
 using System.Data.Linq;
 using System.Data.SqlClient;
@@ -26,7 +27,7 @@ namespace ServicesWebSite.services
            ,[Working]
            ,[ErrorString]
            ,[RunTime]
-           ,[Servity]
+           ,[Severity]
            ,[Location]
            ,[Variable]
            ,[StartDate]
@@ -40,7 +41,7 @@ namespace ServicesWebSite.services
            ,@Working
            ,@ErrorString
            ,@RunTime
-           ,@Servity
+           ,@Severity
            ,@Location
            ,@Variable
            ,@StartDate
@@ -69,21 +70,41 @@ namespace ServicesWebSite.services
                    conn.Open();
                    foreach (TestResult result in testResult)
                    {
-                       cmd.Parameters.Clear();
-                       cmd.Parameters.Add(new SqlParameter("Identifier", result.Identifier));
-                       cmd.Parameters.Add(new SqlParameter("ServiceName", result.ServiceName ?? String.Empty ) );
-                       cmd.Parameters.Add(new SqlParameter("MethodName", result.MethodName ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("Working", result.Working));
-                       cmd.Parameters.Add(new SqlParameter("ErrorString", result.ErrorString ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("RunTime", result.RunTime));
-                       cmd.Parameters.Add(new SqlParameter("Servity",Enum.GetName(typeof(AlarmSeverity),result.Serverity) ));
-                       cmd.Parameters.Add(new SqlParameter("Location", result.Location ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("Variable", result.Variable ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("StartDate", result.StartDate ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("EndDate", result.EndDate ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("Endpoint", result.Endpoint ?? String.Empty));
-                       cmd.Parameters.Add(new SqlParameter("ExceptionMessage", result.ExceptionMessage ?? String.Empty));
-                       cmd.ExecuteNonQuery();
+                       try
+                       {
+                           cmd.Parameters.Clear();
+                           var sev = Enum.GetName(typeof (AlarmSeverity), result.Serverity).ToString();
+                           cmd.Parameters.Add(new SqlParameter("Identifier",SqlDbType.UniqueIdentifier));
+                           cmd.Parameters["Identifier"].Value = result.Identifier;
+                           cmd.Parameters.Add(new SqlParameter("ServiceName", SqlDbType.VarChar, 50));
+                           cmd.Parameters["ServiceName"].Value = result.ServiceName ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("MethodName", SqlDbType.VarChar, 50));
+                           cmd.Parameters["MethodName"].Value = result.MethodName ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("Working", SqlDbType.Bit));
+                          cmd.Parameters["Working"].Value = result.Working.HasValue? result.Working.Value: false;
+
+                           cmd.Parameters.Add(new SqlParameter("ErrorString",SqlDbType.NText));
+                           cmd.Parameters["ErrorString"].Value =  result.ErrorString ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("RunTime", result.RunTime));
+                           cmd.Parameters.Add(new SqlParameter("Severity", SqlDbType.VarChar, 10));
+                           cmd.Parameters["Severity"].Value = sev;
+                           cmd.Parameters.Add(new SqlParameter("Location", SqlDbType.VarChar, 100));
+                           cmd.Parameters["Location"].Value = result.Location ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("Variable", SqlDbType.VarChar, 100));
+                            cmd.Parameters["Variable"].Value =result.Variable ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("StartDate", SqlDbType.VarChar, 30));
+                           cmd.Parameters["StartDate"].Value =result.StartDate ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("EndDate", SqlDbType.VarChar, 30));
+                           cmd.Parameters["EndDate"].Value = result.EndDate ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("Endpoint", SqlDbType.VarChar, 255));
+                           cmd.Parameters["Endpoint"].Value = result.Endpoint ?? String.Empty;
+                           cmd.Parameters.Add(new SqlParameter("ExceptionMessage", SqlDbType.NText));
+                           cmd.Parameters["ExceptionMessage"].Value =   result.ExceptionMessage ?? String.Empty;
+                           cmd.ExecuteNonQuery();
+                       } catch (Exception ex )
+                       {
+                           // log error
+                       }
                    }
                    conn.Close();
                }
