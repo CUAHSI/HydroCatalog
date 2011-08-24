@@ -1,5 +1,7 @@
-2011-05-31 12:44:42,343 [19] INFO  PerformanceLogger [(null)] - GenericODWS_Start
-2011-05-31 12:44:47,018 [19] DEBUG PerformanceLogger [(null)] - sessionStart
-2011-05-31 12:44:47,037 [19] INFO  PerformanceLogger [(null)] - [ServerStats:  [Uptime:00:00:04.4970180]  ]
-2011-05-31 13:05:20,772 [19] DEBUG PerformanceLogger [(null)] - sessionEnd
-2011-05-31 13:05:20,772 [19] INFO  PerformanceLogger [(null)] - [ServerStats:  [Uptime:00:20:38.2323238]  ]
+2011-07-01 10:57:29,175 [5] INFO  PerformanceLogger [(null)] - GenericODWS_Start
+2011-07-01 10:57:30,268 [5] ERROR PerformanceLogger [(null)] - Application Error
+2011-07-01 10:57:30,980 [5] INFO  PerformanceLogger [(null)] - [ServerStats:  [Uptime:00:00:01.5306696]  ]
+2011-07-01 10:57:32,158 [5] ERROR PerformanceLogger [(null)] - Application Error
+2011-07-01 10:57:32,159 [5] INFO  PerformanceLogger [(null)] - [ServerStats:  [Uptime:00:00:02.7721020]  ]
+2011-07-01 11:00:00,683 [5] INFO  PerformanceLogger [(null)] - GenericODWS_Stop
+2011-07-01 11:00:00,683 [5] INFO  PerformanceLogger [(null)] - [ServerStats:  [Uptime:00:02:31.2950326]  ]

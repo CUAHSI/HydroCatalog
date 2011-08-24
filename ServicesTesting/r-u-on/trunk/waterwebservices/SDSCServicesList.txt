@@ -1,0 +1,6 @@
+NWISDV, true, http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx?WSDL, NWIS:10263500, NWIS:00060, 2010-01-01/2010-01-31
+NWISUV, true, http://river.sdsc.edu/wateroneflow/NWIS/UnitValues.asmx?WSDL, NWIS:10109000, NWIS:00065, P1D
+NCDCISH, false, http://river.sdsc.edu/wateroneflow/NCDC/ISH_1_0.asmx?WSDL, NCDCISH:72584523225, NCDCISH:CIG, 2008-01-01/2008-03-01
+NCDCISD, false, http://river.sdsc.edu/wateroneflow/NCDC/ISD_1_0.asmx?WSDL, NCDCISD:72584523225, NCDCISD:CIG, 2008-01-01/2008-03-01
+NCDCISH_realtime, false, http://river.sdsc.edu/wateroneflow/NCDC/ISH_1_0.asmx?WSDL, NCDCISH:72584523225, NCDCISH:CIG, P5D
+NCDCISD_realtime, false, http://river.sdsc.edu/wateroneflow/NCDC/ISD_1_0.asmx?WSDL, NCDCISD:72584523225, NCDCISD:CIG, P10D

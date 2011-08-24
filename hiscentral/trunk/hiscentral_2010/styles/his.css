@@ -1,0 +1,194 @@
+/***********************************************/
+/* hisds.css - 05/14/2008                      */
+/***********************************************/
+/*
+@import url(yui-reset.css);
+*/
+body {
+	background-color: white;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+
+a:link, a:visited {
+	color: #005FA9;
+	text-decoration: none}
+
+a:hover{text-decoration: underline}
+
+ul{
+ list-style-type: disc;
+ text-align: left;
+ padding: 0;
+ margin: 6px 0 6px 2em
+}
+
+li{
+}
+
+input,textarea {
+	margin: 4px;
+	padding: 0;
+}
+
+cite {
+	margin: 4px;
+}
+
+/************** header tag styles **************/
+
+
+
+h3{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color: white;
+	background-color: #336699;
+	letter-spacing:1px;
+	background-image: url(../images/blue_round_left.gif);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding: 2px 2px 2px 25px;
+	margin: 1.75em 0 2px 0 ;
+}
+
+a.head3{color: white}
+
+a.head3:hover{
+	background-color: white;
+	color: #336699;
+}
+
+
+/*************** page header styles ***************/
+
+.pageheader 
+{
+	position:absolute;
+	top:0;
+	left:0;
+	padding: 0;
+	margin: 0;
+	background: #336699;
+	border-top:  thin solid black;
+	border-bottom: thin solid black;
+	width: 100% ;
+}
+
+.whiteline {
+	padding: 0;	
+	margin: 0;
+	border: 0;
+	border-bottom:  medium solid white;
+	clear: both;
+} 
+
+
+
+/************ page navigation styles **************/
+
+.pageNav{
+	width: 150px;
+	padding: 4px 4px 4px 4px;
+	background-color: #336699;
+}
+
+.menuItems{
+	text-align: left; 
+	margin: 0px;
+	padding: 0px;
+}
+.menuItems hr {
+	color:black;
+	height:1px;
+}
+.menuItems ul {
+	margin: 0px;
+	padding: 0px 0px 0px 12px;
+	list-style-type: none ;
+}
+
+.menuItems a:link, .menuItems a:visited {
+	padding: 4px 0px 4px 0px;
+	font-size: 80%;
+	font-weight: bold;
+	display: block;
+	color: white;
+	text-decoration: none;
+}
+
+.menuItems a:hover{
+	background-color: white;
+	color: #336699;
+}
+
+
+
+/************ lower navagation panel **************/
+
+.lowerNavPanel{
+	width: 150px;
+	padding: 4px 4px 4px 4px;
+	background-color: #336699;
+}
+.lowerNavPanel p {
+	text-align:center;
+	font-size: 80%;
+
+}
+
+.lowerNavPanel a:link, .lowerNavPanel a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+.lowerNavPanel a:hover{text-decoration: underline}
+
+/************ page footer styles **************/
+
+.pageFooter{
+	padding: 0;
+	margin: 0;
+	background-color: #336699;
+	border-top:  thin solid black;
+	border-bottom: thin solid black;
+	width: 100% ;
+	vertical-align: middle;
+}
+
+.footerContent {
+	padding-bottom: 2px;
+	color: black;
+}
+
+.footerContent a:link, .footerContent a:visited {
+	font-size: 80%;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+
+.footerContent a:hover{
+	background-color: white;
+	color: #336699;
+}
+
+/********* form styles *********/
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+
+				
+input{
+font-family: verdana,Arial,sans-serif;
+}
+

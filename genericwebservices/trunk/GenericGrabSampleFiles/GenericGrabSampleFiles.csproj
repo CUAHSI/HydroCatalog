@@ -93,10 +93,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:6278/genericODws/cuahsi_1_0.asmx">
+    <WebReferenceUrl Include="http://localhost:62781/genericODws/cuahsi_1_0.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wof10\</RelPath>
-      <UpdateFromURL>http://localhost:6278/genericODws/cuahsi_1_0.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:62781/genericODws/cuahsi_1_0.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -70,5 +70,14 @@ namespace cuahsi.wof.ruon.Properties {
                 return ((string)(this["WaterWebServicesAgent_badNamespace_wml11_over_wof10_WaterOneFlow"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3600")]
+        public int RunInterval {
+            get {
+                return ((int)(this["RunInterval"]));
+            }
+        }
     }
 }

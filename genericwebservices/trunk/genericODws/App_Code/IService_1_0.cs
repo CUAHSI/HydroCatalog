@@ -9,7 +9,7 @@ using WaterOneFlowImpl;
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Addressing;
 using Microsoft.Web.Services3.Messaging;
-using WaterOneFlowImpl.Generic;
+
 
 /* In order to keep the "Contract" Clean. Descriptions are found the WsDescriptions Class.
  * This is a set of constants.

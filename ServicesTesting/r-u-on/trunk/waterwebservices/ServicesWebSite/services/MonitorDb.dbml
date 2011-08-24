@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="hiscentral_logging" EntityNamespace="ServicesWebSite.services.monitors" ContextNamespace="ServicesWebSite.services" Class="MonitorDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=disrupter.sdsc.edu;Initial Catalog=hiscentral_logging;Persist Security Info=True;User ID=webservice" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="hiscentral_loggingReader" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.LastServiceRecords" Member="LastServiceRecords">
+    <Type Name="LastServiceRecord">
+      <Column Name="TimeChecked" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Identifier" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MethodName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Working" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ErrorString" Type="System.String" DbType="NText" CanBeNull="true" />
+      <Column Name="RunTime" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Severity" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variable" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Endpoint" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ExceptionMessage" Type="System.String" DbType="NText" CanBeNull="true" />
+      <Column Name="TimeUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceWorkingStats" Member="ServiceWorkingStats">
+    <Type Name="ServiceWorkingStat">
+      <Column Name="ServiceName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MethodName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalTests" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkingTests" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedTests" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

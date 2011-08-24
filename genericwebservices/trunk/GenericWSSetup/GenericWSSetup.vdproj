@@ -176,7 +176,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727        "
+                "FrameworkVersion" = "8:2.0.50727                   "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -344,7 +344,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CUAHSI Generic OD Web Services"
         "ProductCode" = "8:{9F3B1F98-423E-4581-A6EA-0A36B1BB3DBD}"
-        "PackageCode" = "8:{93CE6B87-9160-4E90-BF44-2647AD9E56F3}"
+        "PackageCode" = "8:{9D075EEB-9EB1-4307-9329-299459FD6D98}"
         "UpgradeCode" = "8:{23168873-97F6-46AE-BB04-DC73AA49282B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1076,36 +1076,6 @@
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BE5DF9D284C947309F8E8796677C57B8"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8FDCF595BEAD4D86A9417EEC193D9120"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{76F0008E-04E7-448E-907F-01FF469874DC}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                "ExcludeFilter" = "8:WaterDev_*.config"
-                "ExcludeFilter" = "8:Debug_*.config"
                 }
             }
         }

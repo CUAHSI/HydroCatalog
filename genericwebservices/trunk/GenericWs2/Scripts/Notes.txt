@@ -1,0 +1,5 @@
+﻿Date.js comes from:
+http://code.google.com/p/datejs/
+MIT License
+
+jquery is from Nuget package.

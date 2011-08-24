@@ -1,0 +1,319 @@
+* html .header h2 {
+	top: 35px;
+}
+* html .todoheader, * html .insertheader {
+	height: 1%;
+}
+a, a:visited {
+	text-decoration: none;
+}
+a:hover, input {
+	color: #333333;
+}
+form    
+{
+    width: 375px;
+}
+body {
+	background: #6B91C3;
+	font: "Segoe UI", Segoe, sans-serif;
+	margin: 0;
+	padding: 18px;
+    background: url(images/bkgrnd.png) top left repeat-x;	
+}
+em {
+	background: #EEEEEE;
+	font-style: normal;
+}
+li {
+	background: url(images/bullet_purple.gif) top left no-repeat;
+	padding: 0 0 0 18px;
+}
+p {
+	line-height: 18px;
+	margin: 5px;
+}
+p,li, input {
+	color: #333333;
+	font: small "Segoe UI", Segoe, sans-serif;
+	padding: 0;
+}
+ul {
+	list-style: none;
+	margin: 5px;
+	padding: 0;
+}
+.placeholder {
+	color: #003399;
+	font: bold medium "Segoe UI", Segoe, sans-serif;
+	height: 40px;
+}
+.content {
+	float: left;
+	margin: 5px 5px;
+	text-align: left;
+}
+
+.detailsview .actions div {
+	float: right;
+	text-align: right;
+	width: 95px;
+	padding-right: 2px;
+}
+.detailsview td {
+	background: #D7E6F4;
+	color: #333333;
+	font: small "Segoe UI", Segoe, sans-serif;
+	padding: 15px 10px 10px 10px;
+}
+.detailsview td a {
+	color: #0066CC;
+	font: bold small "Segoe UI", Segoe, sans-serif;
+	padding-right: 10px;
+}
+.detailsview td a:hover {
+	font-weight: bold;
+	color: #333;
+}
+.detailsview th {
+	background: #4168BD;
+	color: #FFFFFF;
+	font: small "Segoe UI", Segoe, sans-serif;
+	letter-spacing: 0;
+	padding: 3px 8px 5px;
+	padding: 2px;
+	text-align: left;
+}
+.detailsview tr.header {
+	background: #C5DBF7;
+	padding: 3px 8px 5px;
+}
+.gridview .actions div {
+	float: right;
+	padding-right: 2px;
+	text-align: right;
+	width: 95px;
+	
+}
+
+.gridview .edit td,.gridview .create td {
+	background: #DAFFCD;
+	padding: 4px;
+	border-bottom: solid 2px #FFFFFF;
+	border-top: solid 2px #FFFFFF;
+}
+
+.gridview td {
+	background: #D7E6F4;
+	border-bottom: solid 1px #C5DBF7;
+	color: #333333;
+	font: small "Segoe UI", Segoe, sans-serif;
+	padding: 4px 4px;
+	text-transform:lowercase;
+}
+.gridview td a{
+	color: #0066CC;
+	font: bold small "Segoe UI",Segoe,sans-serif;
+	padding: 2px;
+	text-decoration: none;
+}
+.gridview td a:hover {
+	color: #333333;
+	font-weight: bold;
+}
+
+
+.gridview th {
+	background: #4168BD;
+	color: #FFFFFF;
+	font: small "Segoe UI", Segoe, sans-serif;
+	letter-spacing: 0;
+	padding: 4px;
+	text-align: left;
+}
+.gridview th a{
+	color: #FFFFFF;
+	font: bold small "Segoe UI",Segoe,sans-serif;
+}
+.gridview th a:hover{
+	color: #00FF00;
+}
+.gridview tr.even td,.detailsview tr.even td{
+	background: #FFFFFF;
+}
+.gridview tr.header {
+	background: #C5DBF7;
+}
+.gridview,.detailsview {
+	width: 100%;
+}
+.header {
+	height: 50px;
+	margin-left: 5px;
+}
+.header h1 {
+	color: #10377C;
+	font: bold xx-large "Segoe UI", Segoe, sans-serif;
+	margin: 0px;
+}
+.header h2 {
+	color: #666666;
+	font: x-small "Segoe UI", Segoe, sans-serif;
+	position: absolute;
+	top: 28px;
+}
+.header h2 a {
+	color: #6600CC;
+	font-weight: normal;
+}
+.insert {
+	width: 300px;
+}
+.insert span {
+	font-family: "Segoe UI", Segoe, sans-serif;
+}
+.insertheader 
+{
+    color: Silver;
+	background: #10377C url(images/add.gif) 6px 50% no-repeat;
+	margin-top: 25px;
+	padding-left: 25px;
+	position: relative;
+}
+.insertheader  a {
+	color: #FFFFFF;
+	font: bold medium "Segoe UI", Segoe, sans-serif;
+	margin-left: 20px;
+}
+.login {
+	font: small "Segoe UI", Segoe, sans-serif;
+	margin-left: 100px;
+	margin-top: 30px;
+}
+.login .logintitle {
+	background: #10377C;
+	color: #0066CC;
+	color: #FFFFFF;
+	font: bold large "Segoe UI", Segoe, sans-serif;
+	letter-spacing: 0;
+	padding: 2px;
+	padding-left: 5px;
+	text-align: left;
+}
+.login input[type=text] input[type=password] {
+	width: 100px;
+}
+.loginstatus {
+	font: small "Segoe UI", Segoe, sans-serif;
+	margin-left: 660px;
+	margin-top: 20px;
+	position: absolute;
+	text-align: right;
+	width: 200px;
+}
+.loginstatus span {
+	margin-right: 20px;
+}
+.menu {
+	border-width: 1px;
+	float: left;
+	margin: 20px 5px;
+	width: 150px;
+}
+.progress {
+	color: #FFFF99;
+	float: right;
+	font: bold x-large "Segoe UI", Segoe, sans-serif;
+	margin-top: -20px;
+}
+.rss {
+	margin-top: 20px;
+}
+.todoheader 
+{
+    color: Silver;
+	background: #10377C;
+	position: relative;
+}
+
+.todoheader h2
+{
+	background: url(images/corner.gif) top right no-repeat; 
+	color: #FFFFFF;
+	font: bold medium "Segoe UI", Segoe, sans-serif;
+	margin: 0;
+	padding: 8px 5px 5px 5px;
+}
+.insertheader h2 {
+	color: #FFFFFF;
+	font: bold medium "Segoe UI", Segoe, sans-serif;
+	margin: 0;
+	padding: 8px 5px 5px 5px;
+}
+.updateprogress {
+	color: #FFFFFF;
+	font: bold large "Segoe UI", Segoe, sans-serif;
+}
+
+
+
+
+.gridviewadmin .actions div {
+	float: right;
+	padding-right: 2px;
+	text-align: right;
+	width: 95px;
+	
+}
+
+.gridviewadmin .edit td,.gridviewadmin .create td {
+	background: #FFFFFF;
+	padding: 4px;
+	border-bottom: solid 2px #FFFFFF;
+	border-top: solid 2px #FFFFFF;
+}
+
+.gridviewadmin td {
+	background: #FFFFFF;
+	/*border-bottom: solid 1px #C5DBF7;*/
+	color: #333333;
+	font: small "Segoe UI", Segoe, sans-serif;
+	padding: 4px 4px;
+	text-transform:uppercase;
+}
+.gridviewadmin td a{
+	color: #0066CC;
+	font: bold small "Segoe UI",Segoe,sans-serif;
+	padding: 2px;
+	text-decoration: none;
+}
+.gridviewadmin td a:hover {
+	color: #333333;
+	font-weight: bold;
+}
+
+
+.gridviewadmin th {
+	background: #000000;
+	color: #FFFFFF;
+	font: small "Segoe UI", Segoe, sans-serif;
+	letter-spacing: 0;
+	padding: 4px;
+	text-align: left;
+}
+.gridviewadmin th a{
+	color: #FFFFFF;
+	font: bold small "Segoe UI",Segoe,sans-serif;
+}
+.gridviewadmin th a:hover{
+	color: #00FF00;
+}
+.gridviewadmin tr.even td,.detailsview tr.even td{
+	background: #FFFFFF;
+}
+.gridviewadmin tr.header {
+	background: #C5DBF7;
+}
+.gridviewadmin,.detailsview {
+	width: 100%;
+}

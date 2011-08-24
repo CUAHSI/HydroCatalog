@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<timeSeriesResponse xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:wtr="http://www.cuahsi.org/waterML/1.0/" 
+xmlns="http://www.cuahsi.org/waterML/1.0/">
+   <queryInfo>
+      <creationTime>2011-02-15T19:36:01Z</creationTime>
+      <queryURL>http://hydro1.sci.gsfc.nasa.gov/daac-bin/cuahsi/his.cgi?function=GetValues&amp;variable=NLDAS:NLDAS_FORA0125_H.002:apcpsfc&amp;location=GEOM:POINT(-86.188 35.063)&amp;startDate=1980-01-03T11&amp;endDate=1980-01-04T11</queryURL> 
+      <criteria>
+         <locationParam>GEOM:POINT(-86.188 35.063)</locationParam>
+         <variableParam>NLDAS:NLDAS_FORA0125_H.002:apcpsfc</variableParam>
+         <timeParam>
+             <beginDateTime>1980-01-03T11:00:00</beginDateTime>
+             <endDateTime>1980-01-04T11:00:00</endDateTime>
+          </timeParam>
+      </criteria>
+   </queryInfo>
+   <timeSeries>
+      <sourceInfo xsi:type="SiteInfoType">
+          <siteName>
+             X310-Y80 of North American Land Data Assimilation System (NLDAS) NASA
+          </siteName>
+          <siteCode network="NLDAS" siteID="03100080">
+              X310-Y80
+          </siteCode>
+          <geoLocation>
+              <geogLocation xsi:type="LatLonPointType" srs="EPSG:4326">
+                 
+                 <latitude>35.063</latitude>
+				<longitude>-86.188</longitude>
+              </geogLocation>
+          </geoLocation>
+      </sourceInfo>
+      <variable>
+          <variableCode vocabulary="NLDAS" default="true" variableID="61">NLDAS_FORA0125_H.002:apcpsfc</variableCode>
+          <variableName>Precipitation hourly total</variableName>
+          <valueType>Derived Value</valueType>
+          <dataType>Incremental</dataType>
+          <generalCategory>Hydrology</generalCategory>
+          <sampleMedium>Precipitation</sampleMedium>
+          <units unitsAbbreviation="kg/m^2">Kilograms per square meter</units>
+          <NoDataValue>-9999</NoDataValue>
+          <timeSupport isRegular="true">
+             <unit UnitID="103">
+               <UnitDescription>hour</UnitDescription>
+               <UnitType>Time</UnitType>
+               <UnitAbbreviation>hr</UnitAbbreviation>
+             </unit>
+             <timeInterval>1</timeInterval>
+          </timeSupport>
+       </variable>
+       <values unitsAbbreviation="kg/m^2" unitsCode="9999" count="25">
+          <value censorCode="nc" dateTime="1980-01-03T11:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0422</value>          
+          <value censorCode="nc" dateTime="1980-01-03T12:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0544</value>          
+          <value censorCode="nc" dateTime="1980-01-03T13:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T14:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T15:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T16:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T17:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T18:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T19:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T20:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T21:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T22:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.0</value>          
+          <value censorCode="nc" dateTime="1980-01-03T23:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.1832</value>          
+          <value censorCode="nc" dateTime="1980-01-04T00:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.5468</value>          
+          <value censorCode="nc" dateTime="1980-01-04T01:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.1896</value>          
+          <value censorCode="nc" dateTime="1980-01-04T02:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.2824</value>          
+          <value censorCode="nc" dateTime="1980-01-04T03:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.5926</value>          
+          <value censorCode="nc" dateTime="1980-01-04T04:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.262</value>          
+          <value censorCode="nc" dateTime="1980-01-04T05:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.5664</value>          
+          <value censorCode="nc" dateTime="1980-01-04T06:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.627</value>          
+          <value censorCode="nc" dateTime="1980-01-04T07:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.0306</value>          
+          <value censorCode="nc" dateTime="1980-01-04T08:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.2438</value>          
+          <value censorCode="nc" dateTime="1980-01-04T09:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 1.0051</value>          
+          <value censorCode="nc" dateTime="1980-01-04T10:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.9143</value>          
+          <value censorCode="nc" dateTime="1980-01-04T11:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"> 0.9504</value>          
+          <method methodID="1">
+              <MethodDescription>
+                  NLDAS Forcing A 0.125 degree hourly data
+              </MethodDescription>
+          </method>
+          <source sourceID="1">
+             <Organization>               
+                 NASA Goddard Earth Sciences (GES) Data and Information Services Center (DISC)
+             </Organization>
+             <SourceDescription>         
+                 NASA North American Land Data Assimilation System (NLDAS) primary forcing A data
+             </SourceDescription>
+             <ContactInformation>
+                <ContactName>GES DISC Help Desk</ContactName>
+                <TypeOfContact>Main</TypeOfContact>
+                <Phone>301-614-5224</Phone>
+                <Email>help-disc@listserv.gsfc.nasa.gov</Email>
+                <Address xsi:type="xsd:string">
+                    NASA Goddard Space Flight Center, Code 610.2, Greenbelt, MD 20771 USA
+                </Address>           
+             </ContactInformation>
+             <SourceLink>
+               http://disc.sci.gsfc.nasa.gov/hydrology/data-holdings
+             </SourceLink>
+          </source>
+       </values>
+   </timeSeries>
+</timeSeriesResponse>

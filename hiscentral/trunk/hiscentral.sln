@@ -1,57 +1,34 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "hiscentral", "hiscentral\", "{E46830A5-7959-474F-98F1-1811BB438E93}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFramework = "3.5"
-		Debug.AspNetCompiler.VirtualPath = "/hiscentral"
-		Debug.AspNetCompiler.PhysicalPath = "hiscentral\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\hiscentral\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/hiscentral"
-		Release.AspNetCompiler.PhysicalPath = "hiscentral\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\hiscentral\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "6201"
-	EndProjectSection
-EndProject
-Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "hiscentral_deploy", "hiscentral_deploy\hiscentral_deploy.wdproj", "{71DBF00F-79DE-4377-8810-476FAA9AD963}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralWSMethodTests", "HisCentralWSMethodTests\HisCentralWSMethodTests.csproj", "{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E46830A5-7959-474F-98F1-1811BB438E93} = {E46830A5-7959-474F-98F1-1811BB438E93}
-	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hiscentral_2010", "hiscentral_2010\hiscentral_2010.csproj", "{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Deployment|Any CPU = Deployment|Any CPU
+		Production|Any CPU = Production|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E46830A5-7959-474F-98F1-1811BB438E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E46830A5-7959-474F-98F1-1811BB438E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E46830A5-7959-474F-98F1-1811BB438E93}.Deployment|Any CPU.ActiveCfg = Debug|Any CPU
-		{E46830A5-7959-474F-98F1-1811BB438E93}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{E46830A5-7959-474F-98F1-1811BB438E93}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{71DBF00F-79DE-4377-8810-476FAA9AD963}.Debug|Any CPU.ActiveCfg = Deployment|Any CPU
-		{71DBF00F-79DE-4377-8810-476FAA9AD963}.Debug|Any CPU.Build.0 = Deployment|Any CPU
-		{71DBF00F-79DE-4377-8810-476FAA9AD963}.Deployment|Any CPU.ActiveCfg = Deployment|Any CPU
-		{71DBF00F-79DE-4377-8810-476FAA9AD963}.Deployment|Any CPU.Build.0 = Deployment|Any CPU
-		{71DBF00F-79DE-4377-8810-476FAA9AD963}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71DBF00F-79DE-4377-8810-476FAA9AD963}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Deployment|Any CPU.ActiveCfg = Debug|Any CPU
 		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Production|Any CPU.Build.0 = Production|Any CPU
 		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5194F600-41AA-48A9-BD1A-1C3AB9313BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Production|Any CPU.Build.0 = Production|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D10F8E-F71B-4B14-AD2F-2CC3472D055B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

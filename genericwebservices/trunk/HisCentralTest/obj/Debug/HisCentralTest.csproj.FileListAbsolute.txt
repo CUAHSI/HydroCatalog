@@ -1,0 +1,11 @@
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\HisCentralTest.dll
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\HisCentralTest.pdb
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\HisCentral.dll
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\nunit.framework.dll
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\nunit.mocks.dll
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\pnunit.framework.dll
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\HisCentral.pdb
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\bin\Debug\nunit.framework.xml
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\obj\Debug\ResolveAssemblyReference.cache
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\obj\Debug\HisCentralTest.dll
+C:\dev_hydrocatalog\genericwebservices\trunk\HisCentralTest\obj\Debug\HisCentralTest.pdb

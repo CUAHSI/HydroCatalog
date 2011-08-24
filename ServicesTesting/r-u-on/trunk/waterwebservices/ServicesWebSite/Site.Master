@@ -24,15 +24,22 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem Selectable="False" Text="WebServices" Value="WebServices">
+<asp:MenuItem Text="Public WebServices" Value="Public WebServices">
+    <asp:MenuItem NavigateUrl="~/PublicServicesStatus.aspx" Text="Public Services Status" 
+        Value="Public Services"></asp:MenuItem>
+    <asp:MenuItem NavigateUrl="~/PublicServiceStatistics.aspx" 
+        Text="Public Services Statistics" Value="Public Services Statistics">
+    </asp:MenuItem>
+</asp:MenuItem>
+                        <asp:MenuItem Selectable="False" Text="WebServices R-U-On" Value="WebServices">
                             <asp:MenuItem NavigateUrl="~/ActiveAlerts.aspx" Text="Active Alerts" 
                                 ToolTip="Active Alerts" Value="Active Alerts"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/Historic.aspx" Text="Last 7 Days" 
                                 Value="Last 7 Days"></asp:MenuItem>
                         </asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/HisCentral.aspx" Text="His Central" 
+                        <asp:MenuItem NavigateUrl="~/HisCentral.aspx" Text="His Central  R-U-On" 
                             Value="His Central"></asp:MenuItem>
-                        <asp:MenuItem Text="SDSC" Selectable="False" Value="SDSC">
+                        <asp:MenuItem Text="SDSC  R-U-On" Selectable="False" Value="SDSC">
                             <asp:MenuItem NavigateUrl="~/SDSCActive.aspx" Text="WebServices" 
                                 Value="WebServices"></asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/SDSCAll.aspx" Text="All Montitors" 

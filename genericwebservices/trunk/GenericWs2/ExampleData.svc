@@ -1,0 +1,4 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" 
+Service="GenericWebservice.ExampleData" 
+CodeBehind="ExampleData.svc.cs"
+Factory="System.ServiceModel.Activation.WebScriptServiceHostFactory"  %>
