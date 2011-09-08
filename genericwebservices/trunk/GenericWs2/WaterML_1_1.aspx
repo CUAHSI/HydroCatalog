@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WaterML_1_1.aspx.cs" Inherits="GenericWebservice.WaterML_1_1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WaterML_1_1.aspx.cs" Inherits="WaterOneFlow.odws.v1_1.wcf.WaterML_1_1" %>
 <%@ Register TagPrefix="wml" TagName="WmlUrl" Src="~/UserControls/TestRestUrl.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

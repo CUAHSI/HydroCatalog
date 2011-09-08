@@ -17,32 +17,39 @@ namespace HisCentral
        static GetNetworks()
        {
             
-       }
+       //}
 
-       private static void LoadServiceListing()
-       {
-           int i = 0;
-           while (_loading)
-           {
-               i++;
-               if (i > 60) throw new TimeoutException("HIS central did not return in a reasonable time");
-               Thread.Sleep(500);
+       //private static void LoadServiceListing()
+       //{
+           //int i = 0;
+           //while (_loading)
+           //{
+           //    i++;
+           //    if (i > 60) throw new TimeoutException("HIS central did not return in a reasonable time");
+           //    Thread.Sleep(500);
 
-           }
+           //}
            lock (_serviceList)
            {
                if (Loaded == false)
                {
                    _loading = true;
                    svc = new cuahsi.hiscentral.cuahsi.hiscentral.hiscentral();
-                   var services = svc.GetWaterOneFlowServiceInfo();
-                   foreach (var service in services)
-                   {
-                       _serviceList.Add(service.NetworkName, service);
-                   }
+                   svc.GetWaterOneFlowServiceInfoCompleted += (snd, evt) =>
+                                                                  {
 
-                   _loaded = true;
-                   _loading = false;
+
+                                                                     // var services = svc.GetWaterOneFlowServiceInfo();
+                                                                      var services = evt.Result;
+                                                                      foreach (var service in services)
+                                                                      {
+                                                                          _serviceList.Add(service.NetworkName, service);
+                                                                      }
+
+                                                                      _loaded = true;
+                                                                      _loading = false;
+                                                                  };
+                   svc.GetWaterOneFlowServiceInfoAsync();
                }
            }
        }
@@ -54,7 +61,8 @@ namespace HisCentral
 
        public static ServiceInfo GetNetworkByCode(String netowrkCode)
        {
-           if (!Loaded) LoadServiceListing();
+          // if (!Loaded) LoadServiceListing();
+           while (!Loaded) { Thread.Sleep(100); }
            if (_serviceList.ContainsKey(netowrkCode))
            {
                return _serviceList[netowrkCode];

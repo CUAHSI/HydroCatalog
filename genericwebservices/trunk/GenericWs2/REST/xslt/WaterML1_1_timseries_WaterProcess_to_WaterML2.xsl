@@ -8,7 +8,7 @@
                 xmlns:xlink="http://www.w3.org/1999/xlink" 
                 xmlns:wml="http://www.cuahsi.org/waterML/1.1/" 
                 xmlns:fn="http://www.w3.org/2005/xpath-functions" 
-                xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
+                xsi:schemaLocation="http://www.opengis.net/waterml/2.0  ../Transforms/Schemas/WaterML/waterml2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <!--
     <wml2:ObservationProcess xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:om="http://www.opengis.net/om/2.0" xmlns:wml2="http://www.opengis.net/waterml/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:sams="http://www.opengis.net/samplingSpatial/2.0" xmlns:sam="http://www.opengis.net/sampling/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/waterml/2.0 C:\dev_Woml\WaterML\WaterML2.0\trunk\GeneratedSchema_25_03_2011\observationProcess.xsd" gml:id="AAAAA">
     <gml:metaDataProperty type="simple" xlink:role="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:actuate="none" about="http://www.liquid-technologies.com" />

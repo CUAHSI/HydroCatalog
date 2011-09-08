@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GenericWebservice {
+namespace WaterOneFlow.odws.v1_1.wcf {
     
     
     public partial class WaterMl2 {
@@ -19,6 +19,6 @@ namespace GenericWebservice {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GenericWebservice.TestRestUrl wml2url;
+        protected global::GenericWebservice.UserControls.TestRestUrl wml2url;
     }
 }

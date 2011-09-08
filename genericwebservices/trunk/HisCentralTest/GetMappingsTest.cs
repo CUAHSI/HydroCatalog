@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using HisCentral;
 using NUnit;
 using NUnit.Framework;
@@ -31,7 +32,10 @@ namespace HisCentralTest
      [TestCase(2392, "Nitrogen, total organic")]
       public void OntologyListHisCentral(int i, string result)
       {
-
+        while (GetMappings.Loaded == false)
+        {
+            Thread.Sleep(100);
+        }
           var ontoList = GetMappings.OntologyList;
 
           Assert.AreEqual(ontoList[i],result);

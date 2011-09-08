@@ -58,6 +58,21 @@
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Common">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Http">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.HttpEnhancements">
+      <HintPath>..\packages\WebApi.Enhancements.0.3.0\lib\40\Microsoft.ApplicationServer.HttpEnhancements.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Serialization">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.ServiceModel">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.ServiceModel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Http, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -67,9 +82,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WcfRestLibraries\Microsoft.Http.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Net.Http">
+      <HintPath>..\packages\HttpClient.0.3.0\lib\40\Microsoft.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QueryComposition">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.QueryComposition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Runtime.Serialization.Json">
+      <HintPath>..\packages\JsonValue.0.3.0\lib\40\Microsoft.Runtime.Serialization.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ServiceModel.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WcfRestLibraries\Microsoft.ServiceModel.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.Web.jQuery">
+      <HintPath>..\packages\JsonValue.0.3.0\lib\40\Microsoft.ServiceModel.Web.jQuery.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,6 +105,7 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -90,6 +118,9 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.2\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -104,6 +135,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="InstallationHowTo.txt" />
+    <Content Include="REST\Rest.svc" />
     <Content Include="WaterML_1_1.aspx" />
     <Content Include="cuahsi_1_0.asmx" />
     <Content Include="cuahsi_1_1.asmx" />
@@ -155,9 +187,9 @@
     <Content Include="UserControls\TestRestUrl.ascx" />
     <Content Include="WaterMl2.aspx" />
     <Content Include="WaterML_1_0.aspx" />
-    <Content Include="Web.config">
+    <None Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -205,8 +237,14 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\WebApi.cs" />
     <Compile Include="Configure.aspx.designer.cs">
       <DependentUpon>Configure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MyResource.cs" />
+    <Compile Include="REST\IRest.cs" />
+    <Compile Include="REST\Rest.svc.cs">
+      <DependentUpon>Rest.svc</DependentUpon>
     </Compile>
     <Compile Include="WaterML_1_1.aspx.cs">
       <DependentUpon>WaterML_1_1.aspx</DependentUpon>
@@ -383,17 +421,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Code_old\GetSitesOD_v1_1.cs.exclude" />
-    <Content Include="WaterOneFlow_AppSettings.config">
+    <None Include="WaterOneFlow_AppSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="wateroneflow_authentication.config">
+    </None>
+    <None Include="wateroneflow_authentication.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SOAP\Web.config" />
+    </None>
+    <None Include="SOAP\Web.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SitesSeries.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SitesSeries.designer.cs</LastGenOutput>

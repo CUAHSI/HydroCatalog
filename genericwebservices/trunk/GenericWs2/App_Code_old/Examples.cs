@@ -15,6 +15,7 @@ using System.Web.UI.HtmlControls;
 
 using cuahsi.his;
 using GenericWebservice;
+using WaterOneFlow.odws.v1_1.wcf;
 using genericws.example;
 
 

@@ -68,24 +68,24 @@ namespace genericws.example
 		{
 			OnCreated();
 		}
-		
-		public System.Data.Linq.Table<GenericWebservice.Variable> Variables
+
+        public System.Data.Linq.Table<GenericWebservice.Variable> Variables
 		{
 			get
 			{
 				return this.GetTable<GenericWebservice.Variable>();
 			}
 		}
-		
-		public System.Data.Linq.Table<GenericWebservice.SeriesCatalog> SeriesCatalogs
+
+        public System.Data.Linq.Table<GenericWebservice.SeriesCatalog> SeriesCatalogs
 		{
 			get
 			{
-				return this.GetTable<GenericWebservice.SeriesCatalog>();
+                return this.GetTable<GenericWebservice.SeriesCatalog>();
 			}
 		}
-		
-		public System.Data.Linq.Table<GenericWebservice.Site> Sites
+
+        public System.Data.Linq.Table<GenericWebservice.Site> Sites
 		{
 			get
 			{

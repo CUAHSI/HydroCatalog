@@ -19,6 +19,6 @@ namespace GenericWebservice {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GenericWebservice.TestRestUrl wml10url;
+        protected global::GenericWebservice.UserControls.TestRestUrl wml10url;
     }
 }

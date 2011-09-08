@@ -9,7 +9,7 @@
                 xmlns:wml="http://www.cuahsi.org/waterML/1.1/" 
                 xmlns:fn="http://www.w3.org/2005/xpath-functions" 
                 xmlns:swe="http://www.opengis.net/swe"
-                xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
+                xsi:schemaLocation="http://www.opengis.net/waterml/2.0  ../Transforms/Schemas/WaterML/waterml2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <!--
     <element name="observedProperty" type="gml:ReferenceType">
 <annotation>

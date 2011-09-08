@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TestRestUrl.ascx.cs" 
-Inherits="GenericWebservice.TestRestUrl" %>
+Inherits="GenericWebservice.UserControls.TestRestUrl" %>
  <div id='WaterMlRestUrlControl'><p>
         WaterML is delivered over a SOAP API, called "WaterOneFlow". In this version, the API is updated
         to include a REST endpooint</p>

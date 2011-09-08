@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="WaterMl2.aspx.cs" Inherits="GenericWebservice.WaterMl2" %>
+    CodeBehind="WaterMl2.aspx.cs" Inherits="WaterOneFlow.odws.v1_1.wcf.WaterMl2" %>
 
 <%@ Register TagPrefix="wml" TagName="WmlUrl" Src="~/UserControls/TestRestUrl.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

@@ -25,10 +25,10 @@ namespace HisCentral
         {
            
                
-        }
+        //}
 
-        private static void loadMappings()
-        {
+        //private static void loadMappings()
+        //{
             int i = 0;
             while (_loading)
             {
@@ -43,30 +43,40 @@ namespace HisCentral
                     _loading = true;
                     svc = new cuahsi.hiscentral.cuahsi.hiscentral.hiscentral();
                     Dictionary<int, string> nodes = new Dictionary<int, string>();
-                    var tree = svc.getOntologyTree(null);
-                    tree2List(tree, nodes);
-                    _ontologyList = nodes;
+                    svc.getOntologyTreeCompleted += (sndr, evt) =>
+                                                        {
+                                                            var tree = evt.Result;
+                                                            tree2List(tree, nodes);
+                                                            _ontologyList = nodes;
 
-                    Dictionary<string, MappedVariable> mvnodes = new Dictionary<string, MappedVariable>();
-                    var mvtree = svc.GetMappedVariables2(String.Empty, String.Empty);
-                    foreach (var mappedVariable in mvtree)
-                    {
-                        if (!String.IsNullOrEmpty(mappedVariable.conceptCode)
-                            && !String.IsNullOrEmpty(mappedVariable.variableCode))
-                        {
-                            try
-                            {
-                                mvnodes.Add(mappedVariable.variableCode, mappedVariable);
-                            }
-                            catch
-                            {
-                                //
-                            }
-                        }
-                    }
-                    _mappedVariables = mvnodes;
-                    _loaded = true;
-                    _loading = false;
+
+
+                                                            Dictionary<string, MappedVariable> mvnodes =
+                                                                new Dictionary<string, MappedVariable>();
+                                                            var mvtree = svc.GetMappedVariables2(String.Empty,
+                                                                                                 String.Empty);
+                                                            foreach (var mappedVariable in mvtree)
+                                                            {
+                                                                if (!String.IsNullOrEmpty(mappedVariable.conceptCode)
+                                                                    &&
+                                                                    !String.IsNullOrEmpty(mappedVariable.variableCode))
+                                                                {
+                                                                    try
+                                                                    {
+                                                                        mvnodes.Add(mappedVariable.variableCode,
+                                                                                    mappedVariable);
+                                                                    }
+                                                                    catch
+                                                                    {
+                                                                        //
+                                                                    }
+                                                                }
+                                                            }
+                                                            _mappedVariables = mvnodes;
+                                                            _loaded = true;
+                                                            _loading = false;
+                                                        };
+                    svc.getOntologyTreeAsync(null);
                 }
             }
         }
@@ -80,7 +90,8 @@ namespace HisCentral
         {
          get
          {
-             if (!Loaded) loadMappings();
+             while (!Loaded) { Thread.Sleep(100); }
+            // if (!Loaded) loadMappings();
              //{
              //    Dictionary<int, string> nodes = new Dictionary<int, string>();
              //    var tree = svc.getOntologyTree(null);
@@ -126,8 +137,8 @@ namespace HisCentral
             get
             {
 
-                if (!Loaded) loadMappings(); 
-                
+              //  if (!Loaded) loadMappings(); 
+                while (!Loaded) { Thread.Sleep(100); }
                 if (_mappedVariables == null || _mappedVariables.Count == 0)
                 {
                     Dictionary<string, MappedVariable> nodes = new Dictionary<string, MappedVariable>();
@@ -157,7 +168,8 @@ namespace HisCentral
         }
         public static String GetConceptForVariable(String variableCode)
         {
-            if (!Loaded) loadMappings();
+           // if (!Loaded) loadMappings();
+            while (!Loaded){Thread.Sleep(100);}
             var mv = MappedVariables;
             if (mv.Keys.Contains(variableCode))
             {

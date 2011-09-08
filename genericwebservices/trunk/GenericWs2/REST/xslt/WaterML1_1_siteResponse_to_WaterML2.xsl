@@ -10,7 +10,7 @@ xmlns:om="http://www.opengis.net/om/2.0"
 xmlns:sams="http://www.opengis.net/samplingSpatial/2.0"
 xmlns:xlink="http://www.w3.org/1999/xlink"
 xmlns:wml="http://www.cuahsi.org/waterML/1.1/" 
-xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" 
+xsi:schemaLocation="http://www.opengis.net/waterml/2.0  ../Transforms/Schemas/WaterML/waterml2.xsd" 
 exclude-result-prefixes="xs" version="2.0">
     
     <xsl:output method="xml" indent="yes" />

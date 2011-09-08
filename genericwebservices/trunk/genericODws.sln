@@ -173,6 +173,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WfsHandlerTest", "WfsHandle
 EndProject
 Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "GenericWs2.csproj_deploy1", "GenericWs2.csproj_deploy1\GenericWs2.csproj_deploy1.wdproj", "{0F503AB4-EF64-4EF1-BD48-18114B42C310}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GenericWsSetup2", "GenericWsSetup2\GenericWsSetup2.vdproj", "{677F0CCF-BC9B-4294-BA4F-74A134C834DF}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = genericODws.vsmdi
@@ -563,6 +565,18 @@ Global
 		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Any CPU.Build.0 = Release|Any CPU
 		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0F503AB4-EF64-4EF1-BD48-18114B42C310}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Debug|.NET.ActiveCfg = Debug
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Debug|Any CPU.ActiveCfg = Debug
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Default|.NET.ActiveCfg = Debug
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Default|Any CPU.ActiveCfg = Debug
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Default|Mixed Platforms.ActiveCfg = Debug
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Release|.NET.ActiveCfg = Release
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Release|Any CPU.ActiveCfg = Release
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.Release|Mixed Platforms.ActiveCfg = Release
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.WaterDev|.NET.ActiveCfg = Release
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.WaterDev|Any CPU.ActiveCfg = Release
+		{677F0CCF-BC9B-4294-BA4F-74A134C834DF}.WaterDev|Mixed Platforms.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

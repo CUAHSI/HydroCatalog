@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GenericWebservice {
+namespace GenericWebservice.UserControls {
     
     
     public partial class TestRestUrl {
