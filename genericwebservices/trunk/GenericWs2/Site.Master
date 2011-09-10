@@ -38,13 +38,13 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem Text="API's" Value="API's"></asp:MenuItem>
                         <asp:MenuItem Text="WaterML 1.0" Value="WaterML 1.0" 
                             NavigateUrl="~/WaterML_1_0.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="WaterML 1.1" Value="WaterML 1.1"  NavigateUrl="~/WaterML_1_1.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="WaterML 2.0" Value="WaterML 2.0" 
                             NavigateUrl="~/WaterMl2.aspx"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem NavigateUrl="~/DataCartWFS.aspx" Text="DataCart WFS" 
+                            Value="DataCart WFS"></asp:MenuItem>
                         <asp:MenuItem Text="Admin" Value="Admin">
                             <asp:MenuItem NavigateUrl="~/Configure.aspx" Text="Configuraiton" 
                                 Value="Configuraiton"></asp:MenuItem>

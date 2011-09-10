@@ -525,8 +525,10 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
             sb.Append("<ogc:FID />");
             sb.Append("</ogc:Id_Capabilities>");
             sb.Append("</ogc:Filter_Capabilities>");
-            sb.Append("</wfs:WFS_Capabilities>");
+            sb.AppendLine("</wfs:WFS_Capabilities>");
+
             return sb.ToString();
+            
         }
 
         #endregion
@@ -780,7 +782,7 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
             sb.Append("</xs:extension>");
             sb.Append("</xs:complexContent>");
             sb.Append("</xs:complexType>");
-            sb.Append("</xs:schema>");
+            sb.AppendLine("</xs:schema>");
             return sb.ToString();
         }
 
@@ -1369,11 +1371,11 @@ V.TimeUnitsID  as TimeUnits,NULL as TimeStep,V.DataType,V.SampleMedium AS Medium
 
 
                 sb.Append("</").Append(NetworkName).Append(":DataCart >");
-                sb.Append("</gml:featureMember>");
+                sb.AppendLine("</gml:featureMember>");
                 //sb.Append("</esri:_shape_>");
                 //attributes
             }
-            sb.Append("</wfs:FeatureCollection>");
+            sb.AppendLine("</wfs:FeatureCollection>");
 
 
             context.Response.ContentType = "text/xml";

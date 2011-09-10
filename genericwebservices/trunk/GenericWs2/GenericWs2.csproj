@@ -123,17 +123,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
+    <Content Include="wfs\DataCart.ashx" />
     <None Include="Parameters.WaterDev.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="DataCartWFS.aspx" />
     <Content Include="InstallationHowTo.txt" />
     <Content Include="REST\Rest.svc" />
     <Content Include="WaterML_1_1.aspx" />
@@ -180,16 +182,15 @@
     <Content Include="SOAP\waterml_1_0.svc" />
     <Content Include="SOAP\waterml_1_1.svc" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="UserControls\TestRestUrl.ascx" />
     <Content Include="WaterMl2.aspx" />
     <Content Include="WaterML_1_0.aspx" />
-    <None Include="Web.config">
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,13 +203,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,9 +231,26 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="wfs\DataCart.ashx.cs">
+      <DependentUpon>DataCart.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\WebApi.cs" />
     <Compile Include="Configure.aspx.designer.cs">
       <DependentUpon>Configure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCartWFS.aspx.cs">
+      <DependentUpon>DataCartWFS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCartWFS.aspx.designer.cs">
+      <DependentUpon>DataCartWFS.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\MyResource.cs" />
     <Compile Include="REST\IRest.cs" />
@@ -309,13 +320,6 @@
     <Compile Include="DatabaseTest.aspx.cs">
       <DependentUpon>DatabaseTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Examples_1_0.aspx.cs">
       <DependentUpon>Examples_1_0.aspx</DependentUpon>
@@ -433,9 +437,9 @@
     <None Include="wateroneflow_authentication.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOAP\Web.config">
+    <Content Include="SOAP\Web.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="SitesSeries.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SitesSeries.designer.cs</LastGenOutput>

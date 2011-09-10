@@ -49,15 +49,15 @@ namespace WaterOneFlow.odws
             String server = Dns.GetHostName();
 
 
-            string ipAddress = null;
-            try
-            {
-                ipAddress = GetClientIP(ConfigurationManager.AppSettings["clientIPUrl"]);
-            }
-            catch
-            {
-                ipAddress = "searchFailed";
-            }
+            string ipAddress = "not used";
+            //try
+            //{
+            //    ipAddress = GetClientIP(ConfigurationManager.AppSettings["clientIPUrl"]);
+            //}
+            //catch
+            //{
+            //    ipAddress = "searchFailed";
+            //}
 
             String contact = ConfigurationManager.AppSettings["contactEmail"];
 

@@ -30,12 +30,7 @@ namespace HisCentral
         //private static void loadMappings()
         //{
             int i = 0;
-            while (_loading)
-            {
-                i++;
-                if (i > 60) throw new TimeoutException("HIS central did not return in a reasonable time");
-                Thread.Sleep(500);
-            }
+
             lock (_ontologyList)
             {
                 if (Loaded == false)
@@ -45,6 +40,12 @@ namespace HisCentral
                     Dictionary<int, string> nodes = new Dictionary<int, string>();
                     svc.getOntologyTreeCompleted += (sndr, evt) =>
                                                         {
+                                                            if (evt.Error != null)
+                                                            {
+                                                                _loaded = true; // what can we do?
+                                                                throw new SystemException("HIS Service Call failed" +
+                                                                                          evt.Error.Message);
+                                                            }
                                                             var tree = evt.Result;
                                                             tree2List(tree, nodes);
                                                             _ontologyList = nodes;
