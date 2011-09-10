@@ -268,7 +268,7 @@ namespace Cuahsi.His.Ruon
                             if (!result.Working)
                             {
                                 failedCount++;
-                                log.DebugFormat("Completed Failed {0} {1} ", server["ServerName"], "Monitor_Ontology");
+                                log.DebugFormat("Completed Failed {0} {1} ", server["ServerName"], "Monitor_Ontology-WordListNitrogen");
                                 preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
                                     AlarmSeverity.Major,
@@ -276,7 +276,25 @@ namespace Cuahsi.His.Ruon
                             }
                             else
                             {
-                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_Ontology");
+                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_Ontology-WordListNitrogen");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
+                                alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
+                            }
+
+                            result = tester.runOntologyTree(server["ServerName"]);
+
+                            if (!result.Working)
+                            {
+                                failedCount++;
+                                log.DebugFormat("Completed Failed {0} {1} ", server["ServerName"], "Monitor_Ontology-getOntologyTre");
+                                preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName,
+                                    AlarmSeverity.Major,
+                                    "Ontology Failed " + result.ServiceName + " error: " + result.errorString));
+                            }
+                            else
+                            {
+                                log.DebugFormat("Completed {0} {1} ", server["ServerName"], "Monitor_Ontology-getOntologyTre");
                                 preformanceLogger.DebugFormat(PERFORMANCEFORMAT, result.ServiceName, result.MethodName, result.runTimeMilliseconds, result.errorString);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
