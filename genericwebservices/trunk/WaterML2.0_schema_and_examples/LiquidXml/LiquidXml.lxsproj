@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
+<XmlStudioProject xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="9.1.2.3326" UseRelativePaths="true">
+	<Project Name="LiquidXml">
+		<SubGroup Name="Documents">
+			<File Uri="..\examples\Mutltiple_series_example_Lk_Houston.xml"/>
+			<File Uri="..\examples\sos_response_example.xml"/>
+			<SubGroup Name="fromwml">
+				<File Uri="..\examples\FromWaterml1\Mendon_timeseries.xml"/>
+			</SubGroup>
+		</SubGroup>
+		<SubGroup Name="Schemas">
+			<File Uri="..\Schemas\WaterML\collection.xsd"/>
+			<File Uri="..\Schemas\WaterML\monitoringPoint.xsd"/>
+			<File Uri="..\Schemas\WaterML\observationProcess.xsd"/>
+			<File Uri="..\Schemas\WaterML\timeseries.xsd"/>
+			<File Uri="..\Schemas\WaterML\timeseriesObservationMetadata.xsd"/>
+			<File Uri="..\Schemas\WaterML\waterml2.xsd"/>
+		</SubGroup>
+		<SubGroup Name="Transforms">
+			<File Uri="..\Transforms\WaterML1_1_siteResponse_to_WaterML2.xsl"/>
+			<File Uri="..\Transforms\WaterML1_1_timeSeries_to_WaterML2.xsl"/>
+			<File Uri="..\Transforms\WaterML1_1_timseries_ObservedProperty_to_WaterML2.xsl"/>
+			<File Uri="..\Transforms\WaterML1_1_timseries_WaterProcess_to_WaterML2.xsl"/>
+			<File Uri="..\Transforms\WaterML1_1_variables_to_waterml2.xslt"/>
+			<File Uri="..\Transforms\WaterML1_siteResponse_to_WaterML2.xsl"/>
+			<File Uri="..\Transforms\WaterML1_timeSeries_to_WaterML2.xsl"/>
+		</SubGroup>
+		<SubGroup Name="WaterMl1.x">
+			<SubGroup Name="wml1.1">
+				<File Uri=".\Waterml1.x\lbrsampleResponses20110829\v11\GetValues_Mendon_usu3.xml"/>
+				<File Uri=".\Waterml1.x\lbrsampleResponses20110829\v11\GetValues_Qualifiers.xml"/>
+				<File Uri=".\Waterml1.x\lbrsampleResponses20110829\v11\GetValues_SingleQC.xml"/>
+			</SubGroup>
+		</SubGroup>
+	</Project>
+</XmlStudioProject>

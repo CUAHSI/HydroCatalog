@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--=====================================================================
+Example Instance for SOS 2.0 Capabilities document.
+=======================================================================-->
+<Capabilities version="2.0.0"
+xmlns="http://www.opengis.net/sos/2.0" 
+xmlns:fes="http://www.opengis.net/fes/2.0" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:ogc="http://www.opengis.net/ogc" 
+xmlns:ows="http://www.opengis.net/ows/1.1" 
+xmlns:om="http://www.opengis.net/om/1.0" 
+xmlns:swe="http://www.opengis.net/swe/1.0"
+xmlns:swes="http://www.opengis.net/swes/2.0"
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opengis.net/sos/2.0 http://schemas.opengis.net/sos/2.0.0/sosGetCapabilities.xsd">
+
+<ows:ServiceIdentification>
+    <ows:Title>My SOS</ows:Title>
+    <ows:Abstract>My SOS serves water observations</ows:Abstract>
+    <ows:Keywords>
+      <ows:Keyword>water level</ows:Keyword>
+      <ows:Keyword>discharge</ows:Keyword>
+      <ows:Keyword>humidity</ows:Keyword>
+      <ows:Keyword>temperature</ows:Keyword>
+    </ows:Keywords>
+    <ows:ServiceType codeSpace="http://opengeospatial.net">OGC:SOS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+    <ows:Fees>NONE</ows:Fees>
+    <ows:AccessConstraints>NONE</ows:AccessConstraints>
+</ows:ServiceIdentification>
+  
+<ows:ServiceProvider xmlns:ows="http://www.opengis.net/ows/1.1" >
+    <ows:ProviderName>My Provider</ows:ProviderName>
+    <ows:ProviderSite xlink:href="http://my.organization.org/sos"/>
+    <ows:ServiceContact>
+      <ows:ContactInfo>
+        <ows:Phone>
+          <ows:Voice>+49.123.456 789- 0</ows:Voice>
+          <ows:Facsimile>+49.123.456 789- 0</ows:Facsimile>
+        </ows:Phone>
+        <ows:Address>
+          <ows:DeliveryPoint>My Street 24</ows:DeliveryPoint>
+          <ows:City>MyCity</ows:City>
+          <ows:PostalCode>12345</ows:PostalCode>
+          <ows:Country>MyCountry</ows:Country>
+          <ows:ElectronicMailAddress>info@my.organization.org</ows:ElectronicMailAddress>
+        </ows:Address>
+      </ows:ContactInfo>
+      <ows:Role/>
+	</ows:ServiceContact>
+</ows:ServiceProvider>
+
+<contents>
+	<Contents>
+		<swes:procedureDescriptionFormat>http://www.opengis.net/sensorML/2.0</swes:procedureDescriptionFormat>
+
+		<!-- features which serve only for discovery purposes: -->
+		<swes:relatedFeature xlink:href="http://wfs.example.org?request=getFeature&amp;featureid=Rhine" />
+		<swes:relatedFeature xlink:href="http://wfs.example.org?request=getFeature&amp;featureid=Ems" />
+		<swes:relatedFeature xlink:href="http://wfs.example.org?request=getFeature&amp;featureid=Mosel" />
+		<swes:relatedFeature xlink:href="http://wfs.example.org?request=getFeature&amp;featureid=Weser" />
+		<!-- ... -->
+		
+		<swes:offering>
+			<ObservationOffering>
+				<swes:identifier>water_observations</swes:identifier>
+				<swes:procedure>urn:ogc:object:feature:Sensor:organization:Water_Gage_Network</swes:procedure>
+				<swes:observableProperty>urn:ogc:def:phenomenon:OGC:waterlevel</swes:observableProperty>
+				<swes:observableProperty>urn:ogc:def:phenomenon:OGC:discharge</swes:observableProperty>
+				<observedArea>
+					<gml:Envelope srsName="urn:ogc:def:crs:EPSG:4326">
+						<gml:lowerCorner>51 7</gml:lowerCorner>
+						<gml:upperCorner>53 9</gml:upperCorner>
+					</gml:Envelope>
+				</observedArea>
+				<phenomenonTime>
+					<gml:TimePeriod gml:id="phenomenonTimeWater">
+						<gml:beginPosition>2008-01-11T16:22:25.00</gml:beginPosition>
+						<gml:endPosition indeterminatePosition="now" />
+					</gml:TimePeriod>
+				</phenomenonTime>
+			</ObservationOffering>
+		</swes:offering>
+		
+		<swes:offering>
+			<ObservationOffering>
+				<swes:identifier>weather_observations</swes:identifier>
+				<swes:procedure>urn:ogc:object:feature:Sensor:organization:Weather_Station_Network</swes:procedure>
+				<swes:observableProperty>urn:ogc:def:phenomenon:OGC:temperature</swes:observableProperty>
+				<swes:observableProperty>urn:ogc:def:phenomenon:OGC:humidity</swes:observableProperty>
+				<swes:observableProperty>urn:ogc:def:phenomenon:OGC:precipitation</swes:observableProperty>
+				<observedArea>
+					<gml:Envelope srsName="urn:ogc:def:crs:EPSG:4326">
+						<gml:lowerCorner>51 7</gml:lowerCorner>
+						<gml:upperCorner>53 9</gml:upperCorner>
+					</gml:Envelope>
+				</observedArea>
+				<phenomenonTime>
+					<gml:TimePeriod gml:id="phenomenonTimeWeather">
+						<gml:beginPosition>2008-01-11T16:22:25.00</gml:beginPosition>
+						<gml:endPosition indeterminatePosition="now" />
+					</gml:TimePeriod>
+				</phenomenonTime>
+			</ObservationOffering>
+		</swes:offering>
+		
+		<responseMode>INLINE</responseMode>
+		<responseFormat>http://www.opengis.net/om/2.0</responseFormat>
+		<observationType>http://www.opengis.net/spec/OMXML/2.0/conf/observation</observationType>
+		<resultType>http://www.opengis.net/swe/2.0#DataArray</resultType>
+
+	</Contents>
+</contents>
+
+<insertionCapabilities>
+	<InsertionCapabilities>
+
+		<observationType>http://www.opengis.net/spec/OMXML/2.0/conf/observation</observationType>
+		<resultType>http://www.opengis.net/swe/2.0/DataArray</resultType>
+
+	</InsertionCapabilities>
+</insertionCapabilities>
+
+</Capabilities>

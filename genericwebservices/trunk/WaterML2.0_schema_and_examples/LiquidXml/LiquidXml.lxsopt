@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
+<XmlStudioProjectOptions xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="9.1.5.3408">
+	<OpenFile Uri="..\examples\Mutltiple_series_example_Lk_Houston.xml"/>
+	<OpenFile Uri="..\examples\sos_response_example.xml"/>
+	<OpenFile Uri="..\Schemas\WaterML\waterml2.xsd"/>
+	<OpenFile Uri="..\Schemas\WaterML\collection.xsd"/>
+</XmlStudioProjectOptions>

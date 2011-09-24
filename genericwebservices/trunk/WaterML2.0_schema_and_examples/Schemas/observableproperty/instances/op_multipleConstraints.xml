@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example based on GeoSciML v3. Note: this is NOT GeoSciML but uses GeoSciML registered terms in the ObservableProperty context for illustrative purposes-->
+<ComplexObservableProperty xmlns="http://schemas.opengis.net/op"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.opengis.net/op ../schemas/op.xsd" gml:id="ID123">
+    <label>Commonly high metamorphic grade</label>
+    <basePhenomenon xlink:href="http://resource.geosciml.org/classifierScheme/cgi/metamorphicgrade"/>
+    <constraint>
+        <swe:Category definition="http://resource.geosciml.org/classifier/cgi/valuequalifier">
+            <swe:label>common</swe:label>
+            <swe:codeSpace
+                xlink:href="http://resource.geosciml.org/classifierScheme/cgi/valuequalifier"/>
+            <swe:value>http://resource.geosciml.org/classifier/cgi/valuequalifier/0004</swe:value>
+        </swe:Category>
+    </constraint>
+    <constraint>
+        <swe:Category>
+            <swe:label>High metamorphic grade</swe:label>
+            <swe:codeSpace
+                xlink:href="http://resource.geosciml.org/classifierScheme/cgi/metamorphicgrade"/>
+            <swe:value>http://resource.geosciml.org/classifier/cgi/metamorphicgrade/0003</swe:value>
+        </swe:Category>
+    </constraint>
+</ComplexObservableProperty>

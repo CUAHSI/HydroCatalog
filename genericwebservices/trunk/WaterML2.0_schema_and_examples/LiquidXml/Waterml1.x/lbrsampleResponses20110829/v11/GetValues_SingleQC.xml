@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<timeSeriesResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.cuahsi.org/waterML/1.1/">
+  <queryInfo>
+    <creationTime>2011-08-29T11:11:04.2284135-07:00</creationTime>
+    <criteria MethodCalled="GetValues">
+      <parameter name="site" value="LBR_TEST:USU-LBR-Wellsville" />
+      <parameter name="variable" value="LBR_TEST:USU41/QualityControlLevelID=2" />
+      <parameter name="startDate" value="2007-10-04" />
+      <parameter name="endDate" value="2007-12-31" />
+    </criteria>
+  </queryInfo>
+  <timeSeries>
+    <sourceInfo xsi:type="SiteInfoType">
+      <siteName>Little Bear River near Wellsville, Utah</siteName>
+      <siteCode network="LBR" siteID="10">USU-LBR-Wellsville</siteCode>
+      <geoLocation>
+        <geogLocation xsi:type="LatLonPointType" srs="EPSG:4269">
+          <latitude>41.643457</latitude>
+          <longitude>-111.917649</longitude>
+        </geogLocation>
+        <localSiteXY projectionInformation=" NAD83 / UTM zone 12N">
+          <X>423579.317</X>
+          <Y>4610597.583</Y>
+        </localSiteXY>
+      </geoLocation>
+      <elevation_m>1365</elevation_m>
+      <verticalDatum>NGVD29</verticalDatum>
+      <siteProperty name="County">Cache</siteProperty>
+      <siteProperty name="State">Utah</siteProperty>
+      <siteProperty name="Site Comments">Located on the upstream side of State Highway 101 bridge.</siteProperty>
+    </sourceInfo>
+    <variable>
+      <variableCode vocabulary="LBR" default="true" variableID="41">USU41</variableCode>
+      <variableName>Solids, total Suspended</variableName>
+      <valueType>Sample</valueType>
+      <dataType>Sporadic</dataType>
+      <generalCategory>Water Quality</generalCategory>
+      <sampleMedium>Surface Water</sampleMedium>
+      <unit>
+        <unitName>milligrams per liter</unitName>
+        <unitType>Concentration</unitType>
+        <unitAbbreviation>mg/L</unitAbbreviation>
+        <unitCode>199</unitCode>
+      </unit>
+      <noDataValue>-9999</noDataValue>
+      <timeScale>
+        <unit>
+          <unitName>second</unitName>
+          <unitType>Time</unitType>
+          <unitAbbreviation>s</unitAbbreviation>
+          <unitCode>100</unitCode>
+        </unit>
+        <timeSupport>0</timeSupport>
+      </timeScale>
+      <speciation>Not Applicable</speciation>
+    </variable>
+    <values />
+  </timeSeries>
+</timeSeriesResponse>

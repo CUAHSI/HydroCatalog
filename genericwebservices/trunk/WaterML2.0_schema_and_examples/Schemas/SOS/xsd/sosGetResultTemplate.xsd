@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/>
+  <import namespace="http://www.opengis.net/swe/2.0" schemaLocation="http://schemas.opengis.net/sweCommon/2.0.0/swe.xsd"/>
+  <!-- ================================================= -->
+  <element name="GetResultTemplateResponse" type="sos:GetResultTemplateResponseType" substitutionGroup="swes:ExtensibleResponse"/>
+  <complexType name="GetResultTemplateResponseType">
+    <complexContent>
+      <extension base="swes:ExtensibleResponseType">
+        <sequence>
+          <element name="resultEncoding">
+            <complexType>
+              <sequence>
+                <element ref="swe:AbstractEncoding"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="resultStructure">
+            <complexType>
+              <sequence>
+                <element ref="swe:AbstractDataComponent"/>
+              </sequence>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GetResultTemplateResponsePropertyType">
+    <sequence minOccurs="0">
+      <element ref="sos:GetResultTemplateResponse"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="GetResultTemplate" type="sos:GetResultTemplateType" substitutionGroup="swes:ExtensibleRequest"/>
+  <complexType name="GetResultTemplateType">
+    <complexContent>
+      <extension base="swes:ExtensibleRequestType">
+        <sequence>
+          <element name="offering" type="anyURI">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ObservationOffering</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="observedProperty" type="anyURI">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>unknown</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GetResultTemplatePropertyType">
+    <sequence minOccurs="0">
+      <element ref="sos:GetResultTemplate"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+</schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Request for GetResult operation which contains filters for offering and observedProperty. The response contains a template containing the observation metadata as well as information about the type and structure of the result elements which will be returned in later GetResult responses.
+
+
+In this example, the sequence of operations for retrieving results is as follows:
+1. GetResultTemplate1.xml request is sent to SOS.
+2. GetResultTemplate1_response.xml is returned from SOS.
+3. GetResult1.xml is sent to SOS
+4. GetResult1_response is returned from SOS
+=======================================================================-->
+<sos:GetResultTemplate xmlns="http://www.opengis.net/sos/2.0" service="SOS" version="2.0.0" xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sos/2.0
+http://schemas.opengis.net/sos/2.0.0/sos.xsd">
+	
+<!--identifier of the observation offering-->
+<offering>http://www.my_namespace.org/water_gage_1_observations</offering>
+
+<!--identifier of an observed property-->
+<observedProperty>urn:ogc:def:phenomenon:OGC:water_level</observedProperty>	
+
+</sos:GetResultTemplate>

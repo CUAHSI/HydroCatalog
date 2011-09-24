@@ -12,7 +12,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:swe="http://www.opengis.net/swe/2.0"
     xmlns:sf="http://www.opengis.net/sampling/2.0"
     xmlns:sams="http://www.opengis.net/samplingSpatial/2.0"
-xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../Schemas/WaterML/waterml2.xsd" 
+xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../../Schemas/WaterML/waterml2.xsd" 
 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
  version="2.0">
 <!-- exclude-result-prefixes="xs" -->
@@ -23,15 +23,18 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
   <xsl:param name="wfsBase"></xsl:param>
   <xsl:param name="observedPropertiesBase"></xsl:param>
   <xsl:param name="concept"></xsl:param>
-
+    <xsl:param name="generationdate">2011-01-01T00:00:00Z</xsl:param>
  
 
   
-    <xsl:output method="xml" indent="yes" />
+    <xsl:output method="xml" indent="yes"  omit-xml-declaration="no"/>
+    
+    <!-- this assumes that the codes are unique for a file. ok since it comes from an ODM -->
+    <xsl:key name="qualifiers" match="wml:qualifier" use="wml:qualifierCode"/>
+    <xsl:key name="qclevel" match="wml:timeSeries/wml:values/wml:qualityControlLevel" use="wml:qualityControlLevelCode"/>
     <xsl:template match="wml:timeSeriesResponse">
-        <wml2:Collection>
+        <wml2:collection>
             <xsl:attribute name="xsi:schemaLocation">http://www.opengis.net/waterml/2.0 ../../Schemas/WaterML/waterml2.xsd</xsl:attribute>
-
             <xsl:attribute name="gml:id">generated_collection_doc</xsl:attribute>
             <!-- Get a unique list of all the quality codes used in the time series to build up a dict -->
             <xsl:variable name="unique-list" select="wml:timeSeries/wml:values/wml:value/@qualityControlLevel[not(.=following::wml:value/@qualityControlLevel)]" />
@@ -39,54 +42,130 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 <wml2:DocumentMetadata>
                     <xsl:attribute name="gml:id">doc_md</xsl:attribute>
                     <wml2:generationDate>
-                        <!--<xsl:value-of select="current-dateTime()"/>-->
+                        <xsl:value-of select="$generationdate"/>
                     </wml2:generationDate>
-                    <wml2:generationSystem>Translation from WaterML1.0 response document</wml2:generationSystem>
+                    <wml2:generationSystem>Translation from WaterML1.1 response document</wml2:generationSystem>
                 </wml2:DocumentMetadata>
-                <xsl:comment>8.2.8	metadata (OM_Observation)
-  wml2:intendedSamplingInterval P2Y2M25DT21H54M52.27S
-  wml2:status 
-  wml2:sampledMedium 
-  wml2:maximumGap P5Y0M24DT12H3M45.94S
-                    
-    wml2:parameter
-       om:NamedValue>
-            om:name 
-            om:value 
-        om:NamedValue
-    (and/or)
-    wml2:parameter xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:actuate="other" gml:remoteSchema="http://www.liquid-technologies.com"
-</xsl:comment>
+              
             </wml2:metadata>
             <xsl:comment> 
    8.12.1.7.1	phenomenaDictionary
    8.12.1.7.2	qualifierDictionary 
    8.12.1.7.3	qualityDictionary 
                 processing
-</xsl:comment>
-            <!--  <xsl:if test="not(empty($unique-list))"> -->
-            <xsl:if test="not($unique-list)">
-                <wml2:qualityDictionary>
-                    <gml:Dictionary gml:id="quality">
-                        <gml:identifier codeSpace="http://www.cuahsi.org/waterml2/dictionaries/">quality</gml:identifier>
-                        <xsl:for-each select="$unique-list">
-                            <gml:dictionaryEntry>
+            </xsl:comment>
+        
+            <xsl:if test="count(wml:timeSeries/wml:variable) >0">
+                   <wml2:localDictionary>
+                    <gml:Dictionary gml:id="phenomena">
+                        <gml:identifier codeSpace="http://www.cuahsi.org/waterml2/dictionaries/">phenomena</gml:identifier>
+                        <xsl:for-each select="wml:timeSeries/wml:variable">
+                           <!-- <gml:phenomenonEntry>
                                 <gml:Definition>
                                     <xsl:attribute name="gml:id">
-                                        <xsl:value-of select="translate(., &quot; &quot;, &quot;_&quot;)" />
+                                        <xsl:value-of select="concat('qualifier-',translate( wml:variableCode[1], &quot; &quot;, &quot;_&quot;))" />
+                                    </xsl:attribute>
+                                    <gml:identifier>
+                                        <xsl:attribute name="codeSpace">wml:variableCode[1][@network]</xsl:attribute>
+                                        <xsl:value-of select="wml:variableCode[1][text()]" />
+                                    </gml:identifier>
+                                    <gml:name>
+                                        <xsl:attribute name="codeSpace">wml:variableCode[1][@network]</xsl:attribute>
+                                        <xsl:value-of select="wml:variableName[text()]" />
+                                    </gml:name>
+                                    
+                                </gml:Definition>
+                            </gml:phenomenonEntry>
+                           -->
+                            <xsl:call-template name="phenomenaDictionaryEntry">
+                                <xsl:with-param name="concept"><xsl:value-of select="$concept"/></xsl:with-param>
+                                <xsl:with-param name="observedPropertiesBase"><xsl:value-of select="$observedPropertiesBase"/></xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:for-each>
+                      <!--  <xsl:variable name="PhenomenonEntry"> <xsl:call-template name="phenomenonEntry" >
+                            <xsl:with-param name="wfsBase"><xsl:value-of select="$wfsBase"/></xsl:with-param> 
+                            <xsl:with-param name="observedPropertiesBase"><xsl:value-of select="observedPropertiesBase"/></xsl:with-param>
+                            <xsl:with-param name="concept"><xsl:value-of select="$concept"/></xsl:with-param>
+                        </xsl:call-template></xsl:variable>
+                        <xsl:comment> 
+                           <xsl:value-of select="$PhenomenonEntry" disable-output-escaping="no"></xsl:value-of>
+                        </xsl:comment>
+                        -->
+                    </gml:Dictionary>
+                </wml2:localDictionary>
+            </xsl:if>
+      <!--      <xsl:if test="count(distinct-values(wml:timeSeries/wml:values/wml:qualifier)) >0"> -->
+    <!-- xslt 2.0 -->
+            <!-- <xsl:if test="count(wml:timeSeries/wml:values/wml:qualifier[not(qualifierCode = preceding::qualifierCode)]) >0">
+            -->
+            <xsl:if test="count(wml:timeSeries/wml:values/wml:qualifier) >0">
+               <wml2:localDictionary>
+                    <gml:Dictionary gml:id="qualifier">
+                        <gml:identifier codeSpace="http://www.cuahsi.org/waterml2/dictionaries/">qualifier</gml:identifier>
+                       <xsl:for-each select="wml:timeSeries/wml:values/wml:qualifier[generate-id(.) =
+                            generate-id(key('qualifiers',  wml:qualifierCode)[1])]">
+                  
+                    <!--     <xsl:for-each select="wml:timeSeries/wml:values/wml:qualifier[not(qualifierCode = preceding::qualifierCode)]">
+                   -->       
+                        <gml:dictionaryEntry>  
+                            <gml:Definition>
+                                    <xsl:attribute name="gml:id">
+                                        <xsl:value-of select="concat('qualifier-',translate( wml:qualifierCode, &quot; &quot;, &quot;_&quot;))" />
                                     </xsl:attribute>
                                     <gml:identifier>
                                         <xsl:attribute name="codeSpace">http://www.cuahsi.org/</xsl:attribute>
-                                        <xsl:value-of select="." />
+                                        <xsl:value-of select="wml:qualifierCode" />
                                     </gml:identifier>
+                                    <gml:name>
+                                        <xsl:attribute name="codeSpace">http://www.cuahsi.org/</xsl:attribute>
+                                        <xsl:value-of select="wml:qualifierDescription" />
+                                    </gml:name>
+     
                                 </gml:Definition>
                             </gml:dictionaryEntry>
                         </xsl:for-each>
                     </gml:Dictionary>
-                </wml2:qualityDictionary>
+               </wml2:localDictionary>
             </xsl:if>
+            <!--  <xsl:if test="not(empty($unique-list))"> -->
+          <xsl:if test="count(wml:timeSeries/wml:values/wml:qualityControlLevel) >0">
+     
+              <!-- works in xslt 2.0 aka not .net -->
+          <!--  <xsl:if test="count(//wml:timeSeries/wml:values/wml:qualityControlLevel[not(qualityControlLevelCode = preceding::qualityControlLevelCode)]  )>0">
+          -->
+          <wml2:localDictionary>
+                    <gml:Dictionary gml:id="quality">
+                        <gml:identifier codeSpace="http://www.cuahsi.org/waterml2/dictionaries/">quality</gml:identifier>
+                     <!--  <xsl:for-each select="wml:timeSeries/wml:values/wml:qualityControlLevel"> -->
+                       <!-- xslt 2.0 -->
+                        <!-- <xsl:for-each select="//wml:timeSeries/wml:values/wml:qualityControlLevel[not(qualityControlLevelCode = preceding::qualityControlLevelCode)] ">
+                        -->
+                        <xsl:for-each select="//wml:timeSeries/wml:values/wml:qualityControlLevel[generate-id(.) =
+                            generate-id(key('qclevel',  wml:qualityControlLevelCode)[1])] " >     <!--key('qclevel', '0' )  wml:qualityControlLevelCode -->
+                                <gml:dictionaryEntry>
+                                <gml:Definition>
+                                    <xsl:attribute name="gml:id">
+                                        <xsl:value-of select="concat('qclevel-',translate( wml:qualityControlLevelCode, &quot; &quot;, &quot;_&quot;))" />
+                                    </xsl:attribute>
+                                    <gml:identifier>
+                                        <xsl:attribute name="codeSpace">http://www.cuahsi.org/</xsl:attribute>
+                                        <xsl:value-of select="wml:qualityControlLevelCode" />
+                                    </gml:identifier>
+                                    <gml:name>
+                                        <xsl:attribute name="codeSpace">http://www.cuahsi.org/</xsl:attribute>
+                                        <xsl:value-of select="wml:definition" />
+                                    </gml:name>
+                                    <gml:remarks><xsl:value-of select="wml:explanation" /></gml:remarks>
+                                </gml:Definition>
+                            </gml:dictionaryEntry>
+                        </xsl:for-each>
+                    </gml:Dictionary>
+          </wml2:localDictionary>
+          </xsl:if>
+            
             <xsl:for-each select="wml:timeSeries">
                 <wml2:observationMember>
+                    <xsl:variable name="obsMemberNumber" select="position()"/>   
                     <om:OM_Observation>
                         <xsl:attribute name="gml:id">
                             <xsl:choose>
@@ -94,7 +173,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                                     <xsl:value-of select="@name" />
 								</xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:text>observation</xsl:text>
+                                    <xsl:value-of select="concat('observation-',$obsMemberNumber)"/>
 								</xsl:otherwise>
 							</xsl:choose>
                             
@@ -106,7 +185,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                         </xsl:variable>
                         <om:phenomenonTime>
                             <!-- gml:ids will need to be generated when more than one series as have to be unique in document -->
-                            <gml:TimePeriod gml:id="phen_time">
+                            <gml:TimePeriod >
+                                <xsl:attribute name="gml:id"><xsl:value-of select="concat('phen_time-',$obsMemberNumber)"/></xsl:attribute>
                                 <gml:beginPosition>
                                     <xsl:value-of select="$start-time">
                                     </xsl:value-of>
@@ -118,7 +198,9 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                             </gml:TimePeriod>
                         </om:phenomenonTime>
                         <om:resultTime>
-                            <gml:TimeInstant gml:id="eor">
+                            <gml:TimeInstant >
+                                <xsl:attribute name="gml:id"><xsl:value-of select="concat('eor-',$obsMemberNumber)"/></xsl:attribute>
+                                
                                 <gml:timePosition>
                                     <xsl:value-of select="$end-time">
                                     </xsl:value-of>
@@ -136,15 +218,19 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                       
                       <om:observedProperty>
                         <xsl:attribute name="xlink:href">
-                                <xsl:value-of select='concat("urn:cuahsi/variableOntology/",$concept)' />
+                            <xsl:value-of
+                                select="concat(wml:variable/wml:variableCode[1]/@vocabulary,'-',wml:variable/wml:variableCode[1])"
+                            /> 
+                                <xsl:value-of select='concat("#","variableCode-",$concept)' />
                             </xsl:attribute>
                             <xsl:attribute name="xlink:title">
                                 <xsl:value-of select="$concept" />
                             </xsl:attribute>
-                        <xsl:call-template name="ObservedProperty">
+                  <!--      <xsl:call-template name="ObservedProperty">
                           <xsl:with-param name="concept"><xsl:value-of select="$concept"/></xsl:with-param>
                           <xsl:with-param name="observedPropertiesBase"><xsl:value-of select="$observedPropertiesBase"/></xsl:with-param>
                         </xsl:call-template>
+                        -->
                       </om:observedProperty>
                       <!--  
                       <om:observedProperty>
@@ -172,18 +258,57 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                         <om:result>
                             <wml2:Timeseries>
                                 <xsl:attribute name="gml:id">
-                                    <xsl:value-of select="concat(@name,&quot;_TS&quot;)">
+                                    <xsl:value-of select="concat(@name,'_TS-',position() )">
                                     </xsl:value-of>
                                 </xsl:attribute>
                                  <xsl:comment>domainExtent refers to time described above</xsl:comment>
-                                <wml2:temporalExtent xlink:href="#phen_time">
+                                <wml2:temporalExtent >
+                                    <xsl:attribute name="xlink:href"><xsl:value-of select="concat('#phen_time-',$obsMemberNumber)"/></xsl:attribute>
+                                    
                                 </wml2:temporalExtent>
+                                <xsl:comment>8.2.8	metadata (OM_Observation)
+                                    wml2:intendedSamplingInterval P2Y2M25DT21H54M52.27S
+                                    wml2:status 
+                                    wml2:sampledMedium 
+                                    wml2:maximumGap P5Y0M24DT12H3M45.94S
+                                    
+                                    wml2:parameter
+                                    om:NamedValue>
+                                    om:name 
+                                    om:value 
+                                    om:NamedValue
+                                    (and/or)
+                                    wml2:parameter xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:actuate="other" gml:remoteSchema="http://www.liquid-technologies.com"
+                                </xsl:comment>
+                               <wml2:metadata>
+                                    <wml2:TSMetadata>
+                                        <!--       <wml2:cumulative>false</wml2:cumulative> -->
+                                        <xsl:choose>
+                                            <xsl:when test="wml:variable/wml:timeScale/wml:timeSupport > 0">
+                                                <wml2:cumulative>true</wml2:cumulative>
+                                                <wml2:aggregationDuration>
+                                                    <xsl:call-template name="TimeUnitToPeriod">
+                                                        <xsl:with-param name="TimeSupport" select="wml:variable/wml:timeScale/wml:timeSupport"/>
+                                                        <xsl:with-param name="Unit"  select="wml:variable/wml:timeScale/wml:unit"/>
+                                                    </xsl:call-template>
+                                                </wml2:aggregationDuration>
+                                            </xsl:when>
+                                            <xsl:otherwise> <wml2:cumulative>false</wml2:cumulative></xsl:otherwise>
+                                        </xsl:choose>
+    
+                                      <!--       <wml2:aggregationDuration>P1D</wml2:aggregationDuration>-->    
+                                 
+                                    </wml2:TSMetadata>
+                                </wml2:metadata>
+                                
                                 <xsl:comment>baseTime and  spacing</xsl:comment>
+                               
                                 <wml2:defaultPointMetadata>
                                     <wml2:DefaultTVPMetadata>
-                                       
+                                     
                                         <xsl:choose>
-                                       <xsl:when test="count(wml:values/wml:censorCode) &lt; 1 " >
+                                       <xsl:when test="count(wml:values/wml:censorCode) = 0 or
+                                           count(wml:values/wml:censorCode) > 0" >
                                          
                                      <xsl:comment>8.6.4	Data quality. Mapping needed</xsl:comment>
                                         <wml2:quality>
@@ -194,8 +319,9 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                                             </xsl:attribute>
                                             <xsl:attribute name="xlink:title">not censored</xsl:attribute>
                                     </wml2:quality>  
-                                        </xsl:when>
-                                            <xsl:otherwise>
+                                       </xsl:when>
+                                           
+                                            <xsl:otherwise> <!-- there is one -->
                                                 <xsl:for-each select="wml:values/wml:censorCode" >
                                                 <wml2:quality>
                                             <!-- xlink:href="http://waterdata.usgs.gov/NJ/nwis/help/?provisional"
@@ -222,7 +348,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                                                 <xsl:value-of select="wml:variable/wml:dataType" />
                                             </xsl:attribute>
                                         </wml2:interpolationType>
-                               <xsl:if test="count(wml:values/wml:qualityControlLevel) = 1">
+                               <xsl:if test="count(wml:values/wml:qualityControlLevel) > 0">
                                         <wml2:processing>
                                             <!-- xlink:href="http://waterdata.usgs.gov/NJ/nwis/help/?provisional"
 	                        xlink:title="Provisional data subject to revision."/>
@@ -232,20 +358,16 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                                             </xsl:attribute>
                                             <xsl:attribute name="xlink:title"> <xsl:value-of select="wml:values/wml:qualityControlLevel[1]/wml:definition"/></xsl:attribute>
                                     </wml2:processing>
-                                 <xsl:comment>8.6.3	unitOfMeasure. Mapping. The unit of measure is specified using the ISO19103 UnitOfMeasure type. </xsl:comment>
+                               </xsl:if>
+                                        <xsl:comment>8.6.3	unitOfMeasure. Mapping. The unit of measure is specified using the ISO19103 UnitOfMeasure type. </xsl:comment>
                                         <wml2:uom>
                                             <xsl:attribute name="uom">
-                                                <xsl:value-of select="concat(&quot;&quot;,wml:variable/wml:unit/wml:unitAbbreviation)" />
-                                            </xsl:attribute>
-                                         <!--   <xsl:attribute name="xlink:href">
-                                                <xsl:value-of select="concat(&quot;&quot;,wml:variable/wml:unit/wml:unitAbbreviation)" />
-                                            </xsl:attribute>
-                                            <xsl:attribute name="xlink:title">
-                                                <xsl:value-of select="concat(wml:variable/wml:unit/wml:unitAbbreviation,' ', wml:variable/wml:unit/wml:unitName)" />
-                                            </xsl:attribute>
-                                            -->
+                                                <xsl:call-template name="UOMCreator">
+                                                    <xsl:with-param name="Unit" select="wml:variable/wml:unit" />
+                                                </xsl:call-template>
+                                                
+                                            </xsl:attribute>  
                                         </wml2:uom>
-                                </xsl:if>
                                 </wml2:DefaultTVPMetadata>
                             </wml2:defaultPointMetadata>
                             <xsl:for-each select="wml:values/wml:value">
@@ -257,40 +379,43 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
                                         <wml2:value>
                                             <xsl:value-of select="." />
                                         </wml2:value>
+                                        
                                         <!-- <xsl:if test="not(empty(@qualityControlLevel))">
                      -->
-                                       <xsl:if test="count(wml:values/wml:qualityControlLevel) > 1 
-                    or 
-                                    not( @censored = 'nc')  ">
-                                        <wml2:metadata>
-                                        <wml2:TVPMetadata>
-                                            <xsl:if test="not( @censored = 'nc')">
-                                            <!-- wml1 censored ~ quality -->
-                                                <wml2:quality>
+                                        <xsl:if test="count(../wml:qualityControlLevel) > 1 or 
+                                            count(../wml:qualifier) > 0 ">
+                                            <wml2:metadata>
+                                                <wml2:TVPMetadata>
+                                                    <xsl:if test="count(../wml:qualityControlLevel) > 1 and @qualityControlLevelCode">
+                                                    <wml2:quality>
                                                 <xsl:attribute name="xlink:href">
-                                                    <xsl:value-of select="@censored" />
+                                                    <xsl:value-of select="concat('qclevel-',translate(@qualityControlLevelCode, &quot; &quot;, &quot;_&quot;))" />
                                                 </xsl:attribute>
-                                            </wml2:quality>
-                                        </xsl:if>
-                                            <xsl:if test="count(wml:values/wml:qualityControlLevel) > 1">
-                                            <!-- wml1 quality control level == processing level -->
-                                                <wml2:processing>
-                                                <xsl:attribute name="xlink:href">
-                                                    <xsl:value-of select="concat(&quot;#&quot;,translate(@qualityControlLevel, &quot; &quot;, &quot;_&quot;))" />
-                                                </xsl:attribute>
-                                            </wml2:processing>
-                                        </xsl:if>
-                                        </wml2:TVPMetadata>
-                                            </wml2:metadata>
+                                                    </wml2:quality>
+                                                    </xsl:if>
+                                                    <xsl:if test="@qualifiers">
+                                                        <wml2:qualifier>
+                                                            <xsl:attribute name="xlink:href">
+                                                                <xsl:value-of select="concat('qualifer-',translate(@qualifiers, &quot; &quot;, &quot;_&quot;))" />
+                                                            </xsl:attribute>
+                                                        </wml2:qualifier>
+                                                        </xsl:if>
+                                                <xsl:if test="@sampleCode" >
+                                                    <!-- <wml2:relatedObservation xlink:href="http://my_sampling.org/sample_453" xlink:title="Original sample"/> -->
+                                                    <xsl:comment>relatedObservation for sample <xsl:value-of select="@sampleCode"/> should go here</xsl:comment>
+                                                </xsl:if>
+                                                    </wml2:TVPMetadata>
+                                           </wml2:metadata>    
                                         </xsl:if>
                                     </wml2:TimeValuePairMeasure>
                                 </wml2:point>
                             </xsl:for-each>
                         </wml2:Timeseries>
                     </om:result>
-                </om:OM_Observation>
+                    </om:OM_Observation>
             </wml2:observationMember>
         </xsl:for-each>
-    </wml2:Collection>
-</xsl:template>
+    </wml2:collection>
+    </xsl:template>
+    <xsl:include href="WaterML1_1_common_to_waterml2.xsl"/>
 </xsl:stylesheet>

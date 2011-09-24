@@ -62,7 +62,7 @@ namespace WaterOneFlow.v1_0
 
         [WebMethod(Description = WsDescriptions.GetSitesDefaultDesc)]
       //  [OperationContract()]
-      //  [WebGet(
+      // [WebGet(
       //      // ResponseFormat = WebMessageFormat.Xml,
       //UriTemplate = "sites?site={site}&authToken={authToken}"
       //)]
@@ -70,6 +70,12 @@ namespace WaterOneFlow.v1_0
             [XmlArray("site"), XmlArrayItem("string", typeof(string))]
                 string[] site, String authToken);
 
+         [WebGet(
+             // ResponseFormat = WebMessageFormat.Xml,
+        UriTemplate = "sites?location={sites}&authToken={authToken}"
+        )]
+        SiteInfoResponseType GetSites(   
+                string sites, String authToken);
 
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
         //[FaultContract(typeof(WaterOneFlowException))]
@@ -78,7 +84,7 @@ namespace WaterOneFlow.v1_0
         [OperationContract(Action = Constants.WS_NAMSPACE + "GetSiteInfoObject")]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
-            UriTemplate = "series?location={site}&authToken={authToken}"
+            UriTemplate = "siteinfo?location={site}&authToken={authToken}"
             )]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
@@ -103,7 +109,7 @@ namespace WaterOneFlow.v1_0
         //[FaultContract(typeof(WaterOneFlowSourceException))]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
-            UriTemplate = "values?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"
+            UriTemplate = "datavalues?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"
             )]
         TimeSeriesResponseType GetValuesObject(string location, string variable, string startDate, string endDate, String authToken);
 

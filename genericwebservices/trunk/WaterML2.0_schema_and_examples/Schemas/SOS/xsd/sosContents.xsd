@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/>
+  <!-- ================================================= -->
+  <element name="ObservationOffering" type="sos:ObservationOfferingType" substitutionGroup="swes:AbstractOffering"/>
+  <complexType name="ObservationOfferingType">
+    <complexContent>
+      <extension base="swes:AbstractOfferingType">
+        <sequence>
+          <element name="observedArea" minOccurs="0">
+            <complexType>
+              <sequence>
+                <element ref="gml:Envelope"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="phenomenonTime" minOccurs="0">
+            <complexType>
+              <sequence>
+                <element ref="gml:TimePeriod"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="resultTime" minOccurs="0">
+            <complexType>
+              <sequence>
+                <element ref="gml:TimePeriod"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="responseFormat" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>unknown</gml:targetElement>
+              </appinfo>
+              <documentation>Default is defined by specification.</documentation>
+            </annotation>
+          </element>
+          <element name="observationType" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ValueCode</gml:targetElement>
+              </appinfo>
+              <documentation>More specialized O&amp;amp;M formats (shall be in observation substitution group)</documentation>
+            </annotation>
+          </element>
+          <element name="resultType" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ValueCode</gml:targetElement>
+              </appinfo>
+              <documentation>Shall be provided when generic observation type is used.</documentation>
+            </annotation>
+          </element>
+          <element name="featureOfInterestType" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ValueCode</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ObservationOfferingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="sos:ObservationOffering"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="Contents" type="sos:ContentsType" substitutionGroup="swes:AbstractContents"/>
+  <complexType name="ContentsType">
+    <complexContent>
+      <extension base="swes:AbstractContentsType">
+        <sequence>
+          <element name="responseFormat" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>unknown</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="observationType" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ValueCode</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="resultType" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ValueCode</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="featureOfInterestType" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ValueCode</gml:targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ContentsPropertyType">
+    <sequence minOccurs="0">
+      <element ref="sos:Contents"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+</schema>

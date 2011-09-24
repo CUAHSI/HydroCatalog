@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<timeSeriesResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.cuahsi.org/waterML/1.1/">
+  <queryInfo>
+    <creationTime>2011-08-29T11:11:17.6321802-07:00</creationTime>
+    <criteria MethodCalled="GetValues">
+      <parameter name="site" value="LBR_TEST:USU-LBR-Mendon" />
+      <parameter name="variable" value="LBR_TEST:USU40/SOURCEID=3" />
+      <parameter name="startDate" value="1900-01-01" />
+      <parameter name="endDate" value="2010-01-01" />
+    </criteria>
+  </queryInfo>
+  <timeSeries>
+    <sourceInfo xsi:type="SiteInfoType">
+      <siteName>Little Bear River at Mendon Road near Mendon, Utah</siteName>
+      <siteCode network="LBR" siteID="1">USU-LBR-Mendon</siteCode>
+      <geoLocation>
+        <geogLocation xsi:type="LatLonPointType" srs="EPSG:4269">
+          <latitude>41.718473</latitude>
+          <longitude>-111.946402</longitude>
+        </geogLocation>
+        <localSiteXY projectionInformation=" NAD83 / UTM zone 12N">
+          <X>421276.323</X>
+          <Y>4618952.04</Y>
+        </localSiteXY>
+      </geoLocation>
+      <elevation_m>1345</elevation_m>
+      <verticalDatum>NGVD29</verticalDatum>
+      <siteProperty name="County">Cache</siteProperty>
+      <siteProperty name="State">Utah</siteProperty>
+      <siteProperty name="Site Comments">Located below county road bridge at Mendon Road crossing</siteProperty>
+    </sourceInfo>
+    <variable>
+      <variableCode vocabulary="LBR" default="true" variableID="40">USU40</variableCode>
+      <variableName>Phosphorus, total as P, filtered</variableName>
+      <valueType>Sample</valueType>
+      <dataType>Sporadic</dataType>
+      <generalCategory>Water Quality</generalCategory>
+      <sampleMedium>Surface Water</sampleMedium>
+      <unit>
+        <unitName>milligrams per liter</unitName>
+        <unitType>Concentration</unitType>
+        <unitAbbreviation>mg/L</unitAbbreviation>
+        <unitCode>199</unitCode>
+      </unit>
+      <noDataValue>-9999</noDataValue>
+      <timeScale>
+        <unit>
+          <unitName>second</unitName>
+          <unitType>Time</unitType>
+          <unitAbbreviation>s</unitAbbreviation>
+          <unitCode>100</unitCode>
+        </unit>
+        <timeSupport>0</timeSupport>
+      </timeScale>
+      <speciation>P</speciation>
+    </variable>
+    <values>
+      <value censorCode="nc" dateTime="2007-10-04T12:00:00" timeOffset="-07:00" dateTimeUTC="2007-10-04T19:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4509 #5 Mendon Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-10-10T11:30:00" timeOffset="-07:00" dateTimeUTC="2007-10-10T18:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4579 Mendon Filtered" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2007-10-17T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-10-17T20:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4655 Mendon Filtered" qualityControlLevelCode="1">0.56</value>
+      <value censorCode="nc" dateTime="2007-10-24T12:30:00" timeOffset="-07:00" dateTimeUTC="2007-10-24T19:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4736 Mendon Filtered" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="nc" dateTime="2007-11-01T14:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-01T21:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4855 Mendon Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-11-07T13:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-07T20:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4924 J Filtered" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-11-13T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-11-13T20:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4988 Mendon C Filtered" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-11-13T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-11-13T20:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4988 Mendon B Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-11-13T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-11-13T20:00:00" methodCode="25" sourceCode="3" labSampleCode="11/13 TDP E" qualityControlLevelCode="1">0.0383</value>
+      <value censorCode="nc" dateTime="2007-11-21T14:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-21T21:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-5112 P Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-11-21T14:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-21T21:30:00" methodCode="25" sourceCode="3" labSampleCode="11/21 TDP G" qualityControlLevelCode="1">0.033</value>
+      <value censorCode="nc" dateTime="2007-12-05T10:30:00" timeOffset="-07:00" dateTimeUTC="2007-12-05T17:30:00" methodCode="25" sourceCode="3" labSampleCode="G120507-MEN-TDP" qualityControlLevelCode="1">0.0336</value>
+      <value censorCode="nc" dateTime="2007-12-20T14:40:00" timeOffset="-07:00" dateTimeUTC="2007-12-20T21:40:00" methodCode="25" sourceCode="3" labSampleCode="G122007-MEN-F" qualityControlLevelCode="1">0.1217</value>
+      <value censorCode="nc" dateTime="2008-01-03T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T21:00:00" methodCode="25" sourceCode="3" labSampleCode="G010308-MEN-F" qualityControlLevelCode="1">0.1833</value>
+      <value censorCode="nc" dateTime="2008-01-17T15:05:00" timeOffset="-07:00" dateTimeUTC="2008-01-17T22:05:00" methodCode="25" sourceCode="3" labSampleCode="G011708-MEN-F" qualityControlLevelCode="1">0.0444</value>
+      <value censorCode="nc" dateTime="2008-01-31T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-31T21:00:00" methodCode="25" sourceCode="3" labSampleCode="G013108-MEN-F dup" qualityControlLevelCode="1">0.0321</value>
+      <value censorCode="nc" dateTime="2008-01-31T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-31T21:00:00" methodCode="25" sourceCode="3" labSampleCode="G013108-MEN-F" qualityControlLevelCode="1">0.0305</value>
+      <value censorCode="nc" dateTime="2008-02-12T15:15:00" timeOffset="-07:00" dateTimeUTC="2008-02-12T22:15:00" methodCode="25" sourceCode="3" labSampleCode="G021208-MEN-F" qualityControlLevelCode="1">0.0232</value>
+      <qualityControlLevel qualityControlLevelID="1">
+        <qualityControlLevelCode>1</qualityControlLevelCode>
+        <definition>Quality controlled data</definition>
+        <explanation>Quality controlled data that have passed quality assurance procedures such as routine estimation of timing and sensor calibration or visual inspection and removal of obvious errors. An example is USGS published streamflow records following parsing through USGS quality control procedures.</explanation>
+      </qualityControlLevel>
+      <method methodID="25">
+        <methodCode>25</methodCode>
+        <methodDescription>Water chemistry grab sample collected by technicians in the field.</methodDescription>
+      </method>
+      <source sourceID="3">
+        <sourceCode>3</sourceCode>
+        <organization>Utah State University Utah Water Research Laboratory</organization>
+        <sourceDescription>Water chemistry monitoring data collected by Utah State University as part of a National Science Foundation funded test bed project.</sourceDescription>
+        <contactInformation>
+          <contactName>Amber Spackman</contactName>
+          <typeOfContact>main</typeOfContact>
+          <email>amber.s@aggiemail.usu.edu</email>
+          <phone>1-435-797-0045</phone>
+          <address xsi:type="xsd:string">8200 Old Main Hill
+,Logan, Utah 84322-8200</address>
+        </contactInformation>
+        <sourceLink>http://water.usu.edu/littlebearriver</sourceLink>
+        <citation>Water chemistry monitoring data collected by Jeff Horsburgh, David Stevens, David Tarboton, Nancy Mesner, Amber Spackman, and Sandra Gurrero at Utah State University as part of a National Science Foundation funded WATERS Network Test Bed project.</citation>
+      </source>
+      <sample sampleID="88">
+        <labSampleCode>L07-4509 #5 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4509 #5 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="96">
+        <labSampleCode>L07-4579 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4579 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="104">
+        <labSampleCode>L07-4655 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4655 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="110">
+        <labSampleCode>L07-4736 Mendon Filtered </labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4736 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="120">
+        <labSampleCode>L07-4855 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4855 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="136">
+        <labSampleCode>L07-4924 J Filtered </labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4924 J Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="146">
+        <labSampleCode>L07-4988 Mendon C Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4988 Mendon C Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="144">
+        <labSampleCode>L07-4988 Mendon B Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4988 Mendon B Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="40">
+        <labSampleCode>11/13 TDP E</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>11/13 TDP E</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="164">
+        <labSampleCode>L07-5112 P Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-5112 P Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="49">
+        <labSampleCode>11/21 TDP G</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>11/21 TDP G</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="71">
+        <labSampleCode>G120507-MEN-TDP</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G120507-MEN-TDP</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="203">
+        <labSampleCode>G122007-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G122007-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="210">
+        <labSampleCode>G010308-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G010308-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="246">
+        <labSampleCode>G011708-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G011708-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="255">
+        <labSampleCode>G013108-MEN-F dup</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G013108-MEN-F dup</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="254">
+        <labSampleCode>G013108-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G013108-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="263">
+        <labSampleCode>G021208-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G021208-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <censorCode>
+        <censorCode>nc</censorCode>
+        <censorCodeDescription>not censored</censorCodeDescription>
+      </censorCode>
+    </values>
+  </timeSeries>
+</timeSeriesResponse>

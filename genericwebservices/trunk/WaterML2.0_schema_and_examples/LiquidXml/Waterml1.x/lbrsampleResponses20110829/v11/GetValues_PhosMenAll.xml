@@ -1,0 +1,2075 @@
+<?xml version="1.0"?>
+<timeSeriesResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.cuahsi.org/waterML/1.1/">
+  <queryInfo>
+    <creationTime>2011-08-29T11:11:24.8515931-07:00</creationTime>
+    <criteria MethodCalled="GetValues">
+      <parameter name="site" value="LBR_TEST:USU-LBR-Mendon" />
+      <parameter name="variable" value="LBR_TEST:USU40" />
+      <parameter name="startDate" value="1900-01-01" />
+      <parameter name="endDate" value="2010-01-01" />
+    </criteria>
+  </queryInfo>
+  <timeSeries>
+    <sourceInfo xsi:type="SiteInfoType">
+      <siteName>Little Bear River at Mendon Road near Mendon, Utah</siteName>
+      <siteCode network="LBR" siteID="1">USU-LBR-Mendon</siteCode>
+      <geoLocation>
+        <geogLocation xsi:type="LatLonPointType" srs="EPSG:4269">
+          <latitude>41.718473</latitude>
+          <longitude>-111.946402</longitude>
+        </geogLocation>
+        <localSiteXY projectionInformation=" NAD83 / UTM zone 12N">
+          <X>421276.323</X>
+          <Y>4618952.04</Y>
+        </localSiteXY>
+      </geoLocation>
+      <elevation_m>1345</elevation_m>
+      <verticalDatum>NGVD29</verticalDatum>
+      <siteProperty name="County">Cache</siteProperty>
+      <siteProperty name="State">Utah</siteProperty>
+      <siteProperty name="Site Comments">Located below county road bridge at Mendon Road crossing</siteProperty>
+    </sourceInfo>
+    <variable>
+      <variableCode vocabulary="LBR" default="true" variableID="40">USU40</variableCode>
+      <variableName>Phosphorus, total as P, filtered</variableName>
+      <valueType>Sample</valueType>
+      <dataType>Sporadic</dataType>
+      <generalCategory>Water Quality</generalCategory>
+      <sampleMedium>Surface Water</sampleMedium>
+      <unit>
+        <unitName>milligrams per liter</unitName>
+        <unitType>Concentration</unitType>
+        <unitAbbreviation>mg/L</unitAbbreviation>
+        <unitCode>199</unitCode>
+      </unit>
+      <noDataValue>-9999</noDataValue>
+      <timeScale>
+        <unit>
+          <unitName>second</unitName>
+          <unitType>Time</unitType>
+          <unitAbbreviation>s</unitAbbreviation>
+          <unitCode>100</unitCode>
+        </unit>
+        <timeSupport>0</timeSupport>
+      </timeScale>
+      <speciation>P</speciation>
+    </variable>
+    <values>
+      <value censorCode="lt" dateTime="2005-10-27T21:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T04:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-27T22:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T05:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-27T23:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T06:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T00:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T07:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T01:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T08:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T02:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T09:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T03:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T10:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T04:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T11:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T05:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T12:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T06:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T13:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102805-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T07:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T14:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-28T08:30:00" timeOffset="-07:00" dateTimeUTC="2005-10-28T15:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T09:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T16:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T10:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T17:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T11:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T18:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T12:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T19:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T13:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T20:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T14:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T21:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T15:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T22:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T16:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-29T23:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T17:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T00:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T18:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T01:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102905-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T19:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T02:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111305-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-29T20:40:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T03:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111305-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T11:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T18:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111305-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T12:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T19:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T13:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T20:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T14:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T21:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T15:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T22:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T16:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-30T23:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T17:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-31T00:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T18:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-31T01:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T19:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-31T02:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP111405-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T20:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-31T03:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030106-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T21:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-31T04:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030206-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-10-30T22:20:00" timeOffset="-07:00" dateTimeUTC="2005-10-31T05:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030306-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-13T13:50:00" timeOffset="-07:00" dateTimeUTC="2005-11-13T20:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030406-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-13T18:50:00" timeOffset="-07:00" dateTimeUTC="2005-11-14T01:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030506-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-13T20:50:00" timeOffset="-07:00" dateTimeUTC="2005-11-14T03:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030606-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-14T10:00:00" timeOffset="-07:00" dateTimeUTC="2005-11-14T17:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030606-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-14T15:00:00" timeOffset="-07:00" dateTimeUTC="2005-11-14T22:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030706-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-14T18:00:00" timeOffset="-07:00" dateTimeUTC="2005-11-15T01:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030706-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-14T20:00:00" timeOffset="-07:00" dateTimeUTC="2005-11-15T03:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030706-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="lt" dateTime="2005-11-14T21:00:00" timeOffset="-07:00" dateTimeUTC="2005-11-15T04:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030706-PAR-F" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="nc" dateTime="2006-03-01T12:16:00" timeOffset="-07:00" dateTimeUTC="2006-03-01T19:16:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030706-PAR-F" qualityControlLevelCode="1">0.11</value>
+      <value censorCode="nc" dateTime="2006-03-02T11:40:00" timeOffset="-07:00" dateTimeUTC="2006-03-02T18:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031706-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2006-03-03T13:30:00" timeOffset="-07:00" dateTimeUTC="2006-03-03T20:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031806-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2006-03-04T12:40:00" timeOffset="-07:00" dateTimeUTC="2006-03-04T19:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031806-PAR-F" qualityControlLevelCode="1">0.1</value>
+      <value censorCode="nc" dateTime="2006-03-05T10:55:00" timeOffset="-07:00" dateTimeUTC="2006-03-05T17:55:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-06T18:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-07T01:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032506-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-03-06T21:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-07T04:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-03-07T04:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-07T11:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032606-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-03-07T09:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-07T16:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032606-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-03-07T14:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-07T21:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032606-PAR-F" qualityControlLevelCode="1">0.09</value>
+      <value censorCode="nc" dateTime="2006-03-07T17:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-08T00:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032606-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2006-03-17T08:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-17T15:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032606-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-18T02:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-18T09:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032806-PAR-F" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2006-03-18T23:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-19T06:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032806-PAR-F" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2006-03-19T05:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-19T12:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032806-PAR-F" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2006-03-28T12:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-28T19:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032806-PAR-F" qualityControlLevelCode="1">0.09</value>
+      <value censorCode="nc" dateTime="2006-03-28T14:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-28T21:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-28T16:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-28T23:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-28T18:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T01:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-03-28T21:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T04:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-03-29T02:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T09:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-29T04:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T11:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-29T05:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T12:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032906-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-03-29T07:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T14:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP033006-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-29T09:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T16:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP033006-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-29T10:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T17:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP033006-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-03-29T11:50:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T18:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP033006-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-03-29T14:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-29T21:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP033006-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-29T18:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-30T01:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040406-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-29T21:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-30T04:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040406-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-30T00:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-30T07:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-30T04:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-30T11:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-03-30T10:00:00" timeOffset="-07:00" dateTimeUTC="2006-03-30T17:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-04-04T20:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T03:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-05T00:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T07:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-05T03:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T10:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2006-04-05T06:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T13:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-04-05T08:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T15:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-05T11:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T18:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-04-05T13:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-05T20:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-05T19:40:00" timeOffset="-07:00" dateTimeUTC="2006-04-06T02:40:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040606-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-04-14T22:45:00" timeOffset="-07:00" dateTimeUTC="2006-04-15T05:45:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040606-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-15T03:45:00" timeOffset="-07:00" dateTimeUTC="2006-04-15T10:45:00" methodCode="25" sourceCode="4" labSampleCode="CEAP040606-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-15T06:45:00" timeOffset="-07:00" dateTimeUTC="2006-04-15T13:45:00" methodCode="25" sourceCode="4" labSampleCode="CEAP041406-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-04-15T10:45:00" timeOffset="-07:00" dateTimeUTC="2006-04-15T17:45:00" methodCode="25" sourceCode="4" labSampleCode="CEAP041506-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-04-15T21:45:00" timeOffset="-07:00" dateTimeUTC="2006-04-16T04:45:00" methodCode="25" sourceCode="4" labSampleCode="CEAP041506-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-06-09T07:30:00" timeOffset="-07:00" dateTimeUTC="2006-06-09T14:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP041506-PAR-F" qualityControlLevelCode="1">2.46</value>
+      <value censorCode="nc" dateTime="2006-06-09T12:30:00" timeOffset="-07:00" dateTimeUTC="2006-06-09T19:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP041506-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-06-09T18:30:00" timeOffset="-07:00" dateTimeUTC="2006-06-10T01:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072506-PAR-F" qualityControlLevelCode="1">0.01</value>
+      <value censorCode="nc" dateTime="2006-06-10T06:30:00" timeOffset="-07:00" dateTimeUTC="2006-06-10T13:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-06-10T16:30:00" timeOffset="-07:00" dateTimeUTC="2006-06-10T23:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072506-PAR-F" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2006-07-25T12:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-25T19:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072506-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2006-07-25T15:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-25T22:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072506-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2006-07-25T18:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-26T01:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072606-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2006-07-25T21:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-26T04:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072606-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-07-26T00:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-26T07:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP072606-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-07-26T03:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-26T10:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP101906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-07-26T06:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-26T13:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP101906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-07-26T09:15:00" timeOffset="-07:00" dateTimeUTC="2006-07-26T16:15:00" methodCode="25" sourceCode="4" labSampleCode="CEAP101906-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2006-10-19T11:30:00" timeOffset="-07:00" dateTimeUTC="2006-10-19T18:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102006-PAR-F" qualityControlLevelCode="1">0.022</value>
+      <value censorCode="nc" dateTime="2006-10-19T12:30:00" timeOffset="-07:00" dateTimeUTC="2006-10-19T19:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102006-PAR-F" qualityControlLevelCode="1">0.025</value>
+      <value censorCode="nc" dateTime="2006-10-19T13:30:00" timeOffset="-07:00" dateTimeUTC="2006-10-19T20:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP102006-PAR-F" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2006-10-20T03:30:00" timeOffset="-07:00" dateTimeUTC="2006-10-20T10:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP020807-PAR-F" qualityControlLevelCode="1">0.036</value>
+      <value censorCode="nc" dateTime="2006-10-20T05:30:00" timeOffset="-07:00" dateTimeUTC="2006-10-20T12:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP020807-PAR-F" qualityControlLevelCode="1">0.023</value>
+      <value censorCode="nc" dateTime="2006-10-20T06:30:00" timeOffset="-07:00" dateTimeUTC="2006-10-20T13:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP020807-PAR-F" qualityControlLevelCode="1">0.031</value>
+      <value censorCode="nc" dateTime="2007-02-08T14:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-08T21:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP020907-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2007-02-08T18:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-09T01:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP021607-PAR-F" qualityControlLevelCode="1">0.12</value>
+      <value censorCode="nc" dateTime="2007-02-08T22:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-09T05:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP021607-PAR-F" qualityControlLevelCode="1">0.09</value>
+      <value censorCode="nc" dateTime="2007-02-09T02:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-09T09:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP021607-PAR-F" qualityControlLevelCode="1">0.1</value>
+      <value censorCode="nc" dateTime="2007-02-09T06:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-09T13:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP021607-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2007-02-09T10:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-09T17:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030907-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2007-02-16T00:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-16T07:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030907-PAR-F" qualityControlLevelCode="1">0.1</value>
+      <value censorCode="nc" dateTime="2007-02-16T07:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-16T14:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP030907-PAR-F" qualityControlLevelCode="1">0.11</value>
+      <value censorCode="nc" dateTime="2007-02-16T10:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-16T17:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031007-PAR-F" qualityControlLevelCode="1">0.12</value>
+      <value censorCode="nc" dateTime="2007-02-16T12:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-16T19:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031307-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2007-02-16T15:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-16T22:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP031307-PAR-F" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2007-02-16T18:00:00" timeOffset="-07:00" dateTimeUTC="2007-02-17T01:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032007-PAR-F" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2007-03-07T13:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-07T20:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032007-PAR-F" qualityControlLevelCode="1">0.11</value>
+      <value censorCode="nc" dateTime="2007-03-07T19:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-08T02:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032007-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2007-03-08T00:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-08T07:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032707-PAR-F" qualityControlLevelCode="1">0.1</value>
+      <value censorCode="nc" dateTime="2007-03-08T09:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-08T16:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032707-PAR-F" qualityControlLevelCode="1">0.11</value>
+      <value censorCode="nc" dateTime="2007-03-09T16:43:00" timeOffset="-07:00" dateTimeUTC="2007-03-09T23:43:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032707-PAR-F" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2007-03-09T18:43:00" timeOffset="-07:00" dateTimeUTC="2007-03-10T01:43:00" methodCode="25" sourceCode="4" labSampleCode="CEAP032807-PAR-F" qualityControlLevelCode="1">0.06</value>
+      <value censorCode="nc" dateTime="2007-03-09T20:43:00" timeOffset="-07:00" dateTimeUTC="2007-03-10T03:43:00" methodCode="25" sourceCode="4" labSampleCode="CEAP060707-PAR-F" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2007-03-10T00:43:00" timeOffset="-07:00" dateTimeUTC="2007-03-10T07:43:00" methodCode="25" sourceCode="4" labSampleCode="CEAP060707-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2007-03-10T06:43:00" timeOffset="-07:00" dateTimeUTC="2007-03-10T13:43:00" methodCode="25" sourceCode="4" labSampleCode="CEAP060707-PAR-F" qualityControlLevelCode="1">0.07</value>
+      <value censorCode="nc" dateTime="2007-03-13T15:50:00" timeOffset="-07:00" dateTimeUTC="2007-03-13T22:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP060707-PAR-F" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-03-13T19:50:00" timeOffset="-07:00" dateTimeUTC="2007-03-14T02:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP051905-PAR-TSS" qualityControlLevelCode="1">0.01</value>
+      <value censorCode="nc" dateTime="2007-03-14T09:50:00" timeOffset="-07:00" dateTimeUTC="2007-03-14T16:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP052005-PAR-TSS" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="nc" dateTime="2007-03-14T19:50:00" timeOffset="-07:00" dateTimeUTC="2007-03-15T02:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP052005-PAR-TSS" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="nc" dateTime="2007-03-15T07:50:00" timeOffset="-07:00" dateTimeUTC="2007-03-15T14:50:00" methodCode="25" sourceCode="4" labSampleCode="CEAP052005-PAR-TSS" qualityControlLevelCode="1">0.09</value>
+      <value censorCode="nc" dateTime="2007-03-20T19:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-21T02:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP052005-PAR-TSS" qualityControlLevelCode="1">0.1</value>
+      <value censorCode="nc" dateTime="2007-03-20T21:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-21T04:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP052005-PAR-TSS" qualityControlLevelCode="1">0.11</value>
+      <value censorCode="nc" dateTime="2007-03-21T00:30:00" timeOffset="-07:00" dateTimeUTC="2007-03-21T07:30:00" methodCode="25" sourceCode="4" labSampleCode="CEAP081605-PAR-TSS" qualityControlLevelCode="1">0.13</value>
+      <value censorCode="nc" dateTime="2007-03-27T15:00:00" timeOffset="-07:00" dateTimeUTC="2007-03-27T22:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP081705-PAR-TSS" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-03-27T20:00:00" timeOffset="-07:00" dateTimeUTC="2007-03-28T03:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP081705-PAR-TSS" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-03-27T23:00:00" timeOffset="-07:00" dateTimeUTC="2007-03-28T06:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP081705-PAR-TSS" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-03-28T05:00:00" timeOffset="-07:00" dateTimeUTC="2007-03-28T12:00:00" methodCode="25" sourceCode="4" labSampleCode="CEAP081705-PAR-TSS" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2007-06-07T04:20:00" timeOffset="-07:00" dateTimeUTC="2007-06-07T11:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP100405-PAR-TSS" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2007-06-07T08:20:00" timeOffset="-07:00" dateTimeUTC="2007-06-07T15:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP100405-PAR-TSS" qualityControlLevelCode="1">0.09</value>
+      <value censorCode="nc" dateTime="2007-06-07T09:20:00" timeOffset="-07:00" dateTimeUTC="2007-06-07T16:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP100405-PAR-TSS" qualityControlLevelCode="1">0.08</value>
+      <value censorCode="nc" dateTime="2007-06-07T14:20:00" timeOffset="-07:00" dateTimeUTC="2007-06-07T21:20:00" methodCode="25" sourceCode="4" labSampleCode="CEAP100405-PAR-TSS" qualityControlLevelCode="1">0.09</value>
+      <value censorCode="nc" dateTime="2007-10-04T12:00:00" timeOffset="-07:00" dateTimeUTC="2007-10-04T19:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4509 #5 Mendon Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-10-10T11:30:00" timeOffset="-07:00" dateTimeUTC="2007-10-10T18:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4579 Mendon Filtered" qualityControlLevelCode="1">0.05</value>
+      <value censorCode="nc" dateTime="2007-10-17T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-10-17T20:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4655 Mendon Filtered" qualityControlLevelCode="1">0.56</value>
+      <value censorCode="nc" dateTime="2007-10-24T12:30:00" timeOffset="-07:00" dateTimeUTC="2007-10-24T19:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4736 Mendon Filtered" qualityControlLevelCode="1">0.02</value>
+      <value censorCode="nc" dateTime="2007-11-01T14:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-01T21:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4855 Mendon Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-11-07T13:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-07T20:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-4924 J Filtered" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-11-13T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-11-13T20:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4988 Mendon C Filtered" qualityControlLevelCode="1">0.03</value>
+      <value censorCode="nc" dateTime="2007-11-13T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-11-13T20:00:00" methodCode="25" sourceCode="3" labSampleCode="L07-4988 Mendon B Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-11-13T13:00:00" timeOffset="-07:00" dateTimeUTC="2007-11-13T20:00:00" methodCode="25" sourceCode="3" labSampleCode="11/13 TDP E" qualityControlLevelCode="1">0.0383</value>
+      <value censorCode="nc" dateTime="2007-11-21T14:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-21T21:30:00" methodCode="25" sourceCode="3" labSampleCode="L07-5112 P Filtered" qualityControlLevelCode="1">0.04</value>
+      <value censorCode="nc" dateTime="2007-11-21T14:30:00" timeOffset="-07:00" dateTimeUTC="2007-11-21T21:30:00" methodCode="25" sourceCode="3" labSampleCode="11/21 TDP G" qualityControlLevelCode="1">0.033</value>
+      <value censorCode="nc" dateTime="2007-12-05T10:30:00" timeOffset="-07:00" dateTimeUTC="2007-12-05T17:30:00" methodCode="25" sourceCode="3" labSampleCode="G120507-MEN-TDP" qualityControlLevelCode="1">0.0336</value>
+      <value censorCode="nc" dateTime="2007-12-20T14:40:00" timeOffset="-07:00" dateTimeUTC="2007-12-20T21:40:00" methodCode="25" sourceCode="3" labSampleCode="G122007-MEN-F" qualityControlLevelCode="1">0.1217</value>
+      <value censorCode="nc" dateTime="2008-01-03T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T21:00:00" methodCode="25" sourceCode="3" labSampleCode="G010308-MEN-F" qualityControlLevelCode="1">0.1833</value>
+      <value censorCode="nc" dateTime="2008-01-17T15:05:00" timeOffset="-07:00" dateTimeUTC="2008-01-17T22:05:00" methodCode="25" sourceCode="3" labSampleCode="G011708-MEN-F" qualityControlLevelCode="1">0.0444</value>
+      <value censorCode="nc" dateTime="2008-01-31T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-31T21:00:00" methodCode="25" sourceCode="3" labSampleCode="G013108-MEN-F dup" qualityControlLevelCode="1">0.0321</value>
+      <value censorCode="nc" dateTime="2008-01-31T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-31T21:00:00" methodCode="25" sourceCode="3" labSampleCode="G013108-MEN-F" qualityControlLevelCode="1">0.0305</value>
+      <value censorCode="nc" dateTime="2008-02-12T15:15:00" timeOffset="-07:00" dateTimeUTC="2008-02-12T22:15:00" methodCode="25" sourceCode="3" labSampleCode="G021208-MEN-F" qualityControlLevelCode="1">0.0232</value>
+      <qualityControlLevel qualityControlLevelID="1">
+        <qualityControlLevelCode>1</qualityControlLevelCode>
+        <definition>Quality controlled data</definition>
+        <explanation>Quality controlled data that have passed quality assurance procedures such as routine estimation of timing and sensor calibration or visual inspection and removal of obvious errors. An example is USGS published streamflow records following parsing through USGS quality control procedures.</explanation>
+      </qualityControlLevel>
+      <method methodID="25">
+        <methodCode>25</methodCode>
+        <methodDescription>Water chemistry grab sample collected by technicians in the field.</methodDescription>
+      </method>
+      <source sourceID="4">
+        <sourceCode>4</sourceCode>
+        <organization>Utah State University Department of Watershed Sciences</organization>
+        <sourceDescription>Water chemistry monitoring data collected by Utah State Univeristy as part of the USDA CEAP Grant.</sourceDescription>
+        <contactInformation>
+          <contactName>Nancy Mesner</contactName>
+          <typeOfContact>main</typeOfContact>
+          <email>nancy.mesner@usu.edu</email>
+          <phone>1-435-797-7541</phone>
+          <address xsi:type="xsd:string">5200 Old Main Hill
+,Logan, Utah 84322-5200</address>
+        </contactInformation>
+        <sourceLink>http://water.usu.edu/littlebearriver</sourceLink>
+        <citation>Water chemistry monitoring data collected by Jeff Horsburgh, David Stevens, Nancy Mesner and others from Utah State University as part of the USDA Conservation Effects Assessment Grant</citation>
+      </source>
+      <source sourceID="3">
+        <sourceCode>3</sourceCode>
+        <organization>Utah State University Utah Water Research Laboratory</organization>
+        <sourceDescription>Water chemistry monitoring data collected by Utah State University as part of a National Science Foundation funded test bed project.</sourceDescription>
+        <contactInformation>
+          <contactName>Amber Spackman</contactName>
+          <typeOfContact>main</typeOfContact>
+          <email>amber.s@aggiemail.usu.edu</email>
+          <phone>1-435-797-0045</phone>
+          <address xsi:type="xsd:string">8200 Old Main Hill
+,Logan, Utah 84322-8200</address>
+        </contactInformation>
+        <sourceLink>http://water.usu.edu/littlebearriver</sourceLink>
+        <citation>Water chemistry monitoring data collected by Jeff Horsburgh, David Stevens, David Tarboton, Nancy Mesner, Amber Spackman, and Sandra Gurrero at Utah State University as part of a National Science Foundation funded WATERS Network Test Bed project.</citation>
+      </source>
+      <sample sampleID="9605">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9606">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9607">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9608">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9609">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9610">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9611">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9612">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9613">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9614">
+        <labSampleCode>CEAP102805-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102805-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9615">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9616">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9617">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9618">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9619">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9620">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9621">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9622">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9623">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9624">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9625">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9626">
+        <labSampleCode>CEAP102905-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102905-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9627">
+        <labSampleCode>CEAP111305-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111305-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9628">
+        <labSampleCode>CEAP111305-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111305-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9629">
+        <labSampleCode>CEAP111305-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111305-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9630">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9631">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9632">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9633">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9634">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9635">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9636">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9637">
+        <labSampleCode>CEAP111405-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP111405-PAR-F</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 365.2</labMethodName>
+          <labMethodDescription>Orthophosphate Ascorbic Acid Manual Single Reagent</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9638">
+        <labSampleCode>CEAP030106-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030106-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9639">
+        <labSampleCode>CEAP030206-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030206-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9640">
+        <labSampleCode>CEAP030306-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030306-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9641">
+        <labSampleCode>CEAP030406-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030406-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9642">
+        <labSampleCode>CEAP030506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9643">
+        <labSampleCode>CEAP030606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9644">
+        <labSampleCode>CEAP030606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9645">
+        <labSampleCode>CEAP030706-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030706-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9646">
+        <labSampleCode>CEAP030706-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030706-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9647">
+        <labSampleCode>CEAP030706-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030706-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9648">
+        <labSampleCode>CEAP030706-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030706-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9649">
+        <labSampleCode>CEAP030706-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030706-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9650">
+        <labSampleCode>CEAP031706-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031706-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9651">
+        <labSampleCode>CEAP031806-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031806-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9652">
+        <labSampleCode>CEAP031806-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031806-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9653">
+        <labSampleCode>CEAP031906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9654">
+        <labSampleCode>CEAP032506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9655">
+        <labSampleCode>CEAP032506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9656">
+        <labSampleCode>CEAP032606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9657">
+        <labSampleCode>CEAP032606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9658">
+        <labSampleCode>CEAP032606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9659">
+        <labSampleCode>CEAP032606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9660">
+        <labSampleCode>CEAP032606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9661">
+        <labSampleCode>CEAP032806-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032806-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9662">
+        <labSampleCode>CEAP032806-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032806-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9663">
+        <labSampleCode>CEAP032806-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032806-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9664">
+        <labSampleCode>CEAP032806-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032806-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9665">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9666">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9667">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9668">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9669">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9670">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9671">
+        <labSampleCode>CEAP032906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9672">
+        <labSampleCode>CEAP033006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP033006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9673">
+        <labSampleCode>CEAP033006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP033006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9674">
+        <labSampleCode>CEAP033006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP033006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9675">
+        <labSampleCode>CEAP033006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP033006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9676">
+        <labSampleCode>CEAP033006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP033006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9677">
+        <labSampleCode>CEAP040406-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040406-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9678">
+        <labSampleCode>CEAP040406-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040406-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9679">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9680">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9681">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9682">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9683">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9684">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9685">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9686">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9687">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9688">
+        <labSampleCode>CEAP040506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9689">
+        <labSampleCode>CEAP040606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9690">
+        <labSampleCode>CEAP040606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9691">
+        <labSampleCode>CEAP040606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP040606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9692">
+        <labSampleCode>CEAP041406-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP041406-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9693">
+        <labSampleCode>CEAP041506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP041506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9694">
+        <labSampleCode>CEAP041506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP041506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9695">
+        <labSampleCode>CEAP041506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP041506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9696">
+        <labSampleCode>CEAP041506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP041506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9697">
+        <labSampleCode>CEAP072506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9698">
+        <labSampleCode>CEAP072506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9699">
+        <labSampleCode>CEAP072506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9700">
+        <labSampleCode>CEAP072506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9701">
+        <labSampleCode>CEAP072506-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072506-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9702">
+        <labSampleCode>CEAP072606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9703">
+        <labSampleCode>CEAP072606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9704">
+        <labSampleCode>CEAP072606-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP072606-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9705">
+        <labSampleCode>CEAP101906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP101906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9706">
+        <labSampleCode>CEAP101906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP101906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9707">
+        <labSampleCode>CEAP101906-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP101906-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9708">
+        <labSampleCode>CEAP102006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9709">
+        <labSampleCode>CEAP102006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9710">
+        <labSampleCode>CEAP102006-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP102006-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9711">
+        <labSampleCode>CEAP020807-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP020807-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9712">
+        <labSampleCode>CEAP020807-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP020807-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9713">
+        <labSampleCode>CEAP020807-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP020807-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9714">
+        <labSampleCode>CEAP020907-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP020907-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9715">
+        <labSampleCode>CEAP021607-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP021607-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9716">
+        <labSampleCode>CEAP021607-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP021607-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9717">
+        <labSampleCode>CEAP021607-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP021607-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9718">
+        <labSampleCode>CEAP021607-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP021607-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9719">
+        <labSampleCode>CEAP030907-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030907-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9720">
+        <labSampleCode>CEAP030907-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030907-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9721">
+        <labSampleCode>CEAP030907-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP030907-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9722">
+        <labSampleCode>CEAP031007-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031007-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9723">
+        <labSampleCode>CEAP031307-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031307-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9724">
+        <labSampleCode>CEAP031307-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP031307-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9725">
+        <labSampleCode>CEAP032007-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032007-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9726">
+        <labSampleCode>CEAP032007-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032007-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9727">
+        <labSampleCode>CEAP032007-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032007-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9728">
+        <labSampleCode>CEAP032707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9729">
+        <labSampleCode>CEAP032707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9730">
+        <labSampleCode>CEAP032707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9731">
+        <labSampleCode>CEAP032807-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP032807-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9732">
+        <labSampleCode>CEAP060707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP060707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9733">
+        <labSampleCode>CEAP060707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP060707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9734">
+        <labSampleCode>CEAP060707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP060707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9735">
+        <labSampleCode>CEAP060707-PAR-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP060707-PAR-F</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9736">
+        <labSampleCode>CEAP051905-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP051905-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9737">
+        <labSampleCode>CEAP052005-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP052005-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9738">
+        <labSampleCode>CEAP052005-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP052005-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9739">
+        <labSampleCode>CEAP052005-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP052005-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9740">
+        <labSampleCode>CEAP052005-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP052005-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9741">
+        <labSampleCode>CEAP052005-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP052005-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9742">
+        <labSampleCode>CEAP081605-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP081605-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9743">
+        <labSampleCode>CEAP081705-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP081705-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9744">
+        <labSampleCode>CEAP081705-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP081705-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9745">
+        <labSampleCode>CEAP081705-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP081705-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9746">
+        <labSampleCode>CEAP081705-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP081705-PAR-TSS</labCode>
+          <labName>USU Analytical Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 340.2</labMethodName>
+          <labMethodDescription>Total Suspended Solids, Mass Balance</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9747">
+        <labSampleCode>CEAP100405-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP100405-PAR-TSS</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 160.2</labMethodName>
+          <labMethodDescription>Residue Nonfilterable TSS</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9748">
+        <labSampleCode>CEAP100405-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP100405-PAR-TSS</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 160.2</labMethodName>
+          <labMethodDescription>Residue Nonfilterable TSS</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9749">
+        <labSampleCode>CEAP100405-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP100405-PAR-TSS</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 160.2</labMethodName>
+          <labMethodDescription>Residue Nonfilterable TSS</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="9750">
+        <labSampleCode>CEAP100405-PAR-TSS</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>CEAP100405-PAR-TSS</labCode>
+          <labName>Utah Division of Water Quality</labName>
+          <labOrganization>Utah Department of Environmental Quality</labOrganization>
+          <labMethodName>EPA 160.2</labMethodName>
+          <labMethodDescription>Residue Nonfilterable TSS</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="88">
+        <labSampleCode>L07-4509 #5 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4509 #5 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="96">
+        <labSampleCode>L07-4579 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4579 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="104">
+        <labSampleCode>L07-4655 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4655 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="110">
+        <labSampleCode>L07-4736 Mendon Filtered </labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4736 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="120">
+        <labSampleCode>L07-4855 Mendon Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4855 Mendon Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="136">
+        <labSampleCode>L07-4924 J Filtered </labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4924 J Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="146">
+        <labSampleCode>L07-4988 Mendon C Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4988 Mendon C Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="144">
+        <labSampleCode>L07-4988 Mendon B Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-4988 Mendon B Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="40">
+        <labSampleCode>11/13 TDP E</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>11/13 TDP E</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="164">
+        <labSampleCode>L07-5112 P Filtered</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>L07-5112 P Filtered</labCode>
+          <labName>Utah Veterinary Diagnostic Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>EPA 200.8</labMethodName>
+          <labMethodDescription>Determination of Trace Elements in Water and Wastes by Inductively Coupled Plasma - Mass Spectrometry</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="49">
+        <labSampleCode>11/21 TDP G</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>11/21 TDP G</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="71">
+        <labSampleCode>G120507-MEN-TDP</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G120507-MEN-TDP</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="203">
+        <labSampleCode>G122007-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G122007-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="210">
+        <labSampleCode>G010308-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G010308-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="246">
+        <labSampleCode>G011708-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G011708-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="255">
+        <labSampleCode>G013108-MEN-F dup</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G013108-MEN-F dup</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="254">
+        <labSampleCode>G013108-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G013108-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <sample sampleID="263">
+        <labSampleCode>G021208-MEN-F</labSampleCode>
+        <sampleType>Grab</sampleType>
+        <labMethod>
+          <labCode>G021208-MEN-F</labCode>
+          <labName>USU Aquatic Biogeochemistry Laboratory</labName>
+          <labOrganization>Utah State University</labOrganization>
+          <labMethodName>Total Phosphorus</labMethodName>
+          <labMethodDescription>Determination of total phosphorus by digestion and ascorbic acid method</labMethodDescription>
+        </labMethod>
+      </sample>
+      <censorCode>
+        <censorCode>lt</censorCode>
+        <censorCodeDescription>less than</censorCodeDescription>
+      </censorCode>
+      <censorCode>
+        <censorCode>nc</censorCode>
+        <censorCodeDescription>not censored</censorCodeDescription>
+      </censorCode>
+    </values>
+  </timeSeries>
+</timeSeriesResponse>

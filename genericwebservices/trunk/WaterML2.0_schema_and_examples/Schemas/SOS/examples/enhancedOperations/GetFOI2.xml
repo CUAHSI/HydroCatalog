@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Request for GetFeatureOfInterest operation which contains a featureID filter. The response contains a feature collection containing features with IDs passed in this request.
+=======================================================================-->
+<sos:GetFeatureOfInterest xmlns="http://www.opengis.net/sos/2.0" service="SOS" version="2.0.0" xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sos/2.0
+http://schemas.opengis.net/sos/2.0.0/sos.xsd">
+	<featureOfInterest>http://www.my_namespace.org/fois/st1</featureOfInterest>
+	<featureOfInterest>http://www.my_namespace.org/fois/st2</featureOfInterest>
+	<featureOfInterest>http://www.my_namespace.org/fois/st3</featureOfInterest>
+</sos:GetFeatureOfInterest>

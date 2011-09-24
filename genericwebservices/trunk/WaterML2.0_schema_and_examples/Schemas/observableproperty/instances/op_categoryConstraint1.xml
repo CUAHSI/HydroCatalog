@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example -->
+<ComplexObservableProperty xmlns="http://schemas.opengis.net/op"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.opengis.net/op ../schemas/op.xsd" gml:id="ID004">
+    <label>Precipitation as Snow</label>
+    <basePhenomenon xlink:href="http://areference.com/precipitation"/>
+    <constraint>
+        <swe:Category definition="http://areference.com/precipitationType">
+            <swe:value>SNOW</swe:value>
+        </swe:Category>
+    </constraint>
+</ComplexObservableProperty>

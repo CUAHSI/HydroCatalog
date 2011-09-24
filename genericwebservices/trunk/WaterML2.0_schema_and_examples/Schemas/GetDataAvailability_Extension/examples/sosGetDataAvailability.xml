@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gda:GetDataAvailability service="SOS" version="2.0" xsi:schemaLocation="http://www.opengis.net/sosgda/1.0 ../sosGetDataAvailability.xsd" xmlns:gda="http://www.opengis.net/sosgda/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <gda:availabilityTimeframe>
+    <gml:TimePeriod gml:id="ID-01">
+      <gml:beginPosition>2010-07-21T06:00:00Z</gml:beginPosition>
+      <gml:endPosition>2010-07-21T12:00:00Z</gml:endPosition>
+    </gml:TimePeriod>
+  </gda:availabilityTimeframe>
+  <gda:featureOfInterest>http://my.org/fois/foi1</gda:featureOfInterest>
+  <gda:featureOfInterest>http://my.org/fois/foi2</gda:featureOfInterest>
+  <gda:featureOfInterest>http://my.org/fois/foi3</gda:featureOfInterest>
+  <gda:featureOfInterest>http://my.org/fois/foi4444</gda:featureOfInterest>
+  <gda:minimumTimeGap>PT15M</gda:minimumTimeGap>
+  <gda:offering>http://service.com/sos/offering1</gda:offering>
+    <gda:offering>http://service.com/sos/offering2</gda:offering>
+  <gda:offering>http://service.com/sos/offering3</gda:offering>
+  <gda:useAllObservedProperties>true</gda:useAllObservedProperties>
+</gda:GetDataAvailability>
+
+<!-- example:
+
+http://service.com/sos/offering1
+
+  http://service.com/sos/observation1_1
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T08:10:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_2
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T08:30:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_3
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T08:50:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_4
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T10:00:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_5
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T10:10:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+
+http://service.com/sos/offering2
+  http://service.com/sos/observation2_1
+    procedure = http://my.org/sensors/process2
+    phenomenonTime = 2010-07-21T08:12:00Z
+    featureOfInterest = http://my.org/fois/foi2
+    observedProperty = http://authority.org/dictionary/def/property/humidity
+
+http://service.com/sos/offering3
+
+  http://service.com/sos/observation3_1
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-20T01:00:00Z
+    featureOfInterest = http://my.org/fois/foi3
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+
+http://service.com/sos/offering4
+
+  http://service.com/sos/observation4_1
+    procedure = http://my.org/sensors/process4
+    phenomenonTime = 2010-07-210T11:59:00Z - 2010-07-21T12:01:00Z
+    featureOfInterest = http://my.org/fois/foi2
+    observedProperty = http://authority.org/dictionary/def/property/ozone_concentration
+    -->

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Response for UpdateSensor operation which contains the identifier of the sensor whose description has been updated.
+=======================================================================-->
+<swes:UpdateSensorDescriptionResponse  xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/swes/2.0
+http://schemas.opengis.net/swes/2.0.0/swesUpdateSensorDescription.xsd">
+	
+	<!--identifier of the sensor which has been assigned to the sensor by the SOS instance-->
+	<swes:updatedProcedure>http://www.my_namespace.org/sensors/Water_Gage_2</swes:updatedProcedure>
+	
+</swes:UpdateSensorDescriptionResponse>

@@ -5,25 +5,25 @@
   <publishProfile publishUrl="http://localhost/LBRSDSC" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="DefaultWebSite/LBRSDSC" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="False" msdeployMarkAsApp="True" profileName="LocalDeploy" publishMethod="FileSystem" replaceMatchingFiles="False" userName="valentin" savePWD="False" userPWD="" SelectedForPublish="False">
     <file relUrl="Default.aspx" publishTime="05/18/2011 10:32:44" />
     <file relUrl="packages.config" publishTime="06/06/2011 14:27:46" />
-    <file relUrl="Account/Login.aspx" publishTime="05/18/2011 10:32:44" />
+    <file relUrl="REST/waterml_1_1.svc" publishTime="06/03/2011 12:12:49" />
     <file relUrl="wateroneflow_authentication.config" publishTime="06/02/2011 16:14:17" />
     <file relUrl="Examples_1_1.aspx" publishTime="06/02/2011 17:41:33" />
     <file relUrl="bin/WaterOneFlow_AppSettings.config" publishTime="06/02/2011 16:14:17" />
     <file relUrl="Notes/CreatingViewsOverDatabases.txt" publishTime="06/03/2011 12:13:39" />
-    <file relUrl="bin/Web.Config" publishTime="02/03/2011 10:33:22" />
+    <file relUrl="bin/GenericWs2.pdb" publishTime="06/24/2011 09:02:14" />
+    <file relUrl="REST/xslt/WaterML1_1_timseries_ObservedProperty_to_WaterML2.xsl" publishTime="06/14/2011 11:08:08" />
     <file relUrl="Styles/Site.css" publishTime="06/17/2011 15:58:38" />
+    <file relUrl="SOAP/waterml_1_0.svc" publishTime="06/03/2011 14:14:37" />
     <file relUrl="bin/cryptWebConfig.pdb" publishTime="06/23/2011 09:21:03" />
     <file relUrl="ExampleData.svc" publishTime="06/15/2011 12:45:51" />
     <file relUrl="bin/cuahsiServiceXslt.dll" publishTime="06/24/2011 08:48:51" />
     <file relUrl="cuahsi_1_0.asmx" publishTime="06/03/2011 15:17:33" />
     <file relUrl="bin/appsettings.config" publishTime="02/03/2011 10:33:22" />
+    <file relUrl="About.aspx" publishTime="05/18/2011 10:32:44" />
     <file relUrl="bin/cryptWebConfig.exe" publishTime="06/23/2011 09:21:03" />
     <file relUrl="REST/xslt/WaterML1_1_timseries_WaterProcess_to_WaterML2.xsl" publishTime="06/14/2011 10:25:42" />
-    <file relUrl="Account/ChangePassword.aspx" publishTime="05/18/2011 10:32:44" />
-    <file relUrl="cuahsi_1_1.asmx" publishTime="06/02/2011 17:41:34" />
     <file relUrl="bin/HisCentral.pdb" publishTime="06/23/2011 09:21:04" />
     <file relUrl="bin/cuahsiServiceXslt.pdb" publishTime="06/24/2011 08:48:51" />
-    <file relUrl="UserControls/TestRestUrl.ascx" publishTime="06/17/2011 15:34:31" />
     <file relUrl="App_Readme/Elmah.SqlServer.txt" publishTime="06/02/2011 09:13:28" />
     <file relUrl="REST/WCFNotes.txt" publishTime="06/03/2011 14:03:11" />
     <file relUrl="WaterOneFlow_AppSettings.config" publishTime="06/02/2011 16:14:17" />
@@ -41,17 +41,18 @@
     <file relUrl="Account/Register.aspx" publishTime="05/18/2011 10:32:44" />
     <file relUrl="bin/GenericWs2.dll" publishTime="06/24/2011 09:02:14" />
     <file relUrl="bin/Microsoft.Http.Extensions.pdb" publishTime="12/10/2009 08:34:40" />
-    <file relUrl="SOAP/waterml_1_0.svc" publishTime="06/03/2011 14:14:37" />
+    <file relUrl="cuahsi_1_1.asmx" publishTime="06/02/2011 17:41:34" />
     <file relUrl="bin/waterOneFlowImpl.dll" publishTime="04/27/2011 14:49:45" />
     <file relUrl="bin/WofAuthentication.dll" publishTime="06/23/2011 09:21:03" />
     <file relUrl="bin/ODM1_1_Datasets.pdb" publishTime="06/23/2011 09:21:01" />
     <file relUrl="REST/xslt/WaterML1_1_siteResponse_to_WaterML2.xsl" publishTime="06/03/2011 12:13:08" />
     <file relUrl="Scripts/jquery-1.6.js" publishTime="06/06/2011 14:27:46" />
     <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="05/18/2011 10:32:44" />
-    <file relUrl="bin/GenericWs2.pdb" publishTime="06/24/2011 09:02:14" />
+    <file relUrl="UserControls/TestRestUrl.ascx" publishTime="06/17/2011 15:34:31" />
+    <file relUrl="bin/ConnectionStrings.config" publishTime="02/03/2011 10:33:22" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="05/18/2011 10:32:44" />
-    <file relUrl="bin/log4net.xml" publishTime="06/02/2011 17:42:54" />
     <file relUrl="Configure.aspx" publishTime="06/02/2011 17:41:35" />
+    <file relUrl="SOAP/Web.config" publishTime="06/03/2011 16:40:07" />
     <file relUrl="Scripts/jquery-1.6-vsdoc.js" publishTime="06/06/2011 14:27:46" />
     <file relUrl="WaterMl2.aspx" publishTime="06/17/2011 17:57:57" />
     <file relUrl="WaterML_1_0.aspx" publishTime="06/24/2011 07:33:08" />
@@ -59,11 +60,9 @@
     <file relUrl="bin/Microsoft.Http.pdb" publishTime="12/10/2009 08:34:40" />
     <file relUrl="bin/Microsoft.ServiceModel.Web.dll" publishTime="12/10/2009 08:38:30" />
     <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="05/18/2011 10:32:44" />
-    <file relUrl="Notes/DevNotes.txt" publishTime="06/03/2011 12:13:39" />
     <file relUrl="DatabaseTest.aspx" publishTime="06/02/2011 17:41:34" />
     <file relUrl="Examples_1_0.aspx" publishTime="06/02/2011 17:41:34" />
     <file relUrl="bin/WaterOneFlowUtilitiesCode.dll" publishTime="06/23/2011 09:21:01" />
-    <file relUrl="bin/HisCentral.dll" publishTime="06/23/2011 09:21:04" />
     <file relUrl="Notes/ReleaseProceedures.txt" publishTime="06/03/2011 12:13:39" />
     <file relUrl="REST/TesUrls_lbr.txt" publishTime="06/03/2011 12:12:49" />
     <file relUrl="original_wsdls/cuahsi_1_0.asmx.xml" publishTime="05/19/2011 14:14:30" />
@@ -73,26 +72,27 @@
     <file relUrl="REST/waterml_1_0.svc" publishTime="06/03/2011 13:56:57" />
     <file relUrl="bin/log4net.dll" publishTime="06/02/2011 17:42:54" />
     <file relUrl="bin/HisCentral.XmlSerializers.dll" publishTime="06/23/2011 09:21:06" />
-    <file relUrl="About.aspx" publishTime="05/18/2011 10:32:44" />
+    <file relUrl="REST/xslt/WaterML1_1_timeSeries_to_WaterML2.xsl" publishTime="06/14/2011 11:28:18" />
+    <file relUrl="bin/HisCentral.dll" publishTime="06/23/2011 09:21:04" />
     <file relUrl="Account/Web.config" publishTime="06/24/2011 08:59:29" />
     <file relUrl="bin/WaterOneFlowUtilitiesCode.pdb" publishTime="06/23/2011 09:21:01" />
-    <file relUrl="SOAP/Web.config" publishTime="06/03/2011 16:40:07" />
+    <file relUrl="Notes/DevNotes.txt" publishTime="06/03/2011 12:13:39" />
     <file relUrl="bin/WofAuthentication.pdb" publishTime="06/23/2011 09:21:03" />
     <file relUrl="bin/ODM1_0_Datasets.dll" publishTime="06/23/2011 09:21:02" />
     <file relUrl="WaterML_1_1.aspx" publishTime="06/20/2011 15:31:47" />
-    <file relUrl="REST/waterml_1_1.svc" publishTime="06/03/2011 12:12:49" />
+    <file relUrl="bin/Web.Config" publishTime="02/03/2011 10:33:22" />
     <file relUrl="bin/Elmah.dll" publishTime="06/02/2011 09:13:24" />
     <file relUrl="Scripts/date.js" publishTime="06/15/2011 18:51:17" />
-    <file relUrl="REST/xslt/WaterML1_1_timseries_ObservedProperty_to_WaterML2.xsl" publishTime="06/14/2011 11:08:08" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="05/18/2011 10:32:44" />
     <file relUrl="REST/xslt/WaterML1_timeSeries_to_WaterML2.xsl" publishTime="06/14/2011 11:08:17" />
     <file relUrl="bin/ODM1_0_Datasets.pdb" publishTime="06/23/2011 09:21:02" />
     <file relUrl="Scripts/jquery-1.6.min.js" publishTime="06/06/2011 14:27:46" />
-    <file relUrl="bin/ConnectionStrings.config" publishTime="02/03/2011 10:33:22" />
+    <file relUrl="bin/log4net.xml" publishTime="06/02/2011 17:42:54" />
     <file relUrl="original_wsdls/cuahsi_1_1.asmx.xml" publishTime="05/19/2011 14:14:40" />
     <file relUrl="SOAP/waterml_1_1.svc" publishTime="06/03/2011 14:14:40" />
     <file relUrl="bin/Microsoft.Http.dll" publishTime="12/10/2009 08:38:22" />
     <file relUrl="REST/waterml_2.svc" publishTime="06/03/2011 12:12:49" />
-    <file relUrl="REST/xslt/WaterML1_1_timeSeries_to_WaterML2.xsl" publishTime="06/14/2011 11:28:18" />
+    <file relUrl="Account/Login.aspx" publishTime="05/18/2011 10:32:44" />
     <file relUrl="REST/xslt/WaterML1_siteResponse_to_WaterML2.xsl" publishTime="06/03/2011 12:13:08" />
     <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="05/18/2011 10:32:44" />
     <file relUrl="Scripts/ExampleWaterMlLinks.js" publishTime="06/16/2011 17:03:04" />

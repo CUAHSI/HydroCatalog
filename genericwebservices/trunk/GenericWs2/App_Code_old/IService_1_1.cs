@@ -53,11 +53,18 @@ namespace v1_1 {
       //)]
         SiteInfoResponseType GetSitesObject(string[] site, String authToken);
 
+         [WebGet(
+             // ResponseFormat = WebMessageFormat.Xml,
+        UriTemplate = "sites?location={sites}&authToken={authToken}"
+        )]
+        SiteInfoResponseType GetSitesObject(   
+                string sites, String authToken);
+
         [WebMethod(Description = WsDescriptions.GetSiteInfoObjectDefaultDesc)]
         [OperationContract(Action = ConstantsNs.WS_NAMSPACE + "GetSiteInfoObject")]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
-      UriTemplate = "series?location={site}&authToken={authToken}"
+      UriTemplate = "siteinfo?location={site}&authToken={authToken}"
       )]
         SiteInfoResponseType GetSiteInfoObject(string site, String authToken);
 
@@ -89,7 +96,7 @@ namespace v1_1 {
         [OperationContract(Action = ConstantsNs.WS_NAMSPACE + "GetValuesObject")]
         [WebGet(
             // ResponseFormat = WebMessageFormat.Xml,
-        UriTemplate = "values?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"
+        UriTemplate = "datavalues?location={location}&variable={variable}&startDate={startDate}&endDate={endDate}&authToken={authToken}"
         )]
         TimeSeriesResponseType GetValuesObject(string location, string variable, string startDate, string endDate, String authToken);
 

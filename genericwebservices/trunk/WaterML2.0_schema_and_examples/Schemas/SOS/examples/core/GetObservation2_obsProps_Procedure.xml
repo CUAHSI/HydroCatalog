@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Request for GetObservation operation which contains filters for offering, observedProperty and the procedure. The response contains observations for the observed property which are executed by the procedure defined in this request.
+=======================================================================-->
+<sos:GetObservation xmlns="http://www.opengis.net/sos/2.0" service="SOS" version="2.0.0" xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sos/2.0
+http://schemas.opengis.net/sos/2.0.0/sos.xsd">
+	
+	<!--identifier of an offering-->
+	<offering>http://www.my_namespace.org/water_gage_1_observations</offering>
+	
+	<!--identifier of an observed property-->
+	<observedProperty>urn:ogc:def:phenomenon:OGC:water_level</observedProperty>
+	
+	<!--identifier of a procedure-->
+	<procedure>http://www.my_namespace.org/sensors/Water_Gage_1</procedure>
+	
+</sos:GetObservation>

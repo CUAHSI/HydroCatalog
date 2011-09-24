@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Response for InsertResultTemplate operation request. The response containis the identifier of the template.
+
+In this example, the sequence of operations for inserting results is as follows:
+1. InsertResultTemplate1.xml request is sent to SOS.
+2. InsertResultTemplate1_response.xml is returned from SOS.
+3. InsertResult1.xml is sent to SOS
+4. InsertResult1_response is returned from SOS
+=======================================================================-->
+<sos:InsertResultTemplateResponse xmlns="http://www.opengis.net/sos/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sos/2.0
+http://schemas.opengis.net/sos/2.0.0/sos.xsd">
+	
+	<!--identifier of the template which has been accepted by the SOS; if not resolvable, the GetResultTemplate operation can be used to retrieve this template -->
+	<acceptedTemplate>http://my.organization.org/sos/resultTemplate1</acceptedTemplate>
+	
+</sos:InsertResultTemplateResponse>

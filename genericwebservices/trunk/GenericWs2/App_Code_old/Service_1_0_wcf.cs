@@ -189,7 +189,22 @@ namespace WaterOneFlow.odws
                     //throw SoapExceptionGenerator.WOFExceptionToSoapException(we);
                 }
             }
-          
+
+            public SiteInfoResponseType GetSites(string sites, string authToken)
+            {
+                if (String.IsNullOrEmpty(sites))
+                {
+                    return GetSites(new string[] {}, authToken);
+                }
+                else
+                {
+                    return GetSites(
+                        sites.Split(new string[] {","},StringSplitOptions.RemoveEmptyEntries)
+                        , authToken
+                        );
+                }
+            }
+
 
             public virtual SiteInfoResponseType GetSiteInfoObject(string SiteNumber, String authToken)
             {

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Request for InsertResultTemplate operation containing the result template including identifier of the offering for which the results shall be inserted. This request also contains an observation template containing the static metadata which is the same for all results as well as information about the result structure and its encoding. The response contains the identifier of the template, if it has been accepted by the SOS.
+
+In this example, the sequence of operations for inserting results is as follows:
+1. InsertResultTemplate1.xml request is sent to SOS.
+2. InsertResultTemplate1_response.xml is returned from SOS.
+3. InsertResult1.xml is sent to SOS
+4. InsertResult1_response is returned from SOS
+=======================================================================-->
+<sos:InsertResultTemplate xmlns="http://www.opengis.net/sos/2.0" service="SOS" version="2.0.0" xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:om="http://www.opengis.net/om/2.0" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sos/2.0
+http://schemas.opengis.net/sos/2.0.0/sos.xsd http://www.opengis.net/swe/2.0 http://schemas.opengis.net/sweCommon/2.0.0/swe.xsd">
+	<proposedTemplate>
+	
+		<!-- definition of result template-->
+		<ResultTemplate>
+			
+			<!--identifier of offering to which the observations shall be added -->
+			<offering>http://www.my_namespace.org/water_gage_2_observations</offering>
+			
+			<!--template containing the static observation elements which are the same for all results which are inserted-->
+			<observationTemplate>
+				<om:OM_Observation gml:id="sensor2obsTemplate">
+					<om:phenomenonTime nilReason="template"/>
+					<om:resultTime nilReason="template"/>
+					<om:procedure xlink:href="http://www.example.org/register/process/Water_Gage_2"/>
+					<om:observedProperty xlink:href="urn:ogc:def:phenomenon:OGC:water_level"/>
+					<om:featureOfInterest xlink:href="http://wfs.example.org?request=getFeature&amp;featureid=Rhine_Sandbank_123 "/>
+					<om:result/>
+				</om:OM_Observation>
+			</observationTemplate>
+			
+			<!--definition of result structure; result in this case is swe:DataRecord consisting of three elements: phenomenonTime, waterlevel and flowrate-->
+			<resultStructure>
+				<swe:DataRecord>
+					<swe:field name="phenomenonTime">
+						<swe:Time definition="http://www.opengis.net/sos/2.0/observation/phenomenonTime">
+							<swe:uom code="ms"/>
+						</swe:Time>
+					</swe:field>
+					<swe:field name="waterlevel">
+						<swe:Quantity definition="urn:ogc:def:phenomenon:OGC:water_level">
+							<swe:uom code="cm"/>
+						</swe:Quantity>
+					</swe:field>
+				</swe:DataRecord>
+			</resultStructure>
+			
+			<!--definition of result encoding; in this example, the results are encoded as text with the seperators defined in this element-->
+			<resultEncoding>
+				<swe:TextEncoding tokenSeparator="," blockSeparator="@@"/>
+			</resultEncoding>
+		</ResultTemplate>
+	</proposedTemplate>
+</sos:InsertResultTemplate>

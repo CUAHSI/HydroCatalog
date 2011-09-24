@@ -36,7 +36,7 @@
     <wml2:parameter type="simple" xlink:role="http://www.liquid-technologies.com" xlink:title="string" xlink:show="embed" />
 </wml2:ObservationProcess>
     -->
-
+    <xsl:import href="WaterML1_1_common_to_waterml2.xsl" />
   
   <xsl:output method="xml" indent="yes" />
     <xsl:template name="WaterObservationProcess" match="wml:timeSeriesResponse">
@@ -44,22 +44,35 @@
        The XML element “om:procedure” shall contain a subelement of “wml:WaterObservationProcess” or a member of its substitution group, or a xlink:href attribute referencing a such an element.</xsl:comment> 
        
         <xsl:comment>9.6	Requirements Class: Water Observation Procedures</xsl:comment>
-        <wml:WaterObservationProcess>
+        <wml2:ObservationProcess >
+            <xsl:attribute name="gml:id"><xsl:value-of select="concat('process-',position())"></xsl:value-of></xsl:attribute>
             <xsl:if test="wml:values/wml:method/wml:methodName">
                 <gml:name codeSpace="urn:cuashi/his/localservice">
                     <xsl:value-of select="wml:values/wml:method/wml:methodName" />
                 </gml:name>
                 <xsl:call-template name="ChooseMethodName" />
             </xsl:if>
-            <wml:processType>
+            <wml2:processType>
                 <xsl:attribute name="xlink:href">
                     <xsl:text>http://www.opengis.net/def/processType/WaterML/2.0/Unknown</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="xlink:title">
                     <xsl:call-template name="ChooseMethodName" />
                 </xsl:attribute>
-            </wml:processType>
-            <wml:processReference>
+            </wml2:processType>
+            <xsl:if test="wml:variable/wml:timeScale/wml:timeSupport != 0">
+                <wml2:aggregationPeriod>
+                    <xsl:call-template name="TimeUnitToPeriod">
+                        
+                        <xsl:with-param name="Unit" select="wml:variable/wml:timeScale/wml:unit"></xsl:with-param>
+                        <xsl:with-param name="TimeSupport" select="wml:variable/wml:timeScale/wml:timeSupport"></xsl:with-param>
+                        <!--     <xsl:value-of select="concat(&quot;PT&quot;,wml:variable/wml:timeScale/wml:timeSupport,substring(wml:variable/wml:timeScale/wml:unit/wml:unitAbbreviation,1,1))" />
+                        -->
+                    </xsl:call-template>  
+                </wml2:aggregationPeriod>
+                <xsl:comment>TBD: fixed example. aggregationPeriod not calculated.</xsl:comment>
+            </xsl:if>
+            <wml2:processReference>
                 <xsl:choose>
                     <xsl:when test="wml:values/wml:method/wml:methodLink">
                         <xsl:attribute name="xlink:href">
@@ -87,13 +100,8 @@
                         </xsl:attribute>
                     </xsl:otherwise>
                 </xsl:choose>
-            </wml:processReference>
-            <xsl:if test="wml:variable/wml:timeScale/wml:timeSupport != 0">
-                 <wml2:aggregationPeriod>
-                    <xsl:value-of select="concat(&quot;PT&quot;,wml:variable/wml:timeScale/wml:timeSupport,substring(wml:variable/wml:timeScale/wml:unit/wml:unitAbbreviation,1,1))" />
-                </wml2:aggregationPeriod>
-                <xsl:comment>TBD: fixed example. aggregationPeriod not calculated.</xsl:comment>
-           </xsl:if>
+            </wml2:processReference>
+ 
           <xsl:if test="wml:variable/wml:valueType">
             
           <xsl:call-template name="Parameter" >
@@ -125,7 +133,7 @@
             </xsl:with-param>
           </xsl:call-template>
           </xsl:if>
-          <om:parameter>
+      <!--    <wml2:parameter>
             <om:NamedValue>
               <om:name>
                 <xsl:attribute name="xlink:title">ODM Variable</xsl:attribute>
@@ -136,8 +144,9 @@
                 <xsl:copy-of select="wml:variable" />
               </om:value>
             </om:NamedValue>
-          </om:parameter>
-        </wml:WaterObservationProcess>
+          </wml2:parameter>
+          -->
+        </wml2:ObservationProcess>
     </xsl:template>
     <xsl:template name="ChooseMethodName">
         <xsl:choose>
@@ -157,7 +166,7 @@
     <xsl:param name="ParamName"></xsl:param>
     <xsl:param name="ParamValue"></xsl:param>
  
-    <om:parameter>
+    <wml2:parameter>
       <om:NamedValue>
         <om:name>
           <xsl:attribute name="xlink:title">
@@ -172,6 +181,6 @@
             <xsl:value-of select="$ParamValue" />
         </om:value>
       </om:NamedValue>
-    </om:parameter>
+    </wml2:parameter>
   </xsl:template>
 </xsl:stylesheet>

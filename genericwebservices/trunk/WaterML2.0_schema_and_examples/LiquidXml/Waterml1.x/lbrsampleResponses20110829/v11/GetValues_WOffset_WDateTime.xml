@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<timeSeriesResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.cuahsi.org/waterML/1.1/">
+  <queryInfo>
+    <creationTime>2011-08-29T11:11:21.8364206-07:00</creationTime>
+    <criteria MethodCalled="GetValues">
+      <parameter name="site" value="LBR_TEST:USU-LBR-ExpFarm" />
+      <parameter name="variable" value="LBR_TEST:USU20" />
+      <parameter name="startDate" value="2008-01-01T00:00:00" />
+      <parameter name="endDate" value="2008-01-04T16:00:00" />
+    </criteria>
+  </queryInfo>
+  <timeSeries>
+    <sourceInfo xsi:type="SiteInfoType">
+      <siteName>Utah State University Experimental Farm near Wellsville, Utah</siteName>
+      <siteCode network="LBR" siteID="3">USU-LBR-ExpFarm</siteCode>
+      <geoLocation>
+        <geogLocation xsi:type="LatLonPointType" srs="EPSG:4269">
+          <latitude>41.666993</latitude>
+          <longitude>-111.890567</longitude>
+        </geogLocation>
+        <localSiteXY projectionInformation=" NAD83 / UTM zone 12N">
+          <X>425861.714</X>
+          <Y>4613186.929</Y>
+        </localSiteXY>
+      </geoLocation>
+      <elevation_m>1369</elevation_m>
+      <verticalDatum>NGVD29</verticalDatum>
+      <siteProperty name="County">Cache</siteProperty>
+      <siteProperty name="State">Utah</siteProperty>
+      <siteProperty name="Site Comments">This is a continuous weather station.</siteProperty>
+    </sourceInfo>
+    <variable>
+      <variableCode vocabulary="LBR" default="true" variableID="20">USU20</variableCode>
+      <variableName>Wind direction</variableName>
+      <valueType>Field Observation</valueType>
+      <dataType>StandardDeviation</dataType>
+      <generalCategory>Climate</generalCategory>
+      <sampleMedium>Air</sampleMedium>
+      <unit>
+        <unitName>degree</unitName>
+        <unitType>Angle</unitType>
+        <unitAbbreviation>deg</unitAbbreviation>
+        <unitCode>2</unitCode>
+      </unit>
+      <noDataValue>-9999</noDataValue>
+      <timeScale isRegular="true">
+        <unit>
+          <unitName>hour</unitName>
+          <unitType>Time</unitType>
+          <unitAbbreviation>hr</unitAbbreviation>
+          <unitCode>103</unitCode>
+        </unit>
+        <timeSupport>1</timeSupport>
+      </timeScale>
+      <speciation>Not Applicable</speciation>
+    </variable>
+    <values>
+      <value censorCode="nc" dateTime="2008-01-01T00:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T07:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">16.47688</value>
+      <value censorCode="nc" dateTime="2008-01-01T01:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T08:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">30.85909</value>
+      <value censorCode="nc" dateTime="2008-01-01T02:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T09:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">22.85484</value>
+      <value censorCode="nc" dateTime="2008-01-01T03:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T10:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">15.57532</value>
+      <value censorCode="nc" dateTime="2008-01-01T04:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T11:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">13.91846</value>
+      <value censorCode="nc" dateTime="2008-01-01T05:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T12:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">8.313826</value>
+      <value censorCode="nc" dateTime="2008-01-01T06:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T13:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">25.35068</value>
+      <value censorCode="nc" dateTime="2008-01-01T07:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T14:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">28.03284</value>
+      <value censorCode="nc" dateTime="2008-01-01T08:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T15:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">28.56101</value>
+      <value censorCode="nc" dateTime="2008-01-01T09:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T16:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">49.19908</value>
+      <value censorCode="nc" dateTime="2008-01-01T10:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T17:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">26.63891</value>
+      <value censorCode="nc" dateTime="2008-01-01T11:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T18:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">51.79374</value>
+      <value censorCode="nc" dateTime="2008-01-01T12:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T19:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">20.80637</value>
+      <value censorCode="nc" dateTime="2008-01-01T13:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T20:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">23.5025</value>
+      <value censorCode="nc" dateTime="2008-01-01T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T21:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">25.34259</value>
+      <value censorCode="nc" dateTime="2008-01-01T15:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T22:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">31.32994</value>
+      <value censorCode="nc" dateTime="2008-01-01T16:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-01T23:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">12.77388</value>
+      <value censorCode="nc" dateTime="2008-01-01T17:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T00:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">24.04374</value>
+      <value censorCode="nc" dateTime="2008-01-01T18:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T01:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">19.46184</value>
+      <value censorCode="nc" dateTime="2008-01-01T19:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T02:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">19.36535</value>
+      <value censorCode="nc" dateTime="2008-01-01T20:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T03:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">38.46448</value>
+      <value censorCode="nc" dateTime="2008-01-01T21:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T04:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">48.6266</value>
+      <value censorCode="nc" dateTime="2008-01-01T22:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T05:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">35.21203</value>
+      <value censorCode="nc" dateTime="2008-01-01T23:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T06:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">41.07719</value>
+      <value censorCode="nc" dateTime="2008-01-02T00:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T07:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">38.13955</value>
+      <value censorCode="nc" dateTime="2008-01-02T01:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T08:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">23.75994</value>
+      <value censorCode="nc" dateTime="2008-01-02T02:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T09:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">28.83831</value>
+      <value censorCode="nc" dateTime="2008-01-02T03:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T10:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">29.78106</value>
+      <value censorCode="nc" dateTime="2008-01-02T04:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T11:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">21.57279</value>
+      <value censorCode="nc" dateTime="2008-01-02T05:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T12:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">35.85594</value>
+      <value censorCode="nc" dateTime="2008-01-02T06:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T13:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">16.23873</value>
+      <value censorCode="nc" dateTime="2008-01-02T07:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T14:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">23.78969</value>
+      <value censorCode="nc" dateTime="2008-01-02T08:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T15:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">30.94116</value>
+      <value censorCode="nc" dateTime="2008-01-02T09:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T16:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">15.26485</value>
+      <value censorCode="nc" dateTime="2008-01-02T10:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T17:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">14.33326</value>
+      <value censorCode="nc" dateTime="2008-01-02T11:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T18:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">20.43785</value>
+      <value censorCode="nc" dateTime="2008-01-02T12:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T19:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">35.08701</value>
+      <value censorCode="nc" dateTime="2008-01-02T13:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T20:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">12.33666</value>
+      <value censorCode="nc" dateTime="2008-01-02T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T21:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">49.44418</value>
+      <value censorCode="nc" dateTime="2008-01-02T15:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T22:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">23.08424</value>
+      <value censorCode="nc" dateTime="2008-01-02T16:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-02T23:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">28.85294</value>
+      <value censorCode="nc" dateTime="2008-01-02T17:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T00:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">49.4504</value>
+      <value censorCode="nc" dateTime="2008-01-02T18:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T01:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">25.41348</value>
+      <value censorCode="nc" dateTime="2008-01-02T19:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T02:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">13.37312</value>
+      <value censorCode="nc" dateTime="2008-01-02T20:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T03:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">39.08138</value>
+      <value censorCode="nc" dateTime="2008-01-02T21:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T04:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">22.10926</value>
+      <value censorCode="nc" dateTime="2008-01-02T22:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T05:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">20.8702</value>
+      <value censorCode="nc" dateTime="2008-01-02T23:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T06:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">24.18704</value>
+      <value censorCode="nc" dateTime="2008-01-03T00:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T07:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">21.84821</value>
+      <value censorCode="nc" dateTime="2008-01-03T01:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T08:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">17.6009</value>
+      <value censorCode="nc" dateTime="2008-01-03T02:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T09:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">53.4236</value>
+      <value censorCode="nc" dateTime="2008-01-03T03:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T10:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">25.42396</value>
+      <value censorCode="nc" dateTime="2008-01-03T04:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T11:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">44.32512</value>
+      <value censorCode="nc" dateTime="2008-01-03T05:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T12:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">47.78789</value>
+      <value censorCode="nc" dateTime="2008-01-03T06:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T13:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">18.60651</value>
+      <value censorCode="nc" dateTime="2008-01-03T07:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T14:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">23.58218</value>
+      <value censorCode="nc" dateTime="2008-01-03T08:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T15:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">45.05455</value>
+      <value censorCode="nc" dateTime="2008-01-03T09:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T16:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">19.42422</value>
+      <value censorCode="nc" dateTime="2008-01-03T10:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T17:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">53.10426</value>
+      <value censorCode="nc" dateTime="2008-01-03T11:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T18:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">59.0599</value>
+      <value censorCode="nc" dateTime="2008-01-03T12:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T19:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">47.53547</value>
+      <value censorCode="nc" dateTime="2008-01-03T13:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T20:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">32.96982</value>
+      <value censorCode="nc" dateTime="2008-01-03T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T21:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">56.62478</value>
+      <value censorCode="nc" dateTime="2008-01-03T15:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T22:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">25.82798</value>
+      <value censorCode="nc" dateTime="2008-01-03T16:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-03T23:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">45.1179</value>
+      <value censorCode="nc" dateTime="2008-01-03T17:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T00:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">22.16343</value>
+      <value censorCode="nc" dateTime="2008-01-03T18:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T01:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">58.02749</value>
+      <value censorCode="nc" dateTime="2008-01-03T19:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T02:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">16.48953</value>
+      <value censorCode="nc" dateTime="2008-01-03T20:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T03:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">42.25484</value>
+      <value censorCode="nc" dateTime="2008-01-03T21:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T04:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">83.83076</value>
+      <value censorCode="nc" dateTime="2008-01-03T22:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T05:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">43.15256</value>
+      <value censorCode="nc" dateTime="2008-01-03T23:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T06:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">62.59254</value>
+      <value censorCode="nc" dateTime="2008-01-04T00:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T07:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">37.57588</value>
+      <value censorCode="nc" dateTime="2008-01-04T01:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T08:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">58.71018</value>
+      <value censorCode="nc" dateTime="2008-01-04T02:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T09:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">81.15363</value>
+      <value censorCode="nc" dateTime="2008-01-04T03:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T10:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">58.4892</value>
+      <value censorCode="nc" dateTime="2008-01-04T04:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T11:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">34.34019</value>
+      <value censorCode="nc" dateTime="2008-01-04T05:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T12:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">58.75384</value>
+      <value censorCode="nc" dateTime="2008-01-04T06:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T13:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">28.67388</value>
+      <value censorCode="nc" dateTime="2008-01-04T07:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T14:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">56.74674</value>
+      <value censorCode="nc" dateTime="2008-01-04T08:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T15:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">62.14596</value>
+      <value censorCode="nc" dateTime="2008-01-04T09:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T16:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">69.94344</value>
+      <value censorCode="nc" dateTime="2008-01-04T10:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T17:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">67.22586</value>
+      <value censorCode="nc" dateTime="2008-01-04T11:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T18:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">63.65368</value>
+      <value censorCode="nc" dateTime="2008-01-04T12:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T19:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">39.10022</value>
+      <value censorCode="nc" dateTime="2008-01-04T13:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T20:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">13.04632</value>
+      <value censorCode="nc" dateTime="2008-01-04T14:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T21:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">13.11878</value>
+      <value censorCode="nc" dateTime="2008-01-04T15:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T22:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">12.68212</value>
+      <value censorCode="nc" dateTime="2008-01-04T16:00:00" timeOffset="-07:00" dateTimeUTC="2008-01-04T23:00:00" methodCode="9" sourceCode="2" offsetValue="2.44" offsetTypeCode="1" qualityControlLevelCode="0">16.92382</value>
+      <qualityControlLevel qualityControlLevelID="0">
+        <qualityControlLevelCode>0</qualityControlLevelCode>
+        <definition>Raw data</definition>
+        <explanation>Raw and unprocessed data and data products that have not undergone quality control.  Depending on the variable, data type, and data transmission system, raw data may be available within seconds or minutes after the measurements have been made. Examples include real time precipitation, streamflow and water quality measurements.</explanation>
+      </qualityControlLevel>
+      <method methodID="9">
+        <methodCode>9</methodCode>
+        <methodDescription>Wind direction measured using a 03001 R.M. Young Wind Sentry Set (anemometer and vane).</methodDescription>
+        <methodLink>http://www.campbellsci.com/03001-wind-sentry</methodLink>
+      </method>
+      <source sourceID="2">
+        <sourceCode>2</sourceCode>
+        <organization>Utah State University Utah Water Research Laboratory</organization>
+        <sourceDescription>Continuous monitoring data collected by Utah State University as part of a National Science Foundation funded test bed project.</sourceDescription>
+        <contactInformation>
+          <contactName>Jeff Horsburgh</contactName>
+          <typeOfContact>main</typeOfContact>
+          <email>jeff.horsburgh@usu.edu</email>
+          <phone>1-435-797-2946</phone>
+          <address xsi:type="xsd:string">8200 Old Main Hill
+,Logan, Utah 84322-8200</address>
+        </contactInformation>
+        <sourceLink>http://water.usu.edu/littlebearriver</sourceLink>
+        <citation>Continuous monitoring data collected by Jeff Horsburgh, David Stevens, David Tarboton, Nancy Mesner, Amber Spackman, and Sandra Gurrero at Utah State University as part of a National Science Foundation funded WATERS Network Test Bed project.</citation>
+      </source>
+      <offset offsetTypeID="1">
+        <offsetTypeCode>1</offsetTypeCode>
+        <offsetDescription>Distance above ground level</offsetDescription>
+        <unit>
+          <unitName>meter</unitName>
+          <unitType>Length</unitType>
+          <unitAbbreviation>m</unitAbbreviation>
+          <unitCode>52</unitCode>
+        </unit>
+        <offsetIsVertical>true</offsetIsVertical>
+      </offset>
+      <censorCode>
+        <censorCode>nc</censorCode>
+        <censorCodeDescription>not censored</censorCodeDescription>
+      </censorCode>
+    </values>
+  </timeSeries>
+</timeSeriesResponse>

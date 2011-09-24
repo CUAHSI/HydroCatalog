@@ -138,6 +138,20 @@ namespace WaterOneFlow.odws.v1_0
             }
         }
 
+        public SiteInfoResponseType GetSites(string sites, string authToken)
+        {
+            if (String.IsNullOrEmpty(sites))
+            {
+                return GetSites(new string[] { }, authToken);
+            }
+            else
+            {
+                return GetSites(
+                    sites.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                    , authToken
+                    );
+            }
+        }
         public virtual SiteInfoResponseType GetSiteInfoObject(string SiteNumber, String authToken)
         {
             //   GlobalClass.WaterAuth.SiteInfoServiceAllowed(Context, authToken);

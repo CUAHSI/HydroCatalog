@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/><!-- ================================================= -->
+    <element name="SosInsertionMetadata" substitutionGroup="swes:InsertionMetadata" type="sos:SosInsertionMetadataType"/>
+    <complexType name="SosInsertionMetadataType">
+        <complexContent>
+            <extension base="swes:InsertionMetadataType">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="1" name="observationType" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ValueCode</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="resultType" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ValueCode</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="1" name="featureOfInterestType" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ValueCode</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="SosInsertionMetadataPropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:SosInsertionMetadata"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+</schema>

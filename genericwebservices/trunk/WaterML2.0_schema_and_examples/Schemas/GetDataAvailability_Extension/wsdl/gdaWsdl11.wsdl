@@ -1,0 +1,45 @@
+<wsdl:definitions targetNamespace="http://www.opengis.net/sosgda/1.0/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:gdaw="http://www.opengis.net/sosgda/1.0/wsdl" xmlns:gda="http://www.opengis.net/sosgda/1.0">
+  <wsdl:documentation xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:description>
+        This is the abstract definition for the AvailabilityInvestigator interface defined in the SOS 2.0 - Get Data Availability Extension [OGC 10-167]. It can be imported in a concrete WSDL file for an SOS 2.0 server instance which then also needs to include a binding description. The WSDL 1.1 syntax is used to describe the interface signatures and message structures.
+        </dc:description>
+  </wsdl:documentation>
+  <!-- ============================================== -->
+  <!-- ====================  Types ==================== -->
+  <!-- ============================================== -->
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.opengis.net/sosgda/1.0">
+      <xsd:include schemaLocation="http://schemas.opengis.net/gda/1.0.0/sosGetDataAvailability.xsd"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.opengis.net/ows/1.1">
+      <xsd:include schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <!-- ================================================= -->
+  <!-- ====================  Messages ==================== -->
+  <!-- ================================================= -->
+  <wsdl:message name="GetDataAvailabilityRequestMessage">
+    <wsdl:part name="body" element="gda:GetDataAvailability"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataAvailabilityResponseMessage">
+    <wsdl:part name="body" element="gda:GetDataAvailabilityResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExceptionMessage">
+    <wsdl:part name="fault" element="ows:Exception"/>
+  </wsdl:message>
+  <!-- ================================================= -->
+  <!-- ====================  Port Type ==================== -->
+  <!-- ================================================= -->
+  <wsdl:portType name="AvailabilityInvestigator">
+    <wsdl:operation name="GetDataAvailability">
+      <wsdl:input wsam:Action="http://www.opengis.net/sosgda/1.0/GetDataAvailability" message="gdaw:GetDataAvailabilityRequestMessage"/>
+      <wsdl:output wsam:Action="http://www.opengis.net/sosgda/1.0/GetDataAvailabilityResponse" message="gdaw:GetDataAvailabilityResponseMessage"/>
+      <wsdl:fault name="MissingParameterValueException" wsam:Action="http://www.opengis.net/ows/1.1/Exception" message="gdaw:ExceptionMessage"/>
+      <wsdl:fault name="InvalidParameterValueException" wsam:Action="http://www.opengis.net/ows/1.1/Exception" message="gdaw:ExceptionMessage"/>
+      <wsdl:fault name="OptionNotSupportedException" wsam:Action="http://www.opengis.net/ows/1.1/Exception" message="gdaw:ExceptionMessage"/>
+      <wsdl:fault name="NoApplicableCodeException" wsam:Action="http://www.opengis.net/ows/1.1/Exception" message="gdaw:ExceptionMessage"/>
+      <wsdl:fault name="InvalidRequestException" wsam:Action="http://www.opengis.net/swes/2.0/Exception" message="gdaw:ExceptionMessage"/>
+      <wsdl:fault name="RequestExtensionNotSupportedException" wsam:Action="http://www.opengis.net/swes/2.0/Exception" message="gdaw:ExceptionMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

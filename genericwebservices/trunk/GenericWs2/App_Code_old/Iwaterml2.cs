@@ -9,7 +9,7 @@ using System.Text;
 using System.Xml;
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "Iwaterml2" in both code and config file together.
-[ServiceContract(Namespace = "http://company/waterml2")]
+[ServiceContract(Namespace = "http://www.cuahsi.org/WaterML/2.0.0")]
 public interface Iwaterml2
 {
 	[OperationContract]

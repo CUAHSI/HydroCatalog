@@ -1,0 +1,12 @@
+<soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope/soap-envelope.xsd" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gda="http://www.opengis.net/sosgda/1.0" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <soap12:Header>
+    <wsa:RelatesTo>http://my.client.com/uid/msg-0010</wsa:RelatesTo>
+    <wsa:To>ttp://my.client.com/client/myReceiver</wsa:To>
+    <wsa:Action>http://www.opengis.net/sosgda/1.0/GetDataAvailabilityResponse</wsa:Action>
+  </soap12:Header>
+  <soap12:Body>
+    <gda:GetDataAvailabilityResponse>
+      <!-- details omitted for brevity -->
+    </gda:GetDataAvailabilityResponse>
+  </soap12:Body>
+</soap12:Envelope>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.opengis.net/fes/2.0" schemaLocation="http://schemas.opengis.net/filter/2.0.0/filterAll.xsd"/>
+    <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/><!-- ================================================= -->
+    <element name="GetResult" substitutionGroup="swes:ExtensibleRequest" type="sos:GetResultType"/>
+    <complexType name="GetResultType">
+        <complexContent>
+            <extension base="swes:ExtensibleRequestType">
+                <sequence>
+                    <element name="observedProperty" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>unknown</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element name="offering" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ObservationOffering</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="1" minOccurs="0" name="spatialFilter">
+                        <complexType>
+                            <sequence>
+                                <element ref="fes:spatialOps"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="featureOfInterest" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>gml:AbstractFeature</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="temporalFilter">
+                        <complexType>
+                            <sequence>
+                                <element ref="fes:temporalOps"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="GetResultPropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:GetResult"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType><!-- ================================================= -->
+    <element name="GetResultResponse" substitutionGroup="swes:ExtensibleResponse" type="sos:GetResultResponseType"/>
+    <complexType name="GetResultResponseType">
+        <complexContent>
+            <extension base="swes:ExtensibleResponseType">
+                <sequence>
+                    <element name="resultValues" type="anyType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="GetResultResponsePropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:GetResultResponse"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+</schema>

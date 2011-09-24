@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/><!-- ================================================= -->
+    <element name="InsertionCapabilities" type="sos:InsertionCapabilitiesType"/>
+    <complexType name="InsertionCapabilitiesType">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="1" name="procedureDescriptionFormat" type="anyURI">
+                <annotation>
+                    <appinfo>
+                        <gml:targetElement>unknown</gml:targetElement>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element maxOccurs="unbounded" minOccurs="1" name="featureOfInterestType" type="anyURI">
+                <annotation>
+                    <appinfo>
+                        <gml:targetElement>sos:ValueCode</gml:targetElement>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element maxOccurs="unbounded" minOccurs="1" name="observationType" type="anyURI">
+                <annotation>
+                    <appinfo>
+                        <gml:targetElement>sos:ValueCode</gml:targetElement>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element maxOccurs="unbounded" minOccurs="0" name="resultType" type="anyURI">
+                <annotation>
+                    <appinfo>
+                        <gml:targetElement>sos:ValueCode</gml:targetElement>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element maxOccurs="unbounded" minOccurs="0" name="supportedEncoding" type="anyURI">
+                <annotation>
+                    <appinfo>
+                        <gml:targetElement>unknown</gml:targetElement>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="InsertionCapabilitiesPropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:InsertionCapabilities"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+</schema>

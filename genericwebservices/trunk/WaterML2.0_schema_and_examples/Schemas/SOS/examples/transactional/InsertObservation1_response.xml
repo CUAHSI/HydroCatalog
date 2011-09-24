@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Response for InsertObservation operation which contains the assigned observation identifier.
+=======================================================================-->
+<sos:InsertObservationResponse xmlns="http://www.opengis.net/sos/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sos/2.0
+http://schemas.opengis.net/sos/2.0.0/sos.xsd">
+
+
+	<!--identifier of the observation assigned by the SOS-->
+	<sos:observation>http://www.my_namespace.org/water_gage_1_observations/obs1
+	</sos:observation>
+
+</sos:InsertObservationResponse>

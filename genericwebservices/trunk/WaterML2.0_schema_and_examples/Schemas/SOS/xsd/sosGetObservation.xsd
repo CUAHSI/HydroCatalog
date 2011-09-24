@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:om="http://www.opengis.net/om/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0/swes.xsd"/>
+    <import namespace="http://www.opengis.net/fes/2.0" schemaLocation="http://schemas.opengis.net/filter/2.0/filterAll.xsd"/>
+    <import namespace="http://www.opengis.net/om/2.0" schemaLocation="http://schemas.opengis.net/om/2.0/observation.xsd"/><!-- ================================================= -->
+    <element name="GetObservation" substitutionGroup="swes:ExtensibleRequest" type="sos:GetObservationType"/>
+    <complexType name="GetObservationType">
+        <complexContent>
+            <extension base="swes:ExtensibleRequestType">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="offering" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ObservationOffering</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="observedProperty" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>unknown</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="procedure" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>om:OM_Process</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="temporalFilter">
+                        <complexType>
+                            <sequence>
+                                <element ref="fes:temporalOps"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                    <element maxOccurs="1" minOccurs="0" name="spatialFilter">
+                        <complexType>
+                            <sequence>
+                                <element ref="fes:spatialOps"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="featureOfInterest" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>gml:AbstractFeature</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element maxOccurs="1" minOccurs="0" name="responseFormat" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>unknown</gml:targetElement>
+                            </appinfo>
+                            <documentation>Indicate overall type of response ... e.g. O&amp;amp;M 1.0 or KML 2.1</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="GetObservationPropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:GetObservation"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType><!-- ================================================= -->
+    <element name="GetObservationResponse" substitutionGroup="swes:ExtensibleResponse" type="sos:GetObservationResponseType"/>
+    <complexType name="GetObservationResponseType">
+        <complexContent>
+            <extension base="swes:ExtensibleResponseType">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="observationData">
+                        <complexType>
+                            <sequence>
+                                <element ref="om:OM_Observation"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="GetObservationResponsePropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:GetObservationResponse"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+</schema>

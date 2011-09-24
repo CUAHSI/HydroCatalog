@@ -10,8 +10,8 @@ CodeBehind="WaterML_1_0.aspx.cs" Inherits="GenericWebservice.WaterML_1_0" %>
     var vocabularyCode =  "<%= ConfigurationManager.AppSettings["Vocabulary"] %>" ;
    var  SoapPage="cuahsi_1_0.asmx";
  var baseUrl ="REST/waterml_1_0.svc/" ;
-var siteMethod="series";
-   var valuesMethod="values";
+var siteMethod="siteinfo";
+   var valuesMethod="datavalues";
    var  variableMethod="variables";
    </script>
      </asp:Content>
