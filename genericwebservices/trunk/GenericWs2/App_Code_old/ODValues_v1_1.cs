@@ -104,8 +104,10 @@ namespace WaterOneFlow.odws
                 DataValuesTableAdapter valuesTableAdapter = new DataValuesTableAdapter();
                 valuesTableAdapter.Connection.ConnectionString = v1_0.Config.ODDB();
 
+                //valuesTableAdapter.FillBySiteIdVariableIDBetweenDates(ds.DataValues, siteID.Value, VariableID.Value,
+                //                                                      BeginDateTime.DateTime, EndDateTime.DateTime);
                 valuesTableAdapter.FillBySiteIdVariableIDBetweenDates(ds.DataValues, siteID.Value, VariableID.Value,
-                                                                      BeginDateTime.DateTime, EndDateTime.DateTime);
+                                                                       BeginDateTime.LocalTime, EndDateTime.LocalTime);
 
                 return ds;
             }

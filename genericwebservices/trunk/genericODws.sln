@@ -211,7 +211,7 @@ Global
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|.NET.ActiveCfg = WaterDev|Any CPU
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|.NET.Build.0 = WaterDev|Any CPU
-		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Any CPU.ActiveCfg = WaterDev|Any CPU
+		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Any CPU.ActiveCfg = Debug|Any CPU
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Mixed Platforms.ActiveCfg = WaterDev|Any CPU
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Mixed Platforms.Build.0 = WaterDev|Any CPU
 		{E16ABD2F-E3B8-498D-A441-09928E54E4C2}.Debug|.NET.ActiveCfg = Debug|Any CPU
