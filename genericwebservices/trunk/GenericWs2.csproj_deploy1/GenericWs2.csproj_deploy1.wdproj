@@ -30,6 +30,13 @@
     <UseMerge>true</UseMerge>
     <SingleAssemblyName>GenericWs2.csproj_deploy1</SingleAssemblyName>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WaterDev|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>.\WaterDev</OutputPath>
+    <EnableUpdateable>true</EnableUpdateable>
+    <UseMerge>true</UseMerge>
+    <SingleAssemblyName>GenericWs2.csproj_deploy1</SingleAssemblyName>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenericWs2\GenericWs2.csproj">
       <Project>{592A2308-5B12-469F-87AF-0330B4FD63E6}</Project>
