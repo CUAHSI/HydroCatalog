@@ -3,6 +3,7 @@ using cuahsi.wof.ruon;
 
 using System;
 using cuahsi.wof.ruon.wof_1_0;
+using HisCentralServicesList;
 using NUnit.Framework;
 
 namespace HisAgentTests
@@ -190,12 +191,12 @@ namespace HisAgentTests
 
             var asResoruceDict = servers.AsResource();
 
-            Assert.That(asResoruceDict[0][WaterWebServicesAgent.SERVERNAME] == servers[0].Name, "failed dict name" + serviceName);
-            Assert.That(Boolean.Parse(asResoruceDict[0][WaterWebServicesAgent.SERVERENABLED]) == servers[0].Enabled, "failed dict enabled" + serviceName);
-            Assert.That(asResoruceDict[0][WaterWebServicesAgent.ENDPOINT] == servers[0].Endpoint, "failed dict endpoint" + serviceName);
-            Assert.That(asResoruceDict[0][WaterWebServicesAgent.SITECODE] == servers[0].SiteCode, "failed dict site" + serviceName);
-            Assert.That(asResoruceDict[0][WaterWebServicesAgent.VARIABLECODE] == servers[0].VariableCode, "failed dict variable" + serviceName);
-            Assert.That(asResoruceDict[0][WaterWebServicesAgent.ISOTIMEPERIOD] == servers[0].ISOTimeInterval, "failed dict datetime" + serviceName);
+            Assert.That(asResoruceDict[0][constants.SERVERNAME] == servers[0].Name, "failed dict name" + serviceName);
+            Assert.That(Boolean.Parse(asResoruceDict[0][constants.SERVERENABLED]) == servers[0].Enabled, "failed dict enabled" + serviceName);
+            Assert.That(asResoruceDict[0][constants.ENDPOINT] == servers[0].Endpoint, "failed dict endpoint" + serviceName);
+            Assert.That(asResoruceDict[0][constants.SITECODE] == servers[0].SiteCode, "failed dict site" + serviceName);
+            Assert.That(asResoruceDict[0][constants.VARIABLECODE] == servers[0].VariableCode, "failed dict variable" + serviceName);
+            Assert.That(asResoruceDict[0][constants.ISOTIMEPERIOD] == servers[0].ISOTimeInterval, "failed dict datetime" + serviceName);
 
             var listToServers = new ObsSeriesServerList(asResoruceDict);
 

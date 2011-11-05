@@ -8,88 +8,89 @@ using cuahsi.wof.ruon.wof_1_0;
 using log4net;
 using Ruon;
 using HisServiceTypes;
+using HisCentralServicesList;
 
 namespace cuahsi.wof.ruon
 {
 
-    public class ObsSeriesServer
-    {
-        public String Name { get; set; }
-        public Boolean Enabled { get; set; }
-        public String Endpoint { get; set; }
-        public String SiteCode { get; set; }
-        public String VariableCode { get; set; }
-        public String ISOTimeInterval { get; set; }
-        public ObsSeriesServer()
-        {
+    //public class ObsSeriesServer
+    //{
+    //    public String Name { get; set; }
+    //    public Boolean Enabled { get; set; }
+    //    public String Endpoint { get; set; }
+    //    public String SiteCode { get; set; }
+    //    public String VariableCode { get; set; }
+    //    public String ISOTimeInterval { get; set; }
+    //    public ObsSeriesServer()
+    //    {
 
-        }
-        public Dictionary<String, String> ToDictionary()
-        {
-            Dictionary<String, String> asDict = new Dictionary<string, string>(6);
-            asDict.Add(WaterWebServicesAgent.SERVERNAME, Name);
-            asDict.Add(WaterWebServicesAgent.SERVERENABLED, Enabled.ToString());
-            asDict.Add(WaterWebServicesAgent.ENDPOINT, Endpoint);
-            asDict.Add(WaterWebServicesAgent.SITECODE, SiteCode);
-            asDict.Add(WaterWebServicesAgent.VARIABLECODE, VariableCode);
-            asDict.Add(WaterWebServicesAgent.ISOTIMEPERIOD, ISOTimeInterval);
-            return asDict;
-        }
+    //    }
+    //    public Dictionary<String, String> ToDictionary()
+    //    {
+    //        Dictionary<String, String> asDict = new Dictionary<string, string>(6);
+    //        asDict.Add(WaterWebServicesAgent.SERVERNAME, Name);
+    //        asDict.Add(WaterWebServicesAgent.SERVERENABLED, Enabled.ToString());
+    //        asDict.Add(WaterWebServicesAgent.ENDPOINT, Endpoint);
+    //        asDict.Add(WaterWebServicesAgent.SITECODE, SiteCode);
+    //        asDict.Add(WaterWebServicesAgent.VARIABLECODE, VariableCode);
+    //        asDict.Add(WaterWebServicesAgent.ISOTIMEPERIOD, ISOTimeInterval);
+    //        return asDict;
+    //    }
 
-        public string[] ToAgentStringArray()
-        {
-            return this.ToDictionary().Values.ToArray();
-        }
+    //    public string[] ToAgentStringArray()
+    //    {
+    //        return this.ToDictionary().Values.ToArray();
+    //    }
 
-    }
-    public class ObsSeriesServerList : List<ObsSeriesServer>
-    {
-        private Boolean _editied = false;
-        public ObsSeriesServerList()
-        {
+    //}
+    //public class ObsSeriesServerList : List<ObsSeriesServer>
+    //{
+    //    private Boolean _editied = false;
+    //    public ObsSeriesServerList()
+    //    {
 
-        }
-        public ObsSeriesServerList(Dictionary<string, string>[] agentMangagedResources)
-        {
-            foreach (Dictionary<string, string> r in agentMangagedResources)
-            {
-                ObsSeriesServer server = new ObsSeriesServer();
-                Boolean enabled;
-                Boolean.TryParse(r[WaterWebServicesAgent.SERVERENABLED], out enabled);
-                server.Enabled = enabled;
-                server.Endpoint = r[WaterWebServicesAgent.ENDPOINT];
-                server.Name = r[WaterWebServicesAgent.SERVERNAME];
-                server.SiteCode = r[WaterWebServicesAgent.SITECODE];
-                server.VariableCode = r[WaterWebServicesAgent.VARIABLECODE];
-                server.ISOTimeInterval = r[WaterWebServicesAgent.ISOTIMEPERIOD];
-                this.Add(server);
-            }
-        }
-        public Boolean Edited
-        {
-            get { return _editied; }
-            set { _editied = value; }
-        }
-        public Dictionary<string, string>[] AsResource()
-        {
-            List<Dictionary<String, String>> s = new List<Dictionary<String, String>>(this.Count);
-            foreach (var hisCentralServer in this)
-            {
-                s.Add(hisCentralServer.ToDictionary());
-            }
-            return s.ToArray();
-        }
+    //    }
+    //    public ObsSeriesServerList(Dictionary<string, string>[] agentMangagedResources)
+    //    {
+    //        foreach (Dictionary<string, string> r in agentMangagedResources)
+    //        {
+    //            ObsSeriesServer server = new ObsSeriesServer();
+    //            Boolean enabled;
+    //            Boolean.TryParse(r[WaterWebServicesAgent.SERVERENABLED], out enabled);
+    //            server.Enabled = enabled;
+    //            server.Endpoint = r[WaterWebServicesAgent.ENDPOINT];
+    //            server.Name = r[WaterWebServicesAgent.SERVERNAME];
+    //            server.SiteCode = r[WaterWebServicesAgent.SITECODE];
+    //            server.VariableCode = r[WaterWebServicesAgent.VARIABLECODE];
+    //            server.ISOTimeInterval = r[WaterWebServicesAgent.ISOTIMEPERIOD];
+    //            this.Add(server);
+    //        }
+    //    }
+    //    public Boolean Edited
+    //    {
+    //        get { return _editied; }
+    //        set { _editied = value; }
+    //    }
+    //    public Dictionary<string, string>[] AsResource()
+    //    {
+    //        List<Dictionary<String, String>> s = new List<Dictionary<String, String>>(this.Count);
+    //        foreach (var hisCentralServer in this)
+    //        {
+    //            s.Add(hisCentralServer.ToDictionary());
+    //        }
+    //        return s.ToArray();
+    //    }
 
-        public string[][] AsAgentResource()
-        {
-            List<string[]> s = new List<string[]>(this.Count);
-            foreach (var hisCentralServer in this)
-            {
-                s.Add(hisCentralServer.ToAgentStringArray());
-            }
-            return s.ToArray();
-        }
-    }
+    //    public string[][] AsAgentResource()
+    //    {
+    //        List<string[]> s = new List<string[]>(this.Count);
+    //        foreach (var hisCentralServer in this)
+    //        {
+    //            s.Add(hisCentralServer.ToAgentStringArray());
+    //        }
+    //        return s.ToArray();
+    //    }
+    //}
 
     /// <summary>
     /// This is an example of a trivial agent that can be loaded by the ServiceLoader.<br/>
@@ -113,25 +114,27 @@ namespace cuahsi.wof.ruon
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public const string GETSITES = "Use_GetSites";
-        public const string GETVALUES = "Use_GetValues";
-        public const string READFROMCENTRAL = "Use_HISCENTRAL_forSeries";
-        public const string SERVERNAME = "Server_Name";
-        public const string SERVERENABLED = "Server_Enabled";
-        public const string ENDPOINT = "Endpoint_Url";
-        public const string SITECODE = "ws_SiteCode";
-        public const string VARIABLECODE = "ws_VariableCode";
-        public const string ISOTIMEPERIOD = "ISO_TimeInterval";
+        //public const string GETSITES = "Use_GetSites";
+        //public const string GETVALUES = "Use_GetValues";
+        //public const string READFROMCENTRAL = "Use_HISCENTRAL_forSeries";
+        //public const string SERVERNAME = "Server_Name";
+        //public const string SERVERENABLED = "Server_Enabled";
+        //public const string ENDPOINT = "Endpoint_Url";
+        //public const string SITECODE = "ws_SiteCode";
+        //public const string VARIABLECODE = "ws_VariableCode";
+        //public const string ISOTIMEPERIOD = "ISO_TimeInterval";
 
-        public const string MONITORSERVICE_SERVICENAME = "WaterWebService";
+        //public const string MONITORSERVICE_SERVICENAME = "WaterWebService";
 
-        public const string MONITORSERVICE_METHOD = "WWS_STATUS";
+        //public const string MONITORSERVICE_METHOD = "WWS_STATUS";
 
-        public const string URLDISABLED_METHODNAME = "URL_STATUS";
-        public const string DISABLED_MESSAGE = " DISABLED";
-        public const string ENABLED_MESSAGE = " ENABLED";
+        //public const string URLDISABLED_METHODNAME = "URL_STATUS";
+        //public const string DISABLED_MESSAGE = " DISABLED";
+        //public const string ENABLED_MESSAGE = " ENABLED";
 
         private ObsSeriesServerList _obsSeriesServers;
+        private ObsSeriesServerList _obsSeriesServersNew;
+        
         private string usgsDailyValues = "http://river.sdsc.edu/wateroneflow/NWIS/DailyValues.asmx";
         /// <summary>
         /// Constructor, HAS to have this signature
@@ -148,6 +151,7 @@ namespace cuahsi.wof.ruon
              300, null, null, serviceProcess)
         {
         bool isInstalled = Agent.IsInstalled("WaterWebServicesAgent");
+      
 #elif DEBUG
         // 0seconds, aka run once
         public WaterWebServicesAgent(IServiceProcess serviceProcess)
@@ -158,6 +162,7 @@ namespace cuahsi.wof.ruon
         {
 
             bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
+        
 #else
         // run once an hour: 3600 seconds, or as configured in the DLL .config
         public WaterWebServicesAgent(IServiceProcess serviceProcess)
@@ -168,6 +173,7 @@ namespace cuahsi.wof.ruon
         {
 
             bool isInstalled = Agent.IsInstalled("CuahsiWaterServicesAgent");
+            
 #endif
             log.DebugFormat("RunInterval Property:{0}, Agent:{1})",
                       Properties.Settings.Default.RunInterval, MonitorIntervalSec);
@@ -175,19 +181,25 @@ namespace cuahsi.wof.ruon
                    new AgentConfig.MetaVar[]
                 {
                     // agent parameters
-                    new AgentConfig.MetaVar(GETSITES, AgentConfig.Type.Boolean, "true"),
-                    new AgentConfig.MetaVar(GETVALUES, AgentConfig.Type.Boolean, "true"),
-                     new AgentConfig.MetaVar(READFROMCENTRAL,AgentConfig.Type.Boolean, "true"),
+                    new AgentConfig.MetaVar(constants.GETSITES, AgentConfig.Type.Boolean, "true"),
+                    new AgentConfig.MetaVar(constants.GETVALUES, AgentConfig.Type.Boolean, "true"),
+ #if SDSCServices
+       
+                    new AgentConfig.MetaVar(constants.READFROMCENTRAL,AgentConfig.Type.Boolean, "false"),
+#else
+                   new AgentConfig.MetaVar(constants.READFROMCENTRAL,AgentConfig.Type.Boolean, "true"),
+
+#endif
                 },
                      new AgentConfig.MetaVar[]
                 {
                     // Manage Resources in comma delimited list
-                    new AgentConfig.MetaVar(SERVERNAME,AgentConfig.Type.String, "Unknown Server" ),
-                    new AgentConfig.MetaVar(SERVERENABLED,AgentConfig.Type.Boolean, "true" ),
-                    new AgentConfig.MetaVar(ENDPOINT, AgentConfig.Type.String, usgsDailyValues),
-                    new AgentConfig.MetaVar(SITECODE, AgentConfig.Type.String, "NWIS:10263500"),
-                    new AgentConfig.MetaVar(VARIABLECODE, AgentConfig.Type.String, "NWIS:00060"),
-                    new AgentConfig.MetaVar(ISOTIMEPERIOD, AgentConfig.Type.String, "2010-08-01T13:00:00Z/2010-08-15T00:00:00Z"),
+                    new AgentConfig.MetaVar(constants.SERVERNAME,AgentConfig.Type.String, "Unknown Server" ),
+                    new AgentConfig.MetaVar(constants.SERVERENABLED,AgentConfig.Type.Boolean, "true" ),
+                    new AgentConfig.MetaVar(constants.ENDPOINT, AgentConfig.Type.String, usgsDailyValues),
+                    new AgentConfig.MetaVar(constants.SITECODE, AgentConfig.Type.String, "NWIS:10263500"),
+                    new AgentConfig.MetaVar(constants.VARIABLECODE, AgentConfig.Type.String, "NWIS:00060"),
+                    new AgentConfig.MetaVar(constants.ISOTIMEPERIOD, AgentConfig.Type.String, "2010-08-01T13:00:00Z/2010-08-15T00:00:00Z"),
                 }
 
                );
@@ -211,10 +223,13 @@ namespace cuahsi.wof.ruon
 
                 foreach (var list in Configuration.ManagedResources)
                 {
-                    _obsSeriesServers.Add(new ObsSeriesServer { Name = list[SERVERNAME], Enabled = Boolean.Parse(list[SERVERENABLED]), Endpoint = list[ENDPOINT] });
+                    _obsSeriesServers.Add(new ObsSeriesServer { Name = list[constants.SERVERNAME], Enabled = Boolean.Parse(list[constants.SERVERENABLED]), Endpoint = list[constants.ENDPOINT] });
                 }
             }
         }
+
+        
+
 
         private void SetupBaseServices()
         {
@@ -301,8 +316,8 @@ namespace cuahsi.wof.ruon
                     var startupError = new TestResult
                     {
                         Working = false,
-                        ServiceName = MONITORSERVICE_SERVICENAME,
-                        MethodName = MONITORSERVICE_METHOD,
+                        ServiceName = constants.MONITORSERVICE_SERVICENAME,
+                        MethodName = constants.MONITORSERVICE_METHOD,
                         ErrorString =
                              "ERROR Starting up Monitor Service.? Resources list (series to test) Null ",
                         Serverity = AlarmSeverity.Minor
@@ -324,41 +339,41 @@ namespace cuahsi.wof.ruon
                 foreach (var server in managedResources)
                 {
                     Boolean ServiceHasError = false;
-                    if (!Boolean.Parse(server[SERVERENABLED]))
+                    if (!Boolean.Parse(server[constants.SERVERENABLED]))
                     {
-                        log.Debug(URLDISABLED_METHODNAME + " " + server[SERVERNAME]);
+                        log.Debug(constants.URLDISABLED_METHODNAME + " " + server[constants.SERVERNAME]);
                         var disabledAlarm = new TestResult(false,
                             AlarmSeverity.Minor,
-                            server[SERVERNAME],
-                            URLDISABLED_METHODNAME,
-                             server[ENDPOINT],
-                             server[SERVERNAME] + DISABLED_MESSAGE);
+                            server[constants.SERVERNAME],
+                            constants.URLDISABLED_METHODNAME,
+                             server[constants.ENDPOINT],
+                             server[constants.SERVERNAME] + constants.DISABLED_MESSAGE);
                         testResults.Add(disabledAlarm);
 
-                        alarms.Add(new Alarm(server[SERVERNAME], server[SERVERNAME] + URLDISABLED_METHODNAME, AlarmSeverity.Minor, server[SERVERNAME] + " Disabled"));
+                        alarms.Add(new Alarm(server[constants.SERVERNAME], server[constants.SERVERNAME] + constants.URLDISABLED_METHODNAME, AlarmSeverity.Minor, server[constants.SERVERNAME] + " Disabled"));
                         continue;
                     }
                     else
                     {
                         var clearAlarm = new TestResult(true,
                             AlarmSeverity.Clear,
-                            server[SERVERNAME],
-                             URLDISABLED_METHODNAME,
-                             server[ENDPOINT],
-                             server[SERVERNAME] + ENABLED_MESSAGE);
+                            server[constants.SERVERNAME],
+                             constants.URLDISABLED_METHODNAME,
+                             server[constants.ENDPOINT],
+                             server[constants.SERVERNAME] + constants.ENABLED_MESSAGE);
                         testResults.Add(clearAlarm);
-                        alarms.Add(new Clear(server[SERVERNAME], server[SERVERNAME] + URLDISABLED_METHODNAME, server[SERVERNAME] + " Enabled"));
+                        alarms.Add(new Clear(server[constants.SERVERNAME], server[constants.SERVERNAME] + constants.URLDISABLED_METHODNAME, server[constants.SERVERNAME] + " Enabled"));
                     }
 
                     try
                     {
-                        log.InfoFormat("Endpoint {0}, start", server[ENDPOINT]);
+                        log.InfoFormat("Endpoint {0}, start", server[constants.ENDPOINT]);
 
                         IWaterWebSericesTester tester = null;
                         ServiceTypeEnum serviceType = ServiceTypeEnum.UNKNOWN;
                         try
                         {
-                            serviceType = WsdlUtilities.ServiceTypeFromWsdlUrl(server[ENDPOINT]);
+                            serviceType = WsdlUtilities.ServiceTypeFromWsdlUrl(server[constants.ENDPOINT]);
                             switch (serviceType)
                             {
                                 case HisServiceTypes.ServiceTypeEnum.WOF_1_0:
@@ -371,66 +386,66 @@ namespace cuahsi.wof.ruon
                                     tester = new cuahsi.wof.ruon.wof_1_1_badnamespace.WaterWebSericesTester();
                                     break;
                                 default:
-                                    log.Warn("Cannot determine Service Type: " + server[ENDPOINT]);
-                                    throw new ArgumentException("Cannot determine Service Type: " + server[ENDPOINT]);
+                                    log.Warn("Cannot determine Service Type: " + server[constants.ENDPOINT]);
+                                    throw new ArgumentException("Cannot determine Service Type: " + server[constants.ENDPOINT]);
 
 
 
                             }
-                            log.DebugFormat("OK: WSDL or capabilities for {0}", server[SERVERNAME]);
+                            log.DebugFormat("OK: WSDL or capabilities for {0}", server[constants.SERVERNAME]);
                             var clearAlarm = new TestResult(true,
                             AlarmSeverity.Clear,
-                            server[SERVERNAME],
+                            server[constants.SERVERNAME],
                              "WSDL",
-                             server[ENDPOINT],
+                             server[constants.ENDPOINT],
                              "OK: WSDL or capabilities");
                             testResults.Add(clearAlarm);
 
-                            alarms.Add(new Clear(server[SERVERNAME], "WSDL"));
+                            alarms.Add(new Clear(server[constants.SERVERNAME], "WSDL"));
 
                         }
                         catch (System.Net.WebException ex)
                         {
                             string errorMessage =
                                 string.Format("ERROR: Connecting to WSDL or capabilities for {0} at {1} {2} {3}",
-                                              server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                                              server[constants.SERVERNAME], server[constants.ENDPOINT], ex.Message, ex.StackTrace);
                             log.ErrorFormat(errorMessage);
                             var errorService = new TestResult
                             {
                                 Working = false,
-                                ServiceName = server[SERVERNAME],
+                                ServiceName = server[constants.SERVERNAME],
                                 MethodName = "WSDL",
-                                ErrorString = "ERROR: Connecting to Service: " + server[SERVERNAME],
+                                ErrorString = "ERROR: Connecting to Service: " + server[constants.SERVERNAME],
                                 Serverity = AlarmSeverity.Critical,
-                                Endpoint = server[ENDPOINT],
+                                Endpoint = server[constants.ENDPOINT],
                                 ExceptionMessage = errorMessage
                             };
 
                             testResults.Add(errorService);
 
-                            alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
+                            alarms.Add(new Alarm(server[constants.SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[constants.SERVERNAME]));
 
-                            throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
+                            throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[constants.SERVERNAME], ex);
 
                         }
                         catch (Exception ex)
                         {
                             string errorMessage =
-                                string.Format("ERROR: When parsing WSDL or capabilities (or other error) for {0} url:  {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                                string.Format("ERROR: When parsing WSDL or capabilities (or other error) for {0} url:  {1} {2} {3}", server[constants.SERVERNAME], server[constants.ENDPOINT], ex.Message, ex.StackTrace);
                             log.Error(errorMessage);
                             var errorService = new TestResult
                             {
                                 Working = false,
-                                ServiceName = server[SERVERNAME],
+                                ServiceName = server[constants.SERVERNAME],
                                 MethodName = "WSDL",
-                                ErrorString = "ERROR: Connecting to Service: " + server[SERVERNAME],
+                                ErrorString = "ERROR: Connecting to Service: " + server[constants.SERVERNAME],
                                 Serverity = AlarmSeverity.Critical,
-                                Endpoint = server[ENDPOINT],
+                                Endpoint = server[constants.ENDPOINT],
                                 ExceptionMessage = errorMessage
                             };
                             testResults.Add(errorService);
-                            alarms.Add(new Alarm(server[SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[SERVERNAME]));
-                            throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[SERVERNAME], ex);
+                            alarms.Add(new Alarm(server[constants.SERVERNAME], "WSDL", AlarmSeverity.Critical, "ERROR: Connecting to Service: " + server[constants.SERVERNAME]));
+                            throw new ServiceConnectionException("ERROR: Fetching WSDL or capabilities: " + server[constants.SERVERNAME], ex);
 
                         }
 
@@ -441,43 +456,43 @@ namespace cuahsi.wof.ruon
 
                         timer2.Reset();
 
-                        tester.Endpoint = server[ENDPOINT];
-                        if (Boolean.Parse(Configuration[GETSITES]) && !ServiceHasError)
+                        tester.Endpoint = server[constants.ENDPOINT];
+                        if (Boolean.Parse(Configuration[constants.GETSITES]) && !ServiceHasError)
                         {
-                            TestResult result = tester.GetSites(server[SERVERNAME]);
+                            TestResult result = tester.GetSites(server[constants.SERVERNAME]);
                             testResults.Add(result);
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
-                                log.ErrorFormat("FAILED: GetSites {0} {1} " + server[SERVERNAME] + server[ENDPOINT]);
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "FAILED: GetSites " + server[SERVERNAME]));
+                                log.ErrorFormat("FAILED: GetSites {0} {1} " + server[constants.SERVERNAME] + server[constants.ENDPOINT]);
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, "FAILED: GetSites " + server[constants.SERVERNAME]));
                             }
                             else
                             {
-                                log.Debug("OK: GetSites " + server[SERVERNAME]);
+                                log.Debug("OK: GetSites " + server[constants.SERVERNAME]);
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
-                        if (Boolean.Parse(Configuration[GETVALUES]) && !ServiceHasError)
+                        if (Boolean.Parse(Configuration[constants.GETVALUES]) && !ServiceHasError)
                         {
 
-                            TestResult result = tester.RunTests(server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD]);
+                            TestResult result = tester.RunTests(server[constants.SERVERNAME], server[constants.SITECODE], server[constants.VARIABLECODE], server[constants.ISOTIMEPERIOD]);
                             testResults.Add(result);
 
                             if (!result.Working.HasValue || !result.Working.Value)
                             {
-                                log.Error(String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD], server[ENDPOINT]));
-                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[SERVERNAME], server[SITECODE], server[VARIABLECODE], server[ISOTIMEPERIOD], server[ENDPOINT])));
+                                log.Error(String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[constants.SERVERNAME], server[constants.SITECODE], server[constants.VARIABLECODE], server[constants.ISOTIMEPERIOD], server[constants.ENDPOINT]));
+                                alarms.Add(new Alarm(result.ServiceName, result.ServiceName + result.MethodName, AlarmSeverity.Critical, String.Format("FAILED: GetValues {0},{1},{2}.{3}, {4}", server[constants.SERVERNAME], server[constants.SITECODE], server[constants.VARIABLECODE], server[constants.ISOTIMEPERIOD], server[constants.ENDPOINT])));
                             }
                             else
                             {
-                                log.Debug("OK: GetValues " + server[SERVERNAME]);
+                                log.Debug("OK: GetValues " + server[constants.SERVERNAME]);
 
                                 alarms.Add(new Clear(result.ServiceName, result.ServiceName + result.MethodName, ""));
                             }
                         }
 
-                        log.InfoFormat("Endpoint {0}, end: {1}", server[ENDPOINT], timer2.Elapsed);
+                        log.InfoFormat("Endpoint {0}, end: {1}", server[constants.ENDPOINT], timer2.Elapsed);
                         timer2.Reset();
 
                     }
@@ -488,20 +503,20 @@ namespace cuahsi.wof.ruon
                     catch (Exception ex)
                     {
                         string errorMessage =
-                                string.Format("ERROR: Major Error in Monitor Service while testing service {0} {1} {2} {3}", server[SERVERNAME], server[ENDPOINT], ex.Message, ex.StackTrace);
+                                string.Format("ERROR: Major Error in Monitor Service while testing service {0} {1} {2} {3}", server[constants.SERVERNAME], server[constants.ENDPOINT], ex.Message, ex.StackTrace);
                         log.Error(errorMessage);
                         var errorService = new TestResult
                         {
                             Working = false,
-                            ServiceName = server[SERVERNAME],
-                            MethodName = MONITORSERVICE_METHOD,
-                            ErrorString = "ERROR in Monitor Service testing service " + server[SERVERNAME],
+                            ServiceName = server[constants.SERVERNAME],
+                            MethodName = constants.MONITORSERVICE_METHOD,
+                            ErrorString = "ERROR in Monitor Service testing service " + server[constants.SERVERNAME],
                             Serverity = AlarmSeverity.Critical
                         };
 
                         testResults.Add(errorService);
 
-                        alarms.Add(new Alarm(server[SERVERNAME], MONITORSERVICE_METHOD, AlarmSeverity.Critical, "ERROR in Monitor Service"));
+                        alarms.Add(new Alarm(server[constants.SERVERNAME], constants.MONITORSERVICE_METHOD, AlarmSeverity.Critical, "ERROR in Monitor Service"));
 
                     }
 
@@ -509,12 +524,23 @@ namespace cuahsi.wof.ruon
 
                 var clearService = new TestResult(true,
                            AlarmSeverity.Clear,
-                           MONITORSERVICE_SERVICENAME,
-                            MONITORSERVICE_METHOD);
+                          constants. MONITORSERVICE_SERVICENAME,
+                            constants.MONITORSERVICE_METHOD);
                 clearService.ErrorString = "OK: Monitor Service Working";
                 testResults.Add(clearService);
 
-                alarms.Add(new Clear(MONITORSERVICE_SERVICENAME, MONITORSERVICE_METHOD, "OK: Working Monitor Service"));
+                alarms.Add(new Clear(constants.MONITORSERVICE_SERVICENAME, constants.MONITORSERVICE_METHOD, "OK: Working Monitor Service"));
+               
+                // get new services, and clear removed services
+                _obsSeriesServersNew = HisCentralServicesList.HisSeriesList.SeriesList();
+                HisCentralServicesList.HisSeriesList.DisableSeries(_obsSeriesServers, _obsSeriesServersNew);
+
+                foreach (string removedNetwork in HisCentralServicesList.HisSeriesList.RemovedNetworks(_obsSeriesServers, _obsSeriesServersNew))
+                {
+                    alarms.Add(new Clear(removedNetwork, constants.MONITORSERVICE_METHOD, "OK: Working Monitor Service"));
+                    // I might need to add testResult here.
+                }
+   //
 
                 ReportAlarms(alarms, false);
                 SendTestResults(testResults);
@@ -534,8 +560,8 @@ namespace cuahsi.wof.ruon
                 var errorService = new TestResult
                                        {
                                            Working = false,
-                                           ServiceName = MONITORSERVICE_SERVICENAME,
-                                           MethodName = MONITORSERVICE_METHOD,
+                                           ServiceName = constants.MONITORSERVICE_SERVICENAME,
+                                           MethodName = constants.MONITORSERVICE_METHOD,
                                            ErrorString = "ERROR in Monitor Service",
                                            Serverity = AlarmSeverity.Critical,
                                            ExceptionMessage = errorMessage
@@ -544,14 +570,27 @@ namespace cuahsi.wof.ruon
                 testResults.Add(errorService);
 
                 List<IAlarm> alarms = new List<IAlarm>();
-                alarms.Add(new Alarm(MONITORSERVICE_SERVICENAME, MONITORSERVICE_METHOD, AlarmSeverity.Critical, "ERROR in Monitor Service"));
+                alarms.Add(new Alarm(constants.MONITORSERVICE_SERVICENAME, constants.MONITORSERVICE_METHOD, AlarmSeverity.Critical, "ERROR in Monitor Service"));
                 ReportAlarms(alarms, false);
                 SendTestResults(testResults);
                 log.InfoFormat("Run Complete {0}", timer.Elapsed);
                 timer.Stop();
             }
+         if (Boolean.Parse(Configuration[constants.READFROMCENTRAL])){
+            UpdateServiceList();
+}
         }
 
+    private void UpdateServiceList ()
+    {
+        log.Info("Updateing Services List");
+        _obsSeriesServersNew = HisCentralServicesList.HisSeriesList.SeriesList();
+        HisCentralServicesList.HisSeriesList.DisableSeries(_obsSeriesServers, _obsSeriesServersNew);
+        
+        AgentParams ap = new AgentParams();
+        ap.Resources = _obsSeriesServersNew.AsAgentResource();
+        this.SetParameters(ap);
+    }
         protected void SendTestResults(List<ITestResult2> testResults)
         {
            try{

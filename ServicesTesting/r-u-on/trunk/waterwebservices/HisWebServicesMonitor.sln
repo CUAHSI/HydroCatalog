@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisServiceUtilities", "HisS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesWebSite", "ServicesWebSite\ServicesWebSite.csproj", "{260656EC-0A89-4493-B054-0A6ABA774CF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisCentralSeriesCmdLine", "HisCentralSeriesCmdLine\HisCentralSeriesCmdLine.csproj", "{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = iaosharp.vsmdi
@@ -211,6 +213,21 @@ Global
 		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|Mixed Platforms.Build.0 = Release|Any CPU
 		{260656EC-0A89-4493-B054-0A6ABA774CF4}.SDSCServices|x86.ActiveCfg = Release|Any CPU
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Debug|x86.ActiveCfg = Debug|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Debug|x86.Build.0 = Debug|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Release|Any CPU.ActiveCfg = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Release|x86.ActiveCfg = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.Release|x86.Build.0 = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.SDSCServices|Any CPU.ActiveCfg = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.SDSCServices|Mixed Platforms.ActiveCfg = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.SDSCServices|Mixed Platforms.Build.0 = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.SDSCServices|x86.ActiveCfg = Release|x86
+		{8F1058E0-296E-49B0-A4B9-F424EE07AC1E}.SDSCServices|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

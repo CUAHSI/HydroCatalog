@@ -86,6 +86,10 @@
     <Compile Include="WaterWebSericesTesterTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HisCentralServicesList\HisCentralServicesList.csproj">
+      <Project>{65F5AC41-A4EF-4A96-A67A-0E58AE170EAA}</Project>
+      <Name>HisCentralServicesList</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HisServiceTypes\HisServiceUtilities.csproj">
       <Project>{07DEB67A-2F09-4BBA-9E5D-35BF7C1BA477}</Project>
       <Name>HisServiceUtilities</Name>
