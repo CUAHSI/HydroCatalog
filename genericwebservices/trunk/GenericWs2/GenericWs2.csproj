@@ -131,7 +131,13 @@
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
+    <Content Include="InstallingUsingMSBuild.txt" />
+    <Content Include="SetACL.exe" />
     <Content Include="wfs\DataCart.ashx" />
+    <None Include="AddToIIS.bat" />
+    <None Include="Installer.targets" />
+    <Content Include="MyWS.config" />
+    <Content Include="MyWS_TWO.config" />
     <None Include="Parameters.WaterDev.xml">
       <SubType>Designer</SubType>
     </None>
@@ -191,6 +197,9 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Test.config" />
+    <None Include="RemoveFromIIS.bat" />
+    <None Include="SetACL.bat" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
