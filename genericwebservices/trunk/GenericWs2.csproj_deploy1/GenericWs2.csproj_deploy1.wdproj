@@ -155,8 +155,8 @@
     <Copy SourceFiles="@(MyWaterOneFlowAuth)" DestinationFiles="$(OutputPath)wateroneflow.authentication.config" />
     
     <Copy SourceFiles="@(MyLog4net)" DestinationFiles="$(OutputPath)wateroneflow.logging.log4net" />
--->    <RemoveDir Directories="$(OutputPath)build_configs\" />
-    <RemoveDir Directories="$(OutputPath)log-data" />
+   <RemoveDir Directories="$(OutputPath)build_configs\" />
+ -->    <RemoveDir Directories="$(OutputPath)log-data"  />
     <Delete Files="$(OutputPath)logger-debug-log.txt;$(OutputPath)webapp-log.txt;" />
     <Delete Files="$(OutputPath)vwd.webinfo;" />
     <MakeDir Directories="$(OutputPath)log-data" />

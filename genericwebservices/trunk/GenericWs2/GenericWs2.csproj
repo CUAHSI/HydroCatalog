@@ -135,14 +135,20 @@
     <Content Include="SetACL.exe" />
     <Content Include="wfs\DataCart.ashx" />
     <None Include="AddToIIS.bat" />
-    <None Include="Installer.targets" />
-    <Content Include="MyWS.config" />
+    <None Include="Installer.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="MyWS.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="MyWS_TWO.config" />
     <None Include="Parameters.WaterDev.xml">
       <SubType>Designer</SubType>
     </None>
     <Content Include="DataCartWFS.aspx" />
-    <Content Include="InstallationHowTo.txt" />
+    <Content Include="InstallationHowTo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="REST\Rest.svc" />
     <Content Include="WaterML_1_1.aspx" />
     <Content Include="cuahsi_1_0.asmx" />
