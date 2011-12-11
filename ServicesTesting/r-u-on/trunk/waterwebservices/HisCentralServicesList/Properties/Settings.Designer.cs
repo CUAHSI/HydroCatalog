@@ -13,7 +13,7 @@ namespace HisCentralServicesList.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "10.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -65,11 +65,23 @@ FROM HISNetworks where  (isPublic='true')
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=disrupter.sdsc.edu,1433;Initial Catalog=HISCentral;User ID=hiscentral" +
-            "User2;Password=im2nopploki")]
         public string CentralHISConnectionString {
             get {
                 return ((string)(this["CentralHISConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>NWISUV</string>\r\n  <string>RioGrandeET</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection ServicesWithP1D {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ServicesWithP1D"]));
+            }
+            set {
+                this["ServicesWithP1D"] = value;
             }
         }
     }

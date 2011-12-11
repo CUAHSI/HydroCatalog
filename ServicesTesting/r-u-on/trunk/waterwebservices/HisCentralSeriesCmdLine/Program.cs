@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using HisCentralServicesList;
 
-
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "cuahsi.log4net.xml", Watch = true)]
 namespace HisCentralSeriesCmdLine
 {
     class Program

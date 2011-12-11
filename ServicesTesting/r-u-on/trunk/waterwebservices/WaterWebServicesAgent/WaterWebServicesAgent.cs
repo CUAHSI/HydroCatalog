@@ -9,6 +9,7 @@ using log4net;
 using Ruon;
 using HisServiceTypes;
 using HisCentralServicesList;
+using Microsoft.SqlServer.Server;
 
 namespace cuahsi.wof.ruon
 {
@@ -531,6 +532,10 @@ namespace cuahsi.wof.ruon
 
                 alarms.Add(new Clear(constants.MONITORSERVICE_SERVICENAME, constants.MONITORSERVICE_METHOD, "OK: Working Monitor Service"));
                
+                try
+                {
+                    
+                
                 // get new services, and clear removed services
                 _obsSeriesServersNew = HisCentralServicesList.HisSeriesList.SeriesList();
                 HisCentralServicesList.HisSeriesList.DisableSeries(_obsSeriesServers, _obsSeriesServersNew);
@@ -539,6 +544,15 @@ namespace cuahsi.wof.ruon
                 {
                     alarms.Add(new Clear(removedNetwork, constants.MONITORSERVICE_METHOD, "OK: Working Monitor Service"));
                     // I might need to add testResult here.
+                }
+                alarms.Add(new Alarm(constants.MONITORSERVICE_SERVICENAME, constants.MONITORSERVICE_METHOD, AlarmSeverity.Major, "ERROR: Unupdated series list: connecting to database to get series list"));
+                
+                }
+                catch
+                {
+                    alarms.Add(new Clear(constants.MONITORSERVICE_SERVICENAME, constants.MONITORSERVICE_METHOD, "Ok: Updated series list"));
+                    
+  
                 }
    //
 
@@ -585,10 +599,9 @@ namespace cuahsi.wof.ruon
     {
         log.Info("Updateing Services List");
         _obsSeriesServersNew = HisCentralServicesList.HisSeriesList.SeriesList();
-        HisCentralServicesList.HisSeriesList.DisableSeries(_obsSeriesServers, _obsSeriesServersNew);
         
         AgentParams ap = new AgentParams();
-        ap.Resources = _obsSeriesServersNew.AsAgentResource();
+        ap.Resources = HisCentralServicesList.HisSeriesList.DisableSeries(_obsSeriesServers, _obsSeriesServersNew).AsAgentResource();
         this.SetParameters(ap);
     }
         protected void SendTestResults(List<ITestResult2> testResults)

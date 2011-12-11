@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -114,11 +115,14 @@ namespace HisCentralServicesList
                         DateTime endate = DateTime.Parse(dataRow["EndDate"].ToString());
                         DateTime startDate = endate.AddDays(-2);
                         string isoRangeFormat = "{0:0000}-{1:00}-{2:00}/{3:0000}-{4:00}-{5:00}";
-
-
-                        var isoRange = String.Format(isoRangeFormat, startDate.Year, startDate.Month, startDate.Day,
+                        string isoRange = "P1D";
+if ( Properties.Settings.Default.ServicesWithP1D.Contains(series.Name) )
+{
+    isoRange = "P1D";
+} else {
+                         isoRange = String.Format(isoRangeFormat, startDate.Year, startDate.Month, startDate.Day,
                                                      endate.Year, endate.Month, endate.Day);
-
+}
                         series.ISOTimeInterval = isoRange;
 
                         seriesList.Add(series);
@@ -139,7 +143,7 @@ namespace HisCentralServicesList
         public static ObsSeriesServerList  DisableSeries(ObsSeriesServerList originalList, ObsSeriesServerList newList)
         {
             var disabledOld = from o in originalList
-                              where o.Enabled = false
+                              where o.Enabled == false
                               select o.Name;
    
             foreach(var obs in newList)

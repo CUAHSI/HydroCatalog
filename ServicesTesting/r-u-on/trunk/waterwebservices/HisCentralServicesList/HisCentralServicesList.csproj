@@ -76,6 +76,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Web References\org.cuahsi.hiscentral\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,7 +114,7 @@
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\org.cuahsi.hiscentral\hiscentral.wsdl" />
@@ -141,6 +142,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cuahsi.log4net.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
