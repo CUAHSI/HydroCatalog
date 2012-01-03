@@ -53,8 +53,8 @@ namespace GenericWebservice
             using (SitesSeriesDataContext OdmLiteDataContext = new SitesSeriesDataContext(ConfigurationManager.ConnectionStrings["ODDB"].ConnectionString))
             {
                 var s = OdmLiteDataContext.GetTable<Site>();
-               
-                return s.ToList();
+
+                return s.Take(100).ToList();
             }
         }
         [OperationContract]
@@ -65,7 +65,7 @@ namespace GenericWebservice
             {
                 var s = OdmLiteDataContext.GetTable<SeriesCatalog>();
 
-                return s.Take(20).ToList();
+                return s.Take(100).ToList();
             }
 
         }
@@ -76,7 +76,7 @@ namespace GenericWebservice
             using (SitesSeriesDataContext OdmLiteDataContext = new SitesSeriesDataContext(ConfigurationManager.ConnectionStrings["ODDB"].ConnectionString))
             {
                 var s = OdmLiteDataContext.GetTable<Variable>();
-                return s.ToList();
+                return s.Take(100).ToList();
             }
         }
         #endregion

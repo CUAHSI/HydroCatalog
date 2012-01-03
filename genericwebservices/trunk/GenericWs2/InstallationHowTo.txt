@@ -13,7 +13,9 @@ Requirements
 * IIS/ASP.Net v4
 * SqlServer (express is OK)
 * .Net 4.0 ( Use Windows Update or in Visual Studio 2010)
-* WebDeploy (install using MS Web Platform Installer)
+* (install using MS Web Platform Installer)
+** WebDeploy
+** Asp.net MVC 2 and MVC 3 
 Windows 2003:
 * hotfix from http://support.microsoft.com/kb/915782
 Optional
@@ -42,7 +44,7 @@ II7 Installer Install
 Command Line Install
 IIS6 Note, post install you will need to create and assign the Web Application to ASP.Net 4.0 Application Pool
 
-0) Install WebDeploy (http://www.iis.net/download/DeployAndMigrate)
+0) Install WebDeploy and Asp.net MVC 3 (http://www.iis.net/download/DeployAndMigrate)
 1) Installed patched MsBuild script (see http://support.microsoft.com/kb/2537134)
 2) rename GenericWs2.SetParameters.xml
 3) edit GenericWs2.SetParameters_(YOURNAME).xml
@@ -71,4 +73,6 @@ Noted Issues
 
 =====
 Web Deploy: http://www.iis.net/download/WebDeploy
+MSI Web Deploy Installer: http://technet.microsoft.com/en-us/library/dd569059(WS.10).aspx
 Net 4: 
+
