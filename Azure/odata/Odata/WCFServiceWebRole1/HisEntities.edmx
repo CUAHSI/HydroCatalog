@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hissandboxModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="hissandboxModelStoreContainer">
+          <EntitySet Name="SeriesCatalog" EntityType="hissandboxModel.Store.SeriesCatalog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sites" EntityType="hissandboxModel.Store.Sites" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Variables" EntityType="hissandboxModel.Store.Variables" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Sites_SiteID" Association="hissandboxModel.Store.FK_Sites_SiteID">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="SeriesCatalog" EntitySet="SeriesCatalog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variables_VariableID" Association="hissandboxModel.Store.FK_Variables_VariableID">
+            <End Role="Variables" EntitySet="Variables" />
+            <End Role="SeriesCatalog" EntitySet="SeriesCatalog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SeriesCatalog">
+          <Key>
+            <PropertyRef Name="SeriesID" />
+          </Key>
+          <Property Name="SeriesID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="SiteCode" Type="varchar" MaxLength="101" />
+          <Property Name="SiteName" Type="varchar" MaxLength="200" />
+          <Property Name="VariableID" Type="int" Nullable="false" />
+          <Property Name="VariableCodeSmall" Type="varchar" MaxLength="20" />
+          <Property Name="VariableName" Type="varchar" MaxLength="200" />
+          <Property Name="VariableUnitsID" Type="int" />
+          <Property Name="VariableUnitsName" Type="varchar" MaxLength="100" />
+          <Property Name="SampleMedium" Type="varchar" MaxLength="100" />
+          <Property Name="ValueType" Type="varchar" MaxLength="150" />
+          <Property Name="BeginDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Valuecount" Type="int" Nullable="false" />
+          <Property Name="GeneralCategory" Type="int" />
+          <Property Name="UTCOffset" Type="int" />
+          <Property Name="SourceID" Type="int" Nullable="false" />
+          <Property Name="VariableCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="SeriesCode" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Sites">
+          <Key>
+            <PropertyRef Name="SiteID" />
+          </Key>
+          <Property Name="SiteID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SiteCode" Type="varchar" Nullable="false" MaxLength="101" />
+          <Property Name="SiteName" Type="varchar" MaxLength="200" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="LatLongDatumID" Type="varchar" MaxLength="150" />
+          <Property Name="Elevation_m" Type="real" />
+          <Property Name="VerticalDatum" Type="varchar" MaxLength="50" />
+          <Property Name="LocalX" Type="float" />
+          <Property Name="LocalY" Type="float" />
+          <Property Name="LocalProjectionID" Type="int" />
+          <Property Name="PosAccuracy_m" Type="real" />
+          <Property Name="StateName" Type="varchar" MaxLength="120" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="150" />
+          <Property Name="OrganizationName" Type="varchar" MaxLength="80" />
+          <Property Name="HUC" Type="varchar" MaxLength="12" />
+          <Property Name="HUCnumeric" Type="decimal" />
+          <Property Name="NetworkID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Variables">
+          <Key>
+            <PropertyRef Name="VariableID" />
+          </Key>
+          <Property Name="VariableID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Variable" Type="nvarchar" MaxLength="100" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="SampleMedium" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValueType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsRegular" Type="bit" />
+          <Property Name="TimeSupport" Type="int" />
+          <Property Name="TimeUnitID" Type="int" />
+          <Property Name="DataType" Type="nvarchar" MaxLength="50" />
+          <Property Name="GeneralCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="AltVariableCode" Type="varchar" MaxLength="50" />
+          <Property Name="AltVariableName" Type="varchar" MaxLength="200" />
+          <Property Name="AltUnits" Type="varchar" MaxLength="100" />
+          <Property Name="networkId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Sites_SiteID">
+          <End Role="Sites" Type="hissandboxModel.Store.Sites" Multiplicity="1" />
+          <End Role="SeriesCatalog" Type="hissandboxModel.Store.SeriesCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SeriesCatalog">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variables_VariableID">
+          <End Role="Variables" Type="hissandboxModel.Store.Variables" Multiplicity="1" />
+          <End Role="SeriesCatalog" Type="hissandboxModel.Store.SeriesCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variables">
+              <PropertyRef Name="VariableID" />
+            </Principal>
+            <Dependent Role="SeriesCatalog">
+              <PropertyRef Name="VariableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hissandboxModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="hisEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SeriesCatalogs" EntityType="hissandboxModel.SeriesCatalog" />
+          <EntitySet Name="Sites" EntityType="hissandboxModel.Site" />
+          <EntitySet Name="Variables" EntityType="hissandboxModel.Variable" />
+          <AssociationSet Name="FK_Sites_SiteID" Association="hissandboxModel.FK_Sites_SiteID">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="SeriesCatalog" EntitySet="SeriesCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variables_VariableID" Association="hissandboxModel.FK_Variables_VariableID">
+            <End Role="Variables" EntitySet="Variables" />
+            <End Role="SeriesCatalog" EntitySet="SeriesCatalogs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SeriesCatalog">
+          <Key>
+            <PropertyRef Name="SeriesID" />
+          </Key>
+          <Property Name="SeriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <Property Name="SiteCode" Type="String" MaxLength="101" Unicode="false" FixedLength="false" />
+          <Property Name="SiteName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="VariableID" Type="Int32" Nullable="false" />
+          <Property Name="VariableCodeSmall" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="VariableName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="VariableUnitsID" Type="Int32" />
+          <Property Name="VariableUnitsName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="SampleMedium" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ValueType" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="BeginDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="Valuecount" Type="Int32" Nullable="false" />
+          <Property Name="GeneralCategory" Type="Int32" />
+          <Property Name="UTCOffset" Type="Int32" />
+          <Property Name="SourceID" Type="Int32" Nullable="false" />
+          <Property Name="VariableCode" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SeriesCode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Site" Relationship="hissandboxModel.FK_Sites_SiteID" FromRole="SeriesCatalog" ToRole="Sites" />
+          <NavigationProperty Name="Variable" Relationship="hissandboxModel.FK_Variables_VariableID" FromRole="SeriesCatalog" ToRole="Variables" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteID" />
+          </Key>
+          <Property Name="SiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteCode" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+          <Property Name="SiteName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="LatLongDatumID" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Elevation_m" Type="Single" />
+          <Property Name="VerticalDatum" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LocalX" Type="Double" />
+          <Property Name="LocalY" Type="Double" />
+          <Property Name="LocalProjectionID" Type="Int32" />
+          <Property Name="PosAccuracy_m" Type="Single" />
+          <Property Name="StateName" Type="String" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="County" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Comments" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="OrganizationName" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="HUC" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="HUCnumeric" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NetworkID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SeriesCatalogs" Relationship="hissandboxModel.FK_Sites_SiteID" FromRole="Sites" ToRole="SeriesCatalog" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="VariableID" />
+          </Key>
+          <Property Name="VariableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Variable1" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="SampleMedium" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ValueType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsRegular" Type="Boolean" />
+          <Property Name="TimeSupport" Type="Int32" />
+          <Property Name="TimeUnitID" Type="Int32" />
+          <Property Name="DataType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GeneralCategory" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AltVariableCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AltVariableName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="AltUnits" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="networkId" Type="Int32" />
+          <NavigationProperty Name="SeriesCatalogs" Relationship="hissandboxModel.FK_Variables_VariableID" FromRole="Variables" ToRole="SeriesCatalog" />
+        </EntityType>
+        <Association Name="FK_Sites_SiteID">
+          <End Role="Sites" Type="hissandboxModel.Site" Multiplicity="1" />
+          <End Role="SeriesCatalog" Type="hissandboxModel.SeriesCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SeriesCatalog">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variables_VariableID">
+          <End Role="Variables" Type="hissandboxModel.Variable" Multiplicity="1" />
+          <End Role="SeriesCatalog" Type="hissandboxModel.SeriesCatalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variables">
+              <PropertyRef Name="VariableID" />
+            </Principal>
+            <Dependent Role="SeriesCatalog">
+              <PropertyRef Name="VariableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hissandboxModelStoreContainer" CdmEntityContainer="hisEntities">
+          <EntitySetMapping Name="SeriesCatalogs"><EntityTypeMapping TypeName="hissandboxModel.SeriesCatalog"><MappingFragment StoreEntitySet="SeriesCatalog">
+            <ScalarProperty Name="SeriesID" ColumnName="SeriesID" />
+            <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+            <ScalarProperty Name="SiteCode" ColumnName="SiteCode" />
+            <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+            <ScalarProperty Name="VariableID" ColumnName="VariableID" />
+            <ScalarProperty Name="VariableCodeSmall" ColumnName="VariableCodeSmall" />
+            <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+            <ScalarProperty Name="VariableUnitsID" ColumnName="VariableUnitsID" />
+            <ScalarProperty Name="VariableUnitsName" ColumnName="VariableUnitsName" />
+            <ScalarProperty Name="SampleMedium" ColumnName="SampleMedium" />
+            <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+            <ScalarProperty Name="BeginDateTime" ColumnName="BeginDateTime" />
+            <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+            <ScalarProperty Name="Valuecount" ColumnName="Valuecount" />
+            <ScalarProperty Name="GeneralCategory" ColumnName="GeneralCategory" />
+            <ScalarProperty Name="UTCOffset" ColumnName="UTCOffset" />
+            <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+            <ScalarProperty Name="VariableCode" ColumnName="VariableCode" />
+            <ScalarProperty Name="SeriesCode" ColumnName="SeriesCode" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Sites"><EntityTypeMapping TypeName="hissandboxModel.Site"><MappingFragment StoreEntitySet="Sites">
+            <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+            <ScalarProperty Name="SiteCode" ColumnName="SiteCode" />
+            <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+            <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+            <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+            <ScalarProperty Name="LatLongDatumID" ColumnName="LatLongDatumID" />
+            <ScalarProperty Name="Elevation_m" ColumnName="Elevation_m" />
+            <ScalarProperty Name="VerticalDatum" ColumnName="VerticalDatum" />
+            <ScalarProperty Name="LocalX" ColumnName="LocalX" />
+            <ScalarProperty Name="LocalY" ColumnName="LocalY" />
+            <ScalarProperty Name="LocalProjectionID" ColumnName="LocalProjectionID" />
+            <ScalarProperty Name="PosAccuracy_m" ColumnName="PosAccuracy_m" />
+            <ScalarProperty Name="StateName" ColumnName="StateName" />
+            <ScalarProperty Name="County" ColumnName="County" />
+            <ScalarProperty Name="Comments" ColumnName="Comments" />
+            <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+            <ScalarProperty Name="HUC" ColumnName="HUC" />
+            <ScalarProperty Name="HUCnumeric" ColumnName="HUCnumeric" />
+            <ScalarProperty Name="NetworkID" ColumnName="NetworkID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Variables"><EntityTypeMapping TypeName="hissandboxModel.Variable"><MappingFragment StoreEntitySet="Variables">
+            <ScalarProperty Name="VariableID" ColumnName="VariableID" />
+            <ScalarProperty Name="Variable1" ColumnName="Variable" />
+            <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+            <ScalarProperty Name="SampleMedium" ColumnName="SampleMedium" />
+            <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+            <ScalarProperty Name="IsRegular" ColumnName="IsRegular" />
+            <ScalarProperty Name="TimeSupport" ColumnName="TimeSupport" />
+            <ScalarProperty Name="TimeUnitID" ColumnName="TimeUnitID" />
+            <ScalarProperty Name="DataType" ColumnName="DataType" />
+            <ScalarProperty Name="GeneralCategory" ColumnName="GeneralCategory" />
+            <ScalarProperty Name="AltVariableCode" ColumnName="AltVariableCode" />
+            <ScalarProperty Name="AltVariableName" ColumnName="AltVariableName" />
+            <ScalarProperty Name="AltUnits" ColumnName="AltUnits" />
+            <ScalarProperty Name="networkId" ColumnName="networkId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="HisEntities">
+        <EntityTypeShape EntityType="hissandboxModel.SeriesCatalog" Width="1.5" PointX="3" PointY="1.125" Height="5.0571093749999987" IsExpanded="true" />
+        <EntityTypeShape EntityType="hissandboxModel.Site" Width="1.5" PointX="0.75" PointY="1.125" Height="4.8648079427083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="hissandboxModel.Variable" Width="1.5" PointX="0.75" PointY="7.625" Height="3.9033007812499996" IsExpanded="true" />
+        <AssociationConnector Association="hissandboxModel.FK_Sites_SiteID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.5574039713541663" />
+          <ConnectorPoint PointX="3" PointY="3.5574039713541663" />
+        </AssociationConnector>
+        <AssociationConnector Association="hissandboxModel.FK_Variables_VariableID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.576650390625" />
+          <ConnectorPoint PointX="3.75" PointY="9.576650390625" />
+          <ConnectorPoint PointX="3.75" PointY="6.1821093749999987" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
