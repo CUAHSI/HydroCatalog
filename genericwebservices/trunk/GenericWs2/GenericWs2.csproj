@@ -132,6 +132,7 @@
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
     <Content Include="InstallingUsingMSBuild.txt" />
+    <Content Include="REST\xslt\WaterML1_1_common_to_waterml2.xsl" />
     <Content Include="SetACL.exe" />
     <Content Include="wfs\DataCart.ashx" />
     <None Include="AddToIIS.bat" />

@@ -26,12 +26,12 @@ To Install
 * gather
 ** sql connection string
 ** Brief (8 Characters or less) Name of Service
-* Download XXXX.zip
+* Download http://water.sdsc.edu/softwarereleases/GenericODWebServices/GenericWs2.deploy.zip
 * unzip
 ** files should be xxx
 Files:
-* Mod_GenericWs2.deploy.cmd
-* mod_GenericWs2.deploy-readme.txt
+* GenericWs2.deploy.cmd
+* GenericWs2.deploy-readme.txt
 * GenericWs2.SetParameters.xml
 * GenericWs2.SourceManifest.xml
 * GenericWs2.zip
