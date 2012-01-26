@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MCVReg", "http://localhost/mastercvreg/MCVReg.vbproj", "{B7D7DAE4-9A51-44BB-822E-0D030989313C}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7D7DAE4-9A51-44BB-822E-0D030989313C}.Debug|Default.ActiveCfg = Debug|.NET
+		{B7D7DAE4-9A51-44BB-822E-0D030989313C}.Debug|Default.Build.0 = Debug|.NET
+		{B7D7DAE4-9A51-44BB-822E-0D030989313C}.Release|Default.ActiveCfg = Release|.NET
+		{B7D7DAE4-9A51-44BB-822E-0D030989313C}.Release|Default.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

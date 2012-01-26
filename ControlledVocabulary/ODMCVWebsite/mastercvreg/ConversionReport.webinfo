@@ -1,0 +1,82 @@
+﻿This report shows the steps taken to convert your Web application from ASP.NET 1.1 to ASP.NET 2.0. 
+There may be some unresolved conversion issues you will need to manually fix. 
+For more information, please refer to http://go.microsoft.com/fwlink/?LinkId=46995 or search for the help topic "Converting from Visual Studio .NET 2002 or 2003".
+Conversion Started on project file MCVReg.vbproj at January 25 2012, 15:09:15.
+
+=========================ERRORS===================
+
+=========================WARNINGS=================
+Warning: If the base class of any of the code-behind classes declares page fields please add the 'CodeFileBaseClass' attribute in the corresponding Page.
+Warning: Unable to parse file ODM_downloads.aspx, since no code-behind attribute or page/control directive found.    ODM_downloads.aspx
+Warning: Resource files were moved to 'App_GlobalResources' folder. Code using resources may have to be fixed manually.
+Warning: This web project was converted as a file-based web application. If your site contained any IIS meta-information, e.g. sub-folders marked as virtual directories, it is recommended that you close this web site and re-open it using the Open Web Site command and selecting the Local IIS tab.
+
+=========================COMMENTS=================
+Read-only attribute of file C:\inetpub\wwwroot\mastercvreg\Web.Config has been changed to read-write.
+Web.Config: Added 'xhtmlConformance' attribute.
+Removed attribute Codebehind from file admindefault.aspx.
+Access level of 'MCVReg.admindefault' changed to 'Partial' in file admindefault.aspx.vb (Line 5).
+Removed comment lines before designplaceholder declaration from file admindefault.aspx.vb.    admindefault.aspx.vb (Line 16)
+Removed attribute Codebehind from file admindefault11.aspx.
+Access level of 'MCVReg.admindefault11' changed to 'Partial' in file admindefault11.aspx.vb (Line 5).
+Removed comment lines before designplaceholder declaration from file admindefault11.aspx.vb.    admindefault11.aspx.vb (Line 16)
+Removed attribute Codebehind from file cv10.aspx.
+Access level of 'MCVReg.cv10' changed to 'Partial' in file cv10.aspx.vb (Line 6).
+Removed comment lines before designplaceholder declaration from file cv10.aspx.vb.    cv10.aspx.vb (Line 16)
+Removed attribute Codebehind from file cv11.aspx.
+Access level of 'MCVReg.cv11' changed to 'Partial' in file cv11.aspx.vb (Line 6).
+Removed comment lines before designplaceholder declaration from file cv11.aspx.vb.    cv11.aspx.vb (Line 16)
+Removed attribute Codebehind from file default.aspx.
+Access level of 'MCVReg.ODMDefault' changed to 'Partial' in file default.aspx.vb (Line 3).
+Removed comment lines before designplaceholder declaration from file default.aspx.vb.    default.aspx.vb (Line 13)
+Removed attribute Codebehind from file edit_cv.aspx.
+Access level of 'MCVReg.edit_cv' changed to 'Partial' in file edit_cv.aspx.vb (Line 8).
+Removed comment lines before designplaceholder declaration from file edit_cv.aspx.vb.    edit_cv.aspx.vb (Line 18)
+Removed attribute Codebehind from file edit_cv11.aspx.
+Access level of 'MCVReg.edit_cv11' changed to 'Partial' in file edit_cv11.aspx.vb (Line 8).
+Removed comment lines before designplaceholder declaration from file edit_cv11.aspx.vb.    edit_cv11.aspx.vb (Line 18)
+Removed attribute Codebehind from file error.aspx.
+Access level of 'MCVReg._error' changed to 'Partial' in file error.aspx.vb (Line 3).
+Removed comment lines before designplaceholder declaration from file error.aspx.vb.    error.aspx.vb (Line 13)
+Removed attribute Codebehind from file Global.asax.
+Removed attribute Codebehind from file login.aspx.
+Access level of 'MCVReg.login' changed to 'Partial' in file login.aspx.vb (Line 3).
+Removed comment lines before designplaceholder declaration from file login.aspx.vb.    login.aspx.vb (Line 13)
+Removed attribute Codebehind from file login11.aspx.
+Access level of 'MCVReg.login11' changed to 'Partial' in file login11.aspx.vb (Line 3).
+Removed comment lines before designplaceholder declaration from file login11.aspx.vb.    login11.aspx.vb (Line 13)
+Removed attribute Codebehind from file register.aspx.
+Access level of 'MCVReg.register' changed to 'Partial' in file register.aspx.vb (Line 5).
+Removed comment lines before designplaceholder declaration from file register.aspx.vb.    register.aspx.vb (Line 15)
+Removed attribute TargetSchema from file templateFooter.ascx.
+Removed attribute Codebehind from file templateFooter.ascx.
+Access level of 'MCVReg.templateFooter' changed to 'Partial' in file templateFooter.ascx.vb (Line 3).
+Removed comment lines before designplaceholder declaration from file templateFooter.ascx.vb.    templateFooter.ascx.vb (Line 13)
+Removed attribute TargetSchema from file templateHeader.ascx.
+Removed attribute Codebehind from file templateHeader.ascx.
+Access level of 'MCVReg.templateHeader' changed to 'Partial' in file templateHeader.ascx.vb (Line 3).
+Removed comment lines before designplaceholder declaration from file templateHeader.ascx.vb.    templateHeader.ascx.vb (Line 14)
+Removed attribute Codebehind from file viewCV.aspx.
+Access level of 'MCVReg.viewCV' changed to 'Partial' in file viewCV.aspx.vb (Line 7).
+Removed comment lines before designplaceholder declaration from file viewCV.aspx.vb.    viewCV.aspx.vb (Line 16)
+Removed attribute Codebehind from file viewCV11.aspx.
+Access level of 'MCVReg.viewCV11' changed to 'Partial' in file viewCV11.aspx.vb (Line 7).
+Removed comment lines before designplaceholder declaration from file viewCV11.aspx.vb.    viewCV11.aspx.vb (Line 16)
+Added folder App_Code\classes.
+Moved file classes\ControlledVocabulary11.vb to the App_Code\classes\ directory.
+Moved file classes\ControlledVocabulary.vb to the App_Code\classes\ directory.
+Moved file ODM_downloads.aspx.vb to the App_Code\ directory.
+Moved file Global.asax.vb to the App_Code\ directory.
+Moved file classes\Functions.vb to the App_Code\classes\ directory.
+Moved file classes\Database.vb to the App_Code\classes\ directory.
+Moved file AssemblyInfo.vb to the App_Code\ directory.
+Renamed file login.aspx.resx to file login.aspx.resx.
+Added folder App_GlobalResources.
+Moved file login.aspx.resx to the App_GlobalResources directory.
+Renamed file ODM_downloads.aspx.resx to file ODM_downloads.aspx.resx.
+Moved file ODM_downloads.aspx.resx to the App_GlobalResources directory.
+Removed file Bin\MCVReg.dll.
+Removed file Bin\MCVReg.pdb.
+Removed file MCVReg.vbproj.
+Removed file MCVReg.vbproj.webinfo.
+Project MCVReg.vbproj has been converted successfully at January 25 2012, 15:09:25.
