@@ -15,7 +15,7 @@
 				<td>
 					<div class="pageheader">
 						<div class="whiteline"></div>
-						<div class="hislogo"><a href="http://his.cuahsi.org"><img src="images/hislogo.jpg" alt="CUAHSI Hydrologic Information System - Sharing Hydrologic Data" align="left" height="125" width="322" border="0"  / ></a></div>
+						<div class="hislogo"><a href="http://his.cuahsi.org"><img src="images/hisa.gif" alt="CUAHSI Hydrologic Information System - Sharing Hydrologic Data" align="left" height="125" width="322" border="0"  / ></a></div>
 						<div class="whiteline"></div>
 					</div>					
 				</td>

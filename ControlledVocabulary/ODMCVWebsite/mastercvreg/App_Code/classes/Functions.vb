@@ -56,8 +56,8 @@ Public Class Functions
             End If
         End If
 
-        strSignature = "David Tarboton<br>Utah State University<br>" _
-                    & "<a href='mailto:david.tarboton@usu.edu'>david.tarboton@usu.edu</a>"
+        strSignature = "Jennifer Arrigo<br>Program Manager<br>CUAHSI<br>" _
+                    & "<a href='mailto:jarrigo@cuahsi.org'>jarrigo@cuahsi.org</a>"
 
         Select Case msgModerators
             Case "tarboton"
@@ -65,22 +65,21 @@ Public Class Functions
                 strSignature = "David Tarboton<br>Utah State University<br>" _
                     & "<a href='mailto:david.tarboton@usu.edu'>david.tarboton@usu.edu</a>"
             Case "administrator"
-                ' msgModerators = "halcyongoddess@gmail.com"
-                'msgModerators = "jeff.horsburgh@usu.edu"
-                'strSignature = "Jeff Horsburgh<br>Utah State University<br>" _
-                '    & "<a href='mailto:jeff.horsburgh@usu.edu'>jeff.horsburgh@usu.edu</a>"
-                msgModerators = "kim.schreuders@usu.edu"
-                strSignature = "Kim Schreuders<br>Utah State University<br>" _
-                    & "<a href='mailto:kim.schreuders@usu.edu'>kim.schreuders@usu.edu</a>"
+                msgModerators = "jeff.horsburgh@usu.edu"
+                strSignature = "Jeff Horsburgh<br>Utah State University<br>" _
+                    & "<a href='mailto:jeff.horsburgh@usu.edu'>jeff.horsburgh@usu.edu</a>"
             Case "horsburgh"
                 msgModerators = "jeff.horsburgh@usu.edu"
                 strSignature = "Jeff Horsburgh<br>Utah State University<br>" _
                     & "<a href='mailto:jeff.horsburgh@usu.edu'>jeff.horsburgh@usu.edu</a>"
-            Case "schreuders"
-                msgModerators = "kim.schreuders@usu.edu"
-                strSignature = "Kim Schreuders<br>Utah State University<br>" _
-                    & "<a href='mailto:kim.schreuders@usu.edu'>kim.schreuders@usu.edu</a>"
-
+            'Case "schreuders"
+            '    msgModerators = "kim.schreuders@usu.edu"
+            '    strSignature = "Kim Schreuders<br>Utah State University<br>" _
+            '        & "<a href='mailto:kim.schreuders@usu.edu'>kim.schreuders@usu.edu</a>"
+            Case "arrigo"
+                msgModerators = "jarrigo@cuahsi.org"
+                strSignature = "Jennifer Arrigo<br>CUAHSI<br>" _
+                    & "<a href='mailto:jarrigo@cuahsi.org'>jarrigo@cuahsi.org</a>"
         End Select
 
         'if we get an error, tablename contains the error message
@@ -94,7 +93,7 @@ Public Class Functions
             Case "error"
                 objMailMessage.From = "CUAHSIhiswebsite@cuahsi.org"
             Case Else
-                objMailMessage.From = "david.tarboton@usu.edu"
+                objMailMessage.From = "jarrigo@cuahsi.org"
         End Select
 
         objMailMessage.Body = "<div style=""font-family:Verdana,Arial,sans-serif; font-size:13px; width:600px"">"
@@ -153,8 +152,6 @@ Public Class Functions
                         objMailMessage.Body &= "</div>"
                 End Select
                 Try
-                    'SmtpMail.SmtpServer = "cc.usu.edu"
-                    'SmtpMail.SmtpServer = "lhotse.uwrl.usu.edu"
                     SmtpMail.SmtpServer = "mail.usu.edu"
                     SmtpMail.Send(objMailMessage)
                 Catch ex As Exception
@@ -164,17 +161,14 @@ Public Class Functions
                         errorMessage &= ex2.ToString()
                         ex2 = ex2.InnerException
                     End While
-                    'objMailMessage.To = "halcyongoddess@gmail.com"
-                    objMailMessage.To = "kim.schreuders@usu.edu"
+                    objMailMessage.To = "jeff.horsburgh@usu.edu"
                     objMailMessage.Subject = "ODM Controlled Vocabularies Email Error"
 
                     objMailMessage.Body &= "<p>An error occured on the ODM CV submission page:</p>"
                     objMailMessage.Body &= "<p>" & errorMessage & "</p>"
                     objMailMessage.Body &= "</div>"
 
-                    'SmtpMail.SmtpServer = "cc.usu.edu"
                     SmtpMail.SmtpServer = "mail.usu.edu"
-
                     SmtpMail.Send(objMailMessage)
                 End Try
             Case "submission"
@@ -193,7 +187,6 @@ Public Class Functions
                 End Select
                 objMailMessage.Body &= "</div>"
 
-                'SmtpMail.SmtpServer = "cc.usu.edu"
                 SmtpMail.SmtpServer = "mail.usu.edu"
                 SmtpMail.Send(objMailMessage)
 
@@ -208,19 +201,16 @@ Public Class Functions
                 objMailMessage.Body &= "<br><br><p>" & strSignature
                 objMailMessage.Body &= "</div>"
 
-                'SmtpMail.SmtpServer = "cc.usu.edu"
                 SmtpMail.SmtpServer = "mail.usu.edu"
                 SmtpMail.Send(objMailMessage)
             Case "error"
-                ' objMailMessage.To = "halcyongoddess@gmail.com"
-                objMailMessage.To = "kim.schreuders@usu.edu"
+                objMailMessage.To = "jeff.horsburgh@usu.edu"
                 objMailMessage.Subject = "ODM Controlled Vocabularies Error"
 
                 objMailMessage.Body &= "<p>An error occured on the ODM CV submission page:</p>"
                 objMailMessage.Body &= "<p>" & tableName & "</p>"
                 objMailMessage.Body &= "</div>"
 
-                'SmtpMail.SmtpServer = "cc.usu.edu"
                 SmtpMail.SmtpServer = "mail.usu.edu"
                 SmtpMail.Send(objMailMessage)
         End Select

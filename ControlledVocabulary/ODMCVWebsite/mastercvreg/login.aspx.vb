@@ -37,22 +37,28 @@ Partial Class login
                     Session.Add("admin", "tarboton")
                     Response.Redirect("admindefault.aspx")
                 End If
-            Case "MPIASECKI"
-                If Trim(txtPass.Text) = "beta9027" Then
-                    Session.Add("login", "true")
-                    Session.Add("admin", "piasecki")
-                    Response.Redirect("admindefault.aspx")
-                End If
+            'Case "MPIASECKI"
+            '    If Trim(txtPass.Text) = "beta9027" Then
+            '        Session.Add("login", "true")
+            '        Session.Add("admin", "piasecki")
+            '        Response.Redirect("admindefault.aspx")
+            '    End If
             Case "JEFFH"
                 If Trim(txtPass.Text) = "horsburgh67" Then
                     Session.Add("login", "true")
                     Session.Add("admin", "horsburgh")
                     Response.Redirect("admindefault.aspx")
                 End If
-            Case "KIMS"
-                If Trim(txtPass.Text) = "sca1066" Then
+            'Case "KIMS"
+            '    If Trim(txtPass.Text) = "sca1066" Then
+            '        Session.Add("login", "true")
+            '        Session.Add("admin", "schreuders")
+            '        Response.Redirect("admindefault.aspx")
+            '        End If
+            Case "JARRIGO"
+                If Trim(txtPass.Text) = "cuahsi@123" Then
                     Session.Add("login", "true")
-                    Session.Add("admin", "schreuders")
+                    Session.Add("admin", "arrigo")
                     Response.Redirect("admindefault.aspx")
                 End If
         End Select

@@ -364,7 +364,7 @@ Partial Class edit_cv11
 
             submitterInfo = txtName.Text & ", " & "<a href='mailto:" & txtEmail.Text & "'>" & txtEmail.Text & "</a>"
 
-            EmailNotifications("submission", "11", curTable, txt1.Text, txtEmail.Text, "jeff.horsburgh@usu.edu,david.tarboton@usu.edu,kim.schreuders@usu.edu", lblAction.Text, "", "", changeInfo, submitterInfo)
+            EmailNotifications("submission", "11", curTable, txt1.Text, txtEmail.Text, "jeff.horsburgh@usu.edu,david.tarboton@usu.edu,jarrigo@cuahsi.org", lblAction.Text, "", "", changeInfo, submitterInfo)
         Catch ex As Exception
             pnlMsg_11.Visible = True
             lblMsg_11.Text = "An error occured while updating Controlled Vocabularies. Please check entries and try again"

@@ -20,7 +20,7 @@
 			</asp:Panel>
 			
 			<h1>Master Controlled Vocabulary Registry for ODM 1.1</h1>
-			<p>CUAHSI's ODM 1.1 has 12 controlled vocabulary tables.  This web page has been developed to promote 
+			<p>CUAHSI's ODM 1.1 has several controlled vocabulary tables.  This web page has been developed to promote 
 			consistency between different instances of the ODM through a moderated system for changing the 
 			master controlled vocabularies.  This web page displays the master controlled vocabulary 
 			entries and allows users to request additions or changes to these.  Users may then update their ODM 
@@ -32,17 +32,22 @@
 				should also receive an email confirmation.  If you have a request that cannot be accommodated 
 				on this website, please contact the master controlled vocabulary moderators:</p>
 				<p>
-					<table width="40%">
+					<table width="60%">
 						<tr valign="top">
+							<td>
+								<p><b>Jennifer Arrigo</b><br>
+								CUAHSI<br>
+								<a href="mailto:jarrigo@cuahsi.org">jarrigo@cuahsi.org</a></p>
+							</td>
+							<td>
+								<p><b>Jeff Horsburgh</b><br>
+								Utah State University<br>
+								<a href="mailto:jeff.horsburgh@usu.edu">jeff.horsburgh@usu.edu</a></p>
+							</td>
 							<td>
 								<p><b>David Tarboton</b><br>
 								Utah State University<br>
 								<a href="mailto:david.tarboton@usu.edu">david.tarboton@usu.edu</a></p>
-							</td>
-							<td>
-								<p><b>Michael Piasecki</b><br>
-								Drexel University<br>
-								<a href="mailto:mp29@drexel.edu">mp29@drexel.edu</a></p>
 							</td>
 						</tr>
 					</table>
