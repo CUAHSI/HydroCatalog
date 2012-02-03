@@ -369,6 +369,34 @@ Public Class ODMCVService
         Return Result.ToString
 
     End Function
+    <WebMethod(Description:="This method returns a string (formatted as XML) with all of the items in the SiteType Controlled Vocabulary.")> _
+      Public Function GetSiteTypeCV() As String
+        Dim Result As New Text.StringBuilder
+        Dim objDataTable As Data.DataTable
+        Dim objDataRow As Data.DataRow
+
+        'Get the items in the controlled vocabulary from the database
+        objDataTable = OpenTable("SELECT * FROM SiteTypeCV ORDER BY Term ASC")
+
+        'Create the result string
+        Result.Append("<GetSiteTypeCVResponse>")
+
+        'Get the count of the records
+        Result.Append("<Records count=" & """" & CStr(objDataTable.Rows.Count) & """" & ">")
+
+        'Now create an element for each record
+        For Each objDataRow In objDataTable.Select
+            Result.Append("<Record>" _
+                & "<Term>" & Convert.ToString(objDataRow.Item("Term")) & "</Term>" _
+                & "<Definition>" & Convert.ToString(objDataRow.Item("Definition")) & "</Definition>" _
+                & "</Record>")
+        Next
+
+        Result.Append("</Records></GetSiteTypeCVResponse>")
+
+        Return Result.ToString
+
+    End Function
 
 #End Region
 
