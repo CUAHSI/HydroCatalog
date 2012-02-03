@@ -40,7 +40,7 @@
         </asp:LoginView>  
            
         <asp:LoginView ID="LoginView2" runat="server">
-        <RoleGroups>
+            <RoleGroups>
                 <asp:RoleGroup Roles="Administrator">
                     <ContentTemplate>
                         <ul>
@@ -57,8 +57,6 @@
                     </ContentTemplate>
                 </asp:RoleGroup>
              </RoleGroups>           
-        </asp:LoginView>
-        
-              
+        </asp:LoginView>           
     </div>
 </asp:Content>
