@@ -96,7 +96,7 @@
 				<br>
 				<h2>Updating your controlled vocabularies</h2>
 				<p>The master controlled vocabularies are published via a set of XML web services that 
-				can be accessed at: <a href="http://water.usu.edu/odmcv/odmcv.asmx" target="_blank">http://water.usu.edu/odmcv/odmcv.asmx</a>.  The methods within this web 
+				can be accessed at: <a href="http://his.cuahsi.org/odmcv/odmcv.asmx" target="_blank">http://his.cuahsi.org/odmcv/odmcv.asmx</a>.  The methods within this web 
 				service will return the most recent ODM controlled vocabulary terms.  The Update Controlled 
 				Vocabulary tool in ODM tools will update your controlled vocabulary tables by comparing 
 				them with the latest information in the master set published through these web services.</p><br>

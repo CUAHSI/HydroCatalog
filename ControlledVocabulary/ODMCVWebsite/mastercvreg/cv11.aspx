@@ -71,6 +71,9 @@
 					<td><a href="edit_cv11.aspx?tbl=SampleTypeCV&id=549576996">SampleTypeCV:</a></td><td>Used to populate the SampleType field in the Samples table</td>
 				</tr>
 				<tr>
+					<td><a href="edit_cv11.aspx?tbl=SiteTypeCV&id=901578250">SiteTypeCV:</a></td><td>Used to populate the SiteType field in the Sites table</td>
+				</tr>
+				<tr>
 					<td><a href="edit_cv11.aspx?tbl=SpatialReferences&id=565577053">SpatialReferences:</a></td><td>Defines the coordinate systems used in the Sites table</td>
 				</tr>
 				<tr>
@@ -96,7 +99,7 @@
 				<br>
 				<h2>Updating your controlled vocabularies</h2>
 				<p>The master controlled vocabularies are published via a set of XML web services that 
-				can be accessed at: <a href="http://odm.usu.edu/ODMCV_1_1/ODMCV_1_1.asmx" target="_blank">http://odm.usu.edu/ODMCV_1_1/ODMCV_1_1.asmx</a>.  The methods within this web 
+				can be accessed at: <a href="http://his.cuahsi.org/odmcv_1_1/odmcv_1_1.asmx" target="_blank">http://his.cuahsi.org/odmcv_1_1/odmcv_1_1.asmx</a>.  The methods within this web 
 				service will return the most recent ODM controlled vocabulary terms.  The Update Controlled 
 				Vocabulary tool in ODM tools will update your controlled vocabulary tables by comparing 
 				them with the latest information in the master set published through these web services.</p><br>

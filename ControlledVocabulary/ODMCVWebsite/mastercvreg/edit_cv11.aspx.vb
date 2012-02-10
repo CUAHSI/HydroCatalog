@@ -62,6 +62,8 @@ Partial Class edit_cv11
                 lblTableInformation.Text = "Used to populate the SampleMedium field in the Variables table"
             Case "SampleTypeCV"
                 lblTableInformation.Text = "Used to populate the SampleType field in the Samples table"
+            Case "SiteTypeCV"
+                lblTableInformation.Text = "Used to populate the SiteType field in the Sites table"
             Case "SpatialReferences"
                 lblTableInformation.Text = "Defines the coordinate systems used in the Sites table"
             Case "TopicCategoryCV"
