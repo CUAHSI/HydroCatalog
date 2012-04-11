@@ -245,6 +245,13 @@ namespace WaterOneFlow.odws.v1_0
                     CuahsiBuilder.createNote(row.Comments, "Site Comments", null);
                 sit.note = CuahsiBuilder.addNote(sit.note, aNote);
             }
+            if (!row.IsSiteTypeNull())
+            {
+                NoteType aNote =
+                    CuahsiBuilder.createNote(row.SiteType, "Site Type", null);
+                sit.note = CuahsiBuilder.addNote(sit.note, aNote);
+            }
+            
             return sit;
         }
     }

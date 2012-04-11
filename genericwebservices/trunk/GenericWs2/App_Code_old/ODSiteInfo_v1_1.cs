@@ -333,6 +333,12 @@ namespace WaterOneFlow.odws
                         CuahsiBuilder.createProperty(row.PosAccuracy_m.ToString(), "PosAccuracy_m", null);
                     sit.siteProperty = CuahsiBuilder.addProperty(sit.siteProperty, aNote);
                 }
+                if (!row.IsSiteTypeNull())
+                {
+                    PropertyType aNote =
+                        CuahsiBuilder.createProperty(row.SiteType, "Site Type", null);
+                    sit.siteProperty = CuahsiBuilder.addProperty(sit.siteProperty, aNote);
+                }
                 return sit;
             }
         }

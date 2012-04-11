@@ -82,6 +82,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>seriesCatalogDataSet_v1_1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="siteInfoDataSet_v1_1.cs">
+      <DependentUpon>siteInfoDataSet_v1_1.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="siteInfoDataSet_v1_1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
