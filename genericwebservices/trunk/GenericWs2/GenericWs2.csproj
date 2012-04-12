@@ -147,7 +147,9 @@
     </Content>
     <Content Include="MyWS_TWO.config" />
     <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.chm" />
-    <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+    <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.xsd">
       <SubType>Designer</SubType>
     </None>

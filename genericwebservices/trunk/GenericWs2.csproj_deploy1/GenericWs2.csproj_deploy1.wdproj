@@ -176,6 +176,7 @@
         />
         -->
     <Copy SourceFiles="@(MyCommunityTasks)" DestinationFiles="@(MyCommunityTasks->'$(ZipBuildDirectory)\MSBuildCommunityTasks\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" DestinationFiles="$(ZipBuildDirectory)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
     <Copy SourceFiles="@(MyInstallerFile)" DestinationFiles="$(ZipBuildDirectory)\Installer.targets" />
     <Copy SourceFiles="@(MyInstallerConfigFile)" DestinationFolder="$(ZipBuildDirectory)" />
     <Copy SourceFiles="@(MyOutputFiles)" DestinationFiles="@(MyOutputFiles->'$(ZipBuildDirectory)\$(ZipWebAppDirectory)\%(RecursiveDir)%(Filename)%(Extension)')" />
