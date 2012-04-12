@@ -132,6 +132,9 @@
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
     <Content Include="InstallingUsingMSBuild.txt" />
+    <Content Include="MSBuildCommunityTasks\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
+    <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.xml" />
     <Content Include="REST\xslt\WaterML1_1_common_to_waterml2.xsl" />
     <Content Include="SetACL.exe" />
     <Content Include="wfs\DataCart.ashx" />
@@ -143,6 +146,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MyWS_TWO.config" />
+    <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.chm" />
+    <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+    <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MSBuildCommunityTasks\Sample.proj" />
     <None Include="Parameters.WaterDev.xml">
       <SubType>Designer</SubType>
     </None>
