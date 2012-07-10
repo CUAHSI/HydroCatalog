@@ -80,6 +80,10 @@ Public Class Functions
                 msgModerators = "jarrigo@cuahsi.org"
                 strSignature = "Jennifer Arrigo<br>CUAHSI<br>" _
                     & "<a href='mailto:jarrigo@cuahsi.org'>jarrigo@cuahsi.org</a>"
+            Case "pollak"
+                msgModerators = "jpollak@cuahsi.org"
+                strSignature = "Jon Pollak<br>CUAHSI<br>" _
+                    & "<a href='mailto:jpollak@cuahsi.org'>jpollak@cuahsi.org</a>"
         End Select
 
         'if we get an error, tablename contains the error message
