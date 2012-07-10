@@ -36,5 +36,8 @@
                     match="/configuration/appSettings/add[@key='returnUndefinedUTCorLocal']/@value" />
     <parameterValidation type="Enumeration" validationString="UTC,Local,Undefined" />
   </parameter>
+	<parameter  name="AppPool" defaultValue="DefaultPool">
+		<parameterEntry match="application/@applicationPool" scope="application" kind="DeploymentObjectAttribute"/>
+	</parameter>
 
 </parameters>

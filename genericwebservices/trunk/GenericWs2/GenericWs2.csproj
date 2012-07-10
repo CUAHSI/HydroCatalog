@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--<PropertyGroup>
+    <UseMsdeployExe>true</UseMsdeployExe>
+  </PropertyGroup>
+  -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -50,6 +54,32 @@
     <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_waterdev.zip</DesktopBuildPackageLocation>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
     <ProjectParametersXMLFile>Parameters.WaterDev.xml</ProjectParametersXMLFile>
+    <PublishDatabases>false</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ApplicationServices-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|\aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\WaterDev\AutoScripts\ApplicationServices-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="elmah-sqlserver-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=%2a%2a%2a%2a%3bInitial Catalog=%2a%2a%2a%2a%3bUser ID=%2a%2a%2a%2a%3bPassword=%2a%2a%2a%2a" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\WaterDev\AutoScripts\elmah-sqlserver-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="ODDB-Deployment" Order="3">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=localhost%3bInitial Catalog=LittleBear111%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\WaterDev\AutoScripts\ODDB-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah">
@@ -132,12 +162,31 @@
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="Configure.aspx" />
     <Content Include="InstallingUsingMSBuild.txt" />
+    <Content Include="manifest.xml" />
     <Content Include="MSBuildCommunityTasks\ICSharpCode.SharpZipLib.dll" />
     <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
     <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.xml" />
     <Content Include="REST\xslt\WaterML1_1_common_to_waterml2.xsl" />
     <Content Include="SetACL.exe" />
     <Content Include="wfs\DataCart.ashx" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Administration.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\NuGet.Core.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.xml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
     <None Include="AddToIIS.bat" />
     <None Include="Installer.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -179,7 +228,7 @@
     <Content Include="original_wsdls\cuahsi_1_0.asmx.xml" />
     <Content Include="original_wsdls\cuahsi_1_1.asmx.xml" />
     <None Include="Notes\How to Set Up OD Web Service_new.doc" />
-    <None Include="Parameters.xml">
+    <None Include="parameters.xml">
       <SubType>Designer</SubType>
     </None>
     <Content Include="REST\TesUrls_lbr.txt" />

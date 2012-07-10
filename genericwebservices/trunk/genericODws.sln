@@ -173,6 +173,11 @@ Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "GenericWs2.csproj_deploy1",
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GenericWsSetup2", "GenericWsSetup2\GenericWsSetup2.vdproj", "{677F0CCF-BC9B-4294-BA4F-74A134C834DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CB5FBC27-4436-40DF-BC00-E053D30F4121}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = genericODws.vsmdi
@@ -212,8 +217,8 @@ Global
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|.NET.ActiveCfg = WaterDev|Any CPU
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|.NET.Build.0 = WaterDev|Any CPU
 		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Any CPU.ActiveCfg = Debug|Any CPU
-		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Mixed Platforms.ActiveCfg = WaterDev|Any CPU
-		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Mixed Platforms.Build.0 = WaterDev|Any CPU
+		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
 		{E16ABD2F-E3B8-498D-A441-09928E54E4C2}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{E16ABD2F-E3B8-498D-A441-09928E54E4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E16ABD2F-E3B8-498D-A441-09928E54E4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -443,8 +448,8 @@ Global
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|.NET.ActiveCfg = Release|Any CPU
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Any CPU.ActiveCfg = WaterDev|Any CPU
 		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Any CPU.Build.0 = WaterDev|Any CPU
-		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Mixed Platforms.Build.0 = Release|Any CPU
+		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Mixed Platforms.ActiveCfg = WaterDev|Any CPU
+		{592A2308-5B12-469F-87AF-0330B4FD63E6}.WaterDev|Mixed Platforms.Build.0 = WaterDev|Any CPU
 		{017A86A3-6073-417A-A398-50E9339C2E29}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{017A86A3-6073-417A-A398-50E9339C2E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{017A86A3-6073-417A-A398-50E9339C2E29}.Debug|Any CPU.Build.0 = Debug|Any CPU

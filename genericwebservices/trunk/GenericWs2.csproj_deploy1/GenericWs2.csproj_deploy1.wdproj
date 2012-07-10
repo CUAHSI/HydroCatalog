@@ -3,6 +3,9 @@
   Microsoft Visual Studio 2010 Web Deployment Project 
   http://go.microsoft.com/fwlink/?LinkID=104956
 
+also:
+http://msbuildtasks.tigris.org/servlets/ProjectDocumentList
+
 -->
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -97,12 +100,13 @@
   </ItemGroup>
   <ItemGroup>
     <!-- was $(Configuration)_appsettings.config -->
- <!--   <MyWebConfig Include="$(OutputPath)build_configs\$(Configuration)_appsettings.config" />
+    <!--   <MyWebConfig Include="$(OutputPath)build_configs\$(Configuration)_appsettings.config" />
     <MyConnectionString Include="$(OutputPath)build_configs\$(Configuration)_connectionstring.config" />
     <MyWaterOneFlowAuth Include="$(OutputPath)build_configs\$(Configuration)_wateroneflow.authentication.config" />
    
     <MyLog4net Include="$(OutputPath)build_configs\$(Configuration)_wateroneflow.logging.log4net" />
-  -->   <MyOutputFiles Include="$(OutputPath)\**\*.*" />
+  -->
+    <MyOutputFiles Include="$(OutputPath)\**\*.*" />
     <!--  <MyInstallerFile Include="$(OutputPath)Installer.targets" /> -->
     <MyInstallerFile Include="$(SourceWebPhysicalPath)\Installer.targets" />
     <MyInstallerConfigFile Include="$(OutputPath)\Test.config" />
@@ -150,13 +154,14 @@
   </Target>
   -->
   <Target Name="AfterBuild">
- <!--   <Copy SourceFiles="@(MyWebConfig)" DestinationFiles="$(OutputPath)appsettings.config" />
+    <!--   <Copy SourceFiles="@(MyWebConfig)" DestinationFiles="$(OutputPath)appsettings.config" />
     <Copy SourceFiles="@(MyConnectionString)" DestinationFiles="$(OutputPath)connectionstrings.config" />
     <Copy SourceFiles="@(MyWaterOneFlowAuth)" DestinationFiles="$(OutputPath)wateroneflow.authentication.config" />
     
     <Copy SourceFiles="@(MyLog4net)" DestinationFiles="$(OutputPath)wateroneflow.logging.log4net" />
    <RemoveDir Directories="$(OutputPath)build_configs\" />
- -->    <RemoveDir Directories="$(OutputPath)log-data"  />
+ -->
+    <RemoveDir Directories="$(OutputPath)log-data" />
     <Delete Files="$(OutputPath)logger-debug-log.txt;$(OutputPath)webapp-log.txt;" />
     <Delete Files="$(OutputPath)vwd.webinfo;" />
     <MakeDir Directories="$(OutputPath)log-data" />

@@ -289,16 +289,6 @@
       <s:complexType name="GeogLocationType">
         <s:attribute default="EPSG:4326" name="srs" type="s:string" />
       </s:complexType>
-      <s:complexType name="LatLonPointType">
-        <s:complexContent mixed="false">
-          <s:extension base="s1:GeogLocationType">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
-              <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="LatLonBoxType">
         <s:complexContent mixed="false">
           <s:extension base="s1:GeogLocationType">
@@ -307,6 +297,16 @@
               <s:element minOccurs="1" maxOccurs="1" name="west" type="s:double" />
               <s:element minOccurs="1" maxOccurs="1" name="north" type="s:double" />
               <s:element minOccurs="1" maxOccurs="1" name="east" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LatLonPointType">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:GeogLocationType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -531,16 +531,6 @@
         <s:attribute name="UnitID" type="s:int" />
       </s:complexType>
       <s:complexType name="TimePeriodType" />
-      <s:complexType name="TimeIntervalType">
-        <s:complexContent mixed="false">
-          <s:extension base="s1:TimePeriodType">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="beginDateTime" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="endDateTime" type="s:dateTime" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="TimeSingleType">
         <s:complexContent mixed="false">
           <s:extension base="s1:TimePeriodType">
@@ -557,6 +547,16 @@
           <s:extension base="s1:TimePeriodType">
             <s:sequence>
               <s:element minOccurs="0" maxOccurs="1" name="realTimeDataPeriod" type="s:duration" />
+              <s:element minOccurs="1" maxOccurs="1" name="beginDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="endDateTime" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TimeIntervalType">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:TimePeriodType">
+            <s:sequence>
               <s:element minOccurs="1" maxOccurs="1" name="beginDateTime" type="s:dateTime" />
               <s:element minOccurs="1" maxOccurs="1" name="endDateTime" type="s:dateTime" />
             </s:sequence>
@@ -1028,10 +1028,10 @@
   <wsdl:service name="WaterOneFlow">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;div&gt;&lt;strong&gt;Developmental service. This service is internal CUAHSI use, and evaluation.&lt;/strong&gt;&lt;/div&gt;</wsdl:documentation>
     <wsdl:port name="WaterOneFlow" binding="tns:WaterOneFlow">
-      <soap:address location="http://localhost:62781/genericODws/cuahsi_1_0.asmx" />
+      <soap:address location="http://localhost:6278/genericODws/cuahsi_1_0.asmx" />
     </wsdl:port>
     <wsdl:port name="WaterOneFlow1" binding="tns:WaterOneFlow1">
-      <soap12:address location="http://localhost:62781/genericODws/cuahsi_1_0.asmx" />
+      <soap12:address location="http://localhost:6278/genericODws/cuahsi_1_0.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

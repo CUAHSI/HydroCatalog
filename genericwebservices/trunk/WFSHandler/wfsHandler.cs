@@ -951,7 +951,7 @@ COUNT(Distinct Variables.VariableID) as VariableCount,
                     where += ") ";
                     break;
 
-                    break;
+                    
 
                 case "bbox":
                     string[] ll = filterNode.ChildNodes[1].ChildNodes[0].InnerText.Split(' ');
