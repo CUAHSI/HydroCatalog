@@ -215,7 +215,9 @@ Partial Class edit_cv11
                 curLbl.Visible = True
                 'Initialize the ID field:
                 If i_count = 1 And curRow.Item("type") = "int" Then
-                    tempTable = OpenTable("ODMCV_1_1", "SELECT MAX(" & curRow.Item("name") & ") AS maxVal FROM " & curTable)
+                    'JSH - Modified the line below to get the next ID based on the temp table and not the production table so IDs are not duplicated.
+                    'tempTable = OpenTable("ODMCV_1_1", "SELECT MAX(" & curRow.Item("name") & ") AS maxVal FROM " & curTable)
+                    tempTable = OpenTable("ODMCV_1_1", "SELECT MAX(" & curRow.Item("name") & ") AS maxVal FROM temp_" & curTable)
                     tempRow = tempTable.Rows(0)
                     curTxt.Text = CLng(tempRow.Item(0)) + 1
                     curTxt.Enabled = False
@@ -366,7 +368,7 @@ Partial Class edit_cv11
 
             submitterInfo = txtName.Text & ", " & "<a href='mailto:" & txtEmail.Text & "'>" & txtEmail.Text & "</a>"
 
-            EmailNotifications("submission", "11", curTable, txt1.Text, txtEmail.Text, "jeff.horsburgh@usu.edu,david.tarboton@usu.edu,jarrigo@cuahsi.org", lblAction.Text, "", "", changeInfo, submitterInfo)
+            EmailNotifications("submission", "11", curTable, txt1.Text, txtEmail.Text, "jeff.horsburgh@usu.edu,david.tarboton@usu.edu,jarrigo@cuahsi.org,jpollak@cuahsi.org", lblAction.Text, "", "", changeInfo, submitterInfo)
         Catch ex As Exception
             pnlMsg_11.Visible = True
             lblMsg_11.Text = "An error occured while updating Controlled Vocabularies. Please check entries and try again"

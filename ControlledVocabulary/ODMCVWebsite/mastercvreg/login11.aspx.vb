@@ -59,7 +59,13 @@ Partial Class login11
                 If Trim(txtPass.Text) = "cuahsi@123" Then
                     Session.Add("login", "true")
                     Session.Add("admin", "arrigo")
-                    Response.Redirect("admindefault.aspx")
+                    Response.Redirect("admindefault11.aspx")
+                End If
+            Case "JPOLLAK"
+                If Trim(txtPass.Text) = "cuahsi@123" Then
+                    Session.Add("login", "true")
+                    Session.Add("admin", "pollak")
+                    Response.Redirect("admindefault11.aspx")
                 End If
         End Select
     End Sub
