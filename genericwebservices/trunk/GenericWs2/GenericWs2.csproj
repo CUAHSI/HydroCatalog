@@ -255,7 +255,6 @@
     <Content Include="REST\xslt\WaterML1_timeSeries_to_WaterML2.xsl" />
     <Content Include="Scripts\date.js" />
     <Content Include="Scripts\ExampleWaterMlLinks.js" />
-    <Content Include="Scripts\jquery-1.6.min.js" />
     <Content Include="Scripts\Notes.txt" />
     <Content Include="ServiceDescription.aspx" />
     <Content Include="SOAP\waterml_1_0.svc" />
