@@ -4,7 +4,7 @@
 <%@ Register TagPrefix="wml" TagName="WmlUrl" Src="~/UserControls/TestRestUrl.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <!-- jquery in master -->
-    <!--  <script type="text/javascript" src="scripts/jquery-1.6.min.js"></script>-->
+   <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.6.js"></script> 
     <script type="text/javascript">
     var networkCode = "<%= ConfigurationManager.AppSettings["Network"] %>" ;
     var vocabularyCode =  "<%= ConfigurationManager.AppSettings["Vocabulary"] %>" ;
