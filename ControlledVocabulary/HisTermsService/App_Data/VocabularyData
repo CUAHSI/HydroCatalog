@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Vocabularies>
+  <Vocabulary name="CensorCode">
+    <Term> gt </Term>
+    <Term> lt </Term>
+    <Term> nc </Term>
+    <Term> nd </Term>
+    <Term> pnq </Term>
+  </Vocabulary>
+  
+  <Vocabulary name="DataType">
+    <Term> Average </Term>
+    <Term> Best Easy Systematic Estimator </Term>
+    <Term> Categorical </Term>
+    <Term> Constant Over Interval </Term>
+    <Term> Continuos </Term>
+    <Term> Cumulative </Term>
+    <Term> Incremental </Term>
+    <Term> Maximum </Term>
+    <Term> Median </Term>
+    <Term> Minimum </Term>
+    <Term> Mode </Term>
+    <Term> Sporadic </Term>
+    <Term> StadardDeviation </Term>
+    <Term> Unknown </Term>
+    <Term> Variance </Term>
+  </Vocabulary>
+</Vocabularies>
