@@ -1,1 +1,2 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="cuahsi.his.vocabservice.HisVocabularyService" CodeBehind="HisVocabularyService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="cuahsi.his.vocabservice.HisVocabularyService" CodeBehind="HisVocabularyService.svc.cs"
+factory="" %>

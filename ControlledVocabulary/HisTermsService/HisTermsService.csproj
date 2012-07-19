@@ -10,7 +10,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HisTermsService</RootNamespace>
+    <RootNamespace>cuahsi.his.vocabservice</RootNamespace>
     <AssemblyName>HisTermsService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
@@ -58,6 +58,7 @@
     <None Include="App_Data\VocabularyData">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="HisVocabularyRest.svc" />
     <Content Include="HisVocabularyService.svc" />
     <Content Include="Selection\functions.js" />
     <Content Include="Selection\ChangePassword.aspx" />
@@ -90,6 +91,7 @@
     <Compile Include="HisVocabularyService.svc.cs">
       <DependentUpon>HisVocabularyService.svc</DependentUpon>
     </Compile>
+    <Compile Include="IVocabularyRest.cs" />
     <Compile Include="IVocabularyService.cs" />
     <Compile Include="Selection\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -154,6 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HisVocabLib\HisVocabLib.csproj">
+      <Project>{6ABAB218-15A4-47EE-BF20-413FCD9EFDD7}</Project>
+      <Name>HisVocabLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

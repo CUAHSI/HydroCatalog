@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Data.SqlClient;
+using cuahsi.HisVocabLib;
 
 namespace cuahsi.his.vocabservice
 {
-
-    public class HisVocabularyService : IVocabularyService
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
+    public class HisVocabularyService : IVocabularyService, IVocabularyRest
     {
         private VocabulariesList vocabularies = new VocabulariesList();
         VocabularyTermType select_term = null;
 
-        HisVocabularyService()
+        public HisVocabularyService()
         {
+            getVocabularies();
             //vocabularies = new Vocabularies();
         }
 
@@ -62,37 +65,20 @@ namespace cuahsi.his.vocabservice
             bool found = false;
 
             Vocabulary v = new Vocabulary();
-            // TODO: see if vocabulary exists. Get the desription
-
-            v.Name = VocabularyName;
-            using (SqlConnection thisConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterVocabualaryV11"].ConnectionString))
+            found = vocabExists(VocabularyName);
+            //see if vocabulary exists. Get the desription
+            if (found == false)
             {
-                v.VocabularyTerms.AddRange(GetTermsFromDB(VocabularyName, thisConnection)); ;
+                throw new NotFoundException("The vocabulary you have selected in is not in the database");
+            }
+            
+            v.Name = VocabularyName;
+            /*using (SqlConnection thisConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterVocabualaryV11"].ConnectionString))
+            {*/
+            using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
+            {
+                v.VocabularyTerms.AddRange(GetTermsFromDB(VocabularyName, thisConnection));
 
-                //SqlCommand Command1 = thisConnection.CreateCommand();
-
-                //Command1.CommandText = "SELECT Term, Definition FROM " + VocabularyName + "CV";
-                //thisConnection.Open();
-                //SqlDataReader rdr1 = Command1.ExecuteReader();
-
-                //while(rdr1.Read())
-                //{
-
-                //    VocabularyTermType t = new VocabularyTermType();
-                //    v.Name = VocabularyName;
-                //    t.Term = rdr1.GetString(0);
-                //    t.Description = rdr1.GetString(1);
-                //    found = true;
-                //    v.VocabularyTerms.Add(t);   
-                //}
-
-                //if (found == false)
-                //{
-                //    //enter invalid vocabulary, throw error?
-                //    //maybe throw a custom exception 
-                //}
-
-                //return v.VocabularyTerms; //return the vocabulary that the user selected
             }//end using()
             return v;
         }//end getVocabulary()
@@ -103,55 +89,36 @@ namespace cuahsi.his.vocabservice
          * 
          * 
          **/
+        [Serializable]
+        public class NotFoundException : Exception
+        {
+            public NotFoundException(string message)
+                : base(message) { }
+
+        }
+
         public VocabularyTermType getVocabularyTerm(string VocabularyName, string TermName)
         {
-            Vocabulary _vocab = new Vocabulary();
-
             bool found = false;
-            //TODO Validate that vocab exists
+            
+            //Validate that vocab exists
+            found = vocabExists(VocabularyName);
+            if(found == false)
+            {
+                throw new NotFoundException("The vocabulary you have selected in is not in the database");
+            }
+
+            found = termExists(VocabularyName, TermName);
+            if (found == false)
+            {
+                throw new NotFoundException("The term you have selected in is not in the database");
+            }
 
             using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
             {
                 var terms = GetTermsFromDB(VocabularyName, thisConnection);
                 var term = from aTerm in terms where aTerm.Term == TermName select aTerm;
                 return term.First();
-                //thisConnection.Open();
-                //SqlCommand Command1 = thisConnection.CreateCommand();
-
-                //Command1.CommandText = "SELECT Term, Definition FROM " + VocabularyName + "CV";
-                //Command1.CommandText += " WHERE Term = @term";
-                //Command1.Parameters.AddWithValue("term", TermName);
-
-                //SqlDataReader rdr1 = Command1.ExecuteReader();
-
-                //while (rdr1.Read())
-                //{
-                //    VocabularyTermType _term = new VocabularyTermType();
-                //    _term.Term = rdr1.GetString(0);
-                //    _term.Description = rdr1.GetString(1);
-                //    _term.Vocab = VocabularyName;
-                //    (_vocab.VocabularyTerms).Add(_term);
-                //}
-                //rdr1.Close();
-
-                //thisConnection.Close();
-
-                //foreach (VocabularyTermType vt in _vocab.VocabularyTerms)
-                //{
-                //    if (TermName.Equals(vt.Term))
-                //    {
-                //        found = true;
-                //        select_term = vt;
-                //    }
-                //}
-
-                //if (found == false)
-                //{
-                //    //enter invalid vocabulary term, throw error?
-                //    //maybe throw a custom exception 
-                //}
-
-                //return select_term;
             }
         }
 
@@ -182,25 +149,6 @@ namespace cuahsi.his.vocabservice
 
                     }
 
-                    //conn2.Open();
-                    //SqlCommand Command2 = conn2.CreateCommand();
-
-                    //foreach (string aVocab in vocabs)
-                    //{
-                    //    Command2.CommandText = "SELECT Term, Definition FROM " + aVocab + "CV";
-                    //    SqlDataReader rdr2 = Command2.ExecuteReader();
-
-                    //    while (rdr2.Read())
-                    //    {
-                    //        VocabularyTermType the_term = new VocabularyTermType();
-                    //        the_term.Vocab = aVocab;
-                    //        the_term.Term = rdr2.GetString(0);
-                    //        the_term.Description = rdr2.GetString(1);
-                    //        all_terms.Add(the_term);
-                    //    }
-
-                    //    rdr2.Close();
-                    //}
                 }
 
                 rdr1.Close();
@@ -232,6 +180,9 @@ namespace cuahsi.his.vocabservice
             //Console.WriteLine(skos_output);
             return skos_output;
         }
+        //output vocabulary as skos
+
+        //output term as skos
         private List<VocabularyTermType> GetTermsFromDB(string VocabularyName, SqlConnection conn)
         {
             List<VocabularyTermType> vocab = new List<VocabularyTermType>();
@@ -254,7 +205,55 @@ namespace cuahsi.his.vocabservice
             return vocab;
         }
 
+        private bool vocabExists(string Vocabulary)
+        {
+            bool exists = false;
+            SqlConnection conn = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;");
+            
+            SqlCommand Command = conn.CreateCommand();
+            Command.CommandText = "SELECT VocabularyName FROM VocabularyDescription";
+            conn.Open();
+            SqlDataReader rdr = Command.ExecuteReader();
+            while(rdr.Read())
+            {
+                string compare = rdr.GetString(0);
+                
+                if(compare.Equals(Vocabulary))
+                {
+                    exists = true;
+                }
+            }
+
+            return exists;
+        }
+
+        private bool termExists(string Vocabulary, string Term)
+        {
+            bool exists = false;
+            SqlConnection conn = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;");
+
+            SqlCommand Command = conn.CreateCommand();
+            Command.CommandText = "SELECT Term FROM " + Vocabulary + "CV";
+            SqlDataReader rdr = Command.ExecuteReader();
+            while(rdr.Read())
+            {
+                string compare = rdr.GetString(0);
+
+                if (compare.Equals(Term))
+                {
+                    exists = true;
+                }
+            }
+
+            return exists;
+        }
+
+
+
     }//end class HisVocabService
+
+
+
 
     class Test
     {

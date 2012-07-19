@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisTermsService", "HisTermsService.csproj", "{EDF8C4CB-D811-476F-A85A-0EC170442B0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisVocabLib", "..\HisVocabLib\HisVocabLib.csproj", "{6ABAB218-15A4-47EE-BF20-413FCD9EFDD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HisVocabLibTest", "HisVocabLibTest\HisVocabLibTest.csproj", "{45B8CCF4-B180-46D8-B2DC-758117B7D7AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{EDF8C4CB-D811-476F-A85A-0EC170442B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDF8C4CB-D811-476F-A85A-0EC170442B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDF8C4CB-D811-476F-A85A-0EC170442B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABAB218-15A4-47EE-BF20-413FCD9EFDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABAB218-15A4-47EE-BF20-413FCD9EFDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABAB218-15A4-47EE-BF20-413FCD9EFDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABAB218-15A4-47EE-BF20-413FCD9EFDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45B8CCF4-B180-46D8-B2DC-758117B7D7AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45B8CCF4-B180-46D8-B2DC-758117B7D7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45B8CCF4-B180-46D8-B2DC-758117B7D7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45B8CCF4-B180-46D8-B2DC-758117B7D7AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
