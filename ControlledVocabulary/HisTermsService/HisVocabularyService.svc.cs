@@ -73,8 +73,8 @@ namespace cuahsi.his.vocabservice
             }
             
             v.Name = VocabularyName;
-            /*using (SqlConnection thisConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterVocabualaryV11"].ConnectionString))
-            {*/
+            //using (SqlConnection thisConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterVocabualaryV11"].ConnectionString))
+            //{
             using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
             {
                 v.VocabularyTerms.AddRange(GetTermsFromDB(VocabularyName, thisConnection));
@@ -120,6 +120,8 @@ namespace cuahsi.his.vocabservice
                 var term = from aTerm in terms where aTerm.Term == TermName select aTerm;
                 return term.First();
             }
+
+            
         }
 
         public VocabularyTermType[] getAllTerms()
@@ -186,12 +188,12 @@ namespace cuahsi.his.vocabservice
         private List<VocabularyTermType> GetTermsFromDB(string VocabularyName, SqlConnection conn)
         {
             List<VocabularyTermType> vocab = new List<VocabularyTermType>();
-            SqlCommand Command2 = conn.CreateCommand();
+            SqlCommand command = conn.CreateCommand();
 
 
-            Command2.CommandText = "SELECT Term, Definition FROM " + VocabularyName + "CV";
+            command.CommandText = "SELECT Term, Definition FROM " + VocabularyName + "CV";
             conn.Open();
-            SqlDataReader rdr1 = Command2.ExecuteReader();
+            SqlDataReader rdr1 = command.ExecuteReader();
             while (rdr1.Read())
             {
                 VocabularyTermType _term = new VocabularyTermType();
@@ -223,6 +225,8 @@ namespace cuahsi.his.vocabservice
                     exists = true;
                 }
             }
+            rdr.Close();
+            conn.Close();
 
             return exists;
         }
@@ -233,6 +237,7 @@ namespace cuahsi.his.vocabservice
             SqlConnection conn = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;");
 
             SqlCommand Command = conn.CreateCommand();
+            conn.Open();
             Command.CommandText = "SELECT Term FROM " + Vocabulary + "CV";
             SqlDataReader rdr = Command.ExecuteReader();
             while(rdr.Read())
@@ -244,7 +249,8 @@ namespace cuahsi.his.vocabservice
                     exists = true;
                 }
             }
-
+            rdr.Close();
+            conn.Close();
             return exists;
         }
 
