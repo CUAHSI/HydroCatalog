@@ -156,6 +156,7 @@ namespace HisVocabLibTest
             term2 = his.getVocabularyTerm("SampleType", "Unknown");
           
             Assert.AreEqual(term2.Vocab, "SampleType");
+            Assert.AreNotEqual(term1, term2);
         }
 
         [Test]
@@ -175,7 +176,6 @@ namespace HisVocabLibTest
             {
                 Console.WriteLine("Test with incorrect vocabulary: " + e.Message);
                 Assert.Pass( "Unexpected exception of type {0} caught: \n{1}", e.GetType(), e.Message);
-
             }
 
             finally
@@ -189,7 +189,6 @@ namespace HisVocabLibTest
                 {
                     Console.WriteLine("Test with incorrect vocabulary term: " + ex.Message);
                     Assert.Pass("Unexpected exception of type {0} caught: \n{1}", ex.GetType(), ex.Message);
-
                 }
                 finally
                 {
@@ -204,8 +203,6 @@ namespace HisVocabLibTest
                     }
 
                 }
-
-
             }
         }//end TestExceptions()
 
@@ -214,13 +211,12 @@ namespace HisVocabLibTest
         {
             HisVocabularyService his = new HisVocabularyService();
 
-            string result;
+            string result1, result2;
 
-            result = his.GetTermAsToSkos("CensorCode", "lt");
+            result1 = his.GetTermAsToSkos("CensorCode", "lt");
+            result2 = his.GetTermAsToSkos("SampleType", "Unknown");
 
-            Console.WriteLine(result);
+            Console.WriteLine(result1 + result2);
         }
-
-
     }
 }

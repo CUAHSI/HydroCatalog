@@ -13,14 +13,11 @@ namespace cuahsi.his.vocabservice
     public class HisVocabularyService : IVocabularyService, IVocabularyRest
     {
         private VocabulariesList vocabularies = new VocabulariesList();
-        VocabularyTermType select_term = null;
-
+       
         public HisVocabularyService()
         {
             getVocabularies();
-            //vocabularies = new Vocabularies();
         }
-
 
         /*
          * getVocabularies() - this method should return all the vocabularies and their description in the cuahsi DB
@@ -175,16 +172,13 @@ namespace cuahsi.his.vocabservice
             //Vocabulary = getVocabulary(Vocabulary).Name;
             Term = getVocabularyTerm(Vocabulary, Term).Term;
 
-            skos_output = String.Format("\n\n\t<skos:concept rdf:about=\"urn:cuahsi.org/vocabulary/{0}#{1}\"\n" +
+            skos_output = String.Format("\t<skos:concept rdf:about=\"urn:cuahsi.org/vocabulary/{0}#{1}\"\n" +
                                         "\t<skos:prefLabel xml:lang=\"en\">{2}</skos:prefLabel>\n" +
                                         "\t\t<skos:altLabel xml:lang=\"en\">{3}</skos:AltLabel>\">\n" +
-                                        "\t\t<skos:definition>{4}</skos:defnition></skos:concept>", Vocabulary, Term, Term, Term, getVocabularyTerm(Vocabulary, Term).Description);
-            //Console.WriteLine(skos_output);
+                                        "\t\t<skos:definition>{4}</skos:defnition></skos:concept>\n", Vocabulary, Term, Term, Term, getVocabularyTerm(Vocabulary, Term).Description);
             return skos_output;
         }
-        //output vocabulary as skos
 
-        //output term as skos
         private List<VocabularyTermType> GetTermsFromDB(string VocabularyName, SqlConnection conn)
         {
             List<VocabularyTermType> vocab = new List<VocabularyTermType>();
@@ -253,8 +247,6 @@ namespace cuahsi.his.vocabservice
             conn.Close();
             return exists;
         }
-
-
 
     }//end class HisVocabService
 
