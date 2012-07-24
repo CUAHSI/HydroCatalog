@@ -102,3 +102,5 @@ http://vishaljoshi.blogspot.com/2010/11/team-build-web-deployment-web-deploy-vs.
 wix
 http://blogs.planetsoftware.com.au/paul/archive/2011/02/20/creating-a-web-application-installer-with-wix-3.5-and-visual.aspx
 http://ranjithk.com/2009/12/17/automating-web-deployment-using-windows-installer-xml-wix/
+
+http://sedodream.com/2010/05/01/WebDeploymentToolMSDeployBuildPackageIncludingExtraFilesOrExcludingSpecificFiles.aspx

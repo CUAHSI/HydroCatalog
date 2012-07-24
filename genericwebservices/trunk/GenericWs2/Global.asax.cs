@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Remoting;
 using System.Web;
 using System.Web.SessionState;
 using System.Configuration;
 using System.Net;
 using System.Xml;
+using WaterOneFlow.odm.v1_1;
 using log4net;
 using WaterOneFlow.Services.Gatekeeper;
 
@@ -37,40 +39,50 @@ namespace WaterOneFlow.odws
             WaterAuth.GatekeeperPropertiesSection = sect;
             WaterAuth.TestConfiguration();
 
+            if (!CheckVersion.isOdm111(ConfigurationManager.ConnectionStrings["ODDB"].ConnectionString))
+            {
+                throw new ServerException("Database is not ODM version 1.1.1");
+            }
+           // // Code that runs on application startup 
+           // String codeDate = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
 
-            // Code that runs on application startup 
-            String codeDate = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
+           // String process = "GenericODWS_Start";
+           // //String path = Context.Request.ApplicationPath;
+           // String network = ConfigurationManager.AppSettings["network"];
+           // String vocabulary = ConfigurationManager.AppSettings["vocabulary"];
 
-            String process = "GenericODWS_Start";
-            String path = Context.Request.ApplicationPath;
-            String network = ConfigurationManager.AppSettings["network"];
-            String vocabulary = ConfigurationManager.AppSettings["vocabulary"];
-
-            String server = Dns.GetHostName();
+           // String server = Dns.GetHostName();
 
 
-            string ipAddress = "not used";
-            //try
-            //{
-            //    ipAddress = GetClientIP(ConfigurationManager.AppSettings["clientIPUrl"]);
-            //}
-            //catch
-            //{
-            //    ipAddress = "searchFailed";
-            //}
+           // string ipAddress = "not used";
+           // //try
+           // //{
+           // //    ipAddress = GetClientIP(ConfigurationManager.AppSettings["clientIPUrl"]);
+           // //}
+           // //catch
+           // //{
+           // //    ipAddress = "searchFailed";
+           // //}
 
-            String contact = ConfigurationManager.AppSettings["contactEmail"];
+           // String contact = ConfigurationManager.AppSettings["contactEmail"];
 
-            log4net.GlobalContext.Properties["ipAddress"] = ipAddress;
-            log4net.GlobalContext.Properties["contact"] = contact;
-            log4net.GlobalContext.Properties["networkVocabulary"] = network;
-            log4net.GlobalContext.Properties["variableVocabulary"] = vocabulary;
-            log4net.GlobalContext.Properties["path"] = path;
-            log4net.GlobalContext.Properties["server"] = server;
-            log4net.GlobalContext.Properties["codeDate"] = codeDate;
-            log.Info(process);
-            // log.InfoFormat("{0}|{1}|{2}|{3}|{4}|{5}|{6}|ver:{7}",
-            //     process, server, path, network, vocabulary, ipAddress, contact, codeDate);
+           // log4net.GlobalContext.Properties["ipAddress"] = ipAddress;
+           // log4net.GlobalContext.Properties["contact"] = contact;
+           // log4net.GlobalContext.Properties["networkVocabulary"] = network;
+           // log4net.GlobalContext.Properties["variableVocabulary"] = vocabulary;
+           //// log4net.GlobalContext.Properties["path"] = path;
+           // log4net.GlobalContext.Properties["server"] = server;
+           // log4net.GlobalContext.Properties["codeDate"] = codeDate;
+           // log.Info(process);
+           // // log.InfoFormat("{0}|{1}|{2}|{3}|{4}|{5}|{6}|ver:{7}",
+           // //     process, server, path, network, vocabulary, ipAddress, contact, codeDate);
+        }
+        void Application_BeginRequest(Object source, EventArgs e)
+        {
+            HttpApplication app = (HttpApplication)source;
+            HttpContext context = app.Context;
+            // Attempt to peform first request initialization
+            FirstRequestInitialization.Initialize(context);
         }
 
         private static string GetClientIP(String stringUrl)
@@ -193,6 +205,61 @@ namespace WaterOneFlow.odws
             // is set to InProc in the Web.config file. If session mode is set to StateServer 
             // or SQLServer, the event is not raised.
             log.Debug("GenericODWS_sessionEnd");
+        }
+    }
+
+    class FirstRequestInitialization
+    {
+        private static readonly ILog log = LogManager.GetLogger("CUAHSI.WEBSERVICES");
+        
+        private static bool s_InitializedAlready = false;
+        private static Object s_lock = new Object();
+        // Initialize only on the first request
+        public static void Initialize(HttpContext context)
+        {
+            if (s_InitializedAlready)
+            {
+                return;
+            }
+            lock (s_lock)
+            {
+                if (s_InitializedAlready)
+                {
+                    return;
+                }
+                // Code that runs on application startup 
+                String codeDate = File.GetCreationTimeUtc(Assembly.GetExecutingAssembly().Location).ToString();
+
+                String process = "GenericODWS_Start";
+                //String path = Context.Request.ApplicationPath;
+                String network = ConfigurationManager.AppSettings["network"];
+                String vocabulary = ConfigurationManager.AppSettings["vocabulary"];
+
+                String server = Dns.GetHostName();
+
+
+                string ipAddress = "not used";
+                //try
+                //{
+                //    ipAddress = GetClientIP(ConfigurationManager.AppSettings["clientIPUrl"]);
+                //}
+                //catch
+                //{
+                //    ipAddress = "searchFailed";
+                //}
+
+                String contact = ConfigurationManager.AppSettings["contactEmail"];
+
+                log4net.GlobalContext.Properties["ipAddress"] = ipAddress;
+                log4net.GlobalContext.Properties["contact"] = contact;
+                log4net.GlobalContext.Properties["networkVocabulary"] = network;
+                log4net.GlobalContext.Properties["variableVocabulary"] = vocabulary;
+                // log4net.GlobalContext.Properties["path"] = path;
+                log4net.GlobalContext.Properties["server"] = server;
+                log4net.GlobalContext.Properties["codeDate"] = codeDate;
+                log.Info(process);
+                s_InitializedAlready = true;
+            }
         }
     }
 }
