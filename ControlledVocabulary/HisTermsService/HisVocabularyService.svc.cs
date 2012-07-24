@@ -117,8 +117,7 @@ namespace cuahsi.his.vocabservice
                 var term = from aTerm in terms where aTerm.Term == TermName select aTerm;
                 return term.First();
             }
-
-            
+      
         }
 
         public VocabularyTermType[] getAllTerms()
@@ -129,7 +128,6 @@ namespace cuahsi.his.vocabservice
 
             using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
             {
-
                 SqlCommand Command1 = thisConnection.CreateCommand();
                 Command1.CommandText = "SELECT VocabularyName FROM VocabularyDescription";
                 thisConnection.Open();
@@ -249,9 +247,6 @@ namespace cuahsi.his.vocabservice
         }
 
     }//end class HisVocabService
-
-
-
 
     class Test
     {

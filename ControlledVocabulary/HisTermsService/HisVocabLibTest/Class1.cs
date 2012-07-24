@@ -88,7 +88,7 @@ namespace HisVocabLibTest
 
             Assert.IsNotNullOrEmpty(voc.Name);
             Assert.IsNotNullOrEmpty(voc.Description);
-            foreach(VocabularyTermType t in terms)//voc.VocabularyTerms)
+            foreach(VocabularyTermType t in terms)
             {
                 Assert.IsNotNullOrEmpty(t.Term);
                 Assert.IsNotNullOrEmpty(t.Description);
