@@ -28,7 +28,7 @@ namespace cuahsi.his.vocabservice
         [WebGet(UriTemplate = "Vocabularies")]
         public Vocabulary[] getVocabularies()
         {
-            List<Vocabulary> all_vocab = new List<Vocabulary>();
+            List<VocabularyDescription> all_vocab = new List<VocabularyDescription>();
 
             using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
             {
@@ -40,13 +40,19 @@ namespace cuahsi.his.vocabservice
 
                 while (rdr1.Read())
                 {
-                    Vocabulary v = new Vocabulary();
+                    VocabularyDescription v = new VocabularyDescription();
                     v.Name = rdr1.GetString(0);
                     v.Description = rdr1.GetString(1);
                     vocabularies.VocabularyList.Add(v);
                     all_vocab.Add(v);
                 }
-                return all_vocab.ToArray();
+               // return all_vocab).ToArray();
+               return all_vocab.ConvertAll(new Converter<VocabularyDescription, Vocabulary>(
+                                         delegate(VocabularyDescription vocab) {
+                                                                                   return  new Vocabulary(vocab);
+                                         }
+                                         )
+                                         ).ToArray();
             }
         }
 
@@ -54,7 +60,7 @@ namespace cuahsi.his.vocabservice
          * getVocabulary() - this method returns the vocabulary that the client selects, if it doesnt exist should throw error
          * 
          * @params: String
-         * @returns: Vocabulary
+         * @returns: VocabularyDescription
          * 
          * */
         public Vocabulary getVocabulary(string VocabularyName)
@@ -167,7 +173,7 @@ namespace cuahsi.his.vocabservice
         public String GetTermAsToSkos(string Vocabulary, string Term)
         {
             string skos_output;
-            //Vocabulary = getVocabulary(Vocabulary).Name;
+            //VocabularyDescription = getVocabulary(VocabularyDescription).Name;
             Term = getVocabularyTerm(Vocabulary, Term).Term;
 
             skos_output = String.Format("\t<skos:concept rdf:about=\"urn:cuahsi.org/vocabulary/{0}#{1}\"\n" +

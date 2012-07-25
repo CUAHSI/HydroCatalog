@@ -1,4 +1,4 @@
-﻿<%@ Page Title="VocabularySelection" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="VocabularyDescriptionSelection" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="WebForm1.aspx.cs" Inherits="HisTermsService.Selection.VocabularySelection" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -8,14 +8,14 @@
         DISPLAY VOCABULARY IN SKOS FORMAT
     </h2>
     <p>
-        Pleas select the Vocabulary and Term you would like to view.
+        Pleas select the VocabularyDescription and Term you would like to view.
     </p>
 
     <script src = "functions.js"></script>
     
     <form id="form1" runat="server">
         <div>
-            &nbsp;Vocabulary:&nbsp;&nbsp;<asp:DropDownList ID="ddlVocabulary" runat="server" Width="110px" onChange='ddlVocabularyOnChange();'>
+            &nbsp;VocabularyDescription:&nbsp;&nbsp;<asp:DropDownList ID="ddlVocabulary" runat="server" Width="110px" onChange='ddlVocabularyDescriptionOnChange();'>
             </asp:DropDownList>
             <br />
             &nbsp; Term :&nbsp; &nbsp;  &nbsp;   &nbsp; &nbsp;<asp:DropDownList ID="ddlTerm" runat="server" Width="110px" onChange='ddlTermOnChange();'>

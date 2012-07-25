@@ -9,5 +9,12 @@ namespace cuahsi.his.vocabservice
     {
         [WebGet(UriTemplate = "/Vocabularies" )]  
         Vocabulary[] getVocabularies();
+
+        [WebGet(UriTemplate = "/VocabularyDescription/{VocabularyName}")]
+        Vocabulary getVocabulary(string VocabularyName);
+
+        [WebGet(UriTemplate = "/VocabularyDescription/{VocabularyName}/{termName}")]
+        VocabularyTermType getVocabularyTerm(string VocabularyName, string TermName);
     }
+
 }

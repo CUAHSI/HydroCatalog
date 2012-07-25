@@ -16,13 +16,13 @@ namespace cuahsi.his.vocabservice
         string Test();
 
       //  [WebGet( UriTemplate="/Vocabularies", ResponseFormat = WebMessageFormat.Xml)]
-        [OperationContract(Name = "GetVocab")]
+        [OperationContract(Name = "GetVocabularies")]
         Vocabulary[] getVocabularies();
 
-        [OperationContract]
+        [OperationContract(Name = "GetVocabulary")]
         Vocabulary getVocabulary(string VocabularyName);
 
-        [OperationContract]
+        [OperationContract(Name = "GetVocabularyTerm")]
         VocabularyTermType getVocabularyTerm(string VocabularyName, string TermName);
 
         [OperationContract]

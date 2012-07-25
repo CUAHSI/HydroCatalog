@@ -16,7 +16,7 @@ namespace HisTermsService.Selection
 
         }
 
-        //Bind Vocabulary dropdownlist
+        //Bind VocabularyDescription dropdownlist
         public void BindddlVocabulary()
         {
           //  HisVocabularyService.getVocabularies();   

@@ -65,20 +65,20 @@ namespace HisVocabLibTest
         [Test]
         public void TestVocabulary()
         {
-            Console.WriteLine("Test Vocabulary: ");
+            Console.WriteLine("Test VocabularyDescription: ");
             HisVocabularyService his = new HisVocabularyService();
             /*
-             * Using the CensorCodeCV to test Vocabulary Structure
+             * Using the CensorCodeCV to test VocabularyDescription Structure
              */
             var t1 = new VocabularyTermType{ Term = "lt", Description = "less than", Vocab = "CensorCodeSample" };
             var t2 = new VocabularyTermType { Term = "gt", Description = "greater than", Vocab = "CensorCodeSample" };
             var t3 = new VocabularyTermType { Term = "nc", Description = "not censored", Vocab = "CensorCodeSample" };
             var t4 = new VocabularyTermType { Term = "nd", Description = "non-detect", Vocab = "CensorCodeSample" };
             var t5 = new VocabularyTermType { Term = "pnq", Description = "present but not quantified", Vocab = "CensorCodeSample" };
-            var voc = new Vocabulary{ Name = "CensorCodeSample", Description = "incorrect", VocabularyTerms = { t1, t2, t3, t4, t5 } };
+            var voc = new Vocabulary { Name = "CensorCodeSample", Description = "incorrect", VocabularyTerms = { t1, t2, t3, t4, t5 } };
 
             VocabularyTermType [] termsSample = voc.VocabularyTerms.ToArray();
-            VocabularyTermType[] terms = his.getVocabulary("CensorCode").VocabularyTerms.ToArray();
+            VocabularyTermType[] terms =((Vocabulary) his.getVocabulary("CensorCode")).VocabularyTerms.ToArray();
             
             for (int i = 0; i < terms.Length; i++)
             {
@@ -105,9 +105,9 @@ namespace HisVocabLibTest
         {
             Console.WriteLine("Test: getVocabularies()\n\t\t--this method should return all the vocabularies with a given description\n" );
             HisVocabularyService his = new HisVocabularyService();
-            Vocabulary[] v;
+            VocabularyDescription[] v;
             v = his.getVocabularies();
-            foreach(Vocabulary vocab in v)
+            foreach(VocabularyDescription vocab in v)
             {
                 Console.WriteLine("Name: " + vocab.Name + "\nDescription: " + vocab.Description + "\n");
             }
@@ -119,7 +119,7 @@ namespace HisVocabLibTest
             Console.WriteLine("Test : getVocabulary()");
             HisVocabularyService his = new HisVocabularyService();
             Vocabulary v1, v2;
-            v1 = his.getVocabulary("SampleType");
+            v1 = (Vocabulary) his.getVocabulary("SampleType");
             string[] terms = {"Unknown", "No Sample", "FD", "FF", "FL", "LF", "GW", "PB", "PD", "PE", "PI", "PW", "RE", "SE", "SR", 
                                  "SS", "SW", "TE", "TI", "TW", "VE", "VI", "VW", "Grab", "Automated", "meteorological" };
             int i = 0;
@@ -129,7 +129,7 @@ namespace HisVocabLibTest
                 i++;
             }
 
-            v2 = his.getVocabulary("DataType");
+            v2 = (Vocabulary) his.getVocabulary("DataType");
 
             foreach (VocabularyTermType vt in v2.VocabularyTerms)
             {
