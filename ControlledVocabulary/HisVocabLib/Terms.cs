@@ -11,11 +11,11 @@ namespace cuahsi.HisVocabLib
     [Serializable]
     public class VocabulariesList
     {
-        List<Vocabulary> Vocab_List = new List<Vocabulary>();
+        List<VocabularyDescription> Vocab_List = new List<VocabularyDescription>();
         int vocab_Count;
 
         [DataMember]
-        public List<Vocabulary> VocabularyList
+        public List<VocabularyDescription> VocabularyList
         {
             get
             {
@@ -31,12 +31,16 @@ namespace cuahsi.HisVocabLib
     }//end class VocbulariesList
 
     [DataContract(Namespace = "http://his.cuahsi.org/ontology")]
-    public class Vocabulary
+    public class VocabularyDescription
     {
-        private List<VocabularyTermType> vocab_terms = new List<VocabularyTermType>();
+      // if this is not null, it will show up as an element.
+        // So 
+        // private List<VocabularyTermType> vocab_terms = new List<VocabularyTermType>();
+        private List<VocabularyTermType> vocab_terms = null;
         private string _name;
         private string _descr;
 
+        
         [DataMember]
         public string Name
         {
@@ -50,19 +54,7 @@ namespace cuahsi.HisVocabLib
             }
         }
 
-        [DataMember]
-        public List<VocabularyTermType> VocabularyTerms
-        {
-            get
-            {
-                return vocab_terms;
-            }
-            set
-            {
-                vocab_terms = value;
-            }
-
-        }
+       
 
         [DataMember]
         public String Description
@@ -76,8 +68,40 @@ namespace cuahsi.HisVocabLib
                 _descr = value;
             }
         }
-    }//end class Vocabulary
+    }//end class VocabularyDescription
+    [DataContract(Namespace = "http://his.cuahsi.org/ontology")]
+    public class Vocabulary: VocabularyDescription
+    {
 
+        private List<VocabularyTermType> vocab_terms = null;
+
+        public Vocabulary ()
+        {
+            vocab_terms = new List<VocabularyTermType>();
+        }
+        public Vocabulary(VocabularyDescription vocabularyDescription)
+        {
+            vocab_terms = null;
+            Description = vocabularyDescription.Description;
+            Name = vocabularyDescription.Name;
+        }
+
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
+        public List<VocabularyTermType> VocabularyTerms
+        {
+            get
+            {
+                return vocab_terms;
+            }
+            set
+            {
+                vocab_terms = value;
+            }
+
+        }
+
+      
+    }
 
     //  [DataContract(Namespace = "http://his.cuahsi.org/ontology")]
     [DataContract(Namespace = "http://www.w3.org/2004/02/skos/core#", Name = "Concept")]
