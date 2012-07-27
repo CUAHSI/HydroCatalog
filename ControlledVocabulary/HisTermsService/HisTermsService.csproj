@@ -64,6 +64,7 @@
     </None>
     <Content Include="HisVocabularyRest.svc" />
     <Content Include="HisVocabularyService.svc" />
+    <Content Include="Methods.aspx" />
     <Content Include="Selection\functions.js" />
     <Content Include="Selection\ChangePassword.aspx" />
     <Content Include="Selection\ChangePasswordSuccess.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="IVocabularyRest.cs" />
     <Compile Include="IVocabularyService.cs" />
+    <Compile Include="Methods.aspx.cs">
+      <DependentUpon>Methods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Methods.aspx.designer.cs">
+      <DependentUpon>Methods.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Selection\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
