@@ -160,7 +160,10 @@
         <h1 class="style1"><strong>REST
         </strong>
         </h1>
-        <div style="margin-left: 40px"><div>Vocabularies</div>
+      <div>Help Endpoint: <a href="HisVocabularyService.svc/rest/help">HisVocabularyService.svc/rest/help</a></div>
+           <div>Endpoint: <a href="HisVocabularyService.svc/rest/">http://{host}/{service}/HisVocabularyService.svc/rest</a></div>
+  <div style="margin-left: 40px"><div><strong>Methods</strong><br />
+            Vocabularies</div>
         </div>
 
         <div style="margin-left: 40px"><div>Vocabulary/{Vocab}</div>

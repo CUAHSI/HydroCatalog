@@ -8,7 +8,8 @@
         Welcome to the CUASHI VocabularyDescription Services
     </h2>
     <p>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are REST and SOAP interfaces. To see the detailed description of the methods click the methdos tab</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are REST and SOAP interfaces. To see the detailed description of the methods click the methdos tab. 
+        There is also a standard web help at: </p>
     <p>
         Simple Senario</p>
 <p>
