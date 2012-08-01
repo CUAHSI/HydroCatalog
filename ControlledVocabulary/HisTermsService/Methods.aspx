@@ -160,8 +160,8 @@
         <h1 class="style1"><strong>REST
         </strong>
         </h1>
-      <div>Help Endpoint: <a href="HisVocabularyService.svc/rest/help">HisVocabularyService.svc/rest/help</a></div>
-           <div>Endpoint: <a href="HisVocabularyService.svc/rest/">http://{host}/{service}/HisVocabularyService.svc/rest</a></div>
+      <div>Help Endpoint: <a href="terms/rest/help">http://{host}/{service}terms/rest/help</a></div>
+           <div>Endpoint: <a href="terms/rest/">http://{host}/{service}/terms/rest</a></div>
   <div style="margin-left: 40px"><div><strong>Methods</strong><br />
             Vocabularies</div>
         </div>
@@ -173,7 +173,7 @@
         </div>
     
          &nbsp;<ul>
-            <li><strong>Vocabularies</li></strong> - this links you a list of the vocabularies and their 
+            <li><strong>Vocabularies</strong></li> - this links you a list of the vocabularies and their 
                 description
                 <br />
                 <br />
@@ -225,7 +225,7 @@
                             Returns a list of the vocabularies and their descriptions in&nbsp; xml </td>
                         <td class="style4">
                             <asp:HyperLink ID="HyperLink4" runat="server" 
-                                NavigateUrl="~/HisVocabularyService.svc/rest/Vocabularies">see vocabularies here</asp:HyperLink></td>
+                                NavigateUrl="~/terms/rest/Vocabularies">see vocabularies here</asp:HyperLink></td>
 
                     </tr>
                 </table>
@@ -287,7 +287,7 @@
                             Returns a vocabulary list and its terms and definition in xml</td>
                       <td class="style4">
                             <asp:HyperLink ID="HyperLink3" runat="server" 
-                                NavigateUrl="~/HisVocabularyService.svc/rest/Vocabulary/CensorCode">see vocbulary : CensorCode</asp:HyperLink></td>
+                                NavigateUrl="~/terms/rest/Vocabulary/CensorCode">see vocbulary : CensorCode</asp:HyperLink></td>
 
                     </tr>
                 </table>
@@ -352,7 +352,7 @@
                             Returns a term and its definition in xml</td>
                         <td class="style4">
                             <asp:HyperLink ID="HyperLink2" runat="server" 
-                                NavigateUrl="~/HisVocabularyService.svc/rest/Vocabulary/CensorCode/gt">see term : gt (vocabulary : CensorCode)
+                                NavigateUrl="~/terms/rest/Vocabulary/CensorCode/gt">see term : gt (vocabulary : CensorCode)
                             </asp:HyperLink></td>
 
                     </tr>
@@ -362,7 +362,7 @@
     <div> <h1 class="style14">SOAP</h1>
     
         <asp:HyperLink ID="HyperLink1" runat="server" 
-            NavigateUrl="~/HisVocabularyService.svc">SOAP description</asp:HyperLink>
+            NavigateUrl="~/terms">SOAP description</asp:HyperLink>
     
     <div>
         Description of Soap methods
