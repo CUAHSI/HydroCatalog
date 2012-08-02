@@ -62,6 +62,7 @@
     <None Include="App_Data\VocabularyData">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="getVocabularies.aspx" />
     <Content Include="HisVocabularyRest.svc" />
     <Content Include="HisVocabularyService.svc" />
     <Content Include="Methods.aspx" />
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="getVocabularies.aspx.cs">
+      <DependentUpon>getVocabularies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="getVocabularies.aspx.designer.cs">
+      <DependentUpon>getVocabularies.aspx</DependentUpon>
     </Compile>
     <Compile Include="HisVocabularyService.svc.cs">
       <DependentUpon>HisVocabularyService.svc</DependentUpon>

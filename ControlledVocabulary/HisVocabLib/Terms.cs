@@ -39,7 +39,6 @@ namespace cuahsi.HisVocabLib
         private List<VocabularyTermType> vocab_terms = null;
         private string _name;
         private string _descr;
-
         
         [DataMember]
         public string Name
@@ -53,8 +52,6 @@ namespace cuahsi.HisVocabLib
                 _name = value;
             }
         }
-
-       
 
         [DataMember]
         public String Description
@@ -97,10 +94,7 @@ namespace cuahsi.HisVocabLib
             {
                 vocab_terms = value;
             }
-
         }
-
-      
     }
 
     //  [DataContract(Namespace = "http://his.cuahsi.org/ontology")]

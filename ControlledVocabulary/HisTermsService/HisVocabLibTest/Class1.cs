@@ -119,7 +119,7 @@ namespace HisVocabLibTest
             Console.WriteLine("Test : getVocabulary()");
             HisVocabularyService his = new HisVocabularyService();
             Vocabulary v1, v2;
-            v1 = (Vocabulary) his.getVocabulary("SampleType");
+            v1 = his.getVocabulary("SampleType");
             string[] terms = {"Unknown", "No Sample", "FD", "FF", "FL", "LF", "GW", "PB", "PD", "PE", "PI", "PW", "RE", "SE", "SR", 
                                  "SS", "SW", "TE", "TI", "TW", "VE", "VI", "VW", "Grab", "Automated", "meteorological" };
             int i = 0;
@@ -129,7 +129,7 @@ namespace HisVocabLibTest
                 i++;
             }
 
-            v2 = (Vocabulary) his.getVocabulary("DataType");
+            v2 = his.getVocabulary("DataType");
 
             foreach (VocabularyTermType vt in v2.VocabularyTerms)
             {
@@ -164,11 +164,11 @@ namespace HisVocabLibTest
         {
             Console.WriteLine("Testing Exceptions: \n");
             HisVocabularyService his = new HisVocabularyService();
-            //his.getVocabularies();
+            his.getVocabularies();
             try
             {
                 his.getVocabularyTerm("NonExistentVocab", "lt");
-                //his.getVocabularyTerm("CensorCode", "incorrect_term");
+                his.getVocabularyTerm("CensorCode", "incorrect_term");
 
 
             }

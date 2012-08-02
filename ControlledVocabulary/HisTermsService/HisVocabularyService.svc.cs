@@ -40,23 +40,17 @@ namespace cuahsi.his.vocabservice
 
                 while (rdr1.Read())
                 {
-                    VocabularyDescription v = new VocabularyDescription();
+                    var v = new VocabularyDescription();
                     v.Name = rdr1.GetString(0);
                     v.Description = rdr1.GetString(1);
                     vocabularies.VocabularyList.Add(v);
                     all_vocab.Add(v);
                 }
-               // return all_vocab).ToArray();
-               return all_vocab.ConvertAll(new Converter<VocabularyDescription, Vocabulary>(
-                                         delegate(VocabularyDescription vocab) {
-                                                                                   return  new Vocabulary(vocab);
-                                         }
-                                         )
-                                         ).ToArray();
+               return all_vocab.ConvertAll(vocab => new Vocabulary(vocab) ).ToArray();
             }
         }
 
-        /*
+       /*
          * getVocabulary() - this method returns the vocabulary that the client selects, if it doesnt exist should throw error
          * 
          * @params: String

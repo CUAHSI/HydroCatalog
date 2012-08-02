@@ -8,14 +8,19 @@
         Welcome to the CUASHI VocabularyDescription Services
     </h2>
     <p>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are REST and SOAP interfaces. To see the detailed description of the methods click the methdos tab</p>
+<<<<<<< local
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&nbsp;&nbsp;&nbsp;&nbsp; There are REST and SOAP interfaces. To see the detailed description of the methods click the methdos tab</em></p>
+=======
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are REST and SOAP interfaces. To see the detailed description of the methods click the methdos tab. 
+        There is also a standard web help at: </p>
+>>>>>>> other
     <p>
-        Simple Senario</p>
+        <strong>Simple Senario</strong></p>
 <p>
         <span style="padding-left:20px">1)&nbsp; Access list of vocabularies <a href="HisVocabularyService.svc/rest/Vocabularies" > here </a>
         <br/>
         <span style="padding-left:20px">2)    Lets say I want to view all the terms within the vocabulary of CensorCode, <br/>
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given this url :  <a href="HisVocabularyService.svc/rest/Vocabulary/CensorCode">lHisVocabularyService.svc/rest/Vocabulary/CensorCode </a> <br/>              
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given this url :  <a href="HisVocabularyService.svc/rest/Vocabulary/CensorCode">HisVocabularyService.svc/rest/Vocabulary/CensorCode </a> <br/>              
         <br/> 
         <span style="padding-left:40px"/>--Basically you can replace the segment "CensorCode" with the name of any vocabulary of your choice,
             <br/>

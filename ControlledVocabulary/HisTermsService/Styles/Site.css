@@ -40,7 +40,7 @@ p
 h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
-    color: #666666;
+    color: #000000;
     font-variant: small-caps;
     text-transform: none;
     font-weight: 200;
@@ -52,6 +52,7 @@ h1
     font-size: 1.6em;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    color: green;
 }
 
 h2
@@ -73,6 +74,7 @@ h4
 h5, h6
 {
     font-size: 1em;
+    color: green;
 }
 
 /* this rule styles <h1> and <h2> tags that are the 
@@ -291,4 +293,11 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+
+/*----------TABLE OBJECTS-----------*/
+
+table_input 
+{
+    
 }
