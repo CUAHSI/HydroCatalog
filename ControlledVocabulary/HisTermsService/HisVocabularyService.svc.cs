@@ -9,6 +9,61 @@ using cuahsi.HisVocabLib;
 
 namespace cuahsi.his.vocabservice
 {
+    /* 
+     * THIS IS NOW DONE IN CODE IN global.asmx
+     *  void Application_Start(object sender, EventArgs e)
+        {
+            // Code that runs on application startup
+            RouteTable.Routes.Add(new ServiceRoute("Terms", new ServiceHostFactory(), typeof(HisVocabularyService)));
+        }
+     * 
+     * combined with 
+     * <modules runAllManagedModulesForAllRequests="true">
+			  <add name="UrlRoutingModule" type="System.Web.Routing.UrlRoutingModule, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+		  </modules>
+
+		  <handlers>
+			  <add name="UrlRoutingHandler" preCondition="integratedMode" verb="*" path="UrlRouting.axd"/>
+		  </handlers>
+     * and
+     * 
+     * <system.serviceModel>
+    <services>
+      <service name="cuahsi.his.vocabservice.HisVocabularyService" behaviorConfiguration="serveBehav">
+        <endpoint address="rest" binding="webHttpBinding" behaviorConfiguration="restBehavior" contract="cuahsi.his.vocabservice.IVocabularyRest" />
+        <endpoint address="soap" binding="basicHttpBinding"  contract="cuahsi.his.vocabservice.IVocabularyService" />
+        <endpoint contract="IMetadataExchange" binding="mexHttpBinding" address="mex" />
+      </service>
+    </services>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="serveBehav">
+			
+          <!-- To avoid disclosing metadata information, set the value below to false and remove the metadata endpoint above before deployment -->
+          <serviceMetadata httpGetEnabled="true" />
+          <!-- To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information -->
+          <serviceDebug includeExceptionDetailInFaults="true"/>
+          
+        </behavior>
+      </serviceBehaviors>
+      <endpointBehaviors>
+        <behavior name ="restBehavior">
+         
+          <webHttp helpEnabled="true"/>
+   
+        </behavior>
+      </endpointBehaviors>
+    </behaviors>
+	  <serviceHostingEnvironment multipleSiteBindingsEnabled="true"  aspNetCompatibilityEnabled="true">
+		  <serviceActivations>
+			  <!-- example of how to do the config without the vocab-->
+			<!--  <add   relativeAddress="His.svc" service="cuahsi.his.vocabservice.HisVocabularyService"  />
+		  -->
+		  </serviceActivations>
+	  </serviceHostingEnvironment>
+  </system.serviceModel>
+     * 
+     * */
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class HisVocabularyService : IVocabularyService, IVocabularyRest
     {
@@ -40,17 +95,23 @@ namespace cuahsi.his.vocabservice
 
                 while (rdr1.Read())
                 {
-                    var v = new VocabularyDescription();
+                    VocabularyDescription v = new VocabularyDescription();
                     v.Name = rdr1.GetString(0);
                     v.Description = rdr1.GetString(1);
                     vocabularies.VocabularyList.Add(v);
                     all_vocab.Add(v);
                 }
-               return all_vocab.ConvertAll(vocab => new Vocabulary(vocab) ).ToArray();
+               // return all_vocab).ToArray();
+               return all_vocab.ConvertAll(new Converter<VocabularyDescription, Vocabulary>(
+                                         delegate(VocabularyDescription vocab) {
+                                                                                   return  new Vocabulary(vocab);
+                                         }
+                                         )
+                                         ).ToArray();
             }
         }
 
-       /*
+        /*
          * getVocabulary() - this method returns the vocabulary that the client selects, if it doesnt exist should throw error
          * 
          * @params: String
