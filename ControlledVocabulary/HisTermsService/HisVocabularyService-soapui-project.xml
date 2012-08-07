@@ -13,8 +13,8 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getVocabularies">
-      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularies" style="document"/>
+    <wsdl:operation name="GetVocabularies">
+      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularies" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -22,8 +22,8 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getVocabulary">
-      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabulary" style="document"/>
+    <wsdl:operation name="GetVocabulary">
+      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabulary" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -31,8 +31,8 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getVocabularyTerm">
-      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularyTerm" style="document"/>
+    <wsdl:operation name="GetVocabularyTerm">
+      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularyTerm" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -49,8 +49,8 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="toSkos">
-      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/toSkos" style="document"/>
+    <wsdl:operation name="GetTermAsToSkos">
+      <soap:operation soapAction="http://his.cuahsi.org/services/ontology/IVocabularyService/GetTermAsToSkos" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -61,7 +61,7 @@
   </wsdl:binding>
   <wsdl:service name="HisVocabularyService">
     <wsdl:port name="BasicHttpBinding_IVocabularyService" binding="tns:BasicHttpBinding_IVocabularyService">
-      <soap:address location="http://localhost:1132/HisVocabularyService.svc"/>
+      <soap:address location="http://localhost:1132/HisVocabularyService.svc/soap"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?wsdl=wsdl0</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://his.cuahsi.org/services/ontology" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://his.cuahsi.org/services/ontology" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
@@ -69,33 +69,52 @@
     <xsd:schema targetNamespace="http://his.cuahsi.org/services/ontology/Imports">
       <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd0" namespace="http://his.cuahsi.org/services/ontology"/>
       <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
-      <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
-      <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd3" namespace="http://his.cuahsi.org/ontology"/>
+      <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd2" namespace="http://his.cuahsi.org/ontology/dc"/>
+      <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd3" namespace="http://www.w3.org/2004/02/skos/core#"/>
+      <xsd:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd4" namespace="http://his.cuahsi.org/ontology"/>
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IVocabularyRest_getVocabularies_InputMessage">
+    <wsdl:part name="parameters" element="tns:getVocabularies"/>
+  </wsdl:message>
+  <wsdl:message name="IVocabularyRest_getVocabularies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getVocabulariesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IVocabularyRest_getVocabulary_InputMessage">
+    <wsdl:part name="parameters" element="tns:getVocabulary"/>
+  </wsdl:message>
+  <wsdl:message name="IVocabularyRest_getVocabulary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getVocabularyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IVocabularyRest_getVocabularyTerm_InputMessage">
+    <wsdl:part name="parameters" element="tns:getVocabularyTerm"/>
+  </wsdl:message>
+  <wsdl:message name="IVocabularyRest_getVocabularyTerm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getVocabularyTermResponse"/>
+  </wsdl:message>
   <wsdl:message name="IVocabularyService_Test_InputMessage">
     <wsdl:part name="parameters" element="tns:Test"/>
   </wsdl:message>
   <wsdl:message name="IVocabularyService_Test_OutputMessage">
     <wsdl:part name="parameters" element="tns:TestResponse"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_getVocabularies_InputMessage">
-    <wsdl:part name="parameters" element="tns:getVocabularies"/>
+  <wsdl:message name="IVocabularyService_GetVocabularies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVocabularies"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_getVocabularies_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getVocabulariesResponse"/>
+  <wsdl:message name="IVocabularyService_GetVocabularies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVocabulariesResponse"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_getVocabulary_InputMessage">
-    <wsdl:part name="parameters" element="tns:getVocabulary"/>
+  <wsdl:message name="IVocabularyService_GetVocabulary_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVocabulary"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_getVocabulary_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getVocabularyResponse"/>
+  <wsdl:message name="IVocabularyService_GetVocabulary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVocabularyResponse"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_getVocabularyTerm_InputMessage">
-    <wsdl:part name="parameters" element="tns:getVocabularyTerm"/>
+  <wsdl:message name="IVocabularyService_GetVocabularyTerm_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVocabularyTerm"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_getVocabularyTerm_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getVocabularyTermResponse"/>
+  <wsdl:message name="IVocabularyService_GetVocabularyTerm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVocabularyTermResponse"/>
   </wsdl:message>
   <wsdl:message name="IVocabularyService_getAllTerms_InputMessage">
     <wsdl:part name="parameters" element="tns:getAllTerms"/>
@@ -103,53 +122,56 @@
   <wsdl:message name="IVocabularyService_getAllTerms_OutputMessage">
     <wsdl:part name="parameters" element="tns:getAllTermsResponse"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_toSkos_InputMessage">
-    <wsdl:part name="parameters" element="tns:toSkos"/>
+  <wsdl:message name="IVocabularyService_GetTermAsToSkos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTermAsToSkos"/>
   </wsdl:message>
-  <wsdl:message name="IVocabularyService_toSkos_OutputMessage">
-    <wsdl:part name="parameters" element="tns:toSkosResponse"/>
+  <wsdl:message name="IVocabularyService_GetTermAsToSkos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTermAsToSkosResponse"/>
   </wsdl:message>
+  <wsdl:portType name="IVocabularyRest">
+    <wsdl:operation name="getVocabularies">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyRest/getVocabularies" message="tns:IVocabularyRest_getVocabularies_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyRest/getVocabulariesResponse" message="tns:IVocabularyRest_getVocabularies_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getVocabulary">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyRest/getVocabulary" message="tns:IVocabularyRest_getVocabulary_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyRest/getVocabularyResponse" message="tns:IVocabularyRest_getVocabulary_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getVocabularyTerm">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyRest/getVocabularyTerm" message="tns:IVocabularyRest_getVocabularyTerm_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyRest/getVocabularyTermResponse" message="tns:IVocabularyRest_getVocabularyTerm_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IVocabularyService">
     <wsdl:operation name="Test">
       <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/Test" message="tns:IVocabularyService_Test_InputMessage"/>
       <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/TestResponse" message="tns:IVocabularyService_Test_OutputMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="getVocabularies">
-      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularies" message="tns:IVocabularyService_getVocabularies_InputMessage"/>
-      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabulariesResponse" message="tns:IVocabularyService_getVocabularies_OutputMessage"/>
+    <wsdl:operation name="GetVocabularies">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularies" message="tns:IVocabularyService_GetVocabularies_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabulariesResponse" message="tns:IVocabularyService_GetVocabularies_OutputMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="getVocabulary">
-      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabulary" message="tns:IVocabularyService_getVocabulary_InputMessage"/>
-      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularyResponse" message="tns:IVocabularyService_getVocabulary_OutputMessage"/>
+    <wsdl:operation name="GetVocabulary">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabulary" message="tns:IVocabularyService_GetVocabulary_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularyResponse" message="tns:IVocabularyService_GetVocabulary_OutputMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="getVocabularyTerm">
-      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularyTerm" message="tns:IVocabularyService_getVocabularyTerm_InputMessage"/>
-      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularyTermResponse" message="tns:IVocabularyService_getVocabularyTerm_OutputMessage"/>
+    <wsdl:operation name="GetVocabularyTerm">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularyTerm" message="tns:IVocabularyService_GetVocabularyTerm_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularyTermResponse" message="tns:IVocabularyService_GetVocabularyTerm_OutputMessage"/>
     </wsdl:operation>
     <wsdl:operation name="getAllTerms">
       <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getAllTerms" message="tns:IVocabularyService_getAllTerms_InputMessage"/>
       <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/getAllTermsResponse" message="tns:IVocabularyService_getAllTerms_OutputMessage"/>
     </wsdl:operation>
-    <wsdl:operation name="toSkos">
-      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/toSkos" message="tns:IVocabularyService_toSkos_InputMessage"/>
-      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/toSkosResponse" message="tns:IVocabularyService_toSkos_OutputMessage"/>
+    <wsdl:operation name="GetTermAsToSkos">
+      <wsdl:input wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetTermAsToSkos" message="tns:IVocabularyService_GetTermAsToSkos_InputMessage"/>
+      <wsdl:output wsaw:Action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetTermAsToSkosResponse" message="tns:IVocabularyService_GetTermAsToSkos_OutputMessage"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://his.cuahsi.org/services/ontology" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://his.cuahsi.org/services/ontology">
-  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
-  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd3" namespace="http://his.cuahsi.org/ontology"/>
-  <xs:element name="Test">
-    <xs:complexType>
-      <xs:sequence/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TestResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TestResult" nillable="true" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd2" namespace="http://his.cuahsi.org/ontology/dc"/>
+  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd3" namespace="http://www.w3.org/2004/02/skos/core#"/>
+  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd4" namespace="http://his.cuahsi.org/ontology"/>
   <xs:element name="getVocabularies">
     <xs:complexType>
       <xs:sequence/>
@@ -158,7 +180,7 @@
   <xs:element name="getVocabulariesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="getVocabulariesResult" nillable="true" type="q1:ArrayOfstring" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        <xs:element minOccurs="0" name="getVocabulariesResult" nillable="true" type="q1:ArrayOfVocabulary" xmlns:q1="http://his.cuahsi.org/ontology/dc"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -172,7 +194,7 @@
   <xs:element name="getVocabularyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="getVocabularyResult" nillable="true" type="q2:Vocabulary" xmlns:q2="http://his.cuahsi.org/ontology"/>
+        <xs:element minOccurs="0" name="getVocabularyResult" nillable="true" type="q2:Vocabulary" xmlns:q2="http://his.cuahsi.org/ontology/dc"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -187,67 +209,169 @@
   <xs:element name="getVocabularyTermResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="getVocabularyTermResult" nillable="true" type="q3:VocabularyTermType" xmlns:q3="http://his.cuahsi.org/ontology"/>
+        <xs:element minOccurs="0" name="getVocabularyTermResult" nillable="true" type="q3:Concept" xmlns:q3="http://www.w3.org/2004/02/skos/core#"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Test">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="TestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="TestResult" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVocabularies">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="GetVocabulariesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetVocabulariesResult" type="tns:ArrayOfVocabulary"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfVocabulary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Vocabulary" nillable="true" type="q4:Vocabulary" xmlns:q4="http://his.cuahsi.org/ontology"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetVocabulary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="VocabularyName" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVocabularyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetVocabularyResult" type="q5:Vocabulary" xmlns:q5="http://his.cuahsi.org/ontology"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVocabularyTerm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="VocabularyName" type="xs:string"/>
+        <xs:element minOccurs="0" maxOccurs="1" name="TermName" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVocabularyTermResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetVocabularyTermResult" type="q6:VocabularyTermType" xmlns:q6="http://www.w3.org/2004/02/skos/core#"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="getAllTerms">
-    <xs:complexType>
-      <xs:sequence/>
-    </xs:complexType>
+    <xs:complexType/>
   </xs:element>
   <xs:element name="getAllTermsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="getAllTermsResult" nillable="true" type="q4:ArrayOfVocabularyTermType" xmlns:q4="http://his.cuahsi.org/ontology"/>
+        <xs:element minOccurs="0" maxOccurs="1" name="getAllTermsResult" type="tns:ArrayOfVocabularyTermType"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="toSkos">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="Vocabulary" nillable="true" type="xs:string"/>
-        <xs:element minOccurs="0" name="Term" nillable="true" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="toSkosResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="toSkosResult" nillable="true" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-  <xs:complexType name="ArrayOfstring">
+  <xs:complexType name="ArrayOfVocabularyTermType">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VocabularyTermType" nillable="true" type="q7:VocabularyTermType" xmlns:q7="http://www.w3.org/2004/02/skos/core#"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd3</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://his.cuahsi.org/ontology" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://his.cuahsi.org/ontology">
+  <xs:element name="GetTermAsToSkos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="VocabularyNmae" type="xs:string"/>
+        <xs:element minOccurs="0" maxOccurs="1" name="Term" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTermAsToSkosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetTermAsToSkosResult" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://his.cuahsi.org/ontology/dc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://his.cuahsi.org/ontology/dc">
+  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd3" namespace="http://www.w3.org/2004/02/skos/core#"/>
+  <xs:complexType name="ArrayOfVocabulary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Vocabulary" nillable="true" type="tns:Vocabulary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVocabulary" nillable="true" type="tns:ArrayOfVocabulary"/>
   <xs:complexType name="Vocabulary">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VocabularyDescription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VocabularyTerms" nillable="true" type="q1:ArrayOfConcept" xmlns:q1="http://www.w3.org/2004/02/skos/core#">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Vocabulary" nillable="true" type="tns:Vocabulary"/>
+  <xs:complexType name="VocabularyDescription">
     <xs:sequence>
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
-      <xs:element minOccurs="0" name="VocabularyTerms" nillable="true" type="tns:ArrayOfVocabularyTermType"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Vocabulary" nillable="true" type="tns:Vocabulary"/>
-  <xs:complexType name="ArrayOfVocabularyTermType">
+  <xs:element name="VocabularyDescription" nillable="true" type="tns:VocabularyDescription"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd3</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://www.w3.org/2004/02/skos/core#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.w3.org/2004/02/skos/core#">
+  <xs:complexType name="ArrayOfConcept">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="VocabularyTermType" nillable="true" type="tns:VocabularyTermType"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Concept" nillable="true" type="tns:Concept"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfVocabularyTermType" nillable="true" type="tns:ArrayOfVocabularyTermType"/>
-  <xs:complexType name="VocabularyTermType">
+  <xs:element name="ArrayOfConcept" nillable="true" type="tns:ArrayOfConcept"/>
+  <xs:complexType name="Concept">
     <xs:sequence>
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
       <xs:element minOccurs="0" name="Term" nillable="true" type="xs:string"/>
-      <xs:element minOccurs="0" name="Vocab" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inShceme" nillable="true" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VocabularyTermType" nillable="true" type="tns:VocabularyTermType"/>
+  <xs:element name="Concept" nillable="true" type="tns:Concept"/>
+  <xs:complexType name="VocabularyTermType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="inShceme" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="Term" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd4</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://his.cuahsi.org/ontology" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://his.cuahsi.org/ontology">
+  <xs:import schemaLocation="http://localhost:1132/HisVocabularyService.svc?xsd=xsd3" namespace="http://www.w3.org/2004/02/skos/core#"/>
+  <xs:complexType name="Vocabulary">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VocabularyDescription">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="VocabularyTerms" nillable="true" type="tns:ArrayOfVocabularyTermType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VocabularyDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfVocabularyTermType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VocabularyTermType" nillable="true" type="q1:VocabularyTermType" xmlns:q1="http://www.w3.org/2004/02/skos/core#"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:1132/HisVocabularyService.svc?xsd=xsd1</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
   <xs:element name="anyType" nillable="true" type="xs:anyType"/>
   <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
@@ -288,40 +412,40 @@
   <xs:attribute name="FactoryType" type="xs:QName"/>
   <xs:attribute name="Id" type="xs:ID"/>
   <xs:attribute name="Ref" type="xs:IDREF"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getAllTerms" name="getAllTerms" bindingOperationName="getAllTerms" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getAllTerms" name="getAllTerms" bindingOperationName="getAllTerms" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
    <soapenv:Header/>
    <soapenv:Body>
       <ont:getAllTerms/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getAllTerms"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularies" name="getVocabularies" bindingOperationName="getVocabularies" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getAllTerms"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularies" name="GetVocabularies" bindingOperationName="GetVocabularies" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
    <soapenv:Header/>
    <soapenv:Body>
       <ont:getVocabularies/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularies"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabulary" name="getVocabulary" bindingOperationName="getVocabulary" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularies"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabulary" name="GetVocabulary" bindingOperationName="GetVocabulary" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
    <soapenv:Header/>
    <soapenv:Body>
-      <ont:getVocabulary>
+      <ont:GetVocabulary>
          <!--Optional:-->
-         <ont:VocabularyName>?</ont:VocabularyName>
-      </ont:getVocabulary>
+         <ont:VocabularyName>CensorCode</ont:VocabularyName>
+      </ont:GetVocabulary>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabulary"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularyTerm" name="getVocabularyTerm" bindingOperationName="getVocabularyTerm" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabulary"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularyTerm" name="GetVocabularyTerm" bindingOperationName="GetVocabularyTerm" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
    <soapenv:Header/>
    <soapenv:Body>
-      <ont:getVocabularyTerm>
+      <ont:GetVocabularyTerm>
          <!--Optional:-->
-         <ont:VocabularyName>?</ont:VocabularyName>
+         <ont:VocabularyName>CensorCode</ont:VocabularyName>
          <!--Optional:-->
-         <ont:TermName>?</ont:TermName>
-      </ont:getVocabularyTerm>
+         <ont:TermName>gt</ont:TermName>
+      </ont:GetVocabularyTerm>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/getVocabularyTerm"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/Test" name="Test" bindingOperationName="Test" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetVocabularyTerm"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/Test" name="Test" bindingOperationName="Test" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
    <soapenv:Header/>
    <soapenv:Body>
       <ont:Test/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/Test"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/toSkos" name="toSkos" bindingOperationName="toSkos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/Test"/></con:call></con:operation><con:operation isOneWay="false" action="http://his.cuahsi.org/services/ontology/IVocabularyService/GetTermAsToSkos" name="GetTermAsToSkos" bindingOperationName="GetTermAsToSkos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:1132/HisVocabularyService.svc/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ont="http://his.cuahsi.org/services/ontology">
    <soapenv:Header/>
    <soapenv:Body>
       <ont:toSkos>
@@ -331,4 +455,4 @@
          <ont:Term>?</ont:Term>
       </ont:toSkos>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/toSkos"/></con:call></con:operation></con:interface><con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="restVocabularies" type="rest" basePath="/Terms/rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:1132</con:endpoint></con:endpoints><con:resource name="Vocabularies" path="/Vocabularies"><con:settings/><con:parameters/><con:method name="AllVocabs" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/xml; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ont="http://his.cuahsi.org/ontology">ont:ArrayOfVocabulary</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="allvocabls_json" mediaType="application/xml" accept="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="RecordRequestRepresentations">true</con:setting></con:settings><con:endpoint>http://localhost:1132</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request><con:request name="allvocabls_xml" mediaType="application/xml" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="RecordRequestRepresentations">true</con:setting></con:settings><con:endpoint>http://localhost:1132</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="{VOCABULARYNAME}" path="/Vocabulary/{VOCABULARYNAME}"><con:settings/><con:parameters><con:parameter><con:name>VOCABULARYNAME</con:name><con:value>VOCABULARYNAME</con:value><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type><con:default>VOCABULARYNAME</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="censorCode" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html</con:mediaType><con:status>400</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ont="http://his.cuahsi.org/ontology">ont:Vocabulary</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:cen="http://localhost/Terms/rest/Vocabulary/CensorCode">cen:Response</con:element></con:representation><con:request name="CensorCode_xml" mediaType="application/xml"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:1132</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="VOCABULARYNAME" value="CensorCode" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request><con:request name="CensorCode_json" mediaType="application/xml" accept="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:1132</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="VOCABULARYNAME" value="CensorCode" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://his.cuahsi.org/services/ontology/IVocabularyService/toSkos"/></con:call></con:operation></con:interface><con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="restVocabularies" type="rest" basePath="/Terms/rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:1132</con:endpoint><con:endpoint>http://water.sdsc.edu/hiscv</con:endpoint></con:endpoints><con:resource name="Vocabularies" path="/Vocabularies"><con:settings/><con:parameters/><con:method name="AllVocabs" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/xml; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ont="http://his.cuahsi.org/ontology">ont:ArrayOfVocabulary</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="allvocabls_json" mediaType="application/xml" accept="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="RecordRequestRepresentations">true</con:setting></con:settings><con:endpoint>http://water.sdsc.edu/hiscv</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request><con:request name="allvocabls_xml" mediaType="application/xml" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="RecordRequestRepresentations">true</con:setting></con:settings><con:endpoint>http://water.sdsc.edu/hiscv</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="{VOCABULARYNAME}" path="/Vocabulary/{VOCABULARYNAME}"><con:settings/><con:parameters><con:parameter><con:name>VOCABULARYNAME</con:name><con:value>VOCABULARYNAME</con:value><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type><con:default>VOCABULARYNAME</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="censorCode" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html</con:mediaType><con:status>400</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ont="http://his.cuahsi.org/ontology">ont:Vocabulary</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:cen="http://localhost/Terms/rest/Vocabulary/CensorCode">cen:Response</con:element></con:representation><con:request name="CensorCode_xml" mediaType="application/xml"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:1132</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="VOCABULARYNAME" value="CensorCode" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request><con:request name="CensorCode_json" mediaType="application/xml" accept="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:1132</con:endpoint><con:request/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="VOCABULARYNAME" value="CensorCode" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>

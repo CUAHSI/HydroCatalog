@@ -1,0 +1,40 @@
+﻿
+Using the HIS vocabs:
+on kyle.ucsd.edu
+Tables:
+* Concept
+* Hierarchy
+* Synonym
+
+No Descriptions:
+Queries:
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [ConceptID]
+      ,[ConceptName]
+      ,[Layer]
+      ,[IsSearchable]
+  FROM [HisMasterVocabTest].[dbo].[Concepts]
+  --where ConceptName ='nitrogen'
+  where Conceptid =2382
+  
+  go
+  
+  -- find parents
+  select * from Hierarchy where
+  ConceptID = 2382
+  
+  -- find children
+  
+  select * from Hierarchy where
+  ParentID = 2382
+  
+  -- find synoyms
+  select * from Synonyms where
+ conceptID = 2382
+
+ ----
+insheme: variableOntology
+ ConceptName=preflabel
+
+ parent:broader
+ child:narrower
