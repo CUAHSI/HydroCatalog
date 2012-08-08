@@ -131,7 +131,7 @@ namespace cuahsi.HisVocabLib
             }
         }
 
-        [DataMember(Name = "definition")]
+        [DataMember(Name = "description")]
         public string Description
         {
             get
