@@ -12,6 +12,7 @@ namespace cuahsi.HisVocabLib
     public class VocabulariesList
     {
         List<VocabularyDescription> Vocab_List = new List<VocabularyDescription>();
+        int vocab_Count;
 
         [DataMember]
         public List<VocabularyDescription> VocabularyList
@@ -130,7 +131,7 @@ namespace cuahsi.HisVocabLib
             }
         }
 
-        [DataMember(Name = "description")]
+        [DataMember(Name = "definition")]
         public string Description
         {
             get
