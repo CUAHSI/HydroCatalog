@@ -66,6 +66,7 @@
     <Content Include="HisVocabularyRest.svc" />
     <Content Include="HisVocabularyService.svc" />
     <Content Include="Methods.aspx" />
+    <Content Include="Notes.txt" />
     <Content Include="Selection\functions.js" />
     <Content Include="Selection\ChangePassword.aspx" />
     <Content Include="Selection\ChangePasswordSuccess.aspx" />
