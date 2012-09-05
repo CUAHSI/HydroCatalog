@@ -104,6 +104,18 @@ namespace cuahsi.HisVocabLib
         string _term;
         string _descr;
         string _voc;
+        //string _synonym;
+        //string _child;
+        //string _parent;
+
+        [DataMember(Name = "resource",IsRequired = false)]
+        public string Identifier
+        {
+            get;
+
+            set;
+            
+        }
 
         [DataMember(Name = "inShceme")]
         public string Vocab
@@ -143,5 +155,82 @@ namespace cuahsi.HisVocabLib
                 _descr = value;
             }
         }
+        List<Synonym> _syns = new List<Synonym>();
+        [DataMember]
+        public List<Synonym> Synonyms
+        {
+            get
+            {
+                return _syns;
+            }
+            set
+            {
+                _syns = value;
+            }
+
+        }
+        //are there a list of parents and a list of children (broader and narrower terms)?
+        List<LinkedConcept> parents = new List<LinkedConcept>();
+        [DataMember(Name="broader")]
+        public List<LinkedConcept> ParentConcepts 
+        { 
+            get
+            {
+                return parents;
+            }
+            set
+            {
+                parents = value;
+            }
+        }
+
+        List<LinkedConcept> children = new List<LinkedConcept>();
+        [DataMember(Name="narrower")]
+        public List<LinkedConcept> ChildConcepts
+        {
+            get
+            {
+                return children;
+            }
+            set
+            {
+                children = value;
+            }
+        }
     }//end class VocabularyTermType
+
+    public class LinkedConcept
+    {
+        private string con;
+        public String cName
+        {
+            get
+            {
+                return con;
+            }
+            set
+            {
+                con = value;
+            }
+        }
+
+    }
+
+    public class Synonym
+    {
+        private string syn;
+        [DataMember(Name="altlabel")]
+        public String altLabel
+        {
+            get
+            {
+                return syn;
+            }
+            set
+            {
+                syn = value;
+            }
+        }
+    }
+
 }
