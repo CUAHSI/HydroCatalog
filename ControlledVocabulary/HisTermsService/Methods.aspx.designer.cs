@@ -13,15 +13,6 @@ namespace cuahsi.his.vocabservice {
     public partial class Methods {
         
         /// <summary>
-        /// BulletedList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList BulletedList1;
-        
-        /// <summary>
         /// HyperLink4 control.
         /// </summary>
         /// <remarks>

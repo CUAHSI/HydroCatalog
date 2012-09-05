@@ -162,10 +162,10 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <ul>
-        <li>REST <a href="#">(help)</a> <a href="terms/rest/help">(generated help)</a></li>
-        <li>SOA <a href="terms/soap">(endpoint)</a> <a href="terms?wsdl">(WSDL)</a></li>
-    </ul>
+    <asp:BulletedList ID="BulletedList1" runat="server">
+        <asp:ListItem>REST</asp:ListItem>
+        <asp:ListItem>SOAP</asp:ListItem>
+    </asp:BulletedList>
     <div style="margin-left: 40px">
         <h1 class="style1"><strong>REST
         </strong>

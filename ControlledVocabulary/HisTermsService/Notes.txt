@@ -1,4 +1,20 @@
 ﻿
+====
+skos validation:
+http://demo.semantic-web.at:8080/SkosServices/check
+* save file
+* upload
+present errors:
+Need to add lanaguage tags.
+loose term (since there is only one). no reference to a vocabulary
+
+SKOS quality evaluator:
+https://github.com/cmader/qSKOS/wiki/_pages
+
+other skso vocabsL
+http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus/resource/fb99b141-9fe4-4a23-8bef-20a88a80f500
+
+====
 Using the HIS vocabs:
 on kyle.ucsd.edu
 Tables:
