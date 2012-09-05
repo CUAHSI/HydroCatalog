@@ -41,7 +41,7 @@ II7 Installer Install
 * navigate to web server. 
 ** be sure that ASP.net 4 is allow to execute
 * Navigate to WebSite (should be Default Web Site)
-* 
+
 
 Command Line Install
 IIS6 Note, post install you will need to create and assign the Web Application to ASP.Net 4.0 Application Pool
