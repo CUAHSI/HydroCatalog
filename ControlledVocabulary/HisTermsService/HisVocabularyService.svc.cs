@@ -67,6 +67,16 @@ namespace cuahsi.his.vocabservice
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class HisVocabularyService : IVocabularyService, IVocabularyRest
     {
+        private String[] tableNames = {"CensorCodeCV", "DataTypeCV", "GeneralCatogoryCV", "SampleMediumCV", "SampleTypeCV", "SiteTypeCV", 
+                                          "SpeciationCV", "TopicCategory", "ValueTypeCV", "VariableNameCV", "VerticalDatumCV", "Concepts"};
+
+        private string connectionString1 = "Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;";
+
+        private string connectionString2 = "Data Source=kyle.ucsd.edu; database=HisMasterVocabTest; User=webservice; Password=webservice;";
+        private string tName;
+
+        //private static SqlConnection conn1 = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;");
+        //private static SqlConnection conn2 = new SqlConnection(@"Data Source=kyle.ucsd.edu; database=HisMasterVocabTest; User=webservice; Password=webservice;");
         private VocabulariesList vocabularies = new VocabulariesList();
        
         public HisVocabularyService()
@@ -83,14 +93,15 @@ namespace cuahsi.his.vocabservice
         [WebGet(UriTemplate = "Vocabularies")]
         public Vocabulary[] getVocabularies()
         {
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
             List<VocabularyDescription> all_vocab = new List<VocabularyDescription>();
 
-            using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
+            using (conn1)
             {
-                SqlCommand Command1 = thisConnection.CreateCommand();
+                SqlCommand Command1 = conn1.CreateCommand();
 
                 Command1.CommandText = "SELECT VocabularyName, VocabularyDescription FROM VocabularyDescription";
-                thisConnection.Open();
+                conn1.Open();
                 SqlDataReader rdr1 = Command1.ExecuteReader();
 
                 while (rdr1.Read())
@@ -101,13 +112,9 @@ namespace cuahsi.his.vocabservice
                     vocabularies.VocabularyList.Add(v);
                     all_vocab.Add(v);
                 }
-               // return all_vocab).ToArray();
-               return all_vocab.ConvertAll(new Converter<VocabularyDescription, Vocabulary>(
-                                         delegate(VocabularyDescription vocab) {
-                                                                                   return  new Vocabulary(vocab);
-                                         }
-                                         )
-                                         ).ToArray();
+                rdr1.Close();
+                conn1.Close();
+               return all_vocab.ConvertAll(vocab => new Vocabulary(vocab)).ToArray();
             }
         }
 
@@ -120,6 +127,7 @@ namespace cuahsi.his.vocabservice
          * */
         public Vocabulary getVocabulary(string VocabularyName)
         {
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
             bool found = false;
 
             Vocabulary v = new Vocabulary();
@@ -133,11 +141,13 @@ namespace cuahsi.his.vocabservice
             v.Name = VocabularyName;
             //using (SqlConnection thisConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterVocabualaryV11"].ConnectionString))
             //{
-            using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
+            using (conn1)
             {
-                v.VocabularyTerms.AddRange(GetTermsFromDB(VocabularyName, thisConnection));
+                v.VocabularyTerms.AddRange(GetTermsFromDB(VocabularyName, conn1));
 
             }//end using()
+
+            conn1.Close();
             return v;
         }//end getVocabulary()
 
@@ -157,41 +167,86 @@ namespace cuahsi.his.vocabservice
 
         public VocabularyTermType getVocabularyTerm(string VocabularyName, string TermName)
         {
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
+            SqlConnection conn2 = new SqlConnection(@connectionString2);
             bool found = false;
-            
-            //Validate that vocab exists
-            found = vocabExists(VocabularyName);
-            if(found == false)
+            //Commenting out the validation for now, may not be necessary...
+            ////Validate that vocab exists
+            //found = vocabExists(VocabularyName);
+            //if(found == false)
+            //{
+            //    throw new NotFoundException("The vocabulary you have selected in is not in the database");
+            //}
+
+            ////found = termExists(VocabularyName, TermName);
+            //if (found == false)
+            //{
+            //    throw new NotFoundException("The term you have selected in is not in the database");
+            //}
+            if (VocabularyName.Equals("Concepts"))
             {
-                throw new NotFoundException("The vocabulary you have selected in is not in the database");
+                VocabularyTermType _term = new VocabularyTermType();
+
+                using (conn2)
+                {
+                    conn2.Open();
+                    SqlCommand command = conn2.CreateCommand();
+                    int id = 0;
+                    command.CommandText = "SELECT * FROM Concepts WHERE ConceptName='" + TermName + "'"; 
+                    SqlDataReader rdr1 = command.ExecuteReader();
+                    while (rdr1.Read())
+                    {
+                        _term.Term = rdr1.GetString(1);
+                        _term.Description = rdr1.GetValue(0).ToString();
+                        _term.Vocab = "Concepts";
+
+                        id = Convert.ToInt32(_term.Description);
+                    }
+                    rdr1.Close();
+
+                    SqlCommand command2 = conn2.CreateCommand();
+
+                    command2.CommandText = "SELECT * FROM Synonyms WHERE ConceptID=" + id;
+                    SqlDataReader rdr2 = command2.ExecuteReader();
+                    Synonym syn = new Synonym();
+                    syn.altLabel = "none";
+                    while (rdr2.Read())
+                    {
+                        syn.altLabel = rdr2.GetString(0);
+                        _term.Synonyms.Add(syn);
+                    }
+                    conn2.Close();
+                }
+                return _term;
             }
 
-            found = termExists(VocabularyName, TermName);
-            if (found == false)
+            else
             {
-                throw new NotFoundException("The term you have selected in is not in the database");
+                using (conn1)
+                {
+                    tName = TermName;
+                    var terms = GetTermsFromDB(VocabularyName, conn1);
+                    var term = from aTerm in terms
+                               where aTerm.Term.Equals(TermName, StringComparison.InvariantCultureIgnoreCase)
+                               select aTerm;
+                    conn1.Close();
+                    return term.First();
+                }
             }
 
-            using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
-            {
-                var terms = GetTermsFromDB(VocabularyName, thisConnection);
-                var term = from aTerm in terms where aTerm.Term == TermName select aTerm;
-                return term.First();
-            }
-      
         }
 
         public VocabularyTermType[] getAllTerms()
         {
             List<String> vocabs = new List<String>();
             List<VocabularyTermType> all_terms = new List<VocabularyTermType>();
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
 
-
-            using (SqlConnection thisConnection = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
+            using (conn1)
             {
-                SqlCommand Command1 = thisConnection.CreateCommand();
+                SqlCommand Command1 = conn1.CreateCommand();
                 Command1.CommandText = "SELECT VocabularyName FROM VocabularyDescription";
-                thisConnection.Open();
+                conn1.Open();
                 SqlDataReader rdr1 = Command1.ExecuteReader();
 
                 while (rdr1.Read())
@@ -199,18 +254,17 @@ namespace cuahsi.his.vocabservice
                     vocabs.Add((string)rdr1["VocabularyName"]);
                 }
 
-                using (SqlConnection conn2 = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;"))
+                using (conn1)
                 {
                     foreach (string aVocab in vocabs)
                     {
-                        all_terms.AddRange(GetTermsFromDB(aVocab, conn2));
-
+                        if (aVocab != null) all_terms.AddRange(GetTermsFromDB(aVocab, conn1));
                     }
 
                 }
 
                 rdr1.Close();
-                thisConnection.Close();
+                conn1.Close();
             }
 
 
@@ -240,34 +294,77 @@ namespace cuahsi.his.vocabservice
 
         private List<VocabularyTermType> GetTermsFromDB(string VocabularyName, SqlConnection conn)
         {
+;
             List<VocabularyTermType> vocab = new List<VocabularyTermType>();
-            SqlCommand command = conn.CreateCommand();
-
-
-            command.CommandText = "SELECT Term, Definition FROM " + VocabularyName + "CV";
-            conn.Open();
-            SqlDataReader rdr1 = command.ExecuteReader();
-            while (rdr1.Read())
+            Synonym syn = new Synonym();
+       
+            List<Synonym> s = new List<Synonym>();
+         
+            if(VocabularyName.Equals("Concepts"))
             {
                 VocabularyTermType _term = new VocabularyTermType();
-                _term.Term = rdr1.GetString(0);
-                _term.Description = rdr1.GetString(1);
-                _term.Vocab = VocabularyName;
-                vocab.Add(_term);
+           
+                using (conn)
+                {
+                    conn.Open();
+                    SqlCommand command = conn.CreateCommand();
+
+                    command.CommandText = "SELECT * FROM Concepts"; //"SELECT Concepts.ConceptName, Concepts.ConceptID, Synonyms.Synonym FROM Concepts,Synonyms WHERE (Concepts.ConceptName='" + tName + "')";// AND Synonyms.ConceptID = Concepts.ConceptID";// + termName +;//"SELECT Concepts.ConceptName, Concepts.ConceptID, Synonyms.Synonym FROM Concepts, Synonyms INNER JOIN Concepts ON Synonyms.ConceptID";// +",Synonyms";// " WHERE Concepts.ConceptID=Synonyms.ConceptID ";
+                    
+                    //"SELECT Concepts.ConceptName, Synonyms.Synonym FROM concepts INNER JOIN Synonyms ON Concepts.ConceptID = Synonyms.ConceptID"
+                   SqlDataReader rdr1 = command.ExecuteReader();
+                    while (rdr1.Read())
+                    {
+                        _term.Term = rdr1.GetString(1);
+                        //_term.Term = rdr12.GetString(0);
+                        _term.Description = rdr1.GetValue(0).ToString();
+                        _term.Vocab = "Concepts";
+                
+
+                        vocab.Add(_term);
+
+                    }
+                    rdr1.Close();
+
+                    conn.Close();
+                }
+
             }
-            rdr1.Close();
-            conn.Close();
+
+            else
+            {
+                using (conn)
+                {
+                    
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = "SELECT Term, Definition FROM " + VocabularyName + "CV";
+                    conn.Open();
+                    SqlDataReader rdr1 = command.ExecuteReader();
+
+                    while (rdr1.Read())
+                    {
+                        VocabularyTermType _term = new VocabularyTermType();
+                        _term.Term = rdr1.GetString(0);
+                        _term.Description = rdr1.GetString(1);
+                        _term.Vocab = VocabularyName;
+                        _term.Synonyms = s;
+                        vocab.Add(_term);
+                    }
+                    rdr1.Close();
+                    conn.Close();
+                }
+            }
+
             return vocab;
         }
 
         private bool vocabExists(string Vocabulary)
         {
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
             bool exists = false;
-            SqlConnection conn = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;");
-            
-            SqlCommand Command = conn.CreateCommand();
+            SqlCommand Command = conn1.CreateCommand();
             Command.CommandText = "SELECT VocabularyName FROM VocabularyDescription";
-            conn.Open();
+            conn1.Open();
             SqlDataReader rdr = Command.ExecuteReader();
             while(rdr.Read())
             {
@@ -279,18 +376,17 @@ namespace cuahsi.his.vocabservice
                 }
             }
             rdr.Close();
-            conn.Close();
+            conn1.Close();
 
             return exists;
         }
 
         private bool termExists(string Vocabulary, string Term)
         {
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
             bool exists = false;
-            SqlConnection conn = new SqlConnection(@"Data Source=disrupter.sdsc.edu,1433; database=HisMasterVocabTest; User=webservice; Password=webservice;");
-
-            SqlCommand Command = conn.CreateCommand();
-            conn.Open();
+            SqlCommand Command = conn1.CreateCommand();
+            conn1.Open();
             Command.CommandText = "SELECT Term FROM " + Vocabulary + "CV";
             SqlDataReader rdr = Command.ExecuteReader();
             while(rdr.Read())
@@ -303,7 +399,7 @@ namespace cuahsi.his.vocabservice
                 }
             }
             rdr.Close();
-            conn.Close();
+            conn1.Close();
             return exists;
         }
 
