@@ -133,10 +133,10 @@ namespace cuahsi.his.vocabservice
             Vocabulary v = new Vocabulary();
             found = vocabExists(VocabularyName);
             //see if vocabulary exists. Get the desription
-            if (found == false)
-            {
-                throw new NotFoundException("The vocabulary you have selected in is not in the database");
-            }
+            //if (found == false)
+            //{
+            //    throw new NotFoundException("The vocabulary you have selected in is not in the database");
+            //}
             
             v.Name = VocabularyName;
             //using (SqlConnection thisConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterVocabualaryV11"].ConnectionString))
@@ -192,7 +192,8 @@ namespace cuahsi.his.vocabservice
                     conn2.Open();
                     SqlCommand command = conn2.CreateCommand();
                     int id = 0;
-                    command.CommandText = "SELECT * FROM Concepts WHERE ConceptName='" + TermName + "'"; 
+                    //SET @TermName = TermName;
+                    command.CommandText = "SELECT * FROM Concepts WHERE ConceptName='"+ TermName +"'";// +TermName; 
                     SqlDataReader rdr1 = command.ExecuteReader();
                     while (rdr1.Read())
                     {
@@ -213,9 +214,53 @@ namespace cuahsi.his.vocabservice
                     while (rdr2.Read())
                     {
                         syn.altLabel = rdr2.GetString(0);
+                        //if (syn.altLabel.Equals(null))
+                        //    syn.altLabel = "none";
                         _term.Synonyms.Add(syn);
                     }
+                    rdr2.Close();
+                    SqlCommand command3 = conn2.CreateCommand();
+
+                    command3.CommandText = "SELECT * FROM Hierarchy WHERE ConceptID=" + id;
+                    SqlDataReader rdr3 = command3.ExecuteReader();
+                    int parentid = 0;
+                    while(rdr3.Read())
+                    {
+                        parentid = (int) rdr3.GetValue(0);
+                    }
+                    rdr3.Close();
+
+                    SqlCommand command4 = conn2.CreateCommand();
+
+                    command4.CommandText = "SELECT * FROM Concepts WHERE ConceptID=" + parentid;
+                    SqlDataReader rdr4 = command4.ExecuteReader();
+                    string parentname = "none";
+                    LinkedConcept c = new LinkedConcept();
+
+                    while (rdr4.Read())
+                    {
+                        parentname = rdr4.GetString(1);
+                        c.cName = parentname;
+                        _term.ParentConcepts.Add(c);
+                    }
+
+                    rdr4.Close();
+
+                    //get the narrower(child concept)
+                    SqlCommand command5 = conn2.CreateCommand();
+                    command5.CommandText = "SELECT Hierarchy.ConceptName FROM Concepts, Hierarchy WHERE Hierarchy.ParentID=" +id;
+                    SqlDataReader rdr5 = command5.ExecuteReader();
+                    LinkedConcept c2 = new LinkedConcept();
+                    string childname = "none";
+
+                    if (rdr5.Read())
+                    {
+                        childname = rdr5.GetString(0);
+                        c2.cName = childname;
+                        _term.ChildConcepts.Add(c2);
+                    }
                     conn2.Close();
+
                 }
                 return _term;
             }
@@ -239,8 +284,10 @@ namespace cuahsi.his.vocabservice
         public VocabularyTermType[] getAllTerms()
         {
             List<String> vocabs = new List<String>();
+            List<String> vocabs2 = new List<String>();
             List<VocabularyTermType> all_terms = new List<VocabularyTermType>();
             SqlConnection conn1 = new SqlConnection(@connectionString1);
+            SqlConnection conn2 = new SqlConnection(@connectionString2);
 
             using (conn1)
             {
@@ -253,7 +300,8 @@ namespace cuahsi.his.vocabservice
                 {
                     vocabs.Add((string)rdr1["VocabularyName"]);
                 }
-
+                rdr1.Close();
+                conn1.Close();
                 using (conn1)
                 {
                     foreach (string aVocab in vocabs)
@@ -263,10 +311,35 @@ namespace cuahsi.his.vocabservice
 
                 }
 
-                rdr1.Close();
-                conn1.Close();
             }
+            
 
+            //since itz harder to use conceptname, maybe use the conceptid so you dont get the invalid column error blah blah
+            using (conn2)
+            {
+                SqlCommand Command2 = conn2.CreateCommand();
+                Command2.CommandText = "SELECT ConceptName FROM Concepts";
+                conn2.Open();
+                SqlDataReader rdr2 = Command2.ExecuteReader();
+
+                while(rdr2.Read())
+                {
+                    vocabs2.Add((string)rdr2["ConceptName"]);
+                }
+
+                using (conn2)
+                {
+                    foreach (string aVocab in vocabs2)
+                    {
+                        if (aVocab != null) all_terms.AddRange(new[] {getVocabularyTerm("Concepts", aVocab)});
+                    }
+
+                }
+
+                rdr2.Close();
+                conn2.Close();
+
+            }
 
             return all_terms.ToArray();
 
@@ -294,45 +367,45 @@ namespace cuahsi.his.vocabservice
 
         private List<VocabularyTermType> GetTermsFromDB(string VocabularyName, SqlConnection conn)
         {
-;
             List<VocabularyTermType> vocab = new List<VocabularyTermType>();
             Synonym syn = new Synonym();
        
             List<Synonym> s = new List<Synonym>();
-         
-            if(VocabularyName.Equals("Concepts"))
-            {
-                VocabularyTermType _term = new VocabularyTermType();
+            SqlConnection conn1 = new SqlConnection(@connectionString1);
+            //if(VocabularyName.Equals("Concepts"))
+            //{
+            //    VocabularyTermType _term = new VocabularyTermType();
            
-                using (conn)
-                {
-                    conn.Open();
-                    SqlCommand command = conn.CreateCommand();
+            //    using (conn)
+            //    {
+            //        conn.Open();
+            //        SqlCommand command = conn.CreateCommand();
 
-                    command.CommandText = "SELECT * FROM Concepts"; //"SELECT Concepts.ConceptName, Concepts.ConceptID, Synonyms.Synonym FROM Concepts,Synonyms WHERE (Concepts.ConceptName='" + tName + "')";// AND Synonyms.ConceptID = Concepts.ConceptID";// + termName +;//"SELECT Concepts.ConceptName, Concepts.ConceptID, Synonyms.Synonym FROM Concepts, Synonyms INNER JOIN Concepts ON Synonyms.ConceptID";// +",Synonyms";// " WHERE Concepts.ConceptID=Synonyms.ConceptID ";
+            //        command.CommandText = "SELECT * FROM Concepts"; //"SELECT Concepts.ConceptName, Concepts.ConceptID, Synonyms.Synonym FROM Concepts,Synonyms WHERE (Concepts.ConceptName='" + tName + "')";// AND Synonyms.ConceptID = Concepts.ConceptID";// + termName +;//"SELECT Concepts.ConceptName, Concepts.ConceptID, Synonyms.Synonym FROM Concepts, Synonyms INNER JOIN Concepts ON Synonyms.ConceptID";// +",Synonyms";// " WHERE Concepts.ConceptID=Synonyms.ConceptID ";
                     
-                    //"SELECT Concepts.ConceptName, Synonyms.Synonym FROM concepts INNER JOIN Synonyms ON Concepts.ConceptID = Synonyms.ConceptID"
-                   SqlDataReader rdr1 = command.ExecuteReader();
-                    while (rdr1.Read())
-                    {
-                        _term.Term = rdr1.GetString(1);
-                        //_term.Term = rdr12.GetString(0);
-                        _term.Description = rdr1.GetValue(0).ToString();
-                        _term.Vocab = "Concepts";
+            //        //"SELECT Concepts.ConceptName, Synonyms.Synonym FROM concepts INNER JOIN Synonyms ON Concepts.ConceptID = Synonyms.ConceptID"
+            //       SqlDataReader rdr1 = command.ExecuteReader();
+            //        while (rdr1.Read())
+            //        {
+            //            _term.Term = rdr1.GetString(1);
+            //            //_term.Term = rdr12.GetString(0);
+            //            _term.Description = rdr1.GetValue(0).ToString();
+            //            _term.Vocab = "Concepts";
                 
 
-                        vocab.Add(_term);
+            //            vocab.Add(_term);
 
-                    }
-                    rdr1.Close();
+            //        }
+            //        rdr1.Close();
 
-                    conn.Close();
-                }
+            //        conn.Close();
+            //    }
 
-            }
+            //}
 
-            else
-            {
+            //else
+            //{
+            conn = conn1;
                 using (conn)
                 {
                     
@@ -353,7 +426,7 @@ namespace cuahsi.his.vocabservice
                     rdr1.Close();
                     conn.Close();
                 }
-            }
+            //}
 
             return vocab;
         }
