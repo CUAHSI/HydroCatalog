@@ -8,10 +8,11 @@
                 xmlns:xlink="http://www.w3.org/1999/xlink" 
                 xmlns:wml="http://www.cuahsi.org/waterML/1.0/" 
                 xmlns:fn="http://www.w3.org/2005/xpath-functions" 
-                xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../GeneratedSchema_13_10_2010/WaterCollection.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                xsi:schemaLocation="http://www.opengis.net/waterml/2.0 http://schemas.opengis.net/waterml/2.0/waterml2.xsd"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema" 
                 exclude-result-prefixes="xs" version="2.0">
 
-
+<xsl:variable name="comments">false</xsl:variable>
   
   <xsl:output method="xml" indent="yes" />
     <xsl:template match="wml:timeSeriesResponse">

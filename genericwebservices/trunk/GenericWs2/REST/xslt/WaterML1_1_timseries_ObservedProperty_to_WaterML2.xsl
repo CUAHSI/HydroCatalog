@@ -5,9 +5,9 @@
   xmlns:wml2="http://www.opengis.net/waterml/2.0" xmlns:gml="http://www.opengis.net/gml/3.2"
   xmlns:om="http://www.opengis.net/om/2.0" xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:wml="http://www.cuahsi.org/waterML/1.1/" xmlns:fn="http://www.w3.org/2005/xpath-functions"
-  xmlns:swe="http://www.opengis.net/swe"
+  xmlns:swe="http://www.opengis.net/swe/2.0"
   xmlns:op="http://schemas.opengis.net/op"
-  xsi:schemaLocation="http://www.opengis.net/waterml/2.0  ../Transforms/Schemas/WaterML/waterml2.xsd"
+  xsi:schemaLocation="http://www.opengis.net/waterml/2.0 http://schemas.opengis.net/waterml/2.0/waterml2.xsd"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
   <!--
     <element name="observedProperty" type="gml:ReferenceType">
@@ -46,27 +46,32 @@ gml:name should be used for the "short name" or label.
 </swe:Phenomenon>
 -->
 
-
+  <xsl:import href="WaterML1_1_common_to_waterml2.xsl"/>
+  
   <xsl:output method="xml" indent="yes"/>
-  <xsl:template name="phenomenaDictionaryEntry" match="wml:variable">
+  <xsl:template name="VariablePhenomenaDictionaryEntry" match="wml:variable">
     <!-- callled from within a variable loop -->
     <xsl:param name="wfsBase"/>
     <xsl:param name="observedPropertiesBase"/>
     <xsl:param name="concept"/>
    
-    <xsl:comment> Requirements Class:Reference needed</xsl:comment>
+  <!--  <xsl:comment> Requirements Class:Reference needed</xsl:comment> -->
     <gml:dictionaryEntry>
       <gml:Definition>
         <xsl:attribute name="gml:id">
-          <xsl:value-of
-            select="concat(wml:variableCode[1]/@vocabulary,'-',wml:variableCode[1])"
-          /> 
+          <xsl:call-template name="VariableIdentifier">
+            <xsl:with-param name="variable" select="."></xsl:with-param>
+          </xsl:call-template>
+        <!--  <xsl:value-of
+            select="concat(translate(wml:variableCode[1]/@vocabulary,':','-'),'-',wml:variableCode[1])"
+          />
+          -->
         <!--  <xsl:value-of select="concat('concept-',$concept)"/> -->
         </xsl:attribute>
       <gml:description>
         <xsl:attribute name="xlink:href">
           <xsl:value-of
-            select="concat($observedPropertiesBase,wml:variableCode[1]/@vocabulary,&quot;:&quot;,wml:variableCode[1])"
+            select="concat($observedPropertiesBase,wml:variableCode[1]/@vocabulary,':',wml:variableCode[1])"
           />
         </xsl:attribute>
         <xsl:attribute name="xlink:title">
@@ -74,29 +79,25 @@ gml:name should be used for the "short name" or label.
         </xsl:attribute>
       </gml:description>      
         <gml:identifier> 
-          <xsl:attribute name="codeSpace">
-           urn:cuahsi.org\localidenfier\
-          </xsl:attribute>
+          <xsl:attribute name="codeSpace">http://hiscentral.cuahsi.org/wml/variable</xsl:attribute>
           <xsl:value-of
-          select="concat(wml:variableCode[1]/@vocabulary,&quot;:&quot;,wml:variableCode[1])"
+          select="concat(wml:variableCode[1]/@vocabulary,':',wml:variableCode[1])"
         /></gml:identifier> 
 
       <xsl:if test="$concept">
         <gml:name>
-          <xsl:attribute name="codeSpace">
-            <xsl:value-of select="concat(&quot;urn:cuashi/ontology&quot;,$concept)"/>
-          </xsl:attribute>
+          <xsl:attribute name="codeSpace">http://hiscentral.cuahsi.org/ontology/</xsl:attribute>
           <xsl:value-of select="$concept"/>
         </gml:name>
       </xsl:if>
       <gml:name>
         <xsl:attribute name="codeSpace">
           <xsl:value-of
-            select="concat($observedPropertiesBase,wml:variableCode[1]/@vocabulary,&quot;:&quot;,wml:variableCode[1])"
+            select="concat('http://hiscentral.cuahsi.org/wml/vocabulary/',wml:variableCode[1]/@vocabulary)"
           />
         </xsl:attribute>
         
-        <xsl:value-of select="wml:variable/wml:variableName"/>
+        <xsl:value-of select="wml:variableName"/>
         
       </gml:name>
       
@@ -110,12 +111,12 @@ gml:name should be used for the "short name" or label.
     <xsl:param name="wfsBase"/>
     <xsl:param name="observedPropertiesBase"/>
     <xsl:param name="concept"/>
-    <xsl:comment> Requirements Class:Reference needed</xsl:comment>
+   
     <swe:Phenomenon>
       <gml:description>
         <xsl:attribute name="xlink:href">
           <xsl:value-of
-            select="concat($observedPropertiesBase,wml:variable/wml:variableCode[1]/@vocabulary,&quot;:&quot;,wml:variable/wml:variableCode[1])"
+            select="concat($observedPropertiesBase,wml:variable/wml:variableCode[1]/@vocabulary,':',wml:variable/wml:variableCode[1])"
           />
         </xsl:attribute>
         <xsl:attribute name="xlink:title">
@@ -125,7 +126,7 @@ gml:name should be used for the "short name" or label.
       <xsl:if test="$concept">
         <gml:name>
           <xsl:attribute name="codeSpace">
-            <xsl:value-of select="concat(&quot;urn:cuashi/ontology&quot;,$concept)"/>
+            http://hiscentral.cuahsi.org/ontology/
           </xsl:attribute>
           <xsl:value-of select="$concept"/>
         </gml:name>
@@ -133,7 +134,7 @@ gml:name should be used for the "short name" or label.
       <gml:name>
         <xsl:attribute name="codeSpace">
           <xsl:value-of
-            select="concat($observedPropertiesBase,wml:variable/wml:variableCode[1]/@vocabulary,&quot;:&quot;,wml:variable/wml:variableCode[1])"
+            select="concat('http://hiscentral.cuahsi.org/wml/vocabulary/',wml:variable/wml:variableCode[1]/@vocabulary)"
           />
         </xsl:attribute>
 
@@ -145,7 +146,8 @@ gml:name should be used for the "short name" or label.
     </swe:Phenomenon>
 
   </xsl:template>
-  <xsl:template name="phenomenonEntry" match="wml:timeSeriesResponse">
+  
+  <xsl:template name="ObservablePropertyDictionaryEntry" match="wml:timeSeriesResponse">
     <xsl:param name="wfsBase"/>
     <xsl:param name="observedPropertiesBase"/>
     <xsl:param name="concept"/>
@@ -183,5 +185,5 @@ gml:name should be used for the "short name" or label.
     
   </xsl:template>
 
-  <xsl:include href="WaterML1_1_common_to_waterml2.xsl"/>
+  
 </xsl:stylesheet>
