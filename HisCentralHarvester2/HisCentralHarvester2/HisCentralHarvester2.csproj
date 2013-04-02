@@ -107,7 +107,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Copy of HavestConnectionStrings_example.config" />
     <None Include="HavestConnectionStrings_example.config" />
     <None Include="HavestConnectionStrings.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

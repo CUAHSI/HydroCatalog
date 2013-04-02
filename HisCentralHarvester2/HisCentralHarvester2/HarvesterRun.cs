@@ -48,6 +48,8 @@ namespace HisCentralHarvester2
         String SourceID;
         //private static readonly ILog log = LogManager.GetLogger("HarvestLog");
         string logfilename;
+        bool harvestingErrors = false;
+
         List<String> seriescatalogList;
         //static string SourceID;
         long currentSiteIdentifier;
@@ -98,6 +100,10 @@ namespace HisCentralHarvester2
         {
             log("Begin Harvest for service ID:" + SourceID);
             log(System.DateTime.Now.ToString());
+
+            log("Clearing staging tables");
+            StageProc("sp_StageClear");
+
             String sql = "SELECT ServiceWSDL AS Link, NetworkName AS Organization FROM HISNetworks WHERE networkID = " + SourceID;
             URL = " ";
             Console.WriteLine(sql);
@@ -120,6 +126,7 @@ namespace HisCentralHarvester2
                 try
                 {
                     if (URL.Contains("cuahsi_1_1"))
+                    
                     {
                         DoSiteList_11(Organization, con, URL);
                     }
@@ -128,28 +135,212 @@ namespace HisCentralHarvester2
 
                         DoSiteList_10(Organization, con, URL);
                     }
-                    updateStatistics();
+
+
+                    
                 }
                 catch (Exception e)
                 {
+                    harvestingErrors = true;
                     log(e.Message);
                     log(e.StackTrace);
                 }
-                //once update is complete insert the date of update
-                //updateStatistics();
-                //con = new SqlConnection(connect);
-                //con.Open();
-                //String updateSchedule = "UPDATE HISNetworks SET LastHarvested='" + DateTime.Now + "' WHERE NetworkID=" + SourceID;
-                //Console.WriteLine(updateSchedule);
-                //SqlCommand msco = new SqlCommand(updateSchedule,con);
-                //msco.ExecuteNonQuery();
-                //msco.Dispose();
-                //con.Close();
+
+                if (!harvestingErrors)
+                {
+                    log("Archive stage data");
+                    StageProc("sp_StageArchive_Series");
+                    log(StageStats("seriescatalog","archived"));
+                    StageProc("sp_StageArchive_Sites");
+                    log(StageStats("sites", "archived"));
+                    StageProc("sp_StageArchive_Variables");
+                    log(StageStats("variables", "archived"));
+                    
+                }
+                else {
+                    log("Harvesting Errors, skipping archive"); 
+
+                }
+                log("Update stage data");
+                StageProc("sp_StageUpdate_Sites");
+                log(StageStats("sites", "updated"));
+                StageProc("sp_StageUpdate_Variables");
+                log(StageStats("variables","updated"));
+                StageProc("sp_StageUpdate_Series");
+                log(StageStats("seriescatalog","updated"));
+
+                log("Insert stage data");
+                StageProc("sp_StageInsert_Sites");
+                log(StageStats("sites","inserted"));
+                StageProc("sp_StageInsert_variables");
+                log(StageStats("variables", "inserted"));
+                StageProc("sp_StageInsert_Series");
+                log(StageStats("seriescatalog", "inserted"));
+
+                mapVarsDefault();
+
+                
+
+                //log("Clearing staging tables");
+                //StageProc("sp_StageClear");
+
+                log("Updating service statistics"); 
+                updateStatistics();
+                
+
 
             }
 
             log("Harvest completed:" + System.DateTime.Now.ToString());
 
+        }
+        private String StageStats(string table, string action) {
+            
+            string query = "select count(*) from ";
+            string cntString = "error getting count of "+ table + " " + action;
+            
+            switch (action) { 
+                case "updated" :
+                    if (table == "sites") query += "Sites s inner join sites_stage ss on s.sitecode=ss.sitecode where s.networkid = @Networkid";
+                    if (table == "variables") query += "Variables v inner join variables_stage vs on v.altvariablecode=vs.altvariablecode where v.networkid = @Networkid";
+                    if (table == "seriescatalog") query += "SeriesCatalog INNER JOIN SeriesCatalog_stage AS scs ON SeriesCatalog.SeriesCode = scs.SeriesCode where SeriesCatalog.sourceid = @Networkid";
+                    break;
+                case "archived" :
+                    if (table == "sites") query += "sites where networkID = @Networkid and sitecode not in (select sitecode from Sites_stage where NetworkID = @Networkid)";
+                    if (table == "variables") query += "variables where networkID = @Networkid and altvariablecode not in (select altvariablecode from variables_stage where NetworkID = @Networkid)";
+                    if (table == "seriescatalog") query += "seriescatalog where sourceid = @Networkid and seriesCode not in (select seriescode from seriescatalog_stage where sourceid = @Networkid)";
+
+                    break;
+                case "inserted" :
+                    if (table == "sites") query += "sites_stage where networkID = @Networkid and sitecode not in (select sitecode from Sites where NetworkID = @Networkid)";
+                    if (table == "variables") query += "variables_stage where networkID = @Networkid and altvariablecode not in (select altvariablecode from variables where NetworkID = @Networkid)";
+                    if (table == "seriescatalog") query += "seriescatalog_stage where sourceid = @Networkid and seriesCode not in (select seriescode from seriescatalog where sourceid = @Networkid)";
+                    break;
+            }
+
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlConnection con = new SqlConnection(connect);
+                SqlCommand mysco = new SqlCommand(query, con);
+                mysco.CommandTimeout = 12000;
+                mysco.Parameters.Add("@Networkid", SqlDbType.Int);
+                mysco.Parameters["@Networkid"].Value = SourceID;
+
+                using (con)
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(mysco);
+
+
+                    da.Fill(ds, "count");
+                }
+                con.Close();
+                //should be only one
+                string count = " ERROR";
+                if (ds.Tables["count"].Rows.Count > 0)
+                {
+
+                    DataRow row = ds.Tables["count"].Rows[0];
+                    count = row[0].ToString();
+                    cntString = count + " " + table + " records " + action;
+
+
+                }
+            }catch(Exception e){
+                log(e.Message);
+            }
+            
+            //return unitid;
+
+            return cntString;
+        
+        }
+        private void StageProc(string procName)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connect);
+                //con.ConnectionTimeout = 6000;
+                con.Open();
+
+                SqlCommand mysco = new SqlCommand(procName, con);
+
+                mysco.CommandType = CommandType.StoredProcedure;
+                mysco.CommandTimeout = 12000;
+                mysco.Parameters.Add("@networkid", SqlDbType.Int);
+                mysco.Parameters["@networkid"].Value = SourceID;
+                mysco.ExecuteNonQuery();
+                mysco.Dispose();
+                con.Close();
+            }catch (Exception e){
+                log(procName + " error " + e.Message);
+            }
+        }
+        private void StageArchive()
+        {
+            SqlConnection con = new SqlConnection(connect);
+            con.Open();
+
+            SqlCommand mysco = new SqlCommand("sp_StageArchive", con);
+            
+            mysco.CommandType = CommandType.StoredProcedure;
+            mysco.Parameters.Add("@networkid", SqlDbType.Int);
+            mysco.Parameters["@networkid"].Value = SourceID;
+            mysco.ExecuteNonQuery();
+            mysco.Dispose();
+            con.Close();
+        }
+        private void StageClear()
+        {
+            SqlConnection con = new SqlConnection(connect);
+            con.Open();
+
+            SqlCommand mysco = new SqlCommand("sp_StageClear", con);
+            mysco.CommandType = CommandType.StoredProcedure;
+            mysco.Parameters.Add("@networkid", SqlDbType.Int);
+            mysco.Parameters["@networkid"].Value = SourceID;
+            mysco.ExecuteNonQuery();
+            mysco.Dispose();
+            con.Close();
+        }
+        private void StageUpdate() 
+        {
+            SqlConnection con = new SqlConnection(connect);
+            con.Open();
+
+            SqlCommand mysco = new SqlCommand("sp_StageUpdate", con);
+            mysco.CommandType = CommandType.StoredProcedure;
+            mysco.Parameters.Add("@networkid", SqlDbType.Int);
+            mysco.Parameters["@networkid"].Value = SourceID;
+            mysco.ExecuteNonQuery();
+            mysco.Dispose();
+            con.Close();
+        }
+        private void StageInsert()
+        {
+            SqlConnection con = new SqlConnection(connect);
+            con.Open();
+
+            SqlCommand mysco = new SqlCommand("sp_StageInsert", con);
+            mysco.CommandType = CommandType.StoredProcedure;
+            mysco.Parameters.Add("@networkid", SqlDbType.Int);
+            mysco.Parameters["@networkid"].Value = SourceID;
+            mysco.ExecuteNonQuery();
+            mysco.Dispose();
+            con.Close();
+        }
+        private void mapVarsDefault() {
+            SqlConnection con = new SqlConnection(connect);
+            con.Open();
+            SqlCommand mysco = new SqlCommand ("sp_mapVariablesCVJoin", con);
+            mysco.CommandType = CommandType.StoredProcedure;
+            mysco.Parameters.Add("@networkid", SqlDbType.Int);
+            mysco.Parameters["@networkid"].Value = SourceID;
+            mysco.ExecuteNonQuery();
+            mysco.Dispose();
+            con.Close();
+
+        
         }
         private void updateStatistics()
         {
@@ -220,7 +411,6 @@ namespace HisCentralHarvester2
         }
 
 
-
         public void DoSiteList_10(string org, SqlConnection con, string url)
         {
             waterml_10.WaterOneFlow wof = new waterml_10.WaterOneFlow();
@@ -240,6 +430,8 @@ namespace HisCentralHarvester2
                 network = sites[i].siteInfo.siteCode[0].network;
                 if (network == null) network = NetworkName;
                 sitecode = network + ":" + sites[i].siteInfo.siteCode[0].Value.Trim();
+
+
                 waterml_10.SiteInfoResponseType siteinforesp = wof.GetSiteInfoObject(sitecode, "");
 
                 updateInsertSite(siteinforesp.site[0].siteInfo, new SqlConnection(connect));
@@ -262,8 +454,54 @@ namespace HisCentralHarvester2
 
         }
 
+
+
+        public void DoSiteList_10_custom(string org, SqlConnection con, string url)
+        {
+            waterml_10.WaterOneFlow wof = new waterml_10.WaterOneFlow();
+            wof.Url = url;
+
+            String[] blank = new String[0];
+            String varcode;
+            String sitecode;
+            //String network;
+            //string vocab;
+            site[] sites = GetSites_10(wof, blank);
+
+            for (int i = 0; i < sites.Length; i++)
+            {
+                //sites[i].seriesCatalog
+
+                network = sites[i].siteInfo.siteCode[0].network;
+                if (network == null) network = NetworkName;
+                sitecode = network + ":" + sites[i].siteInfo.siteCode[0].Value.Trim();
+
+
+                //waterml_10.SiteInfoResponseType siteinforesp = wof.GetSiteInfoObject(sitecode, "");
+
+                updateInsertSite(sites[i].siteInfo, new SqlConnection(connect));
+                //waterml_10.seriesCatalogTypeSeries[] seriesCat = siteinforesp.site[0].seriesCatalog[0].series;
+                //if (seriesCat != null)
+                //{
+                //    for (int jj = 0; jj < seriesCat.Length; jj++)
+                //    {
+                //        vocab = seriesCat[jj].variable.variableCode[0].vocabulary;
+                //        if (vocab == null) vocab = NetworkName;
+
+                //        varcode = vocab + ":" + seriesCat[jj].variable.variableCode[0].Value;
+                //        DoVariable_10(varcode);
+                //        updateInsertSeries(seriesCat[jj], siteinforesp.site[0].siteInfo, new SqlConnection(connect));
+                //    }
+                //}
+
+
+            }
+
+        }
+
         private site[] GetSites_10(WaterOneFlow wof, string[] blank)
         {
+            
             waterml_10.SiteInfoResponseType sitesResp = wof.GetSites(blank, "");
             //waterml_10.SiteInfoResponseTypeSite[] sites = sitesResp.site;
             return sitesResp.site;
@@ -315,13 +553,20 @@ namespace HisCentralHarvester2
                 {
                     waterml_10.WaterOneFlow wof = new waterml_10.WaterOneFlow();
                     wof.Url = URL;
+                    //String vc = (variableCode.ToString().Split(':'))[1];
                     //wof.GetVariableInfoObject(
                     waterml_10.VariablesResponseType varResp = wof.GetVariableInfoObject(variableCode, "");
-                    updateInsertVariable(varResp.variables[0], new SqlConnection(connect));
+                    //for (int i =0;i < varResp.variables.Length; i++){
+                    //    if ((varResp.variables[i].variableCode[0].Value).Equals(vc)){
+    
+                            updateInsertVariable(varResp.variables[0], new SqlConnection(connect));
+                    //    }
+                    //}
                     varList.Add(variableCode, variableCode);
                 }
                 catch (Exception e)
                 {
+                    harvestingErrors = true;
                     log(e.Message);
                     log(e.StackTrace);
 
@@ -344,6 +589,7 @@ namespace HisCentralHarvester2
                 }
                 catch (Exception e)
                 {
+                    harvestingErrors = true;
                     log(e.Message);
                     log(e.StackTrace);
 
@@ -361,7 +607,7 @@ namespace HisCentralHarvester2
                 con.Open();
 
 
-                SqlCommand msco = new SqlCommand("sp_updateInsertVariable", con);
+                SqlCommand msco = new SqlCommand("sp_InsertVariable_stage", con);
                 msco.CommandType = CommandType.StoredProcedure;
 
                 msco.Parameters.Clear();
@@ -413,8 +659,12 @@ namespace HisCentralHarvester2
             }
             catch (Exception e)
             {
-                log(e.Message);
-                log(e.StackTrace);
+                if (e.Message.IndexOf("UNIQUE KEY") == -1)
+                {
+                    harvestingErrors = true;
+                    log(e.Message);
+                    log(e.StackTrace);
+                }
 
             }
             finally
@@ -431,7 +681,7 @@ namespace HisCentralHarvester2
                 con.Open();
 
 
-                SqlCommand msco = new SqlCommand("sp_updateInsertVariable", con);
+                SqlCommand msco = new SqlCommand("sp_InsertVariable_stage", con);
                 msco.CommandType = CommandType.StoredProcedure;
 
                 msco.Parameters.Clear();
@@ -477,8 +727,11 @@ namespace HisCentralHarvester2
             }
             catch (Exception e)
             {
-                log(e.Message);
-                log(e.StackTrace);
+                if (e.Message.IndexOf( "UNIQUE KEY") == -1){
+                    harvestingErrors = true;
+                    log(e.Message);
+                    log(e.StackTrace);
+                }
 
             }
             finally
@@ -497,7 +750,7 @@ namespace HisCentralHarvester2
                 con.Open();
 
 
-                SqlCommand msco = new SqlCommand("sp_updateInsertSites", con);
+                SqlCommand msco = new SqlCommand("sp_InsertSites_stage", con);
                 msco.CommandType = CommandType.StoredProcedure;
 
                 msco.Parameters.Clear();
@@ -529,8 +782,12 @@ namespace HisCentralHarvester2
             }
             catch (Exception e)
             {
-                log(e.Message);
-                log(e.StackTrace);
+                if (e.Message.IndexOf("UNIQUE KEY") == -1)
+                {
+                    harvestingErrors = true;
+                    log(e.Message);
+                    log(e.StackTrace);
+                }
 
             }
             finally
@@ -549,7 +806,7 @@ namespace HisCentralHarvester2
                 con.Open();
 
 
-                SqlCommand msco = new SqlCommand("sp_updateInsertSites", con);
+                SqlCommand msco = new SqlCommand("sp_InsertSites_stage", con);
                 msco.CommandType = CommandType.StoredProcedure;
 
                 msco.Parameters.Clear();
@@ -581,8 +838,12 @@ namespace HisCentralHarvester2
             }
             catch (Exception e)
             {
-                log(e.Message);
-                log(e.StackTrace);
+                if (e.Message.IndexOf("UNIQUE KEY") == -1)
+                {
+                    harvestingErrors = true;
+                    log(e.Message);
+                    log(e.StackTrace);
+                }
 
             }
             finally
@@ -597,14 +858,20 @@ namespace HisCentralHarvester2
         {
             /*
 @SiteCode varchar(250), @SiteName varchar(250), @VariableCode varchar(100), @VarUnitsId int, @VariableName varchar (250), 
-@varunitsName varchar(50), @SampleMedium varchar(100), @ValueType varchar(100), @beginDate date, @endDate date, 
+@varunitsName varb  char(50), @SampleMedium varchar(100), @ValueType varchar(100), @beginDate date, @endDate date, 
 @valuecount int, @GenCat int, @UTCOffset int, @Networkid int */
             try
             {
                 con.Open();
+                //
+                //series def: sitecode=@sitecode||varcode=@varcode||
+                string srcid = (series.Source != null && series.Source.sourceID != null) ? series.Source.sourceID.ToString() : "-1";
+                string methid = (series.Method != null && series.Method.methodID != null) ? series.Method.methodID.ToString() : "-1";
+                string qcid = (series.QualityControlLevel != null && series.QualityControlLevel.qualityControlLevelID != null) ? series.QualityControlLevel.qualityControlLevelID.ToString() : "-1";
 
 
-                SqlCommand msco = new SqlCommand("sp_updateInsertSeriesCatalog", con);
+
+                SqlCommand msco = new SqlCommand("sp_InsertSeriesCatalog_stage", con);
                 msco.CommandType = CommandType.StoredProcedure;
 
                 msco.Parameters.Clear();
@@ -619,7 +886,7 @@ namespace HisCentralHarvester2
 
                 msco.Parameters.Add("@VarUnitsId", SqlDbType.Int);
                 msco.Parameters["@VarUnitsId"].IsNullable = true;
-                if (series.variable.units.unitsCode == null)
+                if (series.variable.units.unitsCode == null || series.variable.units.unitsCode =="")
                 {
                     msco.Parameters["@VarUnitsId"].Value = DBNull.Value;
                 }
@@ -627,7 +894,7 @@ namespace HisCentralHarvester2
                 {
                     msco.Parameters["@VarUnitsId"].Value = series.variable.units.unitsCode;
                 }
-
+ 
                 msco.Parameters.Add("@VariableName", SqlDbType.VarChar, 250);
                 msco.Parameters["@VariableName"].Value = series.variable.variableName;
 
@@ -643,10 +910,26 @@ namespace HisCentralHarvester2
                 msco.Parameters.Add("@beginDate", SqlDbType.DateTime);
                 msco.Parameters.Add("@endDate", SqlDbType.DateTime);
 
+                //if (series.variableTimeInterval.beginDateTime != null) btime = series.variableTimeInterval.beginDateTime;
+                //if (series.variableTimeInterval.endDateTime != null) etime = series.variableTimeInterval.etimeDateTime; 
+                
                 waterml_10.TimeIntervalType thetime = series.variableTimeInterval as waterml_10.TimeIntervalType;
+                if (thetime != null)
+                {
+                    msco.Parameters["@beginDate"].Value = thetime.beginDateTime;
+                    msco.Parameters["@endDate"].Value = thetime.endDateTime;
 
-                msco.Parameters["@beginDate"].Value = thetime.beginDateTime;
-                msco.Parameters["@endDate"].Value = thetime.endDateTime;
+                }
+                else {
+                    waterml_10.TimePeriodRealTimeType timereal = series.variableTimeInterval as waterml_10.TimePeriodRealTimeType;
+                    if (timereal != null) {
+                        msco.Parameters["@beginDate"].Value = timereal.beginDateTime;
+                        msco.Parameters["@endDate"].Value = timereal.endDateTime;
+                    }
+
+
+                }
+               
 
                 msco.Parameters.Add("@valuecount", SqlDbType.BigInt);
                 msco.Parameters["@valuecount"].Value = series.valueCount.Value;
@@ -654,7 +937,7 @@ namespace HisCentralHarvester2
                 //msco.Parameters.Add("@GenCat", SqlDbType.VarChar, 50);
                 //msco.Parameters["@GenCat"].Value = series.variable.generalCategory;
                 msco.Parameters.Add("@UTCOffset", SqlDbType.Int);
-                if (site.timeZoneInfo != null)
+                if (site.timeZoneInfo != null && site.timeZoneInfo.defaultTimeZone != null && site.timeZoneInfo.defaultTimeZone.ZoneOffset!=null)
                 {
                     msco.Parameters["@UTCOffset"].Value = site.timeZoneInfo.defaultTimeZone.ZoneOffset;
                 }
@@ -663,7 +946,16 @@ namespace HisCentralHarvester2
                     msco.Parameters["@UTCOffset"].Value = 0;
                 }
                 msco.Parameters.Add("@NetworkID", SqlDbType.Int);
-                msco.Parameters["@NetworkID"].Value = SourceID;
+                msco.Parameters["@NetworkID"].Value = SourceID; 
+                msco.Parameters.Add("@SeriesCode", SqlDbType.VarChar, 255);
+
+                string seriesCode = msco.Parameters["@SiteCode"].Value + "||" +
+                                    msco.Parameters["@VariableCode"].Value + "||" +
+                                    methid + "||" +
+                                    srcid + "||" +
+                                    qcid;
+
+                msco.Parameters["@SeriesCode"].Value = seriesCode;
 
                 msco.ExecuteNonQuery();
                 msco.Dispose();
@@ -672,8 +964,12 @@ namespace HisCentralHarvester2
             }
             catch (Exception e)
             {
-                log(e.Message);
-                log(e.StackTrace);
+                if (e.Message.IndexOf("UNIQUE KEY") == -1)
+                {
+                    harvestingErrors = true;
+                    log(e.Message);
+                    log(e.StackTrace);
+                }
 
             }
             finally
@@ -693,7 +989,14 @@ namespace HisCentralHarvester2
                 con.Open();
 
 
-                SqlCommand msco = new SqlCommand("sp_updateInsertSeriesCatalog", con);
+                //
+                //series def: sitecode=@sitecode||varcode=@varcode||
+
+                string srcid = (series.source.sourceID != null) ? series.source.sourceID.ToString(): "-1" ;
+                string methid = (series.method.methodID != null) ? series.method.methodID.ToString():"-1";
+                string qcid = (series.qualityControlLevel.qualityControlLevelID != null) ? series.qualityControlLevel.qualityControlLevelID.ToString() : "-1";
+
+                SqlCommand msco = new SqlCommand("sp_InsertSeriesCatalog_stage", con);
                 msco.CommandType = CommandType.StoredProcedure;
 
                 msco.Parameters.Clear();
@@ -723,7 +1026,7 @@ namespace HisCentralHarvester2
                 msco.Parameters.Add("@beginDate", SqlDbType.DateTime);
                 msco.Parameters.Add("@endDate", SqlDbType.DateTime);
 
-                waterml_11.TimeIntervalType thetime = series.variableTimeInterval as waterml_11.TimeIntervalType;
+                waterml_11.TimePeriodType thetime = series.variableTimeInterval as waterml_11.TimePeriodType;
 
                 msco.Parameters["@beginDate"].Value = thetime.beginDateTime;
                 msco.Parameters["@endDate"].Value = thetime.endDateTime;
@@ -744,6 +1047,16 @@ namespace HisCentralHarvester2
                 }
                 msco.Parameters.Add("@NetworkID", SqlDbType.Int);
                 msco.Parameters["@NetworkID"].Value = SourceID;
+                
+                msco.Parameters.Add("@SeriesCode", SqlDbType.VarChar, 255);
+                
+                string seriesCode = msco.Parameters["@SiteCode"].Value + "||" +
+                     msco.Parameters["@VariableCode"].Value + "||" +
+                     methid + "||" +
+                     srcid + "||" +
+                     qcid;
+
+                msco.Parameters["@SeriesCode"].Value = seriesCode;
 
                 msco.ExecuteNonQuery();
                 msco.Dispose();
@@ -752,8 +1065,12 @@ namespace HisCentralHarvester2
             }
             catch (Exception e)
             {
-                log(e.Message);
-                log(e.StackTrace);
+                if (e.Message.IndexOf("UNIQUE KEY") == -1)
+                {
+                    harvestingErrors = true;
+                    log(e.Message);
+                    log(e.StackTrace);
+                }
 
             }
             finally
