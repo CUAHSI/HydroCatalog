@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Odata", "Odata\Odata.ccproj", "{8032065B-EBC5-43AF-BF4E-B91DA79D6618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HISDataServiceWebRole", "WCFServiceWebRole1\HISDataServiceWebRole.csproj", "{5C6943EA-4007-443A-BCD1-321FC50D0361}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C29EFC9-28CB-4C15-A7E9-032AE7528123}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8032065B-EBC5-43AF-BF4E-B91DA79D6618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8032065B-EBC5-43AF-BF4E-B91DA79D6618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8032065B-EBC5-43AF-BF4E-B91DA79D6618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8032065B-EBC5-43AF-BF4E-B91DA79D6618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6943EA-4007-443A-BCD1-321FC50D0361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6943EA-4007-443A-BCD1-321FC50D0361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6943EA-4007-443A-BCD1-321FC50D0361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6943EA-4007-443A-BCD1-321FC50D0361}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

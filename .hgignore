@@ -67,3 +67,7 @@ genericwebservices/trunk/genericODws/build_configs/Debug_*.config
 genericwebservices/trunk/genericODws/build_configs/WaterDev*.config
 app.Debug.config
 web.Debug.config
+*.gpState
+genericwebservices/trunk/GenericWs2.csproj_deploy1/GenericODWS/
+glob:packages/
+genericwebservices/trunk/GenericWs2.csproj_deploy1/GenericODWS-1-1_*.zip

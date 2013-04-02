@@ -36,7 +36,7 @@ namespace cuahsi.his.service.xslt.utilties
         private void loadXslt()
         {
             myXslTransform  = new XslCompiledTransform();
-            myXslTransform.Load(_filename);
+            myXslTransform.Load(_filename, new XsltSettings(true, false), new XmlUrlResolver());
             lastUpdate = File.GetLastWriteTimeUtc(_filename);
             log.InfoFormat("Reloaded Xslt lastUpdate{0} filename{1}", lastUpdate, _filename);
         }
@@ -52,7 +52,7 @@ namespace cuahsi.his.service.xslt.utilties
 
             if (log.IsDebugEnabled) log.InfoFormat("tranforming Xslt filename{0}",_filename);
 
-            myXslTransform.Transform(input, output);
+            myXslTransform.Transform(input,  output);
         }
 
         /// <summary>

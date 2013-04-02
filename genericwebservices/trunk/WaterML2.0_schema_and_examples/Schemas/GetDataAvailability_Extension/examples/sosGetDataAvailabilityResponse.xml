@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gda:GetDataAvailabilityResponse xsi:schemaLocation="http://www.opengis.net/sosgda/1.0 ../sosGetDataAvailability.xsd" xmlns:gda="http://www.opengis.net/sosgda/1.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <gda:featurePropertyRelationship>
+    <gda:FeaturePropertyTemporalRelationship swes:id="FPTR_ID-01">
+      <gda:phenomenonTime>
+        <gml:TimePeriod gml:id="TID-1">
+          <gml:beginPosition>2010-07-21T08:10:00Z</gml:beginPosition>
+          <gml:endPosition>2010-07-21T08:50:00Z</gml:endPosition>
+        </gml:TimePeriod>
+      </gda:phenomenonTime>
+      <gda:phenomenonTime>
+        <gml:TimePeriod gml:id="TID-2">
+          <gml:beginPosition>2010-07-21T10:00:00Z</gml:beginPosition>
+          <gml:endPosition>2010-07-21T10:10:00Z</gml:endPosition>
+        </gml:TimePeriod>
+      </gda:phenomenonTime>
+      <gda:targetFeature xlink:href="#FID-01"/>
+      <gda:targetProperty xlink:href="#PID-01"/>
+    </gda:FeaturePropertyTemporalRelationship>
+  </gda:featurePropertyRelationship>
+  <gda:featurePropertyRelationship>
+    <gda:FeaturePropertyTemporalRelationship swes:id="FPTR_ID-02">
+      <gda:phenomenonTime>
+        <gml:TimePeriod gml:id="TID-3">
+          <gml:beginPosition>2010-07-210T11:59:00Z</gml:beginPosition>
+          <gml:endPosition>2010-07-21T12:01:00Z</gml:endPosition>
+        </gml:TimePeriod>
+      </gda:phenomenonTime>
+      <gda:targetFeature xlink:href="#FID-02"/>
+      <gda:targetProperty xlink:href="#PID-02"/>
+    </gda:FeaturePropertyTemporalRelationship>
+  </gda:featurePropertyRelationship>
+  <gda:propertyEntryPoint>
+    <gda:ObservedPropertyInfo swes:id="PID-01">
+      <gda:property>http://authority.org/dictionary/def/property/airquality</gda:property>
+      <gda:observedFor xlink:href="#FPTR_ID-01"/>
+    </gda:ObservedPropertyInfo>
+  </gda:propertyEntryPoint>
+  <gda:propertyEntryPoint>
+    <gda:ObservedPropertyInfo swes:id="PID-02">
+      <gda:property>http://authority.org/dictionary/def/property/humidity</gda:property>
+      <gda:observedFor xlink:href="#FPTR_ID-02"/>
+    </gda:ObservedPropertyInfo>
+  </gda:propertyEntryPoint>
+  <gda:featureOfInterestEntryPoint>
+    <gda:FeatureOfInterestInfo swes:id="FID-01">
+      <gda:feature>http://my.org/fois/foi1</gda:feature>
+      <gda:relatedProperty xlink:href="#FPTR_ID-01"/>
+    </gda:FeatureOfInterestInfo>
+  </gda:featureOfInterestEntryPoint>
+  <gda:featureOfInterestEntryPoint>
+    <gda:FeatureOfInterestInfo swes:id="FID-02">
+      <gda:feature>http://my.org/fois/foi2</gda:feature>
+      <gda:relatedProperty xlink:href="#FPTR_ID-02"/>
+    </gda:FeatureOfInterestInfo>
+  </gda:featureOfInterestEntryPoint>
+</gda:GetDataAvailabilityResponse>
+<!--
+http://service.com/sos/offering1
+
+  http://service.com/sos/observation1_1
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T08:10:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_2
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T08:30:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_3
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T08:50:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+- obs 1_1, 1_2 and 1_3 will be combined as the duration between their phenomenonTimes is under 15 minutes each time -
+    
+  http://service.com/sos/observation1_4
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T10:00:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+    
+  http://service.com/sos/observation1_5
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-21T10:10:00Z
+    featureOfInterest = http://my.org/fois/foi1
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+- obs 1_4 and 1_5 will be combined as the duration between their phenomenonTimes is under 15 minutes -
+
+http://service.com/sos/offering2
+  http://service.com/sos/observation2_1
+    procedure = http://my.org/sensors/process2
+    phenomenonTime = 2010-07-210T11:59:00Z - 2010-07-21T12:01:00Z
+    featureOfInterest = http://my.org/fois/foi2
+    observedProperty = http://authority.org/dictionary/def/property/humidity
+- will be included as phenomenonTime is not after the given time frame; phenomenonTime from observation will be put completely into study result (so is not cut at the given timeframes end -
+
+http://service.com/sos/offering3
+
+- dropped from study as phenomenonTime of observation is before given availabilityTimeFrame -
+  http://service.com/sos/observation3_1
+    procedure = http://my.org/sensors/process1
+    phenomenonTime = 2010-07-20T01:00:00Z
+    featureOfInterest = http://my.org/fois/foi3
+    observedProperty = http://authority.org/dictionary/def/property/airquality
+
+- dropped from study as  offering4 was not targeted by request  -
+http://service.com/sos/offering4
+
+  http://service.com/sos/observation4_1
+    procedure = http://my.org/sensors/process4
+    phenomenonTime = 2010-07-21T08:12:00Z
+    featureOfInterest = http://my.org/fois/foi2
+    observedProperty = http://authority.org/dictionary/def/property/ozone_concentration
+-->

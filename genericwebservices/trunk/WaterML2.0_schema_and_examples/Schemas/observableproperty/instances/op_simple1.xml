@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Simple Observable Property -->
+<SimpleObservableProperty xmlns="http://schemas.opengis.net/op" xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+ xsi:schemaLocation="http://schemas.opengis.net/op ../schemas/opsimple.xsd" gml:id="ID001">
+    <label>SolarRadiation</label>
+    <basePhenomenon xlink:href="http://sweet.jpl.nasa.gov/2.1/propEnergyFlux.owl#SolarRadiation"/>
+</SimpleObservableProperty>

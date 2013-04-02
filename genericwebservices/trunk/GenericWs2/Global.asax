@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="GenericWs2.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="WaterOneFlow.odws.GlobalClass" Language="C#" %>

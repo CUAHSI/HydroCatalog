@@ -94,6 +94,7 @@ namespace WaterOneFlowImpl
                 get { return dtime - ofs; }
             }
 
+         
             #endregion
 
             #region methods
@@ -247,7 +248,7 @@ namespace WaterOneFlowImpl
 
               ((1000 * double.Parse(m.Groups["ms"].Value))) : 0;
 
-                    TimeSpan ofs = TimeSpan.Zero;
+                    TimeSpan ofs = TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now);  //TimeSpan.Zero;
                     if (m.Groups["ofs"].Success)
                     {
                         if (isRfc822)
@@ -312,7 +313,11 @@ namespace WaterOneFlowImpl
 
             private static TimeSpan ParseW3COffset(string s)
             {
-                if (s == string.Empty || s == "Z")
+                if (s == string.Empty)
+                    return TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now);
+
+                else if ( s == "Z")
+
                     return TimeSpan.Zero;
                 else
                 {

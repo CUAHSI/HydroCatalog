@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:om="http://www.opengis.net/om/2.0" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.opengis.net/swe/2.0" schemaLocation="http://schemas.opengis.net/sweCommon/2.0.0/swe.xsd"/>
+    <import namespace="http://www.opengis.net/om/2.0" schemaLocation="http://schemas.opengis.net/om/2.0.0/observation.xsd"/>
+    <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/><!-- ================================================= -->
+    <element name="ResultTemplate" substitutionGroup="swes:AbstractSWES" type="sos:ResultTemplateType"/>
+    <complexType name="ResultTemplateType">
+        <complexContent>
+            <extension base="swes:AbstractSWESType">
+                <sequence>
+                    <element name="offering" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ObservationOffering</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element name="observationTemplate">
+                        <complexType>
+                            <sequence>
+                                <element ref="om:OM_Observation"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                    <element name="resultStructure">
+                        <complexType>
+                            <sequence>
+                                <element ref="swe:AbstractDataComponent"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                    <element name="resultEncoding">
+                        <complexType>
+                            <sequence>
+                                <element ref="swe:AbstractEncoding"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ResultTemplatePropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:ResultTemplate"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType><!-- ================================================= -->
+    <element name="InsertResultTemplate" substitutionGroup="swes:ExtensibleRequest" type="sos:InsertResultTemplateType"/>
+    <complexType name="InsertResultTemplateType">
+        <complexContent>
+            <extension base="swes:ExtensibleRequestType">
+                <sequence>
+                    <element name="proposedTemplate">
+                        <complexType>
+                            <sequence>
+                                <element ref="sos:ResultTemplate"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="InsertResultTemplatePropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:InsertResultTemplate"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType><!-- ================================================= -->
+    <element name="InsertResultTemplateResponse" substitutionGroup="swes:ExtensibleResponse" type="sos:InsertResultTemplateResponseType"/>
+    <complexType name="InsertResultTemplateResponseType">
+        <complexContent>
+            <extension base="swes:ExtensibleResponseType">
+                <sequence>
+                    <element name="acceptedTemplate" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ResultTemplate</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="InsertResultTemplateResponsePropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:InsertResultTemplateResponse"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+</schema>

@@ -1,0 +1,12 @@
+http://localhost:6278/genericODws/wfs/datacart.wfs?Service=WFS&request=GETCAPABILITIES
+http://localhost:6278/genericODws/wfs/datacart.wfs?Service=WFS&request=DescribeFeatureType
+http://localhost:6278/genericODws/wfs/datacart.wfs?Service=WFS&request=GetFeature
+
+http://localhost:6278/genericODws/wfs/datacart.wfs?Service=WFS&request=GetFeature&BBOX=-111.99,41.40-111.850,41.6
+
+&Filter=<Filter><BBOX><PropertyName>Name>NAME</PropertyName><Box%20srsName='EPSG:42304'><coordinates>-111.946402,41.495409 -111.799324,41.718473</coordinates></Box></BBOX></Filter>
+
+No records
+http://localhost:6278/genericODws/wfs/datacart.wfs?Service=WFS&request=GetFeature&BBOX=-122.087210506228,37.208402,-121.813389493772,37.383473
+
+

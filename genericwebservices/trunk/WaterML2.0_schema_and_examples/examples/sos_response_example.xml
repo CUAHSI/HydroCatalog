@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sos:GetObservationResponse xmlns:sos="http://www.opengis.net/sos/2.0"
+    xmlns:wml2="http://www.opengis.net/waterml/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:om="http://www.opengis.net/om/2.0"
+    xmlns:sa="http://www.opengis.net/sampling/2.0" xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:sf="http://www.opengis.net/sampling/2.0"
+    xmlns:sams="http://www.opengis.net/samplingSpatial/2.0"
+    xsi:schemaLocation="http://www.opengis.net/sos/2.0 ../Schemas/SOS/xsd/sosGetObservation.xsd 
+    http://www.opengis.net/waterml/2.0 ../Schemas/WaterML/waterml2.xsd">
+    
+    <extension xmlns="http://www.opengis.net/swes/2.0">
+        <wml2:SOSProfileExtension>
+            <!-- This profile defines an extension that allows inline dictionaries to be encoded in the response along with 
+                WaterML2.0 specific metadata --> 
+            <wml2:metadata>
+                <wml2:DocumentMetadata gml:id="doc">
+                    <wml2:generationDate>2011-08-24T10:46:00+10:00</wml2:generationDate>
+                    <wml2:version xlink:href="http://www.opengis.net/waterml/2.0"/>
+                    <wml2:generationSystem>Sensor Observation Service 2.0</wml2:generationSystem>
+                </wml2:DocumentMetadata>
+            </wml2:metadata>
+            
+            <wml2:phenomenaDictionary>
+                <gml:Dictionary gml:id="USGS_phenom_codes">
+                    <gml:identifier codeSpace="http://waterdata.usgs.gov/nwis">phenom_codes_dict</gml:identifier>
+                    <gml:dictionaryEntry>
+                        <gml:Definition gml:id="usgs_water_temp">
+                            <gml:identifier codeSpace="http://waterdata.usgs.gov/nwis/parameters">00010</gml:identifier>
+                            <gml:name codeSpace="http://waterdata.usgs.gov/nwis/parameters">Temperature, water, degrees Celsius</gml:name>
+                            <gml:remarks>USGS code for water temperature in celsius as adapted from http://waterdata.usgs.gov/nwis</gml:remarks>
+                        </gml:Definition>
+                    </gml:dictionaryEntry>
+                </gml:Dictionary>
+            </wml2:phenomenaDictionary>
+            
+            <wml2:qualifierDictionary>
+                <gml:Dictionary gml:id="USGS_qualifier_codes">
+                    <gml:identifier codeSpace="http://waterdata.usgs.gov/nwis/help/?">qualifier_codes_dict</gml:identifier>
+                    <gml:dictionaryEntry>
+                        <gml:Definition gml:id="usgs_provisional">
+                            <gml:identifier codeSpace="http://waterdata.usgs.gov/nwis/help/?">provisional</gml:identifier>
+                            <gml:name codeSpace="http://waterdata.usgs.gov/nwis/parameters">P</gml:name>
+                            <gml:remarks>Provisional data subject to revision.</gml:remarks>
+                        </gml:Definition>
+                    </gml:dictionaryEntry>
+                </gml:Dictionary>
+            </wml2:qualifierDictionary>
+        </wml2:SOSProfileExtension>
+    </extension>
+    
+    <!-- The SOS response document is just a collection of OM_Observations with an extension point. It is similar to 
+        the WaterML2.0 collection document, minus the points of extension used above --> 
+    <sos:observationData>
+        <om:OM_Observation gml:id="obs_13">
+            <om:phenomenonTime>
+                <gml:TimePeriod gml:id="tp_1">
+                    <!-- Timezone: CDT -5 UTC -->
+                    <gml:beginPosition>2011-04-04T00:00:00-05:00</gml:beginPosition>
+                    <gml:endPosition>2011-04-08T00:00:00-05:00</gml:endPosition>
+                </gml:TimePeriod>
+            </om:phenomenonTime>
+            
+            <!-- The time the CSV values were generated from NWIS --> 
+            <om:resultTime>
+                <gml:TimeInstant gml:id="result_generated_from_site_time">
+                    <gml:timePosition>2011-08-23T21:41:39-05:00</gml:timePosition>
+                </gml:TimeInstant>
+            </om:resultTime>
+            
+            <!-- values have been temporally averaged. Link back to original sensor information is provided -->
+            <om:procedure>
+                <wml2:ObservationProcess gml:id="temporal_aggregation">
+                    <wml2:processType xlink:href="http://www.opengis.net/def/processType/WaterML/2.0/Algorithm"/>
+                    <wml2:originatingProcess xlink:href="http://www.usgs.com/sensors/temp_sensor/sensor1234_1ft" 
+                        xlink:role="http://www.opengis.net/def/processType/WaterML/2.0/Sensor"/>
+                    <wml2:aggregationPeriod>P1D</wml2:aggregationPeriod>
+                </wml2:ObservationProcess>
+            </om:procedure>
+            
+            <!-- Uses approach #3 (from diagrams) of specifying vertical offset --> 
+            <om:parameter>
+                <om:NamedValue>
+                    <om:name xlink:href="http://www.opengis.net/def/waterml/2.0/vertical_offset"/>
+                    <om:value xsi:type="gml:MeasureType" uom="ft">1.0</om:value>
+                </om:NamedValue>
+            </om:parameter>
+            
+            <!-- references the internal dictionary code --> 
+            <om:observedProperty xlink:href="#usgs_water_temp" xlink:title="Temperature, water, degrees Celsius"/>
+            
+            <!-- Two options here: encode the monitoring point inline and reference from other observations where it is the same
+                feature of interest or use an xlink to a SOS GetFeatureOfInterest call. See GetFeatureOfInterestResponseExample.xml --> 
+            <om:featureOfInterest>
+                <wml2:MonitoringPoint gml:id="MP_295554095093401">
+                    <gml:identifier codeSpace="http://waterdata.usgs.gov/nwis">295554095093401</gml:identifier>
+                    <gml:name codeSpace="http://waterdata.usgs.gov/nwis">Lk Houston at mouth of Jack's Ditch nr Houston</gml:name>
+                    <sf:sampledFeature xlink:href="http://en.wikipedia.org/wiki/Lake_Houston"/>
+                    <sams:shape>
+                        <gml:Point gml:id="loc_lk_houston">
+                            <gml:pos srsName="ESPG:4326">29.958833 -95.148833</gml:pos>
+                        </gml:Point>
+                    </sams:shape>
+                    <wml2:descriptionReference xlink:href="http://waterdata.usgs.gov/nwis/inventory/?site_no=295554095093401&amp;agency_cd=USGS"/>
+               <wml2:timeZone>
+                   <wml2:TimeZone>
+                       <wml2:zoneOffset></wml2:zoneOffset>
+                   </wml2:TimeZone>
+               </wml2:timeZone>
+                </wml2:MonitoringPoint>    
+            </om:featureOfInterest>
+            
+            <om:result>
+                <wml2:Timeseries gml:id="ts_13">
+                    <wml2:temporalExtent xlink:href="#tp_1"/>
+                    <wml2:metadata>
+                        <wml2:TSMetadata>
+                            <wml2:cumulative>false</wml2:cumulative>
+                            <!-- Daily values --> 
+                            <wml2:aggregationDuration>P1D</wml2:aggregationDuration>
+                        </wml2:TSMetadata>
+                    </wml2:metadata>
+                    
+                    <wml2:defaultPointMetadata>
+                        <wml2:DefaultTVPMetadata>
+                            <wml2:interpolationType xlink:href="http://www.opengis.net/def/timeseriesType/WaterML/2.0/AveragePrec" 
+                                xlink:title="Average in preceeding"/>
+                            <wml2:qualifier xlink:href="#usgs_provisional" xlink:title="Provisional subject to revision."/>
+                            <wml2:uom uom="ft"/>
+                        </wml2:DefaultTVPMetadata>
+                    </wml2:defaultPointMetadata>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <!-- as discussed, where to specify time if it's a daiy average? -->  
+                            <wml2:time>2011-04-04T00:00:00-05:00</wml2:time>
+                            <wml2:value>21.7</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-05T00:00:00-05:00</wml2:time>
+                            <wml2:value>21.7</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-06T00:00:00-05:00</wml2:time>
+                            <wml2:value xsi:nil="true" nilReason="missing"></wml2:value>
+                            <wml2:metadata>
+                                <wml2:TVPMetadata>
+                                    <wml2:comment>Interpreted point as missing</wml2:comment>
+                                </wml2:TVPMetadata>
+                            </wml2:metadata>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-07T00:00:00-05:00</wml2:time>
+                            <wml2:value xsi:nil="true" censorReason="http://www.opengis/def/WaterML/2.0/belowDetectionThreshhold"/>
+                            <wml2:metadata>
+                                <wml2:TVPMetadata>
+                                    <wml2:comment>This point is not really censored, I've added as an example</wml2:comment>
+                                </wml2:TVPMetadata>
+                            </wml2:metadata>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-08T00:00:00-05:00</wml2:time>
+                            <wml2:value>22.0</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-09T00:00:00-05:00</wml2:time>
+                            <wml2:value>22.6</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                </wml2:Timeseries>                
+            </om:result>
+        </om:OM_Observation>
+    </sos:observationData>
+    
+    <sos:observationData>
+        
+        <om:OM_Observation gml:id="obs_14">
+            <om:phenomenonTime>
+                <gml:TimePeriod gml:id="tp_2">
+                    <!-- Timezone: CDT -5 UTC -->
+                    <gml:beginPosition>2011-04-04T00:00:00-05:00</gml:beginPosition>
+                    <gml:endPosition>2011-04-08T00:00:00-05:00</gml:endPosition>
+                </gml:TimePeriod>
+            </om:phenomenonTime>
+            <!-- The time the CSV values were generated from NWIS -->
+            <om:resultTime xlink:href="#result_generated_from_site_time"/>
+            
+            <!-- values have been temporally averaged. Link back to original sensor information is provided -->
+            <om:procedure>
+                <wml2:ObservationProcess gml:id="temporal_aggregation_6ft">
+                    <wml2:processType
+                        xlink:href="http://www.opengis.net/def/processType/WaterML/2.0/Algorithm"/>
+                    <wml2:originatingProcess
+                        xlink:href="http://www.usgs.com/sensors/temp_sensor/sensor1234_6ft"
+                        xlink:role="http://www.opengis.net/def/processType/WaterML/2.0/Sensor"/>
+                    <wml2:aggregationPeriod>P1D</wml2:aggregationPeriod>
+                </wml2:ObservationProcess>
+            </om:procedure>
+            
+            <!-- Uses approach #3 (from diagrams) of specifying vertical offset -->
+            <om:parameter>
+                <om:NamedValue>
+                    <om:name xlink:href="http://www.opengis.net/def/waterml/2.0/vertical_offset"/>
+                    <om:value xsi:type="gml:MeasureType" uom="ft">6.0</om:value>
+                </om:NamedValue>
+            </om:parameter>
+            
+            <!-- references the internal dictionary code -->
+            <om:observedProperty xlink:href="#usgs_water_temp"
+                xlink:title="Temperature, water, degrees Celsius"/>
+            
+            <!-- reference monitoring point described in collection above -->
+            <om:featureOfInterest xlink:href="#MP_295554095093401"/>
+            <om:result>
+                <wml2:Timeseries gml:id="ts_14">
+                    <wml2:temporalExtent xlink:href="#tp_1"/>
+                    <wml2:metadata>
+                        <wml2:TSMetadata>
+                            <wml2:cumulative>false</wml2:cumulative>
+                            <!-- Daily values -->
+                            <wml2:aggregationDuration>P1D</wml2:aggregationDuration>
+                        </wml2:TSMetadata>
+                    </wml2:metadata>
+                    
+                    <wml2:defaultPointMetadata>
+                        <wml2:DefaultTVPMetadata>
+                            <wml2:interpolationType
+                                xlink:href="ttp://www.opengis.net/def/timeseriesType/WaterML/2.0/AveragePrec"
+                                xlink:title="Average in preceeding interval"/>
+                            <wml2:qualifier xlink:href="#usgs_provisional"
+                                xlink:title="Provisional subject to revision."/>
+                            <wml2:uom uom="ft"/>
+                        </wml2:DefaultTVPMetadata>
+                    </wml2:defaultPointMetadata>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-04T00:00:00-05:00</wml2:time>
+                            <wml2:value>21.7</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-05T00:00:00-05:00</wml2:time>
+                            <wml2:value>21.1</wml2:value>
+                            <wml2:metadata>
+                                <wml2:TVPMetadata>
+                                    <wml2:comment>0.6 degrees cooler 5ft down</wml2:comment>
+                                </wml2:TVPMetadata>
+                            </wml2:metadata>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-06T00:00:00-05:00</wml2:time>
+                            <wml2:value xsi:nil="true" nilReason="missing"/>
+                            <wml2:metadata>
+                                <wml2:TVPMetadata>
+                                    <wml2:comment>Interpreted point as missing</wml2:comment>
+                                </wml2:TVPMetadata>
+                            </wml2:metadata>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-07T00:00:00-05:00</wml2:time>
+                            <wml2:value>21.3</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-08T00:00:00-05:00</wml2:time>
+                            <wml2:value>22.0</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                    <wml2:point>
+                        <wml2:TimeValuePairMeasure>
+                            <wml2:time>2011-04-09T00:00:00-05:00</wml2:time>
+                            <wml2:value>22.5</wml2:value>
+                        </wml2:TimeValuePairMeasure>
+                    </wml2:point>
+                </wml2:Timeseries>
+            </om:result>
+        </om:OM_Observation>
+    </sos:observationData>
+    
+    
+</sos:GetObservationResponse>

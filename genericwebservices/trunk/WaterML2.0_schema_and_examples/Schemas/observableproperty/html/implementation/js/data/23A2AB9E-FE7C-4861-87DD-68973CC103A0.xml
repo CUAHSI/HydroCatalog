@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0:1", "", "External Dependencies", "EARoot/EA1.htm", "176.png", "3970", "0", "", "Package diagram0","{E0EFACE4-932C-44ed-9BAD-625FC925F35C}");
+tocTab[tocTab.length] = new Array("0:2", "", "ObservableProperty_SWE_Implementation", "EARoot/EA3.htm", "175.png", "3971", "0", "", "Logical diagram0","{EF8904E2-6D52-4455-9886-5EFB4B00BFE6}");
+tocTab[tocTab.length] = new Array("0:3", "", "«Type» AbstractObservableProperty", "EARoot/EA5.htm", "5.png", "6855", "0", "", "Class0","{6BFAB4EA-CE8F-4483-B0DA-DD9E61BFAB59}");
+tocTab[tocTab.length] = new Array("0:4", "", "«Type» CompositeObservableProperty", "EARoot/EA6.htm", "5.png", "6856", "0", "", "Class0","{B1CFD144-0688-4543-993B-98440DDF8DEB}");
+tocTab[tocTab.length] = new Array("0:5", "", "«Type» ObservableProperty", "EARoot/EA7.htm", "5.png", "6776", "0", "", "Class0","{F29ECB77-589E-4fe9-A0EB-7955570DC68C}");
+tocTab[tocTab.length] = new Array("0:6", "", "«Type» StatisticalQualifier", "EARoot/EA8.htm", "5.png", "6778", "0", "", "Class0","{67EC6BDC-B45E-42b2-8173-7E44D05FE468}");

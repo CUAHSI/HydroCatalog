@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<timeSeriesResponse xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wtr="http://www.cuahsi.org/waterML/" xmlns="http://www.cuahsi.org/waterML/1.0/">
+   <queryInfo>
+      <creationTime>2011-04-23T00:09:08Z</creationTime>
+      <queryURL>http://hydro1.sci.gsfc.nasa.gov/daac-bin/cuahsi/his.cgi?function=GetValues&amp;variable=GLDAS:GLDAS_NOAH025_3H.001:rainf&amp;location=GLDAS:X10-Y0&amp;startDate=2010-10-24T00</queryURL> 
+      <criteria>
+         <locationParam>GLDAS:X10-Y0</locationParam>
+         <variableParam>GLDAS:GLDAS_NOAH025_3H.001:rainf</variableParam>
+         <timeParam>
+             <beginDateTime>2010-10-24T00:00:00</beginDateTime>
+             <endDateTime>2010-11-15T23:00:00</endDateTime>
+          </timeParam>
+      </criteria>
+   </queryInfo>
+   <timeSeries>
+      <sourceInfo xsi:type="SiteInfoType">
+          <siteName>X10-Y0 of Global Land Data Assimilation System (GLDAS) NASA</siteName>
+          <siteCode network="GLDAS" siteID="00100000">X10-Y0</siteCode>
+          <geoLocation>
+              <geogLocation xsi:type="LatLonPointType" srs="EPSG:4326">
+                 <latitude>-59.875</latitude>
+                 <longitude>-177.375</longitude>
+              </geogLocation>
+          </geoLocation>
+      </sourceInfo>
+          <value censorCode="nc" dateTime="2010-10-24T00:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T03:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T06:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T09:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T12:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T15:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T18:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-24T21:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T00:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T03:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T06:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T09:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1">column 13.</value>          
+          <value censorCode="nc" dateTime="2010-10-25T12:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T15:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T18:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-25T21:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1">or click <a href=".help">here</a> for help using the server.</value>          
+          <value censorCode="nc" dateTime="2010-10-26T00:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-26T03:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-26T06:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-26T09:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-26T12:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-26T15:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <value censorCode="nc" dateTime="2010-10-26T18:00:00" qualityControlLevel="Derived products" methodID="1" sourceID="1"></value>          
+          <method methodID="1">
+              <MethodDescription>GLDAS NOAH model 0.25 degree 3-hourly data</MethodDescription>
+              <MethodLink>http://mirador.gsfc.nasa.gov/collections/GLDAS_NOAH025SUBP_3H__001.shtml</MethodLink>
+          </method>
+          <source sourceID="1">
+             <Organization>NASA Goddard Earth Sciences (GES) Data and Information Services Center (DISC)</Organization>
+             <SourceDescription>NASA Global Land Data Assimilation System (GLDAS) NOAH model data</SourceDescription>
+             <ContactInformation>
+                <ContactName>GES DISC Help Desk</ContactName>
+                <TypeOfContact>Main</TypeOfContact>
+                <Phone>301-614-5224</Phone>
+                <Email>help-disc@listserv.gsfc.nasa.gov</Email>
+                <Address xsi:type="xsd:string">NASA Goddard Space Flight Center, Code 610.2, Greenbelt, MD 20771 USA</Address> 
+             </ContactInformation>
+             <SourceLink>http://disc.sci.gsfc.nasa.gov/hydrology/data-holdings</SourceLink>
+          </source>
+       </values>
+   </timeSeries>
+</timeSeriesResponse>

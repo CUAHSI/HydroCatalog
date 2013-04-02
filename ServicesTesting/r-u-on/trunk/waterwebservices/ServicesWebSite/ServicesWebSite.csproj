@@ -33,9 +33,62 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>true</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'SDSCServices|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/CuahsiServicesMonitors</DeployIisAppPath>
+    <PublishDatabases>false</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ApplicationServices-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|\aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\SDSCServices\AutoScripts\ApplicationServices-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="hiscentral_loggingConnectionString-Deployment" Order="2">
+          <Destination Path="Server=disrupter.sdsc.edu%3bDatabase=hiscentral_logging%3bUser ID=loggingService%3bPassword=l0gg1ng%3bTrusted_Connection=False%3b" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=disrupter.sdsc.edu%3bInitial Catalog=hiscentral_logging%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\SDSCServices\AutoScripts\hiscentral_loggingConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="hiscentral_loggingReader-Deployment" Order="3">
+          <Destination Path="Data Source=disrupter.sdsc.edu%3bInitial Catalog=hiscentral_logging%3bPersist Security Info=True%3bUser ID=webservice%3bPassword=webservice" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=disrupter.sdsc.edu%3bInitial Catalog=hiscentral_logging%3bPersist Security Info=True%3bUser ID=webservice%3bPassword=webservice" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\SDSCServices\AutoScripts\hiscentral_loggingReader-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Http.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http">
+      <HintPath>..\packages\HttpClient.0.3.0\lib\40\Microsoft.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Runtime.Serialization.Json">
+      <HintPath>..\packages\JsonValue.0.3.0\lib\40\Microsoft.Runtime.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.ServiceModel.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.Web.jQuery">
+      <HintPath>..\packages\JsonValue.0.3.0\lib\40\Microsoft.ServiceModel.Web.jQuery.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -47,6 +100,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -67,24 +121,37 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="ActiveAlerts.aspx" />
+    <Content Include="PublicServicesStatus.aspx" />
+    <Content Include="PublicServiceStatistics.aspx" />
     <Content Include="SDSCAll.aspx" />
     <Content Include="HisCentral.aspx" />
     <Content Include="Historic.aspx" />
     <Content Include="SDSCActive.aspx" />
+    <Content Include="services\lstServiceRecordsView.txt" />
     <Content Include="services\MonitoringCollector.svc" />
     <Content Include="services\ServiceMonitorTable.txt" />
+    <Content Include="services\ServiceStats.txt" />
+    <Content Include="services\WebServiceMonitor.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.SDSCServices.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="xsltRss.xsl" />
   </ItemGroup>
@@ -131,6 +198,20 @@
     <Compile Include="ActiveAlerts.aspx.designer.cs">
       <DependentUpon>ActiveAlerts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PublicServicesStatus.aspx.cs">
+      <DependentUpon>PublicServicesStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicServicesStatus.aspx.designer.cs">
+      <DependentUpon>PublicServicesStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PublicServiceStatistics.aspx.cs">
+      <DependentUpon>PublicServiceStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicServiceStatistics.aspx.designer.cs">
+      <DependentUpon>PublicServiceStatistics.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SDSCAll.aspx.cs">
       <DependentUpon>SDSCAll.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -171,8 +252,18 @@
       <DependentUpon>SDSCActive.aspx</DependentUpon>
     </Compile>
     <Compile Include="services\IMonitoringCollector.cs" />
+    <Compile Include="services\IWebServiceMonitor.cs" />
+    <Compile Include="services\MonitorDb.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonitorDb.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="services\MonitoredService.cs" />
     <Compile Include="services\MonitoringCollector.svc.cs">
       <DependentUpon>MonitoringCollector.svc</DependentUpon>
+    </Compile>
+    <Compile Include="services\WebServiceMonitor.svc.cs">
+      <DependentUpon>WebServiceMonitor.svc</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -203,6 +294,20 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="services\MonitorDb.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MonitorDb.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="services\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="services\MonitorDb.dbml.layout">
+      <DependentUpon>MonitorDb.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

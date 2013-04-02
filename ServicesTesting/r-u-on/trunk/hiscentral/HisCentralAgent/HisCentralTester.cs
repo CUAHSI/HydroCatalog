@@ -33,8 +33,9 @@ namespace Cuahsi.His.Ruon
         HisCentralTestResult runQueryServiceList(String serviceName);
         HisCentralTestResult runServicesByBox(String serviceName);
         HisCentralTestResult runSeriesCatalogByBox(String serviceName);
-        HisCentralTestResult runSearchableConcepts();
+        HisCentralTestResult runSearchableConcepts(String serviceName);
         HisCentralTestResult runGetWordListNitrogen(String serviceName);
+        HisCentralTestResult runOntologyTree(String serviceName);
     }
 
     public class HisCentralTester : IHisCentralTester
@@ -209,7 +210,7 @@ namespace Cuahsi.His.Ruon
             return testResult;
         }
 
-        public HisCentralTestResult runSearchableConcepts()
+        public HisCentralTestResult runSearchableConcepts(String serviceName)
         {
             HisCentralTestResult testResult = new HisCentralTestResult
 
@@ -295,6 +296,49 @@ namespace Cuahsi.His.Ruon
                 testResult.MethodName,
                 testResult.runTimeMilliseconds);
 
+            return testResult;
+        }
+
+
+        public HisCentralTestResult runOntologyTree(String serviceName)
+        {
+            HisCentralTestResult testResult = new HisCentralTestResult
+
+            {
+                Working = false,
+                ServiceName = ServiceName,
+                MethodName = "getOntologyTree"
+            };
+            log.DebugFormat("Entering {0} {1} {2}",
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType,
+                testResult.ServiceName, testResult.MethodName);
+
+            var timer = Stopwatch.StartNew();
+
+            try
+            {
+                svc.Timeout = 3 * 60000;
+                var result = svc.getOntologyTree(null);
+                {
+                    log.InfoFormat("{0} {1} in {2}ms ex {3} ",
+                       testResult.ServiceName, testResult.MethodName, timer.Elapsed, result.childNodes.Length);
+
+                    testResult.Working = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.ErrorFormat("{0} {1} in {2}ms error {3} ",
+    testResult.ServiceName, testResult.MethodName, timer.Elapsed, ex.Message);
+                testResult.Working = false;
+            }
+            timer.Stop();
+            testResult.runTimeMilliseconds = timer.ElapsedMilliseconds;
+            log.DebugFormat("Leaving {0} {1} {2} {3}",
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType,
+    testResult.ServiceName,
+    testResult.MethodName,
+    testResult.runTimeMilliseconds);
             return testResult;
         }
     }

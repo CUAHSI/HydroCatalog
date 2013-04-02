@@ -1,0 +1,21 @@
+﻿USE [hiscentral_logging]
+GO
+
+/****** Object:  View [dbo].[LastServiceRecords]    Script Date: 05/26/2011 12:13:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[LastServiceRecords]
+AS
+SELECT     a.*
+FROM         dbo.ServiceMonitor AS a INNER JOIN
+                          (SELECT     ServiceName, MAX(TimeChecked) AS maxid
+                            FROM          dbo.ServiceMonitor
+                            GROUP BY ServiceName) AS b ON a.TimeChecked = b.maxid
+
+GO
+
+

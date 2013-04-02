@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--<PropertyGroup>
+    <UseMsdeployExe>true</UseMsdeployExe>
+  </PropertyGroup>
+  -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,10 +14,12 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenericWs2</RootNamespace>
+    <RootNamespace>GenericWebservice</RootNamespace>
     <AssemblyName>GenericWs2</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +29,10 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>true</PublishDatabases>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_Debug.zip</DesktopBuildPackageLocation>
+    <ProjectParametersXMLFile>Parameters.Debug.xml</ProjectParametersXMLFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,13 +41,128 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2.zip</DesktopBuildPackageLocation>
+    <ProjectParametersXMLFile>Parameters.xml</ProjectParametersXMLFile>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WaterDev|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DesktopBuildPackageLocation>..\..\..\..\SoftwareReleases\GenericODWebServices\GenericWs2_waterdev.zip</DesktopBuildPackageLocation>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <ProjectParametersXMLFile>Parameters.WaterDev.xml</ProjectParametersXMLFile>
+    <PublishDatabases>false</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ApplicationServices-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|\aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\WaterDev\AutoScripts\ApplicationServices-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="elmah-sqlserver-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=%2a%2a%2a%2a%3bInitial Catalog=%2a%2a%2a%2a%3bUser ID=%2a%2a%2a%2a%3bPassword=%2a%2a%2a%2a" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\WaterDev\AutoScripts\elmah-sqlserver-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="ODDB-Deployment" Order="3">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=localhost%3bInitial Catalog=LittleBear111%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\WaterDev\AutoScripts\ODDB-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
+    <ExcludeFromPackageFiles Include="Web.*.config">
+      <FromTarget>Project</FromTarget>
+    </ExcludeFromPackageFiles>
+  </ItemGroup>
+  <!-- used to wateroneflow log config  to package
+	see http://sedodream.com/2010/05/01/WebDeploymentToolMSDeployBuildPackageIncludingExtraFilesOrExcludingSpecificFiles.aspx -->
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+			CustomCollectFiles;
+			$(CopyAllFilesToSingleFolderForPackageDependsOn);
+		</CopyAllFilesToSingleFolderForPackageDependsOn>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
+    <ItemGroup>
+      <_CustomFiles Include="wateroneflow.logging.log4net" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+  <!-- add wateroneflow log config -->
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Common">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Http">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.HttpEnhancements">
+      <HintPath>..\packages\WebApi.Enhancements.0.3.0\lib\40\Microsoft.ApplicationServer.HttpEnhancements.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Serialization">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.ServiceModel">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.ApplicationServer.ServiceModel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Http, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WcfRestLibraries\Microsoft.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Http.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WcfRestLibraries\Microsoft.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http">
+      <HintPath>..\packages\HttpClient.0.3.0\lib\40\Microsoft.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QueryComposition">
+      <HintPath>..\packages\WebApi.Core.0.3.0\lib\40\Microsoft.QueryComposition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Runtime.Serialization.Json">
+      <HintPath>..\packages\JsonValue.0.3.0\lib\40\Microsoft.Runtime.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WcfRestLibraries\Microsoft.ServiceModel.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.Web.jQuery">
+      <HintPath>..\packages\JsonValue.0.3.0\lib\40\Microsoft.ServiceModel.Web.jQuery.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -49,38 +174,394 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.2\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="App_Readme\Elmah.txt" />
+    <None Include="Parameters.Debug.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Parameters.Release.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Default.aspx" />
+    <Content Include="App_Readme\Elmah.SqlServer.sql" />
+    <Content Include="App_Readme\Elmah.SqlServer.txt" />
+    <Content Include="Configure.aspx" />
+    <Content Include="InstallingUsingMSBuild.txt" />
+    <Content Include="manifest.xml" />
+    <Content Include="MSBuildCommunityTasks\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
+    <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\addTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\allTrue.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\allTrueP.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\append.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\arcHTrignm.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\arcTrignm.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\booklist.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\boolNodes.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\breadthFirst.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\buildListUntil.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\buildListWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\buildListWhileMap.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\combinatorics.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\complexSum.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\compose-flist.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\compose.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\concat.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\csstext.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\curry.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\date-time.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\diff-results.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\diff-results2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\diff-results3.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\doubleall.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\drop.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\dropWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\dvc-foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\dvc-str-foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\easyDiffList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\elimError.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\elimError2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\exp.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\filter.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\findRoot.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\foldl-tree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\foldr.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\generateFromTo.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\hex-to-decimal.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\hyper-trignm.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\improve.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\improvedDiff.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\improvedDiffList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\improvedIntegration.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\IntegrationList.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\IntegrationList2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\iter.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\longText.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\makeDistinct.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\map.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\mapTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\maximum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\minimum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\monteCarlo.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\multiIntegrate.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\multiLine.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\numList.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\numTree.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\PartialSumsList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\partition.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\pow.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\product.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\productTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\random.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\randomList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\reverse.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\roundLog2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\runningTotal.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\salesMap.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\salesMap.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\scanl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\scanlDVC.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\simpleIntegration.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\someTrue.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\someTrueP.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\span.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\split-to-lines.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\split.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\sqrt.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\sqrt2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\sqrtSeq.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\store.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\store2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-buildListUntil.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-dropWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-dvc-map.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-filter.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-filterDVC.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-map.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\str-takeWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\strReverse.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\strSpan.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\strSplit-to-Lines.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\strSplit-to-Words.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\strSplit-to-Words2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\sum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\sumCSV.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\sumTransform.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\sumTransform2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\sumTransform3.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\sumTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\take.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\takeWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-arcHSine.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-arcSine.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-dvc-Foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-FindRoot.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-findRoot2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-monteCarlo-100.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-monteCarlo-1000.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-monteCarlo-10000.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-monteCarlo-65536.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-random.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-DropWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-dvc-Foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-dvc-Map.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-dvc-Map2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-foldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-Map.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-reverse.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-takeWhile.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\test-str-takeWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSpan.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSplit-to-Lines.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSplit-to-Words2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSplit-to-Words2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSplit-to-Words3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSplit-to-Words8.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\test-strSplit-to-Words8.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-sumCSV.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-zipWith.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test-zipWith3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test2-BuildListWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test2FindRoot.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\test3FindRoot.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testAll-SomeTrue.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testAlltrue.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testAppend.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testBuildListUntil.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testBuildListWhile-Intervals.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testBuildListWhile-Intervals2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testBuildListWhile-Intervals3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testBuildListWhile.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testBuildListWhileMap.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testCombinatorics.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testCombinatorics.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testCompose.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testConcat.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testCurry.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testDistinct1.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testDistinct11.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testDistinct2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testDistinct22.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testDistinct3.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testDistinct33.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testDoubleall.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testDoubleTranslate.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testEasyDiffList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testElimError.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testElimError2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testExp.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testFilter.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testFilter10K.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testFilter20K.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testFilter45K.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testFilter90K.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testFoldl-Jeni.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testFoldl-tree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testFoldl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testFoldr.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testHex-to-decimal.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testHex-to-decimal.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testHTrig.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testImprove.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testImprovedDiff.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testImprovedDiffList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testImprovedIntegration.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testImprovedIntegration2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testImproveMultiple.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testIter.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testln.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMap.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMapTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMaximum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMaximum3.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testMaximum3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMaximumDate.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMinimum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testMultiIntegrate.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testPartialSumsList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testPartition.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testPow.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testProduct.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testProduct2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testProductTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testRandomList.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testReverse.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testRunningTotal.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanIter4.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanl.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanl2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanl3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanl4.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanl5.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testScanl5.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSimpleIntegration.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSomeAllTrue.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSomeTrue.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSomeTrueP.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSplitSpan.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSplitToWords3.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testSqrt.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testStore.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\teststr-Filter.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSumOfProducts.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testSumTree.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTake.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTransform-and-sum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTransform-and-sum1.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testTransform-and-sum2.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testTransform-and-sum2.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTransform-and-sum3.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\testTransform-and-sum3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTree-labels-list.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTrig.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\testTrim.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\text.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\transform-and-sum.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\tree-labels-list.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\treeData.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\trignm.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\trim.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\trim.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\within.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\withinRelative.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\words.xml" />
+    <Content Include="REST\xslt\fxsl-1.2\zipWith.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\zipWith3.xsl" />
+    <Content Include="REST\xslt\fxsl-1.2\zipWithDVC.xsl" />
+    <Content Include="REST\xslt\HisControlledVocabularies\GetMappedVariables.xml" />
+    <Content Include="REST\xslt\HisControlledVocabularies\getOntologyTree.xml" />
+    <Content Include="REST\xslt\HisControlledVocabularies\UnitsCv_2011_10_04.xml" />
+    <Content Include="REST\xslt\HisCVConversions\HisOntologyMapper.xslt" />
+    <Content Include="REST\xslt\HisCVConversions\HisUnits.xslt" />
+    <Content Include="REST\xslt\WaterML1_1_common_to_waterml2.xsl" />
+    <Content Include="REST\xslt\WaterML1_1_site_to_WaterML2.xsl" />
+    <Content Include="REST\xslt\WaterML_1_1_source_to_waterML2_identification.xsl" />
+    <Content Include="REST\xslt\WaterML_1_1_to_WaterML2_dictionaries.xsl" />
+    <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="SetACL.exe" />
+    <Content Include="wfs\DataCart.ashx" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Administration.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\NuGet.Core.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.xml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+    <None Include="AddToIIS.bat" />
+    <None Include="Installer.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="MyWS.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyWS_TWO.config" />
+    <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.chm" />
+    <Content Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="MSBuildCommunityTasks\MSBuild.Community.Tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MSBuildCommunityTasks\Sample.proj" />
+    <None Include="Parameters.WaterDev.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DataCartWFS.aspx" />
+    <Content Include="InstallationHowTo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="REST\Rest.svc" />
+    <Content Include="WaterML_1_1.aspx" />
+    <Content Include="cuahsi_1_0.asmx" />
+    <Content Include="cuahsi_1_1.asmx" />
+    <Content Include="DatabaseTest.aspx" />
+    <Content Include="DefaultWsdlHelpGenerator_XmlHttp.aspx" />
+    <Content Include="ExampleData.svc" />
+    <Content Include="Examples_1_0.aspx" />
+    <Content Include="Examples_1_1.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="Notes\CreatingViewsOverDatabases.txt" />
+    <Content Include="Notes\DevNotes.txt" />
+    <Content Include="Notes\ReleaseProceedures.txt" />
     <Content Include="Notes_generatingWcfServiceInterfaces.txt" />
     <Content Include="original_wsdls\cuahsi_1_0.asmx.xml" />
     <Content Include="original_wsdls\cuahsi_1_1.asmx.xml" />
+    <None Include="Notes\How to Set Up OD Web Service_new.doc" />
+    <None Include="parameters.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="REST\TesUrls_lbr.txt" />
+    <Content Include="REST\waterml_1_0.svc" />
+    <Content Include="REST\waterml_1_1.svc" />
+    <Content Include="REST\waterml_2.svc" />
+    <Content Include="REST\WCFNotes.txt" />
+    <Content Include="REST\xslt\WaterML1_1_timseries_ObservedProperty_to_WaterML2.xsl" />
+    <Content Include="REST\xslt\WaterML1_1_timeSeries_to_WaterML2.xsl" />
+    <Content Include="REST\xslt\WaterML1_1_timseries_WaterProcess_to_WaterML2.xsl" />
+    <Content Include="REST\xslt\WaterML1_1_variables_to_waterml2.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="REST\xslt\WaterML1_1_siteResponse_to_WaterML2.xsl" />
+    <Content Include="REST\xslt\WaterML1_timeSeries_to_WaterML2.xsl" />
+    <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\ExampleWaterMlLinks.js" />
+    <Content Include="Scripts\Notes.txt" />
+    <Content Include="ServiceDescription.aspx" />
+    <Content Include="SOAP\waterml_1_0.svc" />
+    <Content Include="SOAP\waterml_1_1.svc" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="UserControls\TestRestUrl.ascx" />
+    <Content Include="WaterMl2.aspx" />
+    <Content Include="WaterML_1_0.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Release.config">
+    <Content Include="Test.config" />
+    <None Include="RemoveFromIIS.bat" />
+    <None Include="SetACL.bat" />
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.WaterDev.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -109,6 +590,9 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="wfs\DataCart.ashx.cs">
+      <DependentUpon>DataCart.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,10 +600,107 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\WebApi.cs" />
+    <Compile Include="Configure.aspx.designer.cs">
+      <DependentUpon>Configure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataCartWFS.aspx.cs">
+      <DependentUpon>DataCartWFS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataCartWFS.aspx.designer.cs">
+      <DependentUpon>DataCartWFS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MyResource.cs" />
+    <Compile Include="REST\IRest.cs" />
+    <Compile Include="REST\Rest.svc.cs">
+      <DependentUpon>Rest.svc</DependentUpon>
+    </Compile>
+    <Compile Include="WaterML_1_1.aspx.cs">
+      <DependentUpon>WaterML_1_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WaterML_1_1.aspx.designer.cs">
+      <DependentUpon>WaterML_1_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseTest.aspx.designer.cs">
+      <DependentUpon>DatabaseTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleData.svc.cs">
+      <DependentUpon>ExampleData.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Examples_1_0.aspx.designer.cs">
+      <DependentUpon>Examples_1_0.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examples_1_1.aspx.designer.cs">
+      <DependentUpon>Examples_1_1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code_old\Examples.cs" />
+    <Compile Include="App_Code_old\GetSiteInfoOD.cs" />
+    <Compile Include="App_Code_old\GetSiteInfoOD_v1_1.cs" />
+    <Compile Include="App_Code_old\GetSitesOD.cs" />
+    <Compile Include="App_Code_old\GetValuesOD.cs" />
+    <Compile Include="App_Code_old\GetValuesOD_v1_1.cs" />
+    <Compile Include="App_Code_old\GetVariablesOD.cs" />
+    <Compile Include="App_Code_old\GetVariablesOD_v1_1.cs" />
+    <Compile Include="App_Code_old\IService_1_0.cs" />
+    <Compile Include="App_Code_old\IService_1_1.cs" />
+    <Compile Include="App_Code_old\Iwaterml2.cs" />
+    <Compile Include="App_Code_old\ODSeriesCatalog.cs" />
+    <Compile Include="App_Code_old\ODSeriesCatalog_v1_1.cs" />
+    <Compile Include="App_Code_old\ODService.cs" />
+    <Compile Include="App_Code_old\ODService_v1_1.cs" />
+    <Compile Include="App_Code_old\ODSiteInfo.cs" />
+    <Compile Include="App_Code_old\ODSiteInfo_v1_1.cs" />
+    <Compile Include="App_Code_old\ODUnits.cs" />
+    <Compile Include="App_Code_old\ODUnits_v1_1.cs" />
+    <Compile Include="App_Code_old\ODValues.cs" />
+    <Compile Include="App_Code_old\OdValuesCommon.cs" />
+    <Compile Include="App_Code_old\ODValues_v1_1.cs" />
+    <Compile Include="App_Code_old\ODvariables.cs" />
+    <Compile Include="App_Code_old\ODvariables_v1_1.cs" />
+    <Compile Include="App_Code_old\ODvocabularies.cs" />
+    <Compile Include="App_Code_old\Service_1_0_wcf.cs" />
+    <Compile Include="App_Code_old\Service_1_1_wcf.cs" />
+    <Compile Include="App_Code_old\TransformSiteInfo.cs" />
+    <Compile Include="App_Code_old\TransformValues.cs" />
+    <Compile Include="App_Code_old\TransformVariable.cs" />
+    <Compile Include="App_Code_old\waterml2.cs" />
+    <Compile Include="Configure.aspx.cs">
+      <DependentUpon>Configure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatabaseTest.aspx.cs">
+      <DependentUpon>DatabaseTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examples_1_0.aspx.cs">
+      <DependentUpon>Examples_1_0.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examples_1_1.aspx.cs">
+      <DependentUpon>Examples_1_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service_1_0.cs">
+      <DependentUpon>cuahsi_1_0.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service_1_1.cs">
+      <DependentUpon>cuahsi_1_1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,9 +708,37 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="SitesSeries.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SitesSeries.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="SOAP\Service_1_0_wcf_soap.cs">
+      <DependentUpon>waterml_1_0.svc</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TestRestUrl.ascx.cs">
+      <DependentUpon>TestRestUrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\TestRestUrl.ascx.designer.cs">
+      <DependentUpon>TestRestUrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WaterMl2.aspx.cs">
+      <DependentUpon>WaterMl2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WaterMl2.aspx.designer.cs">
+      <DependentUpon>WaterMl2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WaterML_1_0.aspx.cs">
+      <DependentUpon>WaterML_1_0.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WaterML_1_0.aspx.designer.cs">
+      <DependentUpon>WaterML_1_0.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -137,10 +746,79 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeRewriter\CodeRewriter.csproj">
+      <Project>{79C351EE-392B-474E-B182-E75D558A4EB7}</Project>
+      <Name>CodeRewriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EncryptConnectionStrings\EncryptConnectionStrings.csproj">
+      <Project>{ED7EE273-9B41-4981-8709-79BF4A50E0A8}</Project>
+      <Name>EncryptConnectionStrings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HisCentral\HisCentral.csproj">
+      <Project>{79EF484B-3408-41D8-9890-3A0C9DA762EC}</Project>
+      <Name>HisCentral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ODM1_0_Datasets\ODM1_0_Datasets.csproj">
+      <Project>{7CC3CBAF-84AA-4C14-95A8-926C92580F3E}</Project>
+      <Name>ODM1_0_Datasets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ODM1_1_Datasets\ODM1_1_Datasets.csproj">
+      <Project>{5EEAEAA9-A624-4C68-A6B9-250AF448DE4B}</Project>
+      <Name>ODM1_1_Datasets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\waterOneFlowImpl\waterOneFlowImpl.csproj">
       <Project>{533D0719-6D5F-4F02-BD8C-B3D829E9DEB2}</Project>
       <Name>waterOneFlowImpl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WFSHandler\WFSHandler.csproj">
+      <Project>{1CDD205B-042C-4C56-A338-40A6C0D4B603}</Project>
+      <Name>WFSHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WofAuthentication\WofAuthentication.csproj">
+      <Project>{32144077-B780-491E-B0F4-EA29440B056B}</Project>
+      <Name>WofAuthentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xslt\Xslt.csproj">
+      <Project>{ECC2E655-B860-4A02-B3B2-1223AA673FC9}</Project>
+      <Name>Xslt</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Code_old\GetSitesOD_v1_1.cs.exclude" />
+    <None Include="WaterOneFlow_AppSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wateroneflow_authentication.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="SOAP\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="SitesSeries.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>SitesSeries.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="wateroneflow_logging.log4net">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wofGetCapabilities.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SitesSeries.dbml.layout">
+      <DependentUpon>SitesSeries.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -149,9 +827,9 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>16248</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>6278</DevelopmentServerPort>
+          <DevelopmentServerVPath>/genericODws</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -163,6 +841,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

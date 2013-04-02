@@ -1,11 +1,16 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GenericWs2.SiteMaster" %>
+<%@ Register  TagPrefix="wml" TagName="WmlUrl" Src="~/UserControls/TestRestUrl.ascx" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="scripts/date.js"></script>
+    
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+     
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -32,7 +37,20 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem Text="WaterML 1.0" Value="WaterML 1.0" 
+                            NavigateUrl="~/WaterML_1_0.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="WaterML 1.1" Value="WaterML 1.1"  NavigateUrl="~/WaterML_1_1.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="WaterML 2.0" Value="WaterML 2.0" 
+                            NavigateUrl="~/WaterMl2.aspx"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/DataCartWFS.aspx" Text="DataCart WFS" 
+                            Value="DataCart WFS"></asp:MenuItem>
+                        <asp:MenuItem Text="Admin" Value="Admin">
+                            <asp:MenuItem NavigateUrl="~/Configure.aspx" Text="Configuraiton" 
+                                Value="Configuraiton"></asp:MenuItem>
+                            <asp:MenuItem Text="Installation How To" Value="Installation"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/DatabaseTest.aspx" Text="Database Test" 
+                                Value="Database Test"></asp:MenuItem>
+                        </asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>

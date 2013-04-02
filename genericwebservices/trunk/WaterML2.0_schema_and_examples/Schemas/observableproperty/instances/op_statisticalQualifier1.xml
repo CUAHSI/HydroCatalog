@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example -->
+<ComplexObservableProperty xmlns="http://schemas.opengis.net/op"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.opengis.net/op ../schemas/op.xsd" gml:id="ID002">
+    <label>Mean Air Temperature over 24hr Period</label>
+    <basePhenomenon xlink:href="http://myvocab.com/air_temperature"/>
+    <qualifier>
+        <StatisticalQualifier gml:id="24mean1">
+            <statisticalOperator xlink:href="http://www.uncertml.org/statistics/mean"/>
+            <statisticalPeriod>P1D</statisticalPeriod>
+        </StatisticalQualifier>
+    </qualifier>
+</ComplexObservableProperty>

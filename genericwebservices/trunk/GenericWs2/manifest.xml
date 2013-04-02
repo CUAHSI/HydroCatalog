@@ -1,0 +1,4 @@
+﻿<MSDeploy.iisApp>
+	<createApp  managedPipelineMode="Classic" managedRuntimeVersion="v4.0" />
+
+</MSDeploy.iisApp>

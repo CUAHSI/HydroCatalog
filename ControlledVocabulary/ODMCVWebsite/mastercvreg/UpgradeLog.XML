@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="MCVReg">
+</Property><Property Name="Solution File" Value="C:\inetpub\wwwroot\mastercvreg\MCVReg.sln">
+</Property><Property Name="Date" Value="Wednesday, January 25, 2012">
+</Property><Property Name="Time" Value="15:08 PM">
+</Property></Properties><Event ErrorLevel="2" Project="MCVReg" Source="http://localhost/mastercvreg/MCVReg.vbproj" Description="Unable to open the Web site 'http://localhost/mastercvreg/MCVReg.vbproj'. To access local IIS Web sites, you must install the following IIS components:&#xA;&#xA;      IIS 6 Metabase and IIS 6 Configuration Compatibility&#xA;      Windows Authentication&#xA;&#xA;In addition, you must run Visual Studio in the context of an administrator account.&#xA;&#xA;For more information, press F1.">
+</Event><Event ErrorLevel="0" Project="" Source="MCVReg.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="MCVReg.sln" Description="Converted">
+</Event></UpgradeLog>

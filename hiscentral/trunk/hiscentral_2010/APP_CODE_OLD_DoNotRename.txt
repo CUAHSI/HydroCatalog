@@ -1,0 +1,5 @@
+﻿Do not rename the folder to App_code
+
+This has been converted to a "Web Application" All the code gets compiled to a single DLL.
+
+App_code is leftover from Asp.Net "WebSite" means that you will be using dynamic compilatation.

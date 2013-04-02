@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example of a composite observable property -->
+<CompositeObservableProperty xmlns="http://schemas.opengis.net/op"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.opengis.net/op ../schemas/op.xsd" gml:id="BUFR_302035">
+    <label>Basic synoptic "instantaneous" data</label>
+    <count>8</count>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_302032">
+            <label>Temperature and humidity data</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/302032"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_302033">
+            <label>Visibility data</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/302033"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_302034">
+            <label>Precipitation past 24 hours</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/302034"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_007032">
+            <label>Height of sensor above local ground (set to missing to cancel the previous value)</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/007032"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_302004">
+            <label>Cloud data</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/302004"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_101000">
+            <label>Delayed replication</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/101000"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_031001">
+            <label>Delayed descriptor replication factor</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/031001"/>
+        </SimpleObservableProperty>
+    </component>
+    <component>
+        <SimpleObservableProperty gml:id="BUFR_302005">
+            <label>Individual cloud layer or mass</label>
+            <basePhenomenon xlink:href="http://wmo.int/bufrdefs/302005"/>
+        </SimpleObservableProperty>
+    </component>
+</CompositeObservableProperty>

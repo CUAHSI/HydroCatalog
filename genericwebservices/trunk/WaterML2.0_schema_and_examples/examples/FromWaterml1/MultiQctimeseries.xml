@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wml2:Collection xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:om="http://www.opengis.net/om/2.0"
+                 xmlns:wml2="http://www.opengis.net/waterml/2.0"
+                 xmlns:swe="http://www.opengis.net/swe/2.0"
+                 xmlns:gml="http://www.opengis.net/gml/3.2"
+                 xmlns:sf="http://www.opengis.net/sampling/2.0"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 xmlns:sams="http://www.opengis.net/samplingSpatial/2.0"
+                 xmlns:wml="http://www.cuahsi.org/waterML/1.1/"
+                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                 xsi:schemaLocation="http://www.opengis.net/waterml/2.0 ../../Schemas/WaterML/waterml2.xsd"
+                 gml:id="generated_collection_doc">
+   <wml2:metadata>
+      <wml2:DocumentMetadata gml:id="doc_md">
+         <wml2:generationDate>2011-01-01T00:00:00Z</wml2:generationDate>
+         <wml2:generationSystem>Translation from WaterML1.1 response document</wml2:generationSystem>
+      </wml2:DocumentMetadata>
+      <!--8.2.8	metadata (OM_Observation)
+  wml2:intendedSamplingInterval P2Y2M25DT21H54M52.27S
+  wml2:status 
+  wml2:sampledMedium 
+  wml2:maximumGap P5Y0M24DT12H3M45.94S
+                    
+    wml2:parameter
+       om:NamedValue>
+            om:name 
+            om:value 
+        om:NamedValue
+    (and/or)
+    wml2:parameter xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:actuate="other" gml:remoteSchema="http://www.liquid-technologies.com"
+--></wml2:metadata>
+   <!-- 
+   8.12.1.7.1	phenomenaDictionary
+   8.12.1.7.2	qualifierDictionary 
+   8.12.1.7.3	qualityDictionary 
+                processing
+            --><wml2:phenomenaDictionary>
+      <gml:Dictionary gml:id="phenomena">
+         <gml:identifier codeSpace="http://www.cuahsi.org/waterml2/dictionaries/">phenomena</gml:identifier>
+         <!-- Requirements Class:Reference needed--><gml:dictionaryEntry xmlns:swe="http://www.opengis.net/swe" xmlns:op="http://schemas.opengis.net/op">
+            <gml:Definition gml:id="LBR-USU41">
+               <gml:description xlink:href="LBR:USU41" xlink:title="Solids, total Suspended"/>
+               <gml:identifier codeSpace="&#xA;           urn:cuahsi.org\localidenfier\&#xA;          ">LBR:USU41</gml:identifier>
+               <gml:name codeSpace="urn:cuashi/ontology"/>
+               <gml:name codeSpace="LBR:USU41"/>
+            </gml:Definition>
+         </gml:dictionaryEntry>
+      </gml:Dictionary>
+   </wml2:phenomenaDictionary>
+   <wml2:qualityDictionary>
+      <gml:Dictionary gml:id="quality">
+         <gml:identifier codeSpace="http://www.cuahsi.org/waterml2/dictionaries/">quality</gml:identifier>
+         <gml:dictionaryEntry>
+            <gml:Definition gml:id="qclevel-1">
+               <gml:identifier codeSpace="http://www.cuahsi.org/">1</gml:identifier>
+               <gml:name codeSpace="http://www.cuahsi.org/">Quality controlled data</gml:name>
+               <gml:remarks>Quality controlled data that have passed quality assurance procedures such as routine estimation of timing and sensor calibration or visual inspection and removal of obvious errors. An example is USGS published streamflow records following parsing through USGS quality control procedures.</gml:remarks>
+            </gml:Definition>
+         </gml:dictionaryEntry>
+      </gml:Dictionary>
+   </wml2:qualityDictionary>
+   <wml2:observationMember>
+      <om:OM_Observation gml:id="observation">
+         <om:phenomenonTime>
+            <gml:TimePeriod gml:id="phen_time">
+               <gml:beginPosition>2007-11-07T13:00:00</gml:beginPosition>
+               <gml:endPosition>2007-12-20T14:05:00</gml:endPosition>
+            </gml:TimePeriod>
+         </om:phenomenonTime>
+         <om:resultTime>
+            <gml:TimeInstant gml:id="eor">
+               <gml:timePosition>2007-12-20T14:05:00</gml:timePosition>
+            </gml:TimeInstant>
+         </om:resultTime>
+         <om:procedure><!-- http://www.opengis.net/spec/waterml/2.0/req/xml-water-observation/procedure
+       The XML element “om:procedure” shall contain a subelement of “wml:WaterObservationProcess” or a member of its substitution group, or a xlink:href attribute referencing a such an element.--><!--9.6	Requirements Class: Water Observation Procedures--><wml:WaterObservationProcess>
+               <wml:processType xlink:href="http://www.opengis.net/def/processType/WaterML/2.0/Unknown"
+                                xlink:title="Water chemistry grab sample collected by technicians in the field."/>
+               <wml:processReference xlink:href="urn:cuahsi/wof/method:25"
+                                     xlink:title="Water chemistry grab sample collected by technicians in the field."/>
+               <om:parameter>
+                  <om:NamedValue>
+                     <om:name xlink:title="valueType" xlink:href="valueType"/>
+                     <om:value xsi:type="xsd:string">Sample</om:value>
+                  </om:NamedValue>
+               </om:parameter>
+               <om:parameter>
+                  <om:NamedValue>
+                     <om:name xlink:title="noDataValue" xlink:href="noDataValue"/>
+                     <om:value xsi:type="xsd:string">-9999</om:value>
+                  </om:NamedValue>
+               </om:parameter>
+               <om:parameter>
+                  <om:NamedValue>
+                     <om:name xlink:title="sampleMedium" xlink:href="sampleMedium"/>
+                     <om:value xsi:type="xsd:string">Surface Water</om:value>
+                  </om:NamedValue>
+               </om:parameter>
+               <om:parameter>
+                  <om:NamedValue>
+                     <om:name xlink:title="speciation" xlink:href="speciation"/>
+                     <om:value xsi:type="xsd:string">Not Applicable</om:value>
+                  </om:NamedValue>
+               </om:parameter>
+               <om:parameter>
+                  <om:NamedValue>
+                     <om:name xlink:title="ODM Variable" xlink:href="http://his.cuahsi.org/odm"/>
+                     <om:value xsi:type="wml:VariableInfoType">
+                        <variable xmlns="http://www.cuahsi.org/waterML/1.1/">
+                           <variableCode vocabulary="LBR" default="true" variableID="41">USU41</variableCode>
+                           <variableName>Solids, total Suspended</variableName>
+                           <valueType>Sample</valueType>
+                           <dataType>Sporadic</dataType>
+                           <generalCategory>Water Quality</generalCategory>
+                           <sampleMedium>Surface Water</sampleMedium>
+                           <unit>
+                              <unitName>milligrams per liter</unitName>
+                              <unitType>Concentration</unitType>
+                              <unitAbbreviation>mg/L</unitAbbreviation>
+                              <unitCode>199</unitCode>
+                           </unit>
+                           <noDataValue>-9999</noDataValue>
+                           <timeScale>
+                              <unit>
+                                 <unitName>second</unitName>
+                                 <unitType>Time</unitType>
+                                 <unitAbbreviation>s</unitAbbreviation>
+                                 <unitCode>100</unitCode>
+                              </unit>
+                              <timeSupport>0</timeSupport>
+                           </timeScale>
+                           <speciation>Not Applicable</speciation>
+                        </variable>
+                     </om:value>
+                  </om:NamedValue>
+               </om:parameter>
+            </wml:WaterObservationProcess>
+         </om:procedure>
+         <om:observedProperty xlink:href="LBR-USU41#variableCode-" xlink:title=""/>
+         <om:featureOfInterest xlink:href="USU-LBR-Wellsville"/>
+         <!--9.2.1.1	resultQuality would go here--><om:result>
+            <wml2:Timeseries gml:id="_TS"><!--domainExtent refers to time described above--><wml2:temporalExtent xlink:href="#phen_time"/>
+               <wml2:metadata>
+                  <wml2:TSMetadata>
+                     <wml2:cumulative>false</wml2:cumulative>
+                  </wml2:TSMetadata>
+               </wml2:metadata>
+               <!--baseTime and  spacing--><wml2:defaultPointMetadata>
+                  <wml2:DefaultTVPMetadata><!--8.6.4	Data quality. Mapping needed--><wml2:quality xlink:href="http://www.opengis.net/def/timeseriesType/WaterML/2.0/notcensored&#xA;                                            "
+                                   xlink:title="not censored"/>
+                     <!--8.6.5	Data type. need to do a mapping--><wml2:interpolationType xlink:href="http://www.opengis.net/def/timeseriesType/WaterML/2.0/Sporadic"
+                                             xlink:title="Sporadic"/>
+                     <wml2:processing xlink:href="urn:cuahsi/qualityControlLevel1"
+                                      xlink:title="Quality controlled data"/>
+                     <!--8.6.3	unitOfMeasure. Mapping. The unit of measure is specified using the ISO19103 UnitOfMeasure type. --><wml2:uom uom="mg/L"/>
+                  </wml2:DefaultTVPMetadata>
+               </wml2:defaultPointMetadata>
+               <wml2:point>
+                  <wml2:TimeValuePairMeasure>
+                     <wml2:time>2007-11-07T13:00:00</wml2:time>
+                     <wml2:value>10.5</wml2:value>
+                  </wml2:TimeValuePairMeasure>
+               </wml2:point>
+               <wml2:point>
+                  <wml2:TimeValuePairMeasure>
+                     <wml2:time>2007-11-13T12:30:00</wml2:time>
+                     <wml2:value>2.5</wml2:value>
+                  </wml2:TimeValuePairMeasure>
+               </wml2:point>
+               <wml2:point>
+                  <wml2:TimeValuePairMeasure>
+                     <wml2:time>2007-11-21T14:00:00</wml2:time>
+                     <wml2:value>7.2</wml2:value>
+                  </wml2:TimeValuePairMeasure>
+               </wml2:point>
+               <wml2:point>
+                  <wml2:TimeValuePairMeasure>
+                     <wml2:time>2007-12-05T11:00:00</wml2:time>
+                     <wml2:value>2.5</wml2:value>
+                  </wml2:TimeValuePairMeasure>
+               </wml2:point>
+               <wml2:point>
+                  <wml2:TimeValuePairMeasure>
+                     <wml2:time>2007-12-20T14:05:00</wml2:time>
+                     <wml2:value>2.5</wml2:value>
+                  </wml2:TimeValuePairMeasure>
+               </wml2:point>
+            </wml2:Timeseries>
+         </om:result>
+      </om:OM_Observation>
+   </wml2:observationMember>
+</wml2:Collection>

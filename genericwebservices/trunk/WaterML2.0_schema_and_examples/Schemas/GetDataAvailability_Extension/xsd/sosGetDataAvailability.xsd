@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gda="http://www.opengis.net/sosgda/1.0" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:om="http://www.opengis.net/om/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sosgda/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/>
+  <!-- ================================================= -->
+  <element name="FeaturePropertyTemporalRelationship" type="gda:FeaturePropertyTemporalRelationshipType" substitutionGroup="swes:AbstractSWES">
+    <annotation>
+      <documentation>Provides additional information about the relationship between a given featureOfInterest and observedProperty.</documentation>
+    </annotation>
+  </element>
+  <complexType name="FeaturePropertyTemporalRelationshipType">
+    <complexContent>
+      <extension base="swes:AbstractSWESType">
+        <sequence>
+          <element name="phenomenonTime" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Time (exact or generalized) for which observations are available that have the related feature as featureOfInterest and the related property as observedProperty.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gml:AbstractTimeGeometricPrimitive"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="targetFeature" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:FeatureOfInterestInfo</gml:targetElement>
+              </appinfo>
+              <documentation>The related feature.</documentation>
+            </annotation>
+          </element>
+          <element name="targetProperty" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ObservedPropertyInfo</gml:targetElement>
+              </appinfo>
+              <documentation>The related property.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FeaturePropertyTemporalRelationshipPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:FeaturePropertyTemporalRelationship"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="ObservedPropertyInfo" type="gda:ObservedPropertyInfoType" substitutionGroup="swes:AbstractSWES">
+    <annotation>
+      <documentation>Provides information on a specific observedProperty and its relationships to featuresOfInterest and procedures.</documentation>
+    </annotation>
+  </element>
+  <complexType name="ObservedPropertyInfoType">
+    <complexContent>
+      <extension base="swes:AbstractSWESType">
+        <sequence>
+          <element name="property" type="anyURI">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>unknown</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to the (observed) property for which availability information is provided.</documentation>
+            </annotation>
+          </element>
+          <element name="observedBy" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ProcedurePropertyTemporalRelationship</gml:targetElement>
+              </appinfo>
+              <documentation>Information about the phenomenon times of observations that have the given property as observedProperty and were observed by the related procedure.</documentation>
+            </annotation>
+          </element>
+          <element name="observedFor" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:FeaturePropertyTemporalRelationship</gml:targetElement>
+              </appinfo>
+              <documentation>Information about the phenomenon times of observations that have the given property as observedProperty and the related feature as featureOfInterest.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ObservedPropertyInfoPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:ObservedPropertyInfo"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="ProcedureFeatureTemporalRelationship" type="gda:ProcedureFeatureTemporalRelationshipType" substitutionGroup="swes:AbstractSWES">
+    <annotation>
+      <documentation>Provides additional information about the relationship between a given procedure and featureOfInterest.</documentation>
+    </annotation>
+  </element>
+  <complexType name="ProcedureFeatureTemporalRelationshipType">
+    <complexContent>
+      <extension base="swes:AbstractSWESType">
+        <sequence>
+          <element name="phenomenonTime" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Time (exact or generalized) for which observations are available that have the related feature as featureOfInterest and were generated by the related procedure.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gml:AbstractTimeGeometricPrimitive"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="targetFeature" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:FeatureOfInterestInfo</gml:targetElement>
+              </appinfo>
+              <documentation>The related feature.</documentation>
+            </annotation>
+          </element>
+          <element name="targetProcedure" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ProcedureInfo</gml:targetElement>
+              </appinfo>
+              <documentation>The related procedure.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ProcedureFeatureTemporalRelationshipPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:ProcedureFeatureTemporalRelationship"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="ProcedurePropertyTemporalRelationship" type="gda:ProcedurePropertyTemporalRelationshipType" substitutionGroup="swes:AbstractSWES">
+    <annotation>
+      <documentation>Provides additional information about the relationship between a given procedure and observedProperty. Note: this does NOT provide information on which procedure is generally capable of observing certain properties. That information is available in the SOS Capabilities document&amp;rsquo;s contents section.</documentation>
+    </annotation>
+  </element>
+  <complexType name="ProcedurePropertyTemporalRelationshipType">
+    <complexContent>
+      <extension base="swes:AbstractSWESType">
+        <sequence>
+          <element name="phenomenonTime" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Time (exact or generalized) for which observations are available that have the related property as observedProperty and were generated by the related procedure.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gml:AbstractTimeGeometricPrimitive"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="targetProperty" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ObservedPropertyInfo</gml:targetElement>
+              </appinfo>
+              <documentation>The related property.</documentation>
+            </annotation>
+          </element>
+          <element name="targetProcedure" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ProcedureInfo</gml:targetElement>
+              </appinfo>
+              <documentation>The related procedure.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ProcedurePropertyTemporalRelationshipPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:ProcedurePropertyTemporalRelationship"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="ProcedureInfo" type="gda:ProcedureInfoType" substitutionGroup="swes:AbstractSWES">
+    <annotation>
+      <documentation>Provides information on a specific procedure and its relationships to observedProperties and featuresOfInterest.</documentation>
+    </annotation>
+  </element>
+  <complexType name="ProcedureInfoType">
+    <complexContent>
+      <extension base="swes:AbstractSWESType">
+        <sequence>
+          <element name="procedure" type="anyURI">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>om:OM_Process</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to the procedure for which availability information is provided.</documentation>
+            </annotation>
+          </element>
+          <element name="observedFeatureOfInterest" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ProcedureFeatureTemporalRelationship</gml:targetElement>
+              </appinfo>
+              <documentation>Information about the phenomenon times of observations that were generated by the given procedure and have the related feature as featureOfInterest.</documentation>
+            </annotation>
+          </element>
+          <element name="observedProperty" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ProcedurePropertyTemporalRelationship</gml:targetElement>
+              </appinfo>
+              <documentation>Information about the phenomenon times of observations that were generated by the given procedure and have the related property as observedProperty.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ProcedureInfoPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:ProcedureInfo"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="FeatureOfInterestInfo" type="gda:FeatureOfInterestInfoType" substitutionGroup="swes:AbstractSWES">
+    <annotation>
+      <documentation>Provides information on a specific featureOfInterest and its relationships to observedProperties and procedures.</documentation>
+    </annotation>
+  </element>
+  <complexType name="FeatureOfInterestInfoType">
+    <complexContent>
+      <extension base="swes:AbstractSWESType">
+        <sequence>
+          <element name="feature" type="anyURI">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gml:AbstractFeature</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to the featureOfInterest for which availability information is provided.</documentation>
+            </annotation>
+          </element>
+          <element name="relatedProperty" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:FeaturePropertyTemporalRelationship</gml:targetElement>
+              </appinfo>
+              <documentation>Information about the phenomenon times of observations that have the given feature as featureOfInterest and the related property as observedProperty.</documentation>
+            </annotation>
+          </element>
+          <element name="observedBy" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gda:ProcedureFeatureTemporalRelationship</gml:targetElement>
+              </appinfo>
+              <documentation>Information about the phenomenon times of observations that have the given feature as featureOfInterest and were observed by the related procedure.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FeatureOfInterestInfoPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:FeatureOfInterestInfo"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="GetDataAvailability" type="gda:GetDataAvailabilityType" substitutionGroup="swes:ExtensibleRequest">
+    <annotation>
+      <documentation>GetDataAvailability operation request.</documentation>
+    </annotation>
+  </element>
+  <complexType name="GetDataAvailabilityType">
+    <complexContent>
+      <extension base="swes:ExtensibleRequestType">
+        <sequence>
+          <element name="availabilityTimeframe">
+            <annotation>
+              <documentation>Time interval that defines the temporal bounds of the data availability retrieval process.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gml:TimePeriod"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="featureOfInterest" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>gml:AbstractFeature</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to a feature to include in the availability study.</documentation>
+            </annotation>
+          </element>
+          <element name="minimumTimeGap" type="duration" minOccurs="0">
+            <annotation>
+              <documentation>The minimum duration between the phenomenonTime(s) of two consecutive observations required for those times not to be aggregated into a single time period.</documentation>
+            </annotation>
+          </element>
+          <element name="observedProperty" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>unknown</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to a property to include in the availability study.</documentation>
+            </annotation>
+          </element>
+          <element name="offering" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>sos:ObservationOffering</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to a service offering of which to include the associated observations in the availability study.</documentation>
+            </annotation>
+          </element>
+          <element name="procedure" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <appinfo>
+                <gml:targetElement>om:OM_Process</gml:targetElement>
+              </appinfo>
+              <documentation>Pointer to a process to include in the availability study.</documentation>
+            </annotation>
+          </element>
+          <element name="useAllFeaturesOfInterest" type="boolean" minOccurs="0">
+            <annotation>
+              <documentation>True in order to include all featuresOfInterest known to the service in the availability study, else false (default).</documentation>
+            </annotation>
+          </element>
+          <element name="useAllObservedProperties" type="boolean" minOccurs="0">
+            <annotation>
+              <documentation>True in order to include all observedProperties known to the service in the availability study, else false (default).</documentation>
+            </annotation>
+          </element>
+          <element name="useAllProcedures" type="boolean" minOccurs="0">
+            <annotation>
+              <documentation>True in order to include all procedures known to the service in the availability study, else false (default).</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GetDataAvailabilityPropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:GetDataAvailability"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <complexType name="GetDataAvailabilityPropertyByValueType">
+    <sequence>
+      <element ref="gda:GetDataAvailability"/>
+    </sequence>
+  </complexType>
+  <!-- ================================================= -->
+  <element name="GetDataAvailabilityResponse" type="gda:GetDataAvailabilityResponseType" substitutionGroup="swes:ExtensibleResponse">
+    <annotation>
+      <documentation>Response to a GetDataAvailability operation request.</documentation>
+    </annotation>
+  </element>
+  <complexType name="GetDataAvailabilityResponseType">
+    <complexContent>
+      <extension base="swes:ExtensibleResponseType">
+        <sequence>
+          <element name="featurePropertyRelationship" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Additional information about the relationship between a given featureOfInterest and observedProperty.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gda:FeaturePropertyTemporalRelationship"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="procedureFeatureRelationship" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Additional information about the relationship between a given procedure and featureOfInterest.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gda:ProcedureFeatureTemporalRelationship"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="procedurePropertyRelationship" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Additional information about the relationship between a given procedure and observedProperty.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gda:ProcedurePropertyTemporalRelationship"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="procedureEntryPoint" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Information on a specific procedure and its relationships to observedProperties and featuresOfInterest.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gda:ProcedureInfo"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="propertyEntryPoint" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Information on a specific observedProperty and its relationships to featuresOfInterest and procedures.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gda:ObservedPropertyInfo"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element name="featureOfInterestEntryPoint" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>Information on a specific featureOfInterest and its relationships to observedProperties and procedures.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="gda:FeatureOfInterestInfo"/>
+              </sequence>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GetDataAvailabilityResponsePropertyType">
+    <sequence minOccurs="0">
+      <element ref="gda:GetDataAvailabilityResponse"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <complexType name="GetDataAvailabilityResponsePropertyByValueType">
+    <sequence>
+      <element ref="gda:GetDataAvailabilityResponse"/>
+    </sequence>
+  </complexType>
+</schema>

@@ -101,6 +101,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HisCentralServicesList\HisCentralServicesList.csproj">
+      <Project>{65F5AC41-A4EF-4A96-A67A-0E58AE170EAA}</Project>
+      <Name>HisCentralServicesList</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iao.net\iao.net.csproj">
       <Project>{76F7F0EE-DFD6-4266-A22B-9484481BE23B}</Project>
       <Name>iao.net</Name>
@@ -109,6 +113,9 @@
       <Project>{B09EC81E-D5B7-4512-8F61-80BDE43CE3E8}</Project>
       <Name>HISWaterWebServicesAgent</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IMPORTANT_NOTE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

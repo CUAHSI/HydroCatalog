@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=====================================================================
+Example Request for InsertSensor operation which contains information about the description format as well as the format of the procedure description. Additionally, the identifier of the property observed by this sensor is returned. The response contains the assigned sensor ID and the identifier of the offering the sensor is assigned to.
+=======================================================================-->
+<swes:InsertSensorResponse xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/swes/2.0
+http://schemas.opengis.net/swes/2.0.0/swes.xsd">
+
+	<!--identifier assigned by the SOS for this procedure-->
+	<swes:assignedProcedure>http://www.my_namespace.org/sensors/Water_Gage_2</swes:assignedProcedure>
+
+	
+	<!--sensor description encoded in SensorML 1.0.1; for more information take a look at the examples of the SensorML specification-->
+	<swes:assignedOffering>http://www.my_namespace.org/water_gage_2_observations</swes:assignedOffering>
+	
+</swes:InsertSensorResponse>

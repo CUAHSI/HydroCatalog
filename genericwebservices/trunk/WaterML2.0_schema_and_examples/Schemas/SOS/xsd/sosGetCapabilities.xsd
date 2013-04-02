@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<import namespace="http://www.opengis.net/fes/2.0" schemaLocation="http://schemas.opengis.net/filter/2.0.0/filterAll.xsd"/>
+	<import namespace="http://www.opengis.net/ows/1.1" schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
+	<include schemaLocation="sosContents.xsd"/>
+	<!-- ================================================= -->
+	<element name="GetCapabilities" type="sos:GetCapabilitiesType" substitutionGroup="ows:GetCapabilities"/>
+	<complexType name="GetCapabilitiesType">
+		<complexContent>
+			<extension base="ows:GetCapabilitiesType">
+				<sequence>
+					<element name="extension" type="anyType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute name="service" type="string" use="optional" default="SOS"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="GetCapabilitiesPropertyType">
+		<sequence minOccurs="0">
+			<element ref="sos:GetCapabilities"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<!-- ================================================= -->
+	<element name="Capabilities" type="sos:CapabilitiesType"/>
+	<complexType name="CapabilitiesType">
+		<complexContent>
+			<extension base="ows:CapabilitiesBaseType">
+				<sequence>
+					<element name="extension" type="anyType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="filterCapabilities" minOccurs="0">
+						<complexType>
+							<sequence>
+								<element ref="fes:Filter_Capabilities"/>
+							</sequence>
+						</complexType>
+					</element>
+					<element name="contents" minOccurs="0">
+						<complexType>
+							<sequence>
+								<element ref="sos:Contents"/>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="CapabilitiesPropertyType">
+		<sequence minOccurs="0">
+			<element ref="sos:Capabilities"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+</schema>

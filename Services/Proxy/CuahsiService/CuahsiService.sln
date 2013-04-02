@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaService", "NasaService\NasaService.csproj", "{94FD8259-C936-4730-874E-742E3EF7E895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterService", "WaterService\WaterService.csproj", "{740396B4-2017-44FC-841D-D84EA6E55C51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterSchema", "WaterSchema\WaterSchema.csproj", "{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaServiceTest", "NasaServiceTest\NasaServiceTest.csproj", "{D66522A0-F1DC-4DD1-B435-BBFA21391144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRMMService", "TRMMService\TRMMService.csproj", "{DB728B1B-92EE-4E8D-92E6-35B654854BBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSearchUriTemplate", "OpenSearchUriTemplate\OpenSearchUriTemplate.csproj", "{0689ADC3-8986-4801-94F7-75663E76C706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSearchUriTemplateTest", "OpenSearchUriTemplateTest\OpenSearchUriTemplateTest.csproj", "{C5574AE4-52C5-485F-B126-EB59B34CE3FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLDASService", "GLDASService\GLDASService.csproj", "{1A3A052D-CB64-46C3-A619-C110A76F9E67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Nasa1|Any CPU = Nasa1|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94FD8259-C936-4730-874E-742E3EF7E895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94FD8259-C936-4730-874E-742E3EF7E895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94FD8259-C936-4730-874E-742E3EF7E895}.Nasa1|Any CPU.ActiveCfg = Nasa1|Any CPU
+		{94FD8259-C936-4730-874E-742E3EF7E895}.Nasa1|Any CPU.Build.0 = Nasa1|Any CPU
+		{94FD8259-C936-4730-874E-742E3EF7E895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94FD8259-C936-4730-874E-742E3EF7E895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740396B4-2017-44FC-841D-D84EA6E55C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740396B4-2017-44FC-841D-D84EA6E55C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740396B4-2017-44FC-841D-D84EA6E55C51}.Nasa1|Any CPU.ActiveCfg = Nasa1|Any CPU
+		{740396B4-2017-44FC-841D-D84EA6E55C51}.Nasa1|Any CPU.Build.0 = Nasa1|Any CPU
+		{740396B4-2017-44FC-841D-D84EA6E55C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740396B4-2017-44FC-841D-D84EA6E55C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}.Nasa1|Any CPU.ActiveCfg = Nasa1|Any CPU
+		{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}.Nasa1|Any CPU.Build.0 = Nasa1|Any CPU
+		{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14960C69-CCA6-4E6D-BD20-CFDB2CF5E999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66522A0-F1DC-4DD1-B435-BBFA21391144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66522A0-F1DC-4DD1-B435-BBFA21391144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66522A0-F1DC-4DD1-B435-BBFA21391144}.Nasa1|Any CPU.ActiveCfg = Nasa1|Any CPU
+		{D66522A0-F1DC-4DD1-B435-BBFA21391144}.Nasa1|Any CPU.Build.0 = Nasa1|Any CPU
+		{D66522A0-F1DC-4DD1-B435-BBFA21391144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66522A0-F1DC-4DD1-B435-BBFA21391144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB728B1B-92EE-4E8D-92E6-35B654854BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB728B1B-92EE-4E8D-92E6-35B654854BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB728B1B-92EE-4E8D-92E6-35B654854BBF}.Nasa1|Any CPU.ActiveCfg = Nasa1|Any CPU
+		{DB728B1B-92EE-4E8D-92E6-35B654854BBF}.Nasa1|Any CPU.Build.0 = Nasa1|Any CPU
+		{DB728B1B-92EE-4E8D-92E6-35B654854BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB728B1B-92EE-4E8D-92E6-35B654854BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0689ADC3-8986-4801-94F7-75663E76C706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0689ADC3-8986-4801-94F7-75663E76C706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0689ADC3-8986-4801-94F7-75663E76C706}.Nasa1|Any CPU.ActiveCfg = Release|Any CPU
+		{0689ADC3-8986-4801-94F7-75663E76C706}.Nasa1|Any CPU.Build.0 = Release|Any CPU
+		{0689ADC3-8986-4801-94F7-75663E76C706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0689ADC3-8986-4801-94F7-75663E76C706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5574AE4-52C5-485F-B126-EB59B34CE3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5574AE4-52C5-485F-B126-EB59B34CE3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5574AE4-52C5-485F-B126-EB59B34CE3FC}.Nasa1|Any CPU.ActiveCfg = Release|Any CPU
+		{C5574AE4-52C5-485F-B126-EB59B34CE3FC}.Nasa1|Any CPU.Build.0 = Release|Any CPU
+		{C5574AE4-52C5-485F-B126-EB59B34CE3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5574AE4-52C5-485F-B126-EB59B34CE3FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3A052D-CB64-46C3-A619-C110A76F9E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3A052D-CB64-46C3-A619-C110A76F9E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3A052D-CB64-46C3-A619-C110A76F9E67}.Nasa1|Any CPU.ActiveCfg = Nasa1|Any CPU
+		{1A3A052D-CB64-46C3-A619-C110A76F9E67}.Nasa1|Any CPU.Build.0 = Nasa1|Any CPU
+		{1A3A052D-CB64-46C3-A619-C110A76F9E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3A052D-CB64-46C3-A619-C110A76F9E67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

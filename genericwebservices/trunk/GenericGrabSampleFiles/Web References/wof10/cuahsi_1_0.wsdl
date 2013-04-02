@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.cuahsi.org/his/1.0/ws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://www.cuahsi.org/waterML/1.0/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://www.cuahsi.org/his/1.0/ws/AbstractTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.cuahsi.org/his/1.0/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.cuahsi.org/his/1.0/ws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://www.cuahsi.org/waterML/1.0/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.cuahsi.org/his/1.0/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;div&gt;&lt;strong&gt;Developmental service. This service is internal CUAHSI use, and evaluation.&lt;/strong&gt;&lt;/div&gt;</wsdl:documentation>
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://www.cuahsi.org/his/1.0/ws/">
@@ -92,6 +92,13 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetVariableInfoObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:variablesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetValues">
         <s:complexType>
           <s:sequence>
@@ -121,7 +128,13 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="GetValuesObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:timeSeriesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://www.cuahsi.org/waterML/1.0/">
       <s:element name="sitesResponse" type="s1:SiteInfoResponseType" />
@@ -276,16 +289,6 @@
       <s:complexType name="GeogLocationType">
         <s:attribute default="EPSG:4326" name="srs" type="s:string" />
       </s:complexType>
-      <s:complexType name="LatLonPointType">
-        <s:complexContent mixed="false">
-          <s:extension base="s1:GeogLocationType">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
-              <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
       <s:complexType name="LatLonBoxType">
         <s:complexContent mixed="false">
           <s:extension base="s1:GeogLocationType">
@@ -294,6 +297,16 @@
               <s:element minOccurs="1" maxOccurs="1" name="west" type="s:double" />
               <s:element minOccurs="1" maxOccurs="1" name="north" type="s:double" />
               <s:element minOccurs="1" maxOccurs="1" name="east" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LatLonPointType">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:GeogLocationType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -603,13 +616,7 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="variable" type="s1:VariableInfoType" />
         </s:sequence>
       </s:complexType>
-      <s:element name="VariablesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="variablesResponse" type="s1:VariablesResponseType" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
+      <s:element name="variablesResponse" type="s1:VariablesResponseType" />
       <s:complexType name="TimeSeriesResponseType">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="queryInfo" type="s1:QueryInfoType" />
@@ -775,27 +782,7 @@
         </s:sequence>
         <s:attribute name="labMethodID" type="s:int" />
       </s:complexType>
-      <s:element name="TimeSeriesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="timeSeriesResponse" type="s1:TimeSeriesResponseType" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="variablesResponse" type="s1:VariablesResponseType" />
       <s:element name="timeSeriesResponse" type="s1:TimeSeriesResponseType" />
-    </s:schema>
-    <s:schema targetNamespace="http://www.cuahsi.org/his/1.0/ws/AbstractTypes">
-      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
-      <s:complexType name="StringArray">
-        <s:complexContent mixed="false">
-          <s:restriction base="soapenc:Array">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
-            </s:sequence>
-          </s:restriction>
-        </s:complexContent>
-      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetSitesXmlSoapIn">
@@ -832,7 +819,7 @@
     <wsdl:part name="parameters" element="tns:GetVariableInfoObject" />
   </wsdl:message>
   <wsdl:message name="GetVariableInfoObjectSoapOut">
-    <wsdl:part name="parameters" element="s1:VariablesResponse" />
+    <wsdl:part name="parameters" element="tns:GetVariableInfoObjectResponse" />
   </wsdl:message>
   <wsdl:message name="GetValuesSoapIn">
     <wsdl:part name="parameters" element="tns:GetValues" />
@@ -844,131 +831,7 @@
     <wsdl:part name="parameters" element="tns:GetValuesObject" />
   </wsdl:message>
   <wsdl:message name="GetValuesObjectSoapOut">
-    <wsdl:part name="parameters" element="s1:TimeSeriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesXmlHttpGetIn">
-    <wsdl:part name="site" type="s2:StringArray" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesXmlHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpGetIn">
-    <wsdl:part name="site" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoHttpGetIn">
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesHttpGetIn">
-    <wsdl:part name="site" type="s2:StringArray" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesHttpGetOut">
-    <wsdl:part name="Body" element="s1:sitesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoObjectHttpGetIn">
-    <wsdl:part name="site" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoObjectHttpGetOut">
-    <wsdl:part name="Body" element="s1:sitesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoObjectHttpGetIn">
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoObjectHttpGetOut">
-    <wsdl:part name="Body" element="s1:variablesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesHttpGetIn">
-    <wsdl:part name="location" type="s:string" />
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="startDate" type="s:string" />
-    <wsdl:part name="endDate" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesObjectHttpGetIn">
-    <wsdl:part name="location" type="s:string" />
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="startDate" type="s:string" />
-    <wsdl:part name="endDate" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesObjectHttpGetOut">
-    <wsdl:part name="Body" element="s1:timeSeriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesXmlHttpPostIn">
-    <wsdl:part name="site" type="s2:StringArray" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesXmlHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpPostIn">
-    <wsdl:part name="site" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoHttpPostIn">
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesHttpPostIn">
-    <wsdl:part name="site" type="s2:StringArray" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSitesHttpPostOut">
-    <wsdl:part name="Body" element="s1:sitesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoObjectHttpPostIn">
-    <wsdl:part name="site" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteInfoObjectHttpPostOut">
-    <wsdl:part name="Body" element="s1:sitesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoObjectHttpPostIn">
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVariableInfoObjectHttpPostOut">
-    <wsdl:part name="Body" element="s1:variablesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesHttpPostIn">
-    <wsdl:part name="location" type="s:string" />
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="startDate" type="s:string" />
-    <wsdl:part name="endDate" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesObjectHttpPostIn">
-    <wsdl:part name="location" type="s:string" />
-    <wsdl:part name="variable" type="s:string" />
-    <wsdl:part name="startDate" type="s:string" />
-    <wsdl:part name="endDate" type="s:string" />
-    <wsdl:part name="authToken" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetValuesObjectHttpPostOut">
-    <wsdl:part name="Body" element="s1:timeSeriesResponse" />
+    <wsdl:part name="parameters" element="tns:GetValuesObjectResponse" />
   </wsdl:message>
   <wsdl:portType name="WaterOneFlow">
     <wsdl:operation name="GetSitesXml">
@@ -1010,90 +873,6 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, a variable, a start date, and an end date, this method returns a time series. Pass in the sitecode and variable in this format: 'NetworkName:SiteCode' and 'NetworkName:Variable'</wsdl:documentation>
       <wsdl:input message="tns:GetValuesObjectSoapIn" />
       <wsdl:output message="tns:GetValuesObjectSoapOut" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="WaterOneFlow2">
-    <wsdl:operation name="GetSitesXml">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given an array of site numbers, this method returns the site metadata for each one. Send the array of site codes in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSitesXmlHttpGetIn" />
-      <wsdl:output message="tns:GetSitesXmlHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, this method returns the site's metadata. Send the site code in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSiteInfoHttpGetIn" />
-      <wsdl:output message="tns:GetSiteInfoHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfo">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a variable code, this method returns the variable's name. Pass in the variable in this format: 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetVariableInfoHttpGetIn" />
-      <wsdl:output message="tns:GetVariableInfoHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSites">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given an array of site numbers, this method returns the site metadata for each one. Send the array of site codes in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSitesHttpGetIn" />
-      <wsdl:output message="tns:GetSitesHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfoObject">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, this method returns the site's metadata. Send the site code in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSiteInfoObjectHttpGetIn" />
-      <wsdl:output message="tns:GetSiteInfoObjectHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfoObject">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a variable code, this method returns the variable's siteName. Pass in the variable in this format: 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetVariableInfoObjectHttpGetIn" />
-      <wsdl:output message="tns:GetVariableInfoObjectHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetValues">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, a variable, a start date, and an end date, this method returns a time series. Pass in the sitecode and variable in this format: 'NetworkName:SiteCode' and 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetValuesHttpGetIn" />
-      <wsdl:output message="tns:GetValuesHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetValuesObject">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, a variable, a start date, and an end date, this method returns a time series. Pass in the sitecode and variable in this format: 'NetworkName:SiteCode' and 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetValuesObjectHttpGetIn" />
-      <wsdl:output message="tns:GetValuesObjectHttpGetOut" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="WaterOneFlow3">
-    <wsdl:operation name="GetSitesXml">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given an array of site numbers, this method returns the site metadata for each one. Send the array of site codes in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSitesXmlHttpPostIn" />
-      <wsdl:output message="tns:GetSitesXmlHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, this method returns the site's metadata. Send the site code in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSiteInfoHttpPostIn" />
-      <wsdl:output message="tns:GetSiteInfoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfo">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a variable code, this method returns the variable's name. Pass in the variable in this format: 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetVariableInfoHttpPostIn" />
-      <wsdl:output message="tns:GetVariableInfoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSites">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given an array of site numbers, this method returns the site metadata for each one. Send the array of site codes in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSitesHttpPostIn" />
-      <wsdl:output message="tns:GetSitesHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfoObject">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, this method returns the site's metadata. Send the site code in this format: 'NetworkName:SiteCode'</wsdl:documentation>
-      <wsdl:input message="tns:GetSiteInfoObjectHttpPostIn" />
-      <wsdl:output message="tns:GetSiteInfoObjectHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfoObject">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a variable code, this method returns the variable's siteName. Pass in the variable in this format: 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetVariableInfoObjectHttpPostIn" />
-      <wsdl:output message="tns:GetVariableInfoObjectHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetValues">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, a variable, a start date, and an end date, this method returns a time series. Pass in the sitecode and variable in this format: 'NetworkName:SiteCode' and 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetValuesHttpPostIn" />
-      <wsdl:output message="tns:GetValuesHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetValuesObject">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Given a site number, a variable, a start date, and an end date, this method returns a time series. Pass in the sitecode and variable in this format: 'NetworkName:SiteCode' and 'NetworkName:Variable'</wsdl:documentation>
-      <wsdl:input message="tns:GetValuesObjectHttpPostIn" />
-      <wsdl:output message="tns:GetValuesObjectHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WaterOneFlow" type="tns:WaterOneFlow">
@@ -1246,156 +1025,6 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="WaterOneFlow2" type="tns:WaterOneFlow2">
-    <http:binding verb="GET" />
-    <wsdl:operation name="GetSitesXml">
-      <http:operation location="/GetSitesXml" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <http:operation location="/GetSiteInfo" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfo">
-      <http:operation location="/GetVariableInfo" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSites">
-      <http:operation location="/GetSites" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfoObject">
-      <http:operation location="/GetSiteInfoObject" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfoObject">
-      <http:operation location="/GetVariableInfoObject" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetValues">
-      <http:operation location="/GetValues" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetValuesObject">
-      <http:operation location="/GetValuesObject" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WaterOneFlow3" type="tns:WaterOneFlow3">
-    <http:binding verb="POST" />
-    <wsdl:operation name="GetSitesXml">
-      <http:operation location="/GetSitesXml" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <http:operation location="/GetSiteInfo" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfo">
-      <http:operation location="/GetVariableInfo" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSites">
-      <http:operation location="/GetSites" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteInfoObject">
-      <http:operation location="/GetSiteInfoObject" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVariableInfoObject">
-      <http:operation location="/GetVariableInfoObject" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetValues">
-      <http:operation location="/GetValues" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetValuesObject">
-      <http:operation location="/GetValuesObject" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
   <wsdl:service name="WaterOneFlow">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;div&gt;&lt;strong&gt;Developmental service. This service is internal CUAHSI use, and evaluation.&lt;/strong&gt;&lt;/div&gt;</wsdl:documentation>
     <wsdl:port name="WaterOneFlow" binding="tns:WaterOneFlow">
@@ -1403,12 +1032,6 @@
     </wsdl:port>
     <wsdl:port name="WaterOneFlow1" binding="tns:WaterOneFlow1">
       <soap12:address location="http://localhost:6278/genericODws/cuahsi_1_0.asmx" />
-    </wsdl:port>
-    <wsdl:port name="WaterOneFlow2" binding="tns:WaterOneFlow2">
-      <http:address location="http://localhost:6278/genericODws/cuahsi_1_0.asmx" />
-    </wsdl:port>
-    <wsdl:port name="WaterOneFlow3" binding="tns:WaterOneFlow3">
-      <http:address location="http://localhost:6278/genericODws/cuahsi_1_0.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

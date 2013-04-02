@@ -1,0 +1,56 @@
+﻿
+====
+skos validation:
+http://demo.semantic-web.at:8080/SkosServices/check
+* save file
+* upload
+present errors:
+Need to add lanaguage tags.
+loose term (since there is only one). no reference to a vocabulary
+
+SKOS quality evaluator:
+https://github.com/cmader/qSKOS/wiki/_pages
+
+other skso vocabsL
+http://thedatahub.org/dataset/geological-survey-of-austria-thesaurus/resource/fb99b141-9fe4-4a23-8bef-20a88a80f500
+
+====
+Using the HIS vocabs:
+on kyle.ucsd.edu
+Tables:
+* Concept
+* Hierarchy
+* Synonym
+
+No Descriptions:
+Queries:
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [ConceptID]
+      ,[ConceptName]
+      ,[Layer]
+      ,[IsSearchable]
+  FROM [HisMasterVocabTest].[dbo].[Concepts]
+  --where ConceptName ='nitrogen'
+  where Conceptid =2382
+  
+  go
+  
+  -- find parents
+  select * from Hierarchy where
+  ConceptID = 2382
+  
+  -- find children
+  
+  select * from Hierarchy where
+  ParentID = 2382
+  
+  -- find synoyms
+  select * from Synonyms where
+ conceptID = 2382
+
+ ----
+insheme: variableOntology
+ ConceptName=preflabel
+
+ parent:broader
+ child:narrower

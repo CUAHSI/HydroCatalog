@@ -1,4 +1,6 @@
-﻿namespace cuahsi.wof.ruon
+﻿using HisCentralServicesList;
+
+namespace cuahsi.wof.ruon
 {
     partial class MontiorWindow
     {
@@ -144,7 +146,7 @@
             // 
             // serverListBindingSource
             // 
-            this.serverListBindingSource.DataSource = typeof(cuahsi.wof.ruon.ObsSeriesServer);
+            this.serverListBindingSource.DataSource = typeof(ObsSeriesServer);
             // 
             // backgroundWorker1
             // 

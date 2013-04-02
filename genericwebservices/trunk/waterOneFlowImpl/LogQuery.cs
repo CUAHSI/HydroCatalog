@@ -35,6 +35,7 @@ namespace WaterOneFlowImpl
 
         public enum Methods
         {
+
             GetValues,
             GetValuesObject,
             GetVariables,
@@ -44,8 +45,15 @@ namespace WaterOneFlowImpl
             GetSites,
             GetSitesObject,
             GetSitesInBoxObject,
-            GetValuesForSiteObject
+            GetValuesForSiteObject,
+
+
         }
+
+        // added to help differentiate start from end;
+        const string endCode = "_End";
+        const string startCode = "_Start";
+
         public Logging(String network)
         {
             Network = network;
@@ -68,7 +76,7 @@ namespace WaterOneFlowImpl
                 case Methods.GetVariables:
                 case Methods.GetVariablesObject:
                     LogQueryFormatted(
-                        Method.ToString(),
+                        Method.ToString() + startCode,
                         null,
                         parameter,
                         null,
@@ -81,7 +89,7 @@ namespace WaterOneFlowImpl
                 case Methods.GetSiteInfo:
                 case Methods.GetSiteInfoObject:
                     LogQueryFormatted(
-                        Method.ToString(),
+                        Method.ToString() + startCode,
                         parameter,
                         null,
                         null,
@@ -91,7 +99,7 @@ namespace WaterOneFlowImpl
                     break;
                 default:
                     LogQueryUnformatted(
-                        Method.ToString(),
+                        Method.ToString() + startCode,
                         parameter
                         );
                     break;
@@ -106,12 +114,13 @@ namespace WaterOneFlowImpl
 
         public void LogEnd(Methods Method, string parameter, string processingTime, string Count, string UserHost)
         {
+           
             switch (Method)
             {
                 case Methods.GetVariables:
                 case Methods.GetVariablesObject:
                     LogQueryFormatted(
-                        Method.ToString(),
+                        Method.ToString() + endCode,
                         null,
                         parameter,
                         null,
@@ -124,7 +133,7 @@ namespace WaterOneFlowImpl
                 case Methods.GetSiteInfo:
                 case Methods.GetSiteInfoObject:
                     LogQueryFormatted(
-                        Method.ToString(),
+                        Method.ToString() + endCode,
                         parameter,
                         null,
                         null,
@@ -134,7 +143,7 @@ namespace WaterOneFlowImpl
                     break;
                 default:
                     LogQueryUnformatted(
-                        Method.ToString(),
+                        Method.ToString() + endCode,
                         parameter
                         );
                     break;
@@ -155,7 +164,7 @@ namespace WaterOneFlowImpl
         public void LogValuesStart(Methods Method, string Location, string Variable, string start, string end, string UserHost)
         {
             LogQueryFormatted(
-                Method.ToString(),
+                Method.ToString() + startCode,
                 Location,
                 Variable,
                 start,
@@ -181,7 +190,7 @@ namespace WaterOneFlowImpl
         public void LogValuesEnd(Methods Method, string Location, string Variable, string start, string end, long ProcessingTime, int Count, string UserHost)
         {
             LogQueryFormatted(
-                Method.ToString(),
+                Method.ToString() + endCode,
                 Location,
                 Variable,
                 start,

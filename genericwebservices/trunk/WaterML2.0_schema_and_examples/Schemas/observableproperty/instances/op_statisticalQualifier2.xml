@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example -->
+<ComplexObservableProperty xmlns="http://schemas.opengis.net/op"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.opengis.net/op ../schemas/op.xsd" gml:id="ID002">
+    <label>Preciptiation Hourly Rate</label>
+    <basePhenomenon xlink:href="http://cfconventions.org/precipitation_amount"/>
+    <qualifier>
+        <StatisticalQualifier gml:id="hourlypreciprate">
+            <statisticalOperator/>
+            <statisticalPeriod>PT1H</statisticalPeriod>
+        </StatisticalQualifier>
+    </qualifier>
+</ComplexObservableProperty>

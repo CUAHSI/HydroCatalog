@@ -1,0 +1,7 @@
+<sam:SF_SamplingFeatureCollection xmlns:sam="http://www.opengis.net/sampling/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wml2="http://www.opengis.net/waterml/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:om="http://www.opengis.net/om/2.0" xmlns:sams="http://www.opengis.net/samplingSpatial/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:wml="http://www.cuahsi.org/waterML/1.0/"><sam:member><wml2:WaterObservationPoint><gml:name codeSpace="TODO">USU-LBR-Mendon</gml:name><gml:description>Little Bear River at Mendon Road near Mendon, Utah</gml:description><sams:shape><gml:Point gml:id="USU-LBR-Mendon_pos"><gml:pos srsName="EPSG:4269">41.718473-111.946402</gml:pos></gml:Point></sams:shape><sam:parameter><om:NamedValue><om:name xlink:href="http://www.cuahsi.org/waterml2/params/County"/><om:value xsi:type="xsd:string">&#xD;
+c:\temp\&#xD;
+                  </om:value></om:NamedValue></sam:parameter><sam:parameter><om:NamedValue><om:name xlink:href="http://www.cuahsi.org/waterml2/params/State"/><om:value xsi:type="xsd:string">&#xD;
+c:\temp\&#xD;
+                  </om:value></om:NamedValue></sam:parameter><sam:parameter><om:NamedValue><om:name xlink:href="http://www.cuahsi.org/waterml2/params/Site Comments"/><om:value xsi:type="xsd:string">&#xD;
+c:\temp\&#xD;
+                  </om:value></om:NamedValue></sam:parameter></wml2:WaterObservationPoint></sam:member></sam:SF_SamplingFeatureCollection>

@@ -4552,7 +4552,9 @@ namespace WaterOneFlow.Schema.v1 {
         private TimeSeriesType timeSeriesField;
         
         /// <remarks/>
-        public QueryInfoType queryInfo {
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public QueryInfoType queryInfo
+        {
             get {
                 return this.queryInfoField;
             }
@@ -4562,7 +4564,9 @@ namespace WaterOneFlow.Schema.v1 {
         }
         
         /// <remarks/>
-        public TimeSeriesType timeSeries {
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public TimeSeriesType timeSeries
+        {
             get {
                 return this.timeSeriesField;
             }

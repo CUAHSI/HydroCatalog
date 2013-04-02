@@ -1,0 +1,160 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteMaster.master.cs" Inherits="Skin_SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <!-- InstanceEndEditable -->
+    <title>CUAHSI Hydrologic Information System (CUAHSI-HIS)</title>
+    <meta name="description" content="CUAHSI-HIS - Hydrologic Information System" />
+    <meta name="keywords" content="CUAHSI, HIS, hydrologic information system, hydrology, data publication, research" />
+    <meta name="author" content="CUAHSI-HIS Project Team" />
+    <meta name="language" content="en" />
+    <meta name="robots" content="follow, all" />
+    <meta name="revisit-after" content="5 days" />
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    function DeleteWarning(obj)
+    {
+        if(obj.checked)
+        {
+            var cf = confirm( 'Are you sure you want to submit a request to DELETE this Value?' );
+            if(cf)
+                obj.checked = true;
+            else
+                obj.checked = false;
+        }
+    }
+    </script>
+    <script type="text/javascript">
+        try {
+        var pageTracker = _gat._getTracker("UA-7114102-1");
+        pageTracker._trackPageview();
+        } 
+        catch (err) { }
+    </script>
+    <script type="text/javascript" src="http://his.cuahsi.org/scripts/his.js"></script>
+    <link href="http://his.cuahsi.org/images/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" type="text/css" href="http://his.cuahsi.org/styles/his.css" />
+    <link rel="stylesheet" type="text/css" href="http://his.cuahsi.org/styles/print.css" media="print" />
+
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+</head>
+
+<body>
+    <form runat="server">
+        <div class="pagebox">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td>
+	                    <!-- Header Area -->
+	                    <div class="pageheader">
+    	                    <div class="hislogo">
+    		                    <a href="http://his.cuahsi.org/index.html"><img src="http://his.cuahsi.org/images/hisa.gif" alt="CUAHSI Hydrologic Information System - Sharing Hydrologic Data" height="100" width="258"></a>
+    	                    </div>
+    	                    <div class="purpose">
+    		                    <p style="text-align:right;">CUAHSI's Hydrologic Information System (CUAHSI-HIS) provides web services, tools, standards and procedures that enhance access to more and better data for hydrologic analysis.</p>
+    	                    </div>
+
+                            <div class="hormenu">
+    	                        <ul>
+        	                        <li><a href="http://his.cuahsi.org/index.html">Home</a></li>
+        	                        <li><a href="http://his.cuahsi.org/howto.html">How To</a>
+    			                        <ul>
+        			                        <li><a href="http://his.cuahsi.org/datausers.html">Find and Get Data</a></li>  
+        			                        <li><a href="http://his.cuahsi.org/dataanalysis.html">Analyze Data</a></li>  
+        			                        <li><a href="http://his.cuahsi.org/modeling.html">Model Data</a></li>
+        			                        <li><a href="http://his.cuahsi.org/datapublishers.html">Publish Data</a></li>
+                                            <li><a href="http://his.cuahsi.org/developers.html">Develop Tools</a></li> 
+    			                        </ul>
+        	                        </li>
+                                    <li><a href="http://his.cuahsi.org/components.html">Components</a>
+    			                        <ul>
+        			                        <li><a href="http://his.cuahsi.org/wofws.html">Web Services</a></li>
+        			                        <li><a href="http://his.cuahsi.org/hiscentral.html">HIS Central</a></li>                                   
+        			                        <li><a href="http://his.cuahsi.org/hydroserver.html">HydroServer</a></li>                                   
+        			                        <li><a href="http://his.cuahsi.org/hydrodesktop.html">HydroDesktop</a></li>                                   
+    			                        </ul>
+         	                        </li>  
+         	                        <li><a href="http://his.cuahsi.org/support.html">Community</a>
+    			                        <ul>
+         			                        <li><a href="http://lists.sdsc.edu/mailman/listinfo/his">E-mail List</a></li>
+         			                        <li><a href="http://blog.hydrologicscience.org/?page_id=13">User's Forum</a></li>
+         			                        <li><a href="http://river.sdsc.edu/wiki/">Developer's Wiki</a></li>
+                	                        <li><a href="http://www.hydrodesktop.org">HydroDesktop Codeplex</a></li>
+                	                        <li><a href="http://his.cuahsi.org/workshops.html">Workshops</a></li>
+		                                    <li><a href="http://his.cuahsi.org/partners.html">Partners</a></li>
+                	                        <li><a href="http://his.cuahsi.org/faqs.html">FAQs</a></li>
+        			                        <li><a href="http://his.cuahsi.org/contactus.html">Contact Us</a></li>                                   
+            	                        </ul>
+         	                        </li>
+                                    <li><a href="http://his.cuahsi.org/publications.html">Publications</a></li>
+         	                        <li><a href="http://his.cuahsi.org/support.html">About Us</a>
+    			                        <ul>
+         			                        <li><a href="http://his.cuahsi.org/project.html">Project Overview</a></li>
+         			                        <li><a href="http://his.cuahsi.org/system.html">System Overview</a></li>
+                	                        <li><a href="http://his.cuahsi.org/directormessages.html">From the Director</a></li>
+         			                        <li><a href="http://his.cuahsi.org/team.html">HIS Team</a></li>
+         			                        <li><a href="http://his.cuahsi.org/legal.html">Legal</a></li>
+         			                        <li><a href="http://his.cuahsi.org/links.html">Links</a></li>
+                	                        <li><a href="http://his.cuahsi.org/faqs.html">FAQs</a></li>
+        			                        <li><a href="http://his.cuahsi.org/contactus.html">Contact Us</a></li>                                   
+            	                        </ul>
+         	                        </li>
+   		                        </ul>
+    	                        <div class="searchbox" style="text-align:right; margin-right:12px; top:120px; right:0; ">
+			                        <form action="http://his.cuahsi.org/searchresults.html" id="cse-search-box" style="font-size: 80%;" >
+			                            <div>
+    			                            <input type="hidden" name="cx" value="017877913516916987133:kwswvvjjghg" />
+    			                            <input type="hidden" name="cof" value="FORID:9" />
+    			                            <input type="hidden" name="ie" value="ISO-8859-1" />
+    			                            <input type="text" name="q" size="25"  />
+    			                            <input type="submit" name="sa" value="Search HIS" style=" color:#336699; font-weight:bold; font-size: 110%" />
+  			                            </div>
+			                        </form>
+			                        <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+                                </div>
+	                        </div>    
+                        </div>          
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- Content Area -->
+                        <div class="pageContent">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+	                    <div class="pageFooter" style="text-align:center">
+                            <div class="whiteline"></div>
+	                        <div class="footerContent">
+	                            <a href="http://his.cuahsi.org/legal.html" class="links" title="Legal">Legal</a>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="http://his.cuahsi.org/links.html" class="links" title="Links">Links</a>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="http://his.cuahsi.org/faqs.html" class="links" title="FAQs">FAQs</a>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="http://his.cuahsi.org/contactus.html" class="links" title="Contact Us">Contact Us</a>
+                            </div>
+                            <div class="whiteline"></div>
+	                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+	                    <p style="text-align:center ; font-size:80%">&copy; 2008-2010 CUAHSI-HIS</p>
+	                    <!-- <p style="text-align:center ; font-size:80%"><script type="text/javascript" language="Javascript">disclaimer();</script></p> -->
+	                    <p style="text-align:center ; font-size:80%">    This material is based upon work supported by the National Science Foundation (NSF) under Grant Nos. 04-12975, 041-3265, and 06-22374.<br />Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the NSF.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+<!-- InstanceEnd -->
+</html>

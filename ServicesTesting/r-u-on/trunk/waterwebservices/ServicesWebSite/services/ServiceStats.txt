@@ -1,0 +1,11 @@
+﻿SELECT     A.ServiceName, A.MethodName, COUNT(*) AS TotalTests, COUNT(NW.NotWorking) AS FailedTests, COUNT(W.Working) AS WorkingTests
+FROM         dbo.ServiceMonitor AS A LEFT OUTER JOIN
+                          (SELECT     ServiceName, MethodName, COUNT(*) AS NotWorking
+                            FROM          dbo.ServiceMonitor AS B
+                            WHERE      (Working = 0)
+                            GROUP BY ServiceName, MethodName) AS NW ON A.ServiceName = NW.ServiceName AND A.MethodName = NW.MethodName LEFT OUTER JOIN
+                          (SELECT     ServiceName, MethodName, COUNT(*) AS Working
+                            FROM          dbo.ServiceMonitor
+                            WHERE      (Working = 1)
+                            GROUP BY ServiceName, MethodName) AS W ON A.ServiceName = W.ServiceName AND A.MethodName = W.MethodName
+GROUP BY A.ServiceName, A.MethodName

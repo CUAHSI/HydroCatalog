@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" xmlns:sos="http://www.opengis.net/sos/2.0" targetNamespace="http://www.opengis.net/sos/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.opengis.net/swes/2.0" schemaLocation="http://schemas.opengis.net/swes/2.0.0/swes.xsd"/><!-- ================================================= -->
+    <element name="InsertResult" substitutionGroup="swes:ExtensibleRequest" type="sos:InsertResultType"/>
+    <complexType name="InsertResultType">
+        <complexContent>
+            <extension base="swes:ExtensibleRequestType">
+                <sequence>
+                    <element name="template" type="anyURI">
+                        <annotation>
+                            <appinfo>
+                                <gml:targetElement>sos:ResultTemplate</gml:targetElement>
+                            </appinfo>
+                        </annotation>
+                    </element>
+                    <element name="resultValues" type="anyType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="InsertResultPropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:InsertResult"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType><!-- ================================================= -->
+    <element name="InsertResultResponse" substitutionGroup="swes:ExtensibleResponse" type="sos:InsertResultResponseType"/>
+    <complexType name="InsertResultResponseType">
+        <complexContent>
+            <extension base="swes:ExtensibleResponseType"/>
+        </complexContent>
+    </complexType>
+    <complexType name="InsertResultResponsePropertyType">
+        <sequence minOccurs="0">
+            <element ref="sos:InsertResultResponse"/>
+        </sequence>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+</schema>

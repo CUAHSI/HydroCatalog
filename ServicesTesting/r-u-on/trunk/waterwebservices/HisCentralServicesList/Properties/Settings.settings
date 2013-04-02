@@ -5,15 +5,7 @@
     <Setting Name="HisCentralServicesList_org_cuahsi_hiscentral_hiscentral" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://hiscentral.cuahsi.org/webservices/hiscentral.asmx</Value>
     </Setting>
-    <Setting Name="CentralHISConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=localhost,1433;Initial Catalog=HISCentral;User id=;password=&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=localhost,1433;Initial Catalog=HISCentral;User id=;password=</Value>
-    </Setting>
-    <Setting Name="SqlGetNetworks" Type="System.String" Scope="User">
+    <Setting Name="SqlGetNetworks" Type="System.String" Scope="Application">
       <Value Profile="(Default)">  SELECT NetworkID
 , NetworkName,NetworkTitle,ServiceWSDL,ServiceAbs,ContactName,ContactEmail
  ContactPhone,Organization,website,Citation Xmin,Xmax,Ymin,Ymax,ValueCount,
@@ -23,12 +15,27 @@ FROM HISNetworks where  (isPublic='true')
 
 </Value>
     </Setting>
-    <Setting Name="SqlGetSource" Type="System.String" Scope="User">
+    <Setting Name="SqlGetSource" Type="System.String" Scope="Application">
       <Value Profile="(Default)"> SELECT top 1 ServCode,SiteCode,SiteName,VarCode,VarName,VarUnits,Vocabulary,Ontology,Concept
  ,Valuecount,StartDate,EndDate,Latitude,Longitude,IsRegular,TimeUnits,TimeStep,DataType,Medium
 ,MethodID,Method,QCLevelID,QCLevel,SourceID,SourceName,LocType,ServType,XLL,YLL,XUR,YUR,Location
 ,Variable,ReqsAuth,WofVersion,WaterMLURI,WFSURI,WMSURI,DAccessURI,StateName,Geometry,RecordType,OrgHier
-,SerStatus,LastUpdate FROM hiscentral.dbo.v_ObservationsMetadata where sourceid = @Sourceid</Value>
+,SerStatus,LastUpdate FROM dbo.v_ObservationsMetadata where sourceid = @Sourceid</Value>
+    </Setting>
+    <Setting Name="CentralHISConnectionString" GenerateDefaultValueInCode="false" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=kyle.ucsd.edu,1433;Failover Partner=disrupter.sdsc.edu,1433;Initial Catalog=HISCentral;Persist Security Info=True;User ID=hiscentralUser2;Password=im2nopploki&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=kyle.ucsd.edu,1433;Failover Partner=disrupter.sdsc.edu,1433;Initial Catalog=HISCentral;Persist Security Info=True;User ID=hiscentralUser2;Password=im2nopploki</Value>
+    </Setting>
+    <Setting Name="ServicesWithP1D" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;NWISUV&lt;/string&gt;
+  &lt;string&gt;RioGrandeET&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
