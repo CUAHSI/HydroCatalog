@@ -148,7 +148,7 @@
                    <asp:Label ID="lblLastHarvested" runat="server" Font-Size="Small" Height="20px" Style="z-index: 107;
                      left: 92px; position: absolute; top: 416px" Width="300px"></asp:Label>                     
                 <asp:Label ID="lblOrganizationLabel" runat="server"  style="z-index: 108; left: 124px; position: absolute; top: 177px" Height="20px" Width="670px" Font-Bold="True" Font-Size="Large"></asp:Label>                            
-                
+                <asp:Hyperlink ID="lblOrganizationLabel" runat="server"  style="z-index: 108; left: 124px; position: absolute; top: 177px" Height="20px" Font-Bold="True" Font-Size="Large"></asp:Hyperlink>                            
                 
                 
                 
