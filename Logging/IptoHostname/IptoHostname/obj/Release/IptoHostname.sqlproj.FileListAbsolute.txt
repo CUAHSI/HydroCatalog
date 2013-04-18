@@ -1,0 +1,5 @@
+f:\dev_2012\IptoHostname\IptoHostname\bin\Release\IptoHostname.dacpac
+f:\dev_2012\IptoHostname\IptoHostname\bin\Release\IptoHostname.dll
+f:\dev_2012\IptoHostname\IptoHostname\bin\Release\IptoHostname.pdb
+f:\dev_2012\IptoHostname\IptoHostname\obj\Release\IptoHostname.dll
+f:\dev_2012\IptoHostname\IptoHostname\obj\Release\IptoHostname.pdb

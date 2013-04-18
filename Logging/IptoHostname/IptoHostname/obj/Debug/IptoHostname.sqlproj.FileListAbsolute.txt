@@ -1,0 +1,9 @@
+f:\dev_2012\IptoHostname\IptoHostname\bin\Debug\IptoHostname.dacpac
+f:\dev_2012\IptoHostname\IptoHostname\bin\Debug\IptoHostname.dll
+f:\dev_2012\IptoHostname\IptoHostname\bin\Debug\IptoHostname.pdb
+f:\dev_2012\IptoHostname\IptoHostname\obj\Debug\Model.xml
+f:\dev_2012\IptoHostname\IptoHostname\obj\Debug\refactor.xml
+f:\dev_2012\IptoHostname\IptoHostname\obj\Debug\postdeploy.sql
+f:\dev_2012\IptoHostname\IptoHostname\obj\Debug\predeploy.sql
+f:\dev_2012\IptoHostname\IptoHostname\obj\Debug\IptoHostname.dll
+f:\dev_2012\IptoHostname\IptoHostname\obj\Debug\IptoHostname.pdb

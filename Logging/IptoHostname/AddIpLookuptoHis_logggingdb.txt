@@ -1,0 +1,60 @@
+http://blog.netnerds.net/2007/02/sql-server-2005-creating-your-first-c-clr-udf-in-10-easy-steps-one-of-which-includes-partying/
+
+14
+FEB/07
+6
+Well, 10 steps, give or take. This could have been executed in fewer steps had we not chosen such a useful function as an example <G>. This function, which is only supported in SQL Server 2005 with CLR enabled, esentially performs a reverse IP lookup (nslookup -type=ptr), uses System.Net.Dns.GetHostEntry and thus requires a bit more security configuration. So, let's begin.
+
+1. In VS 2005, click File -> New -> Project -> Visual C# -> Database -> SQL Server Project -> OK.
+2. Enter SQL Server name, credentials, and database name -> OK.
+a. Accept the prompt which asks you if you want to enable CLR debugging in the database
+3. In Solution Explorer, right click on the name of your SQL Server Project -> Add -> User Defined Function -> save it as "IPtoHostname.cs" (this will be the name of your function)
+4. Copy and paste the following code into the IPtoHostname.cs window:
+
+IPtoHostname.cs
+
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using Microsoft.SqlServer.Server;
+
+public partial class UserDefinedFunctions
+{
+    [Microsoft.SqlServer.Server.SqlFunction]
+    public static System.Data.SqlTypes.SqlString IPtoHostName(string ipaddr) // this is like T-SQL's CREATE FUNCTION dbo.IPtoHostName  (@strCCode varchar(xx))
+    {
+        try // This basically means "If the IP resolves properly and doesn't throw an exception, then..."
+        {
+            string myIP = System.Net.Dns.GetHostEntry(ipAddress.Trim()).HostName.ToString();
+            return new SqlString(myIP);
+        }
+        catch // "If it doesn't, just return the IP address"
+        {
+            return new SqlString(ipaddr);
+        }
+    }
+};
+Note: Again, because we use System.Net, we need to set some permissions which weakens the security of the given database. I haven't researched the implications of doing so but I figure if I'm going to run CLR stuff in my database, I'm willing to bend a little on security anyway.
+
+5. Save your work. In Solution Explorer, right click on then name of your SQL Server Project and click Properties. Change the Permission Level to External.
+6. Open SQL Server Management Studio and issue the following command, using the name of the database you selected in step 2.
+
+EXEC sp_configure 'CLR ENABLED' , '1'
+GO
+RECONFIGURE
+GO
+ALTER DATABASE MyDBFromStep2 SET TRUSTWORTHY ON
+GO
+Note: In order to enable CLR or set the TRUSTWORTHYness of a database, it's likely that you must be a sys admin. And this is mostly for keywords to help Googlers... if you do not do the above, you will run into an error similiar to the following:
+
+System.Security.SecurityException...
+
+7. Next, go back to Visual Studio, and select the "Debug" dropdown. Change that to "Release."
+8. Save. Hit F5. You should have a successful build.
+9. In SQL Management Studio, Query your database with the following statement:
+
+select dbo.IPtoHostName('24.0.175.222') as hostname
+
+See "c-24-0-175-222.hsd1.tx.comcast.net"
+10. Laissez les bon temps rouler! (Party!)
